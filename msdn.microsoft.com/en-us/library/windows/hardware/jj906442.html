@@ -1,0 +1,3197 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj906442.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="jj906442.html" />
+        <title>Using Robot Automation for Touch Hardware Certification Tests</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj906442(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj906442(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj906442(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj906442(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD5-3:59:28 AM" />
+
+<meta name="Search.ShortId" content="jj906442" />
+
+<meta name="ms.shortidmsdn" content="jj906442" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053968&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj906442.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998100.html" id="dn375949_WIN.10_en-us" mtpsaliasid="" mtpsassetid="19922dd7-c8d5-4eab-bcd4-305157cbce9f_WIN.10_en-us" mtpsshortid="hh998100_WIN.10_en-us" title="Device.Digitizer Testing">Device.Digitizer Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn247279.html" id="dn375953_WIN.10_en-us" mtpsaliasid="" mtpsassetid="5f43a6ff-791a-4176-ba02-0bfec29a6277_WIN.10_en-us" mtpsshortid="dn247279_WIN.10_en-us" title="Additional Digitizer Resources">Additional Digitizer Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn195876.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Down Latency by using an Acoustic Measurement Tool">How to measure Touch Down Latency by using an Acoustic Measurement Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn266003.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Panning Latency">How to measure Touch Panning Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn343548.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run HCK Motion Sensor Tests">How to run HCK Motion Sensor Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169214.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the Windows HCK Tests for Touch and Pen devices">How to run the Windows HCK Tests for Touch and Pen devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn281959.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the Precision Touch Testing Tool">How to use the Precision Touch Testing Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293768.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overview of measuring Touch Down Hardware Latency">Overview of measuring Touch Down Hardware Latency</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="jj906442.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using Robot Automation for Touch Hardware Certification Tests">Using Robot Automation for Touch Hardware Certification Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169213.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service">Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Using Robot Automation for Touch Hardware Certification Tests</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>During Windows 7, multiple partners built robots to automate the touch hardware certification tests. The involved lines and points were laid out using predefined locations so the process was fairly straightforward. In Windows 8, many of the locations are randomized so an API is required to help the robots to find these points and lines. This topic covers the API that was designed to provide that information to the robot and let it command the test in a meaningful way.</p>
+      <h2 class="heading">Glossary</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Term
+								</th>
+            <th>
+									Definition
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Touch certification tool</p>
+            </td>
+            <td>
+              <p>The tool used for testing touch digitizers as part of the Windows Hardware Certification program.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Robot controller</p>
+            </td>
+            <td>
+              <p>The server controlling the robot. This is the main consumer of the ILogoAutomation interface.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>HCK controller</p>
+            </td>
+            <td>
+              <p>The server that controls the testing.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Interaction</p>
+            </td>
+            <td>
+              <p>Single input tests, such as a tap, double tap, or drag. This is the most granular part of touch hardware certification testing. A touch hardware certification test is comprised of a set of interactions.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Test</p>
+            </td>
+            <td>
+              <p>A collection of interactions.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">How to use these APIs</h2>
+      <div id="sectionSection1" class="section">
+        <p>
+          
+        </p>
+        <h3 class="subHeading">Callbacks</h3>
+        <div class="subSection">
+          <p>Callbacks are asynchronous, will not always occur on the same thread, and will originate from a multithreaded apartment.</p>
+        </div>
+        <h3 class="subHeading">Control Flow Overview</h3>
+        <div class="subSection">
+          <p>Each touch hardware certification run consists of a series of tests that is configurable by the Hardware Certification Kit (HCK) controller. Each test is designed to test a specific aspect of a touch digitizer, such as a tap, double tap, or drag test. Every test is composed of an interaction the robot is expected to perform and repeat a set number of times. The goal of the robot is to complete all of the tests by iterating through each one sequentially and performing each interaction.</p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								While the basic idea of the interaction remains the same throughout the test, details such as the start and end points, are changed randomly.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <h4 class="subHeading">Connecting to the Touch Certification Tool</h4>
+          <div class="subSection">
+            <p>The touch certification tool must be started from the HCK controller, or manually by using command line. The robot should not start the touch certification tool remotely. If the <strong>ILogoAutomation</strong> interface is created when the touch certification tool is not running, the interface will not be created.</p>
+            <div class="alert">
+              <table>
+                <tr>
+                  <th align="left">
+                    <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                </tr>
+                <tr>
+                  <td>
+										It is not possible to automatically start the robot when the touch certification tool starts. The robot must be started manually for every test run or you must try to create the <strong>ILogoAutomation</strong> interface until it succeeds.<p></p></td>
+                </tr>
+              </table>
+              <p>
+                
+              </p>
+            </div>
+          </div>
+          <h4 class="subHeading">Selecting a test</h4>
+          <div class="subSection">
+            <p>Each test that the robot performs is identified by a unique name that remains the same between touch certification test runs. The initial screen in the touch certification tool is the test selection page and is treated as a test with a constant name of <strong>Table of Contents</strong>. To get the list of tests, use <strong>QueryAvailableTests</strong>. To start a test, use <strong>StartTest</strong>.</p>
+          </div>
+          <h4 class="subHeading">Running a test</h4>
+          <div class="subSection">
+            <p>Each test includes a set of interactions. The touch certification tool sends a notification when an interaction starts and finishes. The robot should call <strong>ILogoAutomation::QueryInteraction</strong> between the notifications and then perform an interaction. When all of the required interactions are complete, the touch certification tool will stop the test and send a test completed notification by using <strong>ILogoEventHandler::TestCompleted</strong>. At this point, the robot can move to the next test.</p>
+          </div>
+          <a id="BKMK_ErrorHandling">
+            
+          </a>
+          <h4 class="subHeading">Error handling</h4>
+          <div class="subSection">
+            <p>Some of the error cases are as follows: </p>
+            <ul>
+              <li class="unordered">
+											The robot performs an interaction but does not receive an <strong>ILogoEventHandler::InteractionCompleted</strong> callback. The robot controller should have a timeout to detect this. After the timeout, the robot can determine the reason by calling <strong>ILogoAutomation::QueryCurrentState</strong>.<br /><br /><ul><li class="unordered">
+													If the digitizer could not recognize a contact, the touch certification tool will wait indefinitely for input on most tests. If the current state has 0 contacts down and <strong>ILogoAutomation::QueryCurrentInteraction</strong> returns the same interaction ID as before, the robot should fail the test because the digitizer could not recognize a contact.<br /><br /></li><li class="unordered">
+													If the digitizer reports that contact has not departed, no interactions will pass until the contact has departed.<br /><br /></li></ul></li>
+              <li class="unordered">
+											The robot gets more <strong>ILogoEventHandler::InteractionCompleted</strong> callbacks than the number of interactions it has performed.<br /><br /><ul><li class="unordered">
+													This is likely due to device ghosting. The robot should resynchronize its state with the touch certification tool by using <strong>ILogoAutomation::QueryCurrentState</strong> and <strong>ILogoAutomation::QueryCurrentInteraction</strong>.<br /><br /></li></ul></li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="subHeading">Automated Logo Flow Diagram</h3>
+        <div class="subSection">
+          <img id="605da03b-e94f-4a98-90cd-8c6200004908" alt="Automated Flow Diagram" src="../../../../../i.msdn.microsoft.com/dynimg/IC639263.jpg" title="Automated Flow Diagram" xmlns="" />
+        </div>
+      </div>
+      <h2 class="heading">API Definitions</h2>
+      <div id="sectionSection2" class="section">
+        <p>There are three interfaces that you can use:</p>
+        <ul>
+          <li class="unordered">
+            <a href="#BKMK_ILogoAutomation">Interface: ILogoAutomation</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#BKMK_IInteractionObject">Interface: IInteractionObject</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#BKMK_ILogoEvenHandler">Interface: ILogoEventHandler</a>
+            <br />
+            <br />
+          </li>
+        </ul>
+        <a id="BKMK_ILogoAutomation">
+          
+        </a>
+        <h3 class="subHeading">Interface: ILogoAutomation</h3>
+        <div class="subSection">
+          <p>The ILogoAutomation interface allows you to do the following:</p>
+          <ul>
+            <li class="unordered">
+									Query information about the state of the touch certification tool by using <strong>QueryCurrentVersion</strong>, <strong>QueryCurrentState</strong>, <strong>QueryAvailableTests</strong>.<br /><br /></li>
+            <li class="unordered">
+									Control the flow of the touch certification tool similar to the buttons a human would use by using <strong>StartTest</strong>, <strong>ExitTest</strong>, <strong>Exit</strong>, <strong>HideStatusUI</strong>, <strong>ShowStatusUI</strong>.<br /><br /></li>
+            <li class="unordered">
+									Register touch certification tool events, allowing the robot and the touch certification tool states to be more easily synchronized by using <strong>RegisterEventSink</strong> and <strong>UnregisterEventSink</strong>.<br /><br /></li>
+          </ul>
+          <h4 class="subHeading">Overview</h4>
+          <div class="subSection">
+            
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_7233679a-b72a-4334-9e0c-c4af93de1a4e');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7233679a-b72a-4334-9e0c-c4af93de1a4e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+interface ILogoAutomation : IDispatch {
+    HRESULT QueryCurrentVersion(
+        [out] ULONG* version);
+    HRESULT QueryCurrentState(
+        [out] BSTR* testName,
+        [out] ULONG* nContactsDown);
+    HRESULT QueryAvailableTests(
+        [out] VARIANT* testNames);
+
+    HRESULT StartTest(
+        [in] BSTR testName);
+    HRESULT ExitTest();
+    HRESULT Exit();
+    HRESULT HideStatusUI();
+    HRESULT ShowStatusUI();
+
+    HRESULT QueryInteraction(
+        [out] IInteractionObject** interaction);
+    HRESULT FailInteraction(
+        [in] ULONG interactionId,
+        [in] BSTR reason);
+
+    HRESULT RegisterEventSink(
+        [in] ILogoEventHandler* eventSink, 
+        [out] ULONG* cookie);
+    HRESULT UnregisterEventSink(
+        [in] ULONG cookie);
+};
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          </div>
+          <h4 class="subHeading">Methods</h4>
+          <div class="subSection">
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Name
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>QueryCurrentVersion</p>
+                </td>
+                <td>
+                  <p>Returns the current version of the touch certification tool.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>QueryCurrentState</p>
+                </td>
+                <td>
+                  <p>Returns the current state of the touch certification tool, including the test that is displaying and the number of contacts that it thinks are down.</p>
+                  <p>
+                    <strong>testName</strong> The name of either the test selection page (named “Table of Contents”) or an interaction-driven test. The client is responsible for deallocating <strong>testName</strong> with a call to <strong>SysFreeString</strong>.</p>
+                  <p>
+                    <strong>nContactsDown</strong> The number of contacts that the touch certification tool thinks are down. This can be different from the actual number of contacts down. For more information, see <a href="#BKMK_ErrorHandling">Error handling</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>QueryAvailableTests</p>
+                </td>
+                <td>
+                  <p>Returns an array of available test names as a Variant. You can get string pointers from this parameter by using <strong>VariantToStringArrayAlloc</strong>. The client is responsible for clearing and deallocating this memory. The touch certification tool will not pass until all tests are completed successfully.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>StartTest</p>
+                </td>
+                <td>
+                  <p>Starts the test identified by <strong>testName</strong>. The touch certification tool must be on the test selection screen to start a test. You can use <strong>QueryCurrentState</strong> to get the current screen or <strong>ExitTest</strong> to return to the test selection screen.</p>
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+                      </tr>
+                      <tr>
+                        <td>
+													The value for <strong>testName</strong> is case sensitive.<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>ExitTest</p>
+                </td>
+                <td>
+                  <p>Return from a test to the test selection page.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Exit</p>
+                </td>
+                <td>
+                  <p>Exit the touch certification tool.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>HideStatusUI</p>
+                </td>
+                <td>
+                  <p>Hide the status UI. The UI remains hidden until ShowStatusUI is called. It is important to hide this UI before performing any interactions because the status UI may take focus and interfere with the interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>ShowStatusUI</p>
+                </td>
+                <td>
+                  <p>Show the status UI. You can use this if the touch certification tool needs human interaction. The status UI is the recommended way to use the touch certification tool interactively.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>QueryInteraction</p>
+                </td>
+                <td>
+                  <p>Returns a pointer to an <strong>IInteractionObject</strong>. This is used to describe what kind of input the touch certification tool is expecting. The following table summarizes the error conditions for this method and the error code that is returned:</p>
+                  <ul>
+                    <li class="unordered">
+                      <strong>E_FAIL (0x80004005)</strong> This method cannot be called if the current test is the test selection page. If you call this method at the test selection page, this error code is returned.<br /><br /></li>
+                    <li class="unordered">
+                      <strong>0x80040003</strong> The test does not require any interactions. For example, some touch certification tests ask a question and require human input to answer. For those tests, there is no robot interaction and calling this method for those tests will return this error code.<br /><br /></li>
+                    <li class="unordered">
+                      <strong>0x80040001</strong> The test has already been completed. You cannot rerun a test that has completed. If you calling this method when the test has been completed, this error code is returned.<br /><br /></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>FailInteraction</p>
+                </td>
+                <td>
+                  <p>This can be used to fail any one interaction. Used repeatedly it can fail an entire test. This call will fail if the interaction ID does not match the current interaction number (returns 0x80040005). The message is an optional informative reason that is written to the log.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>RegisterEventSink</p>
+                </td>
+                <td>
+                  <p>Register an event sink with the touch certification tool. For more information, see <a href="#BKMK_ILogoEvenHandler">Interface: ILogoEventHandler</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>UnregisterEventSink</p>
+                </td>
+                <td>
+                  <p>Pass in the cookie returned from <strong>RegisterEventSink</strong> to unregister an event sink.</p>
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                      </tr>
+                      <tr>
+                        <td>
+													Make sure to call this method to unregister the event sink before the robot controller is finished. Failing to do so may cause the status UI to freeze for several minutes before DCOM times out. The touch certification tool may try to call the event sink to deliver status updates and will be blocked by an event sink that is not responding. Eventually, the RPC call will timeout and the touch certification tool will recover and automatically unregister the event sink that is not responding.<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h4 class="subHeading">When to implement</h4>
+          <div class="subSection">
+            <p>You should not implement the interface. It is implemented by the touch certification tool itself.</p>
+          </div>
+          <h4 class="subHeading">Error codes</h4>
+          <div class="subSection">
+            <p>The following table summarizes the custom error codes defined for the ILogoAutomation interface:</p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Error code
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040000</p>
+                </td>
+                <td>
+                  <p>The test does not exist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040001</p>
+                </td>
+                <td>
+                  <p>The test has already been completed.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040002</p>
+                </td>
+                <td>
+                  <p>The parameter name is not found.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040003</p>
+                </td>
+                <td>
+                  <p>There is no information for the interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040005</p>
+                </td>
+                <td>
+                  <p>The interaction ID is not correct.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <a id="BKMK_IInteractionObject">
+          
+        </a>
+        <h3 class="subHeading">Interface: IInteractionObject</h3>
+        <div class="subSection">
+          <p>This object defines the interaction that a test expects in order for it to pass. A robot looks at the interaction name and properties to determine the required movements.</p>
+          <p>IInteractionObject provides access to a property bag that holds the information required to complete an interaction. Not all parameters are used for all gesture types. The parameter names are case sensitive.</p>
+          <h4 class="subHeading">Overview</h4>
+          <div class="subSection">
+            
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_63d32781-3f29-47a5-a1d5-2165d51f1cd5');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_63d32781-3f29-47a5-a1d5-2165d51f1cd5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+interface IInteractionObject : IDispatch {
+    HRESULT SetParameter(
+        [in] BSTR name,
+        [in] VARIANT value);
+    HRESULT GetParameter(
+        [in] BSTR name,
+        [out] VARIANT* value);
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          </div>
+          <h4 class="subHeading">Methods</h4>
+          <div class="subSection">
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Name
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>SetParameter</p>
+                </td>
+                <td>
+                  <p>Sets a parameter value of <strong>IInteractionObject</strong>. The object keeps a mapping from parameter name to its value. A robot controller should not need to call this method to change the <strong>IInteractionObject</strong>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>GetParameter</p>
+                </td>
+                <td>
+                  <p>Gets a parameter value from <strong>IInteractionObject</strong>. For example, the following sample code shows how to call this method to get the values of the parameters named <strong>id</strong> and <strong>interactionType</strong>:</p>
+                  
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8535f92e-f3ec-4048-9d6e-1e1c4fa2d6d7');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8535f92e-f3ec-4048-9d6e-1e1c4fa2d6d7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+IInteractionObject* pInteraction = NULL;
+VARIANT varTemp;
+ULONG id = 0;
+PWSTR pszInteractionType = NULL;
+
+m_pLogo-&gt;QueryInteraction(&amp;pInteraction);
+
+// Get interaction id, which is of ULONG type.
+pInteraction-&gt;GetParameter(CComBSTR(L"id"), &amp;varTemp));
+VariantToUInt32(varTemp, &amp;id);
+VariantClear(&amp;varTemp);
+
+// Get interactionType, which is of BSTR type.
+pInteraction-&gt;GetParameter(CComBSTR(L"interactionType"), &amp;varTemp);
+VariantToStringAlloc(varTemp, &amp;pszInteractionType);
+VariantClear(&amp;varTemp);
+
+// Insert logic here to get more/less parameters as needed, and
+// use the data to drive the robot to perform the desired input. 
+
+pInteraction-&gt;Release();
+CoTaskMemFree(pszInteractionType);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+                      </tr>
+                      <tr>
+                        <td>
+													If the parameter name does not exist in the <strong>IInteractionObject</strong> internal mapping, this method will return error code 0x80040002 (The parameter name is not found).<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h4 class="subHeading">Parameters</h4>
+          <div class="subSection">
+            <p>The following are a list of parameters for the <strong>IInteractionObject</strong> interface:</p>
+            <div class="alert">
+              <table>
+                <tr>
+                  <th align="left">
+                    <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                </tr>
+                <tr>
+                  <td>
+										The type given is a subtype within Variant. You can get the values for <strong>startTimes</strong> by using <strong>VariantToDoubleArrayAlloc</strong>.<p></p></td>
+                </tr>
+              </table>
+              <p>
+                
+              </p>
+            </div>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Name
+												</th>
+                <th>
+													Type
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>id</p>
+                </td>
+                <td>
+                  <p>ULONG</p>
+                </td>
+                <td>
+                  <p>The interaction id is set to 0 at the start of each test and increments for every interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>interactionType</p>
+                </td>
+                <td>
+                  <p>BSTR</p>
+                </td>
+                <td>
+                  <p>The interactionType, such as tap, arc, and line, defines how to get from each starting point to each ending point and gives the intent of the interaction object. See the section named Interaction Types for a full listing.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>count</p>
+                </td>
+                <td>
+                  <p>ULONG</p>
+                </td>
+                <td>
+                  <p>The number of contacts in each array.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>xFrom</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The starting X position of each contact with respect to the top left of the screen and the positive axis running to the right and down.</p>
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                      </tr>
+                      <tr>
+                        <td>
+													The starting X and Y positions can be negative, representing points on the device bezel. This is used in some of the edgy tests.<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>xTo</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The ending X position of each contact.</p>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>yFrom</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The starting Y position of each contact.</p>
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                      </tr>
+                      <tr>
+                        <td>
+													The starting X and Y positions can be negative, representing points on the device bezel. This is used in some of the edgy tests.<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>yTo</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The ending Y position of each contact.</p>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>startTimes</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The start time offset from 0 of each contact.</p>
+                  <div class="alert">
+                    <table>
+                      <tr>
+                        <th align="left">
+                          <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                      </tr>
+                      <tr>
+                        <td>
+													The touch certification tool will wait indefinitely for input.<p></p></td>
+                      </tr>
+                    </table>
+                    <p>
+                      
+                    </p>
+                  </div>
+                  <p>Unit: milliseconds</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>endTimes</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The end time offset from 0 of each contact. The duration of any contact is given by <strong>endTimes</strong>[contact] –<strong>startTimes</strong>[contact].</p>
+                  <p>The contact speed can be calculated from <strong>startTime</strong> or <strong>endTime</strong> and <strong>startPosition</strong> and <strong>endPosition</strong>. Unless a specific acceleration profile is given, the robot uses whatever is convenient within the time bounds. The speed should remain relatively smooth.</p>
+                  <p>Unit: milliseconds</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>endHoldTimes</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The length of time each contact should be pressed on the surface before releasing.</p>
+                  <p>Unit: milliseconds</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>rotation</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The amount of rotation moving clockwise from start to end.</p>
+                  <p>Unit: radians</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>xCenter</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The x center point to rotate around for circle and arcs for each contact.</p>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>yCenter</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The y center point to rotate around for circle and arcs for each contact.</p>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>zDistance</p>
+                </td>
+                <td>
+                  <p>DOUBLE*</p>
+                  <p>(Array of count elements)</p>
+                </td>
+                <td>
+                  <p>The distance a contact should remain from the screen.</p>
+                  <p>Unit: millimeters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>accelerationProfile</p>
+                </td>
+                <td>
+                  <p>ULONG</p>
+                </td>
+                <td>
+                  <p>The expected acceleration profile. For a list of definitions, see the Acceleration Profiles section.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h4 class="subHeading">Interaction Types</h4>
+          <div class="subSection">
+            <p>More than one interaction type can cover an interaction that the robot could perform. For example, a tap on the screen could be performed with a line interaction with the same start and stop points. In these cases, a more specific type is given to hint at the intent of the test. The interaction type of <strong>IInteractionObject</strong> can be retrieved by calling the <strong>GetParameter</strong> method with the name parameter as <strong>interactionType</strong>. The returned out-parameter is of the BSTR type indicating what interaction type it is. </p>
+            <p>The following table lists the interaction types:</p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Name
+												</th>
+                <th>
+													Description
+												</th>
+                <th>
+													Notes
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>Tap</p>
+                </td>
+                <td>
+                  <p>A set of quick down up motions</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, accelerationProfile, endHoldTimes</p>
+                  <p>For example, at the starting time offset <strong>startTimes[i]</strong> (i&lt;count), the robot should place contact i at the coordinate location (<strong>xFrom[i]</strong>, <strong>yFrom[i]</strong>). It should remain in contact until <strong>endTimes[i]</strong>, when the contact should be released. It is expected (<strong>xFrom[i]</strong> == <strong>xTo[i]</strong>) and (<strong>yFrom[i]</strong> == <strong>yTo[i]</strong>) so the <strong>xTo</strong> and <strong>yTo</strong> parameters can be ignored.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Line</p>
+                </td>
+                <td>
+                  <p>A [set] of non-intersecting lines</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, accelerationProfile, endHoldTimes</p>
+                  <p>For example, at the starting time offset <strong>startTimes[i]</strong> (i&lt;count) the robot should place contact i at the coordinate location (<strong>xFrom[i]</strong>, <strong>yFrom[i]</strong>). It should remain in contact and move in straight line to (<strong>xTo[i]</strong>, <strong>yTo[i]</strong>) at the time offset of <strong>endTimes[i]</strong>, when the contact should be released. There is no restriction on the moving speed and robot can do whatever is convenient.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Rotate</p>
+                </td>
+                <td>
+                  <p>A [set] of circular arcs</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xCenter, yCenter, rotation, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> xTo, yTo, zDistance accelerationProfile, endHoldTimes</p>
+                  <p>For example. at the starting time offset <strong>startTimes[i]</strong> (i&lt;count), the robot should place contact i at the coordinate location (<strong>xFrom[i]</strong>, <strong>yFrom[i]</strong>). It should remain in contact and move in arc clockwise by radian indicated by the value of <strong>rotation[i]</strong>. The arc center is at (<strong>xCenter[i]</strong>, <strong>yCenter[i]</strong>). The interaction must finish by <strong>endTimes[i]</strong>, when the contact should be released.</p>
+                  <p>
+                    
+                  </p>
+                  <p>Figure 1 shows how these parameters are used to perform the rotate interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Hover</p>
+                </td>
+                <td>
+                  <p>Hold contacts above the screen without touching</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, zDistance, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, accelerationProfile, endHoldTimes</p>
+                  <p>For example, at the starting time offset <strong>startTimes[i]</strong> (i&lt;count), the robot should hover contact i at the coordinate location (<strong>xFrom[i]</strong>, <strong>yFrom[i]</strong>). The distance of the contact from the screen surface is defined by <strong>zDistance[i]</strong>. Note this represents the distance for an average human finger. For a robotic finger – the robot should adjust this height with respect to the difference in capacitance (if any). The hovering contact should remain stable and be removed at <strong>endTimes[i]</strong>. For this release, the hovering is stationary, and the <strong>xTo</strong> and <strong>yTo</strong> parameters can be ignored.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Zoom</p>
+                </td>
+                <td>
+                  <p>Diverging or converging non-intersecting lines</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject Parameters:</strong> Rotation, xCenter, yCenter, zDistance, accelerationProfile, endHoldTimes</p>
+                  <p>For example, zoom interaction is similar to Line interaction, with the exception that one contact will be stationary. If the contact i is stationary, then the following will be true: (<strong>xFrom[i]</strong> == <strong>xTo[i]</strong>) and (<strong>yFrom[i]</strong> == <strong>yTo[i]</strong>).</p>
+                  <p>Please refer to the Line interaction on how to perform the Zoom interaction.</p>
+                  <p>For a pan interaction, the parameters are the same but the contact will not be stationary. Therefore, (xFrom[i] != xTo[i]) and (yFrom[i] != yTo[i]).</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>TouchKeyboard</p>
+                </td>
+                <td>
+                  <p>Multiple taps, linearly offset from one another</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, accelerationProfile, endHoldTimes</p>
+                  <p>For example, the TouchKeyboard interaction is a sequence of tapping on the screen, just like a person tapping the on-screen soft keyboard.</p>
+                  <p>At the starting time offset <strong>startTimes[i]</strong> (i&lt;count), the robot should place contact i at the coordinate location (<strong>xFrom[i]</strong>, <strong>yFrom[i]</strong>). It should remain in contact until the time offset of <strong>endTimes[i]</strong>, when the contact should be released. Just like Tap interaction, it is expected (<strong>xFrom[i]</strong> == <strong>xTo[i]</strong>) and (<strong>yFrom[i]</strong> == <strong>yTo[i]</strong>) so the <strong>xTo</strong> and <strong>yTo</strong> parameters can be ignored.</p>
+                  <p>Suppose there are 4 contacts required by the interaction and the parameters have the following value:</p>
+                  <h3 class="subHeading"> </h3>
+                  <div>
+                    <table>
+                      <tr>
+                        <th>
+																Contact index
+															</th>
+                        <th>
+																0
+															</th>
+                        <th>
+																1
+															</th>
+                        <th>
+																2
+															</th>
+                        <th>
+																3
+															</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>startTimes</p>
+                        </td>
+                        <td>
+                          <p>0</p>
+                        </td>
+                        <td>
+                          <p>200</p>
+                        </td>
+                        <td>
+                          <p>400</p>
+                        </td>
+                        <td>
+                          <p>600</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>endTimes</p>
+                        </td>
+                        <td>
+                          <p>100</p>
+                        </td>
+                        <td>
+                          <p>300</p>
+                        </td>
+                        <td>
+                          <p>500</p>
+                        </td>
+                        <td>
+                          <p>70000</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>xFrom</p>
+                        </td>
+                        <td>
+                          <p>20</p>
+                        </td>
+                        <td>
+                          <p>40</p>
+                        </td>
+                        <td>
+                          <p>60</p>
+                        </td>
+                        <td>
+                          <p>80</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>yFrom</p>
+                        </td>
+                        <td>
+                          <p>40</p>
+                        </td>
+                        <td>
+                          <p>40</p>
+                        </td>
+                        <td>
+                          <p>40</p>
+                        </td>
+                        <td>
+                          <p>40</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <p>It is a sequence of tapping 4 points in line from (20, 40) to (80, 40). The unit is in millimeters.</p>
+                  <p>The robot should perform the interaction as follows:</p>
+                  <ol class="ordered">
+                    <li>
+														At time offset 0 ms, it should place contact 0 down at (20, 40), hold for 100ms and up at 100ms.<br /><br /></li>
+                    <li>
+														At time offset 200 ms, it should place contact 1 down at (40, 40), hold for 100ms and up at 300ms.<br /><br /></li>
+                    <li>
+														At time offset 400 ms, it should place contact 2 down at (60, 40), hold for 100ms and up at 500ms.<br /><br /></li>
+                    <li>
+														At time offset 600 ms, it should place contact 4 down at (80, 40), hold for 100ms and up at 600ms.<br /><br /></li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Non-Interaction</p>
+                </td>
+                <td>
+                  <p>No interaction needed</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, xFrom, yFrom, xTo, yTo, accelerationProfile, endHoldTimes</p>
+                  <p>
+                    <strong>endTimes</strong>[0] gives the length of time to not perform any interaction. The robot should not place any contacts on the screen. If hovering, the contacts must be far enough away from the screen so the device will not recognize a hovering contact. </p>
+                  <p>
+                    <strong>startTimes</strong>[0] is expected to be 0.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Toss</p>
+                </td>
+                <td>
+                  <p>A single line with a defined accelerationProfile. Toss interactions have their speed checked by logo.</p>
+                  <p>For this release, only acceleration profile 2 (Accelerate) is used.</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, accelerationProfile, startTimes, endTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, endHoldTimes</p>
+                  <p>For example, suppose the <strong>accelerationProfile</strong>[0] is 2 (accelerate), at start time offset <strong>startTimes</strong>[0], the robot should place contact 0 down at start point (<strong>xFrom</strong>[0], <strong>yFrom</strong>[0]). It should move the contact towards end point (<strong>xTo</strong>[0], <strong>yTo</strong>[0]), accelerating. By the time <strong>endTimes</strong>[0], the contact should reach end point and the robot should lift the contact up, without stopping.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>MoveAndHold</p>
+                </td>
+                <td>
+                  <p>Similar to Line, but the contacts should be held at the end of movement for a specific length of time before releasing</p>
+                </td>
+                <td>
+                  <p>
+                    <strong>Used IInteractionObject parameters:</strong> count, xFrom, yFrom, xTo, yTo, startTimes, endTimes, endHoldTimes</p>
+                  <p>
+                    <strong>Unused IInteractionObject parameters:</strong> rotation, xCenter, yCenter, zDistance, accelerationProfile</p>
+                  <p>This interaction is similar to Line interaction, except that at the end of movement, the contacts are not released immediately. Instead, they are held pressed down to the surface for an amount of time specified by the <strong>endHoldTimes</strong> parameter. The end time of movement for contact i is calculated by (<strong>endTimes</strong>[i] –<strong>endHoldTimes</strong>[i]).</p>
+                  <p>For example, at the starting time offset <strong>startTimes</strong>[i] (i&lt;count), the robot should place contact i at the coordinate location (<strong>xFrom</strong>[i], <strong>yFrom</strong>[i]). It should remain in contact and move in straight line to (<strong>xTo</strong>[i], <strong>yTo</strong>[i]) at the time offset of (<strong>endTimes</strong>[i] - <strong>endHoldTimes</strong>[i]). Then the contact should be held stable until time offset <strong>endTimes</strong>[i], when it is released from the surface. There is no restriction on the moving speed and robot can do whatever is convenient, as long as the contacts reach destination at or before the required time offset. </p>
+                  <p>For this release, you can expect the number of contacts (<strong>count</strong>) to be 1.</p>
+                </td>
+              </tr>
+            </table>
+            <div class="alert">
+              <table>
+                <tr>
+                  <th align="left">
+                    <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                </tr>
+                <tr>
+                  <td>
+										Even parameters marked as unused may be defined. The API consumer should be robust against extra information stored in the <strong>InteractionObject</strong>.<p></p></td>
+                </tr>
+              </table>
+              <p>
+                
+              </p>
+            </div>
+          </div>
+          <h4 class="subHeading">Rotate Interaction Type and Parameters</h4>
+          <div class="subSection">
+            <p>The following figure (Figure 1) shows how the parameters of a rotation interaction are used to perform a rotate interaction.</p>
+            <img id="80f31a74-f58b-4c4b-9d8e-33b1460e88ae" alt="How to perform a rotate interaction" src="../../../../../i.msdn.microsoft.com/dynimg/IC639264.jpg" title="How to perform a rotate interaction" xmlns="" />
+          </div>
+          <h4 class="subHeading">Acceleration Profiles</h4>
+          <div class="subSection">
+            <p>The following table lists the four acceleration profiles:</p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Profile Name
+												</th>
+                <th>
+													Value
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>Default</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>The contact goes straight down to the screen surface, moves to the end point, stops and lifts up from the surface.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Decelerate</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>The contact moves at certain speed horizontally, decelerating and is lowered to make a contact on the screen surface, moves to the end point, stops and lifts up from the surface.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Accelerate</p>
+                </td>
+                <td>
+                  <p>2</p>
+                </td>
+                <td>
+                  <p>The contact goes straight down to the screen surface and then starts to move to the end point accelerating. It is lifted up while moving at the end point.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Constant speed</p>
+                </td>
+                <td>
+                  <p>3</p>
+                </td>
+                <td>
+                  <p>The contact moves at a certain speed horizontally. While lowering down to make a contact with the screen surface, it maintains the same horizontal speed. On the surface it moves to the end point and lifts up while moving. Its horizontal speed does not change during the entire interaction.</p>
+                </td>
+              </tr>
+            </table>
+            <p>The following figure (Figure 2) shows the robot contact movement for the acceleration profiles. Start contact point and end contact point refer to the circles in the diagram. The diagram shows the robot contact movement viewed from the side of the device screen surface.</p>
+            <img id="eaff51a5-94d4-4d4b-8e85-356daf2fddbd" alt="Illustration of acceleration profiles" src="../../../../../i.msdn.microsoft.com/dynimg/IC639265.jpg" title="Illustration of acceleration profiles" xmlns="" />
+          </div>
+          <h4 class="subHeading">When to implement</h4>
+          <div class="subSection">
+            <p>You should not implement the interface. You will be passed a pointer to this interface in response to a call to <strong>ILogoAutomation::QueryInteraction</strong>.</p>
+          </div>
+          <h4 class="subHeading">Error codes</h4>
+          <div class="subSection">
+            <p>The following table summarizes the interface custom error codes defined for the <strong>IInteractionObject</strong> interface:</p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Error code
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040000</p>
+                </td>
+                <td>
+                  <p>The test does not exist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040001</p>
+                </td>
+                <td>
+                  <p>The test has already been completed.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040002</p>
+                </td>
+                <td>
+                  <p>The parameter name is not found.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040003</p>
+                </td>
+                <td>
+                  <p>There is no information for the interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>0x80040005</p>
+                </td>
+                <td>
+                  <p>The interaction ID is not correct.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <a id="BKMK_ILogoEvenHandler">
+          
+        </a>
+        <h3 class="subHeading">Interface: ILogoEventHandler</h3>
+        <div class="subSection">
+          <p>This interface specifies how the touch certification tool will notify the robot controller about what is happening in the test run. The robot controller should implement this interface to get callbacks from the touch certification tool for status updates. </p>
+          <p>Implementation of this interface should not place time consuming work or any <strong>ILogoAutomation</strong> method calls inside of these methods since it will block the touch certification tool. Unless these methods return, the touch certification tool will not respond to inputs or any <strong>ILogoAutomation</strong> method calls. </p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="Caution" alt="Caution" src="../../../../../i.msdn.microsoft.com/dynimg/IC1429.gif" title="Caution" xmlns="" />Caution </th>
+              </tr>
+              <tr>
+                <td>
+								Failing to follow this rule may cause the touch certification tool to stop responding.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <h4 class="subHeading">Overview</h4>
+          <div class="subSection">
+            
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b87a97b9-b4d8-4ecf-b3a8-42ef6d1ed060');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b87a97b9-b4d8-4ecf-b3a8-42ef6d1ed060" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+interface ILogoEventHandler : IDispatch{
+    HRESULT LogoExit();
+    HRESULT TestStarted(
+        [in] BSTR testName);
+    HRESULT TestCompleted(
+        [in] BSTR testName,
+        [in] BOOL testSucceeded);
+    HRESULT InteractionStarted(
+        [in] BSTR testName,
+        [in] ULONG interactionId);
+    HRESULT InteractionCompleted(
+        [in] BSTR testName,
+        [in] ULONG interactionId,
+        [in] BOOL interactionSucceeded, 
+        [in] BSTR failureReason);
+};
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          </div>
+          <h4 class="subHeading">Methods</h4>
+          <div class="subSection">
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <th>
+													Name
+												</th>
+                <th>
+													Description
+												</th>
+              </tr>
+              <tr>
+                <td>
+                  <p>LogoExit</p>
+                </td>
+                <td>
+                  <p>Called when the touch certification tool is about to exit, usually in response to a call to <strong>ILogoAutomation::Exit()</strong>. The robot should clean all of its state related to the touch certification tool.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>TestStarted</p>
+                </td>
+                <td>
+                  <p>Called whenever the touch certification tool switches to a different test page, including the Table of Contents. At this point, the robot should call <strong>ILogoAutomation::StartTest</strong> if <strong>testName</strong> is “Table of Contents,” or call <strong>ILogoAutomation::QueryInteraction</strong> to get information on the interaction expected and then perform the interaction.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>TestCompleted</p>
+                </td>
+                <td>
+                  <p>Called whenever a test is completed. At this point, the robot should call <strong>ILogoAutomation::ExitTest</strong> to return to the table of contents, and then <strong>StartTest</strong> to start a new test.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>InteractionStarted</p>
+                </td>
+                <td>
+                  <p>Called when the touch certification tool sees the first contact of a new interaction going.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>InteractionCompleted</p>
+                </td>
+                <td>
+                  <p>Called whenever the touch certification tool sees that all input has departed and the interaction is over. This call may be followed by <strong>TestCompleted</strong>. If this event is not being fired, it is an error case that the robot should handle. For more information about error handling, see <a href="#BKMK_ErrorHandling">Error handling</a>.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h4 class="subHeading">Generate Files to Integrate Robot to HCK</h4>
+          <div class="subSection">
+            <p>To integrate the robot to the HCK, the files logo3.tlb, logo3.h and logo3_i.c are used. These define the interfaces described above.</p>
+            <h5 class="heading">Define logo3.idl library</h5>
+            <div class="subSection">
+              <p>Define the logo3.idl. For more information on IDL (Interface Definition Language) file, see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa378712(v=vs.85).aspx">this web page</a>.</p>
+              <p>Refer to the following sample:</p>
+              
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b00afbe9-da8a-4cd4-819d-3a909ff738c6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b00afbe9-da8a-4cd4-819d-3a909ff738c6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+import "oaidl.idl";
+import "ocidl.idl";
+import "Propidl.idl";
+ 
+[
+    object,
+    dual,
+    uuid(25d2b24d-679d-4131-89a7-eeaf10f4cb85),
+    pointer_default(unique)
+]
+interface ILogoEventHandler : IDispatch{
+    HRESULT LogoExit();
+    HRESULT TestStarted(
+        [in] BSTR testName);
+    HRESULT TestCompleted(
+        [in] BSTR testName,
+        [in] BOOL testSucceeded);
+    HRESULT InteractionStarted(
+        [in] BSTR testName,
+        [in] ULONG interactionId);
+    HRESULT InteractionCompleted(
+        [in] BSTR testName,
+        [in] ULONG interactionId,
+        [in] BOOL interactionSucceeded, 
+        [in] BSTR failureReason);
+};
+ 
+[
+    object,
+    uuid(2F900384-8ED7-417D-87EA-F2C9F419F356),
+    dual,
+    nonextensible,
+    pointer_default(unique)
+]
+interface IInteractionObject : IDispatch{
+        HRESULT SetParameter(
+        [in] BSTR name,
+        [in] VARIANT value);
+    HRESULT GetParameter(
+        [in] BSTR name,
+        [out] VARIANT* value);
+};
+ 
+[
+    object,
+    uuid(453D0AC0-AF7C-465B-AA61-2641C5F24366),
+    dual,
+    pointer_default(unique)
+]
+interface ILogoAutomation : IDispatch {
+    HRESULT QueryCurrentVersion(
+        [out] ULONG* version);
+    HRESULT QueryCurrentState(
+        [out] BSTR* testName,
+        [out] ULONG* nContactsDown);
+    HRESULT QueryAvailableTests(
+        [out] VARIANT* testNames);
+ 
+   HRESULT StartTest(
+        [in] BSTR testName);
+    HRESULT ExitTest();
+    HRESULT Exit();
+    HRESULT HideStatusUI();
+    HRESULT ShowStatusUI();
+ 
+    HRESULT QueryInteraction(
+        [out] IInteractionObject** interaction);
+    HRESULT FailInteraction(
+        [in] ULONG interactionId,
+        [in] BSTR reason);
+ 
+    HRESULT RegisterEventSink(
+        [in] ILogoEventHandler* eventSink, 
+        [out] ULONG* cookie);
+    HRESULT UnregisterEventSink(
+        [in] ULONG cookie);
+};
+ 
+ 
+[
+    uuid(58147694-B012-4922-8A48-48E3ABCC1B57),
+    version(1.0),
+]
+library logo3Lib
+{
+    importlib("stdole2.tlb");
+    interface ILogoEventHandler;
+ 
+    [
+        uuid(D371B1A6-30AF-4F43-8202-E13A3C93DA8C)        
+    ]
+    coclass LogoAutomation
+    {
+        [default] interface ILogoAutomation;
+    };
+    [
+        uuid(8F34541E-0742-470D-9AA9-100E7984EA22)        
+    ]
+    coclass InteractionObject
+    {
+        [default] interface IInteractionObject;
+    };
+};
+ 
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+            </div>
+            <h5 class="heading">Generate logo3.tlb, logo3.h and logo3_i.c</h5>
+            <div class="subSection">
+              <p>Once the interfaces and the library have been defined, use the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa367300(v=vs.85).aspx">MIDL (Microsoft Interface Definition Language) compiler</a> to create logo3.tlb, logo3.h and logo3_i.c. Use the following process:</p>
+              <ol class="ordered">
+                <li>
+													Install Visual Studio and the SDK.<br /><br /></li>
+                <li>
+													Define logo3.idle file as shown above.<br /><br /></li>
+                <li>
+													Use the Visual Studio command prompt to run midl. If not, ensure that path to cl.exe is accessible.<br /><br /></li>
+                <li>
+													Run midl.exe. For example, <code>midl.exe /out c:\Folder c:\Folder\logo3.idl</code>.<br /><br /></li>
+                <li>
+													Create a Visual Studio project<br /><br /></li>
+                <li>
+													Add the logo3.idl file to the resources of the project.<br /><br /></li>
+                <li>
+													Copy logo3_i.c and logo3.h to the project’s folder<br /><br /></li>
+                <li>
+													In Visual Studio, add project <strong>Properties</strong> &gt; <strong>Additional dependencies</strong><strong>Propsys.lib</strong><br /><br /></li>
+                <li>
+													Build the project.<br /><br /></li>
+              </ol>
+            </div>
+          </div>
+          <h4 class="subHeading">When to implement</h4>
+          <div class="subSection">
+            <p>Developers should implement this interface and register it with the touch certification tool by calling <strong>ILogoAutomation::RegisterEventSink</strong>. This allows the robot controller to respond to touch certification tool events, instead of polling the state of the tool.</p>
+            <p>After registration, the interface will get callbacks for any events that happen. </p>
+            <div class="alert">
+              <table>
+                <tr>
+                  <th align="left">
+                    <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                </tr>
+                <tr>
+                  <td>
+										Make sure to call this method to unregister the event sink before the robot controller is finished. Failing to do so may cause the status UI to freeze for several minutes before DCOM times out. The touch certification tool may try to call the event sink to deliver status updates and will be blocked by an event sink that is not responding. Eventually, the RPC call will timeout and the touch certification tool will recover and automatically unregister the event sink that is not responding.<p></p>
+										If the robot controller crashes, or the network is not available, the call to <strong>UnregisterEventSink</strong> cannot be guaranteed so the status UI may stop responding for a while. In such cases, if you want to preserve the previous touch certification tool test results, you should wait at least 6 minutes to allow the touch certification tool to recover from an RPC call timeout. If you do not need to preserve the previous test results, you can stop the touch certification tool process.<p></p></td>
+                </tr>
+              </table>
+              <p>
+                
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="heading">Code Sample</h2>
+      <div id="sectionSection3" class="section">
+        <p>This is a partial example of how a robot controller could use the robot APIs.</p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+            </tr>
+            <tr>
+              <td>
+						This example does not cover error handling. For more information about error handling, see <a href="#BKMK_ErrorHandling">Error handling</a>.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_99d51269-bc2a-4c73-8dc0-ae5495db2a84');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_99d51269-bc2a-4c73-8dc0-ae5495db2a84" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+#include &lt;stdio.h&gt;
+#include &lt;tchar.h&gt;
+
+#include &lt;Windows.h&gt;
+#include &lt;Propvarutil.h&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;assert.h&gt;
+
+// Make sure you have set the correct header file path to the SDK.
+#include #logo3.h#
+#include #logo3_i.c#
+
+#define CHECK_HR(EXPR)              \
+    do                              \
+    {                               \
+        hr = (EXPR);                \
+        if (FAILED(hr))             \
+        {                           \
+            printf("File = %s, Line# = %u, %s failed with 0x%x\n", __FILE__, __LINE__, #EXPR, hr);  \
+            goto Exit;              \
+        }                           \
+    } while (FALSE, FALSE);         \
+    
+class AutoBSTR
+{
+public:
+    AutoBSTR(PCWSTR str)
+    {
+        m_str = SysAllocString(str);
+    }
+
+    ~AutoBSTR()
+    {
+        SysFreeString(m_str);
+    }
+
+    operator BSTR() const throw()
+    {
+return m_str;
+    }
+
+private:
+    BSTR m_str;
+};
+
+class LogoEventHandler : public ILogoEventHandler
+{
+public:
+    LogoEventHandler(ILogoAutomation* plogo) : 
+      m_refCount(1), 
+      m_eventTestStarted(NULL),
+      m_eventInteractionCompleted(NULL),
+      m_currentInteractionId(0)
+    {
+    }
+
+    ~LogoEventHandler()
+    {
+        if (m_eventTestStarted != NULL)
+        {
+            CloseHandle(m_eventTestStarted);
+        }
+
+        if (m_eventInteractionCompleted != NULL)
+        {
+            CloseHandle(m_eventInteractionCompleted);
+        }
+    }
+
+    HRESULT Initialize()
+    {
+        m_eventTestStarted = CreateEvent(NULL, FALSE, FALSE, NULL);
+        if (m_eventTestStarted == NULL)
+        {
+            return HRESULT_FROM_WIN32(GetLastError());
+        }
+
+        m_eventInteractionCompleted = CreateEvent(NULL, FALSE, FALSE, NULL);
+        if (m_eventInteractionCompleted == NULL)
+        {
+            return HRESULT_FROM_WIN32(GetLastError());
+        }
+
+        return S_OK;
+    }
+
+public:
+    // ILogoEventHandler Methods
+    STDMETHOD(TestStarted)(BSTR testName)
+    {
+        wprintf(L"[Logo] Test started. Name = %s\n", testName);
+        SetEvent(m_eventTestStarted);
+        return S_OK;
+    }
+
+    STDMETHOD(TestCompleted)(BSTR testName, BOOL testSucceeded)
+    {
+        wprintf(L"[Logo] Test Completed. Name = %s, Result = %s\n", testName,
+            testSucceeded ? L"Passed" : L"Failed");
+
+        return S_OK;
+    }
+
+    STDMETHOD(InteractionStarted)(BSTR testName, ULONG interactionId)
+    {
+        wprintf(L"[Logo] Interaction started. id = %u\n", interactionId);
+        return S_OK;
+    }
+
+    STDMETHOD(InteractionCompleted)(BSTR testName, ULONG interactionId, BOOL interactionSucceeded, BSTR failureReason)
+    {
+        wprintf(L"[Logo] Interaction completed. id = %u, %s\n", interactionId,
+            interactionSucceeded ? L"succeeded" : L"failed");
+
+        if (!interactionSucceeded)
+        {
+            wprintf(L"[Logo] Failure reason: %s\n", failureReason);
+        }
+
+        SysFreeString(failureReason);
+
+        m_currentInteractionId = interactionId;
+        SetEvent(m_eventInteractionCompleted);
+
+        return S_OK;
+    }
+
+    STDMETHOD(LogoExit)()
+    {
+        wprintf(L"[Logo] Logo exited.\n");
+
+        return S_OK;
+    }
+    // end of ILogoEventHandler Methods
+
+    // IUnknown methods
+    STDMETHODIMP_(ULONG) AddRef()
+    {
+        InterlockedIncrement(&amp;m_refCount);
+        return m_refCount;
+    }
+
+    STDMETHODIMP_(ULONG) Release()
+    {
+        InterlockedDecrement(&amp;m_refCount);
+
+        if (m_refCount == 0)
+        {
+            delete this;
+        }
+
+        return m_refCount;
+    }
+
+    STDMETHODIMP QueryInterface(
+      __in   REFIID riid,
+      __out  void **ppvObject)
+    {
+        if (ppvObject == NULL)
+        {
+            return E_POINTER;
+        }
+
+        if (riid == IID_ILogoEventHandler || riid == IID_IUnknown)
+        {
+            AddRef();
+            *ppvObject = this;
+            return S_OK;
+        }
+
+        *ppvObject = NULL;
+        return E_NOINTERFACE;
+    }
+    // End of IUnknown methods
+
+    // IDispatch methods
+    STDMETHODIMP GetTypeInfoCount( 
+        __RPC__out UINT *pctinfo)
+    {
+        return E_NOTIMPL;
+    }
+
+    STDMETHODIMP GetTypeInfo( 
+        __in UINT iTInfo,
+        __in LCID lcid,
+        __RPC__deref_out_opt ITypeInfo **ppTInfo)
+    {
+        return E_NOTIMPL;
+    }
+
+    STDMETHODIMP GetIDsOfNames( 
+        __RPC__in REFIID riid,
+        __RPC__in_ecount_full(cNames) LPOLESTR *rgszNames,
+        __RPC__in_range(0,16384) UINT cNames,
+        LCID lcid,
+        __RPC__out_ecount_full(cNames) DISPID *rgDispId)
+    {
+        return E_NOTIMPL;
+    }
+
+    STDMETHODIMP Invoke( 
+        /* [in] */ DISPID dispIdMember,
+        /* [in] */ REFIID riid,
+        /* [in] */ LCID lcid,
+        /* [in] */ WORD wFlags,
+        /* [out][in] */ DISPPARAMS *pDispParams,
+        /* [out] */ VARIANT *pVarResult,
+        /* [out] */ EXCEPINFO *pExcepInfo,
+        /* [out] */ UINT *puArgErr)
+    {
+        return E_NOTIMPL;
+    }
+    // End of IDispatch methods
+
+public:
+    HRESULT WaitForTestStarted()
+    {
+        DWORD index = 0;
+        HRESULT hr = CoWaitForMultipleHandles(
+            0, //flags
+            10 * 1000, //timeout
+            1, //nHandles
+            &amp;m_eventTestStarted, //handles
+            &amp;index);
+
+        return hr;
+    }
+
+    HRESULT WaitForInteractionCompleted(
+        __out ULONG* interactionId)
+    {
+        DWORD index = 0;
+        HRESULT hr = CoWaitForMultipleHandles(
+            0, //flags
+            10 * 1000, //timeout
+            1, //nHandles
+            &amp;m_eventInteractionCompleted, //handles
+            &amp;index);
+
+        *interactionId = m_currentInteractionId;
+        return hr;
+    }
+
+private:
+    volatile ULONG m_refCount;
+    HANDLE m_eventTestStarted;
+    HANDLE m_eventInteractionCompleted;
+    ULONG m_currentInteractionId;
+};
+
+class RobotController
+{
+public:
+    RobotController()
+        :
+        m_logo(NULL),
+        m_logoEventHandler(NULL),
+        m_registrationCookie(0),
+        m_testNames(NULL),
+        m_nTests(0)
+    {
+    }
+
+    ~RobotController()
+    {
+        if (m_logo != NULL)
+        {
+            // Make sure we unregister the event sink before exit.
+            m_logo-&gt;UnregisterEventSink(m_registrationCookie);
+            m_logo-&gt;Release();
+        }
+
+        if (m_logoEventHandler != NULL)
+        {
+            m_logoEventHandler-&gt;Release();
+        }
+
+        VariantClear(&amp;m_testNamesVar);
+    }
+
+    HRESULT ConnectToLogo()
+    {
+        HRESULT hr = S_OK;
+
+        printf("[Robot Controller] Connecting to logo\n");
+
+        // Logo should be running before robot controller trying to connect to it. Otherwise, this call will fail.
+        CHECK_HR(CoCreateInstance(
+            CLSID_LogoAutomation,
+            NULL,
+            CLSCTX_LOCAL_SERVER, // | CLSCTX_REMOTE_SERVER for DCOM
+            IID_ILogoAutomation,
+            (LPVOID*)&amp;m_logo));
+
+        printf("[Robot Controller] Connected to logo\n");
+
+        m_logoEventHandler = new LogoEventHandler(m_logo);
+
+        if (m_logoEventHandler == NULL)
+        {
+            printf("Cannot allocate memory for LogoEventHandler.\n");
+            hr = E_OUTOFMEMORY;
+            goto Exit;
+        }
+
+        CHECK_HR(m_logoEventHandler-&gt;Initialize());
+
+        // Register event sink to logo so we can get status updates from logo.
+        CHECK_HR(m_logo-&gt;RegisterEventSink(m_logoEventHandler, &amp;m_registrationCookie));
+
+        CHECK_HR(QueryTestNames());
+
+Exit:
+        return hr;
+    }
+
+    HRESULT RunTest(UINT index)
+    {
+        HRESULT hr = S_OK;
+
+        if (index &gt;= m_nTests)
+        {
+            return E_INVALIDARG;
+        }
+
+        // First we need to make sure logo is on the "Table of Contents" page. Calling ExitTest() will
+        // cause logo to display the "Table of Contents" page.
+        CHECK_HR(m_logo-&gt;ExitTest());
+
+        // Start the target test - logo will go to the test page.
+        CHECK_HR(m_logo-&gt;StartTest(m_testNames[index]));
+        CHECK_HR(m_logoEventHandler-&gt;WaitForTestStarted());
+
+        CHECK_HR(RunInteractions());
+
+Exit:
+        return hr;
+    }
+
+    HRESULT RunTests()
+    {
+        HRESULT hr = S_OK;
+
+        // Test 0 is the "Table of Contents" page. Real tests start from index 1.
+        for (UINT i = 1; i &lt; m_nTests; i++)
+        {
+            CHECK_HR(RunTest(i));
+        }
+
+        // Shows "Table of Contents" page for status of all tests.
+        CHECK_HR(m_logo-&gt;ExitTest());
+
+Exit:
+        return hr;
+    }
+
+private:
+    HRESULT QueryTestNames()
+    {
+        HRESULT hr = S_OK;
+
+        CHECK_HR(m_logo-&gt;QueryAvailableTests(&amp;m_testNamesVar));
+
+        m_nTests = m_testNamesVar.parray-&gt;rgsabound-&gt;cElements;
+        m_testNames = (BSTR*)(m_testNamesVar.parray-&gt;pvData);
+
+        printf("Test names---- (%u)\n", m_nTests);
+        for (UINT i = 0; i &lt; m_nTests; i++)
+        {
+            wprintf(L"test %u: %s\n", i, m_testNames[i]);
+        }
+
+Exit:
+        return hr;
+    }
+
+    HRESULT QueryAndPerformInteraction()
+    {
+        HRESULT hr = S_OK;
+        IInteractionObject* interaction = NULL;
+
+        {
+            ULONG nContacts = 0;
+            BSTR currentTestName = NULL;
+
+            // Check current state to make sure no contacts down before a new interaction.
+            CHECK_HR(m_logo-&gt;QueryCurrentState(&amp;currentTestName, &amp;nContacts));
+            if (nContacts != 0)
+            {
+                printf("[Robot Controller] There are contacts down on the screen surface. Cannot perform a new interaction.");
+
+                // Real robot controller can instruct robot to remove any contacts from the screen surface instead
+                // of failing here.
+                hr = E_UNEXPECTED;
+                goto Exit;
+            }
+
+            hr = m_logo-&gt;QueryInteraction(&amp;interaction);
+            
+            if (hr == 0x80040001)
+            {
+                printf("[Robot Controller] No more interactions - test has completed.\n");
+                goto Exit;
+            }
+            else if (hr == 0x80040003)
+            {
+                printf("[Robot Controller] This test does not have any interaction object and requires human input.\n");
+                goto Exit;
+            }
+
+            CHECK_HR(hr);
+
+            VARIANT var = {};
+            ULONG id;
+            CHECK_HR(interaction-&gt;GetParameter(AutoBSTR(L"id"), &amp;var));
+            CHECK_HR(VariantToUInt32(var, &amp;id));
+            VariantClear(&amp;var);
+
+            CHECK_HR(interaction-&gt;GetParameter(AutoBSTR(L"interactionType"), &amp;var));
+            std::wstring interactionType(var.bstrVal);
+            VariantClear(&amp;var);
+
+            wprintf(L"[Robot Controller] Interaction id = %u, type = %s\n", id, interactionType.c_str());
+
+            bool interactionPerformed = false;
+
+            // Get interaction parameters based on the type of interaction and used the parameters to 
+            // instruct the robot to perform the interaction.
+            if (interactionType == L"Line")
+            {
+                CHECK_HR(GetParamAndPerformLineInteraction(interaction, &amp;interactionPerformed));
+            }
+            else if (interactionType == L"Non-Interaction")
+            {
+                CHECK_HR(GetParamAndPerformNonInteraction(interaction, &amp;interactionPerformed));
+            }
+            // else ...
+            // The sample code only demonstrates how to get interaction parameters for Line and Non-Interaction
+            // interactions. For other interaction types, please refer to the documentation for what parameters
+            // to retrieve from the IInteractionObject. They are similar to how it is done in this sample.
+
+            if (interactionPerformed)
+            {
+                // If interaction was performed, we should wait for the interaction to complete. A callback
+                // from logo to the m_logoEventHandler tells that.
+                ULONG completedInteractionId = 0;
+                CHECK_HR(m_logoEventHandler-&gt;WaitForInteractionCompleted(&amp;completedInteractionId));
+
+                if (id != completedInteractionId)
+                {
+                    // Interaction id mismatch - it might be device issue or robot performed multiple interactions.
+                    hr = E_UNEXPECTED;
+                    goto Exit;
+                }
+            }
+            else
+            {
+                // We couldn't perform the interaction. Set hr to 0x80040001 (Test has already been completed)
+                // to allow the sample code to move to the next test.
+                hr = 0x80040001;
+                goto Exit;
+            }
+        }
+
+Exit:
+        if (interaction != NULL)
+        {
+            interaction-&gt;Release();
+        }
+        return hr;
+    }
+
+    HRESULT GetParamAndPerformNonInteraction(
+        __in IInteractionObject* interaction,
+        __out bool* interactionPerformed)
+    {
+        HRESULT hr = S_OK;
+        DOUBLE* endTimes = NULL;
+        ULONG nEndTimes = 0;
+
+        CHECK_HR(GetDoubles(interaction, L"endTimes", &amp;endTimes, &amp;nEndTimes));
+
+        // It is expected for Non-interaction, there is only 1 element in endTimes array.
+        assert(nEndTimes == 1);
+
+        DWORD sleepTime = (DWORD)(endTimes[0]);
+        printf("[Robot Controller] Perform non-interaction - no contact of the screen for %ums\n", sleepTime);
+        Sleep(sleepTime);
+
+        *interactionPerformed = true;
+
+Exit:
+        if (endTimes != NULL)
+        {
+            CoTaskMemFree(endTimes);
+        }
+        return hr;
+    }
+
+    HRESULT GetParamAndPerformLineInteraction(
+        __in IInteractionObject* interaction,
+        __out bool* interactionPerformed)
+    {
+        HRESULT hr = S_OK;
+        DOUBLE* xFrom = NULL;
+        DOUBLE* yFrom = NULL;
+        DOUBLE* xTo = NULL;
+        DOUBLE* yTo = NULL;
+        DOUBLE* startTimes = NULL;
+        DOUBLE* endTimes = NULL;
+        ULONG count = 0;
+        ULONG n = 0;
+
+        // Get all the interaction parameters used by a Line interaction.
+        CHECK_HR(GetDoubles(interaction, L"xFrom", &amp;xFrom, &amp;n));
+        count = n;
+
+        CHECK_HR(GetDoubles(interaction, L"yFrom", &amp;yFrom, &amp;n));
+        assert(count == n);
+
+        CHECK_HR(GetDoubles(interaction, L"xTo", &amp;xTo, &amp;n));
+        assert(count == n);
+
+        CHECK_HR(GetDoubles(interaction, L"yTo", &amp;yTo, &amp;n));
+        assert(count == n);
+
+        CHECK_HR(GetDoubles(interaction, L"startTimes", &amp;startTimes, &amp;n));
+        assert(count == n);
+
+        CHECK_HR(GetDoubles(interaction, L"endTimes", &amp;endTimes, &amp;n));
+        assert(count == n);
+
+        printf("Interaction parameters:\n");
+        PrintVector(L"xFrom", xFrom, count);
+        PrintVector(L"yFrom", yFrom, count);
+        PrintVector(L"xTo", xTo, count);
+        PrintVector(L"yTo", yTo, count);
+        PrintVector(L"startTimes", startTimes, count);
+        PrintVector(L"endTimes", endTimes, count);
+
+        // Instruct robot to perform interaction based on the parameters.
+        // This sample does not show how to control the robot as it is very specific to 
+        // the robot designer. This sample does not perform this interaction.
+        *interactionPerformed = false;
+
+Exit:
+        if (xFrom != NULL)
+        {
+            CoTaskMemFree(xFrom);
+        }
+
+        if (yFrom != NULL)
+        {
+            CoTaskMemFree(yFrom);
+        }
+
+        if (xTo != NULL)
+        {
+            CoTaskMemFree(xTo);
+        }
+
+        if (yTo != NULL)
+        {
+            CoTaskMemFree(yTo);
+        }
+
+        if (startTimes != NULL)
+        {
+            CoTaskMemFree(startTimes);
+        }
+
+        if (endTimes != NULL)
+        {
+            CoTaskMemFree(endTimes);
+        }
+
+        return hr;
+    }
+
+    HRESULT RunInteractions()
+    {
+        HRESULT hr = S_OK;
+
+        // Hide the status UI before doing interaction.
+        CHECK_HR(m_logo-&gt;HideStatusUI());
+
+        bool hasMoreIteration = true;
+
+        while (hasMoreIteration)
+        {
+            // Usually a test needs multiple iterations of interactions. 
+            hr = QueryAndPerformInteraction();
+
+            if (hr == 0x80040001)
+            {
+                // The test has been completed.
+                hasMoreIteration = false;
+                hr = S_OK;
+            }
+
+            CHECK_HR(hr);
+        }
+
+Exit:
+        // Re-display the status UI for human to review the test status.
+        m_logo-&gt;ShowStatusUI();
+        return hr;
+    }
+
+    HRESULT GetDoubles(
+        __in IInteractionObject *interaction, 
+        __in PCWSTR paramName,
+        __out_ecount(*length) DOUBLE** doubleArray,
+        __out ULONG* length)
+    {
+        VARIANT var = {};
+        HRESULT hr = interaction-&gt;GetParameter(AutoBSTR(paramName), &amp;var);
+
+        if (SUCCEEDED(hr))
+        {
+            hr = VariantToDoubleArrayAlloc(var, doubleArray, length);
+        }
+    
+        VariantClear(&amp;var);
+
+        return hr;
+    }
+
+    void PrintVector(
+        __in PCWSTR name,
+        __in_ecount(count) const DOUBLE* vector,
+        __in ULONG count)
+    {
+        wprintf(L"%s\n", name);
+
+        for (ULONG i = 0; i &lt; count; i++)
+        {
+            printf("%.2f ", vector[i]);
+        }
+
+        printf("\n");
+    }
+
+private:
+    ILogoAutomation* m_logo;
+    LogoEventHandler* m_logoEventHandler;
+    ULONG m_registrationCookie;
+    BSTR* m_testNames;
+    ULONG m_nTests;
+    VARIANT m_testNamesVar;
+
+};
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    HRESULT hr = S_OK;
+    CHECK_HR(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED));
+
+    // Extra scope to make sure COM objects are released before calling CoUninitialize.
+    {
+        RobotController robotController;
+
+        CHECK_HR(robotController.ConnectToLogo());
+
+        CHECK_HR(robotController.RunTests());
+    }
+
+Exit:
+    CoUninitialize();
+    printf("\n[Robot Controller] Shutting down\n");
+
+    return hr;
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+      </div>
+      <h2 class="heading">Robot API Configuration</h2>
+      <div id="sectionSection4" class="section">
+        <p>Use the procedures in this section to configure the computer that are used with the robot API. </p>
+        <h3 class="subHeading">Prerequisites</h3>
+        <div class="subSection">
+          <p>To use the robot API, the following prerequisites must be met:</p>
+          <ul>
+            <li class="unordered">
+									A server running the touch certification tool and a client computer to be used as the robot controller<br /><br /></li>
+            <li class="unordered">
+									A user account that will be used on both the server and the robot controller<br /><br /></li>
+            <li class="unordered">
+									The user account used on the server and the robot controller must be a member of the Distributed COM Users security group on both computer. You can add the user account to the group by using the Computer Management console or by using the command line. <br /><br /></li>
+          </ul>
+        </div>
+        <h3 class="subHeading">Configure the Robot API on domain-joined Windows 8 computers</h3>
+        <div class="subSection">
+          <p>Use the following procedures to configure the Robot API to work on Windows 8 computers that are joined to the same domain.</p>
+          <h4 class="subHeading">Open TCP port 135 by using Windows Firewall</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>On the Start screen, type <strong>Windows Firewall</strong>, click <strong>Settings</strong>, and then click <strong>Windows Firewall</strong> in the search results.</p>
+              </li>
+              <li>
+                <p>In the <strong>Windows Firewall</strong> console, click <strong>Advanced Settings</strong>.</p>
+              </li>
+              <li>
+                <p>Right-click Inbound <strong>Rules</strong>, and then click <strong>New Rules</strong>.</p>
+              </li>
+              <li>
+                <p>On the <strong>Rule Type</strong> page of the <strong>New Inbound Rule Wizard</strong>, click <strong>Port</strong>, and then click <strong>Next</strong>.</p>
+              </li>
+              <li>
+                <p>On the <strong>Protocol and Ports</strong> page, click <strong>TCP</strong>, click <strong>Specific local ports</strong>, type <strong>135</strong>, and then click <strong>Next</strong>.</p>
+              </li>
+              <li>
+                <p>On the <strong>Action</strong> page, click <strong>Allow the connection</strong>, and then click <strong>Next</strong>.</p>
+              </li>
+              <li>
+                <p>On the <strong>Profile</strong> page, select the <strong>Domain</strong>, <strong>Private</strong>, and <strong>Public</strong> check boxes, and then click <strong>Next</strong>.</p>
+              </li>
+              <li>
+                <p>On the <strong>Name</strong> page, in the <strong>Name</strong> box, specify a name for this rule, such as <strong>Robot API</strong>, and then click <strong>Finish</strong>.</p>
+              </li>
+              <li>
+                <p>Repeat these steps to create an outbound rule.</p>
+              </li>
+              <li>
+                <p>These steps should be completed on both the server and the robot controller.</p>
+              </li>
+            </ol>
+          </div>
+          <p>You can also open the ports by using the command line by running the following commands:</p>
+          <ul>
+            <li class="unordered">
+              <strong>netsh advfirewall firewall add rule name=”Robot API” dir=in action=allow protocol=TCP localport=135 profile=any</strong>
+              <br />
+              <br />
+            </li>
+            <li class="unordered">
+              <strong>netsh advfirewall firewall add rule name=”Robot API” dir=out action=allow protocol=TCP localport=135 profile=any</strong>
+              <br />
+              <br />
+            </li>
+          </ul>
+          <h4 class="subHeading">Register the touch certification tool</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>Log on to the server.</p>
+              </li>
+              <li>
+                <p>From an elevated command prompt, type <strong>logo3.exe /RegServer</strong> and then press Enter.</p>
+                <div class="alert">
+                  <table>
+                    <tr>
+                      <th align="left">
+                        <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                    </tr>
+                    <tr>
+                      <td>
+												The <strong>RegServer</strong> parameter is case sensitive.<p></p></td>
+                    </tr>
+                  </table>
+                  <p>
+                    
+                  </p>
+                </div>
+              </li>
+              <li>
+                <p>Repeat these steps on the robot controller.</p>
+              </li>
+            </ol>
+          </div>
+          <h4 class="subHeading">Make the touch certification tool interactive by using dcomcnfg.exe</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>Log on to the server.</p>
+              </li>
+              <li>
+                <p>On the Start screen, type <strong>dcomcnfg.exe</strong> and then click <strong>dcomcnfg.exe</strong> from the search results.</p>
+              </li>
+              <li>
+                <p>Expand <strong>Component Services</strong>, expand <strong>Computers</strong>, expand <strong>My Computer</strong>, and then click <strong>DCOM Config</strong>.</p>
+              </li>
+              <li>
+                <p>Right-click <strong>Logo3</strong>, and then click <strong>Properties</strong>.</p>
+              </li>
+              <li>
+                <p>Click the <strong>Identity</strong> tab, and then click <strong>The interactive user</strong>.</p>
+              </li>
+              <li>
+                <p>Click <strong>OK</strong>.</p>
+              </li>
+            </ol>
+          </div>
+          <h4 class="subHeading">Co-create the ILogoAutomation interface</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>Log on to the robot controller.</p>
+              </li>
+              <li>
+                <p>On the Start screen, type <strong>dcomcnfg.exe</strong> and then click <strong>dcomcnfg.exe</strong> from the search results.</p>
+              </li>
+              <li>
+                <p>Expand <strong>Component Services</strong>, expand <strong>Computers</strong>, expand <strong>My Computer</strong>, and then click <strong>DCOM Config</strong>.</p>
+              </li>
+              <li>
+                <p>Right-click <strong>Logo3</strong>, and then click <strong>Properties</strong>.</p>
+              </li>
+              <li>
+                <p>Click the <strong>Location</strong> tab, select the <strong>Run application on the following computer</strong> check box, and then type the name of the server.</p>
+              </li>
+              <li>
+                <p>Click <strong>OK</strong>.</p>
+              </li>
+            </ol>
+          </div>
+          <p>Alternatively, you can call <strong>CoCreateEx()</strong> and specify the server name. If TCP port 135 is open and the touch certification tool is registered, no further action is required. </p>
+          <p>Once you have completed all of the procedures in this section, the touch certification tool should be working and the robot controller should be able to connect.</p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+              </tr>
+              <tr>
+                <td>
+								The touch certification tool does not allow com instantiations so it must be running on the server in order for the robot controller to connect.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+        <h3 class="subHeading">Configure the Robot API on Windows 8 computers that are not joined to a domain</h3>
+        <div class="subSection">
+          <p>To configure the Robot API on Windows 8 computers that are not joined to a domain, you must modify the Access Permissions and Launch and Activation Permissions to allow the user account access from the server.</p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								The client and server devices must be either in the same domain or in the same workgroup.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <h4 class="subHeading">To modify the Access Permissions and Launch and Activation Permissions</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>Log on to the server.</p>
+              </li>
+              <li>
+                <p>On the Start screen, type <strong>dcomcnfg.exe</strong> and then click <strong>dcomcnfg.exe</strong> from the search results.</p>
+              </li>
+              <li>
+                <p>Expand <strong>Component Services</strong>, and then expand <strong>Computers</strong>.</p>
+              </li>
+              <li>
+                <p>Right-click <strong>My Computer</strong>, and then click <strong>Properties</strong>.</p>
+              </li>
+              <li>
+                <p>Click the <strong>COM Security</strong> tab.</p>
+              </li>
+              <li>
+                <p>Under the <strong>Access Permissions</strong> heading, click <strong>Edit Limits</strong>.</p>
+              </li>
+              <li>
+                <p>Add the user account, select the <strong>Allow</strong> check boxes for both <strong>Local Access</strong> and <strong>Remote Access</strong>, and then click <strong>OK</strong>.</p>
+              </li>
+              <li>
+                <p>Under the <strong>Launch and Activation Permissions</strong> heading, click <strong>Edit Limits</strong>.</p>
+              </li>
+              <li>
+                <p>Add the user account, select the <strong>Allow</strong> check boxes for <strong>Local Launch</strong>, <strong>Remote Launch</strong>, <strong>Local Activation</strong>, and <strong>Remote Activation</strong>, and then click <strong>OK</strong>.</p>
+              </li>
+              <li>
+                <p>Repeat these steps on the robot controller.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <h3 class="subHeading">ARM-based devices</h3>
+        <div class="subSection">
+          <p>ARM-based devices are not designed to join a domain so you can follow the procedures in the section named “Configure the Robot API on Windows 8 computers that are not joined to a domain”.</p>
+          <p>Additionally, you should ensure that the <strong>Enable Distributed COM on this computer</strong> check box is selected in the <strong>Default Properties</strong> tab. It is selected by default.</p>
+        </div>
+        <h3 class="subHeading">Configure Windows 7, Windows XP, or Windows Server robot controllers</h3>
+        <div class="subSection">
+          <p>It is possible that some robot controllers only run by using an earlier version of the Windows operating system. Since the touch certification tool only runs on Windows 8, you cannot register the <strong>ILogoAutomation</strong> interface in the normal way. You must import the type library directly into the Windows registry.</p>
+          <h4 class="subHeading">To import the library directly to the registry</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>On the robot controller, create a temporary folder, such as C:\Logo.</p>
+              </li>
+              <li>
+                <p>Copy the logo3.tlb file into the temporary folder.</p>
+              </li>
+              <li>
+                <p>Save the contents of the Touch Certification Tool section into a registry file in the temporary folder. </p>
+                <div class="alert">
+                  <table>
+                    <tr>
+                      <th align="left">
+                        <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                    </tr>
+                    <tr>
+                      <td>
+												If you are using a folder other than C:\Logo as your temporary folder, you must update the registry file with the proper path. <p></p></td>
+                    </tr>
+                  </table>
+                  <p>
+                    
+                  </p>
+                </div>
+              </li>
+              <li>
+                <p>From an elevated command prompt, run the registry file to import it into the registry</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <h3 class="subHeading">WOW not supported for /RegServer</h3>
+        <div class="subSection">
+          <p>Using an x86-version of the touch certification tool on an x64-based computer to register the <strong>ILogoAutomation</strong> interface is not supported and will not work. Always use the touch certification tool that matches your processor architecture.</p>
+        </div>
+        <h3 class="subHeading">Touch certification tool registry file</h3>
+        <div class="subSection">
+          <p>Here’s the registry file</p>
+          
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_310ce6f9-8573-4de3-af61-20ddc63540f3');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_310ce6f9-8573-4de3-af61-20ddc63540f3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\AppID\{BF7FBA21-4E96-403E-8223-6E57C0EBFA82}]
+@="Logo3"
+[HKEY_CLASSES_ROOT\AppID\logo3.exe]
+"AppID"="{BF7FBA21-4E96-403E-8223-6E57C0EBFA82}"
+[HKEY_CLASSES_ROOT\Interface\{2F900384-8ED7-417D-87EA-F2C9F419F356}]
+@="IInteractionObject"
+[HKEY_CLASSES_ROOT\Interface\{2F900384-8ED7-417D-87EA-F2C9F419F356}\ProxyStubClsid]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{2F900384-8ED7-417D-87EA-F2C9F419F356}\ProxyStubClsid32]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{2F900384-8ED7-417D-87EA-F2C9F419F356}\TypeLib]
+@="{58147694-B012-4922-8A48-48E3ABCC1B57}"
+"Version"="1.0"
+[HKEY_CLASSES_ROOT\Interface\{453D0AC0-AF7C-465B-AA61-2641C5F24366}]
+@="ILogoAutomation"
+[HKEY_CLASSES_ROOT\Interface\{453D0AC0-AF7C-465B-AA61-2641C5F24366}\ProxyStubClsid]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{453D0AC0-AF7C-465B-AA61-2641C5F24366}\ProxyStubClsid32]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{453D0AC0-AF7C-465B-AA61-2641C5F24366}\TypeLib]
+@="{58147694-B012-4922-8A48-48E3ABCC1B57}"
+"Version"="1.0"
+[HKEY_CLASSES_ROOT\CLSID\{8F34541E-0742-470D-9AA9-100E7984EA22}]
+@="InteractionObject Class"
+"AppID"="{BF7FBA21-4E96-403E-8223-6E57C0EBFA82}"
+[HKEY_CLASSES_ROOT\CLSID\{8F34541E-0742-470D-9AA9-100E7984EA22}\Programmable]
+[HKEY_CLASSES_ROOT\CLSID\{8F34541E-0742-470D-9AA9-100E7984EA22}\TypeLib]
+@="{58147694-B012-4922-8A48-48E3ABCC1B57}"
+[HKEY_CLASSES_ROOT\CLSID\{8F34541E-0742-470D-9AA9-100E7984EA22}\Version]
+@="1.0"
+[HKEY_CLASSES_ROOT\CLSID\{D371B1A6-30AF-4F43-8202-E13A3C93DA8C}]
+@="LogoAutomation Class"
+"AppID"="{BF7FBA21-4E96-403E-8223-6E57C0EBFA82}"
+[HKEY_CLASSES_ROOT\CLSID\{D371B1A6-30AF-4F43-8202-E13A3C93DA8C}\Programmable]
+[HKEY_CLASSES_ROOT\CLSID\{D371B1A6-30AF-4F43-8202-E13A3C93DA8C}\TypeLib]
+@="{58147694-B012-4922-8A48-48E3ABCC1B57}"
+[HKEY_CLASSES_ROOT\CLSID\{D371B1A6-30AF-4F43-8202-E13A3C93DA8C}\Version]
+@="1.0"
+[HKEY_CLASSES_ROOT\Interface\{25D2B24D-679D-4131-89A7-EEAF10F4CB85}]
+@="ILogoEventHandler"
+[HKEY_CLASSES_ROOT\Interface\{25D2B24D-679D-4131-89A7-EEAF10F4CB85}\ProxyStubClsid]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{25D2B24D-679D-4131-89A7-EEAF10F4CB85}\ProxyStubClsid32]
+@="{00020424-0000-0000-C000-000000000046}"
+[HKEY_CLASSES_ROOT\Interface\{25D2B24D-679D-4131-89A7-EEAF10F4CB85}\TypeLib]
+@="{58147694-B012-4922-8A48-48E3ABCC1B57}"
+"Version"="1.0"
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}]
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}\1.0]
+@="logo3Lib"
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}\1.0\0]
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}\1.0\0\win32]
+@="C:\\logo\\logo3.tlb"
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}\1.0\FLAGS]
+@="0"
+[HKEY_CLASSES_ROOT\TypeLib\{58147694-B012-4922-8A48-48E3ABCC1B57}\1.0\HELPDIR]
+@="C:\\logo"
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        </div>
+        <h3 class="subHeading">DCOM debugging</h3>
+        <div class="subSection">
+          <p>If you are experiencing issues with DCOM, you can enable DCOM debugging to assist you in troubleshooting. </p>
+          <h4 class="subHeading">To enable DCOM debugging</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>On the Start screen, type regedit.exe, and then click regedit.exe from the search results.</p>
+              </li>
+              <li>
+                <p>Navigate to HKEY_LOCAL_MACHINE\Software\Microsoft\Ole</p>
+              </li>
+              <li>
+                <p>Create a new DWORD value named <strong>CallFailureLoggingLevel</strong> and set it to 1 </p>
+              </li>
+            </ol>
+          </div>
+          <p>Once DCOM debugging is enabled, more troubleshooting information will be written to the event log on the server.</p>
+        </div>
+      </div>
+      <h2 class="heading">Latency Testing</h2>
+      <div id="sectionSection5" class="section">
+        <p>At this time, latency testing is not supported with the robot API. You must use the specific latency hardware tools to perform latency testing.</p>
+      </div>
+      <h2 class="heading">Flow Control and Data Validation</h2>
+      <div id="sectionSection6" class="section">
+        <p>The robot or the robot controller is responsible for general flow control of the tests.  This allows those building the robot to deal with all errors from the robot’s capabilities. The test itself will not be looking for any errors or return information from the robot. Similarly, the API will not validate that the robot is capable of performing actions. Any validation should be done by the robot or the robot controller.</p>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Gl7SceEs0CuVDYkaQGWn_jblnS7X2QjblYoFB1TmGeqMC7YyDuI6a8IGUZGBJxPvkxSt6ZYPjR0vgYDRrJZukxIYkZCy6JR5Ip_n11MIAV4U6i6vOZ2BOz9eSSEtNNquXPuRPA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj906442.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj906442.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="qvoUHcQ-y3sUV3StrzcxDYGB-aQJ5o58FKonuIzY-M2R4PHlSkn7jNvJJH75hE0h29LE1UmMWmLdzq2HFWLnkRhG0J56s9c8R14fy8iIXXxJpxfYoBb3lvHqdFpTIQ6n6VcoTQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj906442(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"530ebcc9-7bbb-4532-981c-4e6e585bd41e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj906442.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:16 GMT -->
+</html>

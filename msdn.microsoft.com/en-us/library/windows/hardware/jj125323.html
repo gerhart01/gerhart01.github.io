@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj125323.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125323.aspx" />
+        <title>WHCKProximityTest- TagWriteAppLaunchNullDelimited</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj125323(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125323(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125323(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125323(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD6-10:00:36 AM" />
+
+<meta name="Search.ShortId" content="jj125323" />
+
+<meta name="ms.shortidmsdn" content="jj125323" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075636&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj125323.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124853.aspx" id="dn375944_WIN.10_en-us" mtpsaliasid="" mtpsassetid="db0901ab-f697-4086-8ebb-196c7ac12d5e_WIN.10_en-us" mtpsshortid="jj124853_WIN.10_en-us" title="Device.BusController Testing">Device.BusController Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998672.aspx" id="dn375857_WIN.10_en-us" mtpsaliasid="" mtpsassetid="464d1e58-eb4a-430e-840d-28c390846bf3_WIN.10_en-us" mtpsshortid="hh998672_WIN.10_en-us" title="Device.BusController Tests">Device.BusController Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997791.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Bluetooth 2.1 Logo Tests (Windows v6.3)">Bluetooth - Bluetooth 2.1 Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998565.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Bluetooth Device Version Check Tests (Windows v6.3)">Bluetooth - Bluetooth Device Version Check Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124848.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Bluetooth LE Dual-Mode Logo Tests (Windows v6.3)">Bluetooth - Bluetooth LE Dual-Mode Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125280.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Bluetooth LE Logo Tests (Windows v6.3)">Bluetooth - Bluetooth LE Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247403.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Check For Bluetooth LE Filter Drivers (Windows v6.3)">Bluetooth - Check For Bluetooth LE Filter Drivers (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124548.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth 2.1 Logo Tests (Windows 7)">Bluetooth - Downlevel - Bluetooth 2.1 Logo Tests (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293626.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth 2.1 Logo Tests (Windows 8)">Bluetooth - Downlevel - Bluetooth 2.1 Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997946.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth Device Version Check Tests (Windows 7)">Bluetooth - Downlevel - Bluetooth Device Version Check Tests (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293802.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth Device Version Check Tests (Windows 8)">Bluetooth - Downlevel - Bluetooth Device Version Check Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247174.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth LE Dual-Mode Logo Tests (Windows 8)">Bluetooth - Downlevel - Bluetooth LE Dual-Mode Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260192.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Bluetooth LE Logo Tests (Windows 8)">Bluetooth - Downlevel - Bluetooth LE Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247387.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Machine Uses Microsoft Stack (Windows 8)">Bluetooth - Downlevel - Machine Uses Microsoft Stack (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260271.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Non-USB Logo Tests (Windows 8)">Bluetooth - Downlevel - Non-USB Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998563.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Point to Point Tests (Windows 7)">Bluetooth - Downlevel - Point to Point Tests (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260183.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Point to Point Tests (Windows 8)">Bluetooth - Downlevel - Point to Point Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293785.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Radio On-Off Logo Tests (Windows 8)">Bluetooth - Downlevel - Radio On-Off Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998890.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Scatternet Tests (Windows 7)">Bluetooth - Downlevel - Scatternet Tests (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260397.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Scatternet Tests (Windows 8)">Bluetooth - Downlevel - Scatternet Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998625.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Inband SCO Tests (Windows 7)">Bluetooth - Downlevel - Inband SCO Tests (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247480.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Downlevel - Inband SCO Tests (Windows 8)">Bluetooth - Downlevel - Inband SCO Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124719.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Inband SCO Tests (Windows v6.3)">Bluetooth - Inband SCO Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998396.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Machine Uses Microsoft Stack (Windows v6.3)">Bluetooth - Machine Uses Microsoft Stack (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125257.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Non-USB Logo Tests (Windows v6.3)">Bluetooth - Non-USB Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124109.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Point to Point Tests (Windows v6.3)">Bluetooth - Point to Point Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997921.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Radio On-Off Logo Tests (Windows v6.3)">Bluetooth - Radio On-Off Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998732.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth - Scatternet Tests (Windows v6.3)">Bluetooth - Scatternet Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124295.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Secure Digital Test (LOGO)">Secure Digital Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293811.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UART Controller Test(Basic tests)">UART Controller Test(Basic tests)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247331.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UART Controller Test(Functional tests)">UART Controller Test(Functional tests)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293755.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UART Controller Test(Stress)">UART Controller Test(Stress)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998021.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Exposed Port Controller Test">USB Exposed Port Controller Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124075.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Host Controller Compliance">USB Host Controller Compliance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123757.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Host Controller Enable Disable Test">USB Host Controller Enable Disable Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124634.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB-IF Certification Validation Test (Controller)">USB-IF Certification Validation Test (Controller)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997848.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB xHCI Compliance Suite (ARM)">USB xHCI Compliance Suite (ARM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123677.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB xHCI Register Test">USB xHCI Register Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998627.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB xHCI Runtime Power Management Test">USB xHCI Runtime Power Management Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998583.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- DisablePub">WHCKProximityTest- DisablePub</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124617.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- EnableTwice">WHCKProximityTest- EnableTwice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124738.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextSubCancelIo">WHCKProximityTest- GetNextSubCancelIo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124240.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextSubInputBuffer">WHCKProximityTest- GetNextSubInputBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124980.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextSubInvalidHandle">WHCKProximityTest- GetNextSubInvalidHandle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124764.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextSubTwice">WHCKProximityTest- GetNextSubTwice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123542.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextSubUndersizedBuffer">WHCKProximityTest- GetNextSubUndersizedBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998606.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextTransCancelIo">WHCKProximityTest- GetNextTransCancelIo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123820.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextTransInputBuffer">WHCKProximityTest- GetNextTransInputBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124394.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextTransInvalidHandle">WHCKProximityTest- GetNextTransInvalidHandle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123958.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextTransOutputBuffer">WHCKProximityTest- GetNextTransOutputBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123809.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- GetNextTransTwice">WHCKProximityTest- GetNextTransTwice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123553.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- MaliciousPeer">WHCKProximityTest- MaliciousPeer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124663.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- MaxMessageSize">WHCKProximityTest- MaxMessageSize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293670.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NCICompliance">WHCKProximityTest- NCICompliance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998631.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFBadFormat">WHCKProximityTest- NDEFBadFormat</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123635.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFEmpty">WHCKProximityTest- NDEFEmpty</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997951.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFext">WHCKProximityTest- NDEFext</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998266.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFMIME">WHCKProximityTest- NDEFMIME</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998590.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFUnknown">WHCKProximityTest- NDEFUnknown</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124947.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFURI">WHCKProximityTest- NDEFURI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123665.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFwktT">WHCKProximityTest- NDEFwktT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998526.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- NDEFwktU">WHCKProximityTest- NDEFwktU</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125160.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PairingSupport">WHCKProximityTest- PairingSupport</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998449.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- Presence">WHCKProximityTest- Presence</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124563.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- ProtocolDotSubtype">WHCKProximityTest- ProtocolDotSubtype</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125145.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessage">WHCKProximityTest- PublishMessage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998662.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageDuplicate">WHCKProximityTest- PublishMessageDuplicate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124699.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageOutputBuffer">WHCKProximityTest- PublishMessageOutputBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124299.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageOversizeMessage">WHCKProximityTest- PublishMessageOversizeMessage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997844.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageToInvalidHandle">WHCKProximityTest- PublishMessageToInvalidHandle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998868.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageTwice">WHCKProximityTest- PublishMessageTwice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124644.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- PublishMessageTwoArrivals">WHCKProximityTest- PublishMessageTwoArrivals</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124917.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- RangeOfActivation">WHCKProximityTest- RangeOfActivation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125251.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- ReEnablePub">WHCKProximityTest- ReEnablePub</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123909.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- ReEnableSub">WHCKProximityTest- ReEnableSub</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124524.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- Reliability">WHCKProximityTest- Reliability</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125009.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- ReservedIOCTLs">WHCKProximityTest- ReservedIOCTLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998791.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- Scenario_Share">WHCKProximityTest- Scenario_Share</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125071.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- SessionEstablishment">WHCKProximityTest- SessionEstablishment</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- StandardsCertification">WHCKProximityTest- StandardsCertification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124790.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- SubscribeHungClient">WHCKProximityTest- SubscribeHungClient</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124950.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- SubscribeMessageDuplicate">WHCKProximityTest- SubscribeMessageDuplicate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123972.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWriteAppLaunchErrorHandling">WHCKProximityTest- TagWriteAppLaunchErrorHandling</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998909.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWriteAppLaunchMultipleTuples">WHCKProximityTest- TagWriteAppLaunchMultipleTuples</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125323.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWriteAppLaunchNullDelimited">WHCKProximityTest- TagWriteAppLaunchNullDelimited</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123977.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWriteAppLaunchTabDelimited">WHCKProximityTest- TagWriteAppLaunchTabDelimited</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998431.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWritingToDevice">WHCKProximityTest- TagWritingToDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124476.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWritingToTag">WHCKProximityTest- TagWritingToTag</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125192.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWritingTypesDisallowed">WHCKProximityTest- TagWritingTypesDisallowed</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125086.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TagWritingTypesSupported">WHCKProximityTest- TagWritingTypesSupported</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124611.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- TransmissionRate">WHCKProximityTest- TransmissionRate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124265.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- UnPublish">WHCKProximityTest- UnPublish</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125247.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- UnSubscribe">WHCKProximityTest- UnSubscribe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124006.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeCustom">WHCKProximityTest- WindowsMimeCustom</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124703.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeDotCustom">WHCKProximityTest- WindowsMimeDotCustom</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124206.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeDotHtml">WHCKProximityTest- WindowsMimeDotHtml</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998441.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeDotImage">WHCKProximityTest- WindowsMimeDotImage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125098.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeHtml">WHCKProximityTest- WindowsMimeHtml</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998252.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsMimeImage">WHCKProximityTest- WindowsMimeImage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123565.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsUriNDEFwktU">WHCKProximityTest- WindowsUriNDEFwktU</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123768.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsUriNonNullTerminated">WHCKProximityTest- WindowsUriNonNullTerminated</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998604.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WindowsUriNullTerminated">WHCKProximityTest- WindowsUriNullTerminated</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998961.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximityTest- WriteableTag">WHCKProximityTest- WriteableTag</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247520.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WITT I2C Controller Test - Basic Tests">WITT I2C Controller Test - Basic Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260385.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WITT I2C Controller Test-Functional Tests">WITT I2C Controller Test-Functional Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293580.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WITT I2C Controller Test-Stress">WITT I2C Controller Test-Stress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124042.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="xHCI Debug Capability Device Compliance (Logo)">xHCI Debug Capability Device Compliance (Logo)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">WHCKProximityTest- TagWriteAppLaunchNullDelimited</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This test determines whether the implementation processes a LaunchApp:WriteTag publication whose payload is null delimited.</p>
+      <p>During the test, you will be prompted to bring an NFC tag within the proximity range of the test device.</p>
+      <h2 class="heading">Test details</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>
+                <strong>Associated requirements</strong>
+              </p>
+            </td>
+            <td>
+              <p>Device.BusController.NearFieldProximity.ProviderImplementation</p>
+              <p>
+                <a href="http://go.microsoft.com/fwlink/?LinkID=254483">See the device hardware requirements.</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Platforms</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+									Windows RT (ARM-based)
+									<br />
+									Windows 8 (x64)
+									<br />
+									Windows 8 (x86)
+									<br />
+									Windows RT 8.1
+									<br />
+									Windows 8.1 x64
+									<br />
+									Windows 8.1 x86
+								</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Expected run time</strong>
+              </p>
+            </td>
+            <td>
+              <p>~2 minutes</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Categories</strong>
+              </p>
+            </td>
+            <td>
+              <p>Certification<br /> Functional</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Type</strong>
+              </p>
+            </td>
+            <td>
+              <p>Manual</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Running the test</h2>
+      <div id="sectionSection1" class="section">
+        <p>This is a two computer test. Before you run the test, complete the test setup as described in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998153.aspx">Proximity Controller Testing Prerequisites</a>.</p>
+      </div>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection2" class="section">
+        <p>For troubleshooting information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998751.aspx">Troubleshooting Bus Controller Testing</a>.</p>
+      </div>
+      <h2 class="heading">More information</h2>
+      <div id="sectionSection3" class="section">
+        <p>
+          
+        </p>
+        <h3 class="subHeading">Command syntax</h3>
+        <div class="subSection">
+          <p>
+            
+          </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Command option
+										</th>
+              <th>
+											Description
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <strong>Te.exe /inproc WHCKNearFieldInitiator.dll /name:"CWHCKProximityTestInitiator::TagWriteAppLaunchNullDelimited"</strong>
+                </p>
+              </td>
+              <td>
+                <p>Runs the test.</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								For command-line help for this test binary, type the following: <p></p><strong>Te.exe /inproc WHCKNearFieldInitiator.dll /name:"CWHCKProximityTestInitiator::TagWriteAppLaunchNullDelimited" /listproperties</strong><p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+        <h3 class="subHeading">File list</h3>
+        <div class="subSection">
+          <p>
+            
+          </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											File
+										</th>
+              <th>
+											Location
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>Te.exe</p>
+              </td>
+              <td>
+                <p>
+                  <em>&lt;TAEFBinRoot&gt;</em>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>WHCKNearFieldInitiator.dll</p>
+              </td>
+              <td>
+                <p>
+                  <em>&lt;testbinroot&gt;</em>\dtmtest\NearField\</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="6qTR37t6tZ7B9wcJNW7bvmjKfjABChx1v2A0z0zTnz8MO9CgKvmZQ0K6lwXtPlhLBHyMOPgbxy88jSeWDm1NG5U8u5TVyVY1dldF9HaSvG6uPCqQE8zz7Y4Vdm5prevS_bJ-Dw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj125323.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj125323.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="NYmCxyAEkwPVA0xReZhzaDqtoxwGYN0V0Ob4F_YyYK6P17rcCTcYsstpP2TjfK_xiTEX9B-2C23QWiHsaHV9cwyjj-RQTMs1N_Ilq_Oc_QM2iziwhHQQ7Hvxa4mhigyXkfgwsQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj125323(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5b168a33-b11d-4994-a6d6-8ad20a895536\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj125323.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:11 GMT -->
+</html>

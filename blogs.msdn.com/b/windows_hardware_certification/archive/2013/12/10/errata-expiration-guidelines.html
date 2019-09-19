@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+<!-- Mirrored from blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:53:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8;" /><meta name="robots" content="index,follow" />
+<meta name="description" content="This blog—formerly the Windows Certification Newsletter—provides up-to-date news about the Windows Certification Program. Get info about certification, certification kits, HCK QFEs, certification policy and requirements, the Windows Dev Center hardware dashboard, and more." />
+<meta name="keywords" content="Windows Certification, HCK, Hardware Certification Kit, WHCK, Windows, HCK QFE, Windows Certification Newsletter, certification policy, certification requirements, Windows Dev Center hardware dashboard" />
+<meta name="GENERATOR" content="Telligent Evolution Platform Developer Build (Build: 5.6.50428.7875)" />
+<link rel="pingback" href="../../../../pingback.html" />
+<link href="../../../../../../../i1.blogs.msdn.com/rrcontent/7632fe1dd91290a46b3a118f9478cf1b-27cae0dd5641775697cb89e9a8587625-RequestReducedStyle.css" rel="Stylesheet" type="text/css" /><link rel="alternate" type="application/rss+xml" title="Site Home (RSS 2.0)" href="http://blogs.msdn.com/rss.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Certification team&#39;s Comments (RSS 2.0)" href="http://blogs.msdn.com/members/certblog_4000_outlook.com/comments/rss.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Certification team&#39;s Activities (RSS 2.0)" href="http://blogs.msdn.com/members/certblog_4000_outlook.com/activities/rss.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Activities of People Certification team Follows (RSS 2.0)" href="http://blogs.msdn.com/members/certblog_4000_outlook.com/activities/followersrss.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Certification team&#39;s Groups Activities (RSS 2.0)" href="http://blogs.msdn.com/members/certblog_4000_outlook.com/activities/groupsrss.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Windows Hardware Certification blog (RSS 2.0)" href="../../../../rss.aspx"  />
+<link rel="alternate" type="application/atom+xml" title="Windows Hardware Certification blog (Atom 1.0)" href="../../../../atom.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Windows Hardware Certification blog - All Comments (RSS 2.0)" href="../../../../rsscomments.aspx"  />
+<link rel="alternate" type="application/rss+xml" title="Errata expiration guidelines - Comments for this post (RSS 2.0)" href="../../../../rsscomments9a83.aspx?WeblogPostID=10480957"  />
+
+                    
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+          <link rel="shortcut icon" type="image/ico" href="http://blogs.msdn.com/themes/MSDN2/favicon.ico" />
+          <!--
+            Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+          -->
+          <link href="../../../../../../../i1.blogs.msdn.com/rrcontent/6e455ee01481483d5d047db51a775dad-ffc9f7e1f0412800af51bef62a866f63-RequestReducedStyle.css" rel="Stylesheet" type="text/css" /><script src="../../../../../../../ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+                            
+          <link type="text/css" rel="stylesheet" href="http://blogs.msdn.com/themes/MSDN2/css/DynamicStyle.aspx?PreviewKey=0" media="screen,print" />
+          <link type="text/css" rel="stylesheet" href="http://blogs.msdn.com/themes/blogs/MSDN2/css/DynamicStyle.aspx?WeblogID=16205&amp;PreviewKey=0" media="screen,print" />
+        
+          <!--[if lte IE 6]>
+              <link type="text/css" rel="stylesheet" href="/themes/MSDN2/css/ie6.css" media="screen,print" />
+          <![endif]-->
+                  <meta name="msvalidate.01" content="B717AD6FC29D3A844832AF011B5F9E4C" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../../../rsd.ashx" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href="http://blogs.msdn.com/error.htm?aspxerrorpath=/b/wlwmanifest.ashx" />
+
+        <!--
+            Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+          -->
+        <script src="../../../../../../../ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+    <title>
+	Errata expiration guidelines - Windows Hardware Certification blog - Site Home - MSDN Blogs
+</title></head>
+	<body spellcheck="true">
+		<form name="aspnetForm" method="post" action="http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" value="" />
+<input type="hidden" name="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" value="8bzcyDC7+WLkAorCXGs/SwmnYiD9BBZuBdA04l2K/Hg=" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM5OTAxNDYyNWRkvI787cXLvh9XHlDReEjVejxzcZ4=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="../../../../../../../i1.blogs.msdn.com/rrcontent/2d1e0852e015d49149c1b9074d48916a-02365fa95b265900b807221d154eb674-RequestReducedScript.js" type="text/javascript" ></script>
+
+
+			
+            
+                
+            
+            <div class="header-fragments-header"></div>
+<div class="header-fragments"><div class="header-fragment-outer top-bar msdn-header-fragment-outer msdn-top-bar"><div class="header-fragment-inner top-bar msdn-header-fragment-inner msdn-top-bar"><div class="header-fragment welcome-message" id="header-fragment-1402503690">
+
+
+<!-- always render -->
+</div><div class="header-fragment login-logout" id="header-fragment-1402503691">
+
+
+
+
+
+        <div class="navigation-list-header"></div>
+        <ul class="navigation-list">
+
+            <li class="navigation-item">
+                <span id="ctl00_header_fragment_1402503691__a656a5_ctl00_ctl02_ctl05_WLIDLoginButton1" class="internal-link live-id-button"><a href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395052548&amp;rver=6.0.5286.0&amp;wp=MBI&amp;wreply=http:%2F%2Fblogs.msdn.com%2Fb%2Fwindows_hardware_certification%2Farchive%2F2013%2F12%2F10%2Ferrata-expiration-guidelines.aspx&amp;lc=1033&amp;id=271611">Sign in</a></span>
+            </li>
+        </ul>
+        <div class="navigation-list-footer"></div>
+    </div><div class="header-fragment user-welcome-without-login" id="header-fragment-1402503692">
+
+ &nbsp;<!-- always render -->
+
+</div></div></div><div class="header-fragment blog-banner" id="header-fragment-1402503693">
+
+
+
+<div class="site-banner blog-banner">
+
+<h1 class="blog-banner-name"><a href="../../../../index.html">Windows Hardware Certification blog</a></h1>
+<div class="blog-banner-description">This blog—formerly the Windows Certification Newsletter—provides up-to-date news about the Windows Certification Program.</div>
+</div>
+
+</div></div>
+<div class="header-fragments-footer"></div>
+			
+    <div class="content-fragment-page post" id="ctl00_content_ctl00_page"><div class="layout">
+<div class="layout-header"></div>
+<div class="layout-content content-left-sidebar-right" id="ctl00_content_ctl00_layout">
+<div class="layout-region right-sidebar" id="ctl00_content_ctl00_right-sidebar">
+<div class="layout-region-inner right-sidebar"><div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-150811">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Languages</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><ul class="navigation-list">
+<li class="navigation-item"><a href="http://blogs.msdn.com/b/windows_hardware_certification_ch/">简体中文</a></li>
+<li class="navigation-item"><a href="../../../../index.html">English</a></li>
+<li class="navigation-item"><a href="http://blogs.msdn.com/b/windows_hardware_certification_ja/">日本語</a></li>
+<li class="navigation-item"><a href="http://blogs.msdn.com/b/windows_hardware_certification_ko/">한국어</a></li>
+</ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment c-t-f-widget no-wrapper-with-spacing with-header" id="fragment-150595">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Translate This Page</div></div>
+<div class="content-fragment-content">
+
+
+     <!--
+         
+           localize text, such as translate this & powered by 
+           
+           
+            -->
+<div id="MicrosoftTranslatorWidget" style="width: 275px; min-height: 83px;
+    border-color: #333333; background-color: #CCCCCC;">
+    <noscript>
+        <a href="http://www.microsofttranslator.com/bv.aspx?a=http%3a%2f%2fblogs.msdn.com%2f">Translate this
+            page</a><br />
+        Powered by <a href="http://www.microsofttranslator.com/">Microsoft® Translator</a>
+    </noscript>
+    <script type="text/javascript">
+        setTimeout(function () {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.charset = "UTF-8";
+            s.src = "http://www.microsofttranslator.com/Ajax/V2/Widget.aspx?siteData=ncUzpG6DNC3ChU0huEHZCFQbqrzCQRcTVqXdHso8P2KRGM-oFXjoeYwum3D31voFEyqUPj4HjacfvEdrHEyIG8CuATkNhQmRwcZkpGVFjvVnLd1gzFP2dxWEWKdcQtE1&amp;mode=manual&amp;from=en-us&amp;layout=ts";
+            var p = document.getElementsByTagName('head')[0] || document.documentElement; p.insertBefore(s, p.firstChild);
+        }, 0); 
+    </script>
+</div>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment search-form no-wrapper-with-spacing with-header" id="fragment-150597">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Search</div></div>
+<div class="content-fragment-content">
+
+<div class="field-list-header">
+</div>
+<fieldset class="field-list">
+    <ul class="field-list">
+        <li class="field-item search">
+            <div id="search-allblogs-container">
+                <span class="field-item-input">
+                    <input id="SearchTextBox_AllBlogs" name="SearchTextBox_AllBlogs" type="text" class="searchField"
+                        maxlength="64" size="45" autocomplete="off" />
+                    <input id="SearchButton_AllBlogs" name="SearchButton_AllBlogs" type="button" class="search-button" />
+                </span>
+            </div>
+            <div id="search-thisblog-container">
+                <span class="field-item-input">
+                    <input id="SearchTextBox_ThisBlog" name="SearchTextBox_ThisBlog" type="text" class="searchField"
+                        maxlength="64" size="45" autocomplete="off" />
+                    <input id="SearchButton_ThisBlog" name="SearchButton_ThisBlog" type="button" class="search-button" />
+                </span>
+            </div>
+        </li>
+    </ul>
+</fieldset>
+<div class="field-list-footer">
+    <div id="search-switch-container">
+        <span style="display: inline-block">
+            <input type="radio" name="SearchTypeRadio" value="ThisBlog" id="ThisBlog" checked="checked" /><label
+                for="ThisBlog" id="ThisBlogText">Search this blog</label></span>
+        <span style="display: inline-block">
+            <input type="radio" name="SearchTypeRadio" value="AllBlogs" id="AllBlogs" /><label
+                for="AllBlogs" id="AllBlogsText">Search all blogs</label></span>
+    </div>
+</div>
+<script type="text/javascript">
+var elmSearchAll = $('#search-allblogs-container').hide();
+var elmSearchThis = $('#search-thisblog-container');
+
+// try to get the blog id, if we fail, then we aren't on a blog and just use the regular search approach       
+(16205 === -1) && $('#search-switch-container').hide();
+
+$(document).ready(function() {
+    $('#ThisBlog').click(function () {
+        var self = $(this);
+        if (self.is(':checked')) {
+            elmSearchAll.hide();
+            elmSearchThis.show();
+        }
+    });
+    
+    $('#AllBlogs').click(function () {
+        var self = $(this);
+        if (self.is(':checked')) {
+            elmSearchThis.hide();
+            elmSearchAll.show();
+        }
+    });
+});
+</script>
+<script src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?boxid=SearchTextBox_AllBlogs&amp;btnid=SearchButton_AllBlogs&amp;brand=MSDN&amp;refinement=109&amp;resref=&amp;addEnglish=&amp;rn=&amp;rq=&amp;watermark=&amp;focusOnInit=false&amp;beta=0&amp;iroot=&amp;overrideWatermark=false" type="text/javascript" language="javascript"></script>
+<script src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?boxid=SearchTextBox_ThisBlog&amp;btnid=SearchButton_ThisBlog&amp;brand=MSDN&amp;refinement=&amp;resref=&amp;addEnglish=&amp;watermark=&amp;focusOnInit=false&amp;beta=0&amp;iroot=&amp;overrideWatermark=false&amp;rn=Windows%2bHardware%2bCertification%2bblog&amp;rq=site:blogs.msdn.com/b/windows_hardware_certification/" type="text/javascript" language="javascript"></script>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment raw-html no-wrapper-with-spacing with-header" id="fragment-153030">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Support</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><ul class="navigation-list">
+<li class="navigation-item"><a href="http://msdn.microsoft.com/en-US/windows/hardware/gg454528">Certification support</a></li>
+</ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-150810">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Resources</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><ul class="navigation-list">
+<li class="navigation-item"><a href="http://msdn.microsoft.com/en-US/windows/hardware/">Hardware Dev Center</a></li>
+<li class="navigation-item"><a href="http://msdn.microsoft.com/en-us/windows/hardware/gg454513">Windows hardware development kits and tools</a></li>
+<li class="navigation-item"><a href="http://code.msdn.microsoft.com/windowshardware/">Windows hardware development samples</a></li>
+<li class="navigation-item"><a href="http://msdn.microsoft.com/en-US/windows/hardware/gg463010">Windows Hardware Certification</a></li>
+<li class="navigation-item"><a href="http://msdn.microsoft.com/library/windows/hardware/dn339175.aspx">Newsletter archive</a></li>
+<li class="navigation-item"><a href="https://sysdev.microsoft.com/en-us/hardware/member/">Your dashboard</a></li>
+<li class="navigation-item"><a href="http://msdn.microsoft.com/library/windows/hardware/gg507680/">Getting started</a></li>
+</ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-archive-list no-wrapper-with-spacing with-header" id="fragment-150598">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Archive</div></div>
+<div class="content-fragment-content">
+
+		<div class="content-list-header"></div>
+		<div class="content-list-name">Archives</div>
+		<ul class="content-list">
+	
+		<li class="content-item"><a class="internal-link view-post-archive-list" href="../../../2014/03.html">March 2014</a> (1)</li>
+	
+		<li class="content-item"><a class="internal-link view-post-archive-list" href="../../../2014/02.html">February 2014</a> (6)</li>
+	
+		<li class="content-item"><a class="internal-link view-post-archive-list" href="../../../2014/01.html">January 2014</a> (1)</li>
+	
+		<li class="content-item"><a class="internal-link view-post-archive-list" href="../../12.html">December 2013</a> (7)</li>
+	
+		<li class="content-item"><a class="internal-link view-post-archive-list" href="../../11.html">November 2013</a> (1)</li>
+	
+		</ul>
+		<div class="content-list-footer"></div>
+	
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-links no-wrapper-with-spacing with-header" id="fragment-150596">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Feeds</div></div>
+<div class="content-fragment-content">
+
+		<div class="navigation-list-header"></div>
+		<ul class="navigation-list">
+	<li class="navigation-item"><a class="internal-link view-application" href="../../../../index.html"><span></span>Blog Home</a></li><li class="navigation-item"><a class="internal-link email-post" href="mailto:?subject=Errata expiration guidelines&amp;body=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx">
+		<span></span>Share this
+	</a></li><li class="navigation-item"><a class="internal-link rss" href="../../../../rss.aspx"><span></span>RSS for posts</a></li><li class="navigation-item"><a class="internal-link rss" href="../../../../atom.aspx"><span></span>Atom</a></li><li id=""RssComments""" class="navigation-item"><a class="internal-link rss" href="../../../../rsscomments.aspx"><span></span>RSS for comments</a></li>
+		</ul>
+		<div class="navigation-list-footer"></div>
+	</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+<div class="layout-region content" id="ctl00_content_ctl00_content">
+<div class="layout-region-inner content"><div class="content-fragment blog-title full-border" id="fragment-150599">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-content">
+<h1 class="title">
+	    
+			        
+			    
+	                Errata expiration guidelines
+			    
+	</h1></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-bread-crumbs no-wrapper" id="fragment-150600">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+
+<div class="breadcrumb-list-header"></div>
+<div class="breadcrumb-list">
+	<span class="breadcrumb-item"><a class="internal-link view-home" href="http://blogs.msdn.com/">MSDN Blogs</a></span>
+  
+	
+
+	
+			<span class="separator"> > </span>
+			<span class="breadcrumb-item">
+		<a href="../../../../index.html">Windows Hardware Certification blog</a>
+			</span>
+		
+	
+	
+			<span class="separator"> > </span>
+			<span class="breadcrumb-item">
+		<a href="errata-expiration-guidelines.html">Errata expiration guidelines</a>
+			</span>
+		
+
+	
+</div>
+<div class="breadcrumb-list-footer"></div>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-post no-wrapper" id="fragment-150601">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+<div class="full-post-header"></div>
+<div class="full-post">
+	<h3 class="post-name">Errata expiration guidelines</h3>
+	
+    <div class="post-author" >
+        <span class="avatar"><a href="http://blogs.msdn.com/577398/ProfileUrlRedirect.ashx"><img src="../../../../../../../i1.social.s-msft.com/profile/u/avatar35fa.jpg?displayname=certification+team&amp;size=large" alt="" style="border-width:0px;max-height:32px;max-width:32px;" /></a></span>
+        
+         <span class="profile-usercard-hover" data-profile-userid="90b01cf6-f11d-4d77-ba8c-7a008b7b92e3">
+            <span class="user-name"><a class="internal-link view-user-profile" href="http://blogs.msdn.com/577398/ProfileUrlRedirect.ashx"><span></span>Certification team</a></span>
+       
+            
+        </span>
+    </div>
+    <div class="post-date">
+        <span class="value">
+            10 Dec 2013 8:10 AM
+        </span>
+    </div>
+    <div class="post-attributes">
+        <div class="attribute-list-header"></div>
+        <ul class="attribute-list">
+             <li class="attribute-item post-reply-count">
+                <span class="attribute-name">Comments</span>
+                <span class="attribute-value"><a href="#comments" class="internal-link view-replies"><span></span>5</a></span>
+             </li>
+        </ul>
+        <div class="attribute-list-footer"></div>
+    </div>
+    <div class="post-content user-defined-markup"><p>We've updated all active errata filters for the Windows Hardware Certification Kit (HCK).&#160; All active errata that weren't fixed in the test kit are now extended until 12/31/2014. We'll reevaluate all active errata again about 3 months before the new expiration dates. We'll either retire errata or extend the expiration date again, depending on whether fixes are in place for the test issues. </p>  <p>A few errata are set to expire between now and 12/31/2013 by design for delayed enforcement reasons or because fixes were implemented into the next HCK release. Those errata won't be extended again.</p>  <p>You can <a href="https://sysdev.microsoft.com/Hardware/ec/">check the status of all errata</a> any time on the <a href="http://msdn.microsoft.com/windows/hardware/">Windows Dev Center hardware dashboard</a>. To narrow down the list, use the filters to view only active, expired, or expiring within 30 days. You can also search by ID and title.</p><div style="clear:both;"></div></div>
+    <div class="post-attachment-viewer">
+		
+    </div>
+    <div class="post-actions">
+        <div class="navigation-list-header"></div>
+        <ul class="navigation-list">
+            <!---->
+            <li class="navigation-item"><a class="internal-link view-replies" href="errata-expiration-guidelines.html#comments"><span></span>5 Comments</a></li>
+            
+            
+        </ul>
+        <div class="navigation-list-footer"></div>
+    </div>
+    <div class="post-tags"><div id="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Container" style="display: none;"><div class="tags-editor"><textarea id="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Tags" style="width: 97%; height: 100%;" rows="2" cols="30"></textarea><div style="white-space: nowrap; padding-top: 4px;"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="left"><input type="button" onclick="Telligent_Modal.Open('\/utility\/TagSelector.aspx?TagEditor=ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_TagEditor',400,300,null);;return false;" value="Select Tags..." /></td><td align="right"><input type="button" onclick="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01.Save(); return false;" value="Save" /><input type="button" onclick="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01.Close(); return false;" value="Cancel" /></td></tr></table></div></div></div><span id="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02"><a href="../../../tags/errata%2bexpiration%2bguidelines/index.html" rel="tag">errata expiration guidelines</a>, <a href="../../../tags/Windows%2bHardware%2bCertification%2bKit_2C00_%2bHCK/index.html" rel="tag">Windows Hardware Certification Kit, HCK</a></span><input type="hidden" name="ctl00$content$ctl00$w_150601$_a656a5$ctl00$ctl15$ctl02" id="ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02_State" value="nochange" /></div>
+</div>
+<div class="full-post-footer"></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment social-media-sharing no-wrapper" id="fragment-150602">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+<script src="../../../../../../../i1.blogs.msdn.com/rrcontent/47499858c4077d6e043f7add14000981-e99ec8f3b45f97b38095df2708dc5898-RequestReducedScript.js" type="text/javascript" ></script>
+<div class="ShareThisMainPanel">
+	<div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_a3e193a7_85cc_436b_ac04_304ec37525e8" class="ShareThis_ChildRootPanel" onmouseover="ShareThisChildRootPanelOnmouseOver(this.id);" onmouseout="ShareThisChildRootPanelOnmouseOut(this.id);">
+		<div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_ShareThisBtnCollPanel_d343e6df0eab4c92a951e8948ff05888" class="tierOnePanel">
+			<div class="buttonPanel">
+				<a title="Share on Facebook" class="iconsOnPanel" href="http://www.facebook.com/sharer.php?u=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;t=Errata+expiration+guidelines" target="_blank"><img title="Share on Facebook" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/facebook.gif" style="border-width:0px;" /></a>
+			</div><div class="buttonPanel">
+				<a title="Share on Twitter" class="iconsOnPanel" href="http://twitter.com/home?status=Errata+expiration+guidelines%20:%20http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx" target="_blank"><img title="Share on Twitter" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/twitter.gif" style="border-width:0px;" /></a>
+			</div><div class="buttonPanel">
+				<a title="Share on Digg" class="iconsOnPanel" href="http://digg.com/submit?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on Digg" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/digg.gif" style="border-width:0px;" /></a>
+			</div><div class="buttonPanel">
+				<a title="Share on del.icio.us" class="iconsOnPanel" href="http://del.icio.us/post?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on del.icio.us" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/delicious.gif" style="border-width:0px;" /></a>
+			</div>
+		</div><div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_ShareThisBtnCollPanel_22cbb5c1f26946ef84e2252525bc380b" class="tierTwoPanel" onclick="TierTwoPanelOnclick(this.id);" onkeypress="if (event.keyCode == 13) TierTwoPanelOnclick(this.id);" onmouseover="TierTwoPanelOnmouseOver(this.id);" onmouseout="TierTwoPanelOnmouseOut(this.id);">
+			<div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_ShareThisBtnCollPanel_cc61a68f2c9341f5b214eec8328b1fb6" class="tierTwoRowPanel">
+				<div class="buttonPanel">
+					<a title="Share on Reddit" class="iconsOnPanel" href="http://www.reddit.com/submit?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on Reddit" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/reddit.gif" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on LinkedIn" class="iconsOnPanel" href="http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines&amp;summary=&amp;source=Microsoft&amp;armin=armin" target="_blank"><img title="Share on LinkedIn" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/linkedin.gif" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on Slashdot" class="iconsOnPanel" href="http://slashdot.org/bookmark.pl?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on Slashdot" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/slashdot.gif" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on MySpace" class="iconsOnPanel" href="http://www.myspace.com/Modules/PostTo/Pages/?u=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;t=Errata+expiration+guidelines" target="_blank"><img title="Share on MySpace" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/myspace.gif" style="border-width:0px;" /></a>
+				</div>
+			</div><div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_ShareThisBtnCollPanel_50947fd14ad5457682021cc003cb2c74" class="tierTwoRowPanel">
+				<div class="buttonPanel">
+					<a title="Share on Technorati" class="iconsOnPanel" href="http://technorati.com/faves/?add=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx" target="_blank"><img title="Share on Technorati" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/technorati.gif" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on FriendFeed" class="iconsOnPanel" href="http://friendfeed.com/?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on FriendFeed" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/friendfeed.gif" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on Messenger" class="iconsOnPanel" href="http://profile.live.com/badge?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on Messenger" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/messenger.png" style="border-width:0px;" /></a>
+				</div><div class="buttonPanel">
+					<a title="Share on StumbleUpon" class="iconsOnPanel" href="http://www.stumbleupon.com/submit?url=http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx&amp;title=Errata+expiration+guidelines" target="_blank"><img title="Share on StumbleUpon" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/stumbleupon.gif" style="border-width:0px;" /></a>
+				</div>
+			</div>
+		</div>
+	</div><div id="ctl00_content_ctl00_w_150602__a656a5_ctl00_ShowMoreLessButtonsPanel_cb968c55_d09f_46d7_9dd6_d24942c1a3bd" tabindex="1" class="ShowMoreLessButtonsPanel" onclick="ShowMoreLessButtonsPanelOnClick(this.id);" onkeypress="if (event.keyCode == 13) ShowMoreLessButtonsPanelOnClick(this.id);" onmouseover="ShowMoreLessButtonsPanelOnmouseOver(this.id);" onmouseout="ShowMoreLessButtonsPanelOnmouseOut(this.id);">
+		<a class="buttonMoreLess" id="btn_more"><img title="More" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/more.gif" src="#" border="0" /></a><a class="buttonMoreLess" id="btn_less"><img title="Less" src="../../../../../../CustomWidgets/SocialMediaSharingUC/Resources/less.gif" src="#" border="0" /></a>
+	</div>
+</div><div class="ShareClearFloatsPanel">
+
+</div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-feedback-list no-wrapper with-header" id="fragment-150603">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Blog - Comment List MSDN TechNet</div></div>
+<div class="content-fragment-content">
+
+<script src="../../../../../../../i1.blogs.msdn.com/rrcontent/c6cf9e2cff3f0bfc0a1a8c20bf243544-5882c0bb1c3252f4238afcfee921f6f5-RequestReducedScript.js" type="text/javascript" ></script>
+<script type="text/javascript">
+    // <![CDATA[
+    (function ($) {
+        $.extend(jQuery.tmpl.tag, {
+            "for": {
+                _default: { $2: "var i=1;i<=1;i++" },
+                open: 'for ($2){',
+                close: '};'
+            }
+        });
+    })(jQuery);
+
+    function findYPos(obj) {
+        var curtop = 0;
+        if (obj.offsetParent) {
+            do {
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+            return [curtop];
+        }
+    }
+
+    var endpoint = '/b/windows_hardware_certification/listComments.aspx';
+    var deleteendpoint = '/Utility/ContentFragments/Blogs/FeedbackListAjax.asmx';  
+    $(document).ready(function () {
+        if (window.location.hash) {
+            var commentHash = parseInt(window.location.hash.substring(1, window.location.hash.length));
+            if (!isNaN(commentHash)) {
+                loadComments(0, commentHash, true);
+                return;
+            }
+        }
+
+        loadComments(0, 0, true);
+    });
+
+    function loadComments(page, anchorId, isFirstLoad) {
+        $.ajax({
+            type: 'POST',
+            async: false,
+            contentType: 'application/json',
+            dataType: 'json',
+            url: endpoint + '?blogId=16205&postId=10480957&page=' + page + '&commentId=' + anchorId + '&pageSize=1000&firstLoad=' + isFirstLoad + "&time=" + new Date().getTime(),
+            success: function (data) {
+                var pager = $('#pagerContainer');
+
+                $('#commentList').html('');
+                $('#commentList').html($('#commentTemplate').tmpl(data.Comments));
+                $('#pagerContainer').html($('#pagerTemplate').tmpl(data));
+
+                $('.pagingLink').click(function (e) {
+                    e.preventDefault();
+                    loadComments($(this).data('page'), 0, false);
+                    window.scroll(0, findYPos(document.getElementById('commentList')) - 50);
+                    return false;
+                });
+
+                $('.pagingLink').removeClass('selected');
+                $('#pager' + data.CurrentPage).addClass('selected');
+
+	            
+            }
+        });
+    }
+    // ]]>
+</script>
+
+
+<a name="comments"></a>
+<div class="content-list-header"></div>
+<div class="content-list-name">
+    
+            <a class="internal-link rss" href="../../../../rsscomments9a83.aspx?WeblogPostID=10480957"><span></span>Comments</a>
+        
+</div>
+
+
+
+<ul id="commentList" class="content-list">
+      <li class="content-item">Loading...</li>
+</ul>
+<div id="pagerContainer" class="pager"></div>
+<div class="content-list-footer"></div>
+
+<script id="commentTemplate" type="text/html">
+    {{if Author}}
+    <li id="commentItem${Id}" class="content-item">
+        <div class="full-post-outer fiji-full-post-outer"><div class="full-post-header"><div class="r fiji-r"></div></div>
+        <div class="full-post"><div class="full-post-inner fiji-full-post-inner">
+            <div class="post-author">
+                <span class="avatar">
+                    {{if !Author.IsAnonymous}}
+                    <a href="${Author.ProfileUrl}">
+                        <img src="${Author.AvatarUrl}" style="border-width:0;max-height:32px;max-width:32px;"/>
+                    </a>
+                    {{else}}
+                    <img src="${Author.AvatarUrl}" style="border-width:0;max-height:32px;max-width:32px;"/>
+                    {{/if}}
+                </span>
+                <span class="profile-usercard-hover" data-profile-userid="${Author.ProfileId}">
+                    <span class="user-name">
+                        {{if !Author.IsAnonymous}}
+                        <a href="${Author.ProfileUrl}">
+                            ${Author.DisplayName}
+                        </a>
+                        {{else}}
+                        ${Author.DisplayName}
+                        {{/if}}
+                    </span>
+                </span>
+            </div>
+            <div class="post-date">
+                <span class="value">${PublishedDate}</span>
+            </div>
+            <a name="${Id}" style="padding-left:5px;" href="#${Id}">#</a>
+            <div class="post-content user-defined-markup">
+                {{html Body}}
+            </div>
+            <div class="post-actions">
+                
+            </div>
+        </div>
+        {{if !Author.IsAnonymous && Author.Id == 577398}}
+        <div class="full-post-footer user-is-author">
+        {{else}}
+        <div class="full-post-footer">
+        {{/if}}
+            <div class="r wireframe-r"></div>
+        </div>
+    </li>
+    {{/if}}
+</script>
+
+
+<script id="pagerTemplate" type="text/html">
+    {{if TotalPages}}     
+        {{if TotalPages > 1}}     
+            <span class="summary">Page 1 of 3 (39 items)</span>            
+        
+             {{for(i=1;i<=TotalPages;i++)}}            
+                <a id="pager${i}" data-page="${i}" href="javascript:void(0);" class="pagingLink">
+                    <span>${i}</span>
+                </a>
+                <span class="separator"></span>
+            {{/for }}
+        {{else}}  
+        {{/if}}
+    {{else}}      
+    {{/if}}
+</script></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment captcha-blog-post-comment-form no-wrapper" id="fragment-150604">
+<div class="content-fragment-inner msdn-content-fragment-inner"><div class="content-fragment-top msdn-content-fragment-top"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div><div class="content-fragment-content">
+<input type="hidden" name="ctl00$content$ctl00$w_150604$_a656a5$ctl00$ctl00$postCommentUrl" id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_postCommentUrl" />
+
+    
+            <div class="field-list-header"></div>
+            <fieldset class="field-list">
+                <legend class="field-list-description">Leave a Comment</legend>
+                <ul class="field-list">
+                    <li id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_NameField" class="field-item">
+                        <label for="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName" class="field-item-header">Name</label>
+                        <span class="field-item-input"><input name="ctl00$content$ctl00$w_150604$_a656a5$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbName" type="text" size="60" id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName" /></span>
+                        
+                    </li>
+                    <li class="field-item post-body">
+                        <label for="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment" class="field-item-header">Comment</label>
+                        <span class="field-item-input"><textarea name="ctl00$content$ctl00$w_150604$_a656a5$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbComment" rows="2" cols="20" id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment"></textarea></span>
+                        
+                        
+                    </li>
+                    <li class="field-item">
+                        
+                           <span id="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha">Please add 8 and 7 and type the answer here: <input type="text" name="ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_visibleanswer" value="" /></span>
+
+
+                    </li>
+                    <li class="field-item">
+                        <script type="text/javascript">
+                            // <![CDATA[
+
+                            $(document).ready(function () {
+                                $('a.add-reply.post').click(function (e) {
+                                    e.preventDefault();
+                                    postComment(this);
+                                    return false;
+                                });
+
+                                $('#ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').keyup(function (e) {
+                                    $('#errorOnPosting').hide();
+                                });
+                                var nameBox = $('#ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                if (nameBox.length > 0) {
+                                    $(nameBox).keyup(function (e) {
+                                        $('#errorOnPosting').hide();
+                                    });
+                                }
+                            });
+
+                            function postComment(anchor) {
+                                if (Page_ClientValidate('BlogPostCommentForm-ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00')) {
+                                    togglePostAndPublishing();
+
+                                    var Core_CreateBlogComment_AjaxEndpoint = '/Utility/ContentFragments/Core/CreateBlogComment.asmx' + "/PostComment";
+                                    var name = '';
+                                    var nameBox = $('#ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                    if (nameBox.length > 0) {
+                                        name = $(nameBox).val();
+                                    }
+                                    var body = $('#ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').val();
+                                    var weblogPostId = '10480957';
+
+                                    $.ajax({
+                                        type: "POST",
+                                        async: false,
+                                        url: Core_CreateBlogComment_AjaxEndpoint,
+                                        beforeSend: function (xhr) { TelligentUtility.WriteAuthorizationHeader(xhr); },
+                                        data: { weblogPostId: weblogPostId, url: '', subject: '', message: body, name: name, remember: false },
+                                        success: function (results) {
+                                            var responseVal = $(results.firstChild).text();
+                                            if (responseVal === "-1" || responseVal === "-2") {
+                                                togglePostAndPublishing();
+                                                if (responseVal == "-2")
+                                                    $('#errorOnPosting').html('Your comment has been flagged as spam! The blog administrator has been notified.');
+                                                $('#errorOnPosting').show();
+                                                return;
+                                            }
+                                            var redirectUrl = window.location.href;
+                                            if (redirectUrl.indexOf("?") > -1) {
+                                                redirectUrl = redirectUrl.replace(/\?.*/, "");
+                                            } else if (redirectUrl.indexOf("#") > -1) {
+                                                redirectUrl = redirectUrl.replace(/\#.*/, "");
+                                            }
+
+                                            redirectUrl += '?CommentPosted=true#commentmessage';
+                                            if (window.location.href == redirectUrl) {
+                                                location.reload(true);
+                                            }
+                                            else {
+                                                window.location.href = redirectUrl;
+                                            }
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            togglePostAndPublishing();
+                                            $('#errorOnPosting').show();
+                                        }
+                                    });
+
+                                }
+                            }
+
+                            function togglePostAndPublishing() {
+                                $('a.add-reply.post').toggle();
+                                $('a.publishing').toggle();
+                            }
+                            // ]]>
+                        </script>
+                        <span class="field-item-input">
+                            
+                            <a class="internal-link add-reply post" style="cursor: pointer;"><span></span>Post</a>
+                            <a class="internal-link add-reply publishing" style="color:#c7c7c7; display: none;cursor: pointer;"><span></span>Publishing</a>
+                            <span id="errorOnPosting" style="color: white; background-color: red; padding: 5px; margin-left: 10px; display: none;">An error occurred while posting! Please retry posting your comment.</span>
+                        </span>
+                    </li>
+                </ul>
+            </fieldset>
+            <div class="field-list-footer"></div>
+            
+        
+    </div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom msdn-content-fragment-bottom"><div class="r1 msdn-r1"></div><div class="r2 msdn-r2"></div><div class="r3 msdn-r3"></div><div class="r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="layout-footer"></div>
+</div></div>
+
+			<div class="footer-fragments-header"></div>
+<div class="footer-fragments"><div class="footer-fragment copyright-info" id="footer-fragment-1402503690">
+
+<ul class="footer-fragment-links">
+    <li class="message copyright">© 2014 Microsoft Corporation.</li>
+	<li class="message termsOfService"><a href="http://msdn.microsoft.com/cc300389">Terms of Use</a> </li>
+    <li class="message trademarks"><a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a> </li>
+    <li class="message privacy"><a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy &amp; Cookies</a> </li>
+    <li class="message abuse">
+    
+            <a id="ctl00_footer_fragment_1402503690__a656a5_ctl00_ctl00_ctl01_lnkAbuse" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$footer_fragment_1402503690$_a656a5$ctl00$ctl00$ctl01$lnkAbuse&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Report Abuse</a>
+        
+    </li>
+    
+    <li class="message version">5.6.426.415</li>
+</ul></div><div class="footer-fragment omniture-footer-fragment" id="footer-fragment-1402503691">
+
+
+<script src="../../../../../../../i1.blogs.msdn.com/rrcontent/2569210a296af7a76a1f0a41cafcfd42-0504c0fa449b909ab2cb1f13355532e6-RequestReducedScript.js" type="text/javascript" ></script>        <noscript><a href="http://www.omniture.com/" title="Web Analytics"><img
+        src="http://msstomsdnblogs.112.2o7.net/b/ss/msstomsdnblogs/1/H.20.2--NS/0"
+        height="1" width="1" border="0" alt="" /></a></noscript>
+
+</div></div>
+<div class="footer-fragments-footer"></div>
+		
+<script type="text/javascript">
+// <![CDATA[
+ctl00_content_ctl00 = new ContentFragmentPageCustomCallback('ctl00_content_ctl00',new Function('mode','parameters','callback','errorCallback','context','ctl00_content_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+// ]]>
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx"
+dc:identifier="http://blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx"
+dc:title="Errata expiration guidelines"
+trackback:ping="http://blogs.msdn.com/b/windows_hardware_certification/trackback.ashx?WeblogPostID=10480957" />
+</rdf:RDF>
+-->
+<script type="text/javascript">
+// <![CDATA[
+Telligent_Modal.Configure('#\/utility\/loading.htm',['modal'],['modal-title','modal-title-2','modal-title-3','modal-title-4'],['modal-close'],['modal-content','modal-content-2'],['modal-footer','modal-footer-2','modal-footer-3'],['modal-resize'],['modal-mask'],10000,false,true,true);
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_content_ctl00_ctl00','ctl00$content$ctl00$ctl00','aspnetForm');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+$('#ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Container input[value="Save"]').attr('onclick','').removeAttr('onclick').click( function(){ try { var tagText = $('#ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Tags').val(); if (!tagText) return false;var tagList = tagText.replace(';',',').split(','); var isValid = true; for (var i=0,l=tagList.length;i<l;i++) {isValid = /^[ -~]{0,100}$/ig.test(tagList[i]); if (!isValid) { alert(tagList[i] + ' : is not valide'); return false; } }ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01.Save();}catch(ex){ } return false; });
+// ]]>
+</script>
+<script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01 = new Telligent_InlineEditor('ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Container',new Function('id', 'p', 'ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor.SetInlineEditorPanelAndParameter(id,p);'),new Function('return ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor.GetContent();'),new Function('c', 'ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor.SetContent(c);'),null,new Function('ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor.Focus();'),new Function('w', 'h', 'ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor.Resize(w,h);'),300,90);
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+var ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_TagEditor = new TagEditor('ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_TagEditor',[['certification fees','certification fees'],['changes to certification process','changes to certification process'],['changes to UEFI signing policy','changes to UEFI signing policy'],['dashboard','dashboard'],['download MUTT software','download MUTT software'],['errata expiration guidelines','errata expiration guidelines'],['Fast-track Windows 8.1 certification, certifying Windows 8 devices, certifying devices for Windows 8.1','Fast-track Windows 8.1 certification, certifying Windows 8 devices, certifying devices for Windows 8.1'],['February 2014 QFE','February 2014 QFE'],['Hardware Certification Kit','Hardware Certification Kit'],['hardware certification submission fees update','hardware certification submission fees update'],['HCK QFE 05, HCK, Hardware Certification Kit, WHCK, Windows Hardware Certification Kit, HCK update','HCK QFE 05, HCK, Hardware Certification Kit, WHCK, Windows Hardware Certification Kit, HCK update'],['HCK QFE 06','HCK QFE 06'],['HCK QFE 07','HCK QFE 07'],['HCK update','HCK update'],['Logo License Agreement for Hardware Version 2014','Logo License Agreement for Hardware Version 2014'],['MUTT','MUTT'],['MUTT software package update available','MUTT software package update available'],['precision touchpad certification','precision touchpad certification'],['precision touchpad certification FAQ','precision touchpad certification FAQ'],['pre-submission testing for UEFI submissions','pre-submission testing for UEFI submissions'],['PTP certification','PTP certification'],['PTP certification FAQ','PTP certification FAQ'],['QFE 006','QFE 006'],['self-test submission','self-test submission'],['self-test submission for touch device and precision touchpad certification','self-test submission for touch device and precision touchpad certification'],['sign a UEFI app','sign a UEFI app'],['sign a UEFI driver','sign a UEFI driver'],['SuperMutt','SuperMutt'],['System - Sleep and PNP (disable and enable) with IO Before and After (Certification) test','System - Sleep and PNP (disable and enable) with IO Before and After (Certification) test'],['system certification submissions','system certification submissions'],['test sign UEFI modules','test sign UEFI modules'],['touch device certification','touch device certification'],['UEFI signing policy','UEFI signing policy'],['UEFI signing submissions','UEFI signing submissions'],['UEFI submissions','UEFI submissions'],['use of the Windows Symbol on devices','use of the Windows Symbol on devices'],['verify UEFI submissions','verify UEFI submissions'],['Waiver to the Windows Logo License Agreement','Waiver to the Windows Logo License Agreement'],['WHCK','WHCK'],['Windows Certification','Windows Certification'],['Windows Certification Newsletter','Windows Certification Newsletter'],['Windows Dev Center hardware dashboard','Windows Dev Center hardware dashboard'],['Windows Hardware Certification','Windows Hardware Certification'],['Windows Hardware Certification blog','Windows Hardware Certification blog'],['Windows Hardware Certification Kit','Windows Hardware Certification Kit'],['Windows Hardware Certification Kit, HCK','Windows Hardware Certification Kit, HCK'],['Windows Hardware Certification requirement changes, certification requirement changes, certification requirement changes for January 2014','Windows Hardware Certification requirement changes, certification requirement changes, certification requirement changes for January 2014'],['Windows logo','Windows logo'],['Windows Logo License Agreement','Windows Logo License Agreement'],['Windows Symbol','Windows Symbol']],'ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Tags');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+var ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor = new InlineTagEditor('ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_InlineTagEditor','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Container','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01_Tags');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02 = new Telligent_InlineEditorPanel('ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl02_State','ctl00_content_ctl00_w_150601__a656a5_ctl00_ctl15_ctl01',false,null,null,null);
+// ]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+$('#ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').autoResize({animate : false,extraSpace : 0,limit : 3000});//]]>
+</script>
+<script type="text/javascript">
+subtext_invisible_captcha_hideFromJavascriptEnabledBrowsers('ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha');
+</script><script type="text/javascript">
+subtext_invisible_captcha_setAnswer(8, 7, 'ctl00_content_ctl00_w_150604__a656a5_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer');
+</script></form>
+       
+    <script type="text/javascript">
+        $(window).load(function () {
+            $.getScript('../../../../../../../widgets.membership.s-msft.com/v1/loader599f.js?brand=msdn&amp;lang=en-US', function () {
+            });
+        });
+    </script>
+    
+	
+        <script type="text/javascript">$('div.breadcrumb-list span:last a').addClass('last');</script></body>
+
+<!-- Mirrored from blogs.msdn.com/b/windows_hardware_certification/archive/2013/12/10/errata-expiration-guidelines.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:53:22 GMT -->
+</html>

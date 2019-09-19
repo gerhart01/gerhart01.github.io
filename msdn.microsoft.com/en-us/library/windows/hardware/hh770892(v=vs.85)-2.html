@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh770892(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(v=vs.85).aspx" />
+        <title>Understanding the USB client driver code structure (KMDF) (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh770892(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD1-9:53:37 AM" />
+
+<meta name="Search.ShortId" content="hh770892" />
+
+<meta name="ms.shortidmsdn" content="hh770892" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075217&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh770892%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406260(v=vs.85).aspx" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706187(v=vs.85).aspx" id="dn376893_VS.85_en-us" mtpsaliasid="" mtpsassetid="121E36DE-383E-44EB-B44E-E311C258BCEF_VS.85_en-us" mtpsshortid="hh706187_VS.85_en-us" title="How to write your first USB client driver (KMDF)">How to write your first USB client driver (KMDF)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Understanding the USB client driver code structure (KMDF)">Understanding the USB client driver code structure (KMDF)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Understanding the USB client driver code structure (KMDF)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>In this topic, you'll learn about the source code for aKMDF-based USB client driver. The code examples are generated by the <strong>USB User-Mode Driver</strong>template included with Microsoft Visual Studio 2012.</p>
+<p>These sections provide information about the template code. </p>
+<p>
+</p><ul>
+<li><a href="#driver">Driver source code</a></li>
+<li><a href="#device">Device source code</a></li>
+<li><a href="#queue">Queue source code</a></li>
+<li><a href="#related_topics">Related topics</a></li>
+</ul>
+
+<p>For instructions on generating the KMDF template code, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh706187(v=vs.85).aspx">How to write your first USB client driver (KMDF)</a>.</p>
+<h2><a id="driver"></a><a id="DRIVER"></a>Driver source code</h2>
+<p>The <em>driver object</em> represents the instance of the client driver after Windows loads the driver in memory.  The complete source code for the driver object is in Driver.h and Driver.c. </p>
+<p><strong>Driver.h</strong></p>
+<p>Before discussing the details of the template code, let's look at some declarations in the header file (Driver.h) that are relevant to  KMDF driver development.</p>
+<p>Driver.h,  contains these files, included in the Windows Driver Kit (WDK). </p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c4cf1b97-419b-4a2a-ba9b-9dda53f6a6be');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c4cf1b97-419b-4a2a-ba9b-9dda53f6a6be" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#include &lt;ntddk.h&gt;
+#include &lt;wdf.h&gt;
+#include &lt;usb.h&gt;
+#include &lt;usbdlib.h&gt;
+#include &lt;wdfusb.h&gt;
+
+#include <span style="color:#A31515;">"device.h"</span>
+#include <span style="color:#A31515;">"queue.h"</span>
+#include <span style="color:#A31515;">"trace.h"</span>
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Ntddk.h and  Wdf.h header files are always included for KMDF driver development. The header file includes various  declarations and definitions of methods and structures that you need to compile a KMDF driver. </p>
+<p>Usb.h and Usbdlib.h include declarations and definitions of structures and routines that are required by a client driver for a  USB device. </p>
+<p>Wdfusb.h includes declarations and definitions of structures and methods that are required to communicate with the USB I/O target objects provided by the framework. </p>
+<p>Device.h, Queue.h, and Trace.h are not included in the WDK. Those header files are generated by the template and are discussed later in this topic. </p>
+<p>The next block in Driver.h provides function role type declarations for the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a> routine, and  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540840(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtCleanupCallback</em></a> event callback routines. All of these routines are implemented by the driver.  Role types help Static Driver Verifier (SDV) analyze a driver's source code. For more information about role types, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544643(v=vs.85).aspx">Declaring Functions by Using Function Role Types for KMDF Drivers</a>.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_215af77d-873d-46cc-8319-c4e7070f0dd2');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_215af77d-873d-46cc-8319-c4e7070f0dd2" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+DRIVER_INITIALIZE DriverEntry;
+EVT_WDF_DRIVER_DEVICE_ADD MyUSBDriver_EvtDeviceAdd;
+EVT_WDF_OBJECT_CONTEXT_CLEANUP MyUSBDriver_EvtDriverContextCleanup;
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The implementation file, Driver.c, contains the following block of code that uses <code>alloc_text</code> pragma to specify whether the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a> function and event callback routines  are in pageable memory.
+</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c969ed79-21b1-4d5a-9aae-802630d8f0c3');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c969ed79-21b1-4d5a-9aae-802630d8f0c3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef ALLOC_PRAGMA
+#pragma alloc_text (INIT, DriverEntry)
+#pragma alloc_text (PAGE, MyUSBDriver_EvtDeviceAdd)
+#pragma alloc_text (PAGE, MyUSBDriver_EvtDriverContextCleanup)
+#endif
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Notice that <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a> is marked as INIT, whereas the event callback routines are marked as PAGE. The INIT section indicates that the executable code for <em>DriverEntry</em> is pageable and discarded as soon as the driver returns from its <em>DriverEntry</em>. The PAGE section indicates that the code does not have to remain in physical memory all the time; it can be written to the page file when it is not in use. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554307(v=vs.85).aspx">Locking Pageable Code or Data</a>.
+</p>
+<p>Shortly after your driver is loaded, Windows allocates a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544174(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DRIVER_OBJECT</strong></a> structure that represents your driver.  It then calls your driver's  entry point routine, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a>, and passes a pointer to the structure. Because Windows looks for the routine by name, every driver must implement a routine named <em>DriverEntry</em>.  The routine performs the driver's initialization tasks and specifies the driver's event callback routines to the framework.</p>
+<p>The following code example shows the DriverEntry routine generated by the template.</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_2249ac27-6ee3-477b-804c-5b92a5119882');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_2249ac27-6ee3-477b-804c-5b92a5119882" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+DriverEntry(
+    _In_ PDRIVER_OBJECT  DriverObject,
+    _In_ PUNICODE_STRING RegistryPath
+    )
+{
+    WDF_DRIVER_CONFIG config;
+    NTSTATUS status;
+    WDF_OBJECT_ATTRIBUTES attributes;
+
+    <span style="color:Green;">//</span>
+    <span style="color:Green;">// Initialize WPP Tracing</span>
+    <span style="color:Green;">//</span>
+    WPP_INIT_TRACING( DriverObject, RegistryPath );
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Entry"</span>);
+
+    <span style="color:Green;">//</span>
+    <span style="color:Green;">// Register a cleanup callback so that we can call WPP_CLEANUP when</span>
+    <span style="color:Green;">// the framework driver object is deleted during driver unload.</span>
+    <span style="color:Green;">//</span>
+    WDF_OBJECT_ATTRIBUTES_INIT(&amp;attributes);
+    attributes.EvtCleanupCallback = MyUSBDriver_EvtDriverContextCleanup;
+
+    WDF_DRIVER_CONFIG_INIT(&amp;config,
+                           MyUSBDriver_EvtDeviceAdd
+                           );
+
+    status = WdfDriverCreate(DriverObject,
+                             RegistryPath,
+                             &amp;attributes,
+                             &amp;config,
+                             WDF_NO_HANDLE
+                             );
+
+    <span style="color:Blue;">if</span> (!NT_SUCCESS(status)) {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DRIVER, <span style="color:#A31515;">"WdfDriverCreate failed %!STATUS!"</span>, status);
+        WPP_CLEANUP(DriverObject);
+        <span style="color:Blue;">return</span> status;
+    }
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Exit"</span>);
+
+    <span style="color:Blue;">return</span> status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a> routine has two parameters: a pointer to the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544174(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DRIVER_OBJECT</strong></a> structure that is allocated by Windows, and a registry path for the driver. The <em>RegistryPath</em> parameter represents the driver-specific path in the registry.</p>
+<p> In the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a> routine, the driver performs these tasks:</p>
+<ul>
+<li>Allocates global resources that are required during the lifetime of the driver. For example, in the template code, the client driver allocates resources required for WPP software tracing by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff556191(v=vs.85).aspx">WPP_INIT_TRACING</a> macro. </li>
+<li>Registers certain event callback routines with the framework.<p>To register the event callbacks, the client driver first specifies pointers to  its implementations of the <em>EvtDriverXxx</em> routines in certain WDF structures. The driver then calls the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a> method and supplies those structures (discussed in the next step).  </p>
+</li>
+<li>Calls the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a> method and retrieves a handle to the <em>framework driver object</em>.<p>After the client driver calls  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a>, the framework creates a framework driver object to represent the client driver. When the call completes, the client driver receives a WDFDRIVER handle and can retrieve information about the driver, such as its registry path, version information, and so on (see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff542109(v=vs.85).aspx">Framework Driver Object Methods</a>). </p>
+<p>Note that the framework driver object is different from the Windows driver object  described by <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544174(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DRIVER_OBJECT</strong></a>. At anytime, the client driver can get a pointer to the Windows<strong>DRIVER_OBJECT</strong> structure by using the WDFDRIVER handle and calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547336(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfGetDriver</strong></a> method.</p>
+</li>
+</ul>
+<p>After the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a> call, the framework partners with the client driver to communicate with Windows. The framework acts as a layer of abstraction between Windows and the driver, and handles most of the complicated driver tasks. The client driver registers with the framework for events that driver is interested in. When certain events occur, Windows notifies the framework. If the driver registered an event callback for a particular event, the framework notifies the driver by invoking the registered event callback.  By doing so, the driver is given the opportunity to handle the event, if needed. If the driver did not register its event callback, the framework proceeds with its default handling of the event.   </p>
+<p>One of the event callbacks that the driver must register is <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a>.  The framework invokes the driver's <em>EvtDriverDeviceAdd</em> implementation when the framework is ready to create a device object. In Windows, a  device object  is a logical representation of the function of the physical device for which the client driver is loaded (discussed later in this topic).</p>
+<p>Other event callbacks that the driver can register are <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541694(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverUnload</em></a>, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540840(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtCleanupCallback</em></a>, and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540841(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDestroyCallback</em></a>. </p>
+<p>In the template code, the client driver registers for two events: <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540840(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtCleanupCallback</em></a>. The driver specifies a pointer to the its implementation of <em>EvtDriverDeviceAdd</em> in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551300(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_DRIVER_CONFIG</strong></a> structure and the <em>EvtCleanupCallback</em>  event callback in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552400(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_OBJECT_ATTRIBUTES</strong></a> structure.</p>
+<p>When Windows is ready to release the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544174(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DRIVER_OBJECT</strong></a> structure and unload the driver, the framework reports that event to the client driver by invoking the driver's <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540840(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtCleanupCallback</em></a> implementation.  The framework invokes that callback just before it deletes the framework driver object. The client driver can free all global resources that it allocated in its <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a>. For example, in the template code, the client driver stops WPP tracing that was activated in <em>DriverEntry</em>.</p>
+<p>The following code example shows the client driver's  EvtCleanupCallback event callback implementation.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_25d10903-000f-478e-a1e0-10111c1eeaf4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_25d10903-000f-478e-a1e0-10111c1eeaf4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+VOID
+MyUSBDriver_EvtDriverContextCleanup(
+    _In_ WDFDRIVER Driver
+    )
+{
+    UNREFERENCED_PARAMETER(Driver);
+
+    PAGED_CODE ();
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Entry"</span>);
+
+    <span style="color:Green;">//</span>
+    <span style="color:Green;">// Stop WPP Tracing</span>
+    <span style="color:Green;">//</span>
+    WPP_CLEANUP( WdfDriverWdmGetDriverObject(Driver) );
+
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>After the device is recognized by the USB driver stack,  the bus driver creates a physical device object (PDO) for the device and associates the PDO with the device node.
+
+The device node is in a stack formation, where the PDO is at the bottom. Each stack must have one PDO and can have filter device objects (filter DOs) and a function device object (FDO) above it. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406296(v=vs.85).aspx">Device Nodes and Device Stacks</a>.</p>
+<p>This illustration shows the device stack for the template driver, MyUSBDriver_.sys. </p>
+<p><img id="USB_device_stack" alt="Device stack for temnplate driver" src="http://i.msdn.microsoft.com/dynimg/IC554547.png" title="Device stack for temnplate driver" xmlns="" /></p>
+<p>Notice the device stack named "My USB Device". The USB driver stack creates the PDO for the device stack. In the example, the PDO is associated with Usbhub3.sys, which is one of the drivers included with the USB driver stack.  As the function driver for the device, the client driver must first create the FDO for the device and then attach it to the top of the device stack.  </p>
+<p>For a KMDF-based client driver, the framework performs those tasks on behalf of the client driver. To represent the FDO for the device, the framework creates a <em>framework device object</em>. The client driver can, however, specify certain initialization parameters that the framework uses to configure the new object. That opportunity is given to the client driver when the framework invokes the driver's <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> implementation. After the object is created and the FDO is attached to the top of the device stack,  the framework  provides the client driver  with  a WDFDEVICE handle to the framework device object. By using this handle, the client driver can perform various device-related operations. </p>
+<p>The following code example shows the client driver's  EvtDriverDeviceAdd event callback implementation.</p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4d93a908-c1a0-4279-9a31-d85ccf880eff');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4d93a908-c1a0-4279-9a31-d85ccf880eff" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_EvtDeviceAdd(
+    _In_    WDFDRIVER       Driver,
+    _Inout_ PWDFDEVICE_INIT DeviceInit
+    )
+{
+    NTSTATUS status;
+
+    UNREFERENCED_PARAMETER(Driver);
+
+    PAGED_CODE();
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Entry"</span>);
+
+    status = MyUSBDriver_CreateDevice(DeviceInit);
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Exit"</span>);
+
+    <span style="color:Blue;">return</span> status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>During run time, the implementation of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> uses the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff558773(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">PAGED_CODE</strong></a> macro to check that the routine is being called in an appropriate environment  for pageable code. Make sure you call the macro after declaring all of your variables; otherwise, compilation fails  because the generated source files are .c files and not .cpp files.</p>
+<p>The client driver's <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> implementation calls the MyUSBDriver_CreateDevice helper function to perform  the required tasks. </p>
+<p>The following code example shows the MyUSBDriver_CreateDevice helper function. MyUSBDriver_CreateDevice is defined in Device.c.</p>
+
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f4048ad6-2e2d-4909-ab21-4398607b50c1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f4048ad6-2e2d-4909-ab21-4398607b50c1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_CreateDevice(
+    _Inout_ PWDFDEVICE_INIT DeviceInit
+    )
+{
+    WDF_PNPPOWER_EVENT_CALLBACKS pnpPowerCallbacks;
+    WDF_OBJECT_ATTRIBUTES   deviceAttributes;
+    PDEVICE_CONTEXT deviceContext;
+    WDFDEVICE device;
+    NTSTATUS status;
+
+    PAGED_CODE();
+
+    WDF_PNPPOWER_EVENT_CALLBACKS_INIT(&amp;pnpPowerCallbacks);
+    pnpPowerCallbacks.EvtDevicePrepareHardware = MyUSBDriver_EvtDevicePrepareHardware;
+    WdfDeviceInitSetPnpPowerEventCallbacks(DeviceInit, &amp;pnpPowerCallbacks);
+
+    WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&amp;deviceAttributes, DEVICE_CONTEXT);
+
+    status = WdfDeviceCreate(&amp;DeviceInit, &amp;deviceAttributes, &amp;device);
+
+    <span style="color:Blue;">if</span> (NT_SUCCESS(status)) {
+        <span style="color:Green;">//</span>
+        <span style="color:Green;">// Get the device context and initialize it. WdfObjectGet_DEVICE_CONTEXT is an</span>
+        <span style="color:Green;">// inline function generated by WDF_DECLARE_CONTEXT_TYPE macro in the</span>
+        <span style="color:Green;">// device.h header file. This function will do the type checking and return</span>
+        <span style="color:Green;">// the device context. If you pass a wrong object  handle</span>
+        <span style="color:Green;">// it will return NULL and assert if run under framework verifier mode.</span>
+        <span style="color:Green;">//</span>
+        deviceContext = WdfObjectGet_DEVICE_CONTEXT(device);
+        deviceContext-&gt;PrivateDeviceData = 0;
+
+        <span style="color:Green;">//</span>
+        <span style="color:Green;">// Create a device interface so that applications can find and talk</span>
+        <span style="color:Green;">// to us.</span>
+        <span style="color:Green;">//</span>
+        status = WdfDeviceCreateDeviceInterface(
+            device,
+            &amp;GUID_DEVINTERFACE_MyUSBDriver_,
+            NULL <span style="color:Green;">// ReferenceString</span>
+            );
+
+        <span style="color:Blue;">if</span> (NT_SUCCESS(status)) {
+            <span style="color:Green;">//</span>
+            <span style="color:Green;">// Initialize the I/O Package and any Queues</span>
+            <span style="color:Green;">//</span>
+            status = MyUSBDriver_QueueInitialize(device);
+        }
+    }
+
+    <span style="color:Blue;">return</span> status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> has two parameters: a handle to the framework driver object created in the previous call to  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544113(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">DriverEntry</em></a>,  and a pointer to   a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546951(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDFDEVICE_INIT</strong></a> structure. The framework allocates the <strong>WDFDEVICE_INIT</strong> structure and passes it a pointer so that the client driver can populate the structure with initialization parameters for the framework  device object to be created.</p>
+<p>In the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> implementation, the client driver must perform these  tasks:</p><ul>
+<li>Call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a> method to retrieve a WDFDEVICE handle to the new device object.  <p> The <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a> method causes the framework to create a framework device object for the FDO and attach it to the top of the  device stack. In the <strong>WdfDeviceCreate</strong> call, the client driver must perform these tasks:</p><ul>
+<li>Specify pointers to the client driver's Plug and play (PnP) power callback routines in the  framework-specified <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546951(v=vs.85).aspx">WDFDEVICE_INIT</a> structure. The routines are first set in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552416(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_PNPPOWER_EVENT_CALLBACKS</strong></a> structure and then associated with  WDFDEVICE_INIT by calling  the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546135(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPnpPowerEventCallbacks</strong></a> method.<p> Windows components, PnP and power managers, send device-related requests to drivers in response to changes in PnP state (such as started, stopped, and removed) and power state (such as working or suspend). For KMDF-based drivers, the framework intercepts those requests.  The client driver can get notified about the requests  by registering  callback routines called <em>PnP power event callbacks</em> with the framework, by  using the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a> call. When Windows components send requests, the framework handles them and calls the corresponding PnP power event callback, if the client driver has registered.</p>
+<p>One of the PnP power event callback routines that the client driver must implement  is  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a>. That event callback is invoked when   the PnP manager starts the device. The implementation for <em>EvtDevicePrepareHardware</em> is discussed in the following section.</p>
+</li>
+<li>Specify a pointer to the driver's device context structure. The pointer must be set in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552400(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_OBJECT_ATTRIBUTES</strong></a> structure that is initialized by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552404(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE</strong></a> macro.<p>A device context (sometimes called device extension) is a data structure (defined by the client driver) for storing  information about a specific device object. The client driver passes a pointer to its device context to the framework. The framework allocates a block of memory based on the size of the structure, and stores a pointer to that memory location in the framework device object. The client driver can use the pointer to access and store information in members of the device context. For more information about device contexts, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff542873(v=vs.85).aspx">Framework Object Context Space</a>.</p>
+<p>After the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a> call completes, the client driver receives a handle to the new framework device object, which stores a pointer to the block of memory allocated by the framework for the device context. The client driver can now get a pointer to the device context by calling the <strong>WdfObjectGet_DEVICE_CONTEXT</strong> macro.</p>
+</li>
+</ul>
+
+</li>
+<li>Register a device interface GUID for the client driver by calling  the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545935(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreateDeviceInterface</strong></a> method. Applications can communicate with the driver by using this GUID. The GUID constant  is declared in the header, public.h. </li>
+<li>Set up queues for I/O transfers to the device. The template code defines MyUSBDriver_QueueInitialize, a helper routine for setting up queues,  which is discussed in the <a href="#queue">Queue source code</a> section.</li>
+</ul>
+
+<h2><a id="device"></a><a id="DEVICE"></a>Device source code</h2>
+<p>The <em>device object</em> represents the instance of the device for which the client driver is loaded in memory.  The complete source code for the device  object is in Device.h and Device.c. </p>
+<p><strong>Device.h</strong></p>
+<p>The Device.h header file includes public.h, which contains common declarations used by all files in the project.</p>
+<p></p>
+<p>The next block in Device.h declares the device context for the client driver.</p>
+
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_414ff35f-12fd-4f49-86eb-8de7e7280150');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_414ff35f-12fd-4f49-86eb-8de7e7280150" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">struct</span> _DEVICE_CONTEXT
+{
+    WDFUSBDEVICE UsbDevice;
+    ULONG PrivateDeviceData;  <span style="color:Green;">// just a placeholder</span>
+
+} DEVICE_CONTEXT, *PDEVICE_CONTEXT;
+
+WDF_DECLARE_CONTEXT_TYPE(DEVICE_CONTEXT)
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The <strong>DEVICE_CONTEXT</strong> structure is defined by the client driver and stores information about a framework device object. It is declared in Device.h and contains two members: a handle to a framework's USB target device object (discussed later) and a placeholder. This  structure will be expanded in later exercises. </p>
+<p>Device.h also includes the  <strong>WDF_DECLARE_CONTEXT_TYPE</strong> macro, which generates an inline function, <strong>WdfObjectGet_DEVICE_CONTEXT</strong>. The client driver can call that function to retrieve a pointer to the block of memory from the framework device object. </p>
+<p>The following line of code declares MyUSBDriver_CreateDevice, a helper function that retrieves a WDFUSBDEVICE handle to the USB target device object. </p>
+
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a223f129-9d5c-4089-9695-9268691ba2dc');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a223f129-9d5c-4089-9695-9268691ba2dc" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_CreateDevice(
+    _Inout_ PWDFDEVICE_INIT DeviceInit
+    );
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>USBCreate takes a pointer to a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546951(v=vs.85).aspx">WDFDEVICE_INIT</a> structure as its parameter. This is the same pointer that was passed by the framework when it invoked the client driver's <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> implementation. Basically, MyUSBDriver_CreateDevice performs the tasks of <em>EvtDriverDeviceAdd</em>. The source code for <em>EvtDriverDeviceAdd</em> implementation is discussed in the previous section.</p>
+<p>The next line in Device.h declares a function role type declaration for the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a> event callback routine. The event callback is implemented by the client driver and performs tasks such as configuring the USB device.</p>
+
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_bca2e10d-3983-4a71-88ad-505570176406');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bca2e10d-3983-4a71-88ad-505570176406" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+EVT_WDF_DEVICE_PREPARE_HARDWARE MyUSBDriver_EvtDevicePrepareHardware;
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p><strong>Device.c</strong></p>
+<p>The Device.c implementation file contains the following block of code that uses <code>alloc_text</code> pragma to specify that the driver's implementation of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a> is in pageable memory.
+</p>
+
+
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_611dd160-5c0f-4ffb-8e1c-c1392dd60289');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_611dd160-5c0f-4ffb-8e1c-c1392dd60289" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef ALLOC_PRAGMA
+#pragma alloc_text (PAGE, MyUSBDriver_CreateDevice)
+#pragma alloc_text (PAGE, MyUSBDriver_EvtDevicePrepareHardware)
+#endif
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In the implementation for <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a>, the client driver performs the USB-specific initialization tasks. Those tasks include registering the client driver,  initializing USB-specific I/O target objects, and selecting a USB configuration. The following table shows the specialized I/O target objects provided by the framework. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544752(v=vs.85).aspx">USB I/O Targets</a>.</p>
+<table>
+<tr><th>USB I/O target object (handle)</th><th>Get a  handle by calling ....</th><th>Description</th></tr>
+<tr><td><em>USB target device object</em> (WDFUSBDEVICE )</td><td>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>
+</td><td>Represents a USB device and provides methods for retrieving the device descriptor and sending control requests to the device.</td></tr>
+<tr><td><em>USB target interface object </em> (WDFUSBINTERFACE )</td><td>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550092(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetInterface</strong></a>
+</td><td>  Represents an individual interface and provides methods that a client driver can call to select an alternate setting and retrieve information about the setting.
+</td></tr>
+<tr><td><em>USB target pipe object</em> (WDFUSBPIPE)</td><td>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a>
+</td><td>Represents an individual pipe for an endpoint that is configured in the current alternate setting for an interface.
+
+The USB driver stack selects each interface in the selected configuration and sets up a communication channel to each endpoint within the interface. In USB terminology, that communication channel is known as a <em>pipe</em>.</td></tr>
+</table>
+<p> </p>
+<p>This code example shows the implementation for EvtDevicePrepareHardware.</p>
+
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ef5afa72-e57c-4d60-b453-8016041a6914');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ef5afa72-e57c-4d60-b453-8016041a6914" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_EvtDevicePrepareHardware(
+    _In_ WDFDEVICE Device,
+    _In_ WDFCMRESLIST ResourceList,
+    _In_ WDFCMRESLIST ResourceListTranslated
+    )
+{
+    NTSTATUS status;
+    PDEVICE_CONTEXT pDeviceContext;
+    WDF_USB_DEVICE_CREATE_CONFIG createParams;
+    WDF_USB_DEVICE_SELECT_CONFIG_PARAMS configParams;
+
+    UNREFERENCED_PARAMETER(ResourceList);
+    UNREFERENCED_PARAMETER(ResourceListTranslated);
+
+    PAGED_CODE();
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Entry"</span>);
+
+    status = STATUS_SUCCESS;
+    pDeviceContext = WdfObjectGet_DEVICE_CONTEXT(Device);
+
+    <span style="color:Blue;">if</span> (pDeviceContext-&gt;UsbDevice == NULL) {
+
+        <span style="color:Green;">//</span>
+        <span style="color:Green;">// Specifying a client contract version of 602 enables us to query for</span>
+        <span style="color:Green;">// and use the new capabilities of the USB driver stack for Windows 8.</span>
+        <span style="color:Green;">// It also implies that we conform to rules mentioned in MSDN</span>
+        <span style="color:Green;">// documentation for WdfUsbTargetDeviceCreateWithParameters.</span>
+        <span style="color:Green;">//</span>
+        WDF_USB_DEVICE_CREATE_CONFIG_INIT(&amp;createParams,
+                                         USBD_CLIENT_CONTRACT_VERSION_602
+                                         );
+
+        status = WdfUsbTargetDeviceCreateWithParameters(Device,
+                                                    &amp;createParams,
+                                                    WDF_NO_OBJECT_ATTRIBUTES,
+                                                    &amp;pDeviceContext-&gt;UsbDevice
+                                                    );
+
+        <span style="color:Blue;">if</span> (!NT_SUCCESS(status)) {
+            TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE,
+                        <span style="color:#A31515;">"WdfUsbTargetDeviceCreateWithParameters failed 0x%x"</span>, status);
+            <span style="color:Blue;">return</span> status;
+        }
+
+        <span style="color:Green;">//</span>
+        <span style="color:Green;">// Select the first configuration of the device, using the first alternate</span>
+        <span style="color:Green;">// setting of each interface</span>
+        <span style="color:Green;">//</span>
+        WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_MULTIPLE_INTERFACES(&amp;configParams,
+                                                                     0,
+                                                                     NULL
+                                                                     );
+        status = WdfUsbTargetDeviceSelectConfig(pDeviceContext-&gt;UsbDevice,
+                                                WDF_NO_OBJECT_ATTRIBUTES,
+                                                &amp;configParams
+                                                );
+
+        <span style="color:Blue;">if</span> (!NT_SUCCESS(status)) {
+            TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE,
+                        <span style="color:#A31515;">"WdfUsbTargetDeviceSelectConfig failed 0x%x"</span>, status);
+            <span style="color:Blue;">return</span> status;
+        }
+    }
+
+    TraceEvents(TRACE_LEVEL_INFORMATION, TRACE_DRIVER, <span style="color:#A31515;">"%!FUNC! Exit"</span>);
+
+    <span style="color:Blue;">return</span> status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Here's a closer look at the client driver's tasks as implemented by the template code:</p>
+<ol>
+<li>Specifies the client driver's contract version in preparation to register itself with the underlying USB driver stack, loaded by Windows. <p>Windows can load the USB 3.0 or USB 2.0 driver stack, depending on the host controller to which the USB device is attached. The USB 3.0 driver stack is new in Windows 8 and supports several new features defined by the USB 3.0 specification, such as the streams capability. The new driver stack also implements several improvements, such as better tracking and processing of USB Request Blocks (URBs), which are available through a new set of URB routines. A client driver that intends to use those features or call the new routines must specify  the USBD_CLIENT_CONTRACT_VERSION_602  contract version. A USBD_CLIENT_CONTRACT_VERSION_602 client driver must adhere to a certain set of rules. For more information about those rules, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406258(v=vs.85).aspx">Best Practices: Using URBs</a>.</p>
+<p>To specify the contract version, the client driver must initialize a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406503(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_CREATE_CONFIG</strong></a> structure with the contract version by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406507(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_CREATE_CONFIG_INIT</strong></a> macro.</p>
+</li>
+<li>Calls the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> method. The method requires a handle to the framework device object that the client driver obtained previously by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a> in the driver's  implementation of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a>. The <strong>WdfUsbTargetDeviceCreateWithParameters</strong> method: <ul>
+<li>Registers the client driver with the underlying USB driver stack.</li>
+<li>Retrieves a WDFUSBDEVICE handle to the USB target device object that is created by the framework. The template code stores the handle to the USB target device object in its device context. By using that handle, the client driver can obtain USB-specific information about the device. </li>
+</ul>
+<p class="note"><strong>Note</strong>  You must call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550077(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreate</strong></a> instead of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> if,  </p><ul>
+<li>Your client driver does not call the new  set of URB routines available with theWindows 8 version of the WDK.<p>If your client driver calls <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>, the USB driver stack assumes that all URBs are allocated by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439420(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateIsochUrb</strong></a>. URBs that are allocated by those methods have opaque URB context blocks that are used by the USB driver stack for faster processing. If the client driver uses an URB that is not allocated by those methods, the USB driver generates a bugcheck.</p>
+<p>For more information about URB allocations, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450844(v=vs.85).aspx">Allocating and Building URBs</a>.</p>
+</li>
+<li>Your client driver does not intend to adhere to the set of rules described in <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406258(v=vs.85).aspx">Best Practices: Using URBs</a>.</li>
+</ul>Such drivers are not required to specify a client contract version and therefore must skip Step 1. 
+</li>
+<li>Selects a USB configuration.<p>In the template code, the client driver selects the <em>default configuration</em> in the USB device. The default configuration includes Configuration 0 of the device and the Alternate Setting 0 of each interface within that configuration.</p>
+<p>To select the default configuration, the client driver configures the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552600(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS</strong></a> structure by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552992(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_MULTIPLE_INTERFACES</strong></a> function. The function initializes the <strong>Type</strong> member to <strong>WdfUsbTargetDeviceSelectConfigTypeMultiInterface</strong>         to indicate that if multiple interfaces are available, then an alternate setting in each those interfaces must be selected. Because the call must select the default configuration, the client driver specifies NULL in the <em>SettingPairs</em> parameter and 0 in the <em>NumberInterfaces</em> parameter. Upon completion, the <strong>MultiInterface.NumberOfConfiguredInterfaces</strong> member of <strong>WDF_USB_DEVICE_SELECT_CONFIG_PARAMS</strong> indicates the number of interfaces for which Alternate Setting 0 was selected. Other members are not modified.</p><p class="note"><strong>Note</strong>  If the client driver wants to select alternate settings other than the default setting, the driver must create an array of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff553023(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_INTERFACE_SETTING_PAIR</strong></a> structures. Each element in the array specifies the device-defined interface number and the index of the alternate setting to select. That information is stored in the device's configuration and interface descriptors that can be obtained by calling the  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550098(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceRetrieveConfigDescriptor</strong></a> method.  The client driver must then call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552992(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_MULTIPLE_INTERFACES</strong></a> and pass the <strong>WDF_USB_INTERFACE_SETTING_PAIR</strong> array to the framework.</p>
+
+</li>
+</ol>
+<h2><a id="queue"></a><a id="QUEUE"></a>Queue source code</h2>
+<p>The <em>framework queue object</em> represents the I/O queue for a specific framework device object.  The complete source code for the queue object is in Queue.h and Queue.c. </p>
+<p><strong>Queue.h</strong></p>
+<p>Declares an event callback routine for the event raised by the framework's queue object.</p>
+<p>The first block in Queue.h declares a queue context.</p>
+
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_77614e05-de7e-4b86-b347-876ea1963bed');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_77614e05-de7e-4b86-b347-876ea1963bed" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">struct</span> _QUEUE_CONTEXT {
+
+    ULONG PrivateDeviceData;  <span style="color:Green;">// just a placeholder</span>
+
+} QUEUE_CONTEXT, *PQUEUE_CONTEXT;
+
+WDF_DECLARE_CONTEXT_TYPE_WITH_NAME(QUEUE_CONTEXT, QueueGetContext)
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Similar to a device context, a queue context is a data structure defined by the client to store information about a particular queue.</p>
+<p>The next line of code  declares MyUSBDriver_QueueInitialize function, the helper function that creates and initializes the framework queue object. </p>
+
+<div id="code-snippet-14" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4cefff20-c244-451e-bf07-93e69f290270');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4cefff20-c244-451e-bf07-93e69f290270" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_QueueInitialize(
+    _In_ WDFDEVICE Device
+    );
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The next code example declares a function role type declaration for the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541758(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtIoDeviceControl</em></a> event callback routine. The event callback is implemented by the client driver and is invoked when the framework processes a device I/O control request.</p>
+
+<div id="code-snippet-15" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_7c4a0c64-1271-4a3d-8d91-8317cd97883e');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7c4a0c64-1271-4a3d-8d91-8317cd97883e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+EVT_WDF_IO_QUEUE_IO_DEVICE_CONTROL MyUSBDriver_EvtIoDeviceControl;
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p><strong>Queue.c</strong></p>
+<p>The implementation file, Queue.c, contains the following block of code that uses <code>alloc_text</code> pragma to specify that the driver's implementation of MyUSBDriver_QueueInitialize is in pageable memory.
+</p>
+
+<div id="code-snippet-16" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8f09bfdf-1b22-4090-a389-9b10de52156d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8f09bfdf-1b22-4090-a389-9b10de52156d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef ALLOC_PRAGMA
+#pragma alloc_text (PAGE, MyUSBDriver_QueueInitialize)
+#endif
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>WDF provides the framework queue object to handle the request flow to the client driver. The framework creates a framework queue object when the client driver calls the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547401(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueCreate</strong></a> method. In that call, the client driver can specify certain configuration options  before the framework creates queues. Those options include whether the queue is power-managed, allows zero-length requests, or is the default queue for the driver. A single framework queue object can handle several types of requests, such as read, write, and device I/O control. The client driver can specify event callbacks for  each of those requests.  </p>
+<p>The client driver must also specify  the dispatch type. A queue object's dispatch type determines how the framework delivers requests to the client driver. The delivery mechanism can be sequential, in parallel, or by a custom mechanism defined by the client driver. For a sequential queue, a request is not delivered until the client driver completes the previous request. In parallel dispatch mode, the framework forwards the requests as soon as they arrive from I/O manager. This means the client driver can receive one request while processing another. In the custom mechanism, the client manually pulls the next request out of the framework queue object when the driver is ready to process it. </p>
+<p>Typically, the client driver must set up queues in the driver's <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> event callback.  The template code provides the helper routine, MyUSBDriver_QueueInitialize, that initializes the framework queue object. </p>
+
+<div id="code-snippet-17" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f9355c69-f290-4d78-9809-27e1b5d91c57');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f9355c69-f290-4d78-9809-27e1b5d91c57" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+MyUSBDriver_QueueInitialize(
+    _In_ WDFDEVICE Device
+    )
+{
+    WDFQUEUE queue;
+    NTSTATUS status;
+    WDF_IO_QUEUE_CONFIG    queueConfig;
+
+    PAGED_CODE();
+    
+    <span style="color:Green;">//</span>
+    <span style="color:Green;">// Configure a default queue so that requests that are not</span>
+    <span style="color:Green;">// configure-fowarded using WdfDeviceConfigureRequestDispatching to goto</span>
+    <span style="color:Green;">// other queues get dispatched here.</span>
+    <span style="color:Green;">//</span>
+    WDF_IO_QUEUE_CONFIG_INIT_DEFAULT_QUEUE(
+         &amp;queueConfig,
+        WdfIoQueueDispatchParallel
+        );
+
+    queueConfig.EvtIoDeviceControl = MyUSBDriver_EvtIoDeviceControl;
+
+    status = WdfIoQueueCreate(
+                 Device,
+                 &amp;queueConfig,
+                 WDF_NO_OBJECT_ATTRIBUTES,
+                 &amp;queue
+                 );
+
+    <span style="color:Blue;">if</span>( !NT_SUCCESS(status) ) {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_QUEUE, <span style="color:#A31515;">"WdfIoQueueCreate failed %!STATUS!"</span>, status);
+        <span style="color:Blue;">return</span> status;
+    }
+
+    <span style="color:Blue;">return</span> status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>To set up queues, the client driver performs these  tasks: </p><ol>
+<li>Specifies the queue's configuration options in a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552359(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_IO_QUEUE_CONFIG</strong></a> structure. The template code uses the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff552361(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_IO_QUEUE_CONFIG_INIT_DEFAULT_QUEUE</strong></a> function  to initialize the structure. The function specifies the queue object as the default queue object, is power-managed, and receives requests in parallel.</li>
+<li>Adds the client driver's event callbacks for I/O requests for the queue. In the template, the client driver specifies a pointer to its event callback for a device I/O control request. </li>
+<li>Calls <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547401(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueCreate</strong></a> to retrieve a WDFQUEUE handle to the framework queue object that is created by the framework. </li>
+</ol>
+
+<p>Here's how the queue mechanism works. To communicate with the USB device, an application first opens a handle to the device by calling the <strong>SetDixxx</strong> routines and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateHandle</strong></a>. By using this handle, the application calls the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh404258(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a> function with a specific control code. Depending on the type of control code, the application can specify input and output buffers in that call. The call is eventually received by I/O Manager, which then creates a request (IRP)  and forwards it to the client driver. The framework intercepts the request,  creates a framework request object, and adds it to the framework queue object. In this case, because the client driver registered its event callback for the device I/O control request, the framework invokes the callback. Also, because the queue object was created with the  WdfIoQueueDispatchParallel flag, the callback is invoked as soon as the request is added to the queue. </p>
+
+<div id="code-snippet-18" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e7765c4a-4a7c-40c2-bee9-137f18269797');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e7765c4a-4a7c-40c2-bee9-137f18269797" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+VOID
+MyUSBDriver_EvtIoDeviceControl(
+    _In_ WDFQUEUE Queue,
+    _In_ WDFREQUEST Request,
+    _In_ size_t OutputBufferLength,
+    _In_ size_t InputBufferLength,
+    _In_ ULONG IoControlCode
+    )
+{
+    TraceEvents(TRACE_LEVEL_INFORMATION, 
+                TRACE_QUEUE, 
+                <span style="color:#A31515;">"!FUNC! Queue 0x%p, Request 0x%p OutputBufferLength %d InputBufferLength %d IoControlCode %d"</span>, 
+                Queue, Request, (<span style="color:Blue;">int</span>) OutputBufferLength, (<span style="color:Blue;">int</span>) InputBufferLength, IoControlCode);
+
+    WdfRequestComplete(Request, STATUS_SUCCESS);
+
+    <span style="color:Blue;">return</span>;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>When the framework invokes the client driver's event callback, it passes a handle to the framework request object that holds the request (and its input and output buffers) sent by the application. In addition, it sends a handle to the framework queue object that contains the request. In the event callback, the client driver processes the request as needed. The template code simply completes the request. The client driver can perform more involved tasks. For instance, if an application requests certain device information, in the event callback, the client driver can create a USB control request and send it to the USB driver stack to retrieve the requested device information. USB control requests are discussed in <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff539261(v=vs.85).aspx">USB Control Transfer</a>.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh706183(v=vs.85).aspx">Getting started with USB client driver development</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540196(v=vs.85).aspx">WinUSB</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh706184(v=vs.85).aspx">Write your first USB client driver (UMDF)</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh706187(v=vs.85).aspx">Write your first USB client driver (KMDF)</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20Understanding the USB client driver code structure (KMDF)%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="TJjcPb9pjWXuKBYpszScgmNCaO3ZnSzBgJdWnxz6bzLfO-XGNwk3S6WSiY9AtVmlsluFgzVX41UPBBNSNycL1S0nYUd56rI1r1pphCELyZHYqJkdlYi3L5Y8sqU7bKRd6s2FRQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/hh770892(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh770892(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="1VJDt5xJpa8qZpCt6581tWSuUxPU9tincAidb1tyLQf6aWB3uVQka1VHpA7P8sj_PvY1oO0qckNsojISkMaL794VbuCBKqrxuZBey2yEfdQrz0F9uwGv9lSjCH7XHbsD9TNlqA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh770892(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"d7b59dd4-af45-41d4-ab7b-1057dc207fb9\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh770892(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:08 GMT -->
+</html>

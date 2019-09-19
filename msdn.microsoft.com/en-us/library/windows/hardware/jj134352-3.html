@@ -1,0 +1,3311 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134352 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" />
+        <title>Device.Buscontroller Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134352(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DCE-9:12:19 AM" />
+
+<meta name="Search.ShortId" content="jj134352" />
+
+<meta name="ms.shortidmsdn" content="jj134352" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072739&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134352&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.Buscontroller Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.BusController.Bluetooth.Base</h2>
+      <div id="sectionSection0" class="section">
+        <p>Bluetooth Controller - Generic radio tests</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.Bluetooth.Base.4LeSpecification</p>
+              <p>Device.BusController.Bluetooth.Base.LeStateCombinations</p>
+              <p>Device.BusController.Bluetooth.Base.LeWhiteList</p>
+              <p>Device.BusController.Bluetooth.Base.MicrosoftBluetoothStack</p>
+              <p>Device.BusController.Bluetooth.Base.NoBluetoothLEFilterDriver</p>
+              <p>Device.BusController.Bluetooth.Base.OnOffStateControllableViaSoftware</p>
+              <p>Device.BusController.Bluetooth.Base.RadioScanIntervalSettings</p>
+              <p>Device.BusController.Bluetooth.Base.Scatternet</p>
+              <p>Device.BusController.Bluetooth.Base.SimultaneousBrEdrAndLeTraffic</p>
+              <p>Device.BusController.Bluetooth.Base.SpecificInformationParameters</p>
+              <p>Device.BusController.Bluetooth.Base.SupportsBluetooth21AndEdr</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.4LeSpecification</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must support the Bluetooth 4.0 specification requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth controller must comply with the Basic Rate (BR) and Low Energy (LE) Combined Core Configuration Controller Parts and Host/Controller Interface (HCI) Core Configuration requirements outlined in the Compliance Bluetooth Version 4.0 specifications. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.LeStateCombinations</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must support a minimum set of LE state combinations.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth controller must allow the spec LE state combinations (as allowed in section [Vol 6] Part B, Section 1.1.1 of the Bluetooth version 4.0 spec):Only the following states are not required to be supported:0x0000000000800000 Active Scanning State and Initiating State combination supported.0x0000000004000000 Passive Scanning state and Slave Role combination supported.0x0000000008000000 Active Scanning state and Slave Role combination supported.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.LeWhiteList</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must support a minimum LE white list size of 25 entries.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth controller must support a minimum of 25 entries in its white list for remote Low Energy (LE) devices. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.MicrosoftBluetoothStack</h3>
+        <div class="subSection">
+          <p>Must test using Microsoft's Bluetooth stack</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth controllers must be tested with Microsoft's Bluetooth stack when submitting for hardware certification.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.NoBluetoothLEFilterDriver</h3>
+        <div class="subSection">
+          <p>Bluetooth LE filter drivers are not allowed to load on BTHLEENUM.SYS</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To ensure a uniform experience across Windows Store Apps using the Bluetooth LE (GATT) WinRT API, filter drivers shall not be loaded on BTHLEENUM.SYS. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>The GATT WinRT API provided for communication over Bluetooth LE is closely coupled to the driver implementing GATT support for the inbox Bluetooth stack, BTHLEENUM.SYS.  All Windows Store Apps that use the Microsoft WinRT API for GATT rely on this interface to be work as originally implemented, thus there shall not be any 3rd party components that may intentionally or inadvertently affect this interface.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.OnOffStateControllableViaSoftware</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers’ On/Off state must be controllable via software</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>For Certifying Bluetooth controllers for Windows 8.1:</p>
+          <p>When turning the radio “off”, Bluetooth controllers shall be powered down to its lowest supported power state and no transmission/reception shall take place.  Windows will terminate Bluetooth activity by unloading the inbox protocol drivers and their children, submitting the HCI_Reset command to the controller, and then setting the controller to the D3 logical power state, allowing bus drivers to power down the radio as appropriate.  The radio can be completely powered off if a bus-supported method is available to turn the radio back on.  No additional vendor software control components will be supported. </p>
+          <p>On turning the radio back on, the Windows Bluetooth stack shall resume the device to D0, allowing bus drivers to restart the device.  The Windows Bluetooth stack shall then reinitialize the Bluetooth components of the controller.</p>
+          <p>Bluetooth Radio Management in Windows 8.1 shall only be enabled for internal Bluetooth 4.0 controllers.</p>
+          <p>For Windows 8 Certified controllers on upgrade to Windows 8.1:</p>
+          <p>On upgrade to Windows 8.1, previous DLL support for Bluetooth 4.0 controllers shall be ignored and the Bluetooth controller is expected to be, at a minimum, in a state where there is no transmission/reception from the antenna.  </p>
+          <p>For Certifying Bluetooth controllers for Windows 8 only:</p>
+          <p>The previous requirement remains unchanged.</p>
+          <p>Bluetooth controllers’ On/Off state shall be controllable via software as described in Bluetooth Software Radio Switch The Off state is defined, at a minimum, as disabling the antenna component of the Bluetooth module so there can be no transmission/reception. There must not be any hardware-only switches to control power to the Bluetooth radio.  </p>
+          <p>The radio must maintain on/off state across sleep and reboot.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>The Windows 8.1 implementation of Bluetooth Radio Management provides for an improved Radio Management experience while decreasing the work needed by our IHV and OEM partners.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.RadioScanIntervalSettings</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must use radio scan interval values as set by Windows</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To ensure a uniform experience that balances power usage with responsiveness for users in reconnect scenarios, Bluetooth controllers must use the Page Scan Interval and LE Scan Interval values as set by Windows at all times.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.Scatternet</h3>
+        <div class="subSection">
+          <p>Bluetooth host controller supports Bluetooth scatternet</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth host controller must support at least two concurrent piconets (also known as a scatternet).  The host controller must also be able to allow the host to join a device that is requesting a connection to the existing piconet when the local radio is the master of that piconet. This requirement is described in the Specification of the Bluetooth System, Version 2.1 + Enhanced Data Rate (EDR) (Baseband Specification), Section 8.6.6.  Design Notes:  The scatternet support should follow the enhanced scatternet support errata that are defined by the Bluetooth Special Interest Group (SIG).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.SimultaneousBrEdrAndLeTraffic</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must support simultaneous BR/EDR and LE traffic.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Bluetooth controllers must allow the simultaneous use of both Basic Rate (BR)/Enhanced Data Rate (EDR) and Low Energy (LE) radios.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.SpecificInformationParameters</h3>
+        <div class="subSection">
+          <p>Bluetooth host controller implements specific Informational parameters to provide accurate information about the host controller's capabilities</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The manufacturer fixes the informational parameters, which provide valuable information about the Bluetooth device and the capabilities of the host controller. Bluetooth host controllers must implement the HCl_Read_Local_Version_Information command and HCI_Read_Local_Supported_Features command as described in the Specification of the Bluetooth System, Version2.1 + Enhanced Data Rate (EDR), Part E, Section 7.4. Required support includes the mechanism for reporting the supported version and features.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.Base.SupportsBluetooth21AndEdr</h3>
+        <div class="subSection">
+          <p>Bluetooth controllers must support the Bluetooth 2.1+EDR specification requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth host controller must comply with the requirements that are outlined in the Specification of the Bluetooth System Version 2.1 + Enhanced Data Rate (EDR).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.Bluetooth.NonUSB</h2>
+      <div id="sectionSection1" class="section">
+        <p>Bluetooth Controller - NonUSB connected radios</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.Bluetooth.NonUSB.Performance</p>
+              <p>Device.BusController.Bluetooth.NonUSB.ScoSupport</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.Bluetooth.NonUSB.Performance</h3>
+        <div class="subSection">
+          <p>Non-USB Bluetooth controllers must achieve at least a throughput of 700kbps</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.NonUSB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Non-USB Bluetooth controllers must achieve at least a throughput of 700 kbps at the RFCOMM layer.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.Bluetooth.NonUSB.ScoSupport</h3>
+        <div class="subSection">
+          <p>Non-USB connected Bluetooth controllers use sideband channel for SCO</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.NonUSB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In order to ensure a high quality audio experience All non-USB connected Bluetooth controllers must use a sideband channel for SCO (e.g. SCO over an I2S/PCM interface)</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.Bluetooth.USB</h2>
+      <div id="sectionSection2" class="section">
+        <p>Bluetooth Controller - USB connected radios</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.Bluetooth.USB.ScoDataTransportLayer</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.Bluetooth.USB.ScoDataTransportLayer</h3>
+        <div class="subSection">
+          <p>Bluetooth host controllers support the SCO data transport layer as specified in the Bluetooth 2.1+EDR specifications</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.Bluetooth.USB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth host controller must comply with the Synchronous Connection Oriented (SCO)-USB requirements that are outlined in the Specification of the Bluetooth System, Version 2.1 + Enhanced Data Rate (EDR), Part A, Section 3.5.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.I2C</h2>
+      <div id="sectionSection3" class="section">
+        <p>These requirements apply only to I2C controller silicon vendors. System manufacturers may optionally run these tests but may need hardware customization.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.I2C.CancellationOfIO</p>
+              <p>Device.BusController.I2C.ClockStretching</p>
+              <p>Device.BusController.I2C.HCKTestability</p>
+              <p>Device.BusController.I2C.IdlePowerManagement</p>
+              <p>Device.BusController.I2C.LockUnlockIOCTL</p>
+              <p>Device.BusController.I2C.NACK</p>
+              <p>Device.BusController.I2C.SPBRead</p>
+              <p>Device.BusController.I2C.SPBSequenceIOCTL</p>
+              <p>Device.BusController.I2C.SPBWrite</p>
+              <p>Device.BusController.I2C.Stress</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.I2C.CancellationOfIO</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support cancellation of I/O Requests</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must conform to the SPB framework and support the following:</p>
+          <p>•Driver implements SPB request cancelation logic for read/write/sequence I/O.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.ClockStretching</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support peripheral clock stretching</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must conform to the SPB framework and support the following:</p>
+          <p>•Controller can sustain peripheral holding clock for at least 2 seconds during read, write and sequence I/O.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.HCKTestability</h3>
+        <div class="subSection">
+          <p>Systems with I2C Controllers must expose correct ACPI table information and I2C pin-outs to enable HCK testability.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The objective of this requirement is to enable the controller to be testable by the HCK framework. </p>
+          <p>Details:</p>
+          <p>•Controller under test must provide I2C external connectivity pin-out(SCL,SDA and GND)</p>
+          <p>•Update ACPI to correctly describe HCK test peripheral drivers and its connection to I2C controller under test. </p>
+          <p>•Other peripheral devices on the same I2C controller under test must be disabled when running HCK tests.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Enable WITT based testing to empower I2C controller silicon partners to automate testing of their controller hardware/firmware/driver and ensure that it meets HCK requirements. By using hardware based testing, the silicon partner can quickly stress all aspects of the I2C controller and associated driver providing a higher quality bar</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.IdlePowerManagement</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support Idle Power Management</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must conform to the SPB framework and support the following:</p>
+          <p>Controller should go to D3 state after idle for more than 1 second when screen is on. </p>
+          <p>Controller should not go to D3 state after idle less than 1 second when screen is on to avoid aggressive Dx transition.</p>
+          <p>Controller should go to D3 state after idle for more than 100ms when screen is off.</p>
+          <p>Controller takes less than 75ms (50+ 25 to account for the timer granularity of 15ms) to resume from D3 to D0 state</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.LockUnlockIOCTL</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support Lock/Unlock IOCTL</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If stop condition is supported, the I2C controller and associated controller driver must conform to the SPB framework and support the following: </p>
+          <p>Supports arbitrary number of read/write operations inside Lock/Unlock pair.</p>
+          <p>Generate Start condition for the first I/O in the lock/unlock sequence, restart condition for subsequent I/O, and stop condition when Unlock is called.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.NACK</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support peripheral NACK</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must conform to the SPB framework and support the following:</p>
+          <p>Controller can detect address NACK bus condition and return STATUS_NO_SUCH_DEVICE for request.</p>
+          <p>Controller can detect device NACK during a write operation, complete the request with STATUS_SUCCESS and information bytes is set to a number of bytes that is less than what was intended to be written</p>
+          <p>Controller can detect device NACK during a write operation of a sequence IOCTL, complete the request with STATUS_SUCCESS and information bytes is set to number of bytes that is less than what was intended to be written.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Once we see the V2 silicon, we will need to validate if all sequences are required or if some need to be changed to optional.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.SPBRead</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support SPB Read operations correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must conform to the SPB framework and support the following when reading data from an I2C peripheral:</p>
+          <p>Must support reading from standard (100Kbps), fast (400kbps) and fast plus (1Mbps) peripheral targets. High Speed (3.4MHz) is optional but must pass all HCK requirements for I2C if implemented in the I2C controller and controller driver.</p>
+          <p>Must support read size from 1 to 4096 bytes (4KBytes).</p>
+          <p>Sizes larger than 4KBytes must succeed or fail with STATUS_NOT_SUPPORTED.</p>
+          <p>SPB read is mapped into Start, Read Data, NACK and Stop I2C conditions.</p>
+          <p>Fail any unsupported data size read request with STATUS_INVALID_PARAMETER and not cause any bus activities.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.SPBSequenceIOCTL</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support SPB Sequence IOCTL correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must confirm to the SPB framework and support the following:</p>
+          <p>Supports any arbitrary I/O sequences: write-read, read-write, write-write, read-read and complex combined such as write-read-read-write-write</p>
+          <p>SPB sequence IOCTL is mapped into Start, I/O sequence 1, Restart….I/O sequence N, Stop I2C conditions.</p>
+          <p>Controller needs to examine the sequence and determine if it is supported or fail with STATUS_INVALID_PARAMETER before causing any bus activities.</p>
+          <p>Support any valid parameters (e.g. DelayInUs) and memory format(SIMPLE, MDL, Buffer list etc.) as defined by SPB.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Once we see the V2 silicon, we will need to validate if all sequences are required or if some need to be changed to option</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.SPBWrite</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Drivers support SPB Write operations correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must confirm to the SPB framework and support the following when writing to an I2C peripheral:</p>
+          <p>Must support writing to standard (100Kbps), fast (400kbps) and fast plus (1Mbps) peripheral targets. High Speed (3.4MHz) is optional but must pass all HCK requirements for I2C if implemented in the I2C controller and controller driver.</p>
+          <p>Must supports write size from 1 to 4096 bytes (4KBytes).</p>
+          <p>Sizes larger than 4KBytes must succeed or fail with STATUS_NOT_SUPPORTED.</p>
+          <p>SPB write is mapped into Start, Write Data and Stop I2C conditions.</p>
+          <p>Fail any unsupported data size write request with STATUS_INVALID_PARAMETER and not cause any bus activities.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.I2C.Stress</h3>
+        <div class="subSection">
+          <p>I2C Controller and Controller Driver operates correctly and recovers from bus hangs or faults under prolonged stress conditions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.I2C</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The I2C controller and associated controller driver must confirm to the SPB framework and support the following:</p>
+          <p>Supports bus recovery when peripheral is hung (watchdog mechanism).</p>
+          <p>Sustain multiple targets stress for more than 1 hour.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.NearFieldProximity</h2>
+      <div id="sectionSection4" class="section">
+        <p>Near Field Proximity is a set of short range wireless technologies to enable communication between a personal computer and a device.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.NearFieldProximity.NFCCertification</p>
+              <p>Device.BusController.NearFieldProximity.NFCControllerNCICompliance</p>
+              <p>Device.BusController.NearFieldProximity.ProviderImplementation</p>
+              <p>Device.BusController.NearFieldProximity.ProximityReliability</p>
+              <p>Device.BusController.NearFieldProximity.RangeOfActuation</p>
+              <p>Device.BusController.NearFieldProximity.SessionEstablishmentPerformance</p>
+              <p>Device.BusController.NearFieldProximity.TaptoSetupScenario</p>
+              <p>Device.BusController.NearFieldProximity.TapToUseScenarios</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.NFCCertification</h3>
+        <div class="subSection">
+          <p>NFC Implementations must receive NFC certification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider that implements air interface specifications incorporated by NFC Forum by reference as approved specifications must receive Certification from the NFC Forum, inclusive of: </p>
+          <p>Wave 1 compliance</p>
+          <p>SNEP compliance</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.NFCControllerNCICompliance</h3>
+        <div class="subSection">
+          <p>Devices that implement NFC technology must be compliant with the NFC Controller Interface Specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFC controller in a system or device must be compliant with the NFC Controller Interface (NCI) Specification 1.0 or later. The NFCForum-TS-NCI-1.0 technical specification defines a transport independent communication protocol, using RF Interfaces, to enable a standardized way to communicate between the NFC Controller (NFCC) and a Device Host (DH).</p>
+          <p>The NFCForum-TS-NCI-1.0 Technical Specification is available at http://www.nfc-forum.org/specs/</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.ProviderImplementation</h3>
+        <div class="subSection">
+          <p>Device proximity adheres to the Proximity Provider model</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any technology that implements the GUID_DEVINTERFACE_PROXIMITYPROVIDER device driver interface specified in the 'Windows 8 Near Field Proximity Implementation Specification' document is defined as an NFP provider and must meet all the design and implementation requirements laid out within the spec as well as all other applicable NFP certification requirements. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.ProximityReliability</h3>
+        <div class="subSection">
+          <p>Proximity provider meets session reliability requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider must support performant completion of Windows scenarios.  Within a period of 2.5 minutes the devices must be able to establish 95 successful sessions out of 100 attempts.  The test scenario consists of: </p>
+          <p>Provide two machines to carry out the test with a test app.</p>
+          <p>Tap the two machines together.</p>
+          <p>Validate that a session is established between the two devices within one second.  </p>
+          <p>Repeat from step 2. </p>
+          <p>Attempt this 100 times</p>
+          <p>A pass is recorded if at least 95 sessions are established.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.RangeOfActuation</h3>
+        <div class="subSection">
+          <p>Proximity technology meets range of actuation</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider must support an effective operating volume to enable users to successfully use NFP technology with Windows in 95 times out of 100 attempts for all tap and do scenarios.  Refer to the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document for detailed placement guidance, as well as acceptable, minimum, and maximum values for the required effective operating volume. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.SessionEstablishmentPerformance</h3>
+        <div class="subSection">
+          <p>Proximity technology establishes a session in 0.5 second</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider must support the creation of sessions within 0.5 seconds from the point of being detected within the effective operating volume. As a point of information, the baseline expected performance in this test for NFC is as follows: </p>
+          <p>One instance of the same app on two systems attempt to establish a session. </p>
+          <p>During the session establishment, the total data transferred at the SNEP layer should be no more than 11kb. </p>
+          <p>The expected worst-case transfer rate for NFC is 106kbps, so the total time required at the air interface should be 11kb/106kbps, so 0.103 seconds of time. </p>
+          <p>The remaining 0.307 seconds of time is for buffering and latency in the busses and stacks.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.TaptoSetupScenario</h3>
+        <div class="subSection">
+          <p>Provider must support the handling of the tap and setup scenario</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider must unwrap the out-of-band pairing information from the transmission format so that only the out-of-band pairing information is presented to Windows.  Detailed guidance and requirements are further defined in the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.NearFieldProximity.TapToUseScenarios</h3>
+        <div class="subSection">
+          <p>Provider must support the handling of the tap and use scenarios</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An NFP provider must support the end-to-end NFP use cases of tap and use, tap and launch, tap and share, tap and acquire, and tap and receive. Details are further defined in the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.SdioController</h2>
+      <div id="sectionSection5" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.SdioController.ComplyWithIndustrySpec</p>
+              <p>Device.BusController.SdioController.WdfKmdfDriver</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.SdioController.ComplyWithIndustrySpec</h3>
+        <div class="subSection">
+          <p>SDIO Controller Complies with industry Standard</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.SdioController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Secure Digital I/O (SDIO) host controllers must comply with PCI 2.3 or later requirements for that interface. For PCI configuration registers and interface information, see the SD Host Controller Specification, Version 1.0, Appendix A.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.SdioController.WdfKmdfDriver</h3>
+        <div class="subSection">
+          <p>SDIO Controller driver must be a WDF KMDF Implementation</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.SdioController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The SDIO Controller driver must be written using the Windows Driver Framework (WDF) Kernel Mode Driver Framework for the driver's implementation.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.UART</h2>
+      <div id="sectionSection6" class="section">
+        <p>The requirements apply only to silicon vendors. UART controller drivers are recommended to use SerCXV2.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.UART.Cancellation</p>
+              <p>Device.BusController.UART.DMA</p>
+              <p>Device.BusController.UART.FlowControl</p>
+              <p>Device.BusController.UART.FlushFIFO</p>
+              <p>Device.BusController.UART.HCKTestability</p>
+              <p>Device.BusController.UART.IdlePowerManagement</p>
+              <p>Device.BusController.UART.Performance</p>
+              <p>Device.BusController.UART.ReadWrite</p>
+              <p>Device.BusController.UART.Stress</p>
+              <p>Device.BusController.UART.SupportedBaudRates</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.UART.Cancellation</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support cancellation of Read and Write requests</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>Controller implements necessary logic to support I/O cancellation</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Once we see the V2 silicon, we will need to validate if all sequences are required or if some need to be changed to optional.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.DMA</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers require DMA support for appropriate DMA Transactions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>Peripheral driver can issue read and write request to the controller max at 5K data size.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.FlowControl</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support setting flow control on and off</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>Driver implements support for IOCTL_SERIAL_GET_HANDFLOW and IOCTL_SERIAL_SET_HANDFLOW IOCTLs and flow control settings</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.FlushFIFO</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support Flush FIFOs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the ability to Flush FIFO queues.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.HCKTestability</h3>
+        <div class="subSection">
+          <p>Systems with UART Controllers must expose correct ACPI table information and UART pin-outs to enable HCK testability</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The objective of this requirement is to enable the UART controller to be testable by the HCK framework. </p>
+          <p>Details:</p>
+          <p>Controller under test must provide UART external connectivity pin-out(Rx,Tx, RTS, CTS and GND)</p>
+          <p>Describe HCK UART test peripheral driver and its connection to UART controller under test in device’s firmware.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.IdlePowerManagement</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support Idle Power Management</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>Controller transitions to Dx state when there is no pending I/O in the controller for 200 ms.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.Performance</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers has a measured baud rate that matches the expected value</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework  that the measured baud rate matches the expected value .</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.ReadWrite</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support read/write Unicode(8 bits) data</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following when reading data from an UART peripheral:</p>
+          <p>•Support IOCTL_SERIAL_SET_LINE_CONTROL and IOCTL_SERIAL_GET_LINE_CONTROL and be able to transfer data according to the data length settings(8 bits).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.Stress</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Driver operates correctly (and recovers appropriately from bus errors) under prolonged stress conditions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>•Sustain stress test passes for at least 1 hour.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UART.SupportedBaudRates</h3>
+        <div class="subSection">
+          <p>UART Controller and Controller Drivers support basic baud rate 115200 and faster speed for higher bandwidth communications</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UART</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The UART controller and associated controller driver must confirm to the Serial framework and support the following:</p>
+          <p>•Driver supports IOCTL_SERIAL_SET_BAUD_RATE and IOCTL_SERIAL_GET_BAUD_RATE IOCTL.</p>
+          <p>•Driver should fail baud rate setting for non-supported baud rate and is able perform I/O using the baud rate set.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.BusController.UsbController</h2>
+      <div id="sectionSection7" class="section">
+        <p>Requirements that apply to USB Controllers</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.BusController.UsbController.ImplementAtLeastOneXhciSpcStructForUSB2</p>
+              <p>Device.BusController.UsbController.MaintainDeviceStateOnResumeS1andS3</p>
+              <p>Device.BusController.UsbController.MustResumeWithoutForcedReset</p>
+              <p>Device.BusController.UsbController.PreserveDeviceStateAfterDisableEnable</p>
+              <p>Device.BusController.UsbController.SpecificationCompliance</p>
+              <p>Device.BusController.UsbController.SuperSpeedConnectorsSupportHighFullLow</p>
+              <p>Device.BusController.UsbController.SupportSelectiveSuspend</p>
+              <p>Device.BusController.UsbController.TestedUsingMicrosoftUsbStack</p>
+              <p>Device.BusController.UsbController.UsbifCertification</p>
+              <p>Device.BusController.UsbController.XhciAc64Bit</p>
+              <p>Device.BusController.UsbController.XhciAddInCardsMapPortsConsistently</p>
+              <p>Device.BusController.UsbController.XhciAddInCardsReportInternalDevices</p>
+              <p>Device.BusController.UsbController.XhciSupportDebuggingOnAllExposedPorts</p>
+              <p>Device.BusController.UsbController.XhciSupportMsiMsixInterrupts</p>
+              <p>Device.BusController.UsbController.XhciSupportsMinimum31Streams</p>
+              <p>Device.BusController.UsbController.XhciSupportsRuntimePowerManagement</p>
+              <p>Device.BusController.UsbController.XhciVersionCompliant</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.BusController.UsbController.ImplementAtLeastOneXhciSpcStructForUSB2</h3>
+        <div class="subSection">
+          <p>xHCI Controllers implement at least one xHCI Supported Protocol Capability structure for USB 2.0</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) controllers implement at least one xHCI Supported Protocol Capability structure for USB 2.0 as described in section 7.2 of the xHCI Specification.This affects backward compatibility with USB 2.0.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.MaintainDeviceStateOnResumeS1andS3</h3>
+        <div class="subSection">
+          <p>USB host controller maintains device state on resume from S1 or S3</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>For the host controller to maintain the device state, the USB host controller must not issue a USB bus reset on a system sleep state transition from S3 to S0 or from S1 to S0. USB host controllers that are integrated or embedded into the south bridge chipset must decouple the USB bus reset from the PCI bus reset to reduce resume time. Resume operations from S1 or S3 must not generate USB bus resets. A USB bus reset is a reset signal that is sent over the USB bus to USB devices that are connected to the USB host controller.  Systems that have a USB keyboard attached are allowed to perform USB bus resets to unlock the system by using a password when the system resumes from S3.For security purposes, the BIOS in a mobile system is allowed to issue a USB bus reset if the system is attached to a docking station that has a hard disk drive (HDD) that is password-locked on first resume. A reset of the HDD password is allowed whether or not the mobile system is docked. The following scenarios are allowed: </p>
+          <p>Undocked systems with a password-enabled HDD</p>
+          <p>Docked systems with a password-enabled HDD</p>
+          <p>Addition or removal of an HDD</p>
+          <p>If the docking station does not have a native HDD or the docking station does not have a password, the BIOS must not issue a USB bus reset.It is acceptable to allow the controller to lose power in S3 when the system is on battery power.Design Notes:  See the Enhanced Host Controller Interface Specification for Universal Serial Bus, Revision 1.0, Appendix A.This requirement does not apply to Systems that Support Connected Standby. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.MustResumeWithoutForcedReset</h3>
+        <div class="subSection">
+          <p>All USB host controllers work properly upon resume from sleep, hibernation or restart without a forced reset.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB host controllers work properly upon resume from sleep, hibernation or restart without a forced reset of the USB host controllerDesign Notes:A reset of the entire USB Host Controller results in significantly increased time that it takes for all USB devices to become available after system resume since there could be only one device at address 0 at a time, this enumeration has to be serialized for all USB devices on the bus. We have also seen that resetting the host controller can lead to an illegal SE1 signal state on some host controllers, which in turn can cause some USB devices to hang or drop off the bus. Moreover, devices cannot maintain any private state across sleep resume as that state will be lost on reset.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.PreserveDeviceStateAfterDisableEnable</h3>
+        <div class="subSection">
+          <p>USB controller preserves device states after a disable and re-enable</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a USB controller is disabled and then re-enabled, all devices that were attached to the controller before the USB controller was disabled are required to be present after the USB controller is re-enabled. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.SpecificationCompliance</h3>
+        <div class="subSection">
+          <p>USB host controller that supports USB functionality complies with the appropriate specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Host controllers that provide USB 1.1 functionality but don't provide USB 2.0 or USB 3.0 functionality must comply with either the Open Host Controller Interface (OHCI) Specification for USB or the Universal Host Controller Interface (UHCI) Design Guide, Revision 1.1. Host controllers that provide USB 2.0 functionality but don't provide USB 3.0 functionality must comply with the Enhanced Host Controller Interface Specification (EHCI) for Universal Serial Bus 2.0. EHCI host controllers must comply with the Enhanced Host Controller Interface Specification for Universal Serial Bus, Revision 1.0 or later.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.SuperSpeedConnectorsSupportHighFullLow</h3>
+        <div class="subSection">
+          <p>Exposed Super Speed capable connectors support high, full and low speed USB devices</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) controllers are backward-compatible with high-speed, full-speed, and low-speed USB devices. "Backward compatible" means that all USB devices enumerate and function at their intended speeds.This requirement ensures that low-, full-, and high-speed devices continue to work when xHCI controllers become more prevalent in systems. Design Notes:  Integrated rate-matching (TT) hubs can be used to achieve this backward compatibility.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.SupportSelectiveSuspend</h3>
+        <div class="subSection">
+          <p>USB Host Controller supports selective suspend</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A USB host controller can selectively suspend devices that support the selective suspend feature.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.TestedUsingMicrosoftUsbStack</h3>
+        <div class="subSection">
+          <p>xHCI Controllers must be tested with Microsoft's xHCI Stack installed</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) Controllers must be tested with Microsoft's xHCI stack installed and enabled on a Windows system.Note: During USB-IF self testing a specific USB Test Stack is installed for testing purposes, this is expected and acceptable. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.UsbifCertification</h3>
+        <div class="subSection">
+          <p>USB Host Controller is USB IF certified</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Starting June 1, 2011, USB host controllers must pass USB Implementers Forum (IF) testing.For details see the following link:http://msdn.microsoft.com/en-us/windows/hardware/gg463175.aspxNote: Since USB-IF is currently not certifying controllers for Windows on ARM systems, the Windows on ARM controllers are exempt from needing to get full USB-IF certification. Instead the WoA controllers are expected to pass all Windows Hardware Certification tests which include eventing, loop back and registers tests that get run as part of USB-IF certification.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Systems that Support Connected Standby may pass a subset of USB-IF tests instead of being USB-IF certified, since USB-IF does not certify Systems that Support Connected Standby.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciAc64Bit</h3>
+        <div class="subSection">
+          <p>xHCI Controllers set the AC64 bit in the HCCPARAMS register to 1</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>xHCI Controllers set the AC64 bit in the HCCPARAMS register to 1 as described in Section 5.3.6 of the xHCI specification.Therefore the controller must support:</p>
+          <p>64-bit addressing, described in section 5.3.6, and</p>
+          <p>64-bit register access, described in section 5.1.</p>
+          <p>Design notes:Checking for AC64 to be set is a simple register check in the compliance driver.To test 64-bit addressing, we will need to require the WLK user's client system to have at least 6GB of RAM.  The test will use MmAllocateContiguousMemorySpecifyCache to get physical memory above 4GB.  It will validate in some way that the controller can access this memory area.The test will try writing one or more registers using a 64-bit register access and reading back using 64-bit register access to confirm that registers are updated correctly.  An example of a reasonable register to test is: "Event Ring Segment Table Base Address Register (ERSTBA)" (section 5.3.2.3.2).If AC64 is not set, there is nothing to test.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This Requirement does NOT apply to Systems that Support Connected Standby.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciAddInCardsMapPortsConsistently</h3>
+        <div class="subSection">
+          <p>xHCI add in cards must map USB 3.0 and USB 2.0 ports consistently</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Consistent USB 2.0 and USB 3.0 port mapping is required to help the operating system to effectively manage the ports.  Note: This requirement only applies to add-in cards because port mapping for integrated xHCI controllers should be performed via Advanced Configuration and Power Interface (ACPI). For more information, see the SYSFUND 226 requirement.For Extensible Host Controller Interface (xHCI) add-in cards (where "add-in card" is defined as a card that is not integrated onto the motherboard), the complexity of this requirement varies significantly depending on whether the add-in card contains any internal (integrated or embedded) hubs. If there are no internal hubs, then the port numbering must correlate as given in xHCI v1.x Specification. That is, the first USB 3.0 port must be connected to the same connector as the first 2.0 port, the second with the second, and so on. For example, if the USB 2.0 ports are numbered 1 and 2, and the USB 3.0 ports are numbered 3 and 4, ports 1 and 3 must map to the same connector, and ports 2 and 4 must map to the same connector. For more information, see the xHCI v1.x Specification, sections 4.24.2.1 and 4.24.2.2. If the host does not have any internal hubs, then the remaining text of this requirement can be ignored.However, if there are internal hubs (either integrated or embedded), then the requirement is more involved. Note that strictly speaking, XHCI specification does not allow such hubs for add-in cards because the port mapping information cannot be communicated to the software via ACPI. But through this requirement, we are allowing such hubs and defining the required port mapping. However, this mechanism has some limitations and it does not allow arbitrary configurations that are allowed for integrated controllers when described by ACPI.For add-in cards, xHCI host controllers may implement "integrated hubs" and/or "embedded hubs" as defined in xHCI specification sections 4.24.2.1 and 4.24.2.2.  Embedded hubs need not be limited to being on the system board.  However, the following limitations apply:</p>
+          <p>Embedded hubs of add-in cards must be USB 3.0 hubs (this limitation is unique to the scenario of this requirement and not part of the xHCI specification).</p>
+          <p>An add-in card may have at most 1 integrated hub.</p>
+          <p>If an add-in card has an integrated hub, it must have only 1 USB2 protocol port on the root hub.  This port is the port connected to the integrated hub.</p>
+          <p>An add-in xHCI card that implements an integrated hub must set the Integrated Hub Implemented (IHI) bit in the USB 2.0 xHCI Supported Protocol Capability structure to '1' for the root hub port connected to an integrated hub (refer to section 7.2.2.1.3.2 of the xHCI specification).</p>
+          <p>All integrated or embedded hubs must be marked non-removable in their parent ports.</p>
+          <p>The implementation of integrated hubs determines the External Ports of the controller.  External Ports are a concept defined in section 4.24.2 of the xHCI specification to order ports so that they can be mapped to connectors.  In all cases, let there be n USB2 protocol External Ports numbered 1 to n, and m USB3 protocol External Ports numbered n+1 to n+m. External Port numbers are assigned to meet the following properties (not defined in the xHCI specification).  Note that integrated hubs must be USB 2.0 hubs.</p>
+          <p>If the xHCI implements an integrated hub, then n, the number of USB2 protocol External Ports, equals the number of downstream facing ports on the integrated hub.</p>
+          <p>Otherwise, n equals the number of downstream facing USB2 protocol ports on the root hub.</p>
+          <p>m, the number of USB3 protocol External Ports, equals the number of downstream facing USB3 protocol ports on the root hub.</p>
+          <p>Assign External Port numbers such that External Ports 1 through n are USB2 protocol ports and External Ports n+1 through n+m are USB3 protocol external ports, and the ordering ports within each protocol is preserved.</p>
+          <p> If embedded hub(s) are not present: The USB2 protocol External Ports and USB3 protocol External Ports must be mapped to connectors using the "default" mapping described in section 4.24.2.2 of the xHCI specification under the heading "When an Embedded hub is not implemented".If embedded hub(s) are present: The embedded hubs must be USB 3.0 hubs.  First determine the connector mapping as it would be without any embedded hubs, using the "default" mapping from section 4.24.2.2 of the xHCI specification.  For each embedded hub, both upstream ports must be connected to the same connector.  The embedded hubs' downstream ports map to new connectors in the same way as the ports of a non-embedded USB 3.0 hub.Non-exposed connectors: Devices embedded in the host controller must be marked non-removable in their parent ports.  If, according to the connector mapping above, a non-removable peripheral device's connector is shared with a second port, the second port must not be connected or connectable to any device.  On the other hand, any connector whose port(s) are all marked as removable is considered to be an exposed connector, i.e. it must be physically connectable.Note that if there is no ACPI information, a root hub cannot have both an embedded USB2 device and an integrated USB2 hub; instead, the embedded device must be attached to the integrated hub. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This Requirement does NOT apply to Systems that Support Connected Standby</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciAddInCardsReportInternalDevices</h3>
+        <div class="subSection">
+          <p>xHCI controller add in cards correctly report internally attached devices</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) controllers must indicate internally attached devices by setting the device removable (DR) bit in the PORTSC register to 1 for every port that has an internally attached device. This applies to controllers that do not have ACPI information. For more information, see section 5.4.8 of the xHCI Specification. </p>
+          <p>This requirement will prevent the operating system from flagging non-removable devices as removable.</p>
+          <p>Add-in cards are defined as host controllers that are not integrated onto the motherboard.</p>
+          <p>Design Notes:Note: This requirement only applies to add-in cards because port mapping for integrated xHCI controllers should be performed via Advanced Configuration and Power Interface (ACPI). </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciSupportDebuggingOnAllExposedPorts</h3>
+        <div class="subSection">
+          <p>xHCI Controllers support USB debugging on all exposed ports</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) host controllers are debug-capable on all ports. Ports that have embedded non-removable devices attached do not need to report debug capability.  </p>
+          <p>USB debugging is defined in section 7.6 of the xHCI specification.  </p>
+          <p>This requirement does not apply to add-in card host controllers.  </p>
+          <p>This requirement is effective as of June 2012. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciSupportMsiMsixInterrupts</h3>
+        <div class="subSection">
+          <p>xHCI Controllers support MSI and/or MSI-X interrupts</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extensible Host Controller Interface (xHCI) controllers support Message Signaled Interrupts (MSI) and MSI-X interrupts as defined in section 6.8 of the PCI Local Bus Specification, revision 3.0 and section 5.2.6 of the xHCI Specification.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This Requirement does NOT apply to Systems that Support Connected Standby</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciSupportsMinimum31Streams</h3>
+        <div class="subSection">
+          <p>xHCI controller must support at least 31 primary streams per endpoint</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Refer to the eXtensible Host Controller Interface specification, section 4.12.2.This requirement is for the MaxPSASize in the HCCPARAMS to be set to 4 at the minimum to enable ultimate data transfer rate with UAS devices. Storage devices based on the USB Attached SCSI Protocol (UASP) will utilize streams to achieve faster data transfer rates.  To enable the best experience with these devices, every xHCI controller will need to support at least 31 primary streams.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciSupportsRuntimePowerManagement</h3>
+        <div class="subSection">
+          <p>USB xHCI host controllers support runtime power management including, if implemented, runtime wake</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB xHCI host controllers must support runtime power management, as required by the eXtensible Host Controller Interface specification, version 1.0, Section 4.15.Runtime is defined as the system working state (S0), including the Connected Standby sub-state of S0 if the controller is tested on a system that supports Connected Standby.Power management of the host controller encompasses software-initiated idle power down (controller low power state such as D3), software-initiated power up, and, optionally, hardware-initiated wake signaling.If the xHCI controller is reported to support runtime wake signaling, it must be able to wake itself successfully upon any of the following events:A) Any port detecting device wake signaling, orB) Any port detecting connect, disconnect, or overcurrent, when the corresponding PORTSC Wake on Xxx bit is set to '1'.For more details, see Section 4.15 of the xHCI specification.To report whether the controller supports runtime wake signaling:- For add-in controllers, the controller's PCI configuration space must accurately report whether the controller is capable of waking up via PME.  Note: reporting that the controller supports waking up via PME implies that the controller can both successfully perform PCI wake at runtime, and successfully wake the system from a system low power state, in accordance with the appropriate PCI specification.- For integrated controllers, the ACPI _S0W object must report whether the controller is capable of runtime wake signaling.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.BusController.UsbController.XhciVersionCompliant</h3>
+        <div class="subSection">
+          <p>USB 3.0 controllers are XHCI version compliant</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.BusController.UsbController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Effective June 1, 2012, USB 3.0 controllers must comply with the Extensible Host Controller Interface (xHCI) Specification version 1.0. and any USB-IF Errata that are released by the USB-IF. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="tdh3qXRG4CbHISrzgx885vyyrcoaTmyKbNfiZVWMYI60PD1_1jv7MSqlRLent0q7Wb7Go5OVwMbttvLD4s2upyLMR8VaU-EncZmiGDWEzZQdSeBblKHRqKYkUmIfwUJC-SAS-Q2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj134352" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134352" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="voZ-66G25wFBG7XAi1uezo3PnRpcmv5vgvY1MUHq9LX0K5VMvWbziSZahXx-l4ZSECRPmuagZ6Kh7nBefjIQsIiOKibyqXPsQAiKLrLUQIpajvYFggVljJxpB8MXfxxx2mqY_A2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134352(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"dbbdbc41-583a-4148-b44a-1892a80f346a\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134352 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

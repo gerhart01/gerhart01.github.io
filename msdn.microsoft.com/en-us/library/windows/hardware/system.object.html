@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/system.object(v=vs.110).aspx" />
+        <title>Object Class (System)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/e5kfa45b(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/e5kfa45b(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/e5kfa45b(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="DCSext.ProductFamily" content="LIB_DG" />
+
+<meta name="DCSext.Product" content="NDP_CLR" />
+
+<meta name="DCSext.Title" content="Object Class" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/e5kfa45b(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="MN" content="61C41DD4-9:36:10 AM" />
+
+<meta name="Search.ShortId" content="e5kfa45b" />
+
+<meta name="ms.shortidmsdn" content="e5kfa45b" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,0:VersionSelector,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=2BBEAFF1AA4797D661BA410B9D98FE02" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074170&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fsystem.object.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+<div class="topicNotInScope" id="topicNotInScope">
+    <div class="topicNotInScopeDisclaimer" id="topicNotInScopeDisclaimer">
+        <div class="topicNotInScopeImageContainer clip16x16">
+            <img class="topicNotInScopeInformationImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Information" />
+        </div>
+        <div class="topicNotInScopeSwitchCollectionContainer">
+            <a class="topicNotInScopeSwitchCollection" id="topicNotInScopeSwitchCollection" href="#" onclick="TopicNotInScope_ShowPicker();return false;">
+                Switch
+            </a>
+            <div class="topicNotInScopeImageContainer2 clip11x6">
+                <img class="topicNotInScopeDropdownImage" id="topicNotInScopeDropdownImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Switch" onclick="TopicNotInScope_ShowPicker()" />
+            </div>
+             <ul id="topicNotInScopeCollectionPicker" class="topicNotInScopeCollectionPicker">
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/library/vstudio/system.object.aspx" title="Visual Studio">Visual Studio</a>
+                        </li>
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" title="MSDN Library">MSDN Library</a>
+                        </li>
+            </ul>
+        </div>
+        <div class="topicNotInScopeDisclaimerText">The topic you requested is included in another documentation set. For convenience, it's displayed below. Choose Switch to see the topic in its original location.</div>
+        <div class="Clear"></div>
+    </div>
+</div>
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+    <h1 class="title">Object Class</h1>
+    
+    <div class="lw_vs">
+      <div id="curversion">
+        <strong>
+            .NET Framework 4.5
+        </strong>
+      </div>
+      <div id="versionclick">
+        <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+        <div>
+          <div>
+            <a id="vsLink" href="javascript:;">
+                        Other Versions
+                    </a>
+          </div>
+          <div class="cl_vs_arrow clip10x10">
+            <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" />
+          </div>
+        </div>
+        <ul id="vsPanel">
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.100).aspx" title="">.NET Framework 4</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.90).aspx" title="">.NET Framework 3.5</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.85).aspx" title="">.NET Framework 3.0</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.80).aspx" title="">.NET Framework 2.0</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.71).aspx" title="">.NET Framework 1.1</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object(v=vs.95).aspx" title="">Silverlight </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    
+    <div id="mainSection">
+      <div id="mainBody">
+        <p>
+          
+        </p>
+        <div>
+          <div class="summary">
+            <p>Supports all classes in the .NET Framework class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all classes in the .NET Framework; it is the root of the type hierarchy.</p>
+          </div>
+        </div>
+        <div>
+          
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Inheritance Hierarchy</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="familyToggle">
+              
+            </a>
+            <span class="selflink">System<span xmlns="">.</span>Object</span>
+            <br />  <em>All classes, structures, enumerations, and delegates.</em></div>
+        </div>
+        <p>
+          
+        </p> <strong>Namespace:</strong> 
+   <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.aspx">System</a><br /> <strong>Assembly:</strong>
+   <span>mscorlib</span> (in mscorlib.dll)<div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Syntax</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="syntaxToggle"></a>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-1">C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx?cs-save-lang=1&amp;cs-lang=cpp#code-snippet-1">C++</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx?cs-save-lang=1&amp;cs-lang=fsharp#code-snippet-1">F#</a></div><div class="codeSnippetContainerTabActive" dir="ltr"><a>VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fd9c0a1e-ce93-4693-b918-3ac6d63c84a3');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fd9c0a1e-ce93-4693-b918-3ac6d63c84a3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">'Declaration</span>
+&lt;SerializableAttribute&gt; _
+&lt;ComVisibleAttribute(<span style="color:Blue;">True</span>)&gt; _
+&lt;ClassInterfaceAttribute(ClassInterfaceType.AutoDual)&gt; _
+<span style="color:Blue;">Public</span> <span style="color:Blue;">Class</span> <span style="color:Blue;">Object</span>
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div></div><p>The <span class="selflink">Object</span> type exposes the following members.</p><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Constructors</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="constructorTableToggle"></a><table id="memberList" class="members"><tr><th class="iconColumn">
+               
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.object.aspx">Object</a></td><td><span>Initializes a new instance of the <span><span class="selflink">Object</span></span> class.</span></td></tr></table><a href="#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Methods</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="methodTableToggle"></a><table id="memberList1" class="members"><tr><th class="iconColumn">
+               
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bsc2ak47.aspx">Equals(Object)</a></td><td><span>Determines whether the specified object is equal to the current object.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;static;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="static" alt="Static member" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Static member" xmlns="" class="cl_IC130242" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/w4hkze5k.aspx">Equals(Object, Object)</a></td><td><span>Determines whether the specified object instances are considered equal.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/protected;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="protmethod" alt="Protected method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Protected method" xmlns="" class="cl_IC155188" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.finalize.aspx">Finalize</a></td><td><span>Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.gethashcode.aspx">GetHashCode</a></td><td><span>Serves as the default hash function. </span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.gettype.aspx">GetType</a></td><td><span>Gets the <span><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.type.aspx">Type</a></span> of the current instance.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/protected;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="protmethod" alt="Protected method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Protected method" xmlns="" class="cl_IC155188" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.memberwiseclone.aspx">MemberwiseClone</a></td><td><span>Creates a shallow copy of the current <span><span class="selflink">Object</span></span>.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;static;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="static" alt="Static member" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Static member" xmlns="" class="cl_IC130242" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.referenceequals.aspx">ReferenceEquals</a></td><td><span>Determines whether the specified <span><span class="selflink">Object</span></span> instances are the same instance.</span></td></tr><tr data="http://msdn.microsoft.com/en-us/library/windows/hardware/public;declared;xnafw;portable_library;Windows_store_apps;"><td><img id="pubmethod" alt="Public method" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Public method" xmlns="" class="cl_IC91302" /><img id="xna" alt="Supported by the XNA Framework" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Supported by the XNA Framework" xmlns="" class="cl_IC37116" /><img id="PortableClassLibrary" alt="Supported by Portable Class Library" src="http://i.msdn.microsoft.com/dynimg/IC477625.png" title="Supported by Portable Class Library" xmlns="" /><img id="storebag" alt="Supported in .NET for Windows Store apps" src="http://i.msdn.microsoft.com/dynimg/IC628630.png" title="Supported in .NET for Windows Store apps" xmlns="" /></td><td><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.tostring.aspx">ToString</a></td><td><span>Returns a string that represents the current object.</span></td></tr></table><a href="#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Remarks</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="remarksToggle"></a><p>Languages typically do not require a class to declare inheritance from <span><span class="selflink">Object</span></span> because the inheritance is implicit.</p><p>Because all classes in the .NET Framework are derived from <span><span class="selflink">Object</span></span>, every method defined in the <span><span class="selflink">Object</span></span> class is available in all objects in the system. Derived classes can and do override some of these methods, including: </p><ul><li><p><span><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.equals.aspx">Equals</a></span> - Supports comparisons between objects.</p></li><li><p><span><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.finalize.aspx">Finalize</a></span> - Performs cleanup operations before an object is automatically reclaimed.</p></li><li><p><span><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.gethashcode.aspx">GetHashCode</a></span> - Generates a number corresponding to the value of the object to support the use of a hash table.</p></li><li><p><span><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.tostring.aspx">ToString</a></span> - Manufactures a human-readable text string that describes an instance of the class.</p></li></ul><h3 class="subHeading">Performance Considerations</h3><div class="subsection"><p>If you are designing a class, such as a collection, that must handle any type of object, you can create class members that accept instances of the <span><span class="selflink">Object</span></span> class. However, the process of boxing and unboxing a type carries a performance cost. If you know your new class will frequently handle certain value types you can use one of two tactics to minimize the cost of boxing. </p><ul><li><p>Create a general method that accepts an <span><span class="selflink">Object</span></span> type, and a set of type-specific method overloads that accept each value type you expect your class to frequently handle. If a type-specific method exists that accepts the calling parameter type, no boxing occurs and the type-specific method is invoked. If there is no method argument that matches the calling parameter type, the parameter is boxed and the general method is invoked. </p></li><li><p>Design your type and its members to use generics. The common language runtime creates a closed generic type when you create an instance of your class and specify a generic type argument. The generic method is type-specific and can be invoked without boxing the calling parameter. </p></li></ul><p>Although it is sometimes necessary to develop general purpose classes that accept and return <span><span class="selflink">Object</span></span> types, you can improve performance by also providing a type-specific class to handle a frequently used type. For example, providing a class that is specific to setting and getting Boolean values eliminates the cost of boxing and unboxing Boolean values.</p></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Examples</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="exampleToggle"></a><p>The following example defines a Point type derived from the <span><span class="selflink">Object</span></span> class and overrides many of the virtual methods of the <span><span class="selflink">Object</span></span> class. In addition, the example shows how to call many of the static and instance methods of the <span><span class="selflink">Object</span></span> class.</p><div>
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-2">C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx?cs-save-lang=1&amp;cs-lang=cpp#code-snippet-2">C++</a></div><div class="codeSnippetContainerTabActive" dir="ltr"><a>VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_430a7331-c372-43f8-a146-a13c166fedbe');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_430a7331-c372-43f8-a146-a13c166fedbe" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">' The Point class is derived from System.Object. </span>
+<span style="color:Blue;">Class</span> Point
+    <span style="color:Blue;">Public</span> x, y <span style="color:Blue;">As</span> <span style="color:Blue;">Integer</span> 
+
+    <span style="color:Blue;">Public</span> <span style="color:Blue;">Sub</span> <span style="color:Blue;">New</span>(<span style="color:Blue;">ByVal</span> x <span style="color:Blue;">As</span> <span style="color:Blue;">Integer</span>, <span style="color:Blue;">ByVal</span> y <span style="color:Blue;">As</span> <span style="color:Blue;">Integer</span>) 
+        <span style="color:Blue;">Me</span>.x = x
+        <span style="color:Blue;">Me</span>.y = y
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Sub</span> 
+
+    <span style="color:Blue;">Public</span> <span style="color:Blue;">Overrides</span> <span style="color:Blue;">Function</span> <span style="color:Blue;">Equals</span>(<span style="color:Blue;">ByVal</span> obj <span style="color:Blue;">As</span> <span style="color:Blue;">Object</span>) <span style="color:Blue;">As</span> <span style="color:Blue;">Boolean</span>  
+        <span style="color:Green;">' If Me and obj do not refer to the same type, then they are not equal. </span>
+        <span style="color:Blue;">Dim</span> objType <span style="color:Blue;">As</span> Type = obj.<span style="color:Blue;">GetType</span>()
+        <span style="color:Blue;">Dim</span> meType  <span style="color:Blue;">As</span> Type = <span style="color:Blue;">Me</span>.<span style="color:Blue;">GetType</span>()
+        <span style="color:Blue;">If</span> <span style="color:Blue;">Not</span> objType.<span style="color:Blue;">Equals</span>(meType) <span style="color:Blue;">Then</span> 
+            <span style="color:Blue;">Return</span> <span style="color:Blue;">False</span> 
+        <span style="color:Blue;">End</span> <span style="color:Blue;">If</span>  
+        <span style="color:Green;">' Return true if  x and y fields match. </span>
+        <span style="color:Blue;">Dim</span> other <span style="color:Blue;">As</span> Point = <span style="color:Blue;">CType</span>(obj, Point)
+        <span style="color:Blue;">Return</span> <span style="color:Blue;">Me</span>.x = other.x <span style="color:Blue;">AndAlso</span> <span style="color:Blue;">Me</span>.y = other.y
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Function</span>  
+
+    <span style="color:Green;">' Return the XOR of the x and y fields. </span>
+    <span style="color:Blue;">Public</span> <span style="color:Blue;">Overrides</span> <span style="color:Blue;">Function</span> GetHashCode() <span style="color:Blue;">As</span> <span style="color:Blue;">Integer</span>  
+        <span style="color:Blue;">Return</span> (x &lt;&lt; 1) <span style="color:Blue;">XOr</span> y
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Function</span>  
+
+    <span style="color:Green;">' Return the point's value as a string. </span>
+    <span style="color:Blue;">Public</span> <span style="color:Blue;">Overrides</span> <span style="color:Blue;">Function</span> ToString() <span style="color:Blue;">As</span> <span style="color:Blue;">String</span>  
+        <span style="color:Blue;">Return</span> <span style="color:Blue;">String</span>.Format(<span style="color:#A31515;">"({0}, {1})"</span>, x, y)
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Function</span> 
+
+    <span style="color:Green;">' Return a copy of this point object by making a simple field copy. </span>
+    <span style="color:Blue;">Public</span> <span style="color:Blue;">Function</span> Copy() <span style="color:Blue;">As</span> Point 
+        <span style="color:Blue;">Return</span> <span style="color:Blue;">CType</span>(<span style="color:Blue;">Me</span>.MemberwiseClone(), Point)
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Function</span> 
+<span style="color:Blue;">End</span> <span style="color:Blue;">Class</span>   
+
+<span style="color:Blue;">NotInheritable</span> <span style="color:Blue;">Public</span> <span style="color:Blue;">Class</span> App
+    <span style="color:Blue;">Shared</span> <span style="color:Blue;">Sub</span> Main() 
+        <span style="color:Green;">' Construct a Point object. </span>
+        <span style="color:Blue;">Dim</span> p1 <span style="color:Blue;">As</span> <span style="color:Blue;">New</span> Point(1, 2)
+
+        <span style="color:Green;">' Make another Point object that is a copy of the first. </span>
+        <span style="color:Blue;">Dim</span> p2 <span style="color:Blue;">As</span> Point = p1.Copy()
+
+        <span style="color:Green;">' Make another variable that references the first Point object. </span>
+        <span style="color:Blue;">Dim</span> p3 <span style="color:Blue;">As</span> Point = p1
+
+        <span style="color:Green;">' The line below displays false because p1 and p2 refer to two different objects.</span>
+        Console.WriteLine([<span style="color:Blue;">Object</span>].ReferenceEquals(p1, p2))
+
+        <span style="color:Green;">' The line below displays true because p1 and p2 refer to two different objects  </span>
+        <span style="color:Green;">' that have the same value.</span>
+        Console.WriteLine([<span style="color:Blue;">Object</span>].<span style="color:Blue;">Equals</span>(p1, p2))
+
+        <span style="color:Green;">' The line below displays true because p1 and p3 refer to one object.</span>
+        Console.WriteLine([<span style="color:Blue;">Object</span>].ReferenceEquals(p1, p3))
+
+        <span style="color:Green;">' The line below displays: p1's value is: (1, 2)</span>
+        Console.WriteLine(<span style="color:#A31515;">"p1's value is: {0}"</span>, p1.ToString())
+
+    <span style="color:Blue;">End</span> <span style="color:Blue;">Sub</span> 
+<span style="color:Blue;">End</span> <span style="color:Blue;">Class</span> 
+<span style="color:Green;">' This example produces the following output: </span>
+<span style="color:Green;">' </span>
+<span style="color:Green;">' False </span>
+<span style="color:Green;">' True </span>
+<span style="color:Green;">' True </span>
+<span style="color:Green;">' p1's value is: (1, 2) </span>
+<span style="color:Green;">'</span>
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Version Information</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="versionsTitleToggle"></a><h4 class="subHeading">.NET Framework</h4>Supported in: 4.5.1, 4.5, 4, 3.5, 3.0, 2.0, 1.1, 1.0<br /><h4 class="subHeading">.NET Framework Client Profile</h4>Supported in: 4, 3.5 SP1<br /><h4 class="subHeading">Portable Class Library</h4>Supported in: Portable Class Library<br /><h4 class="subHeading">.NET for Windows Store apps</h4>Supported in: Windows 8<br /></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Platforms</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="platformsTitleToggle"></a><p>Windows 8.1, Windows Server 2012 R2, Windows 8, Windows Server 2012, Windows 7, Windows Vista SP2, Windows Server 2008 (Server Core Role not supported), Windows Server 2008 R2 (Server Core Role supported with SP1 or later; Itanium not supported)</p><p>  <span>
+		  The .NET Framework does not support all versions of every platform. For a list of the supported versions, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/8z6watww.aspx">.NET Framework System Requirements</a>.
+	  </span> </p></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Thread Safety</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="threadSafetyToggle"></a><p>Public static (<span><span class="input">Shared</span></span> in Visual Basic) members of this type are thread safe. Instance members are not guaranteed to be thread-safe.</p></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">See Also</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">Reference</h4><div class="seeAlsoStyle"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/system.aspx">System Namespace</a></div></div></div></div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="2Dw6i6RwUzEdJ_7ky8WNq3T03SER7afIRI1o-xSywWrrLyMwpYu2AsPxje0LFDAKKiVa4yLjHzKWw3wyLshqxK3yphj3ThwUyNlHco686adtX4XfC6v82gEPz4CGKOXTESItxw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/system.object.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fsystem.object.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="Zo6lcLaBSG7IJqY4hxm4I4-8Pl4ZTI4RwMTArohevqeUYQE8KAytWp7pD2SlyzQiYuN4xt3NSrFZnRfT5DFrQDP5ZtmFydVAYQIpzp8JWmFoL1G7eNeDvj-Jca3aNl2HV0o99w2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/e5kfa45b(d=default,l=en-us,v=vs.110).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"899ef083-9123-477c-b83a-783b0c0d27a9\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=163E155D67DE384E263D6D4BD805ACAE" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expand\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Collapse\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Click to expand. Double-click to expand all.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Click to collapse. Double-click to collapse all.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Expand All\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Collapse All\u0027;" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:LibraryMemberFilter,1:Toc_Fixed,2:Rating,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1,/Areas/Epx/Themes/Base/Content:2\u0026amp;hashKey=F67222BED6724001B37F9581D94B5A03" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/system.object.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+</html>

@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh968306(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(v=vs.85).aspx" />
+        <title>How to enumerate USB pipes (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh968306(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD0-9:37:31 AM" />
+
+<meta name="Search.ShortId" content="hh968306" />
+
+<meta name="ms.shortidmsdn" content="hh968306" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074251&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh968306%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406260(v=vs.85).aspx" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539286(v=vs.85).aspx" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968308(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539199(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406225(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450848(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968307(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539193(v=vs.85).aspx" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to enumerate USB pipes</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic provides an overview of USB pipes and describes the steps required by a  USB client driver to obtain pipe handles from the USB driver stack.</p>
+<p>A <em>USB endpoint</em> is a buffer in the device that the client driver sends data to or receives data from. To send or receive data, the client driver submits an I/O transfer request to the USB driver stack, which presents the data to the host controller. The host controller then follows certain protocols (depending on the type of endpoint: bulk, interrupt, or isochronous) to build requests that transfer data  to or from the device. All details of the data transfer are abstracted from the client driver. As long as the client driver submits a well-formed request, the USB driver stack processes the request and transfers data to the device. 
+</p>
+<p>During device configuration, the USB driver stack creates a <em>USB pipe</em> (on the host side) for each of the device's endpoints defined in the USB interface and its active alternate setting. A USB pipe is a communication channel between the host controller and endpoint. For the client driver, a pipe is a logical abstraction of the endpoint. In order to send data transfers, the driver must get the pipe handle associated with the endpoint that is the target for the transfer. Pipe handles are also required when the driver wants abort transfers or reset the pipe, in case of error conditions.</p>
+<p>All attributes of a pipe are derived from the associated endpoint descriptor. For instance, depending on the type of the endpoint, the USB driver stack assigns a type for the pipe. For a bulk endpoint, the USB driver stack creates a bulk pipe; for an isochronous endpoint, an isochronous pipe is created, and so on. Another important attribute is the amount of data that the host controller can send to the endpoint point in a request. Depending on that value, the client driver must determine the layout of the transfer buffer. 
+</p>
+<p>Windows Driver Foundation (WDF)  provides specialized I/O target objects in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544396(v=vs.85).aspx">Kernel-Mode Driver Framework</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560456(v=vs.85).aspx">User-Mode Driver Framework</a> that simplify many of the configuration tasks for the client driver. By using those objects, the client driver can retrieve information about the current configuration, such as the number of interfaces, alternate setting within each interface, and their endpoints.
+One of those objects, called the <em>target pipe object</em>, performs endpoint-related tasks. This topic describes how to obtain pipe information by using the target pipe object. </p>
+<p>For Windows Driver Model (WDM) client drivers, the USB driver stack returns an array of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539114(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> structures. The number of elements in the array depends on the number of endpoints defined for the active alternate setting of an interface in the selected configuration. Each element contains information about the pipe created for a particular endpoint. 
+For information about selecting a configuration and getting the array of pipe information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(v=vs.85).aspx">How to Select a Configuration for a USB Device</a>.</p>
+<h2><a id="What_you_need_to_know"></a><a id="what_you_need_to_know"></a><a id="WHAT_YOU_NEED_TO_KNOW"></a>What you need to know</h2>
+<h3><a id="Technologies"></a><a id="technologies"></a><a id="TECHNOLOGIES"></a>Technologies</h3>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544396(v=vs.85).aspx">Kernel-Mode Driver Framework</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560456(v=vs.85).aspx">User-Mode Driver Framework</a>
+</li>
+</ul>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>Before the client driver can enumerate pipes, make sure these requirements are met:  </p>
+<ul>
+<li>The client driver must have created the framework USB target device object. <p>If you are using the USB templates that are provided with Microsoft Visual Studio Professional 2012,  the template code   performs those tasks. The template code obtains the handle to the target device object and stores in the device context. </p><p><strong>KMDF client driver:  </strong></p><p class="note">A KMDF client driver must obtain a WDFUSBDEVICE handle by calling the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> method. For more information, see "Device source code" in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770892(v=vs.85).aspx">Understanding the USB client driver code structure (KMDF)</a>.</p>
+
+<p><strong>UMDF client driver:  </strong></p><p class="note">A UMDF client driver must obtain an <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560362(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice</strong></a> pointer by querying the framework target device object. For more information, see "<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556764(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware</strong></a> implementation and USB-specific tasks" in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770893(v=vs.85).aspx">Understanding the  USB client driver code structure (UMDF)</a>.</p>
+
+
+</li>
+<li>The device must have an active configuration. <p>If you are using USB templates,  the code selects the first configuration and the default alternate setting in each interface. For information about how to change that default setting, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968309(v=vs.85).aspx">How to select an alternate setting in a USB interface</a>.</p>
+<p><strong>KMDF client driver:  </strong></p><p class="note">A KMDF client driver must call the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550101(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a> method.</p>
+
+<p><strong>UMDF client driver:  </strong></p><p>For a UMDF client  driver, the framework selects the first configuration and the default alternate setting for each interface in that configuration. 
+</p>
+
+</li>
+</ul>
+<h2>Instructions</h2>
+<h3><a id="Getting_USB_pipe_handles_-_KMDF_client_driver"></a><a id="getting_usb_pipe_handles_-_kmdf_client_driver"></a><a id="GETTING_USB_PIPE_HANDLES_-_KMDF_CLIENT_DRIVER"></a>Getting USB pipe handles - KMDF client driver</h3>
+<p>The framework represents each pipe, that is opened by the USB driver stack, as a USB target pipe object. A KMDF client driver can access the methods of the target pipe object to get information about the pipe. To perform data transfers, the client driver must have WDFUSBPIPE pipe handles. To get the pipe handles, the driver must enumerate the active configuration's interfaces and alternate settings, and then enumerate the endpoints defined in each setting. Performing enumeration operations, for each data transfer, can be expensive. Therefore, one approach is to get pipe handles after the device is configured and store them in the driver-defined device context. When the driver receives data transfer requests, the driver can retrieve the required pipe handles from the device context, and use them to send the request. If the client driver changes the configuration of the device, for example, selects an alternate setting, the driver must also refresh the device context with the new pipe handles. Otherwise, the driver can erroneously send transfer requests on stale pipe handles. </p><p class="note"><strong>Note</strong>  Pipe handles are not required for control transfers.</p><p class="note">To send control transfer requests, a WDF client driver calls <strong>WdfUsbDevicexxxx</strong> methods exposed by the framework device object. Those methods require a WDFUSBDEVICE handle to initiate control transfers that target the default endpoint. For such transfers, the I/O target for the request is the default endpoint and is represented by the WDFIOTARGET handle, which is abstracted by the WDFUSBPIPE handle. At the device level, the WDFUSBDEVICE handle is an abstraction of the WDFUSBPIPE handle to the default endpoint.</p>
+<p class="note">For information about sending control transfers and the KMDF methods, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(v=vs.85).aspx">How to send a USB control transfer</a>. </p>
+
+
+<ol>
+<li>Extend your device context structure to store pipe handles.<p>If you know the endpoints in your device, extend your device context structure by adding WDFUSBPIPE members to store the associated USB pipe handles. For example, you can extend the device context structure as shown here:</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_85876ae0-117c-45cf-bf72-6f361269a650');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_85876ae0-117c-45cf-bf72-6f361269a650" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+typedef struct _DEVICE_CONTEXT {  
+    WDFUSBDEVICE    UsbDevice;  
+    WDFUSBINTERFACE UsbInterface;  
+    WDFUSBPIPE      BulkReadPipe;   // Pipe opened for the bulk IN endpoint.
+    WDFUSBPIPE      BulkWritePipe;  // Pipe opened for the bulk IN endpoint.
+    WDFUSBPIPE      InterruptPipe;  // Pipe opened for the interrupt IN endpoint.
+    WDFUSBPIPE      StreamInPipe;   // Pipe opened for stream IN endpoint.
+    WDFUSBPIPE      StreamOutPipe;  // Pipe opened for stream OUT endpoint.
+    UCHAR           NumberConfiguredPipes;  // Number of pipes opened.
+    ...
+    ...                                     // Other members. Not shown.
+
+} DEVICE_CONTEXT, *PDEVICE_CONTEXT;  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>Declare a pipe context structure.<p>Each pipe can store endpoint-related characteristics in another structure called the <em>pipe context</em>. Similar to a device context, a  pipe context is a data structure (defined by the client driver) for storing information about pipes associated with endpoints. During device configuration, the client driver passes a pointer to its pipe context to the framework. The framework allocates a block of memory based on the size of the structure, and stores a pointer to that memory location with the framework USB target pipe object. The client driver can use the pointer to access and store pipe information in members of the pipe context. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_68e02b16-90d6-4754-b1f6-103d17b5bfb9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_68e02b16-90d6-4754-b1f6-103d17b5bfb9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+typedef struct _PIPE_CONTEXT {  
+
+    ULONG MaxPacketSize;
+    ULONG MaxStreamsSupported;
+    PUSBD_STREAM_INFORMATION StreamInfo;
+} PIPE_CONTEXT, *PPIPE_CONTEXT;  
+
+WDF_DECLARE_CONTEXT_TYPE_WITH_NAME(PIPE_CONTEXT, GetPipeContext)  
+  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In this example, the pipe context stores the maximum number of bytes that can be sent in one transfer.  The client driver can use that value to determine the size of the transfer buffer. The declaration also includes the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551252(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_DECLARE_CONTEXT_TYPE_WITH_NAME</strong></a> macro, which generates an inline function, GetPipeContext. The client driver can call that function to retrieve a pointer to the block of memory  that stores the pipe context. </p>
+<p>For more information about contexts, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542873(v=vs.85).aspx">Framework Object Context Space</a>.</p>
+<p>To pass a pointer to the framework, the client driver first initializes its pipe context by calling  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552404(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE</strong></a>. Then, passes a pointer to the pipe context while calling <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550101(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a> (for selecting a configuration) or <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550073(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceSelectSetting</strong></a> (for selecting an alternate setting).</p>
+</li>
+<li>After the device configuration request completes, enumerate the interface and  get the pipe handles for the configured pipes. You will need this set of  information:<ul>
+<li>WDFUSBINTERFACE handle to the interface that contains the current setting. You can get that handle by enumerating the interfaces in the active configuration. Alternately, if you supplied a pointer to a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552600(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS</strong></a> structure in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550101(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a>,  you can get the handle from   <strong>Type.SingleInterface.ConfiguredUsbInterface</strong> member (for single interface devices) or <strong>Type.MultiInterface.Pairs.UsbInterface</strong> member (for multi-interface device).</li>
+<li>Number of pipes opened for the endpoints in the current setting. You can get that number on a particular interface by calling the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550066(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetNumConfiguredPipes</strong></a>  method.</li>
+<li>WDFUSBPIPE handles for all configured pipe. You can get the handle by calling  the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a> method. </li>
+</ul>
+<p>After getting the pipe handle, the client driver can call methods to determine the type and direction of the pipe. The driver can obtain information about the endpoint, in a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553037(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_PIPE_INFORMATION</strong></a> structure. The driver can obtain the populated structure by calling the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551142(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetInformation</strong></a> method. Alternatively, the driver can supply a pointer to the structure in the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a> call.</p>
+</li>
+</ol>
+<p>The following code example enumerates the pipes in the current setting. It obtains pipe handles for the device's bulk and interrupt endpoints and stores them in the driver's device context structure. It stores the maximum packet size of each endpoint in the associated pipe context. If the endpoint supports streams, it opens static streams by calling OpenStreams routine. The implementation of OpenStreams is shown in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(v=vs.85).aspx">How to open and close static streams in a USB bulk endpoint</a>.</p>
+<p>To determine whether a particular bulk endpoint supports static streams, the client driver examines the endpoint descriptor. That code is implemented in a helper routine named, RetrieveStreamInfoFromEndpointDesc, shown in the next code block.</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fd71d553-cd2d-4289-8f0e-1cf20dc951c5');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fd71d553-cd2d-4289-8f0e-1cf20dc951c5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+NTSTATUS  
+    FX3EnumeratePipes(  
+    _In_ WDFDEVICE Device)
+
+{  
+
+    NTSTATUS                    status;  
+    PDEVICE_CONTEXT             pDeviceContext;  
+
+    UCHAR                       i; 
+
+    PPIPE_CONTEXT               pipeContext;
+
+    WDFUSBPIPE					pipe; 
+
+    WDF_USB_PIPE_INFORMATION	pipeInfo;  
+
+    PAGED_CODE();  
+
+    pDeviceContext = GetDeviceContext(Device);
+
+    // Get the number of pipes in the current altenrate setting.
+    pDeviceContext-&gt;NumberConfiguredPipes = WdfUsbInterfaceGetNumConfiguredPipes(
+        pDeviceContext-&gt;UsbInterface);
+
+    if (pDeviceContext-&gt;NumberConfiguredPipes == 0)
+    {
+        status = USBD_STATUS_BAD_NUMBER_OF_ENDPOINTS;
+        goto Exit;
+    }
+    else
+    {
+        status = STATUS_SUCCESS;
+    }
+
+    // Enumerate the pipes and get pipe information for each pipe.
+    for (i = 0; i &lt; pDeviceContext-&gt;NumberConfiguredPipes; i++) 
+    {
+        WDF_USB_PIPE_INFORMATION_INIT(&amp;pipeInfo); 
+
+        pipe =  WdfUsbInterfaceGetConfiguredPipe(
+            pDeviceContext-&gt;UsbInterface,  
+            i, 
+            &amp;pipeInfo); 
+
+        if (pipe == NULL)
+        {
+            continue;
+        }
+
+        pipeContext = GetPipeContext (pipe);
+
+        // If the pipe is a bulk endpoint that supports streams, 
+        // If the host controller supports streams, open streams.
+        // Use the endpoint as an IN bulk endpoint.
+        // Store the maximum packet size.
+
+        if ((WdfUsbPipeTypeBulk == pipeInfo.PipeType) &amp;&amp;
+            WdfUsbTargetPipeIsInEndpoint (pipe))
+        {
+
+            // Check if this is a streams IN endpoint. If it is,
+            // Get the maximum number of streams and store
+            // the value in the pipe context.
+            RetrieveStreamInfoFromEndpointDesc (
+                Device,
+                pipe);
+
+            if ((pipeContext-&gt;IsStreamsCapable) &amp;&amp;
+                (pipeContext-&gt;MaxStreamsSupported &gt; 0))
+            {           
+                status = OpenStreams (
+                    Device,
+                    pipe);
+
+                if (status != STATUS_SUCCESS)
+                {
+                    TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+                        "%!FUNC! Could not open streams.");
+
+                    pDeviceContext-&gt;StreamInPipe = NULL;
+                }
+                else
+                {
+                    pDeviceContext-&gt;StreamInPipe = pipe;
+
+                    pipeContext-&gt;MaxPacketSize = pipeInfo.MaximumPacketSize;
+
+                }
+            }
+            else
+            {
+                pDeviceContext-&gt;BulkReadPipe = pipe;
+
+                pipeContext-&gt;MaxPacketSize = pipeInfo.MaximumPacketSize;
+
+            }
+
+            continue;
+        }
+
+        if ((WdfUsbPipeTypeBulk == pipeInfo.PipeType) &amp;&amp;
+            WdfUsbTargetPipeIsOutEndpoint (pipe))
+        {
+            // Check if this is a streams IN endpoint. If it is,
+            // Get the maximum number of streams and store
+            // the value in the pipe context.
+            RetrieveStreamInfoFromEndpointDesc (
+                Device,
+                pipe);
+
+            if ((pipeContext-&gt;IsStreamsCapable) &amp;&amp;
+                (pipeContext-&gt;MaxStreamsSupported &gt; 0))
+            {           
+                status = OpenStreams (
+                    Device,
+                    pipe);
+
+                if (status != STATUS_SUCCESS)
+                {
+                    TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+                        "%!FUNC! Could not open streams.");
+
+                    pDeviceContext-&gt;StreamOutPipe = NULL;
+                }
+                else
+                {
+                    pDeviceContext-&gt;StreamOutPipe = pipe;
+
+                    pipeContext-&gt;MaxPacketSize = pipeInfo.MaximumPacketSize;
+
+                }
+            }
+            else
+            {
+                pDeviceContext-&gt;BulkWritePipe = pipe;
+
+                pipeContext-&gt;MaxPacketSize = pipeInfo.MaximumPacketSize;
+
+            }
+
+            continue;
+        }
+
+        if ((WdfUsbPipeTypeInterrupt == pipeInfo.PipeType) &amp;&amp;
+            WdfUsbTargetPipeIsInEndpoint (pipe))
+        {
+            pDeviceContext-&gt;InterruptPipe = pipe;
+
+            pipeContext-&gt;MaxPacketSize = pipeInfo.MaximumPacketSize;
+
+            continue;
+        }
+
+    }  
+
+
+Exit:
+    return status;
+
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following code example shows a helper routine named, RetrieveStreamInfoFromEndpointDesc, that the client driver calls while enumerating pipes. </p>
+<p>In following code example, the client driver calls the preceding helper routine, RetrieveStreamInfoFromEndpointDesc, while enumerating pipes. The routine examines first gets the configuration descriptor and parses it to retrieve endpoint descriptors.  If the endpoint descriptor for the pipe contains a USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR_TYPE descriptor, the driver retrieves the maximum number of streams supported by the endpoint. </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1f9a6cab-1182-4252-93a5-babb86b451ff');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1f9a6cab-1182-4252-93a5-babb86b451ff" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+/*++
+
+Routine Description:
+
+This routine parses the configuration descriptor and finds the endpoint
+with which the specified pipe is associated.
+It then retrieves the maximum number of streams supported by the endpoint.
+It stores maximum number of streams in the pipe context.
+
+Arguments:
+
+Device - WDFUSBDEVICE handle to the target device object. 
+The driver obtained that handle in a previous call to
+WdfUsbTargetDeviceCreateWithParameters.
+
+Pipe - WDFUSBPIPE handle to the target pipe object.
+
+Return Value:
+
+NTSTATUS
+++*/
+
+VOID RetrieveStreamInfoFromEndpointDesc (
+    WDFDEVICE Device,
+    WDFUSBPIPE Pipe)
+{
+    PDEVICE_CONTEXT                                 deviceContext                = NULL;
+    PUSB_CONFIGURATION_DESCRIPTOR                   configDescriptor             = NULL;
+    WDF_USB_PIPE_INFORMATION                        pipeInfo;
+    PUSB_COMMON_DESCRIPTOR                          pCommonDescriptorHeader      = NULL;
+    PUSB_INTERFACE_DESCRIPTOR                       pInterfaceDescriptor         = NULL;
+    PUSB_ENDPOINT_DESCRIPTOR                        pEndpointDescriptor          = NULL;
+    PUSB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR   pEndpointCompanionDescriptor = NULL;
+    ULONG                                           maxStreams;
+    ULONG                                           index;
+    BOOLEAN                                         found                        = FALSE;
+    UCHAR                                           interfaceNumber = 0;
+    UCHAR                                           alternateSetting = 1;
+    PPIPE_CONTEXT                                   pipeContext = NULL;
+    NTSTATUS                                        status;
+
+    PAGED_CODE();
+
+    deviceContext = GetDeviceContext (Device);
+
+    pipeContext = GetPipeContext (Pipe);
+
+
+    // Get the configuration descriptor of the currently selected configuration
+    status = FX3RetrieveConfigurationDescriptor (
+        deviceContext-&gt;UsbDevice,
+        &amp;deviceContext-&gt;ConfigurationNumber,
+        &amp;configDescriptor);
+
+    if (!NT_SUCCESS (status))
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Could not retrieve the configuration descriptor.");
+
+        status = USBD_STATUS_INAVLID_CONFIGURATION_DESCRIPTOR;
+
+        goto Exit;
+    }
+
+    if (deviceContext-&gt;ConfigurationNumber == 1)
+    {
+        alternateSetting = 1;
+    }
+    else
+    {
+        alternateSetting = 0;
+    }
+
+    // Get the Endpoint Address of the pipe
+    WDF_USB_PIPE_INFORMATION_INIT(&amp;pipeInfo);  
+    WdfUsbTargetPipeGetInformation (Pipe, &amp;pipeInfo);
+
+
+    // Parse the ConfigurationDescriptor (including all Interface and
+    // Endpoint Descriptors) and locate a Interface Descriptor which
+    // matches the InterfaceNumber, AlternateSetting, InterfaceClass,
+    // InterfaceSubClass, and InterfaceProtocol parameters.  
+
+    pInterfaceDescriptor = USBD_ParseConfigurationDescriptorEx(
+        configDescriptor,
+        configDescriptor,
+        interfaceNumber,  //Interface number is 0.
+        alternateSetting,  // Alternate Setting is 1
+        -1, // InterfaceClass, ignore
+        -1, // InterfaceSubClass, ignore
+        -1  // InterfaceProtocol, ignore
+        );
+
+    if (pInterfaceDescriptor == NULL ) 
+    {
+        // USBD_ParseConfigurationDescriptorEx failed to retrieve Interface Descriptor.
+        goto Exit;
+    }
+
+    pCommonDescriptorHeader = (PUSB_COMMON_DESCRIPTOR) pInterfaceDescriptor;
+
+    for(index = 0; index &lt; pInterfaceDescriptor-&gt;bNumEndpoints; index++) 
+    {
+
+        pCommonDescriptorHeader = USBD_ParseDescriptors(
+            configDescriptor,
+            configDescriptor-&gt;wTotalLength,
+            pCommonDescriptorHeader,
+            USB_ENDPOINT_DESCRIPTOR_TYPE);
+
+        if (pCommonDescriptorHeader == NULL) 
+        {
+            // USBD_ParseDescriptors failed to retrieve Endpoint Descriptor unexpectedly.
+            goto Exit;
+
+        }
+
+        pEndpointDescriptor = (PUSB_ENDPOINT_DESCRIPTOR) pCommonDescriptorHeader;
+
+        // Search an Endpoint Descriptor that matches the EndpointAddress
+        if (pEndpointDescriptor-&gt;bEndpointAddress == pipeInfo.EndpointAddress)
+        {
+
+            found = TRUE;
+
+            break;
+
+        }
+
+        // Skip the current Endpoint Descriptor and search for the next.
+        pCommonDescriptorHeader = (PUSB_COMMON_DESCRIPTOR)(((PUCHAR)pCommonDescriptorHeader) 
+            + pCommonDescriptorHeader-&gt;bLength);
+
+    }
+
+    if (found) 
+    {
+        // Locate the SuperSpeed Endpoint Companion Descriptor 
+        // associated with the endpoint descriptor
+        pCommonDescriptorHeader = USBD_ParseDescriptors (
+            configDescriptor,
+            configDescriptor-&gt;wTotalLength,
+            pEndpointDescriptor,
+            USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR_TYPE);
+
+        if (pCommonDescriptorHeader != NULL) 
+        {
+            pEndpointCompanionDescriptor = 
+                (PUSB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR) pCommonDescriptorHeader;
+
+            maxStreams = pEndpointCompanionDescriptor-&gt;bmAttributes.Bulk.MaxStreams;
+
+            if (maxStreams == 0) 
+            {
+
+                pipeContext-&gt;MaxStreamsSupported = 0;
+
+                pipeContext-&gt;IsStreamsCapable = FALSE;
+            } 
+            else 
+            {
+                pipeContext-&gt;IsStreamsCapable = TRUE;
+
+                pipeContext-&gt;MaxStreamsSupported = 1 &lt;&lt; maxStreams;
+
+            }
+
+        } 
+        else 
+        {
+            KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, 
+                "USBD_ParseDescriptors failed to retrieve SuperSpeed Endpoint Companion Descriptor unexpectedly.\n" ));        
+        }
+
+    }
+    else
+    {
+        pipeContext-&gt;MaxStreamsSupported = 0;
+
+        pipeContext-&gt;IsStreamsCapable = FALSE;
+    }
+
+Exit:
+    if (configDescriptor)
+    {
+        ExFreePoolWithTag (configDescriptor, USBCLIENT_TAG);
+    }
+
+    return;
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h3><a id="Getting_pipe_handles_-_UMDF_client_driver"></a><a id="getting_pipe_handles_-_umdf_client_driver"></a><a id="GETTING_PIPE_HANDLES_-_UMDF_CLIENT_DRIVER"></a>Getting pipe handles - UMDF client driver</h3>
+<p>A UMDF client driver uses COM infrastructure and implements COM callback classes that pair with framework device objects.  Similar to a KMDF driver, a UMDF client driver can only get pipe information after the device is configured. To get pipe information  the client driver must obtain a pointer to the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560391(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe</strong></a> interface of the framework interface object that contains the active setting. By using the interface pointer, the driver  can enumerate the pipes in that setting to obtain <strong>IWDFUsbTargetPipe</strong> interface pointers exposed by the framework target pipe objects. </p>
+<p>Before the driver starts enumerating the pipes, the driver must know about the device configuration and the supported endpoints. Based on that information, the driver can  store pipe objects as class member variables. </p>
+<p>The following code example extends the USB UMDF template that is provided with Visual Studio Professional 2012. For an explanation of the starter code, see "<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556764(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware</strong></a> implementation and USB-specific tasks" in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770893(v=vs.85).aspx">Understanding the  USB client driver code structure (UMDF)</a>. </p>
+<p>Extend the CDevice class declaration as shown here. This example code assumes that the device is the OSR FX2 board. For information about its descriptor layout,  see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh920375(v=vs.85).aspx">USB Device Layout</a>.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4ba1518a-a1cb-4dd7-bd7f-da52a675eb17');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4ba1518a-a1cb-4dd7-bd7f-da52a675eb17" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+class CMyDevice :
+    public CComObjectRootEx&lt;CComMultiThreadModel&gt;,
+    public IPnpCallbackHardware
+{
+
+public:
+
+    DECLARE_NOT_AGGREGATABLE(CMyDevice)
+
+    BEGIN_COM_MAP(CMyDevice)
+        COM_INTERFACE_ENTRY(IPnpCallbackHardware)
+    END_COM_MAP()
+
+    CMyDevice() :
+        m_FxDevice(NULL),
+        m_IoQueue(NULL),
+        m_FxUsbDevice(NULL)
+    {
+    }
+
+    ~CMyDevice()
+    {
+    }
+
+private:
+
+    IWDFDevice *            m_FxDevice;
+
+    CMyIoQueue *            m_IoQueue;
+
+    IWDFUsbTargetDevice *   m_FxUsbDevice;
+
+    IWDFUsbInterface *      m_pIUsbInterface;  //Pointer to the target interface object.
+
+    IWDFUsbTargetPipe *     m_pIUsbInputPipe;  // Pointer to the target pipe object for the bulk IN endpoint.
+
+    IWDFUsbTargetPipe *     m_pIUsbOutputPipe; // Pointer to the target pipe object for the bulk OUT endpoint.
+
+    IWDFUsbTargetPipe *     m_pIUsbInterruptPipe; // Pointer to the target pipe object for the interrupt endpoint.
+  
+private:
+
+    HRESULT
+    Initialize(
+        __in IWDFDriver *FxDriver,
+        __in IWDFDeviceInitialize *FxDeviceInit
+        );
+
+public:
+    
+    static
+    HRESULT
+    CreateInstanceAndInitialize(
+        __in IWDFDriver *FxDriver,
+        __in IWDFDeviceInitialize *FxDeviceInit,
+        __out CMyDevice **Device
+        );
+
+    HRESULT
+    Configure(
+        VOID
+        );
+
+    HRESULT                     // Declare a helper function to enumerate pipes.
+    ConfigureUsbPipes(  
+        );
+public:
+
+    // IPnpCallbackHardware methods
+
+    virtual
+    HRESULT
+    STDMETHODCALLTYPE
+    OnPrepareHardware(
+            __in IWDFDevice *FxDevice
+            );
+
+    virtual
+    HRESULT
+    STDMETHODCALLTYPE
+    OnReleaseHardware(
+        __in IWDFDevice *FxDevice
+        );
+
+};
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In the CDevice class definition, implement a helper method called  CreateUsbIoTargets. This method is called from the IPnpCallbackHardware::OnPrepareHardware implementation after the driver has obtained a pointer to the target device object.</p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8e5b713d-16f6-4b77-b8fb-8a4334570e3a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8e5b713d-16f6-4b77-b8fb-8a4334570e3a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+
+HRESULT  CMyDevice::CreateUsbIoTargets()  
+
+    HRESULT                 hr;  
+    UCHAR                   NumEndPoints = 0;  
+
+    IWDFUsbInterface *      pIUsbInterface = NULL;  
+    IWDFUsbTargetPipe *     pIUsbPipe = NULL;  
+      
+ 
+    if (SUCCEEDED(hr))   
+    {  
+        UCHAR NumInterfaces = pIUsbTargetDevice-&gt;GetNumInterfaces();  
+  
+        WUDF_TEST_DRIVER_ASSERT(1 == NumInterfaces);  
+          
+        hr = pIUsbTargetDevice-&gt;RetrieveUsbInterface(0, &amp;pIUsbInterface);  
+        if (FAILED(hr))  
+        {  
+            TraceEvents(TRACE_LEVEL_ERROR,   
+                        TEST_TRACE_DEVICE,   
+                        "%!FUNC! Unable to retrieve USB interface from USB Device I/O Target %!HRESULT!",  
+                        hr  
+                        );          
+        }  
+        else  
+        {  
+            m_pIUsbInterface = pIUsbInterface;  
+  
+            DriverSafeRelease (pIUsbInterface); //release creation reference                                
+        }
+     }  
+  
+    if (SUCCEEDED(hr))   
+    {  
+        NumEndPoints = pIUsbInterface-&gt;GetNumEndPoints();  
+  
+        if (NumEndPoints != NUM_OSRUSB_ENDPOINTS) 
+        {  
+            hr = E_UNEXPECTED;  
+            TraceEvents(TRACE_LEVEL_ERROR,   
+                        TEST_TRACE_DEVICE,   
+                        "%!FUNC! Has %d endpoints, expected %d, returning %!HRESULT! ",   
+                        NumEndPoints,  
+                        NUM_OSRUSB_ENDPOINTS,  
+                        hr  
+                        );  
+        }  
+    }  
+  
+    if (SUCCEEDED(hr))   
+    {  
+        for (UCHAR PipeIndex = 0; PipeIndex &lt; NumEndPoints; PipeIndex++)  
+        {  
+            hr = pIUsbInterface-&gt;RetrieveUsbPipeObject(PipeIndex,   
+                                                  &amp;pIUsbPipe);  
+  
+            if (FAILED(hr))  
+            {  
+                TraceEvents(TRACE_LEVEL_ERROR,   
+                            TEST_TRACE_DEVICE,   
+                            "%!FUNC! Unable to retrieve USB Pipe for PipeIndex %d, %!HRESULT!",  
+                            PipeIndex,  
+                            hr  
+                            );          
+            }  
+            else  
+            {  
+                if ( pIUsbPipe-&gt;IsInEndPoint() )  
+                {  
+                    if ( UsbdPipeTypeInterrupt == pIUsbPipe-&gt;GetType() )  
+                    {  
+                        m_pIUsbInterruptPipe = pIUsbPipe;  
+                    }  
+                    else if ( UsbdPipeTypeBulk == pIUsbPipe-&gt;GetType() )  
+                    {  
+                        m_pIUsbInputPipe = pIUsbPipe;  
+                    }  
+                    else  
+                    {  
+                        pIUsbPipe-&gt;DeleteWdfObject();  
+                    }                        
+                }  
+                else if ( pIUsbPipe-&gt;IsOutEndPoint() &amp;&amp; (UsbdPipeTypeBulk == pIUsbPipe-&gt;GetType()) )  
+                {  
+                    m_pIUsbOutputPipe = pIUsbPipe;  
+                }  
+                else  
+                {  
+                    pIUsbPipe-&gt;DeleteWdfObject();  
+                }  
+      
+                DriverSafeRelease(pIUsbPipe);  //release creation reference
+            }  
+        }  
+  
+        if (NULL == m_pIUsbInputPipe || NULL == m_pIUsbOutputPipe)  
+        {  
+            hr = E_UNEXPECTED;  
+            TraceEvents(TRACE_LEVEL_ERROR,   
+                        TEST_TRACE_DEVICE,   
+                        "%!FUNC! Input or output pipe not found, returning %!HRESULT!",  
+                        hr  
+                        );          
+        }  
+    }  
+    
+    return hr;  
+}  
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In UMDF, the client driver uses a  pipe index to send data transfer requests. A pipe index is a number assigned by the USB driver stack when it opens pipes for the endpoints in a setting. To obtain the pipe index, call the<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560403(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml"> IWDFUsbTargetPipe::GetInformation</strong></a> method. The method populates a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540285(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WINUSB_PIPE_INFORMATION</strong></a> structure. The <strong>PipeId</strong> value indicates the pipe index.   </p>
+<p>One way of performing read and write operations on the target pipe is to call  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560337(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface::GetWinUsbHandle</strong></a> to obtaining a WinUSB handle and then call <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540046(v=vs.85).aspx#winusb">WinUSB Functions</a>. For example, the driver can call the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540297(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ReadPipe</strong></a> or <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540322(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_WritePipe</strong></a> function. In those function calls, the driver must specify the pipe index. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540174(v=vs.85).aspx">How to Access a USB Device by Using WinUSB Functions</a>.</p>
+<h2>Remarks</h2>
+<h3><a id="Pipe_handles_for_WDM-based_client_drivers"></a><a id="pipe_handles_for_wdm-based_client_drivers"></a><a id="PIPE_HANDLES_FOR_WDM-BASED_CLIENT_DRIVERS"></a>Pipe handles for WDM-based client drivers</h3>
+<p>After a configuration is selected, the USB driver stack sets up a pipe to each of the device's endpoints. The USB driver stack returns an array of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539114(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> structures. The number of elements in the array depends on the number of endpoints defined for the active alternate setting of an interface in the selected configuration. Each element contains information about the pipe created for a particular endpoint. 
+For more information about obtaining pipe handles, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(v=vs.85).aspx">How to Select a Configuration for a USB Device</a>.</p>
+<p></p>
+<p>To build an I/O transfer request, the client driver must have a handle to the pipe associated with that endpoint. The client driver can obtain the pipe handle from the <strong>PipeHandle</strong> member of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539114(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> in the array.</p>
+<p>In addition to the pipe handle, the client driver also requires the pipe type. The client driver can determine the pipe type by examining the <strong>PipeType</strong> member. 
+</p>
+<p>Based on the endpoint type, the USB driver stack supports different types of pipes. The client driver can determine the pipe type by examining the <strong>PipeType</strong> member of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539114(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a>. The different pipe types require different types of USB request blocks (URBs) to perform I/O transactions. </p>
+<p>The client driver then submits the URB to the USB driver stack. The USB driver stack processes the request and sends the specified data to the requested target pipe.</p>
+<p>The URB contains information about the request such as the target pipe handle, transfer buffer, and its length. Each structure within the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> union shares certain members: <strong>TransferFlags</strong>, <strong>TransferBuffer</strong>, <strong>TransferBufferLength</strong>, and <strong>TransferBufferMDL</strong>.
+
+There are type-specific flags in the <strong>TransferFlags</strong> member that correspond to each URB type.
+
+For all data transfer URBs, the USBD_TRANSFER_DIRECTION_IN flag in <strong>TransferFlags</strong> specifies the direction of the transfer. Client drivers set the USBD_TRANSFER_DIRECTION_IN flag to read data from the device. Drivers clear this flag to send data to the device.
+
+Data may be read from or written to either a buffer resident in memory or an MDL. In either case, the driver specifies the size of the buffer in the <strong>TransferBufferLength</strong> member. The driver provides a resident buffer in the <strong>TransferBuffer</strong> member and an MDL in the <strong>TransferBufferMDL</strong> member. Whichever one the driver provides, the other must be NULL.
+
+</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539286(v=vs.85).aspx">USB I/O Transfers</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(v=vs.85).aspx">How to Select a Configuration for a USB Device</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968309(v=vs.85).aspx">How to select an alternate setting in a USB interface</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406288(v=vs.85).aspx">Common tasks for USB client drivers</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to enumerate USB pipes%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="JhR9tQjiv88aQn3E9ZT_SfBP5pU7VcPm3OuJvuATbc2V86Hb5Zgi6BUF15fYngEmvbfxz4KgyV3x8I4tokHyA9GweR5Az0COVHtIeivhILySHNYR9108uQ8BQdLKs59GmwKXxg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh968306(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh968306(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="IJTK0Q8BXja3Zc2nebDkkUF7Cc43Sy1EzK9UHl-USOUL3rICLNEdN-ZDlBHYepQcr8GN9c2Z_ePDzxX5NFeXHCjAOxZiq3VL-TJwUnEd2ctwXak-z24YtOCBCt38jfMlmzsFag2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh968306(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"e5313390-b2b7-4127-b3ae-0fc381140575\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh968306(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+</html>

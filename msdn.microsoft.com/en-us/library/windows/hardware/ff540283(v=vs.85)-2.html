@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff540283(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540283(v=vs.85).aspx" />
+        <title>WinUSB (Winusb.sys) Installation (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff540283(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540283(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540283(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540283(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD6-9:46:40 AM" />
+
+<meta name="Search.ShortId" content="ff540283" />
+
+<meta name="ms.shortidmsdn" content="ff540283" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074800&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff540283%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538853(v=vs.85).aspx" id="dn379397_VS.85_en-us" mtpsaliasid="" mtpsassetid="68378835-7182-43b1-9836-f14754f0b733_VS.85_en-us" mtpsshortid="ff538853_VS.85_en-us" title="Microsoft-provided USB drivers">Microsoft-provided USB drivers</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540196(v=vs.85).aspx" id="dn448502_VS.85_en-us" mtpsaliasid="" mtpsassetid="8234d0b4-2c73-45fa-a8bf-566c64cc2858_VS.85_en-us" mtpsshortid="ff540196_VS.85_en-us" title="WinUSB">WinUSB</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540207(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Architecture and Modules">WinUSB Architecture and Modules</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540283(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB (Winusb.sys) Installation">WinUSB (Winusb.sys) Installation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450799(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Device">WinUSB Device</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">WinUSB (Winusb.sys) Installation</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>For certain Universal Serial Bus (USB) devices, such as devices that are accessed by only a single application, you can install <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540196(v=vs.85).aspx">WinUSB</a> (Winusb.sys) in the device's kernel-mode stack as the USB  device's function driver instead of implementing a driver.  </p>
+<p>This topic contains these sections:</p>
+<p>
+</p><ul>
+<li><a href="#automatic_installation_of__winusb_without_an_inf_file">Automatic installation of  WinUSB without an INF file</a></li>
+<li><a href="#installing_winusb_by_specifying__the_system-provided_device_class">Installing WinUSB by specifying  the system-provided device class</a></li>
+<li><a href="#inf">Writing a custom INF for WinUSB installation</a></li>
+<li><a href="#howto">How to create a driver package that installs Winusb.sys</a></li>
+</ul>
+
+<h2><a id="Automatic_installation_of__WinUSB_without_an_INF_file"></a><a id="automatic_installation_of__winusb_without_an_inf_file"></a><a id="AUTOMATIC_INSTALLATION_OF__WINUSB_WITHOUT_AN_INF_FILE"></a>Automatic installation of  WinUSB without an INF file</h2>
+<p>As an OEM or independent hardware vendor (IHV), you can build your device so that the Winusb.sys gets installed automatically on Windows 8 and later versions of the operating system. Such a device is called a WinUSB device and does not require you to write a custom INF file that references in-box Winusb.inf. </p>
+<p>When you connect a WinUSB device, the system reads device information and loads Winusb.sys automatically.</p>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450799(v=vs.85).aspx">WinUSB Device</a>.</p>
+<h2><a id="Installing_WinUSB_by_specifying__the_system-provided_device_class"></a><a id="installing_winusb_by_specifying__the_system-provided_device_class"></a><a id="INSTALLING_WINUSB_BY_SPECIFYING__THE_SYSTEM-PROVIDED_DEVICE_CLASS"></a>Installing WinUSB by specifying  the system-provided device class</h2>
+<p>When you connect your device, you might notice that Windows loads Winusb.sys automatically (if the IHV has defined the device as a WinUSB Device). Otherwise follow these instructions to load the driver:</p><ol>
+<li>Plug in your device to the host system.</li>
+<li>Open Device Manager and locate the device.</li>
+<li>Right-click the device and select <strong>Update driver software...</strong> from the context menu.</li>
+<li>In the wizard, select <strong>Browse my computer for driver software</strong>.</li>
+<li>Select <strong>Let me pick from a list of device drivers on my computer</strong>.</li>
+<li>From the list of device classes, select <strong>Universal Serial Bus devices</strong>.</li>
+<li>The wizard displays <strong>WinUsb Device</strong>. Select it to load the driver.</li>
+</ol>If <strong>Universal Serial Bus devices</strong> does not appear in the list of device classes, then you need to install the driver by using a custom INF. 
+<p>The preceding procedure does not add a device interface GUID for an app (Windows Store app or Windows desktop app) to access the device. You must add the GUID manually by following this procedure.</p><ol>
+<li>Load the driver as described in the preceding procedure.</li>
+<li>Generate a device interface GUID for your device, by using a tool such as guidgen.exe.
+</li>
+<li>Find the registry key for the device under this key:<p><strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB\&lt;VID_vvvv&amp;PID_pppp&gt;</strong></p>
+</li>
+<li>Under the <strong>Device Parameters</strong> key, add a String registry entry named <strong>DeviceInterfaceGUID</strong> or a Multi-String entry named <strong>DeviceInterfaceGUIDs</strong>. Set the value to the GUID you generated in step 2.</li>
+<li>Disconnect the device from the system and reconnect it to the same physical port.<p class="note"><strong>Note</strong>  If you change the physical port then you must repeat steps 1 through 4.</p>
+</li>
+</ol>
+
+<h2><a id="inf"></a><a id="INF"></a>Writing a custom INF for WinUSB installation</h2>
+<p> As part of the driver package, you provide an .inf file that installs Winusb.sys as the function driver for the USB device. </p>
+<p>The following example .inf file shows WinUSB installation for most USB devices with some modifications, such as changing  <strong>USB_Install</strong> in section names to an appropriate <em>DDInstall</em> value. You should also change  the version, manufacturer, and model sections as necessary. For example, provide an appropriate manufacture's name, the name of your signed catalog file, the correct device class, and the vendor identifier (VID) and product identifier (PID) for the device.</p>
+<p>Also notice that the setup class is set to "USBDevice". Vendors can use the "USBDevice" setup class for devices that do not belong to another class and are not USB host controllers or hubs.</p>
+<p>If you are installing WinUSB as the function driver for one of the functions in a USB composite device, you must provide the hardware ID that is associated with the function, in the INF. You can obtain the hardware ID for the function from the properties of the devnode in <strong>Device Manager</strong>. The hardware ID string format is  "USB\VID_vvvv&amp;PID_pppp".</p>
+<p>The following INF installs WinUSB as the OSR USB FX2 board's function driver on a x64-based system.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_7e8bf455-3807-4e45-bbe5-846dc27dfcc1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_7e8bf455-3807-4e45-bbe5-846dc27dfcc1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+;
+;
+; Installs WinUsb
+;
+
+[Version]
+Signature = "$Windows NT$"
+Class     = USBDevice
+ClassGUID = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider  = %ManufacturerName%
+CatalogFile = WinUSBInstallation.cat
+DriverVer=09/04/2012,13.54.20.543
+
+; ========== Manufacturer/Models sections ===========
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName% =USB_Install, USB\VID_0547&amp;PID_1002
+
+; ========== Class definition ===========
+
+[ClassInstall32]
+AddReg = ClassInstall_AddReg
+
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,%REG_MULTI_SZ%,"%systemroot%\system32\setupapi.dll,-20"
+HKR,,LowerLogoVersion,,5.2
+
+; =================== Installation ===================
+
+[USB_Install]
+Include = winusb.inf
+Needs   = WINUSB.NT
+
+[USB_Install.Services]
+Include =winusb.inf
+Needs   = WINUSB.NT.Services
+
+[USB_Install.HW]
+AddReg=Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{9f543223-cede-4fa3-b376-a25ce9a30e74}"
+
+; [DestinationDirs]
+; If your INF needs to copy files, you must not use the DefaultDestDir directive here.  
+; You must explicitly reference all file-list-section names in this section.
+
+; =================== Strings ===================
+
+[Strings]
+ManufacturerName=""
+ClassName="Universal Serial Bus devices"
+DeviceName="Fx2 Learning Kit Device"
+REG_MULTI_SZ = 0x00010000
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Except for device-specific values and several issues that are noted in the following list, you can use these sections and directives to install WinUSB for any USB device. These list items describe the <strong>Includes</strong> and <strong>Directives</strong> in the preceding .inf file.</p>
+<ul>
+<li><strong>USB_Install</strong>: The <strong>Include</strong> and <strong>Needs</strong> directives in the <strong>USB_Install</strong> section are required for installing WinUSB. You should not modify these directives.</li>
+<li><strong>USB_Install.Services</strong>: The <strong>Include</strong> directive in the <strong>USB_Install.Services</strong> section includes the system-supplied .inf for WinUSB (WinUSB.inf). This .inf file is installed by the WinUSB co-installer if it isn't already on the target system. The <strong>Needs</strong> directive specifies the section within WinUSB.inf that contains information required to install Winusb.sys as the device's function driver. You should not modify these directives.<p class="note"><strong>Note</strong>  Because Windows XP doesn't provide WinUSB.inf, the file must either be copied to Windows XP systems by the co-installer, or you should provide a separate decorated section for Windows XP.</p>
+</li>
+<li><strong>USB_Install.HW</strong>: This section  is the key in the .inf file. It specifies the device interface globally unique identifier (GUID) for your device. The <strong>AddReg</strong> directive sets the specified interface GUID in a standard registry value. When Winusb.sys is loaded as the device's function driver, it reads the registry value DeviceInterfaceGUIDs key and uses the specified GUID to represent the device interface. You should replace the GUID in this example with one that you create specifically for your device. If the protocols for the device change, create a new device interface GUID.<p><strong>Note</strong>  User-mode software must call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551069(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiGetClassDevs</strong></a> to enumerate the registered device interfaces that are associated with one of the device interface classes specified under the DeviceInterfaceGUIDs key. <strong>SetupDiGetClassDevs</strong> returns the device handle for the device that the user-mode software must then pass to the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540277(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Initialize</strong></a> routine to obtain a WinUSB handle for the device interface. For more info about these routines, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540174(v=vs.85).aspx">How to Access a USB Device by Using WinUSB Functions</a>.</p>
+</li>
+</ul>
+<p>The following INF installs WinUSB as the OSR USB FX2 board's function driver on a x64-based system. The example shows INF with WDF coinstallers. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_511b3c84-c0f7-4341-98cf-d9b9bac1e8cb');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_511b3c84-c0f7-4341-98cf-d9b9bac1e8cb" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+;
+;
+; Installs WinUsb
+;
+
+[Version]
+Signature = "$Windows NT$"
+Class     = USBDevice
+ClassGUID = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider  = %ManufacturerName%
+CatalogFile = WinUSBInstallation.cat
+DriverVer=09/04/2012,13.54.20.543
+
+; ========== Manufacturer/Models sections ===========
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName% =USB_Install, USB\VID_0547&amp;PID_1002
+
+; ========== Class definition ===========
+
+[ClassInstall32]
+AddReg = ClassInstall_AddReg
+
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,%REG_MULTI_SZ%,"%systemroot%\system32\setupapi.dll,-20"
+HKR,,LowerLogoVersion,,5.2
+
+; =================== Installation ===================
+
+[USB_Install]
+Include = winusb.inf
+Needs   = WINUSB.NT
+
+[USB_Install.Services]
+Include =winusb.inf
+Needs   = WINUSB.NT.Services
+
+[USB_Install.HW]
+AddReg=Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{9f543223-cede-4fa3-b376-a25ce9a30e74}"
+
+[USB_Install.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01011.dll,WdfCoInstaller","WinUsbCoInstaller2.dll"
+
+[CoInstallers_CopyFiles]
+WinUsbCoInstaller2.dll
+WdfCoInstaller01011.dll
+
+[DestinationDirs]
+; If your INF needs to copy files, you must not use the DefaultDestDir directive here.  
+CoInstallers_CopyFiles=11
+; ================= Source Media Section =====================
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+WinUsbCoInstaller2.dll=1
+WdfCoInstaller01011.dll=1
+
+
+; =================== Strings ===================
+
+[Strings]
+ManufacturerName=""
+ClassName="Universal Serial Bus devices"
+DeviceName="Fx2 Learning Kit Device"
+REG_MULTI_SZ = 0x00010000
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<ul>
+<li><strong>USB_Install.CoInstallers</strong>: This  section, which includes the referenced <strong>AddReg</strong> and <strong>CopyFiles</strong> sections, contains data and instructions to install the WinUSB and KMDF co-installers and associate them with the device. Most USB devices can use these sections and directives without modification.
+</li>
+<li>The x86-based and x64-based versions of Windows have separate co-installers. <p><strong>Note</strong>  Each co-installer has free and checked versions. Use the free version to install WinUSB on free builds of Windows, including all retail versions. Use the checked version (with the "_chk" suffix) to install WinUSB on checked builds of Windows.
+</p>
+</li>
+</ul>
+<p>Each time Winusb.sys loads, it registers a device interface that has the device interface classes that are specified in the registry under the <strong>DeviceInterfaceGUIDs</strong> key. </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c708d411-5e01-4d3c-ada5-35e697405d7b');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c708d411-5e01-4d3c-ada5-35e697405d7b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+HKR,,DeviceInterfaceGUIDs, 0x10000,"{D696BFEB-1734-417d-8A04-86D01071C512}"
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>
+</p><p class="note"><strong>Note</strong>  If you use the redistributable WinUSB package for Windows XP or Windows Server 2003, make sure that you don't uninstall WinUSB in your uninstall packages. Other USB devices might be using WinUSB, so its binaries must remain in the shared folder.</p>
+
+<h2><a id="howto"></a><a id="HOWTO"></a>How to create a driver package that installs Winusb.sys</h2>
+<p>To use WinUSB as the device's function driver, you create a driver package. The driver package must contain these files:</p><ul>
+<li>WinUSB co-installer (Winusbcoinstaller.dll)</li>
+<li>KMDF co-installer (WdfcoinstallerXXX.dll)</li>
+<li>An .inf file that installs Winusb.sys as the device's function driver.
+For more information, see <a href="#inf">Writing an .Inf File for WinUSB Installation</a>.</li>
+<li>A signed catalog file for the package. 
+This file is required to install WinUSB on x64 versions of Windows Vista. </li>
+</ul><img id="winusb_package" alt="winusb installation package" src="http://i.msdn.microsoft.com/dynimg/IC392121.jpg" title="winusb installation package" xmlns="" />
+<p class="note"><strong>Note</strong>  Make sure that the driver package contents meet these requirements:</p><ul>
+<li>The KMDF and WinUSB co-installer files must be obtained from the same version of the Windows Driver Kit (WDK). </li>
+<li>The co-installer files must be obtained from the latest version of the WDK, so that the driver supports all the latest Windows releases.</li>
+<li>The contents of the driver package must be digitally signed with a Winqual release signature. For more info about how to create and test signed catalog files, see <a href="http://go.microsoft.com/fwlink/p/?linkid=129409">Kernel-Mode Code Signing Walkthrough</a> on the Windows Dev Center - Hardware site.
+</li>
+</ul>
+
+<ol>
+<li>Install the <a href="http://www.microsoft.com/whdc/devtools/wdk/WDKpkg.mspx">Windows Driver Kit</a>.</li>
+<li>Create a driver package folder on the machine that the USB device is connected to. For example, c:\UsbDevice.</li>
+<li>
+<p>Copy the WinUSB co-installer (WinusbcoinstallerX.dll) from the <strong>WinDDK\</strong><em>BuildNumber</em><strong>\redist\winusb</strong> folder to the driver package folder.</p>
+<p>The WinUSB co-installer (Winusbcoinstaller.dll) installs WinUSB on the target system, if necessary. 
+The WDK includes three versions of the co-installer depending on the system architecture: x86-based, x64-based, and Itanium-based systems. They are all named WinusbcoinstallerX.dll and are located in the appropriate subdirectory in the <strong>WinDDK\</strong><em>BuildNumber</em><strong>\redist\winusb</strong> folder.</p>
+</li>
+<li>
+<p>Copy the KMDF co-installer (WdfcoinstallerXXX.dll) from the <strong>WinDDK\</strong><em>BuildNumber</em><strong>\redist\wdf</strong> folder to the driver package folder.</p>
+<p>The KMDF co-installer (WdfcoinstallerXXX.dll) installs the correct version of KMDF on the target system, if necessary. The version of WinUSB co-installer must match the KMDF co-installer because KMDF-based client drivers, such as Winusb.sys, require the corresponding version of the KMDF framework to be installed properly on the system. For example, Winusbcoinstaller2.dll requires KMDF version 1.9, which is installed by Wdfcoinstaller01009.dll. The x86 and x64 versions of WdfcoinstallerXXX.dll are included with the WDK under the <strong>WinDDK\</strong><em>BuildNumber</em><strong>\redist\wdf</strong> folder.
+The following table shows the WinUSB co-installer and the associated KMDF co-installer to use on the target system.</p>
+<p>Use this table to determine the WinUSB co-installer and the associated KMDF co-installer.</p><table>
+<tr><th>WinUSB  co-installer</th><th>KMDF library version</th><th>KMDF co-installer</th></tr>
+<tr><td>Winusbcoinstaller.dll
+</td><td>Requires KMDF version 1.5 or later</td><td>
+<p>Wdfcoinstaller01005.dll</p>
+<p>Wdfcoinstaller01007.dll</p>
+<p>Wdfcoinstaller01009.dll</p>
+</td></tr>
+<tr><td>Winusbcoinstaller2.dll
+</td><td>Requires KMDF version 1.9 or later</td><td>Wdfcoinstaller01009.dll</td></tr>
+<tr><td>Winusbcoinstaller2.dll</td><td>Requires KMDF version 1.11 or later</td><td>WdfCoInstaller01011.dll</td></tr>
+</table>
+<p> </p>
+
+</li>
+<li>Write an .inf file that installs Winusb.sys as the function driver for the USB device.</li>
+<li>Create a signed catalog file for the package. 
+This file is required to install WinUSB on x64 versions of  Windows.</li>
+<li>Attach the USB device to your computer.</li>
+<li>Open <strong>Device Manager</strong> to install the driver. Follow the instructions on the <strong>Update Driver Software</strong> wizard and choose manual installation. You will need to provide the  location of the driver package folder to complete the installation.</li>
+</ol>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540207(v=vs.85).aspx">WinUSB Architecture and Modules</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540215(v=vs.85).aspx">Choosing a driver model for developing a USB client driver</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540174(v=vs.85).aspx">How to Access a USB Device by Using WinUSB Functions</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff728834(v=vs.85).aspx">WinUSB Power Management</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff728833(v=vs.85).aspx">WinUSB Functions for Pipe Policy Modification</a>
+</dt>
+<dt><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540046(v=vs.85).aspx#winusb">WinUSB Functions</a></dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540196(v=vs.85).aspx">WinUSB</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20WinUSB (Winusb.sys) Installation%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Fem5kw4eOTVArwPQ2RFrly1uLD-GJagUFJRZqYOL9jdz6n2r_6b29h-VvBDIMwYob-Ht7NZ9B1ja2x2YVLIi6rXpCXKy8lvC8LWa9Y4F91wuU0pP4HjcOCNtJE_dbZfO4hSJgw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/ff540283(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff540283(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="oV4CRe_m1haaXRAP6Hy1L6aqgWDUXnJJXJFOnLcMUtZZ-rHR1BlvaKu93h32WaIirBoWg_1ibW_tVuK4h_zq5JQlAy_CHkcX7H1uSsqwojY1Dp099SoTCErmnB0qYIjINvBawA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff540283(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"e541ef1f-0e3a-436e-aa58-6cdfb8421b1e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff540283(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+</html>

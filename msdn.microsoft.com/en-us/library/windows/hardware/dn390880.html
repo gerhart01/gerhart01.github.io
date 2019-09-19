@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn390880.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:02:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn390880.html" />
+        <title>Communications Audio Fidelity Test (Manual) - Certification</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn390880(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390880(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390880(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390880(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93A-9:02:59 AM" />
+
+<meta name="Search.ShortId" content="dn390880" />
+
+<meta name="ms.shortidmsdn" content="dn390880" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072179&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn390880.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj123955.html" id="dn375850_WIN.10_en-us" mtpsaliasid="" mtpsassetid="8e7f9d31-1006-4a52-b18a-4c93bb044f5f_WIN.10_en-us" mtpsshortid="jj123955_WIN.10_en-us" title="Device.Audio Testing">Device.Audio Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="jj124726.html" id="dn375848_WIN.10_en-us" mtpsaliasid="" mtpsassetid="cf999f55-2926-4107-9194-7c292105dac9_WIN.10_en-us" mtpsshortid="jj124726_WIN.10_en-us" title="Device.Audio Tests">Device.Audio Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124840.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="AC3 Test - Certification">AC3 Test - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998025.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Logo Test - Certification">Audio Logo Test - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124121.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bluetooth Audio Logo Test (Manual) - Certification">Bluetooth Audio Logo Test (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123751.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Call Control API Test">Call Control API Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123902.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Class Driver Audio Logo Test - Certification">Class Driver Audio Logo Test - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998569.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Class Driver Round Trip Test (Manual)  - Certification">Class Driver Round Trip Test (Manual)  - Certification</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn390880.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Communications Audio Fidelity Test (Manual) - Certification">Communications Audio Fidelity Test (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125291.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device Driver INF Verification Test (Certification)">Device Driver INF Verification Test (Certification)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247417.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device Power State Transition Test">Device Power State Transition Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998321.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test - Win7">DRM Test - Win7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124702.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test - Win8">DRM Test - Win8</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260180.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test - Windows 8.1">DRM Test - Windows 8.1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124823.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Fidelity Test (Manual) - Certification">Fidelity Test (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998795.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="General Audio Test">General Audio Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998520.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hardware Offload of Audio Processing Test - Certification">Hardware Offload of Audio Processing Test - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124071.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Position Test">KS Position Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998690.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Topology Test - Win7">KS Topology Test - Win7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124427.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Topology Test - Win8">KS Topology Test - Win8</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998991.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lullaby Test - Certification">Lullaby Test - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123479.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Round Trip Test (Manual) - Certification">Round Trip Test (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124017.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SysFX Test">SysFX Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124327.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UAA Test (Manual)">UAA Test (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998419.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Audio Logo Test (Manual) - Certification">USB Audio Logo Test (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn456311.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Audio EffectsDiscovery - Basic">Verify Audio EffectsDiscovery - Basic</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn456312.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Audio EffectsDiscovery (Manual) - Certification">Verify Audio EffectsDiscovery (Manual) - Certification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997780.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Wave Test - Certification">Wave Test - Certification</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Communications Audio Fidelity Test (Manual) - Certification</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>The <a href="jj125187.html">Windows Hardware Certification Program</a> defines a minimum bar for audio quality of devices that have integrated loudspeakers and microphone(s). The Communications Audio Fidelity test verifies that the system meets the hardware certification requirements for a high fidelity audio playback and capture experience.</p>
+      <h2 class="heading">Test details</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>
+                <strong>Associated requirements</strong>
+              </p>
+            </td>
+            <td>
+              <p>Device.Audio.Base.InAirFidelity</p>
+              <p>
+                <a href="http://go.microsoft.com/fwlink/?LinkID=254483">See the device hardware requirements.</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Platforms</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+									Windows RT 8.1
+									<br />
+									Windows 8.1 x64
+									<br />
+									Windows 8.1 x86
+								</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Expected run time</strong>
+              </p>
+            </td>
+            <td>
+              <p>~10 minutes</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Categories</strong>
+              </p>
+            </td>
+            <td>
+              <p>Certification</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Type</strong>
+              </p>
+            </td>
+            <td>
+              <p>Manual</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Running the test</h2>
+      <div id="sectionSection1" class="section">
+        <p>Before you run the test, complete the test setup as described in the test requirements: <a href="jj123567.html">Audio Device Testing Prerequisites</a>.</p>
+        <p>This test requires the following items:</p>
+        <ul>
+          <li class="unordered">
+							One test computer that has at least one microphone and one loudspeaker (referred to as the Device under Test [DUT]). <br /><br /></li>
+          <li class="unordered">
+							One <a href="http://www.polycom.com/products-services/products-for-microsoft/lync-optimized/cx100-desktop-phone.html">Polycom CX-100</a> USB device for reference and measurement.<br /><br /></li>
+        </ul>
+        <p>The test is required for systems that have at least one microphone and one loudspeaker. The test does not require an anechoic chamber; it can be performed in a quiet office environment. </p>
+        <p>The in-air audio fidelity test is implemented in the Windows Hardware Certification Kit (Windows HCK). The Windows HCK tests play speech signals from the device under test and from a reference device to simulate realistic user scenarios.</p>
+        <p>You should perform the in-air audio fidelity tests in a typical office environment that has background noise that is less than 35 dBA SPL. Put the device under test (DUT) on a table in a position for typical usage and mount the Polycom CX-100 reference device on a tripod, as shown in <em>REF _Ref345316931 \h Figure 1 Device under Test Setup</em>. Connect the reference device to the DUT by using a USB connection.</p>
+        <p>
+          <strong>Step-by-step instructions for running the test:</strong>
+        </p>
+        <p>Watch the following video demonstration.</p>
+        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"><div class="OfficeVideoInline" id="OfficeInlineVideo0"><img id="c937a43c-aac5-4830-8d37-5eb0a80dce2a" alt="Communications Audio Fidelity Manual Setup Video" src="../../../../../i.msdn.microsoft.com/dynimg/IC679822.png" title="Communications Audio Fidelity Manual Setup Video" xmlns="" /></div><meta itemprop="thumbnailUrl" content="../../../../dynimg/IC679822.png" /></div>
+        <p>
+          
+        </p>
+        <p>
+          <a href="http://content1.catalog.video.msn.com/e2/ds/30519e58-2c10-45c3-bbfe-68ae25328706.mp4">Download the video (MP4)</a>
+        </p>
+        <p>
+          <a href="mailto:lhdocfb@microsoft.com?subject=HCKAudioFidelityTestSetupVIDEO&amp;body=%0D%0A%0D%0AMicrosoft uses your feedback to improve its products, services and documentation. While we are investigating the issue you report, we may send e-mail to you to ask for further details or clarification on the feedback you send to us, and we may send e-mail to you to let you know that your feedback has been addressed.  We do not use your e-mail address for any other purpose.%0D%0AFor technical support, contact http://go.microsoft.com/fwlink/?LinkId=143702.%0D%0A%0D%0A For further information about the Microsoft Online Privacy Statement, please see http://go.microsoft.com/fwlink/?LinkId=143701.">Send feedback about this video</a>
+        </p>
+        <ol class="ordered">
+          <li>
+							Prepare the client for Windows HCK testing.<br /><br /></li>
+          <li>
+							Put the device and reference device in a quiet room (background noise less than 35 dBA SPL).<br /><br /></li>
+          <li>
+							Position the device and reference device according to the diagram in the reference document.<br /><br /><ol class="ordered"><li>
+									0.4 m forward of the device<br /><br /></li><li>
+									0.3m above the device<br /><br /></li><li>
+									0.5m overall<br /><br /></li><li>
+									Laptop or slate screen should be at a 20 degree angle from vertical.<br /><br /></li><li>
+									Centerline of both devices should be lined up.<br /><br /></li><li>
+									The reference device should be vertically oriented as shown in <em>REF _Ref345316931 \h Figure 1 Device under Test Setup</em>, with its speaker facing the DUT.<br /><br /></li></ol></li>
+          <li>
+							Connect the reference device to the DUT by using USB.<br /><br /></li>
+          <li>
+							Schedule and run the Communications Audio Test on the Windows HCK Controller.<br /><br /></li>
+        </ol>
+        <p>
+          
+        </p>
+        <img id="5c7a4896-cb56-484b-a18a-5790b3cca85d" alt="Audio FIdelity Test Position" src="../../../../../i.msdn.microsoft.com/dynimg/IC696418.jpg" title="Audio FIdelity Test Position" xmlns="" />
+        <p>
+          <strong>Figure 1 Device under Test Setup</strong>
+        </p>
+        <p>The following eight tests are performed and the results are compared to the Windows Hardware Certification Requirements for in-air audio fidelity:</p>
+        <p>
+          <strong>Microphone tests</strong>
+        </p>
+        <ul>
+          <li class="unordered">
+							Speech to noise ratio of the raw microphone signal when capturing a speech signal that is played back by the reference device that is located 0.5m from the DUT.<br /><br /></li>
+          <li class="unordered">
+							Digital signal level of the raw microphone signal when capturing a speech signal that is played back by the reference device that is located 0.5m from the DUT.<br /><br /></li>
+          <li class="unordered">
+							Clipping (saturation) of the raw microphone signal when capturing a speech signal played that is back by the reference device that is located 0.5m from the DUT.<br /><br /></li>
+        </ul>
+        <p>
+          <strong>Loudspeaker test</strong>
+        </p>
+        <ul>
+          <li class="unordered">
+							Output level of the loudspeaker(s) at 0.5m when rendering a digital speech signal by the DUT.<br /><br /></li>
+        </ul>
+        <p>
+          <strong>Combined microphone and loudspeaker tests</strong>
+        </p>
+        <ul>
+          <li class="unordered">
+							Clipping of raw microphone signal during loudspeaker playback of speech signal at nominal volume.<br /><br /></li>
+          <li class="unordered">
+							Echo attenuation by the Windows acoustic echo canceller during speech playback by the DUT.<br /><br /></li>
+          <li class="unordered">
+							Latency between microphone and loopback signal that is not reported by the timestamps.<br /><br /></li>
+          <li class="unordered">
+							Measurement of mouth to ear latency; that is, the time difference between when the signal is given to the loudspeaker renderer and when it is obtained from the microphone capture.<br /><br /></li>
+        </ul>
+      </div>
+      <a id="spec">
+        
+      </a>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection2" class="section">
+        <p>For additional troubleshooting information, see <a href="jj123860.html">Troubleshooting Audio Testing</a>.</p>
+        <h3 class="subHeading">Microphone tests troubleshooting</h3>
+        <div class="subSection">
+          <p>This section describes common problems that can occur during microphone testing.</p>
+          <p>
+            <strong>Speech to noise ratio</strong>
+          </p>
+          <p>If the speech to noise ratio is lower than the requirement, check the following possible causes:</p>
+          <ul>
+            <li class="unordered">
+									The room in which the test has been performed is too noisy; it does not meet the &lt;35dBA SPL requirement. Use a sound pressure level meter to verify that the background noise is below 35dBA SPL. Repeat the test in a quiet room that meets this requirement.<br /><br /></li>
+            <li class="unordered">
+									The microphone(s) have a low signal to noise ratio (SNR). Use microphones that have a higher SNR.<br /><br /></li>
+            <li class="unordered">
+									The microphones are not isolated from the fan noise. Make sure that quiet fans are used and that the microphones are located away from the fans and are mechanically isolated from fan noise.<br /><br /></li>
+            <li class="unordered">
+									Electrical components can cause a buzzing noise. Ensure electrical components don’t emit any audible noise.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Digital signal level</strong>
+          </p>
+          <p>This test plays a speech signal from the reference device and captures it by using the microphone of the DUT. The test automatically adjusts the microphone level in the control panel of the Windows operating system. If the microphone capture signal level is too low, we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									The analog microphone gain that is exposed to the operating system cannot be amplified high enough. Use an amplifier that has higher analog gain.<br /><br /></li>
+            <li class="unordered">
+									The sensitivity of the digital microphone is too low. Use a digital microphone that has higher sensitivity.<br /><br /></li>
+          </ul>
+          <p>If the microphone capture level is too high, we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									The analog microphone gain that is exposed to the operating system has a signal that cannot be reduced low enough. Make sure that the correct gain range is exposed by using the firmware of the preamplifier.<br /><br /></li>
+            <li class="unordered">
+									The sensitivity of the digital microphone is too high. Use a digital microphone that has lower sensitivity.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Speech played back by reference device is clipped</strong>
+          </p>
+          <p>If the microphone signal is clipped, we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									The analog microphone gain that is exposed to the operating system cannot be reduced low enough. Make sure that the correct gain range is exposed by using the firmware of the preamplifier.<br /><br /></li>
+            <li class="unordered">
+									The sensitivity of the digital microphone is too high. Use a digital microphone that has lower sensitivity.<br /><br /></li>
+          </ul>
+        </div>
+        <h3 class="subHeading">Loudspeaker test troubleshooting</h3>
+        <div class="subSection">
+          <p>This section describes common problems that can occur during loudspeaker testing.</p>
+          <p>
+            <strong>Output signal level</strong>
+          </p>
+          <p>If the loudspeaker output level is too low, we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									Check that the loudspeaker assembly is properly sealed to the speaker grill.<br /><br /></li>
+            <li class="unordered">
+									Check that the grill holes are more than 50% open.<br /><br /></li>
+            <li class="unordered">
+									Use a loudspeaker that has higher sensitivity.<br /><br /></li>
+          </ul>
+        </div>
+        <h3 class="subHeading">Combined microphone and loudspeaker tests troubleshooting</h3>
+        <div class="subSection">
+          <p>This section describes common problems that can occur during combined microphone and loudspeaker testing.</p>
+          <p>
+            <strong>Speech played back by device under test is clipped</strong>
+          </p>
+          <p>This test plays back a speech signal from the DUT and captures the signal on the same DUT. The test checks whether the captured signal is clipped (that is, saturated) after the microphone level found in the control panel of the Windows operating system is automatically adjusted to prevent clipping. The microphone level is only reduced to a point where it still meets the requirement for the microphone output signal level when it plays back a speech signal from the reference device. For example, a device under test might need a microphone level of ≥+10dB to pass the microphone output signal test. In this case, the clipping test for speech played back by the DUT needs to pass at a microphone level setting of ≥+10dB.</p>
+          <p>If the microphone signal that is recorded during playback of sound by the speaker was clipped (saturated), we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									Mechanically isolate the loudspeakers from the microphones to reduce the loudspeaker to microphone coupling. In addition, to prevent coupling through the device enclosure, the microphone boot should be sealed to the chassis and the speaker assembly should be sealed to the speaker grill.<br /><br /></li>
+            <li class="unordered">
+									Ensure that the analog gain of the preamplifier can be reduced enough to avoid microphone clipping.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Echo attenuation</strong>
+          </p>
+          <p>If the acoustic echo canceller cannot remove a sufficient amount of echo in the microphone signal, we recommend the following solutions:</p>
+          <ul>
+            <li class="unordered">
+									Reduce the coupling total harmonic distortion and noise by reducing rattles that are caused to keys, wires, tape, etc.<br /><br /></li>
+            <li class="unordered">
+									Increase the terminal coupling loss by more fully separating loudspeaker(s) and microphone(s).<br /><br /></li>
+            <li class="unordered">
+									Use loudspeakers that have better total harmonic distortion.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Unreported latency between microphone and loudspeaker loopback signal</strong>
+          </p>
+          <p>To ensure that the microphone signal is either completely aligned with the loudspeaker signal or is slightly delayed, acoustic echo cancellers align the loudspeaker and microphone signal based on timestamps. If too much delay occurs, the acoustic echo canceller cannot fully cover the echo that is caused by reverberation. Failures must be fixed by improving the implementation of the timestamps. A timestamp is determined by device streaming positions (DevPos), application streaming position (AppPos) and system performance counter (QPC: query performance counter) by using the IAudioCaptureClient::GetBuffer method. Assuming that the audio stream sampling rate is FS, the timestamp is calculated as: <em>TS=QPC+(AppPos-DevPos)/FS</em>.</p>
+          <p>
+            <strong>Mouth to ear latency</strong>
+          </p>
+          <p>If mouth to ear latency is too high, users cannot have a full-duplex conversation and unintentionally talk over each other. We recommend that you reduce latency in the following ways:</p>
+          <ul>
+            <li class="unordered">
+									Improve the audio driver to have a lower delay.<br /><br /></li>
+            <li class="unordered">
+									Reduce the delay in render-side on-board processing (for example, volume leveler algorithms), or turn off render-side processing.<br /><br /></li>
+            <li class="unordered">
+									If a raw microphone API is used, make sure that the audio drivers disable capture side processing (as required by the Windows Hardware Certification Requirements).<br /><br /></li>
+          </ul>
+        </div>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="jj124726.html">Device.Audio Tests</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="M9JXtai5lyMSiQQwZw2Z5Uv9lCJ2iRc9zRT8qa_WFPB72abC0jNUeDJixiPpOKvBakmUDTj2uJbrRdIOcN_ZhgIHGiH7nfOTqCdYlAUFjViyYYHE3Qi_A75QIgzBK90toICeWQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn390880.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn390880.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="LFkB8EX-W4_jB6wjid9P5Z6lhI9Cejy5JYdAjvzeCB6aqaPmag4scx0lD54sC6faQYSdX6_hDkjgzke-KzqJGTqlfvT0otiiDJwJdQGykby1bAkrfeOokUZ5JWuXOouShunrrg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ url: "http://img1.video.s-msn.com/s/js/vxp_min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:OfficeVideoInline;/Areas/Epx/Content/Scripts:0\u0026amp;hashKey=3DD3E414BDFBF8062D63D576F42B0F60" },
+	{ txt: "//\n            $(document).ready(function() {\n                vscs.officeVideoInline.renderVideo(\"lite\", \u0027SP_Generic_640x360\u0027, \u0027OfficeInlineVideo0\u0027, \u0027b3ddde19-0fcd-4e66-b989-db498a44cc53\u0027, \u0027Windows\u0027, \u0027en-us\u0027);\n            });\n        /**/" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn390880(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"69abaca3-5819-48c1-ac64-372f4a03c978\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=C5887BC403FC3361C704CD3A7698D780" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn390880.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:52 GMT -->
+</html>

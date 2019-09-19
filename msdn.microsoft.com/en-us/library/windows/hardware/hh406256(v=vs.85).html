@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh406256(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:30:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="hh406256(v%3dvs.85).html" />
+        <title>USB Driver Stack Architecture (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh406256(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406256(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406256(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406256(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD6-7:04:02 AM" />
+
+<meta name="Search.ShortId" content="hh406256" />
+
+<meta name="ms.shortidmsdn" content="hh406256" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395065042&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh406256%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff538853(v%3dvs.85).html" id="dn379397_VS.85_en-us" mtpsaliasid="" mtpsassetid="68378835-7182-43b1-9836-f14754f0b733_VS.85_en-us" mtpsshortid="ff538853_VS.85_en-us" title="Microsoft-provided USB drivers">Microsoft-provided USB drivers</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="hh406256(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Driver Stack Architecture">USB Driver Stack Architecture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff538820(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB device class drivers included in Windows">USB device class drivers included in Windows</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff537432(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Microsoft-Defined USB Driver Frameworks">Microsoft-Defined USB Driver Frameworks</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj649944(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Device Registry Entries">USB Device Registry Entries</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff539234(v%3dvs.85).html" id="dn448498_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Generic Parent Driver (Usbccgp.sys)">USB Generic Parent Driver (Usbccgp.sys)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff540196(v%3dvs.85).html" id="dn448502_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB">WinUSB</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">USB Driver Stack Architecture</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic provides an overview of the Universal Serial Bus (USB) driver stack architecture. </p>
+<p>The following figure shows  the architectural block diagram of the USB driver stack for Windows 8. The diagram shows separate USB driver stacks for USB 2.0 and USB 3.0. Windows loads the USB 3.0 driver stack when a device is attached to an xHCI controller. The USB 3.0 stack is new in Windows 8. </p>
+<p>Windows loads the USB 2.0 driver stack for devices that are attached to eHCI, oHCI, or uHCI controllers. The USB 2.0 driver stack ships in Windows XP with Service Pack 1 (SP1) and later versions of the Windows operating system. </p>
+<p><img id="usb_driver_stack_3" alt="Architectural block diagram for USB 2.0 and 3.0 driver stacks" src="../../../../../i.msdn.microsoft.com/dynimg/IC617542.png" title="Architectural block diagram for USB 2.0 and 3.0 driver stacks" xmlns="" /></p>
+<p>
+</p><ul>
+<li><a href="#usb_3.0_driver_stack">USB 3.0 driver stack</a><ul>
+<li><a href="#usb_3.0_host_controller_driver__usbxhci.sys_">USB 3.0 host controller driver (Usbxhci.sys)</a></li>
+<li><a href="#_usb_host_controller_extension__ucx01000.sys__">	USB host controller extension (Ucx01000.sys)
+</a></li>
+<li><a href="#usb_hub_driver__usbhub3.sys_">USB hub driver (Usbhub3.sys)</a></li>
+</ul>
+</li>
+<li><a href="#usb_2.0_driver_stack">USB 2.0 driver stack</a></li>
+<li><a href="#usb_common_class_generic_parent_driver__usbccgp.sys__">USB common class generic parent driver (Usbccgp.sys) </a></li>
+<li><a href="#winusb__winusb.sys_">WinUSB (Winusb.sys)</a></li>
+<li><a href="#usb_client_driver">USB client driver</a></li>
+<li><a href="#helper_libraries_for_client_drivers">Helper libraries for client drivers</a></li>
+<li><a href="#related_topics">Related topics</a></li>
+</ul>
+
+<h2><a id="USB_3.0_driver_stack"></a><a id="usb_3.0_driver_stack"></a><a id="USB_3.0_DRIVER_STACK"></a>USB 3.0 driver stack</h2>
+<p>The USB 3.0 stack is new in Windows 8. Microsoft created the new drivers by using  Kernel Mode Driver Framework (KMDF) interfaces. The KMDF driver model  reduces complexity and improves stability.</p>
+<h3><a id="USB_3.0_host_controller_driver__Usbxhci.sys_"></a><a id="usb_3.0_host_controller_driver__usbxhci.sys_"></a><a id="USB_3.0_HOST_CONTROLLER_DRIVER__USBXHCI.SYS_"></a>USB 3.0 host controller driver (Usbxhci.sys)</h3>
+<p>The xHCI driver is the USB 3.0 host controller driver. The responsibilities of the xHCI driver include initializing  MMIO registers and host memory-based data structures for xHCI controller hardware, mapping transfer requests from upper layer drivers  to Transfer Request Blocks, and submitting the requests to the hardware. After completing a transfer, the driver handles transfer completion events from the hardware and propagates the events up the driver stack. It also controls the xHCI controller device slots and endpoint contexts.  </p>
+<p>The xHCI driver is  new in Windows 8 and is not an extension of the eHCI miniport driver that was available in earlier versions of the operating system. The new driver was written by using Kernel Mode Driver Framework (KMDF) interfaces and uses KMDF for all controller power management and PnP events. Windows loads the xHCI driver as the function device object (FDO) in the device stack for the host controller.    
+
+</p>
+<h3><a id="_USB_host_controller_extension__Ucx01000.sys__"></a><a id="_usb_host_controller_extension__ucx01000.sys__"></a><a id="_USB_HOST_CONTROLLER_EXTENSION__UCX01000.SYS__"></a>	USB host controller extension (Ucx01000.sys)
+</h3>
+<p>The USB host controller extension driver (an extension to KMDF) is the new extension to the underlying class-specific host controller driver, such as the xHCI driver.  The new driver is extensible and is designed to support other types of host controller drivers that are expected to be developed in the future. The USB host controller extension serves as a common abstracted interface to the hub driver, provides a generic mechanism for queuing requests to the host controller driver, and overrides certain selected functions.  All I/O requests initiated by upper drivers reach the host controller extension driver before the xHCI driver. Upon receiving an I/O request, the host controller extension validates the request and then forwards the request to the proper KMDF queue associated with the target endpoint. The xHCI driver, when ready for processing, retrieves the request from the queue.  
+The responsibilities of the USB host controller extension driver are: </p>
+<ul>
+<li>Provides USB-specific objects to the xHCI driver.
+</li>
+<li>Provides KMDF event callback routines to the xHCI driver.
+</li>
+<li>Manages and control the operations of the root hub associated with the host controller.</li>
+<li>Implements features that are configurable by the client driver, like chained MDLs, streams, and so on.</li>
+</ul>
+<h3><a id="USB_hub_driver__Usbhub3.sys_"></a><a id="usb_hub_driver__usbhub3.sys_"></a><a id="USB_HUB_DRIVER__USBHUB3.SYS_"></a>USB hub driver (Usbhub3.sys)</h3>
+<p>The new hub driver, in the USB driver stack for 3.0 devices, uses the  KMDF driver model. The hub driver primarily performs these tasks: </p>
+<ul>
+<li>Manages USB hubs and their ports.</li>
+<li>Enumerates devices and other hubs attached to their downstream ports.</li>
+<li>Creates physical device objects (PDOs) for the enumerated devices and hubs.</li>
+</ul>
+<p>Windows loads the hub driver as the FDO in the hub device stack.  Device enumeration and hub management in the new driver are implemented through a set of state machines.  The hub driver relies on KMDF for power management and PnP functions.  
+In addition to hub management, the hub driver also performs preliminary checks and processing of certain requests sent by the USB client driver layer. For instance, the hub driver parses a select-configuration request to determine which endpoints will be configured by the request.  After parsing the information, the hub driver submits the request to the USB host controller extension or further processing. </p>
+<h2><a id="USB_2.0_driver_stack"></a><a id="usb_2.0_driver_stack"></a><a id="USB_2.0_DRIVER_STACK"></a>USB 2.0 driver stack</h2>
+<p>Windows loads the USB 2.0 driver stack for devices that are attached to eHCI, oHCI, or uHCI controllers. The drivers in the USB 2.0 driver stack ship in Windows XP with SP1 and later versions of the Windows operating system. The USB 2.0 driver stack is designed to facilitate high-speed USB devices as defined in the USB 2.0 specification.</p>
+<p>At the bottom of the USB driver stack is the host controller driver. It consists of the port driver, Usbport.sys, and one or more of three miniport drivers that run concurrently. When the system detects host controller hardware, it loads one of these miniport drivers. The miniport driver, after it is loaded, loads the port driver, Usbport.sys. The port driver handles those aspects of the host controller driver's duties that are independent of the specific protocol. </p>
+<p>The Usbuhci.sys (universal host controller interface) miniport driver replaces the Uhcd.sys miniclass driver that shipped with Windows 2000. The Usbohci.sys (open host controller interface) miniport driver replaces Openhci.sys. The Usbehci.sys miniport driver supports high-speed USB devices and was introduced in Windows XP with SP1 and later and Windows Server 2003 and later operating systems.</p>
+<p>In all versions of Windows that support USB 2.0, the operating system is capable of managing USB 1.1 and USB 2.0 host controllers simultaneously. Whenever the operating system detects that both types of controller are present, it creates two separate device nodes, one for each host controller. Windows subsequently loads the Usbehci.sys miniport driver for the USB 2.0-compliant host controller hardware and either Usbohci.sys or Openhci.sys for the USB 1.1-compliant hardware, depending on the system configuration.</p>
+<p>Above the port driver is the USB bus driver, Usbhub.sys, also known as the hub driver. This is the device driver for each hub on the system.</p>
+<h2><a id="USB_common_class_generic_parent_driver__Usbccgp.sys__"></a><a id="usb_common_class_generic_parent_driver__usbccgp.sys__"></a><a id="USB_COMMON_CLASS_GENERIC_PARENT_DRIVER__USBCCGP.SYS__"></a>USB common class generic parent driver (Usbccgp.sys) </h2>
+<p>The USB common class generic parent driver is the Microsoft-provided parent driver for composite devices. The hub driver enumerates and loads the parent composite driver if <strong>deviceClass</strong> is 0 or 0xef and <strong>numInterfaces</strong> is greater than 1 in the device descriptor. The hub driver generates the compatible ID for the parent composite driver as  "USB\COMPOSITE". Usbccgp.sys uses Windows Driver Model (WDM) routines. </p>
+<p>The parent composite driver enumerates all functions in a composite device and creates a PDO for each one. This causes the appropriate class or client driver to be loaded for each function in the device. Each function driver (child PDO) sends requests to the parent driver, which submits them to the USB hub driver.</p>
+<p>Usbccgp.sys is included with  Windows XP with SP1 and later versions of the Windows operating system. In Windows 8, the driver has been updated to implement function suspend and remote wake-up features as defined in the USB 3.0 specification. </p>
+<p>For more information, see <a href="ff539234(v%3dvs.85).html">USB Generic Parent Driver (Usbccgp.sys)</a>.</p>
+<h2><a id="WinUSB__Winusb.sys_"></a><a id="winusb__winusb.sys_"></a><a id="WINUSB__WINUSB.SYS_"></a>WinUSB (Winusb.sys)</h2>
+<p>Windows USB (WinUSB) is a Microsoft-provided generic driver for USB devices. WinUSB architecture consists of a kernel-mode driver (Winusb.sys) and a user-mode dynamic link library (Winusb.dll). For devices that don't require a custom function driver, Winusb.sys can be installed in the device's kernel-mode stack as the function driver. User-mode processes can then communicate with Winusb.sys by using a set of device I/O control requests or by calling <strong>WinUsb_Xxx</strong> functions.
+
+For more information, see <a href="ff540196(v%3dvs.85).html">WinUSB</a>.</p>
+<p>In Windows 8, the Microsoft-provided information (INF) file for WinUSB, Winusb.inf, contains USB\MS_COMP_WINUSB as a device identifier string. This allows Winusb.sys to get automatically loaded as the function driver for those devices that have a matching WinUSB compatible ID in the MS OS descriptor. Such devices are called WinUSB devices. Hardware manufacturers are not required to distribute an INF file for their WinUSB device, making the driver installation process simpler for the end user. For more information, see <a href="hh450799(v%3dvs.85).html">WinUSB Device</a>.</p>
+<h2><a id="USB_client_driver"></a><a id="usb_client_driver"></a><a id="USB_CLIENT_DRIVER"></a>USB client driver</h2>
+<p>
+      Each USB device, composite or non-composite, is managed by a client driver. A USB client driver is a class or device driver that is a client of the USB driver stack. Such drivers  include class and device-specific drivers from Microsoft or a third-party vendor. To see a list of class drivers provided by Microsoft, see <a href="ff538820(v%3dvs.85).html">Drivers for the Supported USB Device Classes</a>. A client driver creates requests to communicate with the device by calling public interfaces exposed by the USB driver stack.</p>
+<p>A client driver for a composite device is no different from a client driver for a non-composite device, except for its location in the driver stack. </p>
+<p>A client driver for a non-composite device is layered directly above the hub driver. </p>
+<p>For a composite USB device that exposes multiple functions and does not have a  parent class driver, Windows loads the <a href="ff539234(v%3dvs.85).html">USB generic parent driver (Usbccgp.sys)</a> between the hub driver and the client driver layer. The parent driver creates a separate PDO for each function of a composite device. Client drivers (FDOs for functions) are loaded above the generic parent driver. Vendors might choose to provide a separate client driver for each function. 
+     </p>
+<p>A USB client driver can run in either user mode or kernel mode, depending on the requirements of the driver. USB client drivers can be written by using KMDF, UMDF, or WDM routines. </p>
+<h2><a id="Helper_libraries_for_client_drivers"></a><a id="helper_libraries_for_client_drivers"></a><a id="HELPER_LIBRARIES_FOR_CLIENT_DRIVERS"></a>Helper libraries for client drivers</h2>
+<p>Microsoft provides the following helper libraries to help kernel-mode drivers and applications to communicate with the USB driver stack:</p>
+<ul>
+<li>Usbd.sys<p>Microsoft provides the Usbd.sys library that exports routines  for USB client drivers. The helper routines simplify the operational tasks of a client driver. For instance, by using the helper routines, a USB client driver can build <a href="ff537056(v%3dvs.85).html">USB Request Blocks (URBs)</a> for certain specific operations, such as selecting a configuration, and submit those URBs to the USB driver stack. </p>
+</li>
+<li>Usbdex.lib<p>This helper library is new for Windows 8. The library exports routines primarily for allocating and building URBs. Those routines replace some of the legacy routines exported by Usbd.sys. The new routines require the client driver to register with the USB driver stack, which maintains the handle for registration.  That handle is used for calls to other   Usbdex.lib routines. Certain URBs allocated by the  new routines have an URB context that the USB driver uses for better tracking and processing.  For more information, see  <a href="hh450844(v%3dvs.85).html">Allocating and Building URBs</a>.</p>
+</li>
+<li>Winusb.dll<p>Winusb.dll is a user-mode DLL that exposes <a href="ff540046(v%3dvs.85).html#winusb">WinUSB functions</a> for communicating with  Winusb.sys, which is loaded as a device's function driver in kernel mode. Applications  use these functions to configure the device, retrieve information about the device, and perform I/O operations. For information about using these functions, see <a href="ff540174(v%3dvs.85).html">How to Access a USB Device by Using WinUSB Functions</a>.</p>
+</li>
+</ul>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff538930(v%3dvs.85).html">Universal Serial Bus (USB) Drivers</a>
+</dt>
+<dt>
+<a href="hh406260(v%3dvs.85).html">USB Driver Development Guide</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20USB Driver Stack Architecture%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="lkNOEKpR6hD1_BrYaRlhS2uluCemW1depA97kbdlBaSgc4X3m8ZDnCEoAzJkyyiMWt6I95adKEzqZ0tYPwE45s3-BCnWFyQ5NyyrLrEIpIrIsFzqHDRDufwY6Mb51S85vcSBJw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh406256(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh406256(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="lL8nyxZcA1-OQhhxXcpmjw-3BlVNvmLkJVajoDfh4pOqQ88fap2UpyPtenTmDgZ1FRL9sjaiQ4uNyUrUZlJ7Nib8RHlX2MvFEgCuFl65oiitm80TqcHrocpq7aw14qQV8PE7kg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh406256(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"3ab05dc0-2b01-4cfc-a928-c31a057d5688\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh406256(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:30:33 GMT -->
+</html>

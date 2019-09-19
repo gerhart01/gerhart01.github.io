@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/gg615081(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:53:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="gg615081(v%3dvs.85).html" />
+        <title>How to select a configuration for a USB device (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/gg615081(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/gg615081(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD0-9:01:11 AM" />
+
+<meta name="Search.ShortId" content="gg615081" />
+
+<meta name="ms.shortidmsdn" content="gg615081" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072071&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fgg615081%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh406260(v%3dvs.85).html" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff537060(v%3dvs.85).html" id="hh948138_VS.85_en-us" mtpsaliasid="" mtpsassetid="710b4f96-eeee-4313-b068-b2f2e718f8d2_VS.85_en-us" mtpsshortid="ff537060_VS.85_en-us" title="Selecting a USB configuration in USB drivers">Selecting a USB configuration in USB drivers</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="gg615081(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select a configuration for a USB device">How to select a configuration for a USB device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968309(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select an alternate setting in a USB interface">How to select an alternate setting in a USB interface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff538059(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Configuring Usbccgp.sys to Select a Non-Default USB Configuration">Configuring Usbccgp.sys to Select a Non-Default USB Configuration</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to select a configuration for a USB device</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>In this topic, you will learn about how to select a configuration in a universal serial bus (USB) device.</p>
+<p>To select a configuration for a USB device, the client driver for the device must choose at least one of the supported configurations and specify the alternate settings of each interface to use. The client driver packages those choices in a <em>select-configuration request</em> and sends the request to the Microsoft-provided USB driver stack, specifically the USB bus driver (USB hub PDO). The USB bus driver selects each interface in the specified configuration and sets up a communication channel, or  <em>pipe</em>, to each endpoint within the interface.  After the request completes, the client driver receives a handle for the selected configuration, and pipe handles for the endpoints that are defined in the active alternate setting for each interface. The client driver can then use the received handles to change configuration settings and to send I/O read  and write requests to a particular endpoint.</p>
+<p>A client driver sends a select-configuration request in a <a href="ff537056(v%3dvs.85)-2.html">USB Request Block (URB)</a> of the type URB_FUNCTION_SELECT_CONFIGURATION. The procedure in this topic describes how to use the <a href="hh406243(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a> routine to build that URB. The routine allocates memory for an URB, formats the URB for a select-configuration request, and returns the address of the URB to the client driver. </p>
+<p>Alternately,  you can allocate an <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure and then format the URB manually or by calling the <a href="ff538968(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildSelectConfigurationRequest</strong></a> macro. </p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<ul>
+<li>In Windows 8, <a href="hh406243(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a> replaces <a href="ff539029(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateConfigurationRequestEx</strong></a>. </li>
+<li>Before sending a select-configuration request, you must have a USBD handle for your client driver's registration with the USB driver stack. To create a USBD handle call <a href="hh406241(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a>.</li>
+<li> Make sure you have obtained the configuration descriptor (<a href="ff539241(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USB_CONFIGURATION_DESCRIPTOR</strong></a> structure) of the configuration to select. Typically, you submit an URB of the type URB_FUNCTION_GET_DESCRIPTOR_FROM_DEVICE (see <a href="ff540357(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_DESCRIPTOR_REQUEST</strong></a>) to retrieve information about device configuration.  For more information, see <a href="ff539242(v%3dvs.85)-2.html">USB Configuration Descriptors</a>.</li>
+</ul>
+<h2>Instructions</h2>
+<h3><a id="Create_an_array_of_USBD_INTERFACE_LIST_ENTRY_structures."></a><a id="create_an_array_of_usbd_interface_list_entry_structures."></a><a id="CREATE_AN_ARRAY_OF_USBD_INTERFACE_LIST_ENTRY_STRUCTURES."></a>Step 1: Create an array of USBD_INTERFACE_LIST_ENTRY structures.</h3>
+<ol>
+<li>Get the number of interfaces in the configuration. This information is contained in the <strong>bNumInterfaces</strong> member of the <a href="ff539241(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USB_CONFIGURATION_DESCRIPTOR</strong></a> structure.</li>
+<li>Create an array of  <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> structures. The number  of elements in the array  must be one more than the number of interfaces. Initialize the array by calling <a href="ff563610(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">RtlZeroMemory</strong></a>. <p>The client driver specifies alternate settings in each interface to enable, in the array of <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> structures. </p><ul>
+<li>The <strong>InterfaceDescriptor</strong> member of each structure points to the interface descriptor that contains the alternate setting. </li>
+<li>The <strong>Interface</strong> member of each structure points to an <a href="ff539068(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_INFORMATION</strong></a> structure that contains pipe information in its <strong>Pipes</strong> member. <strong>Pipes</strong> stores information about each endpoint defined in the alternate setting.</li>
+</ul>
+
+</li>
+<li>Obtain an interface descriptor  for each interface (or its alternate setting)   in the configuration. You can obtain those interface descriptors by calling <a href="ff539102(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_ParseConfigurationDescriptorEx</strong></a>. <p><strong>About Function Drivers for a USB Composite Device:  </strong></p><p>If the USB device is a composite device, the configuration is selected  by the Microsoft-provided <a href="ff539234(v%3dvs.85)-2.html">USB Generic Parent Driver</a> (Usbccgp.sys). A client driver, which is one of the function drivers of the composite device, cannot change the configuration but the driver can still send a select-configuration request through Usbccgp.sys.  </p>
+<p>Before sending that request, the client driver must submit a URB_FUNCTION_GET_DESCRIPTOR_FROM_DEVICE request. In response, Usbccgp.sys retrieves a <em>partial configuration descriptor</em> that only contains interface descriptors and other descriptors that pertain to the specific function for which the client driver is loaded. The number of interfaces reported in the <strong>bNumInterfaces</strong> field of a partial configuration descriptor is less than the total number of interfaces defined for the entire USB composite device. In addition, in a partial configuration descriptor, an interface descriptor's <strong>bInterfaceNumber</strong> indicates the actual interface number relative to the entire device. For example,  Usbccgp.sys might report a partial configuration descriptor with <strong>bNumInterfaces</strong> value of 2 and <strong>bInterfaceNumber</strong> value of 4 for the first interface. Note that the interface number is greater than the number of interfaces reported.</p>
+<p>While  enumerating interfaces in a partial configuration, avoid searching for interfaces by calculating interface numbers  based on the number of interfaces. In the preceding example, if <a href="ff539102(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_ParseConfigurationDescriptorEx</strong></a> is called in a loop that starts at zero, ends at <code>(bNumInterfaces - 1)</code>, and increments the interface index (specified in the <em>InterfaceNumber</em> parameter) in each iteration, the routine fails to get the correct interface. Instead, make sure that you search for all interfaces in the configuration descriptor by passing -1 in <em>InterfaceNumber</em>. For implementation details, see the code example in this section.</p>
+<p>For information about how Usbccgp.sys handles a select-configuration request sent by a client driver, see <a href="ff538059(v%3dvs.85)-2.html">Configuring Usbccgp.sys to Select a Non-Default USB Configuration</a>.</p>
+
+</li>
+<li>For each element (except  the last element) in the array,  set the <strong>InterfaceDescriptor</strong> member to the address of an  interface descriptor. For the first element in the array, set the <strong>InterfaceDescriptor</strong> member to the address of the  interface descriptor that represents the first interface in the configuration. Similarly for the <em>n</em>th element in the array, set the <strong>InterfaceDescriptor</strong> member to the address of the  interface descriptor that represents the <em>n</em>th interface in the configuration. </li>
+<li>The <strong>InterfaceDescriptor</strong> member of the last element must be set to NULL. </li>
+</ol>
+<h3><a id="Get_a_pointer_to_an_URB_allocated_by_the_USB_driver_stack."></a><a id="get_a_pointer_to_an_urb_allocated_by_the_usb_driver_stack."></a><a id="GET_A_POINTER_TO_AN_URB_ALLOCATED_BY_THE_USB_DRIVER_STACK."></a>Step 2: Get a pointer to an URB allocated by the USB driver stack.</h3>
+<p>Next, call <a href="hh406243(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a> by specifying the configuration to select and the populated array of <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> structures. The routine performs the following tasks:</p><ul>
+<li>Creates an URB and fills it with information about the specified configuration, its interfaces and endpoints, and sets the request type to URB_FUNCTION_SELECT_CONFIGURATION.</li>
+<li>Within that URB,  allocates a <a href="ff539068(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_INFORMATION</strong></a> structure for each interface descriptor that the client driver specifies.</li>
+<li>Sets  the <strong>Interface</strong> member of the <em>n</em>th element of the caller-provided <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a>  array to the address of the corresponding <a href="ff539068(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_INFORMATION</strong></a> structure in the URB.</li>
+<li>Initializes the <strong>InterfaceNumber</strong>, <strong>AlternateSetting</strong>, <strong>NumberOfPipes</strong>, <strong>Pipes[i].MaximumTransferSize</strong>, and <strong>Pipes[i].PipeFlags</strong> members.<p><strong>Note</strong>  In Windows 7 and ealier, the client driver created an URB for a select-configuration request by calling <a href="ff539029(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateConfigurationRequestEx</strong></a>. In Windows 2000 <strong>USBD_CreateConfigurationRequestEx</strong> initializes <strong>Pipes[i].MaximumTransferSize</strong> to the default maximum transfer size for a single URB read/write request. The client driver can specify a different maximum transfer size in the <strong>Pipes[i].MaximumTransferSize</strong>. The USB stack ignores this value in Windows XP, Windows Server 2003, and later versions of the operating system. For more information about <strong>MaximumTransferSize</strong>, see <a href="ff538112(v%3dvs.85)-2.html">Setting USB Transfer and Packet Sizes</a>.</p>
+</li>
+</ul>
+
+<h3><a id="Submit_the_URB_to_the_USB_driver_stack."></a><a id="submit_the_urb_to_the_usb_driver_stack."></a><a id="SUBMIT_THE_URB_TO_THE_USB_DRIVER_STACK."></a>Step 3: Submit the URB to the USB driver stack.</h3>
+<p>To submit the URB to the USB driver stack, the client driver must send an <a href="ff537271(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IOCTL_INTERNAL_USB_SUBMIT_URB</strong></a> I/O control request . For information about submitting an URB, see <a href="hh450899(v%3dvs.85)-2.html">How to Submit an URB</a>. </p>
+<p>After receiving the URB, the USB driver stack fills the rest of the members of each <a href="ff539068(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_INFORMATION</strong></a> structure. In particular, the <strong>Pipes</strong> array member is filled with information about the  pipes associated with the endpoints of the interface.</p>
+<h3><a id="On_request_completion__inspect_the_USBD_INTERFACE_INFORMATION_structures_and_the_URB."></a><a id="on_request_completion__inspect_the_usbd_interface_information_structures_and_the_urb."></a><a id="ON_REQUEST_COMPLETION__INSPECT_THE_USBD_INTERFACE_INFORMATION_STRUCTURES_AND_THE_URB."></a>Step 4: On request completion, inspect the USBD_INTERFACE_INFORMATION structures and the URB.</h3>
+<p>After the USB driver stack completes the IRP for the request, the stack returns the list of alternate settings and the related interfaces  in the <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> array.</p>
+<ol>
+<li>
+<p>The <strong>Pipes</strong> member of each <a href="ff539068(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_INFORMATION</strong></a> structure points to an array of <a href="ff539114(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> structures that contains information about the pipes associated with each endpoint of that particular interface. The client driver can obtain pipe handles from <strong>Pipes[i].PipeHandle</strong> and use them to send I/O requests to specific pipes. The <strong>Pipes[i].PipeType</strong> member specifies the type of endpoint and transfer supported by that pipe.</p>
+</li>
+<li>
+<p>Within the <strong>UrbSelectConfiguration</strong> member of the URB, the USB driver stack returns a handle that you can use to select an alternate interface setting by submitting another URB of the type URB_FUNCTION_SELECT_INTERFACE (<em>select-interface request</em>). To allocate and build the URB structure for that request, call <a href="hh406245(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectInterfaceUrbAllocateAndBuild</strong></a>. </p>The select-configuration request and select-interface request might fail if there is insufficient bandwidth to support the isochronous, control, and interrupt endpoints within the enabled interfaces. In that case, the USB bus driver sets the <strong>Status</strong> member of the URB header to USBD_STATUS_NO_BANDWIDTH.</li>
+</ol>
+<p>The following example code shows how to create an array of <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> structures and call <a href="hh406243(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a>. 
+The example sends the request synchronously by calling SubmitUrbSync. To see the code example for SubmitUrbSync, see <a href="hh450899(v%3dvs.85)-2.html">How to Submit an URB</a>.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a849437d-6d87-457b-885e-476373015f89');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a849437d-6d87-457b-885e-476373015f89" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Green;">/*++
+
+Routine Description:
+This helper routine selects the specified configuration.
+
+Arguments:
+USBDHandle - USBD handle that is retrieved by the 
+client driver in a previous call to the USBD_CreateHandle routine.
+
+ConfigurationDescriptor - Pointer to the configuration
+descriptor for the device. The caller receives this pointer
+from the URB_FUNCTION_GET_DESCRIPTOR_FROM_DEVICE request.
+
+Return Value: NT status value
+--*/</span>
+
+NTSTATUS SelectConfiguration (PDEVICE_OBJECT DeviceObject,
+                              PUSB_CONFIGURATION_DESCRIPTOR ConfigurationDescriptor)
+{
+    PDEVICE_EXTENSION deviceExtension;
+    PIO_STACK_LOCATION nextStack;
+    PIRP irp;
+    PURB urb = NULL;
+
+    KEVENT    kEvent;
+    NTSTATUS ntStatus;    
+
+    PUSBD_INTERFACE_LIST_ENTRY   interfaceList = NULL; 
+    PUSB_INTERFACE_DESCRIPTOR    interfaceDescriptor = NULL;
+    PUSBD_INTERFACE_INFORMATION  Interface = NULL;
+    USBD_PIPE_HANDLE             pipeHandle;
+
+    ULONG                        interfaceIndex;
+
+    PUCHAR StartPosition = (PUCHAR)ConfigurationDescriptor;
+
+    deviceExtension = (PDEVICE_EXTENSION)DeviceObject-&gt;DeviceExtension;
+
+    <span style="color:Green;">// Allocate an array for the list of interfaces</span>
+    <span style="color:Green;">// The number of elements must be one more than number of interfaces.</span>
+    interfaceList = (PUSBD_INTERFACE_LIST_ENTRY)ExAllocatePool (
+        NonPagedPool, 
+        <span style="color:Blue;">sizeof</span>(USBD_INTERFACE_LIST_ENTRY) *
+        (deviceExtension-&gt;NumInterfaces + 1));
+
+    <span style="color:Blue;">if</span>(!interfaceList)
+    {
+        <span style="color:Green;">//Failed to allocate memory</span>
+        ntStatus = STATUS_INSUFFICIENT_RESOURCES;
+        <span style="color:Blue;">goto</span> Exit;
+    }
+
+    <span style="color:Green;">// Initialize the array by setting all members to NULL.</span>
+    RtlZeroMemory (interfaceList, <span style="color:Blue;">sizeof</span> (
+        USBD_INTERFACE_LIST_ENTRY) *
+        (deviceExtension-&gt;NumInterfaces + 1));
+
+    <span style="color:Green;">// Enumerate interfaces in the configuration.</span>
+    <span style="color:Blue;">for</span> ( interfaceIndex = 0; 
+        interfaceIndex &lt; deviceExtension-&gt;NumInterfaces; 
+        interfaceIndex++) 
+    {
+        interfaceDescriptor = USBD_ParseConfigurationDescriptorEx(
+            ConfigurationDescriptor, 
+            StartPosition, <span style="color:Green;">// StartPosition </span>
+            -1,            <span style="color:Green;">// InterfaceNumber</span>
+            0,             <span style="color:Green;">// AlternateSetting</span>
+            -1,            <span style="color:Green;">// InterfaceClass</span>
+            -1,            <span style="color:Green;">// InterfaceSubClass</span>
+            -1);           <span style="color:Green;">// InterfaceProtocol</span>
+
+        <span style="color:Blue;">if</span> (!interfaceDescriptor) 
+        {
+            ntStatus = STATUS_INSUFFICIENT_RESOURCES;
+            <span style="color:Blue;">goto</span> Exit;
+        }
+
+        <span style="color:Green;">// Set the interface entry</span>
+        interfaceList[interfaceIndex].InterfaceDescriptor = interfaceDescriptor;
+        interfaceList[interfaceIndex].Interface = NULL;
+
+        <span style="color:Green;">// Move the position to the next interface descriptor</span>
+        StartPosition = (PUCHAR)interfaceDescriptor + interfaceDescriptor-&gt;bLength;
+
+    }
+
+    <span style="color:Green;">// Make sure that the InterfaceDescriptor member of the last element to NULL.</span>
+    interfaceList[deviceExtension-&gt;NumInterfaces].InterfaceDescriptor = NULL;
+
+    <span style="color:Green;">// Allocate and build an URB for the select-configuration request.</span>
+    ntStatus = USBD_SelectConfigUrbAllocateAndBuild(
+        deviceExtension-&gt;UsbdHandle, 
+        ConfigurationDescriptor, 
+        interfaceList,
+        &amp;urb);
+
+    <span style="color:Blue;">if</span>(!NT_SUCCESS(ntStatus)) 
+    {
+        <span style="color:Blue;">goto</span> Exit;
+    }
+
+    <span style="color:Green;">// Allocate the IRP to send the buffer down the USB stack.</span>
+    <span style="color:Green;">// The IRP will be freed by IO manager.</span>
+    irp = IoAllocateIrp((deviceExtension-&gt;NextDeviceObject-&gt;StackSize)+1, TRUE);  
+
+    <span style="color:Blue;">if</span> (!irp)
+    {
+        <span style="color:Green;">//Irp could not be allocated.</span>
+        ntStatus = STATUS_INSUFFICIENT_RESOURCES;
+        <span style="color:Blue;">goto</span> Exit;
+    }
+
+    ntStatus = SubmitUrbSync( 
+        deviceExtension-&gt;NextDeviceObject, 
+        irp, 
+        urb, 
+        CompletionRoutine);
+
+    <span style="color:Green;">// Enumerate the pipes in the interface information array, which is now filled with pipe</span>
+    <span style="color:Green;">// information.</span>
+
+    <span style="color:Blue;">for</span> ( interfaceIndex = 0; 
+        interfaceIndex &lt; deviceExtension-&gt;NumInterfaces; 
+        interfaceIndex++) 
+    {
+        ULONG i;
+
+        Interface = interfaceList[interfaceIndex].Interface;
+
+        <span style="color:Blue;">for</span>(i=0; i &lt; Interface-&gt;NumberOfPipes; i++) 
+        {
+            pipeHandle = Interface-&gt;Pipes[i].PipeHandle;
+
+            <span style="color:Blue;">if</span> (Interface-&gt;Pipes[i].PipeType == UsbdPipeTypeInterrupt)
+            {
+                deviceExtension-&gt;InterruptPipe = pipeHandle;
+            }
+            <span style="color:Blue;">if</span> (Interface-&gt;Pipes[i].PipeType == UsbdPipeTypeBulk &amp;&amp; USB_ENDPOINT_DIRECTION_IN (Interface-&gt;Pipes[i].EndpointAddress))
+            {
+                deviceExtension-&gt;BulkInPipe = pipeHandle;
+            }
+            <span style="color:Blue;">if</span> (Interface-&gt;Pipes[i].PipeType == UsbdPipeTypeBulk &amp;&amp; USB_ENDPOINT_DIRECTION_OUT (Interface-&gt;Pipes[i].EndpointAddress))
+            {
+                deviceExtension-&gt;BulkOutPipe = pipeHandle;
+            }
+        }
+    }
+
+Exit:
+
+    <span style="color:Blue;">if</span>(interfaceList) 
+    {
+        ExFreePool(interfaceList);
+        interfaceList = NULL;
+    }
+
+    <span style="color:Blue;">if</span> (urb)
+    {
+        USBD_UrbFree( deviceExtension-&gt;UsbdHandle, urb); 
+    }
+
+
+    <span style="color:Blue;">return</span> ntStatus;
+
+}
+
+NTSTATUS CompletionRoutine ( PDEVICE_OBJECT DeviceObject,
+                            PIRP           Irp,
+                            PVOID          Context)
+{
+    PKEVENT kevent;
+
+    kevent = (PKEVENT) Context;
+
+    <span style="color:Blue;">if</span> (Irp-&gt;PendingReturned == TRUE)
+    {
+        KeSetEvent(kevent, IO_NO_INCREMENT, FALSE);
+    }
+
+    KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, <span style="color:#A31515;">"Select-configuration request completed. \n"</span> ));
+
+
+    <span style="color:Blue;">return</span> STATUS_MORE_PROCESSING_REQUIRED;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Remarks</h2>
+<p><strong>Disabling a Configuration for a USB Device:  </strong></p><p>To disable a USB device, create and submit a select-configuration request with a NULL configuration descriptor.  For that type of request, you can reuse the URB that you created for request that selected a configuration in the device. Alternately, you can allocate a new URB by calling <a href="hh406250(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a>. Before submitting the request you must format the URB by using the <a href="ff538968(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildSelectConfigurationRequest</strong></a> macro as shown in the following example code.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_6506fdce-5086-489e-8824-765808521da6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_6506fdce-5086-489e-8824-765808521da6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+URB Urb;
+UsbBuildSelectConfigurationRequest(
+  &amp;Urb,
+  <span style="color:Blue;">sizeof</span>(_URB_SELECT_CONFIGURATION),
+  NULL
+);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff538059(v%3dvs.85)-2.html">Configuring Usbccgp.sys to Select a Non-Default USB Configuration</a>
+</dt>
+<dt>
+<a href="ff537060(v%3dvs.85)-2.html">USB device configuration</a>
+</dt>
+<dt>
+<a href="hh450844(v%3dvs.85)-2.html">Allocating and Building URBs</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to select a configuration for a USB device%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="ErFKsRP8hGGULCJUlavUPS75bQeqEXxlKt8TcE8swnTMqTTu-iZC1TgglEymzeZgIvCGP_7jFXjYoaMdQgWru_MsTMVbhrsODzpvQrctTbTowoNSQNsfnYkulARR4UXZxZ9emA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/gg615081(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fgg615081(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="lRChSFI5tAFAcIInXXD2MlxTy0fVm6lLY4IcPihbuAs5mLhkvM9T8t4dHKCfa2w9zaOj182mc_WDWc36-iHO5tQFi0wjG9LdSzVARoQR9HhxSn5BjL9-AMQLYZ1gX_p9WR2oAw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/gg615081(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"8f770fec-811c-43dc-bf44-a7f769482449\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/gg615081(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:53:35 GMT -->
+</html>

@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/aa363858(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx" />
+        <title>CreateFile function (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/aa363858(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93A-9:05:37 AM" />
+
+<meta name="Search.ShortId" content="aa363858" />
+
+<meta name="ms.shortidmsdn" content="aa363858" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072337&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2faa363858%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+<div class="topicNotInScope" id="topicNotInScope">
+    <div class="topicNotInScopeDisclaimer" id="topicNotInScopeDisclaimer">
+        <div class="topicNotInScopeImageContainer clip16x16">
+            <img class="topicNotInScopeInformationImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Information" />
+        </div>
+        <div class="topicNotInScopeSwitchCollectionContainer">
+            <a class="topicNotInScopeSwitchCollection" id="topicNotInScopeSwitchCollection" href="#" onclick="TopicNotInScope_ShowPicker();return false;">
+                Switch
+            </a>
+            <div class="topicNotInScopeImageContainer2 clip11x6">
+                <img class="topicNotInScopeDropdownImage" id="topicNotInScopeDropdownImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Switch" onclick="TopicNotInScope_ShowPicker()" />
+            </div>
+             <ul id="topicNotInScopeCollectionPicker" class="topicNotInScopeCollectionPicker">
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/windows/desktop/ux/aa363858(v=vs.85).aspx" title="Visual Studio">Visual Studio</a>
+                        </li>
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx" title="Windows Desktop Development">Windows Desktop Development</a>
+                        </li>
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/library/aa363858(v=vs.85).aspx" title="MSDN Library">MSDN Library</a>
+                        </li>
+            </ul>
+        </div>
+        <div class="topicNotInScopeDisclaimerText">The topic you requested is included in another documentation set. For convenience, it's displayed below. Choose Switch to see the topic in its original location.</div>
+        <div class="Clear"></div>
+    </div>
+</div>
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">CreateFile function</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>Creates or opens a file or I/O device. The most commonly used I/O devices are as follows: file, file 
+    stream, directory, physical disk, volume, console buffer, tape drive, communications resource, mailslot, and 
+    pipe. The function returns a handle that can be used to access the file or device for various types of 
+    I/O depending on the file or device and the flags and attributes specified.</p>
+<p>To perform this operation as a transacted operation, which results in a handle that can be used for transacted 
+    I/O, use the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363859(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFileTransacted</strong></a> function.</p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ff79d091-07ef-4ac9-8cdf-2f17f94ef59d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ff79d091-07ef-4ac9-8cdf-2f17f94ef59d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HANDLE WINAPI CreateFile(
+  _In_      LPCTSTR lpFileName,
+  _In_      DWORD dwDesiredAccess,
+  _In_      DWORD dwShareMode,
+  _In_opt_  LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+  _In_      DWORD dwCreationDisposition,
+  _In_      DWORD dwFlagsAndAttributes,
+  _In_opt_  HANDLE hTemplateFile
+);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Parameters</h2>
+<dl>
+<dt><em>lpFileName</em> [in]</dt>
+<dd>
+<p>The name of the file or device to be created or opened. You may use either forward slashes (/) or backslashes (\) in this name.</p>
+<p>In the ANSI version of this function, the name is limited to <strong>MAX_PATH</strong> characters. 
+       To extend this limit to 32,767 wide characters, call the Unicode version of the function and prepend 
+       "\\?\" to the path. For more information, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365247(v=vs.85).aspx">Naming Files, Paths, and Namespaces</a>.</p>
+<p>For information on special device names, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363908(v=vs.85).aspx">Defining an MS-DOS Device Name</a>.</p>
+<p>To create a file stream, specify the name of the file, a colon, and then the name of the stream. For more 
+       information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364404(v=vs.85).aspx">File Streams</a>.</p>
+</dd>
+<dt><em>dwDesiredAccess</em> [in]</dt>
+<dd>
+<p>The requested access to the file or device, which can be summarized as read, write, both or neither zero).</p>
+<p>The most commonly used values are <strong>GENERIC_READ</strong>, 
+       <strong>GENERIC_WRITE</strong>, or both 
+       (<code>GENERIC_READ | GENERIC_WRITE</code>). For more information, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa446632(v=vs.85).aspx">Generic Access Rights</a>, 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364399(v=vs.85).aspx">File Security and Access Rights</a>, 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg258116(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">File Access Rights Constants</strong></a>, and 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa374892(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ACCESS_MASK</strong></a>.</p>
+<p>If this parameter is zero, the application can query certain metadata such as file, directory, or device 
+       attributes without accessing that file or device, even if <strong>GENERIC_READ</strong> access would 
+       have been denied.</p>
+<p>You cannot request an access mode that conflicts with the sharing mode that is specified by the 
+       <em>dwShareMode</em> parameter in an open request that already has an open handle.</p>
+<p>For more information, see the Remarks section of this topic and 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>.</p>
+</dd>
+<dt><em>dwShareMode</em> [in]</dt>
+<dd>
+<p>The requested sharing mode of the file or device, which can be read, write, both, delete, all of these, or 
+       none (refer to the following table). Access requests to attributes or extended attributes are not affected by 
+       this flag.</p>
+<p>If this parameter is zero and <strong>CreateFile</strong> succeeds, the 
+       file or device cannot be shared and cannot be opened again until the handle to the file or device is closed. 
+       For more information, see the Remarks section.</p>
+<p>You cannot request a sharing mode that conflicts with the access mode that is specified in an existing 
+       request that has an open handle. <strong>CreateFile</strong> would fail and 
+       the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms679360(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetLastError</strong></a> function would return 
+       <strong>ERROR_SHARING_VIOLATION</strong>.</p>
+<p>To enable a process to share a file or device while another process has the file or device open, use a 
+       compatible combination of one or more of the following values. For more information about valid combinations of 
+       this parameter with the <em>dwDesiredAccess</em> parameter, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>.</p>
+<p class="note"><strong>Note</strong>  The sharing options for each open handle remain in effect until that handle is closed, regardless of 
+       process context.</p>
+<table>
+<tr><th>Value</th><th>Meaning</th></tr>
+<tr><td><a id="0"></a><dl>
+<dt><strong>0</strong></dt>
+<dt>0x00000000</dt>
+</dl>
+</td><td>
+<p>Prevents other processes from opening a file or device if they request delete, read, or write access.</p>
+</td></tr>
+<tr><td><a id="FILE_SHARE_DELETE"></a><a id="file_share_delete"></a><dl>
+<dt><strong>FILE_SHARE_DELETE</strong></dt>
+<dt>0x00000004</dt>
+</dl>
+</td><td>
+<p>Enables subsequent open operations on a file or device to request delete access.</p>
+<p>Otherwise, other processes cannot open the file or device if they request delete access.</p>
+<p>If this flag is not specified, but the file or device has been opened for delete access, the function 
+         fails.</p>
+<p class="note"><strong>Note</strong>  Delete access allows both delete and rename operations.</p>
+</td></tr>
+<tr><td><a id="FILE_SHARE_READ"></a><a id="file_share_read"></a><dl>
+<dt><strong>FILE_SHARE_READ</strong></dt>
+<dt>0x00000001</dt>
+</dl>
+</td><td>
+<p>Enables subsequent open operations on a file or device to request read access.</p>
+<p>Otherwise, other processes cannot open the file or device if they request read access.</p>
+<p>If this flag is not specified, but the file or device has been opened for read access, the function 
+         fails.</p>
+</td></tr>
+<tr><td><a id="FILE_SHARE_WRITE"></a><a id="file_share_write"></a><dl>
+<dt><strong>FILE_SHARE_WRITE</strong></dt>
+<dt>0x00000002</dt>
+</dl>
+</td><td>
+<p>Enables subsequent open operations on a file or device to request write access.</p>
+<p>Otherwise, other processes cannot open the file or device if they request write access.</p>
+<p>If this flag is not specified, but the file or device has been opened for write access or has a file mapping 
+         with write access, the function fails.</p>
+</td></tr>
+</table>
+<p> </p>
+</dd>
+<dt><em>lpSecurityAttributes</em> [in, optional]</dt>
+<dd>
+<p>A pointer to a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa379560(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SECURITY_ATTRIBUTES</strong></a> 
+       structure that contains two separate but related data members: an optional security descriptor, and a Boolean 
+       value that determines whether the returned handle can be inherited by child processes.</p>
+<p>This parameter can be <strong>NULL</strong>.</p>
+<p>If this parameter is <strong>NULL</strong>, the handle returned by 
+       <strong>CreateFile</strong> cannot be inherited by any child processes the 
+       application may create and the file or device associated with the returned handle gets a default security 
+       descriptor.</p>
+<p>The <strong>lpSecurityDescriptor</strong> member of the structure specifies a 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa379561(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SECURITY_DESCRIPTOR</strong></a> for a file or device. If 
+       this member is <strong>NULL</strong>, the file or device associated with the returned handle is 
+       assigned a default security descriptor.</p>
+<p><strong>CreateFile</strong> ignores the 
+       <strong>lpSecurityDescriptor</strong> member when opening an existing file or device, but continues 
+       to use the <strong>bInheritHandle</strong> member.</p>
+<p>The <strong>bInheritHandle</strong>member of the structure specifies whether the returned handle 
+       can be inherited.</p>
+<p>For more information, see the Remarks section.</p>
+</dd>
+<dt><em>dwCreationDisposition</em> [in]</dt>
+<dd>
+<p>An action to take on a file or device that exists or does not exist.</p>
+<p>For devices other than files, this parameter is usually set to <strong>OPEN_EXISTING</strong>.</p>
+<p>For more information, see the Remarks section.</p>
+<p>This parameter must be one of the following values, which cannot be combined:</p>
+<table>
+<tr><th>Value</th><th>Meaning</th></tr>
+<tr><td><a id="CREATE_ALWAYS"></a><a id="create_always"></a><dl>
+<dt><strong>CREATE_ALWAYS</strong></dt>
+<dt>2</dt>
+</dl>
+</td><td>
+<p>Creates a new file, always.</p>
+<p>If the specified file exists and is writable, the function overwrites the file, the function succeeds, and 
+         last-error code is set to <strong>ERROR_ALREADY_EXISTS</strong> (183).</p>
+<p>If the specified file does not exist and is a valid path, a new file is created, the function succeeds, and 
+         the last-error code is set to zero.</p>
+<p>For more information, see the Remarks section of this topic.</p>
+</td></tr>
+<tr><td><a id="CREATE_NEW"></a><a id="create_new"></a><dl>
+<dt><strong>CREATE_NEW</strong></dt>
+<dt>1</dt>
+</dl>
+</td><td>
+<p>Creates a new file, only if it does not already exist.</p>
+<p>If the specified file exists, the function fails and the last-error code is set to 
+         <strong>ERROR_FILE_EXISTS</strong> (80).</p>
+<p>If the specified file does not exist and is a valid path to a writable location, a new file is created.</p>
+</td></tr>
+<tr><td><a id="OPEN_ALWAYS"></a><a id="open_always"></a><dl>
+<dt><strong>OPEN_ALWAYS</strong></dt>
+<dt>4</dt>
+</dl>
+</td><td>
+<p>Opens a file, always.</p>
+<p>If the specified file exists, the function succeeds and the last-error code is set to 
+         <strong>ERROR_ALREADY_EXISTS</strong> (183).</p>
+<p>If the specified file does not exist and is a valid path to a writable location, the function creates a 
+         file and the last-error code is set to zero.</p>
+</td></tr>
+<tr><td><a id="OPEN_EXISTING"></a><a id="open_existing"></a><dl>
+<dt><strong>OPEN_EXISTING</strong></dt>
+<dt>3</dt>
+</dl>
+</td><td>
+<p>Opens a file or device, only if it exists.</p>
+<p>If the specified file or device does not exist, the function fails and the last-error code is set to 
+         <strong>ERROR_FILE_NOT_FOUND</strong> (2).</p>
+<p>For more information about devices, see the Remarks section.</p>
+</td></tr>
+<tr><td><a id="TRUNCATE_EXISTING"></a><a id="truncate_existing"></a><dl>
+<dt><strong>TRUNCATE_EXISTING</strong></dt>
+<dt>5</dt>
+</dl>
+</td><td>
+<p>Opens a file and truncates it so that its size is zero bytes, only if it exists.</p>
+<p>If the specified file does not exist, the function fails and the last-error code is set to 
+         <strong>ERROR_FILE_NOT_FOUND</strong> (2).</p>
+<p>The calling process must open the file with the <strong>GENERIC_WRITE</strong> bit set as part of 
+         the <em>dwDesiredAccess</em> parameter.</p>
+</td></tr>
+</table>
+<p> </p>
+</dd>
+<dt><em>dwFlagsAndAttributes</em> [in]</dt>
+<dd>
+<p>The file or device attributes and flags, <strong>FILE_ATTRIBUTE_NORMAL</strong> being the most 
+       common default value for files.</p>
+<p>This parameter can include any combination of the available file attributes 
+       (<strong>FILE_ATTRIBUTE_*</strong>). All other file attributes override 
+       <strong>FILE_ATTRIBUTE_NORMAL</strong>.</p>
+<p>This parameter can also contain combinations of flags (<strong>FILE_FLAG_*</strong>) for control of 
+       file or device caching behavior, access modes, and other special-purpose flags. These combine with any 
+       <strong>FILE_ATTRIBUTE_*</strong> values.</p>
+<p>This parameter can also contain Security Quality of Service (SQOS) information by specifying the 
+       <strong>SECURITY_SQOS_PRESENT</strong> flag. Additional SQOS-related flags information is presented in 
+       the table following the attributes and flags tables.</p>
+<p class="note"><strong>Note</strong>  When <strong>CreateFile</strong> opens an existing file, it generally 
+       combines the file flags with the file attributes of the existing file, and ignores any file attributes supplied 
+       as part of <em>dwFlagsAndAttributes</em>. Special cases are detailed in 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>.</p>
+<p>Some of the following file attributes and flags may only apply to files and not necessarily all other types 
+       of devices that <strong>CreateFile</strong> can open. For additional 
+       information, see the Remarks section of this topic and 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>.</p>
+<p>For more advanced access to file attributes, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365535(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetFileAttributes</strong></a>. For a complete list 
+       of all file attributes with their values and descriptions, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg258117(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">File Attribute Constants</strong></a>.</p>
+<table>
+<tr><th>Attribute</th><th>Meaning</th></tr>
+<tr><td><a id="FILE_ATTRIBUTE_ARCHIVE"></a><a id="file_attribute_archive"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_ARCHIVE</strong></dt>
+<dt>32 (0x20)</dt>
+</dl>
+</td><td>
+<p>The file should be archived. Applications use this attribute to mark files for backup or removal.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_ENCRYPTED"></a><a id="file_attribute_encrypted"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_ENCRYPTED</strong></dt>
+<dt>16384 (0x4000)</dt>
+</dl>
+</td><td>
+<p>The file or directory is encrypted. For a file, this means that all data in the file is encrypted. For a 
+         directory, this means that encryption is the default for newly created files and subdirectories. For more 
+         information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364223(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">File Encryption</strong></a>.</p>
+<p>This flag has no effect if <strong>FILE_ATTRIBUTE_SYSTEM</strong> is also specified.</p>
+<p>This flag is not supported on Home, Home Premium, Starter, or ARM editions of Windows.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_HIDDEN"></a><a id="file_attribute_hidden"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_HIDDEN</strong></dt>
+<dt>2 (0x2)</dt>
+</dl>
+</td><td>
+<p>The file is hidden. Do not include it in an ordinary directory listing.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_NORMAL"></a><a id="file_attribute_normal"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_NORMAL</strong></dt>
+<dt>128 (0x80)</dt>
+</dl>
+</td><td>
+<p>The file does not have other attributes set. This attribute is valid only if used alone.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_OFFLINE"></a><a id="file_attribute_offline"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_OFFLINE</strong></dt>
+<dt>4096 (0x1000)</dt>
+</dl>
+</td><td>
+<p>The data of a file is not immediately available. This attribute indicates that file data is physically 
+         moved to offline storage. This attribute is used by Remote Storage, the hierarchical storage management 
+         software. Applications should not arbitrarily change this attribute.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_READONLY"></a><a id="file_attribute_readonly"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_READONLY</strong></dt>
+<dt>1 (0x1)</dt>
+</dl>
+</td><td>
+<p>The file is read only. Applications can read the file, but cannot write to or delete it.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_SYSTEM"></a><a id="file_attribute_system"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_SYSTEM</strong></dt>
+<dt>4 (0x4)</dt>
+</dl>
+</td><td>
+<p>The file is part of or used exclusively by an operating system.</p>
+</td></tr>
+<tr><td><a id="FILE_ATTRIBUTE_TEMPORARY"></a><a id="file_attribute_temporary"></a><dl>
+<dt><strong>FILE_ATTRIBUTE_TEMPORARY</strong></dt>
+<dt>256 (0x100)</dt>
+</dl>
+</td><td>
+<p>The file is being used for temporary storage.</p>
+<p>For more information, see the <a href="#caching_behavior">Caching Behavior</a> section of this 
+         topic.</p>
+</td></tr>
+</table>
+<p> </p>
+<table>
+<tr><th>Flag</th><th>Meaning</th></tr>
+<tr><td><a id="FILE_FLAG_BACKUP_SEMANTICS"></a><a id="file_flag_backup_semantics"></a><dl>
+<dt><strong>FILE_FLAG_BACKUP_SEMANTICS</strong></dt>
+<dt>0x02000000</dt>
+</dl>
+</td><td>
+<p>The file is being opened or created for a backup or restore operation. The system ensures that the calling 
+         process overrides file security checks when the process has <strong>SE_BACKUP_NAME</strong> and 
+         <strong>SE_RESTORE_NAME</strong> privileges. For more information, see 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms717797(v=vs.85).aspx">Changing Privileges in a Token</a>.</p>
+<p>You must set this flag to obtain a handle to a directory. A directory handle can be passed to some 
+         functions instead of a file handle. For more information, see the Remarks section.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_DELETE_ON_CLOSE"></a><a id="file_flag_delete_on_close"></a><dl>
+<dt><strong>FILE_FLAG_DELETE_ON_CLOSE</strong></dt>
+<dt>0x04000000</dt>
+</dl>
+</td><td>
+<p>The file is to be deleted immediately after all of its handles are closed, which includes the specified 
+         handle and any other open or duplicated handles.</p>
+<p>If there are existing open handles to a file, the call fails unless they were all opened with the 
+         <strong>FILE_SHARE_DELETE</strong> share mode.</p>
+<p>Subsequent open requests for the file fail, unless the <strong>FILE_SHARE_DELETE</strong> share 
+         mode is specified.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_NO_BUFFERING"></a><a id="file_flag_no_buffering"></a><dl>
+<dt><strong>FILE_FLAG_NO_BUFFERING</strong></dt>
+<dt>0x20000000</dt>
+</dl>
+</td><td>
+<p>The file or device is being opened with no system caching for data reads and writes. This flag does not 
+         affect hard disk caching or memory mapped files.</p>
+<p>There are strict requirements for successfully working with files opened with 
+         <strong>CreateFile</strong> using the 
+         <strong>FILE_FLAG_NO_BUFFERING</strong> flag, for details see 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/cc644950(v=vs.85).aspx">File Buffering</a>.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_OPEN_NO_RECALL"></a><a id="file_flag_open_no_recall"></a><dl>
+<dt><strong>FILE_FLAG_OPEN_NO_RECALL</strong></dt>
+<dt>0x00100000</dt>
+</dl>
+</td><td>
+<p>The file data is requested, but it should continue to be located in remote storage. It should not be 
+         transported back to local storage. This flag is for use by remote storage systems.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_OPEN_REPARSE_POINT"></a><a id="file_flag_open_reparse_point"></a><dl>
+<dt><strong>FILE_FLAG_OPEN_REPARSE_POINT</strong></dt>
+<dt>0x00200000</dt>
+</dl>
+</td><td>
+<p>Normal <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365503(v=vs.85).aspx">reparse point</a> processing will not 
+         occur; <strong>CreateFile</strong> will attempt to open the reparse 
+         point. When a file is opened, a file handle is returned, whether or not the filter that controls the reparse 
+         point is operational.</p>
+<p>This flag cannot be used with the <strong>CREATE_ALWAYS</strong> flag.</p>
+<p>If the file is not a reparse point, then this flag is ignored.</p>
+<p>For more information, see the Remarks section.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_OVERLAPPED"></a><a id="file_flag_overlapped"></a><dl>
+<dt><strong>FILE_FLAG_OVERLAPPED</strong></dt>
+<dt>0x40000000</dt>
+</dl>
+</td><td>
+<p>The file or device is being opened or created for asynchronous I/O.</p>
+<p>When subsequent I/O operations are completed on this handle, the event specified in the 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms684342(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">OVERLAPPED</strong></a> structure will be set to the 
+         signaled state.</p>
+<p>If this flag is specified, the file can be used for simultaneous read and write operations.</p>
+<p>If this flag is not specified, then I/O operations are serialized, even if the calls to the read and write 
+         functions specify an <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms684342(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">OVERLAPPED</strong></a> structure.</p>
+<p>For information about considerations when using a file handle created with this flag, see the 
+         <a href="#synchronous_and_asynchronous_i_o_handles">Synchronous and Asynchronous I/O Handles</a> 
+         section of this topic.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_POSIX_SEMANTICS"></a><a id="file_flag_posix_semantics"></a><dl>
+<dt><strong>FILE_FLAG_POSIX_SEMANTICS</strong></dt>
+<dt>0x0100000</dt>
+</dl>
+</td><td>
+<p>Access will occur according to POSIX rules. This includes allowing multiple files with names, differing 
+         only in case, for file systems that support that naming. Use care when using this option, because files 
+         created with this flag may not be accessible by applications that are written for MS-DOS or 16-bit 
+         Windows.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_RANDOM_ACCESS"></a><a id="file_flag_random_access"></a><dl>
+<dt><strong>FILE_FLAG_RANDOM_ACCESS</strong></dt>
+<dt>0x10000000</dt>
+</dl>
+</td><td>
+<p>Access is intended to be random. The system can use this as a hint to optimize file caching.</p>
+<p>This flag has no effect if the file system does not support cached I/O and 
+         <strong>FILE_FLAG_NO_BUFFERING</strong>.</p>
+<p>For more information, see the <a href="#caching_behavior">Caching Behavior</a> section of this 
+         topic.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_SESSION_AWARE"></a><a id="file_flag_session_aware"></a><dl>
+<dt><strong>FILE_FLAG_SESSION_AWARE</strong></dt>
+<dt>0x00800000</dt>
+</dl>
+</td><td>
+<p>The file or device is being opened with session awareness. If this flag is not specified, then per-session 
+         devices (such as a redirected USB device) cannot be opened by processes running in session 0. This flag has 
+         no effect for callers not in session 0. This flag is supported only on server editions of Windows.</p>
+<p><strong>Windows Server 2008 R2, Windows Server 2008, and Windows Server 2003:  </strong>This flag is not supported before Windows Server 2012.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_SEQUENTIAL_SCAN"></a><a id="file_flag_sequential_scan"></a><dl>
+<dt><strong>FILE_FLAG_SEQUENTIAL_SCAN</strong></dt>
+<dt>0x08000000</dt>
+</dl>
+</td><td>
+<p>Access is intended to be sequential from beginning to end. The system can use this as a hint to optimize 
+         file caching.</p>
+<p>This flag should not be used if read-behind (that is, reverse scans) will be used.</p>
+<p>This flag has no effect if the file system does not support cached I/O and 
+         <strong>FILE_FLAG_NO_BUFFERING</strong>.</p>
+<p>For more information, see the <a href="#caching_behavior">Caching Behavior</a> section of this 
+         topic.</p>
+</td></tr>
+<tr><td><a id="FILE_FLAG_WRITE_THROUGH"></a><a id="file_flag_write_through"></a><dl>
+<dt><strong>FILE_FLAG_WRITE_THROUGH</strong></dt>
+<dt>0x80000000</dt>
+</dl>
+</td><td>
+<p>Write operations will not go through any intermediate cache, they will go directly to disk.</p>
+<p>For additional information, see the <a href="#caching_behavior">Caching Behavior</a> section of this 
+         topic.</p>
+</td></tr>
+</table>
+<p> </p>
+<p>The <em>dwFlagsAndAttributes</em>parameter can also specify SQOS information. For more 
+       information, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa378832(v=vs.85).aspx">Impersonation Levels</a>. When the 
+       calling application specifies the <strong>SECURITY_SQOS_PRESENT</strong> flag as part of 
+       <em>dwFlagsAndAttributes</em>, it can also contain one or more of the following values.</p>
+<table>
+<tr><th>Security flag</th><th>Meaning</th></tr>
+<tr><td><a id="SECURITY_ANONYMOUS"></a><a id="security_anonymous"></a><dl>
+<dt><strong>SECURITY_ANONYMOUS</strong></dt>
+</dl>
+</td><td>
+<p>Impersonates a client at the Anonymous impersonation level.</p>
+</td></tr>
+<tr><td><a id="SECURITY_CONTEXT_TRACKING"></a><a id="security_context_tracking"></a><dl>
+<dt><strong>SECURITY_CONTEXT_TRACKING</strong></dt>
+</dl>
+</td><td>
+<p>The security tracking mode is dynamic. If this flag is not specified, the security tracking mode is 
+         static.</p>
+</td></tr>
+<tr><td><a id="SECURITY_DELEGATION"></a><a id="security_delegation"></a><dl>
+<dt><strong>SECURITY_DELEGATION</strong></dt>
+</dl>
+</td><td>
+<p>Impersonates a client at the Delegation impersonation level.</p>
+</td></tr>
+<tr><td><a id="SECURITY_EFFECTIVE_ONLY"></a><a id="security_effective_only"></a><dl>
+<dt><strong>SECURITY_EFFECTIVE_ONLY</strong></dt>
+</dl>
+</td><td>
+<p>Only the enabled aspects of the client's security context are available to the server. If you do not 
+         specify this flag, all aspects of the client's security context are available.</p>
+<p>This allows the client to limit the groups and privileges that a server can use while impersonating the 
+         client.</p>
+</td></tr>
+<tr><td><a id="SECURITY_IDENTIFICATION"></a><a id="security_identification"></a><dl>
+<dt><strong>SECURITY_IDENTIFICATION</strong></dt>
+</dl>
+</td><td>
+<p>Impersonates a client at the Identification impersonation level.</p>
+</td></tr>
+<tr><td><a id="SECURITY_IMPERSONATION"></a><a id="security_impersonation"></a><dl>
+<dt><strong>SECURITY_IMPERSONATION</strong></dt>
+</dl>
+</td><td>
+<p>Impersonate a client at the impersonation level. This is the default behavior if no other flags are 
+         specified along with the <strong>SECURITY_SQOS_PRESENT</strong> flag.</p>
+</td></tr>
+</table>
+<p> </p>
+</dd>
+<dt><em>hTemplateFile</em> [in, optional]</dt>
+<dd>
+<p>A valid handle to a template file with the <strong>GENERIC_READ</strong> access right. The template 
+       file supplies file attributes and extended attributes for the file that is being created.</p>
+<p>This parameter can be <strong>NULL</strong>.</p>
+<p>When opening an existing file, <strong>CreateFile</strong> ignores this 
+       parameter.</p>
+<p>When opening a new encrypted file, the file inherits the discretionary access control list from its parent 
+       directory. For additional information, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364223(v=vs.85).aspx">File Encryption</a>.</p>
+</dd>
+</dl>
+<h2>Return value</h2>
+<p>If the function succeeds, the return value is an open handle to the specified file, device, named pipe, or 
+       mail slot.</p>
+<p>If the function fails, the return value is <strong>INVALID_HANDLE_VALUE</strong>. To get extended 
+       error information, call <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms679360(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetLastError</strong></a>.</p>
+<h2>Remarks</h2>
+<p><strong>CreateFile</strong> was originally developed specifically for file 
+    interaction but has since been expanded and enhanced to include most other types of I/O devices and mechanisms 
+    available to Windows developers. This section attempts to cover the varied issues developers may experience when 
+    using <strong>CreateFile</strong> in different contexts and with different I/O 
+    types. The text attempts to use the word <em>file</em> only when referring specifically to data stored in an 
+    actual file on a file system. However, some uses of <em>file</em> may be referring more generally to an I/O 
+    object that supports file-like mechanisms. This liberal use of the term <em>file</em> is particularly 
+    prevalent in constant names and parameter names because of the previously mentioned historical reasons.</p>
+<p>When an application is finished using the object handle returned by 
+    <strong>CreateFile</strong>, use the 
+    <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms724211(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CloseHandle</strong></a> function to close the handle. This not only 
+    frees up system resources, but can have wider influence on things like sharing the file or device and committing 
+    data to disk. Specifics are noted within this topic as appropriate.</p>
+<p><strong>Windows Server 2003 and Windows XP:  </strong>A sharing violation occurs if an attempt is made to open a file or directory for deletion on a remote 
+     computer when the value of the <em>dwDesiredAccess</em> parameter is the 
+     <strong>DELETE</strong> access flag (0x00010000) <strong>OR</strong>'ed with any other access flag, and the remote file 
+     or directory has not been opened with <strong>FILE_SHARE_DELETE</strong>. To avoid the sharing violation 
+     in this scenario, open the remote file or directory with the <strong>DELETE</strong> access right only, 
+     or call <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363915(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeleteFile</strong></a> without first opening the file or 
+     directory for deletion.</p>
+<p>Some file systems, such as the NTFS file system, support compression or encryption for individual files and 
+     directories. On volumes that have a mounted file system with this support, a new file inherits the compression 
+     and encryption attributes of its directory.</p>
+<p>You cannot use <strong>CreateFile</strong> to control compression, 
+     decompression, or decryption on a file or directory. For more information, see 
+     <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>, 
+     <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364219(v=vs.85).aspx">File Compression and Decompression</a>, 
+     and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364223(v=vs.85).aspx">File Encryption</a>.</p>
+<p><strong>Windows Server 2003 and Windows XP:  </strong>For backward compatibility purposes, <strong>CreateFile</strong> does 
+     not apply inheritance rules when you specify a security descriptor in 
+     <em>lpSecurityAttributes</em>. To support inheritance, functions that later query the security 
+     descriptor of this file may heuristically determine and report that inheritance is in effect. For more 
+     information, see 
+     <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa376326(v=vs.85).aspx">Automatic Propagation of Inheritable ACEs</a>.</p>
+<p>As stated previously, if the <em>lpSecurityAttributes</em> parameter is 
+     <strong>NULL</strong>, the handle returned by 
+     <strong>CreateFile</strong> cannot be inherited by any child processes your 
+     application may create. The following information regarding this parameter also applies:</p>
+<ul>
+<li>If the <strong>bInheritHandle</strong> member variable is not <strong>FALSE</strong>, 
+      which is any nonzero value, then the handle can be inherited. Therefore it is critical this structure member be 
+      properly initialized to <strong>FALSE</strong> if you do not intend the handle to be inheritable.</li>
+<li>The access control lists (ACL) in the default security descriptor for a file or directory are inherited 
+      from its parent directory.</li>
+<li>The target file system must support security on files and directories for the 
+      <strong>lpSecurityDescriptor</strong> member to have an effect on them, which can be determined by 
+      using <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364993(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetVolumeInformation</strong></a>.</li>
+</ul>
+<p>In Windows 8 and Windows Server 2012, this function is supported by the following technologies.</p>
+<table>
+<tr><th>Technology</th><th>Supported</th></tr>
+<tr><td>
+<p>Server Message Block (SMB) 3.0 protocol</p>
+</td><td>
+<p>Yes</p>
+</td></tr>
+<tr><td>
+<p>SMB 3.0 Transparent Failover (TFO)</p>
+</td><td>
+<p>See remarks</p>
+</td></tr>
+<tr><td>
+<p>SMB 3.0 with Scale-out File Shares (SO)</p>
+</td><td>
+<p>See remarks</p>
+</td></tr>
+<tr><td>
+<p>Cluster Shared Volume File System (CsvFS)</p>
+</td><td>
+<p>Yes</p>
+</td></tr>
+<tr><td>
+<p>Resilient File System (ReFS)</p>
+</td><td>
+<p>Yes</p>
+</td></tr>
+</table>
+<p> </p>
+<p>Note that <strong>CreateFile</strong> with supersede disposition will fail if performed on a file where there is already an open alternate data stream.</p>
+<h3><a id="Symbolic_Link_Behavior"></a><a id="symbolic_link_behavior"></a><a id="SYMBOLIC_LINK_BEHAVIOR"></a>Symbolic Link Behavior</h3>
+<p>If the call to this function creates a file, there is no change in behavior. Also, consider the following 
+      information regarding <strong>FILE_FLAG_OPEN_REPARSE_POINT</strong>:</p>
+<ul>
+<li>
+<p>If <strong>FILE_FLAG_OPEN_REPARSE_POINT</strong> is specified:</p>
+<ul>
+<li>If an existing file is opened and it is a symbolic link, the handle returned is a handle to the 
+         symbolic link.</li>
+<li>If <strong>TRUNCATE_EXISTING</strong> or <strong>FILE_FLAG_DELETE_ON_CLOSE</strong> 
+         are specified, the file affected is a symbolic link.</li>
+</ul>
+</li>
+<li>
+<p>If <strong>FILE_FLAG_OPEN_REPARSE_POINT</strong> is not specified:</p>
+<ul>
+<li>If an existing file is opened and it is a symbolic link, the handle returned is a handle to the 
+         target.</li>
+<li>If <strong>CREATE_ALWAYS</strong>, <strong>TRUNCATE_EXISTING</strong>, or 
+         <strong>FILE_FLAG_DELETE_ON_CLOSE</strong> are specified, the file affected is the target.</li>
+</ul>
+</li>
+</ul>
+<h3><a id="caching_behavior"></a><a id="CACHING_BEHAVIOR"></a>Caching Behavior</h3>
+<p>Several of the possible values for the <em>dwFlagsAndAttributes</em> parameter are used by 
+      <strong>CreateFile</strong> to control or affect how the data associated 
+      with the handle is cached by the system. They are:</p>
+<ul>
+<li><strong>FILE_FLAG_NO_BUFFERING</strong></li>
+<li><strong>FILE_FLAG_RANDOM_ACCESS</strong></li>
+<li><strong>FILE_FLAG_SEQUENTIAL_SCAN</strong></li>
+<li><strong>FILE_FLAG_WRITE_THROUGH</strong></li>
+<li><strong>FILE_ATTRIBUTE_TEMPORARY</strong></li>
+</ul>
+<p>If none of these flags is specified, the system uses a default general-purpose caching scheme. Otherwise, the 
+      system caching behaves as specified for each flag.</p>
+<p>Some of these flags should not be combined. For instance, combining 
+      <strong>FILE_FLAG_RANDOM_ACCESS</strong> with <strong>FILE_FLAG_SEQUENTIAL_SCAN</strong> is 
+      self-defeating.</p>
+<p>Specifying the <strong>FILE_FLAG_SEQUENTIAL_SCAN</strong> flag can increase performance for 
+      applications that read large files using sequential access. Performance gains can be even more noticeable for 
+      applications that read large files mostly sequentially, but occasionally skip forward over small ranges of 
+      bytes. If an application moves the file pointer for random access, optimum caching performance most likely will 
+      not occur. However, correct operation is still guaranteed.</p>
+<p>The flags <strong>FILE_FLAG_WRITE_THROUGH</strong> and 
+      <strong>FILE_FLAG_NO_BUFFERING</strong> are independent and may be combined.</p>
+<p>If <strong>FILE_FLAG_WRITE_THROUGH</strong> is used but 
+      <strong>FILE_FLAG_NO_BUFFERING</strong> is not also specified, so that system caching is in effect, 
+      then the data is written to the system cache but is flushed to disk without delay.</p>
+<p>If <strong>FILE_FLAG_WRITE_THROUGH</strong> and <strong>FILE_FLAG_NO_BUFFERING</strong> are 
+      both specified, so that system caching is not in effect, then the data is immediately flushed to disk without 
+      going through the Windows system cache. The operating system also requests a write-through of the hard disk's 
+      local hardware cache to persistent media.</p>
+<p class="note"><strong>Note</strong>  Not all hard disk hardware supports this write-through capability.</p>
+<p>Proper use of the <strong>FILE_FLAG_NO_BUFFERING</strong> flag requires special application 
+      considerations. For more information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/cc644950(v=vs.85).aspx">File Buffering</a>.</p>
+<p>A write-through request via <strong>FILE_FLAG_WRITE_THROUGH</strong> also causes NTFS to flush any 
+      metadata changes, such as a time stamp update or a rename operation, that result from processing the request. 
+      For this reason, the <strong>FILE_FLAG_WRITE_THROUGH</strong> flag is often used with the 
+      <strong>FILE_FLAG_NO_BUFFERING</strong> flag as a replacement for calling the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364439(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FlushFileBuffers</strong></a> function after each write, which can 
+      cause unnecessary performance penalties. Using these flags together avoids those penalties. For general 
+      information about the caching of files and metadata, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364218(v=vs.85).aspx">File Caching</a>.</p>
+<p>When <strong>FILE_FLAG_NO_BUFFERING</strong> is combined with 
+      <strong>FILE_FLAG_OVERLAPPED</strong>, the flags give maximum asynchronous performance, because the I/O 
+      does not rely on the synchronous operations of the memory manager. However, some I/O operations take more time, 
+      because data is not being held in the cache. Also, the file metadata may still be cached (for example, when 
+      creating an empty file). To ensure that the metadata is flushed to disk, use the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364439(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FlushFileBuffers</strong></a> function.</p>
+<p>Specifying the <strong>FILE_ATTRIBUTE_TEMPORARY</strong> attribute causes file systems to avoid 
+      writing data back to mass storage if sufficient cache memory is available, because an application deletes a 
+      temporary file after a handle is closed. In that case, the system can entirely avoid writing the data. Although 
+      it does not directly control data caching in the same way as the previously mentioned flags, the 
+      <strong>FILE_ATTRIBUTE_TEMPORARY</strong> attribute does tell the system to hold as much as possible in 
+      the system cache without writing and therefore may be of concern for certain applications.</p>
+<h3><a id="Files"></a><a id="files"></a><a id="FILES"></a>Files</h3>
+<p>If you rename or delete a file and then restore it shortly afterward, the system searches the cache for file 
+      information to restore. Cached information includes its short/long name pair and creation time.</p>
+<p>If you call <strong>CreateFile</strong> on a file that is pending deletion 
+      as a result of a previous call to <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363915(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeleteFile</strong></a>, the function 
+      fails. The operating system delays file deletion until all handles to the file are closed. 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms679360(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetLastError</strong></a> returns 
+      <strong>ERROR_ACCESS_DENIED</strong>.</p>
+<p>The <em>dwDesiredAccess</em> parameter can be zero, allowing the application to query file 
+      attributes without accessing the file if the application is running with adequate security settings. This is 
+      useful to test for the existence of a file without opening it for read and/or write access, or to obtain other 
+      statistics about the file or directory. See 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365257(v=vs.85).aspx">Obtaining and Setting File Information</a> 
+      and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364952(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetFileInformationByHandle</strong></a>.</p>
+<p>If <strong>CREATE_ALWAYS</strong> and <strong>FILE_ATTRIBUTE_NORMAL</strong> are 
+      specified, <strong>CreateFile</strong> fails and sets the last error to 
+      <strong>ERROR_ACCESS_DENIED</strong> if the file exists and has the 
+      <strong>FILE_ATTRIBUTE_HIDDEN</strong> or <strong>FILE_ATTRIBUTE_SYSTEM</strong> attribute. 
+      To avoid the error, specify the same attributes as the existing file.</p>
+<p>When an application creates a file across a network, it is better to use 
+      <code>GENERIC_READ | GENERIC_WRITE</code> for 
+      <em>dwDesiredAccess</em> than to use <strong>GENERIC_WRITE</strong> alone. The 
+      resulting code is faster, because the redirector can use the cache manager and send fewer SMBs with more data. 
+      This combination also avoids an issue where writing to a file across a network can occasionally return 
+      <strong>ERROR_ACCESS_DENIED</strong>.</p>
+<p>For more information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363874(v=vs.85).aspx">Creating and Opening Files</a>.</p>
+<h3><a id="synchronous_and_asynchronous_i_o_handles"></a><a id="SYNCHRONOUS_AND_ASYNCHRONOUS_I_O_HANDLES"></a>Synchronous and Asynchronous I/O Handles</h3>
+<p><strong>CreateFile</strong> provides for creating a file or device handle 
+      that is either synchronous or asynchronous. A synchronous handle behaves such that I/O function calls using that 
+      handle are blocked until they complete, while an asynchronous file handle makes it possible for the system to 
+      return immediately from I/O function calls, whether they completed the I/O operation or not. As stated 
+      previously, this synchronous versus asynchronous behavior is determined by specifying 
+      <strong>FILE_FLAG_OVERLAPPED</strong> within the <em>dwFlagsAndAttributes</em> 
+      parameter. There are several complexities and potential pitfalls when using asynchronous I/O; for more 
+      information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365683(v=vs.85).aspx">Synchronous and Asynchronous I/O</a>.</p>
+<h3><a id="File_Streams"></a><a id="file_streams"></a><a id="FILE_STREAMS"></a>File Streams</h3>
+<p>On NTFS file systems, you can use <strong>CreateFile</strong> to create 
+      separate streams within a file. For more information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364404(v=vs.85).aspx">File Streams</a>.</p>
+<h3><a id="Directories"></a><a id="directories"></a><a id="DIRECTORIES"></a>Directories</h3>
+<p>An application cannot create a directory by using 
+      <strong>CreateFile</strong>, therefore only the 
+      <strong>OPEN_EXISTING</strong> value is valid for 
+      <em>dwCreationDisposition</em> for this use case. To create a directory, the application must 
+      call <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363855(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateDirectory</strong></a> or 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363856(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateDirectoryEx</strong></a>.</p>
+<p>To open a directory using <strong>CreateFile</strong>, specify the 
+      <strong>FILE_FLAG_BACKUP_SEMANTICS</strong> flag as part of 
+      <em>dwFlagsAndAttributes</em>. Appropriate security checks still apply when this flag is used 
+      without <strong>SE_BACKUP_NAME</strong> and <strong>SE_RESTORE_NAME</strong> privileges.</p>
+<p>When using <strong>CreateFile</strong> to open a directory during 
+      defragmentation of a FAT or FAT32 file system volume, do not specify the 
+      <strong>MAXIMUM_ALLOWED</strong> access right. Access to the directory is denied if this is done. 
+      Specify the <strong>GENERIC_READ</strong> access right instead.</p>
+<p>For more information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bb540529(v=vs.85).aspx">About Directory Management</a>.</p>
+<h3><a id="Physical_Disks_and_Volumes"></a><a id="physical_disks_and_volumes"></a><a id="PHYSICAL_DISKS_AND_VOLUMES"></a>Physical Disks and Volumes</h3>
+<p>Direct access to the disk or to a volume is restricted. For more information, see 
+      "Changes to the file system and to the storage stack to restrict direct disk access and direct volume access in Windows Vista and in Windows Server 2008" 
+      in the Help and Support Knowledge Base at 
+      <a href="http://go.microsoft.com/fwlink/p/?linkid=117121">http://support.microsoft.com/kb/942448</a>.</p>
+<p><strong>Windows Server 2003 and Windows XP:  </strong>Direct access to the disk or to a volume is not restricted in this manner.</p>
+<p>You can use the <strong>CreateFile</strong> function to open a physical 
+      disk drive or a volume, which returns a direct access storage device (DASD) handle that can be used with the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363216(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a> function. This enables you to access 
+      the disk or volume directly, for example such disk metadata as the partition table. However, this type of access 
+      also exposes the disk drive or volume to potential data loss, because an incorrect write to a disk using this 
+      mechanism could make its contents inaccessible to the operating system. To ensure data integrity, be sure to 
+      become familiar with <strong>DeviceIoControl</strong> and how other 
+      APIs behave differently with a direct access handle as opposed to a file system handle.</p>
+<p>The following requirements must be met for such a call to succeed:</p>
+<ul>
+<li>The caller must have administrative privileges. For more information, see 
+       <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms717802(v=vs.85).aspx">Running with Special Privileges</a>.</li>
+<li>The <em>dwCreationDisposition</em> parameter must have the 
+       <strong>OPEN_EXISTING</strong>flag.</li>
+<li>When opening a volume or floppy disk, the <em>dwShareMode</em> parameter must have the 
+       <strong>FILE_SHARE_WRITE</strong>flag.</li>
+</ul>
+<p class="note"><strong>Note</strong>  The <em>dwDesiredAccess</em> parameter can be zero, allowing the application to query 
+      device attributes without accessing a device. This is useful for an application to determine the size of a 
+      floppy disk drive and the formats it supports without requiring a floppy disk in a drive, for instance. It can 
+      also be used for reading statistics without requiring higher-level data read/write permission.</p>
+<p>When opening a physical drive <em>x</em>:, the 
+      <em>lpFileName</em> string should be the following form: 
+      "\\.\PhysicalDrive<em>X</em>". Hard disk numbers 
+      start at zero. The following table shows some examples of physical drive strings.</p>
+<table>
+<tr><th>String</th><th>Meaning</th></tr>
+<tr><td>"\\.\PhysicalDrive0"</td><td>Opens the first physical drive.</td></tr>
+<tr><td>"\\.\PhysicalDrive2"</td><td>Opens the third physical drive.</td></tr>
+</table>
+<p> </p>
+<p>To obtain the physical drive identifier for a volume, open a handle to the volume and call the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363216(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a> function with 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365194(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS</strong></a>. 
+      This control code returns the disk number and offset for each of the volume's one or more extents; a volume can 
+      span multiple physical disks.</p>
+<p>For an example of opening a physical drive, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363147(v=vs.85).aspx">Calling DeviceIoControl</a>.</p>
+<p>When opening a volume or removable media drive (for example, a floppy disk drive or flash memory thumb drive), 
+      the <em>lpFileName</em> string should be the following form: 
+      "\\.\<em>X</em>:". Do not use a trailing backslash 
+      (\), which indicates the root directory of a drive. The following table shows some examples of drive strings.</p>
+<table>
+<tr><th>String</th><th>Meaning</th></tr>
+<tr><td>"\\.\A:"</td><td>Opens floppy disk drive A.</td></tr>
+<tr><td>"\\.\C:"</td><td>Opens the C: volume.</td></tr>
+<tr><td>"\\.\C:\"</td><td>Opens the file system of the C: volume.</td></tr>
+</table>
+<p> </p>
+<p>You can also open a volume by referring to its volume name. For more information, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365248(v=vs.85).aspx">Naming a Volume</a>.</p>
+<p>A volume contains one or more mounted file systems. Volume handles can be opened as noncached at the 
+      discretion of the particular file system, even when the noncached option is not specified in 
+      <strong>CreateFile</strong>. You should assume that all Microsoft file 
+      systems open volume handles as noncached. The restrictions on noncached I/O for files also apply to volumes.</p>
+<p>A file system may or may not require buffer alignment even though the data is noncached. However, if the 
+      noncached option is specified when opening a volume, buffer alignment is enforced regardless of the file system 
+      on the volume. It is recommended on all file systems that you open volume handles as noncached, and follow the 
+      noncached I/O restrictions.</p>
+<p class="note"><strong>Note</strong>  To read or write to the last few sectors of the volume, you must call 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363216(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a> and specify 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364556(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FSCTL_ALLOW_EXTENDED_DASD_IO</strong></a>. This signals 
+      the file system driver not to perform any I/O boundary checks on partition read or write calls. Instead, 
+      boundary checks are performed by the device driver.</p>
+<h3><a id="Changer_Device"></a><a id="changer_device"></a><a id="CHANGER_DEVICE"></a>Changer Device</h3>
+<p>The <strong>IOCTL_CHANGER_*</strong> control codes for 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363216(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a> accept a handle to a changer device. 
+      To open a changer device, use a file name of the following form: 
+      "\\.\Changer<em>x</em>" where 
+      <em>x</em> is a number that indicates which device to open, starting with zero. To open 
+      changer device zero in an application that is written in C or C++, use the following file name: 
+      "\\\\.\\Changer0".</p>
+<h3><a id="Tape_Drives"></a><a id="tape_drives"></a><a id="TAPE_DRIVES"></a>Tape Drives</h3>
+<p>You can open tape drives by using a file name of the following form: 
+      "\\.\TAPE<em>x</em>" where 
+      <em>x</em> is a number that indicates which drive to open, starting with tape drive zero. To 
+      open tape drive zero in an application that is written in C or C++, use the following file name: 
+      "\\\\.\\TAPE0".</p>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa362508(v=vs.85).aspx">Backup</a>.</p>
+<h3><a id="Communications_Resources"></a><a id="communications_resources"></a><a id="COMMUNICATIONS_RESOURCES"></a>Communications Resources</h3>
+<p>The <strong>CreateFile</strong> function can create a handle to a 
+      communications resource, such as the serial port COM1. For communications resources, 
+      the <em>dwCreationDisposition</em> parameter must be 
+      <strong>OPEN_EXISTING</strong>, the <em>dwShareMode</em> parameter must be zero 
+      (exclusive access), and the <em>hTemplateFile</em> parameter must be 
+      <strong>NULL</strong>. Read, write, or read/write access can be specified, and the handle can be opened 
+      for overlapped I/O.</p>
+<p>To specify a COM port number greater than 9, use the following syntax: 
+      "\\.\COM10". This syntax works for all port numbers and hardware that 
+      allows COM port numbers to be specified.</p>
+<p>For more information about communications, see 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363196(v=vs.85).aspx">Communications</a>.</p>
+<h3><a id="Consoles"></a><a id="consoles"></a><a id="CONSOLES"></a>Consoles</h3>
+<p>The <strong>CreateFile</strong> function can create a handle to console 
+      input (CONIN$). If the process has an open handle to it as a result of inheritance or 
+      duplication, it can also create a handle to the active screen buffer (CONOUT$). The 
+      calling process must be attached to an inherited console or one allocated by the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms681944(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">AllocConsole</strong></a> function. For console handles, set the 
+      <strong>CreateFile</strong> parameters as follows.</p>
+<table>
+<tr><th>Parameters</th><th>Value</th></tr>
+<tr><td>
+<p><em>lpFileName</em></p>
+</td><td>
+<p>Use the CONIN$ value to specify console input.</p>
+<p>Use the CONOUT$ value to specify console output.</p>
+<p>CONIN$ gets a handle to the console input buffer, even if the 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms686244(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetStdHandle</strong></a> function redirects the standard input 
+         handle. To get the standard input handle, use the 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms683231(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetStdHandle</strong></a>function.</p>
+<p>CONOUT$ gets a handle to the active screen buffer, even if 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms686244(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetStdHandle</strong></a>redirects the standard output handle. To 
+         get the standard output handle, use <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms683231(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetStdHandle</strong></a>.</p>
+</td></tr>
+<tr><td>
+<p><em>dwDesiredAccess</em></p>
+</td><td>
+<p><code>GENERIC_READ | GENERIC_WRITE</code> is preferred, but either one can 
+         limit access.</p>
+</td></tr>
+<tr><td>
+<p><em>dwShareMode</em></p>
+</td><td>
+<p>When opening CONIN$, specify 
+         <strong>FILE_SHARE_READ</strong>. When opening CONOUT$, specify 
+         <strong>FILE_SHARE_WRITE</strong>.</p>
+<p>If the calling process inherits the console, or if a child process should be able to access the console, 
+         this parameter must be <code>FILE_SHARE_READ | FILE_SHARE_WRITE</code>.</p>
+</td></tr>
+<tr><td>
+<p><em>lpSecurityAttributes</em></p>
+</td><td>
+<p>If you want the console to be inherited, the <strong>bInheritHandle</strong> member of the 
+         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa379560(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SECURITY_ATTRIBUTES</strong></a> structure 
+         must be <strong>TRUE</strong>.</p>
+</td></tr>
+<tr><td>
+<p><em>dwCreationDisposition</em></p>
+</td><td>
+<p>You should specify <strong>OPEN_EXISTING</strong> when using 
+         <strong>CreateFile</strong> to open the console.</p>
+</td></tr>
+<tr><td>
+<p><em>dwFlagsAndAttributes</em></p>
+</td><td>
+<p>Ignored.</p>
+</td></tr>
+<tr><td>
+<p><em>hTemplateFile</em></p>
+</td><td>
+<p>Ignored.</p>
+</td></tr>
+</table>
+<p> </p>
+<p>The following table shows various settings of <em>dwDesiredAccess</em> and 
+      <em>lpFileName</em>.</p>
+<table>
+<tr><th><em>lpFileName</em></th><th><em>dwDesiredAccess</em></th><th>Result</th></tr>
+<tr><td>"CON"</td><td><strong>GENERIC_READ</strong></td><td>Opens console for input.</td></tr>
+<tr><td>"CON"</td><td><strong>GENERIC_WRITE</strong></td><td>Opens console for output.</td></tr>
+<tr><td>"CON"</td><td><code>GENERIC_READ | GENERIC_WRITE</code></td><td>Causes <strong>CreateFile</strong> to fail; 
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms679360(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetLastError</strong></a> returns 
+        <strong>ERROR_FILE_NOT_FOUND</strong>.</td></tr>
+</table>
+<p> </p>
+<h3><a id="Mailslots"></a><a id="mailslots"></a><a id="MAILSLOTS"></a>Mailslots</h3>
+<p>If <strong>CreateFile</strong>opens the client end of a mailslot, the 
+      function returns <strong>INVALID_HANDLE_VALUE</strong> if the mailslot client attempts to open a local 
+      mailslot before the mailslot server has created it with the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365147(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateMailSlot</strong></a> function.</p>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365576(v=vs.85).aspx">Mailslots</a>.</p>
+<h3><a id="Pipes"></a><a id="pipes"></a><a id="PIPES"></a>Pipes</h3>
+<p>If <strong>CreateFile</strong> opens the client end of a named pipe, the 
+      function uses any instance of the named pipe that is in the listening state. The opening process can duplicate 
+      the handle as many times as required, but after it is opened, the named pipe instance cannot be opened by 
+      another client. The access that is specified when a pipe is opened must be compatible with the access that is 
+      specified in the <em>dwOpenMode</em>parameter of the 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365150(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateNamedPipe</strong></a> function.</p>
+<p>If the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365150(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateNamedPipe</strong></a> function was not 
+      successfully called on the server prior to this operation, a pipe will not exist and 
+      <strong>CreateFile</strong> will fail with 
+      <strong>ERROR_FILE_NOT_FOUND</strong>.</p>
+<p>If there is at least one active pipe instance but there are no available listener pipes on the server, which 
+      means all pipe instances are currently connected, 
+     <strong>CreateFile</strong> fails with 
+     <strong>ERROR_PIPE_BUSY</strong>.</p>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365780(v=vs.85).aspx">Pipes</a>.</p>
+<h2>Examples</h2>
+<p>Example file operations are shown in the following topics:</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363778(v=vs.85).aspx">Appending One File to Another File</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363789(v=vs.85).aspx">Canceling Pending I/O Operations</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms682499(v=vs.85).aspx">Creating a Child Process with Redirected Input and Output</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363875(v=vs.85).aspx">Creating and Using a Temporary File</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364587(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FSCTL_RECALL_FILE</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364962(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetFinalPathNameByHandle</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365204(v=vs.85).aspx">Locking and Unlocking Byte Ranges in Files</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa366789(v=vs.85).aspx">Obtaining a File Name From a File Handle</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd442656(v=vs.85).aspx">Obtaining File System Recognition Information</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bb540534(v=vs.85).aspx">Opening a File for Reading or Writing</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms724926(v=vs.85).aspx">Retrieving the Last-Write Time</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365539(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetFileInformationByHandle</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365690(v=vs.85).aspx">Testing for the End of a File</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms686919(v=vs.85).aspx">Using Fibers</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bb540537(v=vs.85).aspx">Using Streams</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365736(v=vs.85).aspx">Walking a Buffer of Change Journal Records</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365743(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Wow64DisableWow64FsRedirection</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365744(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Wow64EnableWow64FsRedirection</strong></a>
+</li>
+</ul>
+<p>Physical device I/O is demonstrated in the following topics:</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363147(v=vs.85).aspx">Calling DeviceIoControl</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363201(v=vs.85).aspx">Configuring a Communications Resource</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363424(v=vs.85).aspx">Monitoring Communications Events</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363427(v=vs.85).aspx">Processing a Request to Remove a Device</a>
+</li>
+</ul>
+<p>An example using named pipes is located at 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365592(v=vs.85).aspx">Named Pipe Client</a>.</p>
+<p>Working with a mailslot is shown in 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365802(v=vs.85).aspx">Writing to a Mailslot</a>.</p>
+<p>A tape backup code snippet can found at 
+      <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa362520(v=vs.85).aspx">Creating a Backup Application</a>.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Minimum supported client</p>
+</th><td>Windows XP [desktop apps only]</td></tr>
+<tr><th>
+<p>Minimum supported server</p>
+</th><td>Windows Server 2003 [desktop apps only]</td></tr>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>FileAPI.h (include Windows.h); </dt>
+<dt>WinBase.h on Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003, and Windows XP (include Windows.h)</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>Library</p>
+</th><td>
+<dl>
+<dt>Kernel32.lib</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>DLL</p>
+</th><td>
+<dl>
+<dt>Kernel32.dll</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>Unicode and ANSI names</p>
+</th><td><strong>CreateFileW</strong> (Unicode) and <strong>CreateFileA</strong> (ANSI)</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt><strong>Overview Topics</strong></dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bb540529(v=vs.85).aspx">About Directory Management</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bb540532(v=vs.85).aspx">About Volume Management</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa362508(v=vs.85).aspx">Backup</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363196(v=vs.85).aspx">Communications</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363879(v=vs.85).aspx">Creating, Deleting, and Maintaining Files</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363219(v=vs.85).aspx">Device Input and Output Control (IOCTL)</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364219(v=vs.85).aspx">File Compression and Decompression</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364223(v=vs.85).aspx">File Encryption</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364232(v=vs.85).aspx">File Management Functions</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364399(v=vs.85).aspx">File Security and Access Rights</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa364404(v=vs.85).aspx">File Streams</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365198(v=vs.85).aspx">I/O Completion Ports</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365199(v=vs.85).aspx">I/O Concepts</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365576(v=vs.85).aspx">Mailslots</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365257(v=vs.85).aspx">Obtaining and Setting File Information</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365780(v=vs.85).aspx">Pipes</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms717802(v=vs.85).aspx">Running with Special Privileges</a>
+</dt>
+<dt><strong>Functions</strong></dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms724211(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CloseHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363855(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateDirectory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363856(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateDirectoryEx</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363859(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFileTransacted</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365147(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateMailSlot</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365150(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateNamedPipe</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363915(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeleteFile</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363216(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceIoControl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ms679360(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetLastError</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365467(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365468(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFileEx</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365535(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetFileAttributes</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365747(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFile</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365748(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFileEx</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/windows/hardware/community/comments/aa363858(v=vs.85).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="oxkDDLHnQqCxFsEhYEKw7NJnw4GKJXzgi9edZnEoPSVoq2Nt1MMfMM-9cbboaexMeMXw9q2rirm_xBGlOmGbDx4mt3lekPs2uJ7NRp4LKnVtQGU567CepCwXgsfdGocWdr-iSQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/aa363858(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="IE IE7 ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2faa363858(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="hOLeXkzWUE6kDIGgxFOYi0O477z2p1Fr3YCiwQ-mMFJFFPCe70vL-ZCzjLP9ZVwVdf78dh6q769pYJBU8f2SZl35K29kn4lJqH5Ru8TcYbtMiNxZKw9jc8cx38wlZi2hCx3-8A2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/aa363858(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"bd9cfc9c-7581-4c88-b261-0875c63eafaf\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=163E155D67DE384E263D6D4BD805ACAE" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,2:Rating,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1,/Areas/Epx/Themes/Base/Content:2\u0026amp;hashKey=E0ADCE6B79455234471CB12A3F97CE03" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/aa363858(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

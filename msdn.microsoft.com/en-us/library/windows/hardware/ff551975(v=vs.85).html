@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff551975(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551975(v=vs.85).aspx" />
+        <title>NdisFlushBuffer function (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff551975(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551975(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551975(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551975(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD6-9:40:24 AM" />
+
+<meta name="Search.ShortId" content="ff551975" />
+
+<meta name="ms.shortidmsdn" content="ff551975" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074424&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff551975%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557563(v=vs.85).aspx" id="dn303475_VS.85_en-us" mtpsaliasid="" mtpsassetid="0b9b6de3-d878-49b3-a223-a9c39ab142dc_VS.85_en-us" mtpsshortid="ff557563_VS.85_en-us" title="Network Devices">Network Devices</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff562407(v=vs.85).aspx" id="ff573204_VS.85_en-us" mtpsaliasid="" mtpsassetid="4ba1f2f5-5310-4687-856d-e206c662cb40_VS.85_en-us" mtpsshortid="ff562407_VS.85_en-us" title="Network Drivers Prior to Windows Vista">Network Drivers Prior to Windows Vista</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565850(v=vs.85).aspx" id="ff573856_VS.85_en-us" mtpsaliasid="" mtpsassetid="3b28ac6c-63a8-4887-aaed-84f34d7e0122_VS.85_en-us" mtpsshortid="ff565850_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556916(v=vs.85).aspx" id="ff574047_VS.85_en-us" mtpsaliasid="" mtpsassetid="1c695c48-edaa-44d1-b0fa-e557b66e073d_VS.85_en-us" mtpsshortid="ff556916_VS.85_en-us" title="NDIS 5.1">NDIS 5.1</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557045(v=vs.85).aspx" id="ff574066_VS.85_en-us" mtpsaliasid="" mtpsassetid="a2484aae-c419-4238-a25d-c5f95d259582_VS.85_en-us" mtpsshortid="ff557045_VS.85_en-us" title="NDIS Library Function References">NDIS Library Function References</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546463(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ETH_COPY_NETWORK_ADDRESS">ETH_COPY_NETWORK_ADDRESS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546465(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FDDI_COMPARE_NETWORK_ADDRESSES">FDDI_COMPARE_NETWORK_ADDRESSES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546466(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FDDI_IS_BROADCAST">FDDI_IS_BROADCAST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546467(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FDDI_IS_MULTICAST">FDDI_IS_MULTICAST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546468(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FDDI_IS_SMT">FDDI_IS_SMT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556919(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_BUFFER_LINKAGE">NDIS_BUFFER_LINKAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556922(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_BUFFER_TO_SPAN_PAGES">NDIS_BUFFER_TO_SPAN_PAGES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556986(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_ORIGINAL_PACKET">NDIS_GET_ORIGINAL_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556988(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_CANCEL_ID">NDIS_GET_PACKET_CANCEL_ID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556989(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_HEADER_SIZE">NDIS_GET_PACKET_HEADER_SIZE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556992(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_MEDIA_SPECIFIC_INFO">NDIS_GET_PACKET_MEDIA_SPECIFIC_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556995(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_PROTOCOL_TYPE">NDIS_GET_PACKET_PROTOCOL_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556997(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_STATUS">NDIS_GET_PACKET_STATUS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556998(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_TIME_RECEIVED">NDIS_GET_PACKET_TIME_RECEIVED</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557002(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_TIME_SENT">NDIS_GET_PACKET_TIME_SENT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557004(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_GET_PACKET_TIME_TO_SEND">NDIS_GET_PACKET_TIME_TO_SEND</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557007(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_INIT_FUNCTION">NDIS_INIT_FUNCTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557084(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_OOB_DATA_FROM_PACKET">NDIS_OOB_DATA_FROM_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557095(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PACKET_EXTENSION_FROM_PACKET">NDIS_PACKET_EXTENSION_FROM_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557100(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PACKET_FIRST_NDIS_BUFFER">NDIS_PACKET_FIRST_NDIS_BUFFER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557102(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PACKET_LAST_NDIS_BUFFER">NDIS_PACKET_LAST_NDIS_BUFFER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557114(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PACKET_VALID_COUNTS">NDIS_PACKET_VALID_COUNTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557115(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PAGABLE_FUNCTION">NDIS_PAGABLE_FUNCTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557121(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PAGEABLE_FUNCTION">NDIS_PAGEABLE_FUNCTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557126(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PER_PACKET_INFO_FROM_PACKET">NDIS_PER_PACKET_INFO_FROM_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557131(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PHYSICAL_ADDRESS_CONST">NDIS_PHYSICAL_ADDRESS_CONST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557142(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_PORT_TO_PORT">NDIS_PORT_TO_PORT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557184(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_ORIGINAL_PACKET">NDIS_SET_ORIGINAL_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557195(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_CANCEL_ID">NDIS_SET_PACKET_CANCEL_ID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557202(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_HEADER_SIZE">NDIS_SET_PACKET_HEADER_SIZE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557204(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_MEDIA_SPECIFIC_INFO">NDIS_SET_PACKET_MEDIA_SPECIFIC_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558916(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_STATUS">NDIS_SET_PACKET_STATUS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558919(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_TIME_RECEIVED">NDIS_SET_PACKET_TIME_RECEIVED</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558921(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_TIME_SENT">NDIS_SET_PACKET_TIME_SENT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558923(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NDIS_SET_PACKET_TIME_TO_SEND">NDIS_SET_PACKET_TIME_TO_SEND</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550733(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAdjustBufferLength">NdisAdjustBufferLength</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550736(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocateBuffer">NdisAllocateBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550741(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocateBufferPool">NdisAllocateBufferPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550749(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocateFromBlockPool">NdisAllocateFromBlockPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550762(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocateMemory">NdisAllocateMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550767(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocateMemoryWithTag">NdisAllocateMemoryWithTag</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550774(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocatePacket">NdisAllocatePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550780(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocatePacketPool">NdisAllocatePacketPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550787(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisAllocatePacketPoolEx">NdisAllocatePacketPoolEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisBufferLength">NdisBufferLength</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550809(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisBufferVirtualAddress">NdisBufferVirtualAddress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550818(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisBufferVirtualAddressSafe">NdisBufferVirtualAddressSafe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550821(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCancelSendPackets">NdisCancelSendPackets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550828(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCancelTimer">NdisCancelTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550830(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisChainBufferAtBack">NdisChainBufferAtBack</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550837(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisChainBufferAtFront">NdisChainBufferAtFront</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550895(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisClOpenAddressFamily">NdisClOpenAddressFamily</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550904(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCloseAdapter">NdisCloseAdapter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551006(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCmRegisterAddressFamily">NdisCmRegisterAddressFamily</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551036(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCompleteBindAdapter">NdisCompleteBindAdapter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551043(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCompletePnPEvent">NdisCompletePnPEvent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551048(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCompleteUnbindAdapter">NdisCompleteUnbindAdapter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551052(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisConvertStringToAtmAddress">NdisConvertStringToAtmAddress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551060(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCopyBuffer">NdisCopyBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551066(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCopyFromPacketToPacket">NdisCopyFromPacketToPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551071(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCopyFromPacketToPacketSafe">NdisCopyFromPacketToPacketSafe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551077(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCopyLookaheadData">NdisCopyLookaheadData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551877(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCoRequest">NdisCoRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551884(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCoRequestComplete">NdisCoRequestComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551890(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCoSendPackets">NdisCoSendPackets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551895(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCreateBlockPool">NdisCreateBlockPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551900(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisCreateLookaheadBufferFromSharedMemory">NdisCreateLookaheadBufferFromSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551909(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDeregisterProtocol">NdisDeregisterProtocol</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551916(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDestroyBlockPool">NdisDestroyBlockPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551922(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDestroyLookaheadBufferFromSharedMemory">NdisDestroyLookaheadBufferFromSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551932(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDprAllocatePacket">NdisDprAllocatePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551937(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDprAllocatePacketNonInterlocked">NdisDprAllocatePacketNonInterlocked</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551940(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDprFreePacket">NdisDprFreePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551945(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisDprFreePacketNonInterlocked">NdisDprFreePacketNonInterlocked</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551975(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFlushBuffer">NdisFlushBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551981(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFreeBuffer">NdisFreeBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551984(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFreeBufferPool">NdisFreeBufferPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551993(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFreePacket">NdisFreePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551995(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFreePacketPool">NdisFreePacketPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552016(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisFreeToBlockPool">NdisFreeToBlockPool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552033(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetBufferPhysicalArraySize">NdisGetBufferPhysicalArraySize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552035(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetCacheFillSize">NdisGetCacheFillSize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552055(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetDriverHandle">NdisGetDriverHandle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552061(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetFirstBufferFromPacket">NdisGetFirstBufferFromPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552066(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetFirstBufferFromPacketSafe">NdisGetFirstBufferFromPacketSafe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552070(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetNextBuffer">NdisGetNextBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552073(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetPacketCancelId">NdisGetPacketCancelId</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552081(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetPacketFlags">NdisGetPacketFlags</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552090(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetPoolFromPacket">NdisGetPoolFromPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552094(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetReceivedPacket">NdisGetReceivedPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552110(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisGetSystemUpTime">NdisGetSystemUpTime</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552138(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMCopySendCompletePerPacketInfo">NdisIMCopySendCompletePerPacketInfo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552139(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMCopySendPerPacketInfo">NdisIMCopySendPerPacketInfo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552145(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMDeregisterLayeredMiniport">NdisIMDeregisterLayeredMiniport</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552155(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMGetCurrentPacketStack">NdisIMGetCurrentPacketStack</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552156(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMGetDeviceContext">NdisIMGetDeviceContext</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552161(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMInitializeDeviceInstance">NdisIMInitializeDeviceInstance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552167(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateReadPciSlotInformation">NdisImmediateReadPciSlotInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552171(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateReadPortUchar">NdisImmediateReadPortUchar</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552174(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateReadPortUlong">NdisImmediateReadPortUlong</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552177(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateReadPortUshort">NdisImmediateReadPortUshort</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552181(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateReadSharedMemory">NdisImmediateReadSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552186(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateWritePciSlotInformation">NdisImmediateWritePciSlotInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552189(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateWritePortUchar">NdisImmediateWritePortUchar</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552192(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateWritePortUlong">NdisImmediateWritePortUlong</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552196(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateWritePortUshort">NdisImmediateWritePortUshort</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552202(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisImmediateWriteSharedMemory">NdisImmediateWriteSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552203(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMNotifyPnPEvent">NdisIMNotifyPnPEvent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552205(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisIMRegisterLayeredMiniport">NdisIMRegisterLayeredMiniport</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552253(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisInitializeTimer">NdisInitializeTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552258(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisInitializeWorkItem">NdisInitializeWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552300(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMAllocateMapRegisters">NdisMAllocateMapRegisters</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552304(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMAllocateSharedMemoryAsync">NdisMAllocateSharedMemoryAsync</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552313(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMArcIndicateReceive">NdisMArcIndicateReceive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552317(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMArcIndicateReceiveComplete">NdisMArcIndicateReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552321(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCancelTimer">NdisMCancelTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553429(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCmRegisterAddressFamily">NdisMCmRegisterAddressFamily</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553438(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCmRequest">NdisMCmRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553443(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCmRequestComplete">NdisMCmRequestComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553455(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCoIndicateReceivePacket">NdisMCoIndicateReceivePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553458(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCoIndicateStatus">NdisMCoIndicateStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553460(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCompleteBufferPhysicalMapping">NdisMCompleteBufferPhysicalMapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553468(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCoReceiveComplete">NdisMCoReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553473(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCoRequestComplete">NdisMCoRequestComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553475(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMCoSendComplete">NdisMCoSendComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553486(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMDeregisterAdapterShutdownHandler">NdisMDeregisterAdapterShutdownHandler</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553490(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMDeregisterDevice">NdisMDeregisterDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553501(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMDeregisterInterrupt">NdisMDeregisterInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553510(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMEthIndicateReceive">NdisMEthIndicateReceive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553513(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMEthIndicateReceiveComplete">NdisMEthIndicateReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553518(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMFddiIndicateReceive">NdisMFddiIndicateReceive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553521(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMFddiIndicateReceiveComplete">NdisMFddiIndicateReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553523(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMFreeMapRegisters">NdisMFreeMapRegisters</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553533(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMIndicateReceivePacket">NdisMIndicateReceivePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553538(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMIndicateStatus">NdisMIndicateStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553540(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMIndicateStatusComplete">NdisMIndicateStatusComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553543(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMInitializeScatterGatherDma">NdisMInitializeScatterGatherDma</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553546(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMInitializeTimer">NdisMInitializeTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553547(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMInitializeWrapper">NdisMInitializeWrapper</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553551(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMoveFromMappedMemory">NdisMoveFromMappedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553557(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMoveMappedMemory">NdisMoveMappedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553561(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMoveToMappedMemory">NdisMoveToMappedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553562(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMPciAssignResources">NdisMPciAssignResources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553566(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMPromoteMiniport">NdisMPromoteMiniport</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553571(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMQueryAdapterResources">NdisMQueryAdapterResources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553575(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMQueryInformationComplete">NdisMQueryInformationComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553584(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMRegisterAdapterShutdownHandler">NdisMRegisterAdapterShutdownHandler</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553588(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMRegisterDevice">NdisMRegisterDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553596(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMRegisterInterrupt">NdisMRegisterInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553602(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMRegisterMiniport">NdisMRegisterMiniport</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553606(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMRegisterUnloadHandler">NdisMRegisterUnloadHandler</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553613(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSendComplete">NdisMSendComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553617(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSendResourcesAvailable">NdisMSendResourcesAvailable</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553619(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetAttributes">NdisMSetAttributes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553623(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetAttributesEx">NdisMSetAttributesEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553626(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetInformationComplete">NdisMSetInformationComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553629(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetMiniportSecondary">NdisMSetMiniportSecondary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553632(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetPeriodicTimer">NdisMSetPeriodicTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553635(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSetTimer">NdisMSetTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553646(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMStartBufferPhysicalMapping">NdisMStartBufferPhysicalMapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553649(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMSynchronizeWithInterrupt">NdisMSynchronizeWithInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553652(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMTransferDataComplete">NdisMTransferDataComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553658(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMTrIndicateReceive">NdisMTrIndicateReceive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553659(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMTrIndicateReceiveComplete">NdisMTrIndicateReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553662(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMUpdateSharedMemory">NdisMUpdateSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553664(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMWanIndicateReceive">NdisMWanIndicateReceive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553667(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMWanIndicateReceiveComplete">NdisMWanIndicateReceiveComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553668(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisMWanSendComplete">NdisMWanSendComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553673(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisOpenAdapter">NdisOpenAdapter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553676(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisOpenConfiguration">NdisOpenConfiguration</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553683(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisOpenProtocolConfiguration">NdisOpenProtocolConfiguration</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553685(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisPacketPoolUsage">NdisPacketPoolUsage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553687(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisPacketSize">NdisPacketSize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553690(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisPrintString">NdisPrintString</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554407(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryBuffer">NdisQueryBuffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554411(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryBufferOffset">NdisQueryBufferOffset</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554417(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryBufferSafe">NdisQueryBufferSafe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554428(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryPacket">NdisQueryPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554434(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryPacketLength">NdisQueryPacketLength</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554456(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQueryPendingIOCount">NdisQueryPendingIOCount</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554462(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisQuerySendFlags">NdisQuerySendFlags</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554540(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReadEisaSlotInformation">NdisReadEisaSlotInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554544(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReadEisaSlotInformationEx">NdisReadEisaSlotInformationEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554554(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReadPciSlotInformation">NdisReadPciSlotInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554560(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReadPcmciaAttributeMemory">NdisReadPcmciaAttributeMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554645(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisRecalculatePacketCounts">NdisRecalculatePacketCounts</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554653(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisRegisterProtocol">NdisRegisterProtocol</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554658(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReinitializePacket">NdisReinitializePacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554681(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisRequest">NdisRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554691(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReset">NdisReset</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554706(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisReturnPackets">NdisReturnPackets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554709(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisScheduleWorkItem">NdisScheduleWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554712(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSend">NdisSend</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554715(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSendPackets">NdisSendPackets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554727(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetPacketCancelId">NdisSetPacketCancelId</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554737(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetPacketFlags">NdisSetPacketFlags</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554741(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetPacketPoolProtocolId">NdisSetPacketPoolProtocolId</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554748(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetPacketStatus">NdisSetPacketStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554763(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetSendFlags">NdisSetSendFlags</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554768(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetTimer">NdisSetTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554774(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisSetTimerEx">NdisSetTimerEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554814(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisTerminateWrapper">NdisTerminateWrapper</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554816(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisTransferData">NdisTransferData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554822(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisUnchainBufferAtBack">NdisUnchainBufferAtBack</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554826(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisUnchainBufferAtFront">NdisUnchainBufferAtFront</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554871(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisWritePciSlotInformation">NdisWritePciSlotInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554876(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NdisWritePcmciaAttributeMemory">NdisWritePcmciaAttributeMemory</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">NdisFlushBuffer function</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p><strong>Note</strong>  
+
+NDIS 5.
+<em>x</em> has been deprecated and is superseded by NDIS 6.
+<em>x</em>. For new NDIS driver development, see 
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff570021(v=vs.85).aspx">Network Drivers Starting with Windows Vista</a>. For information
+about porting NDIS 5.
+<em>x</em> drivers to NDIS 6.
+<em>x</em>, see 
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff570059(v=vs.85).aspx">Porting NDIS 5.x Drivers to NDIS 6.0</a>.
+</p>
+<p><strong>NdisFlushBuffer</strong> flushes the memory region described by a given buffer descriptor from
+all processor
+  caches.
+</p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a5a8a68e-19b3-48db-b50e-024dfcecffe7');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a5a8a68e-19b3-48db-b50e-024dfcecffe7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+VOID NdisFlushBuffer(
+  _In_  PNDIS_BUFFER Buffer,
+  _In_  BOOLEAN WriteToDevice
+);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Parameters</h2>
+<dl>
+<dt><em>Buffer</em> [in]</dt>
+<dd>
+<p>
+Pointer to a buffer description mapping a buffer from which or into which data is transferred as a
+     bus-master DMA operation.
+</p>
+</dd>
+<dt><em>WriteToDevice</em> [in]</dt>
+<dd>
+<p>
+Specifies <strong>TRUE</strong> if the NIC driver calls this function to flush a buffer before making a transfer
+     from host memory to the NIC.
+     
+</p>
+<p>If the NIC driver specifies <strong>FALSE</strong>, it must ensure the buffer begins and ends on a cache-line
+     boundary.</p>
+</dd>
+</dl>
+<h2>Return value</h2>
+<p>
+None
+</p>
+<h2>Remarks</h2>
+<p>Drivers of bus-master DMA NICs call 
+    
+<strong>NdisFlushBuffer</strong> to maintain data integrity in shared memory. Flushing the buffer
+ensures coherency
+    between the host memory cache and processor physical memory before a DMA transfer to or from the network
+    interface card.</p>
+<p>The driver flushes such a buffer when data that it shares with its NIC might be cached. For any
+    transfer between host memory and a bus-master DMA NIC, the miniport driver must flush the buffer before
+    the transfer starts. Such a driver also must ensure that host memory is not accessed until the transfer
+    completes.</p>
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Version</p>
+</th><td>Not supported for NDIS 6.0 drivers in Windows Vista. Use KeFlushIoBuffers instead. Supported
+   for NDIS 5.1 drivers in Windows Vista and Windows XP.</td></tr>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>Ndis.h (include Ndis.h)</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>IRQL</p>
+</th><td>&lt;= DISPATCH_LEVEL</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549458(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MiniportHandleInterrupt</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff562782(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">NdisMAllocateSharedMemory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553662(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">NdisMUpdateSharedMemory</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [netxp\netxp]:%20NdisFlushBuffer function%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="7-JzLk54MzEbWdekdQBtmly3rSqULzQJOK8rPSRGxMFJnIu72dLHwl60gKsRfJUxeaORYVxnvIjQfSZKiUNksMjv0O6PerHiZuI2ilmi4Ei6JaY-jwGsU6uqKCXxX84I6a4Orw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff551975(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff551975(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="2XfI83dmTpkiHcZlUk8j6Sto4uMDVHJ_YK1I_TsiwH137iOVHVtPAe1plOwRHy8HvEV--7830KiGlwHtZm8o_JpXs8ZoxDnPsGF1ml6-MR-bQgtZ9iH76mr0k1fliZo57p1kFA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff551975(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"69559703-4765-4842-ae87-354ea01ed7fd\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff551975(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:01 GMT -->
+</html>

@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj923067.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923067.aspx" />
+        <title>Trusted Execution Environment ACPI Profile</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj923067(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923067(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923067(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923067(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DCF-9:59:01 AM" />
+
+<meta name="Search.ShortId" content="jj923067" />
+
+<meta name="ms.shortidmsdn" content="jj923067" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075541&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj923067.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998390.aspx" id="dn375909_WIN.10_en-us" mtpsaliasid="" mtpsassetid="30a0007a-2953-4b9c-96e0-41670db41aa1_WIN.10_en-us" mtpsshortid="hh998390_WIN.10_en-us" title="System.Fundamentals Testing">System.Fundamentals Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj920132.aspx" id="dn375842_WIN.10_en-us" mtpsaliasid="" mtpsassetid="248b4346-15e8-48c1-ad84-5ac399929355_WIN.10_en-us" mtpsshortid="jj920132_WIN.10_en-us" title="Additional System Fundamentals Resources">Additional System Fundamentals Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj920134.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM V2.0 Command and Signal Profile">TPM V2.0 Command and Signal Profile</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923067.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Trusted Execution Environment ACPI Profile">Trusted Execution Environment ACPI Profile</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj923068.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Trusted Execution Environment EFI Protocol">Trusted Execution Environment EFI Protocol</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Trusted Execution Environment ACPI Profile</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>Licensing: Microsoft agrees to grant to you a no charge, royalty-free license to its Necessary Claims on reasonable and non-discriminatory terms solely to make, use, sell, offer for sale, import, or distribute any implementation of this specification. “Necessary Claims” are those claims of Microsoft-owned or Microsoft-controlled patents that are technically necessary to implement the required portions (which also include the required elements of optional portions) of this specification, where the functionality causing the infringement is described in detail and not merely referenced in this Specification.</p>
+      <h2 class="heading">1.0 Background</h2>
+      <div id="sectionSection0" class="section">
+        <p>This specification defines the ACPI device object for a TPM 2.0 device and the control methods associated with the ACPI device object required for Windows 8. The control methods implement the equivalent of the TCG physical presence ACPI interface, the equivalent of the Platform Reset Attack Mitigation interface and optionally an ACPI method to send a command to the TPM 2.0 device.</p>
+        <p>An additional static ACPI table (TPM2) is used to define the mechanism for communicating between the TPM 2.0 device and the Windows 8 OS.</p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+            </tr>
+            <tr>
+              <td>
+						Microsoft refers to the Trusted Computing Group’s “TPM.Next” term as “TPM 2.0”<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <h2 class="heading">2.0 Requirements</h2>
+      <div id="sectionSection1" class="section">
+        <p>This specification assumes a computing platform that supports ACPI-based communication as specified in [ACPI09] between an OS and a firmware environment.</p>
+      </div>
+      <h2 class="heading">3.0 Usage scenarios (for example only)</h2>
+      <div id="sectionSection2" class="section">
+        <p>
+          
+        </p>
+        <h3 class="subHeading">3.1 Sending a physical presence command</h3>
+        <div class="subSection">
+          <p>A typical usage scenario is as follows:</p>
+          <ol class="ordered">
+            <li>
+									Within the OS environment, an application detects the TPM 2.0 device is not fully provisioned for use for Windows 8.   (An example of how this could happen is if a new OS image is installed after a previous OS image provisioned the TPM 2.0.)<br /><br /></li>
+            <li>
+									The application launches an OS wizard to ready the TPM 2.0 device for use.<br /><br /></li>
+            <li>
+									The wizard interacts with the computer administrator via UI and determines the administrator needs to clear the TPM 2.0 device to provision it because the TPM 2.0 device reset lockout authorization value is not available.<br /><br /></li>
+            <li>
+									To clear the TPM 2.0 device, the OS requests (by executing an ACPI control method for the TPM 2.0 device object) the firmware perform the operation to clear the TPM 2.0 device upon the next boot provided a physically present user confirms they approve of clearing the TPM 2.0 device.<br /><br /></li>
+            <li>
+									The OS restarts the platform.<br /><br /></li>
+            <li>
+									During the early portion of the boot process, the firmware recognizes the pending request from the OS to clear the TPM 2.0 device.<br /><br /></li>
+            <li>
+									The firmware presents a UI to a physically present user asking them to take some action to confirm clearing of the TPM 2.0 device.<br /><br /></li>
+            <li>
+									A physically present user confirms clearing of the TPM 2.0 device.<br /><br /></li>
+            <li>
+									The firmware clears the TPM 2.0 device using the platform hierarchy authorization.<br /><br /></li>
+            <li>
+									If necessary, to persist the clearing of the TPM 2.0 device, the platform is rebooted immediately.<br /><br /></li>
+            <li>
+									The OS boots.<br /><br /></li>
+            <li>
+									The OS queries (via an ACPI control method on the TPM 2.0 device) if the last OS request to clear the TPM 2.0 device was either (a) successful, (b) was not confirmed by the physically present user or (c) had some other error.  In the following, we assume the TPM 2.0 device was cleared successfully.<br /><br /></li>
+            <li>
+									The TPM 2.0 device provisioning wizard within the OS performs additional commands to ready the device for use by Windows.<br /><br /></li>
+          </ol>
+        </div>
+        <h3 class="subHeading">3.2 Requesting memory to be cleared on the next boot</h3>
+        <div class="subSection">
+          <p>This scenario illustrates how the memory clear feature of the system helps thwart attacks that harvest system memory for key material after the platform is unexpectedly restarted.</p>
+          <ol class="ordered">
+            <li>
+									From within the OS, an administrator on a system with a TPM 2.0 device turns on the BitLocker feature for the OS volume.<br /><br /></li>
+            <li>
+									The BitLocker feature calls the TPM 2.0 device ACPI control method to set the ClearMemory bit defined in the TCG Platform Reset Attack Mitigation Specification.<br /><br /></li>
+            <li>
+									The BitLocker feature encrypts the OS volume.<br /><br /></li>
+            <li>
+									The administrator leaves the system unattended with the screen locked.<br /><br /></li>
+            <li>
+									A malicious person steals the system while it is running.<br /><br /></li>
+            <li>
+									The malicious person inserts a USB stick and quickly removes the system battery and re-inserts it.<br /><br /></li>
+            <li>
+									The system starts booting when the battery is re-inserted.<br /><br /></li>
+            <li>
+									Because the ClearMemory bit was set previously the firmware clears the entire system memory before launching any code not provided by the platform manufacturer.<br /><br /></li>
+            <li>
+									The malicious person configures the firmware during boot to boot to the USB device even though the code on the USB device is not properly signed.<br /><br /></li>
+            <li>
+									The code on the USB device scans the system memory for the BitLocker Volume Master Key but it is not found.<br /><br /><div class="alert"><table><tr><th align="left"><img id="Warning" alt="Warning" src="http://i.msdn.microsoft.com/dynimg/IC174466.gif" title="Warning" xmlns="" />Warning </th></tr><tr><td>
+										Steps 11 through 16 are similar to the earlier steps, but use the UEFI interface instead of ACPI<p></p></td></tr></table><p></p></div></li>
+            <li>
+									The malicious person attempts to boot the system normally.<br /><br /></li>
+            <li>
+									Because BitLocker was enabled with the TPM key protector, this permits BootMgr to “unseal” the volume master key for the OS volume because the correct measurements are in the TPM 2.0 device when BootMgr runs.<br /><br /></li>
+            <li>
+									Boot proceeds to the OS logon screen.<br /><br /></li>
+            <li>
+									The malicious person again removes then re-inserts the battery and boots code from a USB device.<br /><br /></li>
+            <li>
+									Because the ClearMemory bit was set, the system firmware erases the entire system memory during boot.<br /><br /></li>
+            <li>
+									Even though code from the USB device scans the system memory, the OS volume encryption key is not in memory.<br /><br /></li>
+          </ol>
+        </div>
+        <h3 class="subHeading">3.3 Issuing a command to the TPM 2.0 device</h3>
+        <div class="subSection">
+          <p>This example is not applicable for all system architectures.</p>
+          <ol class="ordered">
+            <li>
+									The Windows TPM 2.0 driver wants to issue a command to the TPM 2.0 device.<br /><br /></li>
+            <li>
+									The Windows TPM 2.0 driver writes the command to execute to the physical address read from the ACPI-defined Control Area earlier during the Windows TPM 2.0 driver initialization.<br /><br /></li>
+            <li>
+									The Windows TPM 2.0 driver executes the ACPI control method to execute a TPM 2.0 command.<br /><br /></li>
+            <li>
+									The Windows TPM 2.0 driver polls the registers in the control area until they indicate the TPM command has completed.<br /><br /></li>
+            <li>
+									The Windows TPM driver reads the command response from the physical address read from the ACPI-defined Control Area earlier during Windows TPM driver initialization.<br /><br /></li>
+          </ol>
+        </div>
+      </div>
+      <h2 class="heading">4.0 General ACPI Requirements for the TPM 2.0 System and Device</h2>
+      <div id="sectionSection3" class="section">
+        <h3 class="subHeading">4.1 Power considerations</h3>
+        <div class="subSection">
+          <p>
+            <strong>ACPI D1/D2</strong>
+          </p>
+          <p>The TPM 2.0 device MAY support ACPI D1 and/or ACPI D2 but MUST behave as if it was in power state ACPI D0 while in D1 or D2.</p>
+          <p>
+            <strong>ACPI S3 (Sleep)</strong>
+          </p>
+          <p>The TPM 2.0 MAY support S3 but entry into and exit from the S3 low power state for the device MUST be controlled by the system/platform manufacturer.</p>
+          <p>The OS (or other software running in the OS environment) MUST NOT be able to place the TPM 2.0 device in S3 or cause the TPM 2.0 device to exit from S3.  For example, if the TPM 2.0 device is on a bus, the OS MUST NOT be able to power down the bus causing the TPM 2.0 device to enter S3.</p>
+          <p>The Windows 8 TPM driver will attempt to issue a TPM2_Shutdown command prior to entering S3 (sleep).</p>
+          <p>If a hardware platform does support S3 and the TPM does not retain its state while the system is in S3, the platform MUST issue the necessary TPM2_Init and TPM2_Startup(TPM_SU_STATE) commands during S3 resume.  It is possible the OS may not have completed the TPM2_Shutdown command prior to entry into S3.  This could cause the return result of TPM2_Startup(TPM_SU_STATE) to return an error.  The system firmware that resumes from S3 MUST deal with a TPM2_Startup error appropriately.  For example, by either disabling access to the TPM via hardware, issuing a TPM2_Startup(TPM_SU_CLEAR) command and configuring the device securely by taking actions like extending a separator with an error digest (0x01) into PCRs 0 through 7 and locking NV indices.</p>
+          <p>The system MUST account for time elapsed during S3 by decrementing TPM dictionary attack failure count (TPM_PT_LOCKOUT_COUNTER) for the time the system was in S3 per the lockout interval (TPM_PT_LOCKOUT_INTERVAL).    This may require a platform implementation to provide standby voltage to retain TPM clock and/or state during S3 or a platform could also securely provide information regarding how much time elapsed while the system was in a low power state so the TPM can reliably updates its authorization failure count for its dictionary attack logic.</p>
+          <p>
+            <strong>Low Power States for Connected Standby Systems</strong>
+          </p>
+          <p>Windows 8 does not perform any additional actions associated with the TPM upon entry and exit from low power states for Connected Standby systems.  The platform MUST performing any actions needed for the TPM to behave as though it was in D0 whenever the system enters and exits from low power states for Connected Standby systems.  This MAY require a platform implementation to provide standby voltage to power the TPM clock and/or retain state.  Alternatively, a platform MAY need to securely provide information regarding how much time elapsed while the system was in a low power state to the TPM, so the TPM can reliably updates its authorization failure count for its dictionary attack logic.</p>
+          <p>
+            <strong>System Off</strong>
+          </p>
+          <p>The system SHOULD securely account for time elapsed during full shutdown by decrementing TPM dictionary attack failure count (TPM_PT_LOCKOUT_COUNTER) for the time the system was in S5 per the lockout interval (TPM_PT_LOCKOUT_INTERVAL).</p>
+        </div>
+        <h3 class="subHeading">4.2 ACPI tables</h3>
+        <div class="subSection">
+          <p>A system with a TPM 2.0 device MUST provide a device object table with a hardware device ID and an OS vendor specific static table (TPM2) as described below.</p>
+          <p>Both the TPM2 table and the TPM 2.0 device object MUST be persistent once the platform is shipped to a customer.  (E.g. Firmware options MUST NOT permit hiding of the TPM2 table or the TPM 2.0 device object.)  An exception is if a system is shipped with a non-default option to provide TPM 1.2 functionality instead of TPM 2.0 functionality (i.e. for compatibility with older operating systems like Windows 7.)  In this situation the TPM2 table and the TPM 2.0 device object MAY be removed via a BIOS configuration option and enumeration of a TPM 1.2 performed.  Note:  A Connected Standby System for Windows 8 is required to ship, by default, with a TPM 2.0 visible to the operating system.  Please contact Microsoft for technical guidance about switching between a TPM 2.0 and TPM 1.2 on a hardware platform.</p>
+        </div>
+        <h3 class="subHeading">4.3 TPM 2.0 Device Object ACPI Table</h3>
+        <div class="subSection">
+          <p>
+            <strong>4.3.1 Bus Hierarchy</strong>
+          </p>
+          <p>The Device Object table MUST be under the DSDT table in the ACPI namespace.The TPM 2.0 Device Object MUST be located under the system bus at “root\_SB”.</p>
+          <p>
+            <strong>4.3.2 Hardware Identifier</strong>
+          </p>
+          <p>The actual plug and play hardware identifier (e.g. _HID) for the TPM 2.0 device object MUST be “MSFT0101”or the device MUST have a compatible ID of “MSFT0101” and the _HID could be vendor specific. </p>
+          <p>
+            <strong>4.3.3 Resource Descriptors</strong>
+          </p>
+          <p>The ACPI TPM 2.0 Device Object MUST claim all resources used by the TPM 2.0 device.</p>
+          <p>
+            <strong>4.3.4 Control Methods</strong>
+          </p>
+          <p>
+            <strong>4.3.4.1 Platform Reset Attack Mitigation</strong>
+          </p>
+          <p>The system MUST implement all ACPI and UEFI related parts of [TCG08] for UEFI.  The device object MUST implement the control method interface defined in [TCG08], section 6.    The interface is required even if the platform unconditionally clears memory on every boot.  The clearing of memory MUST NOT be conditional on the TPM 2.0 device state (in contrast [TCG08] does not requiring clearing of memory if the TPM 1.2 is not owned).  Also, sections 3, 5 of [TCG08] MUST be implemented. The _DSM query function MUST be implemented (function index 0) per the ACPI specification.  (Note:  There is a mistake in the ACPI 4.0 specification about the return value for the _DSM method.  The return value of the _DSM method should be a buffer containing 0x03.)  The implementation MUST auto-detect an orderly OS shutdown and clear the ClearMemory bit on such events.</p>
+          <p>Special note for UEFI based ARM systems with a TPM 2.0:  On UEFI based ARM systems with a TPM 2.0, Windows 8 will unconditionally request memory be cleared using the UEFI interface on every boot.  Implementing the ACPI interface is still required, but the interface MAY be implemented to not change the state of the ClearMemory or DisableAutoDetect flags.  (Note:  Microsoft recommends the ACPI interface be implemented per the TCG specification so calling the ACPI interface does change the state of ClearMemory or DisableAutoDetect.)</p>
+          <p>
+            <strong>4.3.4.2 Physical Presence Interface</strong>
+          </p>
+          <p>The system MUST implement the specification defined in [TCG11] per the additional notes below:</p>
+          <ol class="ordered">
+            <li>
+									The use of TPM in the TCG specification should be equated with the TPM 2.0 device.<br /><br /></li>
+            <li>
+									The control methods defined in section 2 MUST be implemented with the following restrictions:<br /><br /><ol class="ordered"><li>
+											The _DSM query function MUST be implemented (function index 0) per the ACPI specification.  (Note:  There is a mistake in the ACPI 4.0 specification about the return value for the _DSM method.  The return value of the _DSM method should be a buffer containing 0x01FF.)<br /><br /></li><li>
+											The implementation MUST return a value of “2: Reboot” for “Get Platform-Specific Action to Transition to Pre-OS Environment.”  PPI operations MUST occur for a transition of a restart and SHOULD occur for a shutdown transition.<br /><br /></li><li>
+											Implementation of the following control methods is optional: “Submit TPM Operation Request to Pre-OS Environment” (may return “2: General Failure”) and “Submit preferred user language” (may return “3: Not implemented”).<br /><br /></li></ol></li>
+            <li>
+									The requirements in section 3 MUST be implemented with the following revisions:<br /><br /><ol class="ordered"><li>
+											The BIOS does not need to provide persistent storage for the NoPPIProvision flag because the operations it authorizes are not relevant for the TPM 2.0 device state.<br /><br /></li><li>
+											Table 2 is revised as follows:<br /><br />
+											Table 1: revised PPI table 2<br /><br /><h3 class="subHeading"> </h3><table><tr><td><p><strong>OperationValue</strong></p></td><td><p><strong>Operation Name</strong></p></td><td><p><strong>TPM Stat</strong></p></td><td><p><strong>BIOS TPM Mgmt Flags</strong></p></td><td><p><strong>Mandatory versus Optional</strong></p></td><td><p><strong>When Physical Presence Confirmation is Required</strong></p></td><td><p><strong>May need additional boot cycle</strong></p></td></tr><tr><td><p>0</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>M</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>1-4</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>M</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>5</p></td><td><p>TPM2_ClearControl(NO) +</p><p>TPM2_Clear</p></td><td><p>X</p></td><td><p></p></td><td><p>M</p></td><td><p>NoPPIClear is FALSE</p></td><td><p>X</p></td></tr><tr><td><p>6-11</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>M</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>12-13</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>O</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>14</p></td><td><p>TPM2_ClearControl(NO) +</p><p>TPM2_Clear</p></td><td><p>X</p></td><td><p></p></td><td><p>M</p></td><td><p>NoPPIClear is FALSE</p></td><td><p>X</p></td></tr><tr><td><p>15-16</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>M</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>17</p></td><td><p>SetNoPPIClear_False</p></td><td><p></p></td><td><p>X</p></td><td><p>O1</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>18</p></td><td><p>SetNoPPIClear_True</p></td><td><p></p></td><td><p>X</p></td><td><p>O1</p></td><td><p>Always</p></td><td><p></p></td></tr><tr><td><p>19-20</p></td><td><p>No Operation</p></td><td><p></p></td><td><p></p></td><td><p>O2</p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>21-22</p></td><td><p>TPM2_ClearControl(NO) +</p><p>TPM2_Clear</p></td><td><p>X</p></td><td><p></p></td><td><p>M</p></td><td><p>NoPPIClear is FALSE</p></td><td><p>X</p></td></tr><tr><td><p>23 – 127</p></td><td><p>Reserved</p></td><td><p></p></td><td><p></p></td><td><p></p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>&gt;=128</p></td><td><p>Vendor Specific</p></td><td><p>X</p></td><td><p>X</p></td><td><p>O</p></td><td><p></p></td><td><p>X</p></td></tr></table><div class="alert"><table><tr><th align="left"><img id="Important" alt="Important" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th></tr><tr><td>
+												For <strong>SetNoPPIClear_False</strong>: if the BIOS implements the items marked “O1” or “O2” it must implement them as a set. For the <strong>No Operation</strong> that follows <strong>SetNoPPIClear_True</strong>, the BIOS must not implement operations 19 and 20 if it does not implement operation 12.<p></p></td></tr></table><p></p></div></li><li>
+											Table 3 is revised as follows:<br /><br /><h3 class="subHeading"> </h3><table><tr><td><p><strong>Operation</strong></p><p><strong>Value</strong></p></td><td><p><strong>Operation</strong></p><p><strong>Name</strong></p></td><td><p><strong>TPM commands sent by BIOS and other BIOS actions to perform the operation</strong></p></td></tr><tr><td><p>0</p></td><td><p>No Operation</p></td><td><p><em>No operation </em></p></td></tr><tr><td><p>1-4, 6-13, 15-16, 19-20</p></td><td><p>No Operation</p></td><td><p>No operation.  However, the operation number MUST be remembered and the result if queried from the OS it MUST return success. </p></td></tr><tr><td><p>5, 14, 21, 22</p></td><td><p>Clear</p></td><td><p>TPM2_ClearControl(NO) + </p><p>TPM2_Clear </p><p>&lt;PLATFORM RESET&gt;*   [*If necessary to persist the TPM changes from TPM2_CLEAR.  Microsoft anticipates on most systems this is unnecessary.]</p></td></tr><tr><td><p>17</p></td><td><p>SetNoPPIClear_False</p><p>(Require physical presence for clear.)</p></td><td><p>This operation does not change TPM state.</p><p></p><p>Clears the BIOS TPM Management Flag NoPPIClear to FALSE.</p></td></tr><tr><td><p>18</p></td><td><p>SetNoPPIClear_True</p><p></p><p>(Do not require physical presence confirmation for clear.)</p></td><td><p>This operation does not change TPM state.</p><p></p><p>Sets the BIOS TPM Management Flag NoPPIClear to TRUE.</p><p></p></td></tr><tr><td><p>23 – 127</p></td><td><p>Reserved</p></td><td><p>Reserved, do not implement or use</p></td></tr><tr><td><p>&gt;=128</p></td><td><p>Vendor Specific</p></td><td><p>TPM commands mapping to vendor specific operation</p></td></tr></table></li></ol></li>
+            <li>
+									The spirit of section 4 MUST be maintained to obtain confirmation from a physically present user when it is required to perform an operation but the actual mechanism does not need to be key presses.  The keys or other mechanism to affirm consent are up to the platform manufacturer.<br /><br /><h3 class="subHeading"> </h3><table><tr><td><p><strong>Op</strong></p><p><strong>Value</strong></p></td><td><p><strong>Operation</strong></p><p><strong>Name</strong></p></td><td><p><strong>Confirmation</strong></p><p><strong>Text </strong></p></td></tr><tr><td><p>5, 14, 21, and 22</p></td><td><p>Clear</p></td><td><p>A configuration change was requested to clear this computer’s TPM (Trusted Platform Module)</p><p>WARNING: Clearing erases information stored on the TPM.  You will lose all created keys and access to data encrypted by these keys.</p><p>Press &lt;CAK&gt; to clear the TPM</p><p>Press &lt;RK&gt; to reject this change request and continue</p></td></tr><tr><td><p>18</p></td><td><p>SetNoPPIClear_True</p><p></p></td><td><p>A configuration change was requested to allow the Operating System to clear the computer’s TPM (Trusted Platform Module) without asking for user confirmation in the future.  </p><p>NOTE: This action does not clear the TPM, but by approving this configuration change, future actions to clear the TPM will not require user confirmation.</p><p>WARNING: Clearing erases information stored on the TPM.  You will lose all created keys and access to data encrypted by these keys.  </p><p>Press &lt;CAK&gt; to approve future Operating System requests to clear the TPM</p><p>Press &lt;RK&gt; to reject this change request and continue</p></td></tr></table></li>
+            <li>
+									Section 5 is informative.<br /><br /></li>
+            <li>
+									Connected Standby systems MAY hardcode NoPPIClear to TRUE and not implement operations 17 and 18.  This means they do not need to implement any confirmation dialogs for physical presence actions because no physical presence operations will require user confirmation.   <br /><br /></li>
+            <li>
+									The firmware MUST leave the storage and endorsement hierarchies enabled when it passes control to initial program loader code like the Windows Boot Manager.<br /><br /></li>
+          </ol>
+          <p>
+            <strong>4.3.4.3 Optional ACPI Start Method</strong>
+          </p>
+          <p>Note: Some platforms MAY implement this optional ACPI method to permit the OS to request the firmware to execute or cancel a TPM 2.0 command. The use of the ACPI Start method is determined by the StartMethod field of the static ACPI table (see Section 4.4.)If the StartMethod field of the static ACPI table indicates the use of this method, the ACPI Start method MUST be implemented.The ACPI functions defined herein shall reside in the _DSM control method object. [Note: This is not a control method in the TPM2 ACPI table.] The _DSM method defined herein MUST be implemented as follows:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>
+                  <strong>UUID </strong>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <strong>Revision</strong>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <strong>Function</strong>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <strong>Description</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>6bbf6cab-5463-4714-b7cd-f0203c0368d4</p>
+                <p>
+                  
+                </p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+              <td>
+                <p>As described in [ACPI09], Section 9.14.1.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  
+                </p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>Start </p>
+              </td>
+            </tr>
+          </table>
+          <p>Function Start</p>
+          <p>Input Arguments: </p>
+          
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f47120d2-87e0-441d-9720-9922ae60c51c');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f47120d2-87e0-441d-9720-9922ae60c51c" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Arg0 (Buffer): UUID = 6bbf6cab-5463-4714-b7cd-f0203c0368d4
+Arg1 (Integer): Revision ID = 0
+Arg2 (Integer): Function Index = 1
+Arg3 (Package): Arguments = Empty Package
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          <p>Return Value:</p>
+          <p>Type: Integer</p>
+          <p>Description of the Return Value: </p>
+          <p>0: Success</p>
+          <p>1: General Failure</p>
+          <p>Functional Behavior:</p>
+          <p>This function tells the system to review the status registers in the TPM 2.0 device control area and take the appropriate action to execute or cancel TPM 2.0 command.  </p>
+          <p>The function is non-blocking. The call will return immediately.  (Do not attempt to perform command execution from within the ACPI method.  AML calls need to be short.)When Return Value 0 is returned, the submitted command was accepted and will be executed by the firmware or cancelled if the Cancel field is already set. Whenever possible the system should return a TPM response instead of a General Failure from this call.  For example, a command cannot be processed now, a Response buffer of TPM2_RC_RETRY could be written and the START field could be CLEARed.  If the command was cancelled because the Cancel field was set, this method may write a TPM2_RC_Cancelled return code in the Response buffer, clear the Start field and return a value of 0.  Alternatively, if the Cancel field is set the method may return a value of 0 and the TPM 2.0 device may later complete or cancel the command per the requirements for cancelling a command.</p>
+          <p>When Return Value 1 is returned, the firmware is unable to read or act upon the request. Other than the return value, the request is equivalent to a NO-OP. Examples are (a) a bad OS driver requests execution of additional commands before a prior command completed, (b) the control area is not in physical memory [perhaps due to memory corruption], or (c) the command or response physical addresses do not exist. A return value of 1 may cause the Windows TPM 2.0 driver may stop using the TPM 2.0 device until the next full system boot (this excludes hibernation/resume cycles).</p>
+          <p>Note: Once command execution starts, this method is not called a second time if the OS chooses the cancel the currently executing command.  (However it is possible the control method may be called initially for a command while the cancel field is set.)</p>
+        </div>
+        <h3 class="subHeading">4.4 TPM2 Static ACPI Table</h3>
+        <div class="subSection">
+          <p>An ACPI table named “TPM2” listed in the “RSDT” ACPI table describes the platform’s TPM 2.0 hardware interface. The Windows TPM 2.0 driver uses this table to determine the manner in which it is to communicate with the TPM 2.0 device. The parameters in the ACPI table required to support this interface are illustrated in the table below.</p>
+          <p>
+            <strong>Table 3: TPM2 ACPI table layout</strong>
+          </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Field</p>
+              </td>
+              <td>
+                <p>Byte Length</p>
+              </td>
+              <td>
+                <p>Byte Offset</p>
+              </td>
+              <td>
+                <p>Description</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Header</p>
+              </td>
+              <td>
+                <p>
+                  
+                </p>
+              </td>
+              <td>
+                <p>
+                  
+                </p>
+              </td>
+              <td>
+                <p>
+                  
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Signature</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>00h</p>
+              </td>
+              <td>
+                <p>‘TPM2’. Signature for the TPM 2.0 device Hardware Interface Table</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Length</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>04h</p>
+              </td>
+              <td>
+                <p>The length of the table, in bytes, including the header, starting from offset 0. This field is used to record the size of the entire table.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Revision</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>08h</p>
+              </td>
+              <td>
+                <p>Revision of this table including the data and structure referenced by it. If any structure referenced by this changed (e.g., Control Area), this revision MUST change. Value 03h.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Checksum</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>09h</p>
+              </td>
+              <td>
+                <p>The entire table, including the checksum field, MUST add to zero to be considered valid.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  OEM ID</p>
+              </td>
+              <td>
+                <p>6</p>
+              </td>
+              <td>
+                <p>0Ah</p>
+              </td>
+              <td>
+                <p>OEM ID per ACPI specification. An OEM-supplied string that identifies the OEM (this may be the chipset vendor).</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  OEM Table ID</p>
+              </td>
+              <td>
+                <p>8</p>
+              </td>
+              <td>
+                <p>10h</p>
+              </td>
+              <td>
+                <p>The OEM Table ID is the manufacturer model ID (assigned by the OEM identified by “OEM ID”; may be the chipset vendor).</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  OEM Revision</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>18h</p>
+              </td>
+              <td>
+                <p>OEM revision for the given OEM Table ID. Per ACPI, “[an] OEM-supplied revision number. Larger numbers are assumed to be newer revisions.”</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Creator ID</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>1Ch</p>
+              </td>
+              <td>
+                <p>Vendor ID of utility that created the table. For the tables containing Definition Blocks, this is the ID of the ASL Compiler.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>  Creator Revision</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>20h</p>
+              </td>
+              <td>
+                <p>Revision of utility that created the table. For the tables containing Definition Blocks, this is the revision of the ASL Compiler.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Flags</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>24h</p>
+              </td>
+              <td>
+                <p>Reserved </p>
+                <p>MUST always be zero</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Address of Control Area</p>
+              </td>
+              <td>
+                <p>8</p>
+              </td>
+              <td>
+                <p>28h</p>
+              </td>
+              <td>
+                <p>Physical address of the Control Area. May be either in TPM 2.0 device memory or in memory reserved by the system during boot. The TPM 2.0 driver retains knowledge of this address throughout a boot cycle including hibernation and resume cycles. If the system does not use the Control Area this value MUST be all zeros.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Start Method</p>
+              </td>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>30h</p>
+              </td>
+              <td>
+                <p>The start method selector determines which mechanism the Windows TPM 2.0 driver uses to communicate TPM 2.0 commands to the device and to notify the TPM 2.0 device that a command is available for processing. This field may contain one of the following values:</p>
+                <h3 class="subHeading"> </h3>
+                <div>
+                  <table>
+                    <tr>
+                      <td>
+                        <p>Value</p>
+                      </td>
+                      <td>
+                        <p>Description</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>0</p>
+                      </td>
+                      <td>
+                        <p>Reserved.  </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>1</p>
+                      </td>
+                      <td>
+                        <p>Reserved (Vendor specific)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>2</p>
+                      </td>
+                      <td>
+                        <p>Uses the ACPI Start method.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>3-5</p>
+                        <p>
+                          
+                        </p>
+                        <p>6</p>
+                      </td>
+                      <td>
+                        <p>Reserved (Vendor specific)</p>
+                        <p>Reserved for the Memory mapped I/O Interface (TIS 1.2+Cancel). This option is not Windows 8 Hardware Certification compliant. Use of this option requires an approved Windows 8 WHCK contingency request for logo certification.  Please contact Microsoft for details.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>7</p>
+                        <p>
+                          
+                        </p>
+                        <p>8</p>
+                      </td>
+                      <td>
+                        <p>Uses the Command Response Buffer Interface.</p>
+                        <p>Uses the Command Response Buffer Interface with ACPI Start method.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>…</p>
+                      </td>
+                      <td>
+                        <p>Reserved.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <p>
+                  
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Platform Specific Parameters</p>
+              </td>
+              <td>
+                <p>variable</p>
+              </td>
+              <td>
+                <p>34h</p>
+              </td>
+              <td>
+                <p>The content of the platform specific parameters is determined by the start mechanism used by this system’s TPM 2.0 device interface. This field contains values that may be used to initiate command processing.  This information may be vendor specific.  For Start Method values of 2 or 6 the field is not used and the Byte Length is zero. </p>
+              </td>
+            </tr>
+          </table>
+          <h4 class="subHeading">4.4.1 Control Area Contents</h4>
+          <div class="subSection">
+            <p>The Control Area structure contains status fields as well as other control bits/fields and one or more addresses. The Control Area contains the physical address of the command buffer and the physical address of the response buffer.</p>
+            <p>Not all TPM 2.0 interface implementations use the Control Area, for example a Start Method value of 6 does not use the Control Area and the information in this section is not applicable for the platform.</p>
+            <p>The control area MUST be in ACPI AddressRangeReserved memory.</p>
+            <p>The Control Area structure is shown in the table below and unless specified otherwise all accesses to the control area are done in the little endian format. </p>
+            <p>
+              <strong>Table 4: Control Area layout</strong>
+            </p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <td>
+                  <p>
+                    
+                  </p>
+                  <p>Field</p>
+                </td>
+                <td>
+                  <p>Byte Length</p>
+                </td>
+                <td>
+                  <p>Offset</p>
+                </td>
+                <td>
+                  <p>Description</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Status fields</p>
+                </td>
+                <td>
+                  <p>
+                    
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    
+                  </p>
+                </td>
+                <td>
+                  <p>TPM 2.0 status fields</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Reserved</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>00h</p>
+                </td>
+                <td>
+                  <p>Reserved. (MUST be zero.)</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Error</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>04h</p>
+                </td>
+                <td>
+                  <p>SET by the TPM 2.0 to indicate an error condition</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Cancel</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>08h</p>
+                </td>
+                <td>
+                  <p>SET by the DRIVER to abort command processing</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Start</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>0Ch</p>
+                </td>
+                <td>
+                  <p>SET by the DRIVER to indicate that a command is available for processing.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Interrupt Control</p>
+                </td>
+                <td>
+                  <p>8</p>
+                </td>
+                <td>
+                  <p>10h</p>
+                </td>
+                <td>
+                  <p>Reserved. (MUST be zero.)</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Command Size</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>18h</p>
+                </td>
+                <td>
+                  <p>Size of the Command buffer</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Command</p>
+                </td>
+                <td>
+                  <p>8</p>
+                </td>
+                <td>
+                  <p>1Ch</p>
+                </td>
+                <td>
+                  <p>This field contains the physical address of the command buffer. Note that the actual command buffer (not the physical address of command buffer) is in big-endian format as mandated by TCG.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Response Size</p>
+                </td>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>24h</p>
+                </td>
+                <td>
+                  <p>Size of the Response Buffer</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Response</p>
+                </td>
+                <td>
+                  <p>8</p>
+                </td>
+                <td>
+                  <p>28h</p>
+                </td>
+                <td>
+                  <p>This field contains the physical address of the response buffer. Note that the actual response buffer (not the physical address of response buffer) is in big-endian format as mandated by TCG.</p>
+                </td>
+              </tr>
+            </table>
+            <p>The TPM 2.0 driver reads the following information once during the initialization of the operating system:</p>
+            <ol class="ordered">
+              <li>
+											The physical address of the control area<br /><br /></li>
+              <li>
+											The size of the command buffer<br /><br /></li>
+              <li>
+											The physical location of the command buffer<br /><br /></li>
+              <li>
+											The size of the response buffer<br /><br /></li>
+              <li>
+											The physical location of the response buffer<br /><br /></li>
+            </ol>
+            <p>For systems that use the control area (i.e. the Start Method value does not equal 6) and support hibernation and resume, the five values above MUST remain constant across hibernation and resume cycles.</p>
+            <p>
+              <strong>4.4.1.1 Error</strong>
+            </p>
+            <p>The TPM 2.0 device may SET this status. It may only write this status when Start is SET. Immediately after the TPM 2.0 device SETs this status, it CLEARs the Start value. The Windows TPM 2.0 driver will not read the Error field unless the Start field is CLEAR.</p>
+            <p>A SET value of the Error field is treated as generic error of the TPM 2.0 device or its hardware interface. Any SET value results in the cancellation of the current command. The command MUST be rolled back, so the TPM 2.0 device is left in a consistent state.</p>
+            <p>For a device with an ACPI Start method, this field should only be used for errors for which a response code cannot be provided. An example is: the response buffer is not in physical memory. The Windows TPM 2.0 driver may stop using the TPM 2.0 device when this field is SET.</p>
+            <p>The initial value for this field after ExitBootServices MUST reflect whether the device works or not.</p>
+            <p>
+              <strong>4.4.1.2 Cancel</strong>
+            </p>
+            <p>The Windows TPM 2.0 driver may SET this field to request that TPM 2.0 device processing of current command be terminated. The Windows TPM 2.0 driver does not  invoke the Start method to initiate processing of the cancel request.</p>
+            <p>When Cancel is SET by the Windows TPM 2.0 driver and the TPM 2.0 device is processing a command, the TPM 2.0 device will stop processing the current command at the earliest convenient point.  For most commands, it is expected that the TPM 2.0 device will complete the command and provide a normal response. For commands that are long running (e.g., RSA key generation), the TPM 2.0 device may exit with TPM_RC_CANCELLED. The TPM 2.0 device has to either complete or cancel the command within 90 seconds.  (Generally most TPM 2.0 commands should complete in less than 500 ms, except RSA key generation commands which may take longer and command cancelling should occur within 200 ms)</p>
+            <p>The Windows TPM 2.0 driver may CLEAR this value when the Start field is CLEAR. The initial value for this field after ExitBootServices MUST be CLEAR.</p>
+            <p>
+              <strong>4.4.1.3 Start</strong>
+            </p>
+            <p>The Windows TPM 2.0 driver may SET this status to indicate that a new command has been placed in the Command buffer. The Windows TPM 2.0 driver may invoke the Start method to initiate processing of the command. The TPM 2.0 device will CLEAR this status when it completes processing a command.</p>
+            <p>The Windows TPM 2.0 driver may CLEAR this status when Start method invocation failed.</p>
+            <p>The initial value for this field after ExitBootServices MUST be CLEAR.</p>
+            <p>
+              <strong>4.4.1.4 Command</strong>
+            </p>
+            <p>This is the physical address to which the Windows TPM 2.0 driver will write the command to execute.  The Windows TPM 2.0 driver will never write a command larger than “Command Size”. </p>
+            <p>The Windows TPM 2.0 driver MUST NOT write to this memory area unless the Start field is CLEAR. Note that the address is specified in little-endian format in the control area but the actual command buffer is in big-endian format as mandated by TCG.</p>
+            <p>
+              <strong>4.4.1.5 Response</strong>
+            </p>
+            <p>This is the physical address from which the Windows TPM 2.0 driver will read command responses.  The Windows TPM 2.0 driver will never read a response larger than “Response Size”.</p>
+            <p>The Windows TPM 2.0 driver will only read a response after the Start field changed from SET to CLEAR and Error is CLEAR. Note that the address is specified in little-endian format in the control area but the actual response buffer is in big-endian format as mandated by TCG.</p>
+          </div>
+        </div>
+        <h3 class="subHeading">4.5 Control Area Interface Definition</h3>
+        <div class="subSection">
+          <p>For hardware platforms that use the Control Area as the TPM 2.0 interface, this section and the information in section 4.4 describes the TPM 2.0 driver interaction with the hardware.  An example of a system that uses the Control Area is a system with a Start Method value of 2 in the TPM2 table.</p>
+          <h4 class="subHeading">4.5.1 State Combinations</h4>
+          <div class="subSection">
+            <p>Table 5 describes the expected behavior for changes made by the Windows TPM 2.0 driver. Please note that only some combinations are allowed. Only the allowed combinations and changes are documented. All other combinations are invalid. Field changes without action by the Windows TPM 2.0 driver means the TPM 2.0 device or the ACPI Start method changed the fields.</p>
+            <p>States marked with ‘0’ indicate that this field is CLEAR. States marked with ‘1’ indicate that this field is SET. States marked with ‘?’ indicate that the value of this field might be either CLEAR or SET. The status fields are abbreviated with: ‘ERR’ – Error, ‘CCL’ – Cancel, and ‘STR’ – Start. A field can be written either by the Windows TPM 2.0 driver or the TPM 2.0 device interface, which is detailed in the action column.</p>
+            <h3 class="subHeading"> </h3>
+            <table>
+              <tr>
+                <td>
+                  <p>
+                    
+                  </p>
+                </td>
+                <td>
+                  <p>|---</p>
+                </td>
+                <td>
+                  <p>Present State</p>
+                </td>
+                <td>
+                  <p>---|</p>
+                </td>
+                <td>
+                  <p>|---</p>
+                </td>
+                <td>
+                  <p>Field Written</p>
+                </td>
+                <td>
+                  <p>---|</p>
+                </td>
+                <td>
+                  <p>|---</p>
+                </td>
+                <td>
+                  <p>Next State</p>
+                </td>
+                <td>
+                  <p>---|</p>
+                </td>
+                <td>
+                  <p>Action Taken by TPM 2.0 device interface</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>#</p>
+                </td>
+                <td>
+                  <p>ERR</p>
+                </td>
+                <td>
+                  <p>CCL</p>
+                </td>
+                <td>
+                  <p>STR</p>
+                </td>
+                <td>
+                  <p>ERR</p>
+                </td>
+                <td>
+                  <p>CCL</p>
+                </td>
+                <td>
+                  <p>STR</p>
+                </td>
+                <td>
+                  <p>ERR</p>
+                </td>
+                <td>
+                  <p>CCL</p>
+                </td>
+                <td>
+                  <p>STR</p>
+                </td>
+                <td>
+                  <p>
+                    
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>The Windows TPM 2.0 driver CLEARs the Cancel value to prepare the Control Area for the next command. The Windows TPM 2.0 driver may CLEAR the Cancel value only when START is CLEAR.</p>
+                  <p>(The TPM 2.0 device MUST NOT write to the Cancel field.)</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>2</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>The Windows TPM 2.0 driver SETs the Start value to indicate that a command is present in the Command area.</p>
+                  <p>The Windows TPM 2.0 driver may call the ACPI Start method to initiate the execution of the command. Upon completion of the ACPI Start method, the TPM 2.0 device MUST complete commands and CLEAR the Start field within 90 seconds.  Exceeding the time limit may cause the Windows TPM 2.0 driver to assume the TPM 2.0 device is hung.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>3</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>The TPM 2.0 device CLEARs the Start field when it finishes processing the command or cancels the command.</p>
+                  <p>If the command was canceled, a response with return code TPM_RC_CANCELLED is placed into the response buffer and Start is CLEARed.</p>
+                  <p>The Windows TPM 2.0 driver may read the response buffer while the Start field is CLEAR.  The Windows TPM 2.0 driver MUST NOT read the response buffer while the Start field is SET.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>The Windows TPM 2.0 driver SETs Cancel to indicate the TPM 2.0 device to cancel the current command. Generally, long running commands should be canceled at the next convenient point. Short running commands may be completed. Specifically, the TPM 2.0 device MUST CLEAR the Start field within 90 seconds after the Cancel field is SET.  (A good performance target is 200ms instead of 90 seconds.)  Note: It is possible the Cancel field may be set when the ACPI Start method is called because one thread within the OS may SET the Cancel field before another thread invokes the ACPI Start Method.  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>5</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>The TPM 2.0 device indicates an error condition in the device. The state of the TPM 2.0 device is as if the command execution never started. The Windows TPM 2.0 driver treats this value as a generic failure of the TPM 2.0 device and cancels the processing of the command.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>6</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>-</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>?</p>
+                </td>
+                <td>
+                  <p>0</p>
+                </td>
+                <td>
+                  <p>The TPM 2.0 device CLEARs the Start field immediately after SETting the Error field.</p>
+                  <p>The Windows TPM 2.0 driver only inspects the Error field when the Start field is CLEAR or if command execution or cancelling does not occur within the required time window. The Windows TPM 2.0 driver may stop using the TPM 2.0 device when the Error field is SET.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h4 class="subHeading">4.5.2 State diagram when using ACPI Start method</h4>
+          <div class="subSection">
+            <p>This state diagram is for informative purposes only. The normative description of behavior is the text in previous sections. If there are missing or ambiguous state transitions please consult the text above.</p>
+            <img id="cfbd0932-6a81-4985-8ab5-4f45d5173919" alt="TPM 2.0 device states when using ACPI Start Method" src="http://i.msdn.microsoft.com/dynimg/IC643990.png" title="TPM 2.0 device states when using ACPI Start Method" xmlns="" />
+            <p>Figure 1: TPM 2.0 device states when using ACPI Start method</p>
+            <div class="alert">
+              <table>
+                <tr>
+                  <th align="left">
+                    <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+                </tr>
+                <tr>
+                  <td>
+										(a) Please note that multiple concurrent threads can interact with the Control Area concurrently. For example: one thread could initiate a command by setting the Start field and then issuing the Start method. Another thread can set the Cancel field in parallel. Hence, the possibility to have the Cancel field set after setting the Start field, but before issuing the Start method. (b) A Windows TPM 2.0 driver may react to error conditions differently than depicted. It might, for instance, transition into an error state when a timeout hits.<p></p></td>
+                </tr>
+              </table>
+              <p>
+                
+              </p>
+            </div>
+          </div>
+          <h4 class="subHeading">4.5.3 State diagram without an ACPI Start method</h4>
+          <div class="subSection">
+            <p>This state diagram is for informative purposes only. The normative description of behavior is the text in previous sections. If there are state transitions are missing or ambiguous please consult the text above.</p>
+            <img id="ba067a0d-470c-4f03-b3f0-3adbc285c4a7" alt="TPM 2.0 Device States without ACPI Start method" src="http://i.msdn.microsoft.com/dynimg/IC643991.png" title="TPM 2.0 Device States without ACPI Start method" xmlns="" />
+            <p>
+              <strong>Figure 2: TPM 2.0 device states without ACPI Start method</strong>
+            </p>
+          </div>
+          <h4 class="subHeading">4.6 Memory Mapped I/O Interface</h4>
+          <div class="subSection">
+            <p>For hardware platforms that use the Memory Mapped I/O Interface, this section and the information in section 4.4 describes the TPM 2.0 driver interaction with the hardware.  An example of a system that uses the memory mapped I/O interface is a system with a Start Method value of 6 in the TPM2 table.</p>
+            <h5 class="heading">4.6.1 TCG TPM Interface Specification Requirements</h5>
+            <div class="subSection">
+              <p>The system MUST comply with the TPM 1.2 hardware interface requirements in [TCG12] for the following sections:</p>
+              <ul>
+                <li>
+													Section 9.1:  TPM Locality Levels<br /><br /></li>
+                <li>
+													Section 9.2:  Locality Uses<br /><br /></li>
+                <li>
+													Section 9.3:  Locality Usage per a Register<br /><br /></li>
+                <li>
+													Section 10:  TPM Register Space<br /><br /></li>
+                <li>
+													Section 11:  System Interaction and Flows<br /><br /><ul><li>
+															Except: All of section 11.2.4 Failure Mode<br /><br /></li><li>
+															Except section 11.2.5: Command Duration, normative item 2<br /><br /></li><li>
+															Except All of section 11.2.6: Timeouts<br /><br /></li><li>
+															Except All of section 11.2.8: Self Test and Early Platform Initialization<br /><br /></li><li>
+															Except All of section 11.2.9:  Input Buffer Size<br /><br /></li><li>
+															Except section 11.2.10: Errors, normative items 2c and 3.<br /><br /></li></ul></li>
+                <li>
+													Section 13:  TPM Hardware Protocol<br /><br /></li>
+              </ul>
+              <p>For future draft specifications of [TCG12] please contact Microsoft.</p>
+            </div>
+            <h5 class="heading">4.6.2 Support for cancelling a command</h5>
+            <div class="subSection">
+              <p>Windows requires the TPM 2.0 device to permit cancelling of a TPM 2.0 command using the memory mapped I/O interface by exhibiting the behavior described below.</p>
+              <p>The previously unused bit 24 of the STS Register is defined as write only and referred to as commandCancel.</p>
+              <p>A write of ‘1’ to  commandCancel during the command execution phase MAY cancel the currently executing command and a response MUST be returned.  The response indicates if the command was cancelled (no TPM 2.0 state change, but a cancel response code TPM_RC_CANCELLED is returned) or completed (a regular TPM 2.0 response is returned indicating the result of the command).   Writes to the commandCancel register when the TPM is not in the command execution state MUST be ignored.</p>
+            </div>
+            <h5 class="heading">4.6.3 Additional Requirements</h5>
+            <div class="subSection">
+              <ol class="ordered">
+                <li>
+													All TPM commands MUST complete within a maximum of 90 seconds.<br /><br /></li>
+                <li>
+													If the TPM 2.0 driver requests to cancel a command, it must complete or cancel within 90 seconds.<br /><br /></li>
+                <li>
+													The following TIMEOUT values MUST be implemented:  TIMEOUT_A = 1 second, TIMEOUT_B = 2 seconds, TIMEOUT_C = 1 second, TIMEOUT_D = 1 second.<br /><br /></li>
+                <li>
+													The minimum input buffer size MUST be 0x500 (or larger).<br /><br /></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="heading">5.0 References</h2>
+      <div id="sectionSection4" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>[ACPI09]</p>
+            </td>
+            <td>
+              <p>“Advanced Configuration and Power Interface Specification,” Version 4.0, June 16, 2009.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>[TCG08]</p>
+            </td>
+            <td>
+              <p>Trusted Computing Group, “TCG Platform Reset Attack Mitigation Specification,” Version 1.0, May 15, 2008.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>[TCG11]</p>
+            </td>
+            <td>
+              <p>Trusted Computing Group, “TCG Physical Presence Interface Specification,” Version 1.20, Feb. 10, 2011.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>[TCG12]</p>
+            </td>
+            <td>
+              <p>Trusted Computing Group, “PC Client Work Group PC Client Specific TPM Interface Specification (TIS) Version 1.21, Revision 1.00.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="fX5N3agFPXWcCa4wKAioXyr288UiXwClevtALxpU_tXeEWrV4rzgD4y_d7ncAZOI7WCkoXvL6hJIlJVMC3nOqYiH82rMYKeNzoJsD3YY327XljzXy-daZycm_gLm-PWtPooQzw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj923067.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj923067.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="8XHd897XH8W_sm9o5Npaby1RpZM_UXDfxLm-ntG18LckM94NAHZcYTcli_jas84tArANz4x2ROXoWKCO9b5K6Lff1Vgiz1JKBUxrJbRt41f9Ix8g7rSK9ELiv7lVQhGvH6_L4A2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj923067(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"d56b4059-e731-4622-b169-2f227043ca85\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj923067.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+</html>

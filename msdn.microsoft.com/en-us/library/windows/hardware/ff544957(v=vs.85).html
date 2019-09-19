@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff544957(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544957(v=vs.85).aspx" />
+        <title>DriverCreate rule (kmdf) (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff544957(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544957(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544957(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544957(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD1-9:35:24 AM" />
+
+<meta name="Search.ShortId" content="ff544957" />
+
+<meta name="ms.shortidmsdn" content="ff544957" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074124&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff544957%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557553(v=vs.85).aspx" id="ff576024_VS.85_en-us" mtpsaliasid="" mtpsassetid="3a5f6182-67df-4aaa-ab36-7f3d6ec1e916_VS.85_en-us" mtpsshortid="ff557553_VS.85_en-us" title="Device and Driver Development Tools">Device and Driver Development Tools</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545440(v=vs.85).aspx" id="ff571784_VS.85_en-us" mtpsaliasid="" mtpsassetid="1d384d73-d1d2-445f-8077-40eed1f99a8c_VS.85_en-us" mtpsshortid="ff545440_VS.85_en-us" title="Driver Development Tools">Driver Development Tools</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552969(v=vs.85).aspx" id="ff571890_VS.85_en-us" mtpsaliasid="" mtpsassetid="1d878be6-8730-4452-a35a-0635ebed9091_VS.85_en-us" mtpsshortid="ff552969_VS.85_en-us" title="Tools for Verifying Drivers">Tools for Verifying Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552840(v=vs.85).aspx" id="ff571910_VS.85_en-us" mtpsaliasid="" mtpsassetid="f020fff9-f880-4aa8-b422-5452728d2fdd_VS.85_en-us" mtpsshortid="ff552840_VS.85_en-us" title="DDI Compliance Rules">DDI Compliance Rules</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551709(v=vs.85).aspx" id="ff571913_VS.85_en-us" mtpsaliasid="" mtpsassetid="63ac4df5-b2dc-43da-abaa-49c5de036d79_VS.85_en-us" mtpsshortid="ff551709_VS.85_en-us" title="Rules for KMDF Drivers">Rules for KMDF Drivers</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj126195(v=vs.85).aspx" id="jj126228_VS.85_en-us" mtpsaliasid="" mtpsassetid="0A3A012C-A1BB-43A5-B38D-4E98928D07E5_VS.85_en-us" mtpsshortid="jj126195_VS.85_en-us" title="DDI usage rule set (KMDF)">DDI usage rule set (KMDF)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542316(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedIoctl">BufAfterReqCompletedIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975065(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedIntIoctl">BufAfterReqCompletedIntIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975066(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedIntIoctlA">BufAfterReqCompletedIntIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542318(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedIoctlA">BufAfterReqCompletedIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542323(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedRead">BufAfterReqCompletedRead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542328(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedReadA">BufAfterReqCompletedReadA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542335(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedWrite">BufAfterReqCompletedWrite</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542340(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BufAfterReqCompletedWriteA">BufAfterReqCompletedWriteA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975068(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ChildDeviceInitApi">ChildDeviceInitApi</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543528(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ControlDeviceDeleted">ControlDeviceDeleted</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543531(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ControlDeviceInitAPI">ControlDeviceInitAPI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543607(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CtlDeviceFinishInitDeviceAdd">CtlDeviceFinishInitDeviceAdd</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543610(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CtlDeviceFinishInitDrEntry">CtlDeviceFinishInitDrEntry</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544839(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DeviceCreateFail">DeviceCreateFail</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544841(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DeviceInitAllocate">DeviceInitAllocate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544843(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DeviceInitAPI">DeviceInitAPI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975072(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DoubleDeviceInitFree">DoubleDeviceInitFree</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544957(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DriverCreate">DriverCreate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547101(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InitFreeDeviceCallback">InitFreeDeviceCallback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547104(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InitFreeDeviceCreate">InitFreeDeviceCreate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547109(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InitFreeDeviceCreateType2">InitFreeDeviceCreateType2</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547119(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InitFreeDeviceCreateType4">InitFreeDeviceCreateType4</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547122(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InitFreeNull">InitFreeNull</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549038(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedIntIoctl">MdlAfterReqCompletedIntIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549042(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedIntIoctlA">MdlAfterReqCompletedIntIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549047(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedIoctl">MdlAfterReqCompletedIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549056(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedIoctlA">MdlAfterReqCompletedIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549058(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedRead">MdlAfterReqCompletedRead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549065(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedReadA">MdlAfterReqCompletedReadA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549075(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedWrite">MdlAfterReqCompletedWrite</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549077(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MdlAfterReqCompletedWriteA">MdlAfterReqCompletedWriteA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549084(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedIntIoctl">MemAfterReqCompletedIntIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549090(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedIntIoctlA">MemAfterReqCompletedIntIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549096(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedIoctl">MemAfterReqCompletedIoctl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549106(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedIoctlA">MemAfterReqCompletedIoctlA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549114(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedRead">MemAfterReqCompletedRead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549116(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedReadA">MemAfterReqCompletedReadA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549120(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedWrite">MemAfterReqCompletedWrite</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549125(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MemAfterReqCompletedWriteA">MemAfterReqCompletedWriteA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550354(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PdoDeviceInitAPI">PdoDeviceInitAPI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550359(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PdoInitFreeDeviceCallback">PdoInitFreeDeviceCallback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550362(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PdoInitFreeDeviceCreate">PdoInitFreeDeviceCreate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550366(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PdoInitFreeDeviceCreateType2">PdoInitFreeDeviceCreateType2</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550368(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PdoInitFreeDeviceCreateType4">PdoInitFreeDeviceCreateType4</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975071(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ControlDeviceInitAllocate">ControlDeviceInitAllocate</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547165(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="InputBufferAPI">InputBufferAPI</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">DriverCreate rule (kmdf)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>
+</p><p>The <strong>DriverCreate</strong> rule specifies that a driver that uses Kernel Mode Driver Framework (KMDF) must call the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a> method to create a framework driver object from within its <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540807(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DriverEntry</strong></a> routine. </p>
+
+<table>
+<tr><th>Driver model</th><td>KMDF</td></tr>
+</table>
+<h2>How to test</h2>
+<table>
+<tr><th>At compile time</th></tr>
+<tr><td>
+<p>Run <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552808(v=vs.85).aspx">Static Driver Verifier</a> and specify the <strong>DriverCreate</strong> rule.</p>Use the following steps to run an analysis of your code:<ol>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454281(v=vs.85).aspx#preparing_your_source_code">Prepare your code (use role type declarations).</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454281(v=vs.85).aspx#running_static_driver_verifier">Run Static Driver Verifier.</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454281(v=vs.85).aspx#viewing_and_analyzing_the_results">View and analyze the results.</a></li>
+</ol>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454281(v=vs.85).aspx">Using Static Driver Verifier to Find Defects in Drivers</a>.</p>
+</td></tr>
+</table>
+<h2>Applies to</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545591(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListAddOrUpdateChildDescriptionAsPresent</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545601(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListBeginIteration</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545608(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListBeginScan</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545615(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545618(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListEndIteration</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545626(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListEndScan</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545636(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545641(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListRequestChildEject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545648(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListRetrieveAddressDescription</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545655(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListRetrieveNextDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545663(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListRetrievePdo</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545667(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListUpdateAllChildDescriptionsAsPresent</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545674(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfChildListUpdateChildDescriptionAsMissing</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545683(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListAppendDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545687(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListGetCount</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545688(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListGetDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545698(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListInsertDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545704(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545717(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCmResourceListRemoveByDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545732(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionAdd</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545747(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545759(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionGetCount</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545763(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionGetFirstItem</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545770(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionGetItem</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545775(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionGetLastItem</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545784(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545792(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCollectionRemoveItem</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545800(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCommonBufferCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545805(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCommonBufferCreateWithConfig</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545814(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCommonBufferGetAlignedLogicalAddress</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545820(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCommonBufferGetAlignedVirtualAddress</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545828(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfCommonBufferGetLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545841(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfControlDeviceInitAllocate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545847(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfControlDeviceInitSetShutdownNotification</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545854(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfControlFinishInitializing</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545864(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAddDependentUsageDeviceObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545870(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAddQueryInterface</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545875(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAddRemovalRelationsPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545882(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAllocAndQueryProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545897(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAssignMofResourceName</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545903(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAssignS0IdleSettings</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545909(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceAssignSxWakeSettings</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545914(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceClearRemovalRelationsDevices</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545920(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceConfigureRequestDispatching</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451093(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceConfigureWdmIrpDispatchCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545926(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545935(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreateDeviceInterface</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545939(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceCreateSymbolicLink</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545945(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceEnqueueRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545953(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetAlignmentRequirement</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545960(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetCharacteristics</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545965(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDefaultQueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545969(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDevicePnpState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545974(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDevicePowerPolicyState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545985(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDevicePowerState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545994(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDeviceState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545998(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetDriver</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546007(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetFileObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546017(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetIoTarget</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546022(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceGetSystemPowerAction</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546025(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceIndicateWakeStatus</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546029(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitAssignName</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546035(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitAssignSDDLString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546043(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitAssignWdmIrpPreprocessCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546050(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitFree</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitRegisterPnpStateChangeCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546066(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitRegisterPowerPolicyStateChangeCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546071(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitRegisterPowerStateChangeCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546074(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetCharacteristics</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546084(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetDeviceClass</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546090(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetDeviceType</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546097(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetExclusive</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546107(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetFileObjectConfig</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546119(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetIoInCallerContextCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546128(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetIoType</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546135(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPnpPowerEventCallbacks</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546142(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPowerInrush</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546147(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPowerNotPageable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546766(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPowerPageable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546774(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPowerPolicyEventCallbacks</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546776(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetPowerPolicyOwnership</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706196(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetReleaseHardwareOrderOnFailure</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451095(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetRemoveLockOptions</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546786(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceInitSetRequestAttributes</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546802(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceMiniportCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546804(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceOpenRegistryKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546820(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceQueryProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546829(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceRemoveDependentUsageDeviceObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546834(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceRemoveRemovalRelationsPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546838(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceResumeIdle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546842(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceRetrieveDeviceInterfaceString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546853(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceRetrieveDeviceName</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546861(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetAlignmentRequirement</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546868(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetBusInformationForChildren</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546872(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetCharacteristics</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546878(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetDeviceInterfaceState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546884(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetDeviceState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546890(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetFailed</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546898(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetPnpCapabilities</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546901(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetPowerCapabilities</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546903(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetSpecialFileSupport</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546915(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceSetStaticStopRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546921(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceStopIdle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451097(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmAssignPowerFrameworkSettings</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451100(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmDispatchIrp</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmDispatchIrpToIoQueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546927(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmDispatchPreprocessedIrp</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546934(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmGetAttachedDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546942(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmGetDeviceObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546946(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDeviceWdmGetPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451108(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerConfigureSystemProfile</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546983(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546986(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerGetFragmentLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546994(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerGetMaximumLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547005(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerGetMaximumScatterGatherElements</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547014(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerSetMaximumScatterGatherElements</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547020(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaEnablerWdmGetDmaAdapter</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451123(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionAllocateResources</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451127(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionCancel</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547039(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionDmaCompleted</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547049(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionDmaCompletedFinal</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547052(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionDmaCompletedWithLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547062(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionExecute</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451177(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionFreeResources</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547072(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionGetBytesTransferred</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547081(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionGetCurrentDmaTransferLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547085(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547094(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionGetRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451179(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionGetTransferInfo</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547099(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionInitialize</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451182(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionInitializeUsingOffset</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547107(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionInitializeUsingRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547114(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionRelease</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451184(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionSetChannelConfigurationCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451188(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionSetDeviceAddressOffset</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451190(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionSetImmediateExecution</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547127(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionSetMaximumLength</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439261(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionSetTransferCompleteCallback</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439264(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionStopSystemTransfer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439267(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDmaTransactionWdmGetTransferContext</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547130(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDpcCancel</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547140(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDpcCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547148(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDpcEnqueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547157(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDpcGetParentObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547167(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDpcWdmGetDpc</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547187(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverGetRegistryPath</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547190(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverIsVersionAvailable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547193(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverMiniportUnload</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547202(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverOpenParametersRegistryKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547206(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverRegisterTraceInfo</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547211(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverRetrieveVersionString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547218(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfDriverWdmGetDriverObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547225(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoAddStaticChild</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547235(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoGetDefaultChildList</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547239(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitAllocAndQueryProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547249(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitOpenRegistryKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547254(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitQueryProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547258(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitSetDefaultChildListConfig</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547268(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitSetEventCallbacks</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547273(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitSetFilter</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547281(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoInitWdmGetPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547282(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoLockStaticChildListForIteration</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547289(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoQueryForInterface</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547293(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoRetrieveNextStaticChild</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547297(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFdoUnlockStaticChildListFromIteration</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547302(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFileObjectGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547310(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFileObjectGetFileName</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547316(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFileObjectGetFlags</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547324(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfFileObjectWdmGetFileObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706200(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfGetTriageInfo</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547340(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptAcquireLock</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547345(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547351(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptDisable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547354(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptEnable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547358(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547367(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptGetInfo</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547371(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptQueueDpcForIsr</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439270(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptQueueWorkItemForIsr</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547376(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptReleaseLock</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439273(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptReportActive</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439277(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptReportInactive</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547381(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptSetExtendedPolicy</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547387(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptSetPolicy</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547389(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptSynchronize</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439284(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptTryToAcquireLock</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547393(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfInterruptWdmGetInterrupt</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547395(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueAssignForwardProgressPolicy</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547401(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547406(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueDrain</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547412(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueDrainSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547415(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueFindRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547421(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548437(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueGetState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548442(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueuePurge</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548449(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueuePurgeSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548452(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueReadyNotify</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548456(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueRetrieveFoundRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548462(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueRetrieveNextRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548470(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueRetrieveRequestByFileObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548478(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueStart</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548482(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueStop</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439289(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueStopAndPurge</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439293(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueStopAndPurgeSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548489(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoQueueStopSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548498(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListAppendDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548502(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548506(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListGetCount</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548510(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListGetDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548513(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListInsertDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548523(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548528(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListRemoveByDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548533(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceListUpdateDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548537(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListAppendIoResList</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548545(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListGetCount</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548553(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListGetIoResList</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548560(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListInsertIoResList</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548570(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548575(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListRemoveByIoResList</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548577(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListSetInterfaceType</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548579(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoResourceRequirementsListSetSlotNumber</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548585(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetAllocAndQueryTargetProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548586(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetClose</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548589(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetCloseForQueryRemove</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548591(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548595(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetFormatRequestForInternalIoctl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548599(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetFormatRequestForInternalIoctlOthers</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548604(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetFormatRequestForIoctl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548612(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetFormatRequestForRead</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548620(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetFormatRequestForWrite</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548625(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548631(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetGetState</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548634(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetOpen</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439338(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetPurge</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548640(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetQueryForInterface</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548646(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetQueryTargetProperty</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548651(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetSendInternalIoctlOthersSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548656(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetSendInternalIoctlSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548660(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetSendIoctlSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548669(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetSendReadSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548672(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetSendWriteSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548677(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStart</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548680(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStop</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548682(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetWdmGetTargetDeviceObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548683(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetWdmGetTargetFileHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548686(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetWdmGetTargetFileObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548691(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetWdmGetTargetPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548694(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfLookasideListCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548697(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryAssignBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548701(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCopyFromBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548703(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCopyToBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548706(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548709(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCreateFromLookaside</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548712(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCreatePreallocated</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548715(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryGetBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548721(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectAcquireLock</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548723(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectAllocateContext</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548727(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectContextGetObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548730(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548734(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectDelete</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548739(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectDereference</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548743(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectDereferenceActual</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548751(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectGetTypedContextWorker</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548752(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectQuery</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548758(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectReference</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548760(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectReferenceActual</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548765(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectReleaseLock</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548770(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoAddEjectionRelationsPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548771(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoClearEjectionRelationsDevices</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548774(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoGetParent</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548776(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAddCompatibleID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548780(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAddDeviceText</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548784(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAddHardwareID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548786(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAllocate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548789(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAllowForwardingRequestToParent</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548792(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAssignContainerID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548797(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAssignDeviceID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548799(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAssignInstanceID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548802(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitAssignRawDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548803(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitSetDefaultLocale</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548805(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoInitSetEventCallbacks</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548809(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoMarkMissing</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548814(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoRemoveEjectionRelationsPhysicalDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548817(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoRequestEject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548820(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoRetrieveAddressDescription</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548824(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoRetrieveIdentificationDescription</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548826(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfPdoUpdateAddressDescription</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549901(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignMemory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549903(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignMultiString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549906(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549910(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignULong</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549912(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignUnicodeString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549913(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryAssignValue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549914(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryClose</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549917(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryCreateKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549919(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryOpenKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549920(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryMemory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549921(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryMultiString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549925(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryULong</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549927(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryUnicodeString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549928(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryQueryValue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549930(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryRemoveKey</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549932(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryRemoveValue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549935(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRegistryWdmGetHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549938(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestAllocateTimer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549941(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCancelSentRequest</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549943(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestChangeTarget</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549945(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestComplete</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549948(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCompleteWithInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549949(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCompleteWithPriorityBoost</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549951(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549953(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCreateFromIrp</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549955(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestFormatRequestUsingCurrentType</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549958(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestForwardToIoQueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549959(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestForwardToParentDeviceIoQueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549961(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetCompletionParams</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549963(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetFileObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549965(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549968(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetIoQueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549969(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetParameters</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549971(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetRequestorMode</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549974(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestGetStatus</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549976(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestIsCanceled</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549978(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestIsFrom32BitProcess</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549980(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestIsReserved</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549984(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestMarkCancelableEx</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549987(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestProbeAndLockUserBufferForRead</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549989(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestProbeAndLockUserBufferForWrite</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550012(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRequeue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550014(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550015(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputMemory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550016(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputWdmMdl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550018(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550019(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputMemory</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550021(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputWdmMdl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550022(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveUnsafeUserInputBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550024(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveUnsafeUserOutputBuffer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550026(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestReuse</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550030(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSetCompletionRoutine</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550032(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSetInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550033(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestStopAcknowledge</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550035(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestUnmarkCancelable</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550036(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestWdmFormatUsingStackLocation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550037(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestWdmGetIrp</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550040(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfSpinLockAcquire</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550042(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfSpinLockCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550044(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfSpinLockRelease</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550046(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfStringCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550049(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfStringGetUnicodeString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550050(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfTimerCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550052(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfTimerGetParentObject</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550054(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfTimerStart</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550056(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfTimerStop</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550059(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredSettingIndex</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550060(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550063(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetEndpointInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550065(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetInterfaceNumber</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550066(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetNumConfiguredPipes</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550068(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetNumEndpoints</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550070(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetNumSettings</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550073(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceSelectSetting</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550074(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceAllocAndQueryString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550077(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439420(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateIsochUrb</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550080(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCyclePortSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550082(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550084(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForCyclePort</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550086(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550088(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForUrb</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550090(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetDeviceDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550092(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetInterface</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550094(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetNumInterfaces</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550095(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceIsConnectedSynchronous</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550096(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryString</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550097(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceResetPortSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550098(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceRetrieveConfigDescriptor</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550099(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceRetrieveCurrentFrameNumber</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550100(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceRetrieveInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550101(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550104(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551127(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceWdmGetConfigurationHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551129(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeAbortSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551130(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeConfigContinuousReader</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551132(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForAbort</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551136(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForRead</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551138(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForReset</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551139(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForUrb</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551141(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForWrite</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551142(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetInformation</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551146(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetIoTarget</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551148(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetType</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551151(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeIsInEndpoint</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551153(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeIsOutEndpoint</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551155(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeReadSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551156(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeResetSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551158(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeSendUrbSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551160(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeSetNoMaximumPacketSizeCheck</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551162(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWdmGetPipeHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551163(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWriteSynchronously</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551164(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfVerifierDbgBreakPoint</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551166(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfVerifierKeBugCheck</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551168(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWaitLockAcquire</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551171(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWaitLockCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551173(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWaitLockRelease</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551175(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWdmDeviceGetWdfDeviceHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551176(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWdmDriverGetWdfDriverHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551178(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551179(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceDeregister</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551182(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceFireEvent</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551184(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551187(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceGetProvider</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551190(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiInstanceRegister</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551193(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiProviderCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551195(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiProviderGetDevice</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551198(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiProviderGetTracingHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551200(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWmiProviderIsEnabled</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551201(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWorkItemCreate</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551203(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWorkItemEnqueue</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551204(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWorkItemFlush</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551207(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfWorkItemGetParentObject</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [devtest\devtest]:%20DriverCreate rule (kmdf)%20 RELEASE:%20(2/13/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 2/13/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="cALP_U51VabApwWqncujAQAPTaOVvFrpY_iyoX7nx2nUtpGQSeVGVMKeQWWeRzKPTyfTHYQ57mS9u2-jgbF5ImN5waJ_g0TcajY4VZ4qCtL4WHGAlRn2NJcpRPhkqzMB7EWKcA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff544957(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff544957(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="f0rNI_7vjlk8RlGfg_vw0nX_5HKk-vx5q1m69AQ4uFVmNkWD3wp7q4RIf8Hsp1ZFcyw88pBSl6U1arDv7agaVc8UPO-CgclS6oSr3uDR2fH1K7smhoOO2ZfhXqpxOR5aouOlAw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff544957(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"a7ac3108-45e8-4fc0-b4ef-cf41c9b83b4e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff544957(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+</html>

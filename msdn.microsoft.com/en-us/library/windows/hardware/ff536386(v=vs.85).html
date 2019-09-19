@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff536386(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536386(v=vs.85).aspx" />
+        <title>Filter, Pin, and Node Properties (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff536386(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536386(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536386(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536386(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD5-9:22:31 AM" />
+
+<meta name="Search.ShortId" content="ff536386" />
+
+<meta name="ms.shortidmsdn" content="ff536386" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395073351&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff536386%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537760(v=vs.85).aspx" id="ff571276_VS.85_en-us" mtpsaliasid="" mtpsassetid="41a45180-4635-4d5d-befa-3e57467d4e33_VS.85_en-us" mtpsshortid="ff537760_VS.85_en-us" title="Audio Devices">Audio Devices</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536191(v=vs.85).aspx" id="ff571279_VS.85_en-us" mtpsaliasid="" mtpsassetid="97124db4-29c2-422e-b139-2ec907524eb5_VS.85_en-us" mtpsshortid="ff536191_VS.85_en-us" title="Design Guide">Design Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538901(v=vs.85).aspx" id="ff571282_VS.85_en-us" mtpsaliasid="" mtpsassetid="9b702ee2-857b-468e-9258-3b87471c2daf_VS.85_en-us" mtpsshortid="ff538901_VS.85_en-us" title="WDM Audio Architecture: Basic Concepts">WDM Audio Architecture: Basic Concepts</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536199(v=vs.85).aspx" id="ff571285_VS.85_en-us" mtpsaliasid="" mtpsassetid="ffc5834f-30c8-40b5-b57b-fe784331690c_VS.85_en-us" mtpsshortid="ff536199_VS.85_en-us" title="Audio Endpoints, Properties and Events">Audio Endpoints, Properties and Events</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536215(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Property Requests">Audio Property Requests</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536386(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Filter, Pin, and Node Properties">Filter, Pin, and Node Properties</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536214(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Property Handlers">Audio Property Handlers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536225(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Basic Support Queries for Audio Properties">Basic Support Queries for Audio Properties</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536200(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Endpoint Builder Algorithm">Audio Endpoint Builder Algorithm</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536372(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dynamic Subdevice Registration and Unregistration">Dynamic Subdevice Registration and Unregistration</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536380(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Exposing Multichannel Nodes">Exposing Multichannel Nodes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537742(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pin Category Property">Pin Category Property</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536394(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Friendly Names for Audio Endpoint Devices">Friendly Names for Audio Endpoint Devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536211(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Position Property">Audio Position Property</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537745(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pin Data-Range and Intersection Properties">Pin Data-Range and Intersection Properties</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537036(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Jack Description Property">Jack Description Property</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537516(v=vs.85).aspx" id="ff571286_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Microphone Array Geometry Property">Microphone Array Geometry Property</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536405(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hardware Events">Hardware Events</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Filter, Pin, and Node Properties</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<h2><a id="filter_pin_and_node_properties"></a><a id="FILTER_PIN_AND_NODE_PROPERTIES"></a></h2>
+<p>Microsoft Windows Driver Model (WDM) audio drivers represent an audio device as a KS filter, and they represent a hardware buffer on the device as a pin on the filter. When a client sends a property request to one of these filter or pin objects, the port driver receives the request and routes the request to the appropriate property handler in the port driver or miniport driver.</p>
+<p>Audio devices support three kinds of properties:</p>
+<ul>
+<li>
+<p><strong>Filter properties</strong></p>
+<p>A filter property is a property of the filter as a whole rather than a property of a particular pin or node within the filter. Requests for filter properties specify filter handles, but they do not specify node IDs.</p>
+</li>
+<li>
+<p><strong>Pin properties</strong></p>
+<p>A pin property is a property of a particular pin instance on the filter. Requests for these properties specify pin handles, but they do not specify node IDs.</p>
+</li>
+<li>
+<p><strong>Node properties</strong></p>
+<p>A node property is a property of a topology node within the filter. A request for a node property specifies a filter handle or pin handle, plus a node ID.</p>
+</li>
+</ul>
+<p>Whether a node-property request specifies a filter or pin handle depends on whether the node is unique to the filter. For more information, see the following Node Properties section.</p>
+<p>The following figure shows these three kinds of property request: a pin-property request sent to a pin instance, a node-property request sent to a node (on a filter or pin instance), and a filter-property request sent to a filter instance.</p><img id="propreqs" alt="Diagram illustrating filter-, pin-, and node-property requests" src="http://i.msdn.microsoft.com/dynimg/IC534800.png" title="Diagram illustrating filter-, pin-, and node-property requests" xmlns="" /><p>Typically, the port driver handles most requests for filter and pin properties, and the miniport driver handles requests for node properties.</p>
+<p>The port driver supplies its own built-in handlers for the filter and pin properties that are used by the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537039(v=vs.85).aspx#sysaudio_system_driver">SysAudio system driver</a> (see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537489(v=vs.85).aspx">KSPROPSETID_Sysaudio</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537490(v=vs.85).aspx">KSPROPSETID_Sysaudio_Pin</a>) and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538687(v=vs.85).aspx#wdmaud_system_driver">WDMAud system driver</a>. A miniport driver does not need to implement handlers for properties that the port driver handles. A typical miniport driver provides few, if any, handlers for filter and pin properties. The miniport driver supplies the handlers for node properties that represent hardware-dependent features of the audio device. The port drivers supply no built-in handling of node properties, with the exception of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565809(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_TOPOLOGY_NAME</strong></a>.</p>
+<p>When both the port driver and miniport driver supply handlers for the same property, the port driver uses its own handler and ignores the miniport driver's handler.</p>
+<h3><a id="Filter_Descriptors"></a><a id="filter_descriptors"></a><a id="FILTER_DESCRIPTORS"></a>Filter Descriptors</h3>
+<p>The port driver obtains pointers to the miniport driver's property handlers by calling the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536765(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IMiniport::GetDescription</strong></a> method. Through this method, the port driver retrieves a pointer to the miniport driver's filter descriptor, which is a structure of type <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537694(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">PCFILTER_DESCRIPTOR</strong></a>. This structure specifies the miniport driver's property handlers for filter, pin, and node properties:</p>
+<ul>
+<li>
+<p>The PCFILTER_DESCRIPTOR structure's <strong>AutomationTable</strong> member points to the automation table for the filter. This table specifies the miniport driver's property handlers for filter properties.</p>
+</li>
+<li>
+<p>The PCFILTER_DESCRIPTOR structure's <strong>Pins</strong> member contains the automation tables for the pins. Each table specifies the property handlers for the pin properties of a particular pin type.</p>
+</li>
+<li>
+<p>The PCFILTER_DESCRIPTOR structure's <strong>Nodes</strong> member contains the automation tables for the topology nodes inside the filter. Each table specifies the property handlers for the node properties of a particular node type.</p>
+</li>
+</ul>
+<h3><a id="Filter_Properties"></a><a id="filter_properties"></a><a id="FILTER_PROPERTIES"></a>Filter Properties</h3>
+<p>The port driver accesses the miniport driver's filter-property handlers through the <strong>AutomationTable</strong> member of PCFILTER_DESCRIPTOR. Typically, this automation table contains few handlers because the port driver supplies its own built-in handlers for all the filter properties that SysAudio and WDMAud use to query and configure audio devices.</p>
+<p>However, the miniport driver can supply handlers for filter properties such as <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565171(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_GENERAL_COMPONENTID</strong></a> that provide hardware-dependent information that is not available to the port driver. Two of the sample audio drivers in the Microsoft Windows Driver Kit (WDK) handle the KSPROPERTY_GENERAL_COMPONENTID property. For more information, see the miniport driver implementations in the Msvad and Sb16 samples.</p>
+<p>All the port drivers in Portcls.sys provide handling for the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566584(v=vs.85).aspx">KSPROPSETID_Pin</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566598(v=vs.85).aspx">KSPROPSETID_Topology</a> property sets. All the properties in these sets are filter properties, with the exception of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565809(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_TOPOLOGY_NAME</strong></a>, which is a node property (that uses a filter handle, not a pin handle, to specify the target for the request). The port drivers support the following subset of the KSPROPSETID_Pin properties:</p>
+<dl>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565192(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_CATEGORY</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565193(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_CINSTANCES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565194(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_COMMUNICATION</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565196(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_CTYPES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565197(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_DATAFLOW</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565198(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_DATAINTERSECTION</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565199(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_DATARANGES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565200(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_GLOBALCINSTANCES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565201(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_INTERFACES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565202(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_MEDIUMS</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565203(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_NAME</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565204(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_NECESSARYINSTANCES</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565205(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_PIN_PHYSICALCONNECTION</strong></a>
+</p>
+</dd>
+</dl>
+<p>These properties provide information about the pin factories belonging to a filter. Typically, clients query the filter for these properties before creating pin instances. The port drivers support all four of the KSPROPSETID_Topology properties, which provide information about the filter's internal topology.</p>
+<p>In addition, the DMus port driver provides a handler for the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537403(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_SYNTH_MASTERCLOCK</strong></a> property, which is a get-only property of a DirectMusic filter. KSPROPERTY_SYNTH_MASTERCLOCK is a member of the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537487(v=vs.85).aspx">KSPROPSETID_SynthClock</a> property set.</p>
+<h3><a id="Pin_Properties"></a><a id="pin_properties"></a><a id="PIN_PROPERTIES"></a>Pin Properties</h3>
+<p>The port driver accesses the miniport driver's pin-property handlers through the <strong>Pins</strong> member of PCFILTER_DESCRIPTOR. This member points to an array of pin descriptors, and each descriptor points to the automation table for a pin type (identified by a pin ID, which is simply the array index).</p>
+<p>Typically, these automation tables contain few entries because the port driver supplies its own handlers for all the pin properties that SysAudio and WDMAud use. A miniport driver has the option of supplying handlers for one or more pin properties that the port driver does not handle, but only clients that know about these properties can send property requests for them.</p>
+<p>With the exception of the Topology port driver, all the port drivers in Portcls.sys supply built-in handlers for the following pin properties:</p>
+<dl>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565110(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_CONNECTION_STATE</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565103(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_CONNECTION_DATAFORMAT</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565099(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_CONNECTION_ALLOCATORFRAMING</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565684(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_STREAM_ALLOCATOR</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565713(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_STREAM_MASTERCLOCK</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537297(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_AUDIO_POSITION</strong></a>
+</p>
+</dd>
+<dd>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537351(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_DRMAUDIOSTREAM_CONTENTID</strong></a>
+</p>
+</dd>
+</dl>
+<p>Some of the properties in this list require hardware-dependent information from the miniport driver. When the port driver receives an IRP containing a request for one of these properties, it does not pass the IRP to the miniport driver. Instead, the port driver handles the request itself, but its handler obtains the information it needs by calling an entry point in the miniport driver. For example, the port driver supplies its own property handler for KSPROPERTY_AUDIO_POSITION requests. This handler simply calls the miniport driver stream's <strong>GetPosition</strong> method (for example, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536727(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IMiniportWavePciStream::GetPosition</strong></a>) to get the current position.</p>
+<h3><a id="Node_Properties"></a><a id="node_properties"></a><a id="NODE_PROPERTIES"></a>Node Properties</h3>
+<p>The port driver accesses the miniport driver's node-property handlers through the <strong>Nodes</strong> member of PCFILTER_DESCRIPTOR. This member points to an array of node descriptors, and each descriptor points to the automation table for a node type (identified by a node ID, which is simply the array index). Typically, all or most of the property handlers belonging to a miniport driver reside in the <strong>Nodes</strong> array. An audio driver represents the hardware controls in an audio device as topology nodes, and it uses the property mechanism to provide clients with access to the hardware-dependent control settings.</p>
+<p>As described previously, a client sends a filter-property request to a filter handle, and a pin-property request to a pin handle. Unlike a filter or pin instance, a node is not a kernel object and does not have a handle. A client sends a node-property request to either a pin handle or a filter handle, but the request also specifies a node ID to indicate that the request is for a node property rather than a pin or filter property.</p>
+<p>The following are general rules for determining whether a node property should use a filter handle or pin handle:</p>
+<ul>
+<li>
+<p>If a filter contains several instances of a particular pin type, and each pin of that type contains a node with a particular node ID, then each pin instance contains an instance of the node. In this case, a node-property request must specify a pin handle (rather than just a filter handle) to distinguish among several instances of the same node type. The combination of pin handle and node ID unambiguously identifies a particular node instance as the target for the request.</p>
+</li>
+<li>
+<p>If a filter contains only one instance of a particular node, a node property request specifies a filter handle. The combination of filter handle and node ID is sufficient to unambiguously identify the node that is the target for the request.</p>
+</li>
+</ul>
+<p>Before implementing a handler for a particular node property, however, the driver writer should refer to <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536197(v=vs.85).aspx">Audio Drivers Property Sets</a> to check whether the target for the property should be specified as a filter handle or pin handle.</p>
+<p>The port drivers in Portcls.sys currently do not provide built-in handling of node properties, with the exception of KSPROPERTY_TOPOLOGY_NAME.</p>
+<h3><a id="Overspecified_and_Underspecified_Property_Requests"></a><a id="overspecified_and_underspecified_property_requests"></a><a id="OVERSPECIFIED_AND_UNDERSPECIFIED_PROPERTY_REQUESTS"></a>Overspecified and Underspecified Property Requests</h3>
+<p>Drivers should be prepared to deal with property requests from clients that do not follow the preceding rules. Requests can be either overspecified or underspecified:</p>
+<ul>
+<li>
+<p><strong>Overspecified requests</strong></p>
+<p>If a property request requires only a filter handle, but the client sends the request to a pin handle instead, the target for the request is overspecified. However, drivers typically treat the request as valid; that is, they treat the request as though it had been sent to the filter containing the pin.</p>
+</li>
+<li>
+<p><strong>Underspecified requests</strong></p>
+<p>If a property request requires a pin handle, but a client sends the request to a filter handle instead, the target for the request is underspecified. For example, if a filter contains several pin instances with the same node type, and a client sends a request for a property of that node type to a filter handle rather than a pin handle, the driver has no way to determine which node instance should receive the request. In this case, the behavior depends on the driver. Instead of automatically failing all underspecified requests, some drivers treat an underspecified set-property request as valid. In this case, the interpretation is that the request sets the default value for the specified node ID. When a pin factory creates a new node instance, the property belonging to the new node is initialized to the default value. A request that changes the default value has no effect on node instances created before the request. In addition, drivers uniformly fail underspecified get-property requests because the handler has no way to determine which node instance to query for the property.</p>
+</li>
+</ul>
+<h3><a id="Exceptions_to_the_Rules"></a><a id="exceptions_to_the_rules"></a><a id="EXCEPTIONS_TO_THE_RULES"></a>Exceptions to the Rules</h3>
+<p>For historical reasons, a few audio properties have behavioral quirks that violate these general rules. The following are examples:</p>
+<ul>
+<li>
+<p>As described in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff536187(v=vs.85).aspx">Applying Speaker-Configuration Settings</a>, a client can change an audio device's speaker configuration by setting the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_AUDIO_CHANNEL_CONFIG</strong></a> property of a 3-D node (<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537148(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSNODETYPE_3D_EFFECTS</strong></a>). The speaker-configuration setting is global because it changes the speaker configuration for all streams that are part of the mix that the device plays through the speakers. According to the general rule, a node-property request that affects the filter as a whole should specify a filter handle (plus a node ID). However, this particular property requires a pin handle instead of a filter handle. The pin handle designates the pin instance containing the 3-D node that is the target for the request.</p>
+</li>
+<li>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537409(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_SYNTH_VOLUME</strong></a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537403(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY_SYNTH_MASTERCLOCK</strong></a> are properties of a synth node (<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537203(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSNODETYPE_SYNTHESIZER</strong></a>). Although both are node properties, requests for these properties do not include node IDs. (Note that the property descriptor for the request is a structure of type <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564262(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSPROPERTY</strong></a>, not <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537143(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">KSNODEPROPERTY</strong></a>.) This behavior violates the general rule that a node property requires a node ID. Despite this discrepancy, a miniport driver that supports either property should supply the property handler through the <strong>Nodes</strong> member of PCFILTER_DESCRIPTOR (instead of the <strong>Pins</strong> member).</p>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [audio\audio]:%20Filter, Pin, and Node Properties%20 RELEASE:%20(11/16/2013)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/16/2013</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="N2ynICT9gj45EYvhx_JgGNGllJ4VA5XqCFAh9-VgnY8WgAGyAkWJdolCzywRnr_CTZBwjffXR5Ew0-_fq-Y5M7cPh2jCGvYPhMWolqTiwe6tv3n-MgenA5iWNmm0Ty-XhmLnSQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff536386(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="Chrome ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff536386(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="pGend00hOt9uLjvwAcQWzYScTbbeZSulRucjZyDzngTrjQPjZf3vJGYMlBSKfAhYwO3Dz-Bf80G_TBXAM_OvpRec7ruAZJlUnCD-CPa2Dkth9LJZCV1ke4G_9hHniex7e_7KLQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff536386(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"3890aba1-be8c-4412-aded-65b8b08b1a3d\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff536386(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:57 GMT -->
+</html>

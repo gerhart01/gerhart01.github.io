@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff540088(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:45:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff540088(v%3dvs.85).html" />
+        <title>HV_INTERRUPT_CONTROL union (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff540088(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540088(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540088(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540088(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD4-3:32:45 AM" />
+
+<meta name="Search.ShortId" content="ff540088" />
+
+<meta name="ms.shortidmsdn" content="ff540088" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395052365&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff540088%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff542584(v%3dvs.85).html" id="ff572457_VS.85_en-us" mtpsaliasid="" mtpsassetid="3b405260-c3db-4f46-a083-f053b5d5c3d1_VS.85_en-us" mtpsshortid="ff542584_VS.85_en-us" title="Hypervisor">Hypervisor</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff541584(v%3dvs.85).html" id="ff572587_VS.85_en-us" mtpsaliasid="" mtpsassetid="34c39c01-a439-4f14-98c4-07e4b02f72e4_VS.85_en-us" mtpsshortid="ff541584_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff541612(v%3dvs.85).html" id="ff572683_VS.85_en-us" mtpsaliasid="" mtpsassetid="b14b01c9-66d9-4e36-a1e5-8a5095e5496d_VS.85_en-us" mtpsshortid="ff541612_VS.85_en-us" title="Hypervisor Structures and Enumerations">Hypervisor Structures and Enumerations</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541179(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_HYPERCALL_INPUT">HV_X64_HYPERCALL_INPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541188(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_HYPERCALL_OUTPUT">HV_X64_HYPERCALL_OUTPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539917(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CALL_CODE">HV_CALL_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_HYPERCALL_CONTENTS">HV_X64_MSR_HYPERCALL_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540186(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROPERTY_CODE">HV_PARTITION_PROPERTY_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540171(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PRIVILEGE_MASK">HV_PARTITION_PRIVILEGE_MASK</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540240(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROXIMITY_DOMAIN_INFO">HV_PROXIMITY_DOMAIN_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540234(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROXIMITY_DOMAIN_FLAGS">HV_PROXIMITY_DOMAIN_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540063(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_DESCRIPTOR">HV_INTERCEPT_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540082(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_TYPE">HV_INTERCEPT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540069(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_PARAMETERS">HV_INTERCEPT_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541344(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNSUPPORTED_FEATURE_CODE">HV_X64_UNSUPPORTED_FEATURE_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541355(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNSUPPORTED_FEATURE_MESSAGE">HV_X64_UNSUPPORTED_FEATURE_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540246(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REGISTER_NAME">HV_REGISTER_NAME</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540250(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REGISTER_VALUE">HV_REGISTER_VALUE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539976(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EXPLICIT_SUSPEND_REGISTER">HV_EXPLICIT_SUSPEND_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540076(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_SUSPEND_REGISTER">HV_INTERCEPT_SUSPEND_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541198(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INTERRUPT_STATE_REGISTER">HV_X64_INTERRUPT_STATE_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541310(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_PENDING_INTERRUPTION_TYPE">HV_X64_PENDING_INTERRUPTION_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541303(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_PENDING_INTERRUPTION_REGISTER">HV_X64_PENDING_INTERRUPTION_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540383(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_REGISTER">HV_X64_FP_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540375(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_CONTROL_STATUS_REGISTER">HV_X64_FP_CONTROL_STATUS_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541367(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XMM_CONTROL_STATUS_REGISTER">HV_X64_XMM_CONTROL_STATUS_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541326(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_SEGMENT_REGISTER">HV_X64_SEGMENT_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541331(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_TABLE_REGISTER">HV_X64_TABLE_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541269(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_POWER_STATE_CONFIG">HV_X64_MSR_POWER_STATE_CONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541319(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_POWER_CHANGE_METHOD">HV_X64_POWER_CHANGE_METHOD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541280(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_POWER_STATE_TRIGGER">HV_X64_MSR_POWER_STATE_TRIGGER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541291(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_RESET_CONTENTS">HV_X64_MSR_RESET_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539912(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CACHE_TYPE">HV_CACHE_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540325(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TRANSLATE_GVA_RESULT">HV_TRANSLATE_GVA_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540330(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TRANSLATE_GVA_RESULT_CODE">HV_TRANSLATE_GVA_RESULT_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539898(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_CONTROL_FLAGS">HV_ACCESS_GPA_CONTROL_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539902(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_RESULT">HV_ACCESS_GPA_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539908(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_RESULT_CODE">HV_ACCESS_GPA_RESULT_CODE</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff540088(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERRUPT_CONTROL">HV_INTERRUPT_CONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540098(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERRUPT_TYPE">HV_INTERRUPT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541245(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_APIC_ASSIST_CONTENTS">HV_X64_MSR_APIC_ASSIST_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540288(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SCONTROL">HV_SYNIC_SCONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SINT">HV_SYNIC_SINT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540299(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SIMP">HV_SYNIC_SIMP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540294(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SIEFP">HV_SYNIC_SIEFP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540140(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_TYPE">HV_MESSAGE_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540126(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_FLAGS">HV_MESSAGE_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540129(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_HEADER">HV_MESSAGE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540113(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE">HV_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540319(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TIMER_MESSAGE_PAYLOAD">HV_TIMER_MESSAGE_PAYLOAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539968(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_MESSAGE_PAYLOAD">HV_EVENTLOG_MESSAGE_PAYLOAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539974(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_TYPE">HV_EVENTLOG_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540210(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_TYPE">HV_PORT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540198(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_INFO">HV_PORT_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539921(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CONNECTION_INFO">HV_CONNECTION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540205(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_PROPERTY_CODE">HV_PORT_PROPERTY_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540159(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_TRIGGER_GROUP">HV_MONITOR_TRIGGER_GROUP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540153(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_PARAMETER">HV_MONITOR_PARAMETER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540163(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_TRIGGER_STATE">HV_MONITOR_TRIGGER_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540149(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_PAGE">HV_MONITOR_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539947(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EMULATED_TIMER_PERIOD">HV_EMULATED_TIMER_PERIOD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539944(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EMULATED_TIMER_CONTROL">HV_EMULATED_TIMER_CONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540191(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PM_TIMER_INFO">HV_PM_TIMER_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541298(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_STIMER_CONFIG_CONTENTS">HV_X64_MSR_STIMER_CONFIG_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541239(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MEMORY_INTERCEPT_MESSAGE">HV_X64_MEMORY_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540360(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_CPUID_INTERCEPT_MESSAGE">HV_X64_CPUID_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541268(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_INTERCEPT_MESSAGE">HV_X64_MSR_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541223(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_IO_PORT_INTERCEPT_MESSAGE">HV_X64_IO_PORT_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540368(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_EXCEPTION_INTERCEPT_MESSAGE">HV_X64_EXCEPTION_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540349(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_APIC_EOI_MESSAGE">HV_X64_APIC_EOI_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541229(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_LEGACY_FP_ERROR_MESSAGE">HV_X64_LEGACY_FP_ERROR_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541203(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INVALID_VP_REGISTER_MESSAGE">HV_X64_INVALID_VP_REGISTER_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541341(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNRECOVERABLE_EXCEPTION_MESSAGE">HV_X64_UNRECOVERABLE_EXCEPTION_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541192(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INTERCEPT_MESSAGE_HEADER">HV_X64_INTERCEPT_MESSAGE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541363(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_VP_EXECUTION_STATE">HV_X64_VP_EXECUTION_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541214(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_IO_PORT_ACCESS_INFO">HV_X64_IO_PORT_ACCESS_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540366(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_EXCEPTION_INFO">HV_X64_EXCEPTION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541234(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MEMORY_ACCESS_INFO">HV_X64_MEMORY_ACCESS_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540252(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SAVE_RESTORE_STATE_RESULT">HV_SAVE_RESTORE_STATE_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539955(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_BUFFER_STATE">HV_EVENTLOG_BUFFER_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539951(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_BUFFER_HEADER">HV_EVENTLOG_BUFFER_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539964(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_ENTRY_TIME_BASIS">HV_EVENTLOG_ENTRY_TIME_BASIS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539960(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_ENTRY_HEADER">HV_EVENTLOG_ENTRY_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540269(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_OBJECT_TYPE">HV_STATS_OBJECT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540264(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_OBJECT_IDENTITY">HV_STATS_OBJECT_IDENTITY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540270(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_PAGE">HV_STATS_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540260(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATISTICS_GROUP_VERSION">HV_STATISTICS_GROUP_VERSION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540255(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATISTICS_GROUP_HEADER">HV_STATISTICS_GROUP_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540279(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_EVENT_FLAGS">HV_SYNIC_EVENT_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540273(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ST_MAP_LOCATION">HV_ST_MAP_LOCATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540380(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_MMX_REGISTER">HV_X64_FP_MMX_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541173(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FX_REGISTERS">HV_X64_FX_REGISTERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541371(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XSAVE_XFEM_REGISTER">HV_X64_XSAVE_XFEM_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541369(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XSAVE_HEADER">HV_X64_XSAVE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541373(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_X_REGISTERS">HV_X64_X_REGISTERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540355(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_CONTEXT">HV_X64_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540346(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_VP_CONTEXT">HV_VP_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540217(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESSOR_INFO">HV_PROCESSOR_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540106(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MEMORY_RANGE_INFO">HV_MEMORY_RANGE_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540051(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_VERSION_INFO">HV_HYPERVISOR_VERSION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539927(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPUID_RESULT">HV_CPUID_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540022(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GVA_RANGE">HV_GVA_RANGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540136(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_PAGE">HV_MESSAGE_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540281(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_EVENT_FLAGS_PAGE">HV_SYNIC_EVENT_FLAGS_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541252(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_GUEST_OS_ID_CONTENTS">HV_X64_MSR_GUEST_OS_ID_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540017(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GUEST_OS_VENDOR">HV_GUEST_OS_VENDOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539983(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GUEST_OS_MICROSOFT_IDS">HV_GUEST_OS_MICROSOFT_IDS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540039(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_INTERFACE">HV_HYPERVISOR_INTERFACE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539925(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPUID_FUNCTION">HV_CPUID_FUNCTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540032(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_COUNTER">HV_HYPERVISOR_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539930(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPU_COUNTER">HV_CPU_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540229(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESS_COUNTER">HV_PROCESS_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540317(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_THREAD_COUNTER">HV_THREAD_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540231(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROFILE_SOURCE">HV_PROFILE_SOURCE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541285(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_REFERENCE_TSC_CONTENTS">HV_X64_MSR_REFERENCE_TSC_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540244(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REFERENCE_TSC_PAGE">HV_REFERENCE_TSC_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540221(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESSOR_VENDOR">HV_PROCESSOR_VENDOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540175(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROCESSOR_FEATURES">HV_PARTITION_PROCESSOR_FEATURES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540181(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROCESSOR_XSAVE_FEATURES">HV_PARTITION_PROCESSOR_XSAVE_FEATURES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540336(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_VIRTUAL_APIC_ASSIST">HV_VIRTUAL_APIC_ASSIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539979(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GPA_MAPPING">HV_GPA_MAPPING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540311(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYSTEM_PROPERTY">HV_SYSTEM_PROPERTY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540056(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INPUT_SET_SYSTEM_PROPERTY">HV_INPUT_SET_SYSTEM_PROPERTY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539936(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_AREA_V1">HV_CRASHDUMP_AREA_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539932(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_AREA">HV_CRASHDUMP_AREA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539941(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_PROCESSOR_STATE">HV_CRASHDUMP_PROCESSOR_STATE</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">HV_INTERRUPT_CONTROL union</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>The HV_INTERRUPT_CONTROL union describes a type of virtual interrupt. </p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_335ec508-18a4-4584-981f-8b766b296141');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_335ec508-18a4-4584-981f-8b766b296141" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">union</span> _HV_INTERRUPT_CONTROL {
+  UINT64 AsUINT64;
+  <span style="color:Blue;">struct</span> {
+    HV_INTERRUPT_TYPE InterruptType;
+    UINT32            LevelTriggered  :1;
+    UINT32            LogicalDestinationMode  :1;
+    UINT32            Reserved  :30;
+  };
+} HV_INTERRUPT_CONTROL, *PHV_INTERRUPT_CONTROL;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Members</h2>
+<dl>
+<dt><strong>AsUINT64</strong></dt>
+<dd>
+<p>A member in the union that can hold one 64-bit value that describes a type of virtual interrupt. </p>
+</dd>
+<dt><strong>InterruptType</strong></dt>
+<dd>
+<p>An <a href="ff540098(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HV_INTERRUPT_TYPE</strong></a> value that identifies the interrupt type. The type is set in the first group of 32 bits of the 64-bit <strong>AsUINT64</strong> member (0x00000000FFFFFFFF). </p>
+</dd>
+<dt><strong>LevelTriggered</strong></dt>
+<dd>
+<p>A UINT32 value that indicates whether the virtual interrupt is edge- or level-triggered. If set (1), the virtual interrupt is level-triggered. Setting this member is equivalent to setting the first bit of the second group of 32 bits of the 64-bit <strong>AsUINT64</strong> member (0x0000000100000000). </p>
+</dd>
+<dt><strong>LogicalDestinationMode</strong></dt>
+<dd>
+<p>A UINT32 value that indicates whether the virtual interrupt is a logical destination mode. Setting this member is equivalent to setting the second bit of the second group of 32 bits of the 64-bit <strong>AsUINT64</strong> member (0x0000000200000000). </p>
+</dd>
+<dt><strong>Reserved</strong></dt>
+<dd>
+<p>This member is reserved and should be set to zero. Setting this member to zero is equivalent to setting the remaining 30 bits (0xFFFFFFFC00000000) of the second group of 32 bits of the 64-bit <strong>AsUINT64</strong> member to zeros.</p>
+</dd>
+</dl>
+<h2>Remarks</h2>
+<p>The HV_INTERRUPT_CONTROL union is passed to the <a href="ff538832(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvAssertVirtualInterrupt</strong></a> function. </p>
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>HvSynicApi.h (include Hvgdk.h)</dt>
+</dl>
+</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="ff540098(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HV_INTERRUPT_TYPE</strong></a>
+</dt>
+<dt>
+<a href="ff538832(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvAssertVirtualInterrupt</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [hypervisor\hypervisor]:%20HV_INTERRUPT_CONTROL union%20 RELEASE:%20(11/16/2013)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/16/2013</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="-MWkCoIaKnspf7OTUVTEyZhgKpave-_xAxtaVVUh__qXH-UpJFtty8OM5UCRgCReU69aV3jmjSKF2xAeGjIl__K6z5yFV5kdFZNvnF8Arghw-YgkAv9fvATMwcfATkolWIUI0Q2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff540088(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff540088(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="F3J4-ydn43WxBTsBLUvoGBeihyv46RyvslMAzeVlz6x1Y2wRUwqP1_ySbJmKy7gtV1ocn06fG0h74rVUN8K7aUccBV9dOh2GF_D5eCoulED3gOhKP8_AnMm4C4J3B_wE7N3BsQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff540088(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"d06296b4-1133-408e-952c-935c5f3e694b\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff540088(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:45:04 GMT -->
+</html>

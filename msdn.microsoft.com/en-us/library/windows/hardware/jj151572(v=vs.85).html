@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj151572(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151572(v=vs.85).aspx" />
+        <title>Case Study: Troubleshooting an unknown USB device by using ETW and Netmon (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj151572(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151572(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151572(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151572(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD6-9:46:25 AM" />
+
+<meta name="Search.ShortId" content="jj151572" />
+
+<meta name="ms.shortidmsdn" content="jj151572" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074785&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj151572%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151576(v=vs.85).aspx" id="dn303361_VS.85_en-us" mtpsaliasid="" mtpsassetid="248BC997-03F7-41E8-95FC-2B295D696502_VS.85_en-us" mtpsshortid="jj151576_VS.85_en-us" title="Testing USB hardware, drivers, and apps in Windows">Testing USB hardware, drivers, and apps in Windows</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151577(v=vs.85).aspx" id="dn448495_VS.85_en-us" mtpsaliasid="" mtpsassetid="F72C181B-1A28-4C6F-82ED-AEF517AB445D_VS.85_en-us" mtpsshortid="jj151577_VS.85_en-us" title="USB Event Tracing for Windows">USB Event Tracing for Windows</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151573(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to capture a USB event trace">How to capture a USB event trace</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151575(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to install Netmon and USB ETW Parsers">How to install Netmon and USB ETW Parsers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151574(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to view a USB ETW trace in Netmon">How to view a USB ETW trace in Netmon</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151572(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Case Study: Troubleshooting an unknown USB device by using ETW and Netmon">Case Study: Troubleshooting an unknown USB device by using ETW and Netmon</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151578(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using activity ID GUIDs in USB ETW traces">Using activity ID GUIDs in USB ETW traces</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151579(v=vs.85).aspx" id="dn434092_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using Xperf with USB ETW">Using Xperf with USB ETW</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj154557(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Debugging USB device issues by using ETW events">Debugging USB device issues by using ETW events</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj154558(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB ETW and Power Management">USB ETW and Power Management</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Case Study: Troubleshooting an unknown USB device by using ETW and Netmon</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic provides an example of how to use USB ETW and Netmon to troubleshoot a USB device that Windows does not recognize. </p>
+<p>For this example, we plugged in a device and it appeared as an unknown device in Device Manager and other parts of the user interface (UI). The Hardware ID was USB\UNKNOWN. To diagnose further, we unplugged the device, began an ETW trace, and plugged in the device again. After the device appeared as an unknown device, we stopped the trace.</p>
+<p>
+</p><ul>
+<li><a href="#about_the_unknown_device_problem">About the Unknown Device Problem</a></li>
+<li><a href="#starting_the_event_trace_analysis">Starting the Event Trace Analysis</a></li>
+<li><a href="#usb_device_summary_events">USB Device Summary Events</a></li>
+<li><a href="#event_description_and_data_payload">Event Description and Data Payload</a></li>
+<li><a href="#usb_netmon_filters">USB Netmon Filters</a></li>
+<li><a href="#status_codes">Understanding Error Events and Status Codes</a></li>
+<li><a href="#reading_backwards_from_problem_events">Reading Backwards from Problem Events</a></li>
+<li><a href="#related_topics">Related topics</a></li>
+</ul>
+
+<h2><a id="About_the_Unknown_Device_Problem"></a><a id="about_the_unknown_device_problem"></a><a id="ABOUT_THE_UNKNOWN_DEVICE_PROBLEM"></a>About the Unknown Device Problem</h2>
+<p>To debug an unknown USB device problem, it helps to understand what the USB driver stack does to enumerate a device when a user plugs it into the system. For information on USB enumeration, see the blog post titled <a href="http://blogs.msdn.com/b/usbcoreblog/archive/2009/10/31/how-does-usb-stack-enumerate-a-device.aspx">How does USB stack enumerate a device?</a></p>
+<p>Typically when the USB driver stack fails to enumerate a device, the hub driver still reports the arrival of the device to Windows and the USB device is marked as an unknown device in Device Manager. The device has a Device ID of USB\VID_0000&amp;PID_0000 and a Hardware ID and Compatible ID of USB\UNKNOWN. The following events cause the USB hub driver to enumerate a USB device as an unknown device:</p><ul>
+<li>A port reset request timed out during enumeration.</li>
+<li>The Set Address request for the USB device failed.
+</li>
+<li>The request for the USB device's Device Descriptor failed.</li>
+<li>The <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539283(v=vs.85).aspx">USB Device Descriptor</a> was malformed and failed validation.</li>
+<li>The request for the Configuration Descriptor failed.</li>
+<li>The <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539242(v=vs.85).aspx">USB Configuration Descriptor</a> was malformed and failed validation.
+</li>
+</ul>
+
+<p>In Windows 7, unknown devices that fail enumeration are marked with failure <a href="http://technet.microsoft.com/en-us/library/cc725873(WS.10).aspx">Code 43</a> in Device Manager.</p>
+<p>If a device is marked with failure <a href="http://technet.microsoft.com/en-us/library/cc731268(WS.10).aspx">Code 28</a> in Device Manager, the device enumerated successfully but is still an unknown device. This failure code indicates that the device did not provide a Product ID string during enumeration and Windows could not find a matching INF for the device to install a driver.</p>
+<h2><a id="Starting_the_Event_Trace_Analysis"></a><a id="starting_the_event_trace_analysis"></a><a id="STARTING_THE_EVENT_TRACE_ANALYSIS"></a>Starting the Event Trace Analysis</h2>
+<p>Because this is a device failure, we recommend that you use Netmon with the USB parser to analyze the log file. You can perform the analysis as you read this paper by using the event trace log file (devicefailure.etl) that is posted on the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463163.aspx">WHDC Web page</a>. </p>
+<p class="proch"><img id="wedge" alt="JJ151572.wedge(en-us,VS.85).gif" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="JJ151572.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>To view the event trace log</strong></p>
+<ol>
+<li>Run Netmon, click <strong>File -&gt; Open -&gt; Capture</strong>, and then select the file.
+</li>
+<li>Select the first event in the <strong>Frame Summary</strong> pane, which has the description SystemTrace. 
+This image shows what the screen looks like when you select the first event. 
+<p><img id="devicefailure_etl" alt="JJ151572.devicefailure_etl(en-us,VS.85).png" src="http://i.msdn.microsoft.com/dynimg/IC589330.png" title="JJ151572.devicefailure_etl(en-us,VS.85).png" xmlns="" /></p>
+</li>
+<li>To customize the columns that Netmon displays, right-click a column name and select <strong>Choose Columns</strong>.
+</li>
+<li>The first event, which is identified as type <strong>SystemTrace</strong>, contains general information about the log. You can expand the information tree in the <strong>Frame Details</strong> pane to see information such as the number of events lost and the trace start time.
+</li>
+</ol>
+<h2><a id="USB_Device_Summary_Events"></a><a id="usb_device_summary_events"></a><a id="USB_DEVICE_SUMMARY_EVENTS"></a>USB Device Summary Events</h2>
+<p>Event 2 is the first USB event in the log. This and several subsequent events describe the USB host controllers, hubs, and devices that were connected to the system when we started the trace. We can call this group of events the device summary events, or just summary events. Like the first event, the summary events do not describe driver activity. Summary events record the state of the devices at the start of a logging session. Other events represent something happening on the bus, interactions with client drivers or the system, or changes of internal state.</p>
+<p>The USB hub and USB port drivers both log summary events. The driver that logged an event is identified in the Protocol Name column. For example, an event that is logged by the USB port driver has the USBPort_MicrosoftWindowsUSBPORT protocol name. A USB event trace typically contains a sequence of port summary events, followed by a sequence of hub summary events. Many of the USB port and USB hub summary events have the words “Information” or “Attributes” in their description.</p>
+<p>How can you identify the end of the summary events? If there is a significant break in the timestamp pattern among the USB hub events at the start of the log, that break is probably the end of the device summary. Otherwise, the first USB port event after any USB hub events is likely the first non-summary event. Figure 3 on the following page shows the first non-summary event in this sample trace.</p>
+<p>In this example, the device of interest was not connected to the system when we started the trace, so you can skip the device summary events for now.</p>
+<p><img id="devicefailure_etl1" alt="JJ151572.devicefailure_etl1(en-us,VS.85).png" src="http://i.msdn.microsoft.com/dynimg/IC589331.png" title="JJ151572.devicefailure_etl1(en-us,VS.85).png" xmlns="" /></p>
+<h2><a id="Event_Description_and_Data_Payload"></a><a id="event_description_and_data_payload"></a><a id="EVENT_DESCRIPTION_AND_DATA_PAYLOAD"></a>Event Description and Data Payload</h2>
+<p>In the sample log, the first event after the device summary events is a USB Hub Wait Wake IRP Completed event. We plugged in a device, and a host controller or a hub is waking up in response. To determine which component is waking up, look at the event's data. The data is in the Frame Details pane, which is shown in a tree structure in approximately the following form:
+</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d4ccb7cd-8132-450d-bd05-69caafcaa5dd');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d4ccb7cd-8132-450d-bd05-69caafcaa5dd" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+Frame information
+ETW event header information
+    ETW event descriptor (Constant information about the event ID such
+    as error level)
+Event payload (Data logged at the time of the event)
+    Name of a USB-specific structure
+        Structure members and their values (Types: numbers, strings,
+        or arrays)
+    ...
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Expand the payload data for the USB Hub Wait Wake IRP Completed event, and you will see an ETW structure that is named fid_USBHUB_Hub. The name of the structure has the following components:</p>
+<p></p>
+<table>
+<tr><th>Term</th><th>Description</th></tr>
+<tr><td>
+<p><a id="fid_"></a><a id="FID_"></a><strong>fid_</strong></p>
+</td><td>
+<p>
+ A typical prefix for a USB ETW structure.</p>
+</td></tr>
+<tr><td>
+<p><a id="_USBHUB_"></a><a id="_usbhub_"></a><strong>
+USBHUB_</strong></p>
+</td><td>
+<p>
+An indication that the USB hub driver logged the event.
+</p>
+</td></tr>
+<tr><td>
+<p><a id="The_rest_of_the_string"></a><a id="the_rest_of_the_string"></a><a id="THE_REST_OF_THE_STRING"></a><strong>The rest of the string</strong></p>
+</td><td>
+<p>The name of the object that the structure's data describes. For this event, it is a Hub object.
+</p>
+</td></tr>
+</table>
+<p> </p>
+<p>The USB hub driver uses the <strong>fid_USBHUB_Hub</strong> structure to describe a USB hub. Events that have this hub structure in their data payload refer to a hub, and we can identify the specific hub by using the contents of the structure. Figure 4 shows the Frame Details pane, with the <strong>fid_USBHUB_Hub</strong> structure expanded to show its fields.
+</p>
+<p><img id="framedetails" alt="JJ151572.framedetails(en-us,VS.85).png" src="http://i.msdn.microsoft.com/dynimg/IC589332.png" title="JJ151572.framedetails(en-us,VS.85).png" xmlns="" /></p>
+<p>The hub structure is very similar to two other structures that commonly appear in USB ETW events:<strong>fid_USBHUB_Device</strong> and <strong>fid_USBPORT_Device</strong>. The following important fields are common to all three structures:</p>
+<p></p>
+<dl>
+<dt><a id="fid_idVendor"></a><a id="fid_idvendor"></a><a id="FID_IDVENDOR"></a><strong>fid_idVendor</strong></dt>
+<dd>
+<p>The USB Vendor ID (VID) of the device.</p>
+</dd>
+<dt><a id="_fid_idProduct"></a><a id="_fid_idproduct"></a><a id="_FID_IDPRODUCT"></a><strong>	fid_idProduct</strong></dt>
+<dd>
+<p>The USB Product ID (PID) of the device.</p>
+</dd>
+<dt><a id="_fid_PortPath"></a><a id="_fid_portpath"></a><a id="_FID_PORTPATH"></a><strong>	fid_PortPath</strong></dt>
+<dd>
+<p>The list of one-based hub port numbers through which a USB device is attached. The number of port numbers in the list is contained in the <strong>PortPathDepth</strong> field. For the root hub devices, this list is all zeros. For a USB device that is connected directly to a root hub port, the value in PortPath[0] is the root hub port number of the port to which the device is attached. For a USB device that is connected through one or more additional USB hubs, the list of hub port numbers starts with the root hub port and continues with the additional hubs (in the order of distance from the root hub). Ignore any zeros.
+For example: 
+</p>
+<table>
+<tr><th>Sample Value</th><th>Description</th></tr>
+<tr><td>[0, 0, 0, 0, 0, 0]</td><td>The event refers to a root hub (a port on the PC, directly controlled by a USB host controller).</td></tr>
+<tr><td>[3, 0, 0, 0, 0, 0]</td><td>The event refers to a hub or a device that is plugged into a root hub's port number 3.</td></tr>
+<tr><td>[3, 1, 0, 0, 0, 0]</td><td>A hub is plugged into a root hub's port 3. The event refers to a hub or a device that is plugged into this external hub's port 1.</td></tr>
+</table>
+<p> </p>
+</dd>
+</dl>
+<p>You should monitor the port paths of any devices of interest. When a device is being enumerated, the VID and PID are unknown and logged as 0. The VID and PID do not appear during some low-level device requests such as reset and suspend. These requests are sent to the hub that the device is plugged into.</p>
+<p>In our sample log, the Wait Wake completion event has a port path with six zeroes. The event indicates a Wait Wake action on a root hub. That is logical because of our actions: we plugged the device into a root hub port, so the root hub is waking up.</p>
+<h2><a id="USB_Netmon_Filters"></a><a id="usb_netmon_filters"></a><a id="USB_NETMON_FILTERS"></a>USB Netmon Filters</h2>
+<p>You can examine each event in a log in chronological order, if you have the time. Even with experience, it is difficult to quickly identify the important events by scanning the list of the event descriptions. To find the cause of the Unknown Device more quickly, you can use the Netmon filter feature.</p>
+<p><strong>The USB Error Filter</strong></p>
+<p>To activate the USB error filter in Netmon, click <strong>Filter -&gt; Display Filter -&gt; Load Filter -&gt; Standard Filters -&gt; USB -&gt; USB Hub Errors</strong>, and then click <strong>Apply</strong> in the <strong>Display Filter</strong> pane.</p>
+<p>The USB error filter narrows the list of events to only those that meet the criteria shown in the following table.</p>
+<p>
+</p><table>
+<tr><th>Filter text</th><th>Description</th></tr>
+<tr><td>(USBPort_MicrosoftWindowsUSBUSBPORT AND NetEvent.Header.Descriptor.Opcode == 34)</td><td>USB port events that have opcode 34 are port errors.</td></tr>
+<tr><td>(USBHub_MicrosoftWindowsUSBUSBHUB AND NetEvent.Header.Descriptor.Opcode == 11)</td><td>USB hub events that have opcode 11 are hub errors.</td></tr>
+<tr><td>(NetEvent.Header.Descriptor.Level == 0x2)</td><td>Events that have level 0x2 are usually errors.</td></tr>
+<tr><td>(USBHub_MicrosoftWindowsUSBUSBHUB AND NetEvent.Header.Descriptor.Id == 210)</td><td>USB hub events with ID 210 are ”USB Hub Exception Logged” events. For more information, see <a href="#status_codes">Understanding Error Events and Status Codes</a>.</td></tr>
+</table>
+<p> </p>
+
+<p>This image shows the smaller set of events that appear in the <strong>Frame Summary</strong> pane after we applied the USB error filter to our sample trace log.</p>
+<p><img id="devicefailure_etl2" alt="JJ151572.devicefailure_etl2(en-us,VS.85).png" src="http://i.msdn.microsoft.com/dynimg/IC589333.png" title="JJ151572.devicefailure_etl2(en-us,VS.85).png" xmlns="" /></p>
+<p>To see an overview of the sequence of errors, you can briefly view each error event. Important fields to observe include <strong>fid_NtStatus</strong>, <strong>fid_UsbdStatus</strong>, and <strong>fid_DebugText</strong>. For more information, see <a href="#status_codes">Understanding Error Events and Status Codes</a>.
+To turn off a filter, click the <strong>Remove</strong> button in the <strong>Display Filter</strong> pane.
+</p>
+<p><strong>Custom Netmon Filters</strong></p>
+<p>You can create custom filters in Netmon. The easiest method is to create a filter from data on the screen in one of the following ways:</p><ul>
+<li>Right-click a field in the <strong>Frame Details</strong> pane and select <strong>Add Selected Value to Display Filter</strong>.</li>
+<li>Right-click a field in the <strong>Frame Summary</strong> pane and select <strong>Add [field name] to Display Filter</strong>. 
+</li>
+</ul>You can change the operators (such as OR, AND, and ==) and the filter values to build the appropriate filter expressions.
+<h2><a id="status_codes"></a><a id="STATUS_CODES"></a>Understanding Error Events and Status Codes</h2>
+<p>In our unknown device example, most of the USB hub exceptions have a <strong>fid_DebugText</strong> data of CreateDeviceFailure. It is not clear how serious the exception is, but the debug text gives a hint as to the cause: an operation related to the new device failed. For now, assume that the adjacent Create Device Failed events are redundant. The last two exceptions are CreateDeviceFailure_Popup and GenErr_UserIoctlFailed. The popup exception sounds like an error that was exposed to the user, but any and all of these errors could be related to the unknown device problem.</p>
+<p>USB error events, and other events, have status values in their data that provide valuable information about the problem. You can find information on status values by using the resources in the following table.</p><table>
+<tr><th>Status type</th><th>Resource</th></tr>
+<tr><td><strong>fid_NtStatus</strong></td><td>See <a href="http://msdn.microsoft.com/en-us/library/cc704588(PROT.10).aspx">NTSTATUS values</a>.</td></tr>
+<tr><td>The status field of a USB request block (URB) or <strong>fid_UsbdStatus</strong></td><td>Look up the value as a USBD_STATUS in inc\api\usb.h in the Windows Driver Kit (WDK).
+You can also use the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539136(v=vs.85).aspx">USBD_STATUS</a>. This topic lists the symbolic names and the meanings of the USBD_STATUS values.
+</td></tr>
+</table>
+<p> </p>
+
+<h2><a id="Reading_Backwards_from_Problem_Events"></a><a id="reading_backwards_from_problem_events"></a><a id="READING_BACKWARDS_FROM_PROBLEM_EVENTS"></a>Reading Backwards from Problem Events</h2>
+<p>The events that are logged before the error events might provide important clues as to the cause of the error. You should look at the events that are logged before the errors to try to determine the root cause of the unknown device. In this example, start looking backward from the CreateDeviceFailure_Popup event, the second-to-last exception. Select this event while the USB error filter is enabled, and then click <strong>Remove</strong> in the <strong>Display Filter</strong> pane. The USB error filter still appears in the <strong>Display Filter</strong> pane, and you can re-apply it later. But now the filter is disabled and the <strong>Frame Summary</strong> pane displays all events as shown in this image.</p>
+<p><img id="devicefailure_etl3" alt="JJ151572.devicefailure_etl3(en-us,VS.85).png" src="http://i.msdn.microsoft.com/dynimg/IC589334.png" title="JJ151572.devicefailure_etl3(en-us,VS.85).png" xmlns="" /></p>
+<p>The two events that are logged just before the CreateDeviceFailure_Popup event are a Dispatch and a Complete of a USB control transfer. The <strong>fid_USBPORT_Device</strong> port path field is zero for both events, which indicates that the transfer's target is the root hub. In the fid_USBPORT_URB_CONTROL_TRANSFER structure of the completion event, the status is zero (USBD_STATUS_SUCCESS), which indicates that the transfer was successful. Continue examining the previous events.</p>
+<p>The next two previous events are the fourth (final) Create Device Failed event and fourth (final) CreateDeviceFailure exception, which we examined earlier.</p>
+<p>The next previous event is Endpoint Close. This event means that an endpoint is no longer usable. The event data describes both the device and the endpoint on that device. The device port path is [1, 0, 0, 0, 0, 0]. The system on which we ran the trace has only host controllers (root hubs) plus the device that we were connecting, so this port path does not describe a hub. The closed endpoint must be on the single device that we plugged in, and now we know that the device's path is 1. It is likely that the drivers made the device's endpoint inaccessible due to a problem that was encountered earlier. Continue examining the previous events.</p>
+<p>The next previous event is a completed USB control transfer. The event data shows that the target of the transfer is the device (the port path is 1). The fid_USBPORT_Endpoint_Descriptor structure indicates that the endpoint's address is 0, so this is the USB-defined default control endpoint. The URB status is 0xC0000004. Because the status is not zero, the transfer was probably not successful. For more details about this USBD_STATUS value, see usb.h and <a href="#status_codes">Understanding Error Events and Status Codes</a>. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e0e3fa93-ae58-46ef-b203-f328f324adff');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e0e3fa93-ae58-46ef-b203-f328f324adff" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#define USBD_STATUS_STALL_PID ((USBD_STATUS)0xC0000004L)
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Meaning: The device returned a stall packet identifier.
+What request was stalled by the endpoint? The other data that was logged for the event indicates that the request was a standard device control request. Here is the parsed request:
+</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_55b792c4-a9d5-40d3-86f9-a687a61453eb');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_55b792c4-a9d5-40d3-86f9-a687a61453eb" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+  Frame: Number = 184, Captured Frame Length = 252, MediaType = NetEvent 
++ NetEvent: 
+- MicrosoftWindowsUSBUSBPORT: Complete Internal URB_FUNCTION_CONTROL_TRANSFER 
+  - USBPORT_ETW_EVENT_COMPLETE_INTERNAL_URB_FUNCTION_CONTROL_TRANSFER: Complete Internal URB_FUNCTION_CONTROL_TRANSFER 
+   + fid_USBPORT_HC: 
+   + fid_USBPORT_Device: 
+   + fid_USBPORT_Endpoint: 
+   + fid_USBPORT_Endpoint_Descriptor: 
+   + fid_URB_Ptr: 0x84539008 
+   - ControlTransfer: 
+    + Urb: Status = 0xc0000004, Flags 0x3, Length = 0 
+    - SetupPacket: GET_DESCRIPTOR 
+     + bmRequestType: (Standard request) 0x80 
+       bRequest: (6) GET_DESCRIPTOR 
+       Value_DescriptorIndex: 0 (0x0) 
+       Value_DescriptorType: (1) DEVICE 
+       _wIndex: 0 (0x0) 
+       wLength: 64 (0x40)
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Combine the bRequest (GET_DESCRIPTOR) with the Value_DescriptorType (DEVICE), and you can determine that the request was get-device descriptor.</p>
+<p>For USB enumeration to continue, the device should have responded to this request with its device descriptor. Instead, the device stalled the request, which caused the enumeration to fail. Therefore, all four create-device failures were caused by stalled requests for the device descriptor. You have determined that the device is unknown because enumeration failed and that enumeration failed because the device did not complete the request for its device descriptor.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151578(v=vs.85).aspx">Using USB ETW</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151577(v=vs.85).aspx">USB Event Tracing for Windows</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20Case Study: Troubleshooting an unknown USB device by using ETW and Netmon%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="vK7L0dJdwBQOvqw7XLxhJ75reAdh5_8gfVO2a0Zj6kBfVcMg4-UZyQhKvV2xbNj6FhFQ2COQL2zxSvng7G1Oh_zkvMpco_uDerBfROqErWJgfX1IRChmWv6fCN0MPsXkTEx4hA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj151572(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj151572(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="_CRVfRM46Xt7meOOe-H1OJj5DDzbMBDVi_HyLNY7cBZtflZ2wxO-wRencaDxg3wrW1kxDKC2n0NiC0_6jCHVwNdkgH26a4tgc4hOBL_ea7q6lnSMHzoVZt-WtQjOQjwMiJdDGw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj151572(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"49d72f58-3b3f-4e5f-8dc8-3d0dfad3f51d\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj151572(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+</html>

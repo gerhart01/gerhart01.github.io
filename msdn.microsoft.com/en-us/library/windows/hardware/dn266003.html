@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn266003.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:06:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn266003.html" />
+        <title>How to measure Touch Panning Latency</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn266003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn266003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn266003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn266003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD1-3:59:21 AM" />
+
+<meta name="Search.ShortId" content="dn266003" />
+
+<meta name="ms.shortidmsdn" content="dn266003" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053961&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn266003.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998100.html" id="dn375949_WIN.10_en-us" mtpsaliasid="" mtpsassetid="19922dd7-c8d5-4eab-bcd4-305157cbce9f_WIN.10_en-us" mtpsshortid="hh998100_WIN.10_en-us" title="Device.Digitizer Testing">Device.Digitizer Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn247279.html" id="dn375953_WIN.10_en-us" mtpsaliasid="" mtpsassetid="5f43a6ff-791a-4176-ba02-0bfec29a6277_WIN.10_en-us" mtpsshortid="dn247279_WIN.10_en-us" title="Additional Digitizer Resources">Additional Digitizer Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn195876.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Down Latency by using an Acoustic Measurement Tool">How to measure Touch Down Latency by using an Acoustic Measurement Tool</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn266003.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Panning Latency">How to measure Touch Panning Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn343548.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run HCK Motion Sensor Tests">How to run HCK Motion Sensor Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169214.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the Windows HCK Tests for Touch and Pen devices">How to run the Windows HCK Tests for Touch and Pen devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn281959.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the Precision Touch Testing Tool">How to use the Precision Touch Testing Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293768.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overview of measuring Touch Down Hardware Latency">Overview of measuring Touch Down Hardware Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj906442.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using Robot Automation for Touch Hardware Certification Tests">Using Robot Automation for Touch Hardware Certification Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169213.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service">Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">How to measure Touch Panning Latency</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This topic provides detailed setup instructions and procedures to measure touch panning latency in accordance with Hardware Certification for Windows 8.1. It assumes that the reader is familiar with touch screens, understands the concept of touch screen latency, and has basic understanding of electrical and software engineering.</p>
+      <p>
+        <strong>In this topic:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="#ov">Overview</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#methodology">Methodology</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#nwreq">Hardware requirements</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#swreq">Software requirements</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#testtriexpa">Test procedure for Triex RA tool</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#itri_ra">Test procedure for ITRI RA tool</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#ar">Analysis and report</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#acm">Automated calibration mode</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#ts">Troubleshooting</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#sup">Additional support</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="ov">
+        
+      </a>
+      <h2 class="heading">Overview</h2>
+      <div id="sectionSection0" class="section">
+        <p>
+          <em>Latency</em> is a measure of time delay that is experienced in the touch digitizer system. <em>Touch down latency</em> is the time between the finger or stylus (actuator) touching the screen and the host operating system receiving the contact (usually through a HID report). <em>Panning latency</em> is slightly more complicated because the contact is moving along a continuous path but the reports arrive in discrete time intervals. Therefore, panning latency is defined only in terms of discrete time intervals for which reported touch data are available. Measuring panning latency is then reduced to knowing the time delay between when the touch actually occurs and when the operating system receives the touch event.</p>
+      </div>
+      <a id="methodology">
+        
+      </a>
+      <h2 class="heading">Methodology</h2>
+      <div id="sectionSection1" class="section">
+        <p>This topic describes the setup and procedures to measure the panning latency of a touch hardware device by using a step motor and a photo-interrupter. The step motor drives a mechanical arm to drive an actuator that simulates a human finger. The actuator draws a circle on the tested device and the photo-interrupter circuit detects when the actuator is at a certain control point. This information is sent to the host computer by using a microcontroller and the testing application calculates latency based on when the device reports a touch event and when the actuator actually makes contact. The following diagram shows the overall concept.</p>
+        <p>
+          
+        </p>
+        <img id="07959d6c-e363-4416-a0c6-b171d76f3ff0" alt="Measuring panning latency" src="../../../../../i.msdn.microsoft.com/dynimg/IC666263.jpg" title="Measuring panning latency" xmlns="" />
+        <p>
+          
+        </p>
+      </div>
+      <a id="nwreq">
+        
+      </a>
+      <h2 class="heading">Hardware requirements</h2>
+      <div id="sectionSection2" class="section">
+        <p>This section describes the hardware components that are required to measure panning latency. </p>
+        <h3 class="subHeading">Step motor and photo-interrupter</h3>
+        <div class="subSection">
+          <p>The measuring tool consists of a step motor, a photo-interrupter, a rotating arm and an actuator, and a control box, which is visible in the background of the following figure.</p>
+          <p>
+            
+          </p>
+          <img id="18efc8b2-5f24-4490-a862-106daf1b7fb4" alt="Measuring tool" src="../../../../../i.msdn.microsoft.com/dynimg/IC666264.png" title="Measuring tool" xmlns="" />
+          <p>
+            
+          </p>
+          <p>The control box has three controlling switches and a power switch.</p>
+          <ul>
+            <li class="unordered">
+              <strong>Motor</strong>: To turn on and off the step motor arm.<br /><br /></li>
+            <li class="unordered">
+              <strong>Calibrate</strong>: Not used for panning latency - turn it off. (Used for touch down latency only.)<br /><br /></li>
+            <li class="unordered">
+              <strong>Mode</strong>: Switch between <strong>Tach</strong> (refers to the photo-interrupter that is used for panning latency measurement) and <strong>Mic</strong> (microphone that is used for touch down latency measurement).<br /><br /></li>
+          </ul>
+          <p>
+            
+          </p>
+          <img id="8ca9f938-6606-41b9-aa36-ac80a906dad4" alt="RA interface" src="../../../../../i.msdn.microsoft.com/dynimg/IC666265.png" title="RA interface" xmlns="" />
+          <p>
+            
+          </p>
+          <p>For panning latency measurement, the initial settings should be as follows:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Switch name
+										</th>
+              <th>
+											State
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>Power</p>
+              </td>
+              <td>
+                <p>Off</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Motor</p>
+              </td>
+              <td>
+                <p>Off</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Calibrate</p>
+              </td>
+              <td>
+                <p>Off</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Mode</p>
+              </td>
+              <td>
+                <p>Tach</p>
+              </td>
+            </tr>
+          </table>
+          <p>Power-on the control box after you plug the USB in to the computer. Plugging in USB after powering on the control box can result in an unpredictable state of the microcontroller.</p>
+        </div>
+        <h3 class="subHeading">Stepper motor settings</h3>
+        <div class="subSection">
+          <p>The stepper motor can be programmed to run in a variety of ways. By default, the stepper motor is programmed to run in an <em>automated calibration mode</em>. (This mode is explained in more detail in the “Automated calibration mode” section later in the document.) The automated calibration mode is designed to minimize calibration errors and latency variations by manual calibration.</p>
+          <p>During acquisition and collection stages, the motor runs at a constant speed of 0.75 revolutions per second. The stepper motor settings used for acquisition and collection stages are as follows:</p>
+          <ul>
+            <li class="unordered">
+									AC (acceleration) = 0.167<br /><br /></li>
+            <li class="unordered">
+									DE (deceleration) = 0.167<br /><br /></li>
+            <li class="unordered">
+									VE (velocity) = 0.75<br /><br /></li>
+          </ul>
+          <p>By using these settings, the step motor circles one time every 1.33 seconds.</p>
+        </div>
+        <h3 class="subHeading">Arm length</h3>
+        <div class="subSection">
+          <p>The angular velocity differs, depending on the radius of the arm. For example, if the radius of the circle is about 5 cm, the velocity is ~25 cm per second. To standardize the test procedure, the arm length should have a radius of 5 cm to reach the velocity of 25 cm per second. A tolerance of ±1 is allowed: that is, from 24 to 26 cm per second.</p>
+          <p>In the case of smaller tablet which is up to 10’’ diagonal display size, the recommended radius is 3 cm instead of 5 cm.</p>
+        </div>
+        <h3 class="subHeading">Arm positioning</h3>
+        <div class="subSection">
+          <p>Ideally, you should cover as many areas of the screen as possible by running the test multiple times in different parts of the screen. The latency in any part of the digitizer is expected to be equal or below the target latency (15 ms).</p>
+          <ol class="ordered">
+            <li>
+              <strong>Test device with a keyboard</strong>: If you are using a slate device, you will need an external keyboard to complete the testing procedures.<br /><br /></li>
+            <li>
+              <strong>Place the test device on a non-slipping surface</strong>: Place the test device in such a way that it does not move during testing. For a small device, a simple solution is to place it on top of a non-slip pad as shown in the figure below. Another way is to have a brace to hold the device firmly in place.<br /><br /></li>
+            <li>
+              <strong>Level the test device</strong>: the actuator is designed to minimize the effect of leveling so the leveling does not have to be perfect. However, you should ensure that the actuator surface (~9 mm in diameter) is touching the device uniformly and not standing on one edge.<br /><br /></li>
+            <li>
+              <strong>Close any unnecessary processes from the test device</strong>: Because you are measuring system performance, close any unnecessary processes from the test device.<br /><br /></li>
+          </ol>
+          <p>
+            
+          </p>
+          <img id="71a455ad-25cb-4e5d-a8b1-069bc337fea7" alt="Arm positioning" src="../../../../../i.msdn.microsoft.com/dynimg/IC666266.png" title="Arm positioning" xmlns="" />
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="swreq">
+        
+      </a>
+      <h2 class="heading">Software requirements</h2>
+      <div id="sectionSection3" class="section">
+        <p>The required software should be installed and configured by the logo controller and the client. If it is running as a standalone, copy stepmotor.exe, wlklogannotation.dll, and WTTLog.dll to a local folder.</p>
+      </div>
+      <a id="testtriexpa">
+        
+      </a>
+      <h2 class="heading">Test procedure for Triex RA tool</h2>
+      <div id="sectionSection4" class="section">
+        <p>The test procedure consists of three steps: calibration, acquisition, and collection. Before you start the test however, you have to level the device. The point of leveling is to align it with the level of the motor rotating in circles. If it is not leveled properly, the actuator will not make good contacts with the digitizer and the circles drawn by the step motor will become irregular and will greatly affect the latency numbers at the end. Verification methods are included to fail the test if the device is not properly leveled or aligned.</p>
+        <a id="calibration">
+          
+        </a>
+        <h3 class="subHeading">Calibration</h3>
+        <div class="subSection">
+          <p>When you start stepmotor.exe, you will see a blank screen. Press the space key to start calibration. The purpose of calibration is to locate the reported position of a touch within a tolerable error estimate when the photo-interrupter is signaled. Because calibration results can greatly affect the latency numbers, it is important that you calibrate carefully.</p>
+          <p>
+            <strong>Setup</strong>
+          </p>
+          <ol class="ordered">
+            <li>
+									Connect the microcontroller to the computer.<br /><br /></li>
+            <li>
+									Turn on the Power switch of the control box.<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+													Switch name
+												</th><th>
+													State
+												</th></tr><tr><td><p>Power</p></td><td><p>On</p></td></tr><tr><td><p>Motor</p></td><td><p>Off</p></td></tr><tr><td><p>Calibrate</p></td><td><p>Off</p></td></tr><tr><td><p>Mode</p></td><td><p>Tach</p></td></tr></table></li>
+            <li>
+									Make sure that Motor switch is turned off.<br /><br /></li>
+            <li>
+									Make sure that the photo-interrupter is not signaling (the photo-interrupter’s light is off). The slot of the disk should be positioned about 2-3 mm past the photo-interrupter signal beam.<br /><br />
+									There are two reasons for the positioning. First, when you turn on the motor, the motor arm will jitter slightly. When it does, you do not want it to cross the beam and therefore make the photo-interrupter signal. Second, when you are running an automated calibration script, this is the position where the loop starts and you want to make sure that the end of the loop (when the calibration begins) aligns properly to be under the photo-interrupter. If you are manually calibrating, this is still a good position to start at so, you do not have to change anything.<br /><br /><br /><br /><img id="a9f898f0-4e36-412b-9ed9-beebb930282e" alt="Calibration slot" src="../../../../../i.msdn.microsoft.com/dynimg/IC666267.png" title="Calibration slot" xmlns="" /><br /><br /></li>
+            <li>
+									Do not move or lower the arm until you enter the calibration phase.<br /><br /></li>
+            <li>
+									Run stepmotor.exe.  If you are running the program through the Windows HCK Controller, select the machine and panning latency test to start the test.<br /><br /></li>
+            <li>
+									The following text message appears:<br /><br />
+									Press the space bar to start the calibration process.<br /><br /></li>
+            <li>
+									Press the space bar. The word <strong>CALIBRATION</strong> appears on the screen.<br /><br /></li>
+            <li>
+									Lower the actuator onto the surface of the screen.<br /><br /></li>
+          </ol>
+          <p>
+            <strong>Test steps (automated)</strong>
+          </p>
+          <ol class="ordered">
+            <li>
+									Turn on the motor. The stepper motor will run in a calibration mode nine times.<br /><br /></li>
+            <li>
+									At the end of the calibration mode, it will stop for five seconds. Follow the instructions in the <a href="#acquisition">Acquisition</a> section of this topic.<br /><br /></li>
+          </ol>
+          <p>
+            <strong>Test steps (manual)</strong>
+          </p>
+          <ol class="ordered">
+            <li>
+									Slowly turn the arm in the same direction as that in which the motor will be moving when it is turned on.<br /><br /></li>
+            <li>
+									Decrease the speed almost to the point of a complete stop when the needle (or the hole) passes through the photo-interrupter. (Note that the maximum velocity should not exceed 1% of the acquisition/collection speed; that is., if the acquisition/collection velocity is 25 cm/s, then the calibration velocity when the slot passes through the photo-interrupter should be less than 0.25 cm/s.)<br /><br /></li>
+            <li>
+									Carefully turn the arm to pass through the photo interrupter.<br /><br /></li>
+            <li>
+									Repeat steps 1 to 2 at least six times.<br /><br />
+									When the signal is interrupted, you should see the photo-interrupter blinking and the test window will report the exact location of the screen where the actuator is making a contact. The following is a sample result:<br /><br />
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_419326f2-dc0f-41f0-b709-1bf6a4825749');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_419326f2-dc0f-41f0-b709-1bf6a4825749" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Touch Pointer Update count=0, x=508,y=110Touch Pointer Update count=1, x=512,y=113
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+          </ol>
+          <p>
+            <strong>Expected results</strong>
+          </p>
+          <p>If calibration is performed successfully, you will not see any error messages.</p>
+        </div>
+        <a id="acquisition">
+          
+        </a>
+        <h3 class="subHeading">Acquisition</h3>
+        <div class="subSection">
+          <p>During the acquisition step, the velocity of the step motor and the shape of the circle are calculated.</p>
+          <p>
+            <strong>Setup</strong>
+          </p>
+          <p>Make sure that the slot is placed as far away from the photo-interrupter as possible.</p>
+          <p>
+            <strong>Test steps</strong>
+          </p>
+          <ol class="ordered">
+            <li>
+									Press the space bar and turn on the Motor switch at the same time. The text on the screen should change to <strong>ACQUISITION</strong>.<br /><br /></li>
+            <li>
+									Let the device run for approximately ten loops.<br /><br /></li>
+            <li>
+									Press the space bar again to go into COLLECTION mode.<br /><br /></li>
+          </ol>
+          <p>
+            <strong>Expected results</strong>
+          </p>
+          <p>The screen will display that COLLECTION mode is active and show the acquisition data. It shows a list of time and velocity calculated for each loop. The first few loops might be skipped if the step motor jittered and showed poor results. A sample text is as follows:</p>
+          
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4cdee892-9f53-461b-816d-a6768fad5448');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4cdee892-9f53-461b-816d-a6768fad5448" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+[4]: t: 1.333 [s] v: 25.456 [cm/s]
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          <p>This tells you:</p>
+          
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cee14719-6b3d-42fc-aa39-87aafa8013df');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cee14719-6b3d-42fc-aa39-87aafa8013df" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+[loop number]: t:&lt;loop time in seconds&gt; [s] v:&lt;velocity&gt; [cm/s]
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        </div>
+        <h3 class="subHeading">Collection</h3>
+        <div class="subSection">
+          <p>Data collection represents the final step for the test.</p>
+          <p>
+            <strong>Setup</strong>
+          </p>
+          <p>Make sure that the word <strong>COLLECTION</strong> appears at the top of the screen. If the word <strong>CALIBRATION</strong> remains after you press the space bar, an error occurred. You will need to run the test again.</p>
+          <p>
+            <strong>Test steps</strong>
+          </p>
+          <ol class="ordered">
+            <li>
+									Let the motor run about ten loops.<br /><br /></li>
+            <li>
+									Press the space bar to finish the test.<br /><br /></li>
+            <li>
+									Turn off the Motor switch.<br /><br /></li>
+          </ol>
+          <p>
+            <strong>Expected results</strong>
+          </p>
+          <p>You will see pass or fail results.</p>
+          <p>
+            
+          </p>
+          <img id="39b3511a-4e57-4ee1-be34-2e1e7d3fbc0e" alt="Collection results" src="../../../../../i.msdn.microsoft.com/dynimg/IC666268.jpg" title="Collection results" xmlns="" />
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="itri_ra">
+        
+      </a>
+      <h2 class="heading">Test procedure for ITRI RA tool</h2>
+      <div id="sectionSection5" class="section">
+        <p>The procedure for running the Touch Panning Latency tool on the ITRI RA tool is slightly different from running the test with the Triex RA tool. The test itself remains the same and contains the same set of Calibration, Acquisition, and Collection steps. The steps for running the test with ITRI are as follows:</p>
+        <ol class="ordered">
+          <li>
+							RA chassis<br /><br /><br /><br /><img id="f843e5e4-7266-4f58-ae29-5a17e3a67593" alt="ITRI RA tool" src="../../../../../i.msdn.microsoft.com/dynimg/IC666269.jpg" title="ITRI RA tool" xmlns="" /><br /><br />
+							Note that in the case of the ITRI RA tool, the calibrate switch has three positions: on, off, and home, which is the center position.<br /><br /></li>
+          <li>
+							To begin, the switches should be as follows:<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+											Switch name
+										</th><th>
+											State
+										</th></tr><tr><td><p>Power</p></td><td><p>On</p></td></tr><tr><td><p>Motor</p></td><td><p>Off</p></td></tr><tr><td><p>Calibrate</p></td><td><p>Off (down)</p></td></tr><tr><td><p>Mode</p></td><td><p>Panning</p></td></tr></table></li>
+          <li>
+							Zero the system by changing the switches to the following and letting the motor rotate the arm 45 degrees. When completed, turn the motor to OFF.<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+											Switch name
+										</th><th>
+											State
+										</th></tr><tr><td><p>Power</p></td><td><p>On</p></td></tr><tr><td><p>Motor</p></td><td><p>Off</p></td></tr><tr><td><p>Calibrate</p></td><td><p>Home (center)</p></td></tr><tr><td><p>Mode</p></td><td><p>Panning (upper)</p></td></tr></table></li>
+          <li>
+							Place the test finger down on the device and press the space bar to enter the Calibration phase. Switches are now as follows:<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+											Switch name
+										</th><th>
+											State
+										</th></tr><tr><td><p>Power</p></td><td><p>On</p></td></tr><tr><td><p>Motor</p></td><td><p>On</p></td></tr><tr><td><p>Calibrate</p></td><td><p>On (upper)</p></td></tr><tr><td><p>Mode</p></td><td><p>Panning (upper)</p></td></tr></table></li>
+          <li>
+							Allow the test to run past the count of 17, then turn off Motor and turn the Calibrate switch to off (lowest position):<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+											Switch name
+										</th><th>
+											State
+										</th></tr><tr><td><p>Power</p></td><td><p>On</p></td></tr><tr><td><p>Motor</p></td><td><p>Off</p></td></tr><tr><td><p>Calibrate</p></td><td><p>Off (lower)</p></td></tr><tr><td><p>Mode</p></td><td><p>Panning (upper)</p></td></tr></table></li>
+          <li>
+							Press the space bar, and turn the motor back ON for the Acquisition phase.<br /><br /></li>
+          <li>
+							After the screen shows a count value over 1999, press the space bar. The test display will show the motor circle time and the speed. Wait for the contact information to be collected in the Collection phase for approximately ten loops, and then press the space bar. At this point, the system is finished. Press the space bar again and turn off the motor.<br /><br /></li>
+        </ol>
+      </div>
+      <a id="ar">
+        
+      </a>
+      <h2 class="heading">Analysis and report</h2>
+      <div id="sectionSection6" class="section">
+        <p>
+          
+        </p>
+        <h3 class="subHeading">Analysis</h3>
+        <div class="subSection">
+          <p>If there are any failures in calibration or acquisition, the test will fail and you can view details for the failure in the report. You will see an error such as the following:</p>
+          
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_25fa874f-390d-4a78-ac93-c5bf5d8b5127');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_25fa874f-390d-4a78-ac93-c5bf5d8b5127" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Warning multiple touch devices present.
+Calibration failed: x11err=3.71 y11err=1.14 x22err=9.14 y22err=1.71
+Acquisition failed: Circles are showing variations in pixel= 9.70
+[135] 581 451 739 602 [199556137598] &gt; 18 48
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        </div>
+        <h3 class="subHeading">Report</h3>
+        <div class="subSection">
+          <p>Pass or fail is reported through the Windows HCK. If you are running the test manually, you can open the <strong>TabletDigitizerOPK.wtl</strong> file in WTT or in Notepad. The average panning latency is logged toward the end. The target latency is equal or less than 15 milliseconds.</p>
+        </div>
+      </div>
+      <a id="acm">
+        
+      </a>
+      <h2 class="heading">Automated calibration mode</h2>
+      <div id="sectionSection7" class="section">
+        <p>Automated calibration mode is the default mode for the RA tool. When you run the script, first make sure that the step motor is set to 20000 steps per revolution in the Q programmer settings. This configuration can be set using the <a href="http://www.applied-motion.com/products/software/st-configurator">ST Configurator tool</a>. Go to Motion &amp; I/O and then Pulse &amp; Direction Control.</p>
+        <p>
+          
+        </p>
+        <img id="4c427311-b3d6-4f4f-8935-bf16f78b45ba" alt="ST Configurator (1)" src="../../../../../i.msdn.microsoft.com/dynimg/IC666270.png" title="ST Configurator (1)" xmlns="" />
+        <p>
+          
+        </p>
+        <img id="edfdf728-bb2f-4188-920f-01564fb4cd68" alt="ST Configurator (2)" src="../../../../../i.msdn.microsoft.com/dynimg/IC666271.png" title="ST Configurator (2)" xmlns="" />
+        <p>
+          
+        </p>
+        <p>Make sure that the Steps/Rev setting shows <strong>20000</strong>.</p>
+        <p>
+          
+        </p>
+        <img id="f9359f88-88e4-4522-b6d8-c86c6265315a" alt="ST Configurator (3)" src="../../../../../i.msdn.microsoft.com/dynimg/IC666272.png" title="ST Configurator (3)" xmlns="" />
+        <p>
+          
+        </p>
+        <p>The settings on the right side should also show <strong>Steps/Rev</strong> currently set for the step motor.</p>
+        <p>
+          
+        </p>
+        <img id="7a7bd5ad-5536-412a-b412-36c69cfd4688" alt="ST Configurator (4)" src="../../../../../i.msdn.microsoft.com/dynimg/IC666273.png" title="ST Configurator (4)" xmlns="" />
+        <p>
+          
+        </p>
+        <p>If the settings are correct, then the automation script will run in three modes in sequential order:</p>
+        <ol class="ordered">
+          <li>
+            <strong>Calibration mode</strong>: When you first turn on the motor, this is the first mode that it will run. During calibration mode, the step motor runs at a velocity of 0.75 revolutions per second (about 1.33 seconds per loop) for 339 degrees from the starting position. Then it stops for 0.5 second before it runs at a velocity of 0.0042 revolutions per second (lowest possible velocity for stepper motor) for 21 degrees. While the stepper motor is running at a very low speed, the testing program (stepmotor.exe) correlates the positions and timestamps from the reported touch contacts when the photo-interrupter beam is interrupted.<br /><br />
+							The following example is a screen shot of how the circle will look. The arc portion where the arrow is pointing at is where the stepper motor runs in a slow speed and where the photo interrupter should be signaling. It is important that the operator aligns the starting position of the disc properly: that is, the slot on the disc should be about 2-3 mm past the photo-interrupter.<br /><br /><br /><br /><img id="ed5de332-2910-4e4d-a8c7-811ba6461e11" alt="Calibration mode circle" src="../../../../../i.msdn.microsoft.com/dynimg/IC666274.png" title="Calibration mode circle" xmlns="" /><br /><br />
+							As a reference, the following describes how this calibration arc is designed:<br /><br /><h3 class="subHeading"> </h3><table><tr><th>
+											VE parameter in Q-Programmer
+										</th><th>
+											0.0042
+										</th></tr><tr><td><p>Average calibration signal arc length</p></td><td><p>1.85 cm (based on 31.26 cm circumference)</p></td></tr><tr><td><p>Average calibration signal angle</p></td><td><p>0.37 radian (21.20 degrees</p></td></tr><tr><td><p>Average calibration signal time</p></td><td><p>12.50 seconds (including 0.5 seconds of wait time when changing velocity)</p></td></tr><tr><td><p></p></td><td><p>Average calibration signal velocity</p></td></tr></table></li>
+          <li>
+            <strong>Five seconds of waiting</strong>: After nine loops of calibration, the motor will stop for five seconds. During this time, the operator must press the space bar to enter into Acquisition mode.<br /><br /></li>
+          <li>
+            <strong>Acquisition/Collection mode</strong>: After five seconds of waiting, the motor will run at a velocity of 0.75 revolutions per second (1.33 seconds per loop) infinitely.<br /><br /></li>
+        </ol>
+      </div>
+      <a id="ts">
+        
+      </a>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection8" class="section">
+        <p>
+          
+        </p>
+        <h3 class="subHeading">Calibration</h3>
+        <div class="subSection">
+          <p>During calibration, the test program cannot calculate the exact location of a touch event when the photo-interrupter is signaled. It is therefore important that you do not introduce latency by spinning the arm too fast. If there is an error, you will see an error message on screen. For example:</p>
+          
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c7f9e653-7dcb-4924-a736-6eac3c453d8d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c7f9e653-7dcb-4924-a736-6eac3c453d8d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Calibration failed: x11err=3.71 y11err=1.14 x22err=9.14 y22err=1.71.
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          <p>Stop and investigate the cause before you restart the test. There are a few common reasons for failure. They occur because the test program cannot make good calculations of the touch point. Reasons for this include:</p>
+          <ul>
+            <li class="unordered">
+									You moved the finger (actuator) too fast when the photo interrupter signaled.<br /><br /></li>
+            <li class="unordered">
+									The device was moved.<br /><br /></li>
+          </ul>
+          <p>Resolve these issues and try again until you get a good calibration. Additional things to keep in mind are:</p>
+          <ul>
+            <li class="unordered">
+									Never turn the arm the other way around.<br /><br /></li>
+            <li class="unordered">
+									Move the arm very carefully when passing through the photo-interrupter, to minimize the error and latency that you might be introducing.<br /><br /></li>
+            <li class="unordered">
+									There should be always two signals when the photo-interrupter is interrupted. The first signal occurs when the light passes through the slot at the end of an edge. The second signal occurs when the light is blocked after it passed through the open slot. The index count is zero-based. After two events have occurred, the count should be an odd number. If you see the following message when you have just started calibration and did not even turn the arm, you have probably turned the arm (therefore the disk) around the photo-interrupter at least one time, causing it to signal. This will automatically cause the calibration to fail. Stop the test immediately and restart.<br /><br />
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4f9378cc-21cf-4a48-b63a-5dbb25e82ae5');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4f9378cc-21cf-4a48-b63a-5dbb25e82ae5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Touch Pointer Update count=0, x=0, y=0
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+          </ul>
+        </div>
+        <h3 class="subHeading">Acquisition</h3>
+        <div class="subSection">
+          <p>If acquisition fails, you will see an error message that is similar to one of the following:</p>
+          
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_57189d1b-d0f8-4d16-92be-70d2d004f025');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_57189d1b-d0f8-4d16-92be-70d2d004f025" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+ERROR: Acquisition failed: Loop times not consistent &gt; 6.3ERROR: Acquisition failed: Circles are showing too many variations in pixels Rcm_error=0.5 xPixelErr=20 yPixelErr=20
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          <p>The first type of error is generated when the average difference among loop times is more than five milliseconds. The second type of error occurs when the circles are not drawn as perfect circles and therefore result in pixel variations that are greater than five pixels. Common causes for this behavior include the following:</p>
+          <ul>
+            <li class="unordered">
+									An improperly leveled or incorrectly calibrated device.<br /><br /></li>
+            <li class="unordered">
+									The device was moved.<br /><br /></li>
+            <li class="unordered">
+									Step motor speed is not consistent. (This is not a probable explanation because it is a well-established, widely used device; nevertheless it is possible that the motor is defective on your particular device.)<br /><br /></li>
+          </ul>
+        </div>
+        <h3 class="subHeading">Collection</h3>
+        <div class="subSection">
+          <p>There should be few problems during collection if the calibration and acquisition steps are passed. Most errors are due to external factors such as, the device being moved, some other processes interrupting the test program, or the device itself failing. Operators might encounter the following three common issues:</p>
+          <p>
+            <strong>Problem 1: Electromagnetic field interference</strong>
+          </p>
+          <p>An error can result from the effect of electromagnetic force that is generated by the stepper motor. Depending on the device, this can be manifested in various ways: for example, ghost touch points being generated. The solution to the problem is to provide a good ground.</p>
+          <p>
+            <strong>Problem 2: Other processes interrupt the test program</strong>
+          </p>
+          <p>When another process interrupts the test process, it will usually corrupt the test result by negatively impacting the latency numbers. </p>
+          <p>You can diagnose this problem by comparing photo interrupter signal intervals. Review the csignal.txt file, which contains the time stamps from the photo-interrupter. The second column shows the system time stamps and the third column shows the microcontroller’s time stamps. For example:</p>
+          
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8e801653-9e04-41e1-9cda-9acea5e7fbb6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8e801653-9e04-41e1-9cda-9acea5e7fbb6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+[ 0:       0] 431506434557 538485264317
+[ 1:      10] 431506447610 538485343495
+[ 2:    1333] 431508166028 538495929302
+[ 3:    1343] 431508178968 538496008565
+[ 4:    1797] 431508769804 538499651185
+[ 5:    1803] 431508776386 538499652266
+[ 6:    2665] 431509897168 538506594116
+[ 7:    2675] 431509910127 538506673294
+[ 8:    3998] 431511628522 538517258922
+[ 9:    4008] 431511641481 538517338232
+[10:    5331] 431513359910 538527923775
+[11:    5342] 431513372973 538528003038
+sfirst =  0
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+          <p>The last entry in the file shows the index of the first valid signal sequence. A ‘valid signal sequence’ refers to the beginning of signal sequences when the system became stable. Between acquisition and collection, the test program writes the acquisition results to log files and, depending on the system performance, it might take some time for it to become stable. In the above example, the very first signal was valid so you can start comparing the time stamp intervals.</p>
+          <p>You can take time stamp intervals by noting the difference between the two even numbered time stamps; or example, 0, 2, 4, 6, etc. As shown in the following table, the signals 4 and 6 are quite different from other signal intervals. Therefore, we know that another process has interrupted the test during that time. In normal cases, you should see less than 1% of difference.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Index
+										</th>
+              <th>
+											Time stamp
+										</th>
+              <th>
+											Interval
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>0</p>
+              </td>
+              <td>
+                <p>431506434557</p>
+              </td>
+              <td>
+                <p>
+                  
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>2</p>
+              </td>
+              <td>
+                <p>431492585219</p>
+              </td>
+              <td>
+                <p>1731471</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>4</p>
+              </td>
+              <td>
+                <p>431494316516</p>
+              </td>
+              <td>
+                <p>603776</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>6</p>
+              </td>
+              <td>
+                <p>431496047748</p>
+              </td>
+              <td>
+                <p>1127364</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>8</p>
+              </td>
+              <td>
+                <p>431497779297</p>
+              </td>
+              <td>
+                <p>1731354</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>10</p>
+              </td>
+              <td>
+                <p>431499509508</p>
+              </td>
+              <td>
+                <p>1731388</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>12</p>
+              </td>
+              <td>
+                <p>431501240620</p>
+              </td>
+              <td>
+                <p>1731288</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            <strong>Problem 3: Sampling rate changes</strong>
+          </p>
+          <p>If a device changes its sampling rate, a significant variance in latency results will occur. You can diagnose this problem by comparing acquisition and collection sampling rates.</p>
+          <p>You can use external tools to measure the sampling rate of a device before and after the motor was turned on. Another method is to analyze the logs that are generated by stepmotor.exe.</p>
+          <ol class="ordered">
+            <li>
+									Open <strong>Acquisition.txt</strong>.<br /><br /></li>
+            <li>
+									Take the first and last row’s timestamps (last column):<br /><br />
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_31299681-3ef2-41f3-a888-51142c7e10e0');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_31299681-3ef2-41f3-a888-51142c7e10e0" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+581   660   709   602   199501901480
+581   805   512   602   199554132317
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+            <li>
+									Calculate the acquisition’s sampling rate as follows:<br /><br />
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_79d24d66-1240-407d-8423-a314b3529ea0');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_79d24d66-1240-407d-8423-a314b3529ea0" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+(Last timestamp – first timestamp) /number of samples (rows)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+            <li>
+									Open <strong>Collection.txt</strong>.<br /><br /></li>
+            <li>
+									Take the first and last row’s timestamps (last column):<br /><br />
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4561e7c4-7bdb-4805-8fea-4a90124da267');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4561e7c4-7bdb-4805-8fea-4a90124da267" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+581   822   423   602 [199554407006]
+581   288   164   602 [199594255626]
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+            <li>
+									Calculate the collection sampling rate as follows:<br /><br />
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cfb4b906-4b54-430f-9bef-20a0e0c39cd7');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cfb4b906-4b54-430f-9bef-20a0e0c39cd7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+(Last timestamp – first timestamp) /number of samples (rows)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+          </ol>
+          <p>If you see more than 2% of difference between the two, the collection data is not reliable and you should investigate the cause.</p>
+        </div>
+      </div>
+      <a id="sup">
+        
+      </a>
+      <h2 class="heading">Additional support</h2>
+      <div id="sectionSection9" class="section">
+        <p> If additional support is required, contact one of the following certified jig vendors:</p>
+        <ul>
+          <li class="unordered">
+            <strong>Triex Technologies, Inc.</strong>
+            <br />
+            <br />
+							+1 (206) 940-0943<br /><br /></li>
+          <li class="unordered">
+            <strong>Industrial Technology Research Institute</strong>
+            <br />
+            <br />
+							+886 (03) 5743887<br /><br /></li>
+        </ul>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="dn247279.html">Additional Digitizer Resources</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="I81fUrjo_xIzPGlAT81m_ZxJp4aOJuyzX-xgH3gcPFs8IfTfD2QZYnrCaWn_jxJbXjAuNMF-PiyhSwlqFBvlbnA_m764GGqmkq0-Ff5i3jfvnsBEXax4VK7K8ggnbw7dzKvnYQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn266003.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn266003.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="AoLncvQaiRfHwVtPBNwuJGqbbvqqM5EkhRyDvBnsv8QNBYLv-YsotoFekx_31nR3-l0qwQrNkAM3NxfVnRHbtVhCGl8uP_iWSNTn_srWZwdaQbzgRiMDoih_fe_DyVCKnztuzw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn266003(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"fcf481e3-2b2f-4dc6-bbc8-1dab91f2fded\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn266003.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:07:08 GMT -->
+</html>

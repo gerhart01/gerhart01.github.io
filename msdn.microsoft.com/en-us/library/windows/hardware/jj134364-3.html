@@ -1,0 +1,3912 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134364 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" />
+        <title>Device.Connectivity Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134364(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93C-9:12:21 AM" />
+
+<meta name="Search.ShortId" content="jj134364" />
+
+<meta name="ms.shortidmsdn" content="jj134364" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072741&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134364&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.Connectivity Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.Connectivity.BluetoothDevices</h2>
+      <div id="sectionSection0" class="section">
+        <p>Devices that connect to the PC via Bluetooth.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.BluetoothDevices.BluetoothDeviceIdProfileVer12</p>
+              <p>Device.Connectivity.BluetoothDevices.BluetoothDeviceIdProfileVer13</p>
+              <p>Device.Connectivity.BluetoothDevices.BluetoothHidLimitedDiscoverableMode</p>
+              <p>Device.Connectivity.BluetoothDevices.BluetoothUSBPlugandPlay</p>
+              <p>Device.Connectivity.BluetoothDevices.ComplementarySubsystemList</p>
+              <p>Device.Connectivity.BluetoothDevices.FunctionAfterSystemSuspendCycle</p>
+              <p>Device.Connectivity.BluetoothDevices.HidInitiatedReconnect</p>
+              <p>Device.Connectivity.BluetoothDevices.KeyboardsSupportPasskeyAuthentication</p>
+              <p>Device.Connectivity.BluetoothDevices.RespondToServiceDiscoveryRequests</p>
+              <p>Device.Connectivity.BluetoothDevices.SupportBluetooth21</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.BluetoothDeviceIdProfileVer12</h3>
+        <div class="subSection">
+          <p>Devices that support Bluetooth must implement the DeviceID profile, version 1.2.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth system defines a Service Discovery Protocol (SDP). Bluetooth PC peripherals must support SDP as described in Specification of the Bluetooth System, Version2.1+EDR, PartB. The Plug and Play information is a single record that gives the device’s VID/PID. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.BluetoothDeviceIdProfileVer13</h3>
+        <div class="subSection">
+          <p>Devices which support Bluetooth must implement the Device ID (DI) profile version 1.3 or Device Information Service (DIS), as applicable</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Bluetooth PC peripherals must include the Device ID record as specified in the Device ID profile, version 1.3, for BR/EDR Bluetooth or the Device Information Service (DIS), version 1.1, Bluetooth LE. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.BluetoothHidLimitedDiscoverableMode</h3>
+        <div class="subSection">
+          <p>Bluetooth HID devices must be discoverable only in Limited Discoverable Mode.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Bluetooth HID devices must be discoverable only in Limited Discoverable Mode. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.BluetoothUSBPlugandPlay</h3>
+        <div class="subSection">
+          <p>Bluetooth wireless technology device supports Plug and Play on the applicable bus</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB must comply with Specification of the Bluetooth System, Version 1.1 or later, "Part H:2, USB Transport Layer."</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.ComplementarySubsystemList</h3>
+        <div class="subSection">
+          <p>Bluetooth wireless technology subsystem end product lists Windows operating system in its complementary subsystem list</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth subsystem end product must list the Windows operating system in the complementary subsystem list as described in Bluetooth Qualification Program Reference Document, Version2.1, Section6.1, "Bluetooth Subsystems."</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.FunctionAfterSystemSuspendCycle</h3>
+        <div class="subSection">
+          <p>Bluetooth device appears and continues to function properly after a system suspend resume cycle</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Bluetooth devices which are present before any system sleep state are present upon wake from that sleep state. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.HidInitiatedReconnect</h3>
+        <div class="subSection">
+          <p>HID Devices which support Bluetooth support HID-initiated re-connect</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The HIDReconnectInitiate attribute (defined in Bluetooth HID Profile, 1.0, Section7.11.5, "HIDReconnectInitiate") must be enabled. To automatically reconnect to the host if the connection is dropped, the device must enter page mode.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 05, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.KeyboardsSupportPasskeyAuthentication</h3>
+        <div class="subSection">
+          <p>Bluetooth Keyboards which implement Secure Simplified Pairing must support the Passkey authentication method</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Keyboards which implement Secure Simplified Pairing must support the Passkey authentication method.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.RespondToServiceDiscoveryRequests</h3>
+        <div class="subSection">
+          <p>Bluetooth Devices respond to Service Discovery requests before requiring authentication and while in inquiry scan state.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Service discovery must be completed before requiring authentication. Bluetooth PC peripherals must support Security Specification as described in Specification of the Bluetooth System, Version2.1+EDR, Part H.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.BluetoothDevices.SupportBluetooth21</h3>
+        <div class="subSection">
+          <p>Devices which support Bluetooth must implement the Bluetooth 2.1 requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.BluetoothDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Bluetooth devices must comply with the Bluetooth 2.1 + EDR requirements outlined in Bluetooth Version 2.1 + EDR specifications.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.NearFieldProximity</h2>
+      <div id="sectionSection1" class="section">
+        <p>Near Field Proximity is a set of short range wireless technologies to enable communication between a personal computer and a device. </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.NearFieldProximity.DeviceNFCCertification</p>
+              <p>Device.Connectivity.NearFieldProximity.DeviceRangeOfActuation</p>
+              <p>Device.Connectivity.NearFieldProximity.DeviceTapToSetup</p>
+              <p>Device.Connectivity.NearFieldProximity.NfcForumTag</p>
+              <p>Device.Connectivity.NearFieldProximity.TouchMark</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.NearFieldProximity.DeviceNFCCertification</h3>
+        <div class="subSection">
+          <p>NFC Implementations must receive NFC certification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A device that implements air interface specifications incorporated by the NFC Forum by reference as approved specifications must receive NFC Certification from the NFC Forum, inclusive of: </p>
+          <p>Wave 1 compliance</p>
+          <p>SNEP compliance</p>
+          <p> </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.NearFieldProximity.DeviceRangeOfActuation</h3>
+        <div class="subSection">
+          <p>Proximity technology meets range of actuation</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A device that implements NFP technology must support an effective operating volume to enable users to successfully use NFP technology with Windows in 95 times out of 100 attempts for all tap and do scenarios.  Refer to the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document for detailed placement guidance, as well as acceptable, minimum, and maximum values for the required effective operating volume. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.NearFieldProximity.DeviceTapToSetup</h3>
+        <div class="subSection">
+          <p>Proximity device supports tap and setup</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A device that supports pairing with Windows using NFP technology must implement the tap and setup scenario defined in more detail in the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document.  The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.NearFieldProximity.NfcForumTag</h3>
+        <div class="subSection">
+          <p>Tap and setup with passive devices</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A device that uses only an NFC Forum tag as the NFP technology must adhere to the NFC Forum NDEF specification. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.NearFieldProximity.TouchMark</h3>
+        <div class="subSection">
+          <p>If using NFC as a proximity technology, then there must be a touch mark on the device.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.NearFieldProximity</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To help users locate and use the proximity technology, the use of a visual mark is required for NFC enabled devices (those devices that implement air interface specifications incorporated by the NFC Forum by reference as approved specifications).  Refer to the most current version of the 'Windows 8 Near Field Proximity Implementation Specification' document for placement guidance and mark usage requirements. The spec can be found at:http://go.microsoft.com/fwlink/?LinkId=237135</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.Network.VerticalPairing</h2>
+      <div id="sectionSection2" class="section">
+        <p>Root for former Rally technologies</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.Network.VerticalPairing.WCN</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.Network.VerticalPairing.WCN</h3>
+        <div class="subSection">
+          <p>An 802.11 network-enabled device that operates as a station (STA) must implement WCN-NET and meet basic 802.11 requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.Network.VerticalPairing</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A 802.11 network-enabled device that operates as a station (STA) must meet the following requirements:</p>
+          <p>The device must implement WCN-NET and comply with the specification. </p>
+          <p>The device must implement WCN-NET vertical-pairing extensions and indicate whether it supports a PnP-X transport protocol. If the device supports a PnP-X transport protocol, it must ensure correct universally unique identifier (UUID) alignment. </p>
+          <p>If WCN-UFD is implemented, it must comply with the specification. </p>
+          <p>If the device has a display that capable of showing a four-digit or eight-digit number, it must support displaying a dynamic Windows Connect Now (WCN) PIN without user intervention. The PIN must be displayed for a minimum of two minutes after the device receives a Wireless Provisioning Services (WPS) M2D message with the value of "Windows" in the WPS Model Name attribute. </p>
+          <p>If the device does not have a display that is capable of showing a four-digit or eight-digit number, it must provide a physical label affixed to the device that includes the eight-digit PIN and clearly labels the PIN value as a PIN (for example, PIN: 12345670). </p>
+          <p>The device must be certified by the Wi-Fi Alliance, including Wi-Fi certification, Wi-Fi Protected Access 2 (WPA2) certification, and Wi-Fi Protected Setup certification. </p>
+          <p>Design Notes:For implementation details, see the WCN-NET specification at <a href="http://go.microsoft.com/fwlink/?LinkId=109371">http://go.microsoft.com/fwlink/?LinkId=109371</a> and the WCN-UFD specification at <a href="http://go.microsoft.com/fwlink/?LinkId=109372">http://go.microsoft.com/fwlink/?LinkId=109372</a>.</p>
+          <p>For more information, see the "Installing Wi-Fi Devices Using Rally Vertical Pairing" white paper at <a href="http://www.microsoft.com/whdc/connect/rally/WiFiVerticalPair.mspx">http://www.microsoft.com/whdc/connect/rally/WiFiVerticalPair.mspx</a>.</p>
+          <p>Additional information can be found at <a href="http://go.microsoft.com/fwlink/?LinkId=109373">http://go.microsoft.com/fwlink/?LinkId=109373</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=109368">http://go.microsoft.com/fwlink/?LinkId=109368</a>.</p>
+          <p>WCN-NET is required. WCN-UFD is optional and is supported in Windows for backward compatibility with devices that are designed to support WCN functionality for Windows XP with Service Pack 2. </p>
+          <p>A device uses WCN-NET vertical-pairing extensions to indicate that its supports PnP-X. The device must provide a single UUID that is provided in both the WCN-NET exchange and the UPnP„¢/Web Services for Devices (WSD) device file or provide the UPnP/WSD device UUID in the TransportUUID attribute of the WCN-NET vertical-pairing extension. The UUID that is provided in UPnP or WSD must be in lowercase (decimal digits can also be used). </p>
+          <p>For WSD implementations, the WSD UUID is provided as the endpoint reference address and must be of the form urn:uuid:. For UPnP implementations, the UPnP UUID is provided as the root device UUID.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.PciConnected</h2>
+      <div id="sectionSection3" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.PciConnected.64BitPrefetchableBar</p>
+              <p>Device.Connectivity.PciConnected.ConfigurationSpaceCorrectlyPopulated</p>
+              <p>Device.Connectivity.PciConnected.ExpressCardImplementsSerialNumber</p>
+              <p>Device.Connectivity.PciConnected.InterruptDisableBit</p>
+              <p>Device.Connectivity.PciConnected.MsiOrMsixSupport</p>
+              <p>Device.Connectivity.PciConnected.PciAndPcixDevicesArePciCompliant</p>
+              <p>Device.Connectivity.PciConnected.PCIExpress</p>
+              <p>Device.Connectivity.PciConnected.SubsystemIdsRequired</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.64BitPrefetchableBar</h3>
+        <div class="subSection">
+          <p>PCI-X and PCI Express devices that use prefetchable memory BARs, implement 64-bit prefetchable memory base address registers (BARs)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that sit on the PCI-X or PCI Express bus and use prefetchable memory BARs must implement 64-bit prefetchable memory BARs on x64-based systems.Design Notes:See "Firmware Allocation of PCI Device Resources in Windows"http://www.microsoft.com/whdc/system/bus/pci/PCI-rsc.mspxIf the device supports 64-bit prefetchable memory BARs, Windows attempts to assign a region above 4 GB. In a PCI bridge, Windows ignores boot configuration for an entire device path emanating from the bridge in whose scope this method is defined. For the bridge and devices below it to be assigned a region above 4 GB, all devices in the path must support 64-bit prefetchable BARs. If this is not true, the rebalance code runs and moves all resource assignments below 4 GB, because the goal is to start as many devices as possible</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.ConfigurationSpaceCorrectlyPopulated</h3>
+        <div class="subSection">
+          <p>Configuration space for PCI device is correctly populated</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>PCI2.3 describes the configuration space that thesystem uses to identify and configure each device that is attached to the bus. The configuration space is made up of a header region and a device-dependent region. Each configuration space must have a 64-byte header at offset0. All the device registers that the device circuit uses for initialization, configuration, and catastrophic error handling must fit within the space between byte64 and byte255.All other registers that the device uses during normal operation must be located in normal I/O or memory space. Unimplemented registers or reads to reserved registers must finish normally and return zero. Writes to reserved registers must finish normally, and the data must be discarded.All registers that the device requires at interrupt time must be in I/O or memory space.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.ExpressCardImplementsSerialNumber</h3>
+        <div class="subSection">
+          <p>A single ExpressCard module that supports both USB and PCI Express interfaces implements a common serial number</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An ExpressCard module that supports both USB and PCI Express interfaces on a single module must implement the common serial number as described in the PCI ExpressCard Electromechanical Specification.This is the only method that Windows will use to determine the relationship of USB and PCI Express on one module. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.InterruptDisableBit</h3>
+        <div class="subSection">
+          <p>PCI and PCI-X devices, that are PCI 2.3 compliant, support the interrupt-disable bit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All PCI and PCI-X devices that claim support for PCI Local Bus Specification Revision 2.3 or later, must support the interrupt-disable bit.Design Notes: See PCI Local Bus Specification, Revision2.3, Section6.2.2.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.MsiOrMsixSupport</h3>
+        <div class="subSection">
+          <p>PCI device that reports PCI-X capability in the PCI configuration space and that generates interrupts may support MSI or MSI-X but is not required to do so</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>As part of the PCI Conventional Specification 2.2 or later, PCI-X Addendum, Section 3.2, all PCI-X devices that generate interrupts must support message-signaled interrupts. For MSI implementation, MSI capabilities must be implemented in the configuration space. For MSI-X implementation, MSI-X capabilities must be implemented in the configuration space.However, because PCI-X is being replaced by PCI Express and many existing implementations do not support MSI or MSI-X, this requirement is being relaxed. Any device that claims to support MSI or MSI-X must do so or will fail the relevant WDK tests. Design Notes:Message Signaled Interrupt for PCI-X device is required by industry standard specification. However, see above.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.PciAndPcixDevicesArePciCompliant</h3>
+        <div class="subSection">
+          <p>PCI and PCI-X devices, at a minimum, are PCI 2.1 compliant</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2008 x86, x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All PCI and PCI-X devices must comply with the PCI Local Bus Specification, Revision 2.1 or later. This requirement applies to devices on X86, IA64 and x64 systems.Design Notes:See PCI Local Bus Specification, Revision 2.1 or later.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.PCIExpress</h3>
+        <div class="subSection">
+          <p>PCI Express requirement</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>1. Device driver for PCI Express device does not modify VC Enable settings:The device driver must not modify the "VC Enable" bit (PCI Express Base Specification, Version1.0a, Section7.11.7, VC Resource Control Register: bit 31) for any of the device's extended (non-VC0) virtual channel or channels. 2. PCI Express link active state L1 exit latency does not exceed 64 µS:A PCI Express link, between root complex and device or bridge, cannot have an active state L1 exit latency of more than 64 microseconds on systems unless the link is associated with a PCI Express cable; that is, a value of 111b cannot be reported in the link capabilities register field 17:15. See PCIe Express Base Specification, Revision 1.0a, Section 7.8.6.3. PCI Express hot-plug port that supports firmware-controlled hot plug uses the _OSC control method for enable and disable:All PCI Express hot-plug ports that support firmware-controlled hot-plugs must support the_OSC control method for enabling and disabling firmware-controlled hot-plug as described in the PCI Firmware Specification Version 3.0. See PCI Express Base Specification, Revision 1.1, Section 6.7.4.4. PCI Express component implements a single device number on its primary interface:Every PCI Express component (that is, physical device) is restricted to implementing a single device number on its primary interface (upstream port), but it may implement up to eight independent functions within that device number. See PCI Express Base Specification, Revision1.1 (or later), Section 7.3.1.5. PCI Express device implements support for MSI or MSI-X:MSI support, which is optional for PCI 2.1, PCI 2.2, and PCI 2.3 devices, is required for PCI Express devices. This capability can be either implemented as MSI or MSI-X. See PCI Express Base Specification, Revision1.0a, Section 6.1.6. PCI Express root complex supports the enhanced (memory-mapped) configuration space access mechanism:The root complex must support the enhanced configuration space access mechanism as defined in PCI Express Base Specification, Revision 1.1 (or later), Section 7.9.7. PCI Express device that can interrupt supports the interrupt disable bit:If an interrupt is implemented, PCI Express devices must support the interrupt disable functionality described in PCI Local Bus Specification, Revision2.3. This bit disables the device or function from asserting INTx. A value of 0 enables the assertion of its INTx signal. A value of 1 disables the assertion of its INTx signal. This bit's state upon reset is 0</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.PciConnected.SubsystemIdsRequired</h3>
+        <div class="subSection">
+          <p>Device IDs include PCI subsystem IDs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.PciConnected</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The SID and SVID fields must comply with the SID requirement in PCI Local Bus Specification 2.3 and the implementation details in "PCI Device Subsystem IDs and Windows." AMR devices and MR devices on the system board are not exempt from the requirement for SID and SVID.SVID is not required for PCIe to PCI/PCI-X bridges.Design Notes:See "PCI Device Subsystem IDs and Windows" at http://go.microsoft.com/fwlink/?LinkId=36804. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.UsbDevices</h2>
+      <div id="sectionSection4" class="section">
+        <p>Applies to all devices connected via USB including USB Hubs. Does not apply to USB Controllers</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.UsbDevices.Addressing</p>
+              <p>Device.Connectivity.UsbDevices.AlternateDriver</p>
+              <p>Device.Connectivity.UsbDevices.CompliesWithChap9</p>
+              <p>Device.Connectivity.UsbDevices.DebugCompliesWithDebugSpec</p>
+              <p>Device.Connectivity.UsbDevices.DebugCompliesWithDebugSpecUSB3</p>
+              <p>Device.Connectivity.UsbDevices.DeviceAttachLessThan100ms</p>
+              <p>Device.Connectivity.UsbDevices.EsdRecovery</p>
+              <p>Device.Connectivity.UsbDevices.FunctionSuspendSelectiveSuspend</p>
+              <p>Device.Connectivity.UsbDevices.InstallViaUniquePnpIdentifier</p>
+              <p>Device.Connectivity.UsbDevices.InternalDevicesMustSupportSuspend</p>
+              <p>Device.Connectivity.UsbDevices.IsochronousDeviceAndDriver</p>
+              <p>Device.Connectivity.UsbDevices.MsOsContainerId</p>
+              <p>Device.Connectivity.UsbDevices.MustBeFunctionalAfterResume</p>
+              <p>Device.Connectivity.UsbDevices.MustEnumerateOnEhciAndXhci</p>
+              <p>Device.Connectivity.UsbDevices.MustNotDisconnectDuringSuspend</p>
+              <p>Device.Connectivity.UsbDevices.MustResumeWithoutForcedReset</p>
+              <p>Device.Connectivity.UsbDevices.MustSignalAttachWithin500ms</p>
+              <p>Device.Connectivity.UsbDevices.MustSupportSuspend</p>
+              <p>Device.Connectivity.UsbDevices.MustSupportSuspendOnRT</p>
+              <p>Device.Connectivity.UsbDevices.PeripheralOperatesInFunctionMode</p>
+              <p>Device.Connectivity.UsbDevices.PortMove500ms</p>
+              <p>Device.Connectivity.UsbDevices.RespondAllStringRequests</p>
+              <p>Device.Connectivity.UsbDevices.ResponsesLimitedByWlengthField</p>
+              <p>Device.Connectivity.UsbDevices.SerialNumbers</p>
+              <p>Device.Connectivity.UsbDevices.SerialNumbersUseValidCharacters</p>
+              <p>Device.Connectivity.UsbDevices.SuperSpeedOnConnectViaUsb3Port</p>
+              <p>Device.Connectivity.UsbDevices.TestedUsingMicrosoftUsbStack</p>
+              <p>Device.Connectivity.UsbDevices.Usb3CompatibleWithDownLevel</p>
+              <p>Device.Connectivity.UsbDevices.UsbifCertification</p>
+              <p>Device.Connectivity.UsbDevices.UseUsbClassOnlyForControllerOrHub</p>
+              <p>Device.Connectivity.UsbDevices.WirelessUsbObtainsWusbLogoFromUsbif</p>
+              <p>Device.Connectivity.UsbDevices.WirelessUsbWiMediaAlliace</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.Addressing</h3>
+        <div class="subSection">
+          <p>USB device can be configured to any USB address</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To ensure that the devices function at all device address ranges, USB devices must be able to be configured to any USB address that the host provides. The device must enumerate and function correctly at any address ranging from 1 to 127. See USB Specification, Revision 2.0 or later, Sections9.1.1.4 and 9.4.6.Justification:  Reduces resume time and maintains device state on resume from S3.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.AlternateDriver</h3>
+        <div class="subSection">
+          <p>USB devices should allow the Operating System to load an alternate driver on device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices must retain basic USB functionality after a driver re-enumeration occurs. For example, a driver that redirects I/O to alternate paths requires re-enumeration. A common way to perform USB redirection is to issue an IOCTL_USB_CYCLE_PORT report on the target driver to trigger re-enumeration of the physical device. Justification: When a virtual PC needs to connect to a physical USB device, the virtual PC loads a driver that is called an "Alternate Driver". This event triggers re-enumeration. After re-enumeration occurs many times, the physical device can no longer function. This requirement attempts to address this problem.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This Requirement does NOT apply to Systems that Support Connected Standby</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.CompliesWithChap9</h3>
+        <div class="subSection">
+          <p>USB device complies with implementation details from the USB specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any devices that are connected externally or internally to a USB port must be tested as USB devices€”that is, the devices provide the capabilities of one or more functions, a hub to the host, or both, as described in USB Specification, Revision 2.0 or later, Chapters 9 and 11. Therefore, these requirements apply to any device that is connected to a USB port: the USB specification and any related USB device class specification, and the Windows Hardware Certification Kit (Windows HCK) program requirements for USB and the related device class.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.DebugCompliesWithDebugSpec</h3>
+        <div class="subSection">
+          <p>USB debug device complies with USB2 Debug Device Specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB devices designed for debug purposes over USB 2.0 must comply with USB2 Debug Device Functional Specification, which includes details on the device framework, commands, and additional operational requirements.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.DebugCompliesWithDebugSpecUSB3</h3>
+        <div class="subSection">
+          <p>USB 3.0 debug cables comply with USB 3.0 specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB cables designed for USB 3.0 host debugging must comply with the Universal Serial Bus 3.0 Specification, section 5.5.2.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 30, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.DeviceAttachLessThan100ms</h3>
+        <div class="subSection">
+          <p>USB device that signals device-attach responds after at least 100 ms</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>When the USB device has signaled device-attach, the operating system provides a debounce interval of 100ms. The device must respond at the end of that interval. This is described in USB Specification, Revision2.0, Section 7.1.7.3. This requirement ensures that the electrical and mechanical connections are stable before the attached device is reset. Justification: Some devices after a few iterations of going into s3 fail to show up on the device tree</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.EsdRecovery</h3>
+        <div class="subSection">
+          <p>USB device does not trigger ESD recovery on USB hubs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices must not trigger ESD recovery when connected to a USB hub. Triggering ESD causes fail-safe code to be executed in the hub driver and negatively affects the functionality of other devices attached to the hub. This is described in USB Specification, Revision 2.0 or later, Sections 7.2.3.Justification:  Triggering ESD causes fail safe code to be executed in the hub driver and will impact the functionality of other devices attached to the hub.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.FunctionSuspendSelectiveSuspend</h3>
+        <div class="subSection">
+          <p>USB 3.0 devices correctly implement Function Suspend and Selective Suspend</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any function that is in a suspend state before a device is selectively suspended remains in the function suspend state when the device is resumed from the selective suspend state. Devices must not place all device functions in the function suspend state. Devices must report the selective suspend state.SuperSpeed devices ignore the DEVICE_REMOTE_WAKEUP feature selector.When all functions of a SuperSpeed device are in the function suspend state and the PORT_U2_TIMEOUT field is programmed to 0xFF, the device initiates U2 after 10 milliseconds (ms) of link inactivity. For more information, see section 9.2 of the USB 3.0 Specification.Devices that are resumed from the selective suspend state retain a minimum set of device state information as specified in section 9.2.5.2 of the USB 3.0 Specification. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.InstallViaUniquePnpIdentifier</h3>
+        <div class="subSection">
+          <p>Third-party drivers for USB devices install through a unique PnP identifier match or a compatible ID match when allowed</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All Universal Serial Bus (USB) devices must have VID and PID sections in the PnP Device ID string. Third-party USB function drivers must not install through a compatible ID match, unless specifically permitted for a particular technology. The list of devices drivers that can be installed using a compatible ID match (Class, SubClass, Prot) is the following:WirelessUSB Cable Association Driver (CLASS_EF&amp;SUBCLASS_03&amp;PROT_01)</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.InternalDevicesMustSupportSuspend</h3>
+        <div class="subSection">
+          <p>All internally connected USB devices must go to Selective Suspend after periods of inactivity</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All internally connected USB devices must be capable of entering the suspend state after device drivers for those devices initiate the USB Selective Suspend process. Third-party drivers for internal devices on applicable systems must implement USB Selective Suspend.</p>
+          <p>Devices belonging to these device classes can opt out of supporting USB Selective Suspend:</p>
+          <p>Printers </p>
+          <p>Scanners </p>
+          <p>Fax </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Printers, scanners and fax device class</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.IsochronousDeviceAndDriver</h3>
+        <div class="subSection">
+          <p>Isochronous USB device and driver requirement</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>1. ISO USB device and driver provide multiple alternate settings to support maximum flexibility of hardware interface options:If any alternate setting consumes isochronous bandwidth, devices and drivers must provide multiple alternate settings for each interface.2. USB device and driver do not use isochronous bandwidth for alternate setting 0:Devices and drivers must not use isochronous bandwidth for alternate setting 0. Devices must consume bandwidth only when they are in use.3.USB isochronous full-speed or high-speed device that uses more than 50 percent of USB bus bandwidth provides alternate settings:If a USB isochronous full-speed or high-speed device uses more than 50 percent of USB bus bandwidth, it must provide alternative settings that allow the device to switch to a setting that uses less than 50 percent of the bus bandwidth and operate as a device of that particular class (ex. if it is a camera then it must continue to stream video), even though it may be in a lower quality mode.Devices with attached host controllers are exempt from this requirement.4. USB device with interfaces containing isochronous endpoints has at least one alternative interface for low bandwidth scenarios:USB device must provide at least one alternative interface for low bandwidth as described inUSB Specification, Revision 2.0 or later, Section 9.6.5.Design Notes:See section 9.6.5 in the Universal Serial Bus Specification, Revision 2.0.If two or more devices are connected that use more than 50 percent of the bus bandwidth and do not provide alternate settings, only one of the devices works at a time.See USB Specification, Revision 2.0or later, Sections 5.6 and 5.7.Justification:  Alternate settings are at the interface descriptor level, specifying different amounts of bandwidth a device requests the host controller to reserve for it. Imagine a conference camera with settings like 50% ,30%, 20%. It starts by asking the host if 50% is available and whether the host can reserve it. If not, then the host chooses the next alternate setting till they have a mutual agreement. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MsOsContainerId</h3>
+        <div class="subSection">
+          <p>USB devices which implement the MS OS Container ID descriptor implement it correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a multifunction USB device implements the Microsoft® operating system ContainerID descriptor, the device does this in the Microsoft operating system feature descriptor.  The Microsoft operating system ContainerID descriptor allows Windows® to correctly detect multifunction devices. The descriptor provides a way for all the device nodes to appear as one physical object in the Devices and Printers user interface (UI).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustBeFunctionalAfterResume</h3>
+        <div class="subSection">
+          <p>Attached USB devices must be functional after resuming from system power states.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices not entering a timely ready state will be marked code 10 or other by the system. Certain classes of devices do not properly respond to system events, such as resume, and require upper driver or expect precise boot timings in order to function properly. Device also must be able to function without a port reset upon resume but also remain functional if a reset does occur.A device must be in the attached state (USB Specification 2.0, section 9.1) to be configured and device must be in the configured state before its functions maybe used (aka, the device is useable). This is per the USB spec 2.0 as in section 9.1 and 9.2.6.2 "After a port is reset or resumed, the USB System Software is expected to provide a "recovery" interval of 10 ms before the device attached to the port is expected to respond to data transfers. The device may ignore any data transfers during the recovery interval."Clarification:Devices must be functional after resuming from system power states whether a port reset is issued or not. Justification:  Devices not entering a timely ready state will be marked code 10 or other by system. Certain classes of devices do not have sufficient resources to handle system events, such as resume, and require upper driver or expect precise boot timings in order to function properly.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustEnumerateOnEhciAndXhci</h3>
+        <div class="subSection">
+          <p>All USB devices must enumerate and operate on EHCI and xHCI controllers as well as downstream of full speed, high speed, and SuperSpeed USB hubs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB devices must enumerate and operate as a user would expect on Enhanced Host Controller Interface (EHCI) controllers and Extensible Host Controller Interface (xHCI) controllers. All USB devices must also operate as a user would expect downstream of a full-speed, high-speed or SuperSpeed hub. </p>
+          <p>The following scenarios will be covered in this requirement: </p>
+          <p>EHCI + device under test (DUT) </p>
+          <p>EHCI + high-speed hub + full-speed hub + DUT </p>
+          <p>EHCI + high-speed hub + DUT </p>
+          <p>xHCI + DUT </p>
+          <p>xHCI + SuperSpeed hub + DUT </p>
+          <p>xHCI + High speed hub + DUT </p>
+          <p>When selecting a system with xHCI controllers for testing this requirement, note that some of these hubs may already be integrated into the controller chipset or embedded into the system that is under testing. External physical ports must be checked for their exact routing to the xHCI controller to test the correct scenario. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustNotDisconnectDuringSuspend</h3>
+        <div class="subSection">
+          <p>USB devices must not disconnect from the upstream port while going to or resuming from selective suspend.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB devices must not disconnect from the upstream port during the selective suspend process. To test this requirement, we will cause the device to go into the selective suspend state and then resume the device. During this process, we will observe the port status bits of the upstream port and verify that the device does not disconnect during this time. We will repeat this process several times. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustResumeWithoutForcedReset</h3>
+        <div class="subSection">
+          <p>All USB devices work properly upon resume from sleep, hibernation or restart without a forced reset of the USB host controller</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB devices work properly upon resume from sleep, hibernation or restart without a forced reset of the USB host controllerDesign Notes:  Registry key ForceHCResetOnResume documented at the KB below is not needed for devices to function properly upon resume in Windows 7.http://support.microsoft.com/kb/928631Note that a known set of currently existing devices do require a forced reset upon resume, these devices should be covered in a list kept by the OS which will reset these devices upon resume. The goal of this requirement is to ensure that this list of devices which need a reset to appear after resume does not grow and that devices can properly handle sleep state transitions without being reset. A reset of the entire USB Host Controller results in significantly increased time that it takes for all USB devices to become available after system resume since there could be only one device at address 0 at a time, this enumeration has to be serialized for all USB devices on the bus. We have also seen that resetting the host controller can lead to an illegal SE1 signal state on some host controllers, which in turn can cause some USB devices to hang or drop off the bus. Moreover, devices cannot maintain any private state across sleep resume as that state will be lost on reset.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustSignalAttachWithin500ms</h3>
+        <div class="subSection">
+          <p>Devices must signal attach within 500 ms after the system resumes.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>After the system resumes from sleep, the hub driver will fetch the status of the port to which the device is connected. If the device does not show as connected, the hub driver will wait 500 milliseconds (ms) before the hub driver queries the port status again. If the device appears as connected within that time, the hub will not need to re-enumerate the device for Plug and Play, which will result in a better user experience. This requirement already exists for bus-powered devices in the USB specification. The requirement will now also apply to self-powered devices. Justification: Some devices take a long time to be discoverable by the operating system. This requirement does not try to enforce the device being back from sleep from a functional point of view. A certain amount of time is necessary to know if the device remains on the bus.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustSupportSuspend</h3>
+        <div class="subSection">
+          <p>All Bus powered USB devices support USB Suspend after periods of inactivity</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The device driver for a bus-powered device initiates the USB Selective Suspend process. The device can enter the suspend state from any powered state. The device must begin the transition to the suspend state after it sees a constant idle state on its upstream facing bus lines for more than 3.0 ms. In suspend state, the device must only draw suspend current from the bus after no more than 10 ms of bus inactivity on all its ports, as described in the USB Specification, Revision 2.0, Sections 7.1.7.6, 6 9.1.1.6 and 9.2.6.2.</p>
+          <p>Clarification about USB Selective Suspend in embedded USB devices can be found in the following requirement: Device.Connectivity.UsbDevices.InternalDevicesMustSupportSuspend </p>
+          <p>Clarification about USB Selective Suspend in Windows RT systems can be found in the following requirements: Device.Connectivity.UsbDevices.MustSupportSuspendOnRT </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.MustSupportSuspendOnRT</h3>
+        <div class="subSection">
+          <p>All Windows RT USB devices must go into Selective Suspend after periods of inactivity</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client ARM (Windows RT)</p>
+                <p>Windows 8.1 Client ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB devices must be capable of entering the suspend state after device drivers for those devices initiate the USB Selective Suspend process.  </p>
+          <p>Devices belonging to these device classes can opt out of supporting USB Selective Suspend: </p>
+          <p>Printers </p>
+          <p>Scanners </p>
+          <p>Fax </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Printers, scanners and fax device class</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.PeripheralOperatesInFunctionMode</h3>
+        <div class="subSection">
+          <p>USB peripheral operates in function mode when connected to a computer host controller</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>When connected to a system's host controller, a USB peripheral must operate as a USB function only. A function is a USB device that provides additional capabilities to the host controller. This is described in USB Specification, Revision 2.0 or later, Section 4 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.PortMove500ms</h3>
+        <div class="subSection">
+          <p>If the software enables the SuperSpeed and then resets the 2.0 port,  device should correctly move over</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In a USB 3.0 hub, two downstream ports, a USB 2.0 port and a SuperSpeed port, share the same connector. The USB 3.0 Specification says that if a device is currently connected on the USB 2.0 port, the device should try to reconnect at the SuperSpeed port when software resets the port. This situation has two relevant time intervals: The time that is necessary for the device to disconnect from the USB 2.0 port, and the total time that is necessary for the device to reconnect on the SuperSpeed port.The time between the time that the reset starts and the time that the device starts RxDetect on USB 3.0 can be up to 1 millisecond (ms). RxDetect can take up to 16 ms in the worst case. The time between the time that RxDetect succeeds and the time that RxDetect signals a disconnect on USB 2.0 can be up to 1 ms.  Therefore, the total time from the start of the reset to disconnect signaling can be up to 18 ms. Accounting for the polling interval of the hub, the total comes to 50 ms.Next, the time between the time that RxDetect succeeds and the time that the device enters U0 can be up to 300 ms. With an extra margin for hub control transfers and other delays, the total comes to 500 ms.To test this requirement, we will first disable the SuperSpeed termination, then re-enable SuperSpeed termination after some time, and then reset the USB 2.0 port. After these actions occur, the software will wait for a port status change notification on the USB 2.0 port and the SuperSpeed port. We will verify that the USB 2.0 port shows a status change that indicates that the device disconnected from the USB 2.0 port and that the SuperSpeed port then shows a status change that indicates that the device connected on the SuperSpeed port.  For more information, see Figure 9-1 in section 9.1.1 of the USB 3.0 Specification.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This Requirement does NOT apply to Systems that Support Connected Standby</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.RespondAllStringRequests</h3>
+        <div class="subSection">
+          <p>USB device responds to all string requests that the host sends to indexes</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB devices must respond accordingly to string requests that the host sends. Devices must stall if no string is stored at the index being queried or if a request error exists. Devices must not reset themselves or stop functioning. This is described in USB Specification, Revision 2.0 or later, Section 9.6.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.ResponsesLimitedByWlengthField</h3>
+        <div class="subSection">
+          <p>USB device responses to host requests are limited in size by the wLength field</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB device requests contain a wLength field. Responses by the USB device to host requests must be of size &lt;= wLength field of the device request as defined in the USB Specification, Revision1.1 or later, Section 9.3.5. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.SerialNumbers</h3>
+        <div class="subSection">
+          <p>USB serial numbers are implemented for specific device classes and are unique across specific device models</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB serial numbers must be implemented for the following device classes: · Bluetooth (Class Code 0xE0, SubClass 0x01, Protocol 0x01)· Communication device class (Class Code 0x02)· Mass storage (Class Code 0x08)· Scanning/imaging (Class Code 0x06)· Printing (Class Code 0x07) ·Host Wire Adapters and  Device Wire Adapters (Class Code 0xE0, subclass 02)USB serial numbers are optional for all other device classes.    Additionally, if serial numbers are implemented on the device's model, all devices of the same model must have unique serial numbers.Design Notes:For more information on USB device class details, see "Defined 1.0 Class Codes" at http://go.microsoft.com/fwlink/?LinkId=40497. For more information on implementation of serial numbers, see USB Specification, Revision 2.0 or later, Section 9.6. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.SerialNumbersUseValidCharacters</h3>
+        <div class="subSection">
+          <p>USB device that implements manufacturer-defined serial numbers contains valid characters</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A USB serial number must be a string that contains a manufacturer-determined ID composed of valid characters. Valid characters are defined in the Windows Driver Kit, "USB_DEVICE_DESCRIPTOR." Justification:  Devices with invalid serial numbers force drivers to remove these invalid characters when reporting the info to PNP. Doing so may cause two devices with different serial numbers (the numbers different via an invalid char) to be reported to PNP as having the same serial number.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.SuperSpeedOnConnectViaUsb3Port</h3>
+        <div class="subSection">
+          <p>If upstream SuperSpeed termination is on, devices must always connect on the USB 3.0 port and never connect on the USB 2.0 port</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In a USB 3.0 hub, two downstream ports, a USB 2.0 port and a Superspeed port, share the same connector. When a SuperSpeed (that is, non-hub) device is plugged into such a connector, the device must always connect on the SuperSpeed port. The device must never connect on the USB 2.0 port. To test this requirement, the software will verify that the USB 3.0 port status bits show a connected device and that the USB 2.0 port status bits do not show a connected device.  For a definition of "connect", see section 2 of the USB 3.0 Specification under "connected".</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This requirement does NOT apply to Systems that Support Connected Standby</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.TestedUsingMicrosoftUsbStack</h3>
+        <div class="subSection">
+          <p>USB Devices must be tested with Microsoft's xHCI Stack installed</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB Devices (Low, Full, High and Super Speed devices) must be tested with Microsoft's Extensible Host Controller Interface (xHCI) Stack installed and enabled on a Windows system. Note: During USB-IF self testing a specific USB Test Stack is installed for testing purposes, this is expected and acceptable.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.Usb3CompatibleWithDownLevel</h3>
+        <div class="subSection">
+          <p>USB 3.0 devices are backwards compatible with down level controllers and hubs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB 3.0 devices both enumerate and function on USB 2.0 controllers. USB 3.0 devices also need to enumerate and function when USB 3.0 devices are connected to a full-speed hub or to a high-speed hub, according to section 5.3.1.1 of the USB 2.0 specification.  "Function" means to operate as a user would expect a device of that class to operate. Design Notes:USB 3.0 devices must be able to do the following: </p>
+          <p>Reset successfully at high and full speeds.</p>
+          <p> </p>
+          <p>Respond successfully to standard requests at high and full speeds for device and configuration descriptors. Standard requests are set_address, set_configuration, and get_descriptor.</p>
+          <p> </p>
+          <p>Return appropriate information. </p>
+          <p>USB 3.0 devices must also be able to function at a minimum level, although USB 3.0 devices will not operate at super speed.  For example, a USB 3.0 mass storage device must be able to transfer files at full speed mode as well as at super speed mode. Although data transfer is much slower at the lower speed, data transfer is still possible.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.UsbifCertification</h3>
+        <div class="subSection">
+          <p>USB IF Tests are passing or device is USB IF certified</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Effective June 1, 2011, USB devices must pass USB Implementers Forum (IF) tests or be USB-IF certified. </p>
+          <p>See white paper on Windows HCK USB-IF Testing</p>
+          <p>at http://www.microsoft.com/whdc/connect/usb/wlk-usb-if-testing.mspxJustification:This is an existing requirement that is based on industry specifications.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.UseUsbClassOnlyForControllerOrHub</h3>
+        <div class="subSection">
+          <p>Third-party INF files include the class "USB" only if the device is a USB host controller, a root, or an external hub</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Class USB is often used incorrectly for devices that do not have a predefined class. For example, a USB mouse uses class HID, whereas a USB smartcard uses class smartcard reader. Class USB is reserved for host controllers and root or external USB hubs. If the vendor has a device that has no Windows-defined class but uses USB as the bus, it must define its own class or class GUID. The setup class associated with the type of USB device, not with the bus type, must be used. The setup class "USB" (ClassGuid = {36fc9e60-c465-11cf-8056-444553540000}) is reserved for USB host controllers and root or external USB hubs. It must not be used for other device categories. Design Notes:Microsoft provides system-defined setup classes for most device types. System-defined setup class GUIDs are defined in the Windows Driver Kit, "Devguid.h."If you choose the wrong class, the device appears in an incorrect location in Device Manager and in the Windows Vista UI. Using this class incorrectly may cause the device driver to fail hardware compatibility testing.For a list of Windows class GUIDs, see the Windows Driver Kit, "System-Supplied Device Setup Classes" at http://msdn.microsoft.com/en-us/library/ff553419(VS.85).aspx.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.WirelessUsbObtainsWusbLogoFromUsbif</h3>
+        <div class="subSection">
+          <p>Wireless USB device or host obtains Certified Wireless USB logo from the USB-IF</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All Wireless USB devices must get a Certified Wireless USB Logo from the USB-IF.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbDevices.WirelessUsbWiMediaAlliace</h3>
+        <div class="subSection">
+          <p>Certified Wireless USB device or host passes all required WiMedia Alliance compliance tests.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbDevices</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Wireless USB device must pass WiMedia Alliance radio compliance tests.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.UsbHub</h2>
+      <div id="sectionSection5" class="section">
+        <p>Requirements that apply only to USB Hubs</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.UsbHub.CompliesWithChap11</p>
+              <p>Device.Connectivity.UsbHub.IdentifyNumOfUserAccessiblePorts</p>
+              <p>Device.Connectivity.UsbHub.ImplementSuperSpeedDescriptors</p>
+              <p>Device.Connectivity.UsbHub.MapPortsPerUsb3Specification</p>
+              <p>Device.Connectivity.UsbHub.ProvideStandardInterfacesToHostPeripherals</p>
+              <p>Device.Connectivity.UsbHub.SuperSpeedRemainsOnAfterPortReset</p>
+              <p>Device.Connectivity.UsbHub.SupportSuspend</p>
+              <p>Device.Connectivity.UsbHub.Usb3HubCompliesWithUsb3Spec</p>
+              <p>Device.Connectivity.UsbHub.Usb3ReportPortStatusBitsCorrectly</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.CompliesWithChap11</h3>
+        <div class="subSection">
+          <p>USB hub that implements USB functionality complies with the related specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB hubs that fit into one of the USB device class definitions must comply with the appropriate USB specification as follows: USB 1.1, Revision1.1 USB 2.0, Revision2.0</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.IdentifyNumOfUserAccessiblePorts</h3>
+        <div class="subSection">
+          <p>USB hub correctly identifies and reports the number of ports that the user can access</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The USB hub must include details in its hub descriptor that provide the operating system with an accurate count of the number of downstream-facing ports that the hub supports and that are exposed to the user. See USB Specification, Revision 2.0, Section11.23, and USB 3.0 Specification, Section 10.14. Root hubs are exempt from this requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Does not apply to Root Hubs</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.ImplementSuperSpeedDescriptors</h3>
+        <div class="subSection">
+          <p>USB 3.0 hubs must properly implement the SuperSpeed hub descriptor, the standard SuperSpeed descriptors, the USB 2.0 ports, and  USB 3.0 hubs report version 2.1.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>As described in section 10.0 of the USB 3.0 Specification, a USB 3.0 hub incorporates a USB 2.0 hub and a SuperSpeed hub. All exposed downstream ports on a USB 3.0 hub must support both SuperSpeed and USB 2.0 connections.For more information on USB 3.0 devices that operate at speeds other than SuperSpeed, see section 9.2.6.6 of the USB 3.0 Specification.When a USB 3.0 hub is operating in SuperSpeed mode, the hub must correctly implement the descriptors that are described in Section 10.13 of the USB 3.0 Specification in addition to the standard USB descriptors. As described in section 10.13.1 of the USB 3.0 Specification, the hub must support the following SuperSpeed descriptors in SuperSpeed mode: </p>
+          <p>Device descriptor</p>
+          <p>Binary Device Object Store (BOS) descriptor</p>
+          <p>USB 2.0 Extension</p>
+          <p>SuperSpeed USB Device Capability descriptor</p>
+          <p>Container ID</p>
+          <p>Configuration descriptor (SuperSpeed information)</p>
+          <p>Interface descriptor</p>
+          <p>Endpoint descriptor (for status change endpoint)</p>
+          <p>Endpoint Companion descriptor (for status change endpoint)</p>
+          <p>The class-specific descriptors for SuperSpeed hubs that must be supported, as defined in section 10.13.2.1 in the USB 3.0 Specification, are as follows:·         SuperSpeed Hub descriptorImplementation DetailsStandard USB SuperSpeed descriptors will be tested via the USB Command Verifier chapter 9 test for USB 3.0 devices. In the Driver Test Manager (DTM), this test is the USB Device Framework Test.Table 1. SuperSpeed Hub Descriptor Asserts</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Assert</p>
+              </td>
+              <td>
+                <p>Description</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>The bDescLength field of the SuperSpeed Hub descriptor has a value of 0xCh.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>2</p>
+              </td>
+              <td>
+                <p>The bDescriptorType field of the SuperSpeed Hub descriptor has a value of 0x2Ah.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>3a</p>
+              </td>
+              <td>
+                <p>Bits D1..D0 of the wHubCharacteristics field of the SuperSpeed Hub descriptor must be 00 if the hub supports ganged power switching.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>3b</p>
+              </td>
+              <td>
+                <p>Bits D1..D0 of the wHubCharacteristics field of the SuperSpeed Hub descriptor must be 01 if the hub supports individual port power switching.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>4a</p>
+              </td>
+              <td>
+                <p>Bit D2 of the wHubCharacteristics field of the SuperSpeed Hub descriptor must be 0 for a hub that is not part of a compound device.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>4b</p>
+              </td>
+              <td>
+                <p>Bit D2 of the wHubCharacteristics field of the SuperSpeed Hub descriptor must be 1 for a hub that is part of a compound device.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>5</p>
+              </td>
+              <td>
+                <p>Bits D4:D3 of the wHubCharacteristics field of the SuperSpeed Hub descriptor must not be 11 or 10 for a self-powered hub.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>6</p>
+              </td>
+              <td>
+                <p>Bits D15D5 of the wHubCharacteristics field of the SuperSpeed Hub descriptor are reserved and must be 0.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>7</p>
+              </td>
+              <td>
+                <p>The bPwrOn2PwrGood field of the SuperSpeed Hub descriptor must be 0 if the hub does not support power switching. </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>8</p>
+              </td>
+              <td>
+                <p>The bHubHdrDecLat field of the SuperSpeed Hub descriptor must be in the range of 0x00h to 0x04h.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>9</p>
+              </td>
+              <td>
+                <p>The DeviceRemovable field of the SuperSpeed Hub descriptor reports the correct non-removable ports as non-removable.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>10</p>
+              </td>
+              <td>
+                <p>The bNbrPorts field of the SuperSpeed Hub descriptor reports the correct number of ports on the hub.</p>
+              </td>
+            </tr>
+          </table>
+          <p> </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.MapPortsPerUsb3Specification</h3>
+        <div class="subSection">
+          <p>USB 3.0 hubs must map their ports as defined in section 10.1 of the USB 3.0 Specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>External USB 3.0 hubs must follow the USB3 specification's connector mapping, except when the USB 3.0 hub may have an unequal number of USB 2.0 and USB 3.0 protocol ports.  For example, the SuperSpeed part of the 3.0 Hub has 'n' ports and 2.0 part of the 3.0 Hub has 'm' ports and minimum(m,n) = 'p'.  The first p ports of the SuperSpeed part and the 2.0 part should be mapped in order, so that port 1 of SuperSpeed hub maps to port 1 of the 2.0 hub, port 2 of the SuperSpeed hub maps to port 2 of the 2.0 hub and so on until port number p.  Each of these 'p' port mappings must either have an external connector for it OR both of the ports in the mapping should be marked as "non-removable" in their respective parent hub descriptors. Note, that if the ports in a mapping are marked as non-removable, only one of the ports in that mapping can have a device attached to it. The other port in that mapping should neither have any device attached to it nor a device can be attached to it i.e. the port should remain unused.If there are excess ports on the 2.0 part (i.e. m-p is not 0), each of those m-p ports may either be exposed to the user OR can be marked as non-removable. If there are excess ports on the SuperSpeed part (i.e. n-p is not 0), none of those n-p ports should be exposed to the user, all of them should be marked as non-removable.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.ProvideStandardInterfacesToHostPeripherals</h3>
+        <div class="subSection">
+          <p>USB hub provides standard connection interfaces to the host and USB peripherals</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All USB hubs must have one upstream-facing port and at least one downstream-facing port. The upstream-facing port must be a single Std-A receptacle for downstream traffic. The downstream-facing port or ports must be one of the following: Std-B receptacleMini-B receptacleCaptive Std-A cable, for upstream traffic Micro - B receptacleThis is described in USB Specification, Revision1.1 or later, Sections 6.2 and 11.1.2. and Micro-USB cables and connectors Revision 1.01 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.SuperSpeedRemainsOnAfterPortReset</h3>
+        <div class="subSection">
+          <p>USB 3.0 hubs must not turn off SuperSpeed termination on downstream ports upon over-current and port reset</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>DSPORT.Powered-off must be entered only when Rx termination is not detected or downstream Vbus is off. ClearPortFeature(PORT_POWER), Overcurrent, Upstream port reset, and SetConfig(0) must not cause SuperSpeed termination to be removed unless Vbus is also removed. If Vbus is removed, SuperSpeed termination must be re-enabled when Vbus is back on. If Upstream Vbus is removed, but the hub still provides Downstream Vbus (self-powered hub), then it must turn downstream SuperSpeed terminations back on.For more information, see figure 10-9 in the USB 3.0 Specification.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.SupportSuspend</h3>
+        <div class="subSection">
+          <p>USB hubs must support suspend, and downstream devices must not drop off the bus when the hub resumes from selective suspend</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB hubs must support the selective suspend state, as stated in both the USB Specification and other certification requirements. After a hub is resumed from the selective suspend state, all devices that were attached downstream of the hub, and that were not removed while the hub was suspended, must be present.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.Usb3HubCompliesWithUsb3Spec</h3>
+        <div class="subSection">
+          <p>USB 3.0 Hubs are compliant with USB 3.0 specification.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB 3.0 Hubs must be compliant with Universal Serial Bus (USB) 3.0 Specification USB 3.0 Hubs must :</p>
+          <p>Pass the USB-IF interoperability tests</p>
+          <p>Pass the USB 3.0 Hub compliance test suite</p>
+          <p>Pass the USB 3.0 CV test</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.UsbHub.Usb3ReportPortStatusBitsCorrectly</h3>
+        <div class="subSection">
+          <p>USB 3.0 hubs must always report the port status bits correctly as per the USB 3.0 Specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.UsbHub</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In the current stack, a number of invalid port status bit combinations that the hub reports are ignored. Any invalid combination of port status bits will be treated as an error. In particular, checks will follow these actions:  </p>
+          <p>Resetting a port</p>
+          <p>Suspending and resuming a port</p>
+          <p>System resume</p>
+          <p>A hub should not report spurious change interrupts. A hub should complete the port status interrupt transfer without reporting changes.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Connectivity.WSD</h2>
+      <div id="sectionSection6" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Connectivity.WSD.DPWS</p>
+              <p>Device.Connectivity.WSD.DPWSExtensibility</p>
+              <p>Device.Connectivity.WSD.MetadataExchange</p>
+              <p>Device.Connectivity.WSD.MetadataValid</p>
+              <p>Device.Connectivity.WSD.Schema</p>
+              <p>Device.Connectivity.WSD.WSDiscovery</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Connectivity.WSD.DPWS</h3>
+        <div class="subSection">
+          <p>Devices which use or interact with the Web Services on Devices API (WSDAPI) comply with Device Profiles for Web Services (DPWS) specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices which plan to use or interact with Microsoft Windows' implementation of DPWS, the Web Services on Devices API (WSDAPI), must implement the DPWS specification themselves. (WSDAPI) </p>
+          <p>Design Notes: </p>
+          <p>DPWS Specification available at </p>
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=109231">http://go.microsoft.com/fwlink/?LinkId=109231</a>
+          </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.WSD.DPWSExtensibility</h3>
+        <div class="subSection">
+          <p>Devices Profile for Web Services Devices must accept messages that contain extensibility sections, and process the messages as appropriate.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices Profile for Web Services (DPWS) devices must accept messages where the XML has been extended. If the device understands the content in the extensible section, it may process it. </p>
+          <p>Design Notes: </p>
+          <p>DPWS Specification available at </p>
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=109231">http://go.microsoft.com/fwlink/?LinkId=109231</a>
+          </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.WSD.MetadataExchange</h3>
+        <div class="subSection">
+          <p>Devices Profile for Web Services (DPWS) Devices support metadata exchange</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>DPWS Devices which interact with the Web Services on Devices API (WSDAPI) must support metadata exchange as defined in the metadata exchange specification. </p>
+          <p>Design Notes: </p>
+          <p>Metadata Exchange specification can be obtained at <a href="http://go.microsoft.com/fwlink/?LinkId=109248">http://go.microsoft.com/fwlink/?LinkId=109248</a></p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.WSD.MetadataValid</h3>
+        <div class="subSection">
+          <p>Devices which interact with the Web Services on Devices (WSDAPI) produce metadata that conforms to the Devices Profile for Web Services</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices which interact with WSDAPI must populate the Metadata as defined in the Device Profile for Web Services Specification of February 2006. </p>
+          <p>Design Notes: </p>
+          <p>The Device Profile for Web Services Specification of February 2006 is available at <a href="http://go.microsoft.com/fwlink/?LinkId=109231">http://go.microsoft.com/fwlink/?LinkId=109231</a></p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.WSD.Schema</h3>
+        <div class="subSection">
+          <p>A network-enabled device that implements Devices Profile for Web Services (DPWS) must adhere to the protocol and schema.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A network-enabled device that implements Devices Profile for Web Services (DPWS) must adhere to the Devices Profile for Web Services as described by the schema. </p>
+          <p>The device must also reference the namespace URI as described in The Devices Profile for Web Service specification. </p>
+          <p>A device the implements DPWS must adhere to the Web Services Description Language (WSDL) associated with the logo device class. The WSDL defines services as collections of network endpoints, or ports. WSDL specification provides an XML format for documents for this purpose. Devices must implement the WSDL version 1.1. </p>
+          <p>Design Notes: </p>
+          <p>See the Web Services Description Language (WSDL) Version 1.1 at <a href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">http://www.w3.org/TR/2001/NOTE-wsdl-20010315</a></p>
+          <p>See the Devices Profile for Web Services schema at <a href="http://schemas.xmlsoap.org/ws/2006/02/devprof/devicesprofile.xsd.">http://schemas.xmlsoap.org/ws/2006/02/devprof/devicesprofile.xsd.</a></p>
+          <p>See the Devices Profile for Web Service specification at <a href="http://specs.xmlsoap.org/ws/2006/02/devprof/devicesprofile.pdf.">http://specs.xmlsoap.org/ws/2006/02/devprof/devicesprofile.pdf.</a></p>
+          <p>Additional information can be found in the Windows Rally Development Kit at <a href="http://go.microsoft.com/fwlink/?LinkId=109368.">http://go.microsoft.com/fwlink/?LinkId=109368.</a></p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Connectivity.WSD.WSDiscovery</h3>
+        <div class="subSection">
+          <p>Devices Profile for Web Services (DPWS) Devices interacting with the Web Services on Devices API (WSDAPI) implement WS-Discovery</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Connectivity.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>DPWS Devices must implement WS-Discovery to work with WSDAPI. </p>
+          <p>Design Notes: </p>
+          <p>WS-Discovery specification can be obtained at <a href="http://go.microsoft.com/fwlink/?LinkId=109247">http://go.microsoft.com/fwlink/?LinkId=109247</a></p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="jjEWcf33s8FFWKUTTL0uLgd3oc4EHUMRofkSGt5KtIEi4pFNoj2jnVRPCesr9Ml8gTdqbR8b1xnoVSk4TxI65tIvRDwzMedcLIMF3Th8hu39_8zNbUHphK7XQ2zn10uCKdvApA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj134364" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134364" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="GsQdmJLsMw6n9VHYHUsOc0gSw8SxpnBQ3IaKLJc-NYfYflLDrbuBz-mOWk1Et63zxzXbLsTg6Bn5cT6iCT197vRLeak6-KGLFGyOrrb5Sw8VwetSF1uMj9TJ4z0M33FtcpSWsQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134364(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"fbd65740-7dff-4118-82d0-310f3b5f3564\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134364 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

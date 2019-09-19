@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn456917.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn456917.html" />
+        <title>Windows Precision Touchpad Device Validation Guide</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn456917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn456917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn456917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn456917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD4-3:59:39 AM" />
+
+<meta name="Search.ShortId" content="dn456917" />
+
+<meta name="ms.shortidmsdn" content="dn456917" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053979&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn456917.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998404.html" id="dn375838_WIN.10_en-us" mtpsaliasid="" mtpsassetid="31f60dd8-c2d5-4dab-916b-0ceec03aa949_WIN.10_en-us" mtpsshortid="hh998404_WIN.10_en-us" title="Device.Input Testing">Device.Input Testing</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn247302.html" id="dn375846_WIN.10_en-us" mtpsaliasid="" mtpsassetid="684bf35b-a599-44fa-84df-0dbd1631df93_WIN.10_en-us" mtpsshortid="dn247302_WIN.10_en-us" title="Additional Input Resources">Additional Input Resources</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a data-tochassubtree="true" href="dn456917.html" id="dn456899_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a357b1f8-e29a-4495-929d-5340be13a9c6_WIN.10_en-us" mtpsshortid="dn456917_WIN.10_en-us" title="Windows Precision Touchpad Device Validation Guide">Windows Precision Touchpad Device Validation Guide</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="dn456894.html" id="dn456907_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Precision Touchpad Tests">Precision Touchpad Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn456908.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Precision Touchpad Test Error Messages">Precision Touchpad Test Error Messages</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Windows Precision Touchpad Device Validation Guide</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This topic provides information about how to validate a Windows Precision Touchpad. It provides guidelines to ensure compliance with the Windows Precision Touchpad Windows Hardware Certification Kit (Windows HCK) testing.</p>
+      <p>This information applies to Windows 8.1.</p>
+      <p>Each test that is described in this topic is available through the Windows HCK.</p>
+      <p>
+        <strong>In this topic:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="#gen">General test guidelines</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#ptlogo">PTLogo interface</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#switches">PTLogo command line switches</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#selectsuspend">USB Selective Suspend</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <p>
+        <strong>In this section:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="dn456894.html">Precision Touchpad Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="dn456908.html">Precision Touchpad Test Error Messages</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="gen">
+        
+      </a>
+      <h2 class="heading">General test guidelines</h2>
+      <div id="sectionSection0" class="section">
+        <ul>
+          <li class="unordered">
+							Unless otherwise specified, the device should always have AC power when you are performing Windows HCK tests.<br /><br /></li>
+          <li class="unordered">
+							Unless otherwise specified, all tests should be run with “Test Signing Mode” ON:<br /><br /><ol class="ordered"><li>
+									Open a command prompt that has elevated privileges.<br /><br /></li><li>
+									Run the following command: <code>bcdedit –set testsigning on</code><br /><br /></li><li>
+									Restart the test machine.<br /><br /></li></ol></li>
+          <li class="unordered">
+							Unless otherwise specified, use 7mm diameter contacts for tests that require the use of the PT3 (Precision Touch Testing Tool).<br /><br /></li>
+          <li class="unordered">
+							Unless otherwise specified, all numbers in error messages that report distance or location are in himetric (0.01mm).<br /><br /></li>
+          <li class="unordered">
+							The grids in the PTLogo visualization help align vertices (for tests like Linearity), and graph distances. The distance from one line to the next is 200 in himetric, or 2mm.<br /><br /></li>
+          <li class="unordered">
+							Unless otherwise specified, multiple contacts should maintain a minimum separation distance:<br /><br /><ul><li class="unordered">
+									If vertically or horizontally aligned, contacts should be at least 11mm apart during test.<br /><br /></li><li class="unordered">
+									If diagonally aligned, contacts should be at least 14mm apart during test.<br /><br /></li></ul></li>
+          <li class="unordered">
+							The path to <strong>GetThqaBlob.exe</strong> on the Windows HCK controller is <strong>C:\Program Files (x86)\Windows Kits\8.1\Hardware Certification Kit\Tests\x86\digitizer\Win8Touch</strong>. All necessary files are copied to test machines when the Windows HCK client is installed.<br /><br /></li>
+          <li class="unordered">
+							Unless otherwise specified, you should disable Selective Suspend to validate USB PTP devices, with exceptions for Static Validation, Edge, Field Firmware Upgradeable (FFU), and Power State Transition tests.<br /><br /></li>
+          <li class="unordered">
+							For all tests that use the PT3, the PT3 must be axis-aligned to the sensor lines as closely as possible. To do this:<br /><br /><ul><li class="unordered">
+									Start with the device secured to the table, and turn the table to 0 or 90 degrees, depending on the test’s requirement.<br /><br /></li><li class="unordered">
+									Because the touchpad might not be perfectly aligned within the device, start PTLogo and use the visualization to make sure that the contact’s path is completely parallel to the visualization grid lines.<br /><br /><div class="alert"><table><tr><th align="left"><img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th></tr><tr><td>
+										Pressing <strong>C</strong> in PTLogo will clear the visualization if you start to fill up the screen. If you started PTLogo with the actual test to be run, press <strong>R</strong> after the sensor is aligned to start at the beginning of the test.<p></p></td></tr></table><p></p></div></li><li class="unordered">
+									If there is any drift off axis, use the fine-tune knob to slightly turn the table, as shown in <em>Figure 1 Fine Adjustment for Axis Alignment</em>.<br /><br /><img id="4608070d-7c4d-4b48-ae34-a5370dd9eb5c" alt="Fine Adjustment Axis Alignment" src="../../../../../i.msdn.microsoft.com/dynimg/IC689148.jpg" title="Fine Adjustment Axis Alignment" xmlns="" /><br /><br /><strong>Figure 1 Fine Adjustment for Axis Alignment</strong><br /><br /></li><li class="unordered">
+									Repeat as needed until there is no observable drift from axis.<br /><br /></li><li class="unordered">
+									For example, observe how the path in <em>Figure 2 Visualization Grid Iterations</em> is adjusted over multiple iterations until the contact’s path is parallel to the visualization grid:<br /><br /><img id="90156b86-3581-4da1-95f7-5784a085d295" alt="Parallel Gridlines" src="../../../../../i.msdn.microsoft.com/dynimg/IC689149.jpg" title="Parallel Gridlines" xmlns="" /><br /><br /><strong>Figure 2 Visualization Grid Iterations</strong><br /><br /></li><li class="unordered">
+									After the path is parallel to the visualization grid lines on one side of the touchpad, run it again on the other side, and make sure it still moves parallel to the grid lines.<br /><br /><img id="a67b6cfe-ed54-445d-ac27-15454b796a21" alt="Parallel Gridlines no Drift" src="../../../../../i.msdn.microsoft.com/dynimg/IC689150.jpg" title="Parallel Gridlines no Drift" xmlns="" /><br /><br /><strong>Figure 3 Parallel Gridlines</strong><br /><br /></li></ul></li>
+        </ul>
+      </div>
+      <a id="ptlogo">
+        
+      </a>
+      <h2 class="heading">PTLogo interface</h2>
+      <div id="sectionSection1" class="section">
+        <ul>
+          <li class="unordered">
+							To manually pass an iteration (where applicable), press <strong>P</strong> on the keyboard.<br /><br /></li>
+          <li class="unordered">
+							To manually fail an iteration (where applicable), press <strong>F</strong> on the keyboard.<br /><br /></li>
+          <li class="unordered">
+							To manually restart the test (where applicable), press <strong>R</strong> on the keyboard.<br /><br /></li>
+          <li class="unordered">
+							To manually fail the test (where applicable), press <strong>T</strong> on the keyboard.<br /><br /></li>
+          <li class="unordered">
+							To manually advance to the next iteration (where applicable), press <strong>N</strong> on the keyboard.<br /><br /></li>
+          <li class="unordered">
+							To exit PTLogo, press <strong>E</strong> on the keyboard.<br /><br /></li>
+        </ul>
+      </div>
+      <a id="switches">
+        
+      </a>
+      <h2 class="heading">PTLogo command line switches</h2>
+      <div id="sectionSection2" class="section">
+        <p>These switches can be combined and are useful for debugging purposes only. These switches are not permissible for a certification test run.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Switch
+								</th>
+            <th>
+									Usage
+								</th>
+            <th>
+									Purpose
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>-startat #</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>Ptlogo.exe –startat # test</strong>
+                <em>&lt;testname&gt;</em>
+                <strong>.json</strong>
+              </p>
+              <p>Where <strong>#</strong> indicates the specific iteration to start for a given .json test, and <em>&lt;testname&gt;</em> is the name of the .json test.</p>
+            </td>
+            <td>
+              <p>Skips to a specific iteration in a given test.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>-noDesktop</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>Ptlogo.exe –noDesktop test.</strong>
+                <em>&lt;testname&gt;</em>
+                <strong>.json</strong>
+              </p>
+              <p>Where <em>&lt;testname&gt;</em> is the name of the .json test.</p>
+            </td>
+            <td>
+              <p>Starts the test on the same input desktop from where it was launched; this is useful for running <strong>digiinfo</strong> or other debugging tools in the background.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>-NoHIDValidation</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>Ptlogo.exe –noHidValidation test.</strong>
+                <em>&lt;testname&gt;</em>
+                <strong>.json</strong>
+              </p>
+              <p>Where <em>&lt;testname&gt;</em> is the name of the .json test.</p>
+            </td>
+            <td>
+              <p>Disables background HID validation for a specific test.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>-alliters</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>Ptlogo.exe –alliters test.</strong>
+                <em>&lt;testname&gt;</em>
+                <strong>.json</strong>
+              </p>
+              <p>Where <em>&lt;testname&gt;</em> is the name of the .json test.</p>
+            </td>
+            <td>
+              <p>Allows you to go through all iterations of a test even if more than the maximum number of permissible failed iterations have occurred.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>-EnableHIDLogging</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>Ptlogo.exe –enableHIDLogging test.</strong>
+                <em>&lt;testname&gt;</em>
+                <strong>.json</strong>
+              </p>
+              <p>Where <em>&lt;testname&gt;</em> is the name of the .json test.</p>
+            </td>
+            <td>
+              <p>Enables HID logging during a specific test to generate a HID.log file for detailed debugging of failures.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <a id="selectsuspend">
+        
+      </a>
+      <h2 class="heading">USB Selective Suspend</h2>
+      <div id="sectionSection3" class="section">
+        <p>All validation should be performed with Selective Suspend DISABLED except for Static Validation, Edge, and Power State Transition tests. </p>
+        <p>In Device Manager, selective suspend can be toggled by selecting the HID Compliant touchpad device node and then viewing by connection to find its parent (a USB Input Device). Select the parent, view <strong>Properties</strong>, and then select the <strong>Power Management</strong> tab to see the screen that is shown in <em>Figure 4 USB Selective Suspend Toggle</em>.</p>
+        <p>When the box is checked, Selective Suspend is enabled; when the box is unchecked, Selective Suspend is disabled. </p>
+        <img id="6b70722f-d7d7-42d6-bf31-ce3a97cb8dba" alt="USB Selective Suspend Toggle" src="../../../../../i.msdn.microsoft.com/dynimg/IC689151.jpg" title="USB Selective Suspend Toggle" xmlns="" />
+        <p>
+          
+        </p>
+        <p>
+          <strong>Figure 4 USB Selective Suspend Toggle</strong>
+        </p>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="dn532239.html">Windows Precision Touchpad Certification Process</a>
+        <br />
+        <a href="dn481260.html">Windows Precision Touchpad HCK Requirements</a>
+        <br />
+        <h4 class="subHeading">Other Resources</h4>
+        <a href="dn247302.html">Additional Input Resources</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="jqU1kKeIabvYPPiQ5KTNXiANdTBgxcTNEXVLRcd6SNs7V2n4J0IFUOiV30ejrfHLR7zPc68r1WIG82A1q_Cy8d204IXlP_vaB4R57w0gUi3toIk_TDjIqWuY00hM3hDV85cz5A2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn456917.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn456917.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="CO6OvW1SYg5_XVZgPcaZ0qTQsiUWmA9ISewZL4PiGM6hnc2K4M2xKvyLdNfpR6IICHOg_v2ASjHu8mY6dDy--F444tisDpYpea1ONojYkQ_w6ReYVIeBi5dpdihdVIqAvgpqRA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn456917(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"6da413cc-8226-4d7d-920f-5ce1949fc65e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn456917.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:51 GMT -->
+</html>

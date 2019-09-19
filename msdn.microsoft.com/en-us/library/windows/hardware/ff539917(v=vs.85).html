@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539917(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:44:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff539917(v%3dvs.85).html" />
+        <title>HV_CALL_CODE enumeration (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff539917(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539917(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539917(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539917(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93A-3:31:45 AM" />
+
+<meta name="Search.ShortId" content="ff539917" />
+
+<meta name="ms.shortidmsdn" content="ff539917" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395052305&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539917%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff542584(v%3dvs.85).html" id="ff572457_VS.85_en-us" mtpsaliasid="" mtpsassetid="3b405260-c3db-4f46-a083-f053b5d5c3d1_VS.85_en-us" mtpsshortid="ff542584_VS.85_en-us" title="Hypervisor">Hypervisor</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff541584(v%3dvs.85).html" id="ff572587_VS.85_en-us" mtpsaliasid="" mtpsassetid="34c39c01-a439-4f14-98c4-07e4b02f72e4_VS.85_en-us" mtpsshortid="ff541584_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff541612(v%3dvs.85).html" id="ff572683_VS.85_en-us" mtpsaliasid="" mtpsassetid="b14b01c9-66d9-4e36-a1e5-8a5095e5496d_VS.85_en-us" mtpsshortid="ff541612_VS.85_en-us" title="Hypervisor Structures and Enumerations">Hypervisor Structures and Enumerations</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541179(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_HYPERCALL_INPUT">HV_X64_HYPERCALL_INPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541188(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_HYPERCALL_OUTPUT">HV_X64_HYPERCALL_OUTPUT</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff539917(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CALL_CODE">HV_CALL_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_HYPERCALL_CONTENTS">HV_X64_MSR_HYPERCALL_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540186(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROPERTY_CODE">HV_PARTITION_PROPERTY_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540171(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PRIVILEGE_MASK">HV_PARTITION_PRIVILEGE_MASK</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540240(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROXIMITY_DOMAIN_INFO">HV_PROXIMITY_DOMAIN_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540234(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROXIMITY_DOMAIN_FLAGS">HV_PROXIMITY_DOMAIN_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540063(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_DESCRIPTOR">HV_INTERCEPT_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540082(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_TYPE">HV_INTERCEPT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540069(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_PARAMETERS">HV_INTERCEPT_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541344(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNSUPPORTED_FEATURE_CODE">HV_X64_UNSUPPORTED_FEATURE_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541355(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNSUPPORTED_FEATURE_MESSAGE">HV_X64_UNSUPPORTED_FEATURE_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540246(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REGISTER_NAME">HV_REGISTER_NAME</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540250(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REGISTER_VALUE">HV_REGISTER_VALUE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539976(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EXPLICIT_SUSPEND_REGISTER">HV_EXPLICIT_SUSPEND_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540076(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERCEPT_SUSPEND_REGISTER">HV_INTERCEPT_SUSPEND_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541198(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INTERRUPT_STATE_REGISTER">HV_X64_INTERRUPT_STATE_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541310(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_PENDING_INTERRUPTION_TYPE">HV_X64_PENDING_INTERRUPTION_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541303(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_PENDING_INTERRUPTION_REGISTER">HV_X64_PENDING_INTERRUPTION_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540383(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_REGISTER">HV_X64_FP_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540375(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_CONTROL_STATUS_REGISTER">HV_X64_FP_CONTROL_STATUS_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541367(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XMM_CONTROL_STATUS_REGISTER">HV_X64_XMM_CONTROL_STATUS_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541326(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_SEGMENT_REGISTER">HV_X64_SEGMENT_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541331(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_TABLE_REGISTER">HV_X64_TABLE_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541269(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_POWER_STATE_CONFIG">HV_X64_MSR_POWER_STATE_CONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541319(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_POWER_CHANGE_METHOD">HV_X64_POWER_CHANGE_METHOD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541280(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_POWER_STATE_TRIGGER">HV_X64_MSR_POWER_STATE_TRIGGER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541291(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_RESET_CONTENTS">HV_X64_MSR_RESET_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539912(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CACHE_TYPE">HV_CACHE_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540325(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TRANSLATE_GVA_RESULT">HV_TRANSLATE_GVA_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540330(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TRANSLATE_GVA_RESULT_CODE">HV_TRANSLATE_GVA_RESULT_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539898(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_CONTROL_FLAGS">HV_ACCESS_GPA_CONTROL_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539902(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_RESULT">HV_ACCESS_GPA_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539908(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ACCESS_GPA_RESULT_CODE">HV_ACCESS_GPA_RESULT_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540088(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERRUPT_CONTROL">HV_INTERRUPT_CONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540098(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INTERRUPT_TYPE">HV_INTERRUPT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541245(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_APIC_ASSIST_CONTENTS">HV_X64_MSR_APIC_ASSIST_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540288(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SCONTROL">HV_SYNIC_SCONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SINT">HV_SYNIC_SINT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540299(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SIMP">HV_SYNIC_SIMP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540294(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_SIEFP">HV_SYNIC_SIEFP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540140(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_TYPE">HV_MESSAGE_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540126(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_FLAGS">HV_MESSAGE_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540129(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_HEADER">HV_MESSAGE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540113(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE">HV_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540319(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_TIMER_MESSAGE_PAYLOAD">HV_TIMER_MESSAGE_PAYLOAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539968(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_MESSAGE_PAYLOAD">HV_EVENTLOG_MESSAGE_PAYLOAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539974(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_TYPE">HV_EVENTLOG_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540210(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_TYPE">HV_PORT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540198(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_INFO">HV_PORT_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539921(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CONNECTION_INFO">HV_CONNECTION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540205(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PORT_PROPERTY_CODE">HV_PORT_PROPERTY_CODE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540159(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_TRIGGER_GROUP">HV_MONITOR_TRIGGER_GROUP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540153(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_PARAMETER">HV_MONITOR_PARAMETER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540163(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_TRIGGER_STATE">HV_MONITOR_TRIGGER_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540149(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MONITOR_PAGE">HV_MONITOR_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539947(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EMULATED_TIMER_PERIOD">HV_EMULATED_TIMER_PERIOD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539944(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EMULATED_TIMER_CONTROL">HV_EMULATED_TIMER_CONTROL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540191(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PM_TIMER_INFO">HV_PM_TIMER_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541298(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_STIMER_CONFIG_CONTENTS">HV_X64_MSR_STIMER_CONFIG_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541239(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MEMORY_INTERCEPT_MESSAGE">HV_X64_MEMORY_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540360(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_CPUID_INTERCEPT_MESSAGE">HV_X64_CPUID_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541268(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_INTERCEPT_MESSAGE">HV_X64_MSR_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541223(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_IO_PORT_INTERCEPT_MESSAGE">HV_X64_IO_PORT_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540368(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_EXCEPTION_INTERCEPT_MESSAGE">HV_X64_EXCEPTION_INTERCEPT_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540349(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_APIC_EOI_MESSAGE">HV_X64_APIC_EOI_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541229(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_LEGACY_FP_ERROR_MESSAGE">HV_X64_LEGACY_FP_ERROR_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541203(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INVALID_VP_REGISTER_MESSAGE">HV_X64_INVALID_VP_REGISTER_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541341(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_UNRECOVERABLE_EXCEPTION_MESSAGE">HV_X64_UNRECOVERABLE_EXCEPTION_MESSAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541192(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_INTERCEPT_MESSAGE_HEADER">HV_X64_INTERCEPT_MESSAGE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541363(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_VP_EXECUTION_STATE">HV_X64_VP_EXECUTION_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541214(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_IO_PORT_ACCESS_INFO">HV_X64_IO_PORT_ACCESS_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540366(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_EXCEPTION_INFO">HV_X64_EXCEPTION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541234(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MEMORY_ACCESS_INFO">HV_X64_MEMORY_ACCESS_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540252(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SAVE_RESTORE_STATE_RESULT">HV_SAVE_RESTORE_STATE_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539955(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_BUFFER_STATE">HV_EVENTLOG_BUFFER_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539951(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_BUFFER_HEADER">HV_EVENTLOG_BUFFER_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539964(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_ENTRY_TIME_BASIS">HV_EVENTLOG_ENTRY_TIME_BASIS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539960(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_EVENTLOG_ENTRY_HEADER">HV_EVENTLOG_ENTRY_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540269(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_OBJECT_TYPE">HV_STATS_OBJECT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540264(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_OBJECT_IDENTITY">HV_STATS_OBJECT_IDENTITY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540270(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATS_PAGE">HV_STATS_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540260(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATISTICS_GROUP_VERSION">HV_STATISTICS_GROUP_VERSION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540255(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_STATISTICS_GROUP_HEADER">HV_STATISTICS_GROUP_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540279(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_EVENT_FLAGS">HV_SYNIC_EVENT_FLAGS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540273(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_ST_MAP_LOCATION">HV_ST_MAP_LOCATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540380(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FP_MMX_REGISTER">HV_X64_FP_MMX_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541173(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_FX_REGISTERS">HV_X64_FX_REGISTERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541371(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XSAVE_XFEM_REGISTER">HV_X64_XSAVE_XFEM_REGISTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541369(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_XSAVE_HEADER">HV_X64_XSAVE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541373(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_X_REGISTERS">HV_X64_X_REGISTERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540355(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_CONTEXT">HV_X64_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540346(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_VP_CONTEXT">HV_VP_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540217(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESSOR_INFO">HV_PROCESSOR_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540106(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MEMORY_RANGE_INFO">HV_MEMORY_RANGE_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540051(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_VERSION_INFO">HV_HYPERVISOR_VERSION_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539927(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPUID_RESULT">HV_CPUID_RESULT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540022(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GVA_RANGE">HV_GVA_RANGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540136(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_MESSAGE_PAGE">HV_MESSAGE_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540281(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYNIC_EVENT_FLAGS_PAGE">HV_SYNIC_EVENT_FLAGS_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541252(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_GUEST_OS_ID_CONTENTS">HV_X64_MSR_GUEST_OS_ID_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540017(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GUEST_OS_VENDOR">HV_GUEST_OS_VENDOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539983(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GUEST_OS_MICROSOFT_IDS">HV_GUEST_OS_MICROSOFT_IDS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540039(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_INTERFACE">HV_HYPERVISOR_INTERFACE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539925(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPUID_FUNCTION">HV_CPUID_FUNCTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540032(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_HYPERVISOR_COUNTER">HV_HYPERVISOR_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539930(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CPU_COUNTER">HV_CPU_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540229(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESS_COUNTER">HV_PROCESS_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540317(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_THREAD_COUNTER">HV_THREAD_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540231(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROFILE_SOURCE">HV_PROFILE_SOURCE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541285(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_X64_MSR_REFERENCE_TSC_CONTENTS">HV_X64_MSR_REFERENCE_TSC_CONTENTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540244(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_REFERENCE_TSC_PAGE">HV_REFERENCE_TSC_PAGE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540221(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PROCESSOR_VENDOR">HV_PROCESSOR_VENDOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540175(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROCESSOR_FEATURES">HV_PARTITION_PROCESSOR_FEATURES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540181(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_PARTITION_PROCESSOR_XSAVE_FEATURES">HV_PARTITION_PROCESSOR_XSAVE_FEATURES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540336(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_VIRTUAL_APIC_ASSIST">HV_VIRTUAL_APIC_ASSIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539979(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_GPA_MAPPING">HV_GPA_MAPPING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540311(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_SYSTEM_PROPERTY">HV_SYSTEM_PROPERTY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540056(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_INPUT_SET_SYSTEM_PROPERTY">HV_INPUT_SET_SYSTEM_PROPERTY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539936(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_AREA_V1">HV_CRASHDUMP_AREA_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539932(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_AREA">HV_CRASHDUMP_AREA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539941(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HV_CRASHDUMP_PROCESSOR_STATE">HV_CRASHDUMP_PROCESSOR_STATE</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">HV_CALL_CODE enumeration</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>The HV_CALL_CODE enumeration contains values for the hypercall codes. </p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_605df4f2-31c6-403b-8f83-e03e208294b9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_605df4f2-31c6-403b-8f83-e03e208294b9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">enum</span> _HV_CALL_CODE { 
+  HvCallReserved0000                   = 0x0000,
+  HvCallSwitchVirtualAddressSpace      = 0x0001,
+  HvCallFlushVirtualAddressSpace       = 0x0002,
+  HvCallFlushVirtualAddressList        = 0x0003,
+  HvCallGetLogicalProcessorRunTime     = 0x0004,
+  HvCallDeprecated0005                 = 0x0005,
+  HvCallDeprecated0006                 = 0x0006,
+  HvCallDeprecated0007                 = 0x0007,
+  HvCallNotifyLongSpinWait             = 0x0008,
+  HvCallParkLogicalProcessors          = 0x0009,
+  HvCallInvokeHypervisorDebugger       = 0x000a,
+  HvCallReserved000b                   = 0x000b,
+  HvCallReserved000c                   = 0x000c,
+  HvCallReserved000d                   = 0x000d,
+  HvCallReserved000e                   = 0x000e,
+  HvCallReserved000f                   = 0x000f,
+  HvCallReserved0010                   = 0x0010,
+  HvCallReserved0011                   = 0x0011,
+  HvCallReserved0012                   = 0x0012,
+  HvCallReserved0013                   = 0x0013,
+  HvCallReserved0014                   = 0x0014,
+  HvCallReserved0015                   = 0x0015,
+  HvCallReserved0016                   = 0x0016,
+  HvCallReserved0017                   = 0x0017,
+  HvCallReserved0018                   = 0x0018,
+  HvCallReserved0019                   = 0x0019,
+  HvCallReserved001a                   = 0x001a,
+  HvCallReserved001b                   = 0x001b,
+  HvCallReserved001c                   = 0x001c,
+  HvCallReserved001d                   = 0x001d,
+  HvCallReserved001e                   = 0x001e,
+  HvCallReserved001f                   = 0x001f,
+  HvCallReserved0020                   = 0x0020,
+  HvCallReserved0021                   = 0x0021,
+  HvCallReserved0022                   = 0x0022,
+  HvCallReserved0023                   = 0x0023,
+  HvCallReserved0024                   = 0x0024,
+  HvCallReserved0025                   = 0x0025,
+  HvCallReserved0026                   = 0x0026,
+  HvCallReserved0027                   = 0x0027,
+  HvCallReserved0028                   = 0x0028,
+  HvCallReserved0029                   = 0x0029,
+  HvCallReserved002a                   = 0x002a,
+  HvCallReserved002b                   = 0x002b,
+  HvCallReserved002c                   = 0x002c,
+  HvCallReserved002d                   = 0x002d,
+  HvCallReserved002e                   = 0x002e,
+  HvCallReserved002f                   = 0x002f,
+  HvCallReserved0030                   = 0x0030,
+  HvCallReserved0031                   = 0x0031,
+  HvCallReserved0032                   = 0x0032,
+  HvCallReserved0033                   = 0x0033,
+  HvCallReserved0034                   = 0x0034,
+  HvCallReserved0035                   = 0x0035,
+  HvCallReserved0036                   = 0x0036,
+  HvCallReserved0037                   = 0x0037,
+  HvCallReserved0038                   = 0x0038,
+  HvCallReserved0039                   = 0x0039,
+  HvCallReserved003a                   = 0x003a,
+  HvCallReserved003b                   = 0x003b,
+  HvCallReserved003c                   = 0x003c,
+  HvCallReserved003d                   = 0x003d,
+  HvCallReserved003e                   = 0x003e,
+  HvCallReserved003f                   = 0x003f,
+  HvCallCreatePartition                = 0x0040,
+  HvCallInitializePartition            = 0x0041,
+  HvCallFinalizePartition              = 0x0042,
+  HvCallDeletePartition                = 0x0043,
+  HvCallGetPartitionProperty           = 0x0044,
+  HvCallSetPartitionProperty           = 0x0045,
+  HvCallGetPartitionId                 = 0x0046,
+  HvCallGetNextChildPartition          = 0x0047,
+  HvCallDepositMemory                  = 0x0048,
+  HvCallWithdrawMemory                 = 0x0049,
+  HvCallGetMemoryBalance               = 0x004a,
+  HvCallMapGpaPages                    = 0x004b,
+  HvCallUnmapGpaPages                  = 0x004c,
+  HvCallInstallIntercept               = 0x004d,
+  HvCallCreateVp                       = 0x004e,
+  HvCallDeleteVp                       = 0x004f,
+  HvCallGetVpRegisters                 = 0x0050,
+  HvCallSetVpRegisters                 = 0x0051,
+  HvCallTranslateVirtualAddress        = 0x0052,
+  HvCallReadGpa                        = 0x0053,
+  HvCallWriteGpa                       = 0x0054,
+  HvCallAssertVirtualInterrupt         = 0x0055,
+  HvCallClearVirtualInterrupt          = 0x0056,
+  HvCallCreatePort                     = 0x0057,
+  HvCallDeletePort                     = 0x0058,
+  HvCallConnectPort                    = 0x0059,
+  HvCallGetPortProperty                = 0x005a,
+  HvCallDisconnectPort                 = 0x005b,
+  HvCallPostMessage                    = 0x005c,
+  HvCallSignalEvent                    = 0x005d,
+  HvCallSavePartitionState             = 0x005e,
+  HvCallRestorePartitionState          = 0x005f,
+  HvCallInitializeEventLogBufferGroup  = 0x0060,
+  HvCallFinalizeEventLogBufferGroup    = 0x0061,
+  HvCallCreateEventLogBuffer           = 0x0062,
+  HvCallDeleteEventLogBuffer           = 0x0063,
+  HvCallMapEventLogBuffer              = 0x0064,
+  HvCallUnmapEventLogBuffer            = 0x0065,
+  HvCallSetEventLogGroupSources        = 0x0066,
+  HvCallReleaseEventLogBuffer          = 0x0067,
+  HvCallFlushEventLogBuffer            = 0x0068,
+  HvCallPostDebugData                  = 0x0069,
+  HvCallRetrieveDebugData              = 0x006a,
+  HvCallResetDebugSession              = 0x006b,
+  HvCallMapStatsPage                   = 0x006c,
+  HvCallUnmapStatsPage                 = 0x006d,
+  HvCallMapSparseGpaPages              = 0x006e,
+  HvCallSetSystemProperty              = 0x006f,
+  HvCallSetPortProperty                = 0x0070,
+  HvCallOutputDebugCharacter,
+  HvCallEchoIncrement,
+  HvCallPerfNop,
+  HvCallPerfNopInput,
+  HvCallPerfNopOutput,
+  HvCallCount
+} HV_CALL_CODE, *PHV_CALL_CODE;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Constants</h2>
+<dl>
+<dt><a id="HvCallReserved0000"></a><a id="hvcallreserved0000"></a><a id="HVCALLRESERVED0000"></a><strong>HvCallReserved0000</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallSwitchVirtualAddressSpace"></a><a id="hvcallswitchvirtualaddressspace"></a><a id="HVCALLSWITCHVIRTUALADDRESSSPACE"></a><strong>HvCallSwitchVirtualAddressSpace</strong></dt>
+<dd>
+<p>Code for the <a href="ff539857(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSwitchVirtualAddressSpace</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallFlushVirtualAddressSpace"></a><a id="hvcallflushvirtualaddressspace"></a><a id="HVCALLFLUSHVIRTUALADDRESSSPACE"></a><strong>HvCallFlushVirtualAddressSpace</strong></dt>
+<dd>
+<p>Code for the <a href="ff538969(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvFlushVirtualAddressSpace</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallFlushVirtualAddressList"></a><a id="hvcallflushvirtualaddresslist"></a><a id="HVCALLFLUSHVIRTUALADDRESSLIST"></a><strong>HvCallFlushVirtualAddressList</strong></dt>
+<dd>
+<p>Code for the <a href="ff538964(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvFlushVirtualAddressList</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetLogicalProcessorRunTime"></a><a id="hvcallgetlogicalprocessorruntime"></a><a id="HVCALLGETLOGICALPROCESSORRUNTIME"></a><strong>HvCallGetLogicalProcessorRunTime</strong></dt>
+<dd>
+<p>Code for the <a href="ff538973(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetLogicalProcessorRunTime</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDeprecated0005"></a><a id="hvcalldeprecated0005"></a><a id="HVCALLDEPRECATED0005"></a><strong>HvCallDeprecated0005</strong></dt>
+<dd>
+<p>Reserved. No longer in use. </p>
+</dd>
+<dt><a id="HvCallDeprecated0006"></a><a id="hvcalldeprecated0006"></a><a id="HVCALLDEPRECATED0006"></a><strong>HvCallDeprecated0006</strong></dt>
+<dd>
+<p>Reserved. No longer in use. </p>
+</dd>
+<dt><a id="HvCallDeprecated0007"></a><a id="hvcalldeprecated0007"></a><a id="HVCALLDEPRECATED0007"></a><strong>HvCallDeprecated0007</strong></dt>
+<dd>
+<p>Reserved. No longer in use. </p>
+</dd>
+<dt><a id="HvCallNotifyLongSpinWait"></a><a id="hvcallnotifylongspinwait"></a><a id="HVCALLNOTIFYLONGSPINWAIT"></a><strong>HvCallNotifyLongSpinWait</strong></dt>
+<dd>
+<p>Code for the <a href="ff539081(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvNotifyLongSpinWait</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallParkLogicalProcessors"></a><a id="hvcallparklogicalprocessors"></a><a id="HVCALLPARKLOGICALPROCESSORS"></a><strong>HvCallParkLogicalProcessors</strong></dt>
+<dd>
+<p>Code for the <a href="ff539090(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvParkLogicalProcessors</strong></a> hypercall function.</p>
+</dd>
+<dt><a id="HvCallInvokeHypervisorDebugger"></a><a id="hvcallinvokehypervisordebugger"></a><a id="HVCALLINVOKEHYPERVISORDEBUGGER"></a><strong>HvCallInvokeHypervisorDebugger</strong></dt>
+<dd>
+<p>Code for the <a href="ff539057(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvInvokeHypervisorDebugger</strong></a> hypercall function.</p>
+</dd>
+<dt><a id="HvCallReserved000b"></a><a id="hvcallreserved000b"></a><a id="HVCALLRESERVED000B"></a><strong>HvCallReserved000b</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved000c"></a><a id="hvcallreserved000c"></a><a id="HVCALLRESERVED000C"></a><strong>HvCallReserved000c</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved000d"></a><a id="hvcallreserved000d"></a><a id="HVCALLRESERVED000D"></a><strong>HvCallReserved000d</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved000e"></a><a id="hvcallreserved000e"></a><a id="HVCALLRESERVED000E"></a><strong>HvCallReserved000e</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved000f"></a><a id="hvcallreserved000f"></a><a id="HVCALLRESERVED000F"></a><strong>HvCallReserved000f</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0010"></a><a id="hvcallreserved0010"></a><a id="HVCALLRESERVED0010"></a><strong>HvCallReserved0010</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0011"></a><a id="hvcallreserved0011"></a><a id="HVCALLRESERVED0011"></a><strong>HvCallReserved0011</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0012"></a><a id="hvcallreserved0012"></a><a id="HVCALLRESERVED0012"></a><strong>HvCallReserved0012</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0013"></a><a id="hvcallreserved0013"></a><a id="HVCALLRESERVED0013"></a><strong>HvCallReserved0013</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0014"></a><a id="hvcallreserved0014"></a><a id="HVCALLRESERVED0014"></a><strong>HvCallReserved0014</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0015"></a><a id="hvcallreserved0015"></a><a id="HVCALLRESERVED0015"></a><strong>HvCallReserved0015</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0016"></a><a id="hvcallreserved0016"></a><a id="HVCALLRESERVED0016"></a><strong>HvCallReserved0016</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0017"></a><a id="hvcallreserved0017"></a><a id="HVCALLRESERVED0017"></a><strong>HvCallReserved0017</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0018"></a><a id="hvcallreserved0018"></a><a id="HVCALLRESERVED0018"></a><strong>HvCallReserved0018</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0019"></a><a id="hvcallreserved0019"></a><a id="HVCALLRESERVED0019"></a><strong>HvCallReserved0019</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001a"></a><a id="hvcallreserved001a"></a><a id="HVCALLRESERVED001A"></a><strong>HvCallReserved001a</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001b"></a><a id="hvcallreserved001b"></a><a id="HVCALLRESERVED001B"></a><strong>HvCallReserved001b</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001c"></a><a id="hvcallreserved001c"></a><a id="HVCALLRESERVED001C"></a><strong>HvCallReserved001c</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001d"></a><a id="hvcallreserved001d"></a><a id="HVCALLRESERVED001D"></a><strong>HvCallReserved001d</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001e"></a><a id="hvcallreserved001e"></a><a id="HVCALLRESERVED001E"></a><strong>HvCallReserved001e</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved001f"></a><a id="hvcallreserved001f"></a><a id="HVCALLRESERVED001F"></a><strong>HvCallReserved001f</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0020"></a><a id="hvcallreserved0020"></a><a id="HVCALLRESERVED0020"></a><strong>HvCallReserved0020</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0021"></a><a id="hvcallreserved0021"></a><a id="HVCALLRESERVED0021"></a><strong>HvCallReserved0021</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0022"></a><a id="hvcallreserved0022"></a><a id="HVCALLRESERVED0022"></a><strong>HvCallReserved0022</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0023"></a><a id="hvcallreserved0023"></a><a id="HVCALLRESERVED0023"></a><strong>HvCallReserved0023</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0024"></a><a id="hvcallreserved0024"></a><a id="HVCALLRESERVED0024"></a><strong>HvCallReserved0024</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0025"></a><a id="hvcallreserved0025"></a><a id="HVCALLRESERVED0025"></a><strong>HvCallReserved0025</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0026"></a><a id="hvcallreserved0026"></a><a id="HVCALLRESERVED0026"></a><strong>HvCallReserved0026</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0027"></a><a id="hvcallreserved0027"></a><a id="HVCALLRESERVED0027"></a><strong>HvCallReserved0027</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0028"></a><a id="hvcallreserved0028"></a><a id="HVCALLRESERVED0028"></a><strong>HvCallReserved0028</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0029"></a><a id="hvcallreserved0029"></a><a id="HVCALLRESERVED0029"></a><strong>HvCallReserved0029</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002a"></a><a id="hvcallreserved002a"></a><a id="HVCALLRESERVED002A"></a><strong>HvCallReserved002a</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002b"></a><a id="hvcallreserved002b"></a><a id="HVCALLRESERVED002B"></a><strong>HvCallReserved002b</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002c"></a><a id="hvcallreserved002c"></a><a id="HVCALLRESERVED002C"></a><strong>HvCallReserved002c</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002d"></a><a id="hvcallreserved002d"></a><a id="HVCALLRESERVED002D"></a><strong>HvCallReserved002d</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002e"></a><a id="hvcallreserved002e"></a><a id="HVCALLRESERVED002E"></a><strong>HvCallReserved002e</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved002f"></a><a id="hvcallreserved002f"></a><a id="HVCALLRESERVED002F"></a><strong>HvCallReserved002f</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0030"></a><a id="hvcallreserved0030"></a><a id="HVCALLRESERVED0030"></a><strong>HvCallReserved0030</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0031"></a><a id="hvcallreserved0031"></a><a id="HVCALLRESERVED0031"></a><strong>HvCallReserved0031</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0032"></a><a id="hvcallreserved0032"></a><a id="HVCALLRESERVED0032"></a><strong>HvCallReserved0032</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0033"></a><a id="hvcallreserved0033"></a><a id="HVCALLRESERVED0033"></a><strong>HvCallReserved0033</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0034"></a><a id="hvcallreserved0034"></a><a id="HVCALLRESERVED0034"></a><strong>HvCallReserved0034</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0035"></a><a id="hvcallreserved0035"></a><a id="HVCALLRESERVED0035"></a><strong>HvCallReserved0035</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0036"></a><a id="hvcallreserved0036"></a><a id="HVCALLRESERVED0036"></a><strong>HvCallReserved0036</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0037"></a><a id="hvcallreserved0037"></a><a id="HVCALLRESERVED0037"></a><strong>HvCallReserved0037</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0038"></a><a id="hvcallreserved0038"></a><a id="HVCALLRESERVED0038"></a><strong>HvCallReserved0038</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved0039"></a><a id="hvcallreserved0039"></a><a id="HVCALLRESERVED0039"></a><strong>HvCallReserved0039</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003a"></a><a id="hvcallreserved003a"></a><a id="HVCALLRESERVED003A"></a><strong>HvCallReserved003a</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003b"></a><a id="hvcallreserved003b"></a><a id="HVCALLRESERVED003B"></a><strong>HvCallReserved003b</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003c"></a><a id="hvcallreserved003c"></a><a id="HVCALLRESERVED003C"></a><strong>HvCallReserved003c</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003d"></a><a id="hvcallreserved003d"></a><a id="HVCALLRESERVED003D"></a><strong>HvCallReserved003d</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003e"></a><a id="hvcallreserved003e"></a><a id="HVCALLRESERVED003E"></a><strong>HvCallReserved003e</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallReserved003f"></a><a id="hvcallreserved003f"></a><a id="HVCALLRESERVED003F"></a><strong>HvCallReserved003f</strong></dt>
+<dd>
+<p>Reserved</p>
+</dd>
+<dt><a id="HvCallCreatePartition"></a><a id="hvcallcreatepartition"></a><a id="HVCALLCREATEPARTITION"></a><strong>HvCallCreatePartition</strong></dt>
+<dd>
+<p>Code for the <a href="ff538859(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvCreatePartition</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallInitializePartition"></a><a id="hvcallinitializepartition"></a><a id="HVCALLINITIALIZEPARTITION"></a><strong>HvCallInitializePartition</strong></dt>
+<dd>
+<p>Code for the <a href="ff539035(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvInitializePartition</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallFinalizePartition"></a><a id="hvcallfinalizepartition"></a><a id="HVCALLFINALIZEPARTITION"></a><strong>HvCallFinalizePartition</strong></dt>
+<dd>
+<p>Code for the <a href="ff538939(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvFinalizePartition</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDeletePartition"></a><a id="hvcalldeletepartition"></a><a id="HVCALLDELETEPARTITION"></a><strong>HvCallDeletePartition</strong></dt>
+<dd>
+<p>Code for the <a href="ff538899(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDeletePartition</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetPartitionProperty"></a><a id="hvcallgetpartitionproperty"></a><a id="HVCALLGETPARTITIONPROPERTY"></a><strong>HvCallGetPartitionProperty</strong></dt>
+<dd>
+<p>Code for the <a href="ff539005(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetPartitionProperty</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSetPartitionProperty"></a><a id="hvcallsetpartitionproperty"></a><a id="HVCALLSETPARTITIONPROPERTY"></a><strong>HvCallSetPartitionProperty</strong></dt>
+<dd>
+<p>Code for the <a href="ff539146(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSetPartitionProperty</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetPartitionId"></a><a id="hvcallgetpartitionid"></a><a id="HVCALLGETPARTITIONID"></a><strong>HvCallGetPartitionId</strong></dt>
+<dd>
+<p>Code for the <a href="ff538996(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetPartitionId</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetNextChildPartition"></a><a id="hvcallgetnextchildpartition"></a><a id="HVCALLGETNEXTCHILDPARTITION"></a><strong>HvCallGetNextChildPartition</strong></dt>
+<dd>
+<p>Code for the <a href="ff538989(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetNextChildPartition</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDepositMemory"></a><a id="hvcalldepositmemory"></a><a id="HVCALLDEPOSITMEMORY"></a><strong>HvCallDepositMemory</strong></dt>
+<dd>
+<p>Code for the <a href="ff538916(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDepositMemory</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallWithdrawMemory"></a><a id="hvcallwithdrawmemory"></a><a id="HVCALLWITHDRAWMEMORY"></a><strong>HvCallWithdrawMemory</strong></dt>
+<dd>
+<p>Code for the <a href="ff539884(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvWithdrawMemory</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetMemoryBalance"></a><a id="hvcallgetmemorybalance"></a><a id="HVCALLGETMEMORYBALANCE"></a><strong>HvCallGetMemoryBalance</strong></dt>
+<dd>
+<p>Code for the <a href="ff538983(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetMemoryBalance</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallMapGpaPages"></a><a id="hvcallmapgpapages"></a><a id="HVCALLMAPGPAPAGES"></a><strong>HvCallMapGpaPages</strong></dt>
+<dd>
+<p>Code for the <a href="ff539070(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvMapGpaPages</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallUnmapGpaPages"></a><a id="hvcallunmapgpapages"></a><a id="HVCALLUNMAPGPAPAGES"></a><strong>HvCallUnmapGpaPages</strong></dt>
+<dd>
+<p>Code for the <a href="ff539869(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvUnmapGpaPages</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallInstallIntercept"></a><a id="hvcallinstallintercept"></a><a id="HVCALLINSTALLINTERCEPT"></a><strong>HvCallInstallIntercept</strong></dt>
+<dd>
+<p>Code for the <a href="ff539043(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvInstallIntercept</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallCreateVp"></a><a id="hvcallcreatevp"></a><a id="HVCALLCREATEVP"></a><strong>HvCallCreateVp</strong></dt>
+<dd>
+<p>Code for the <a href="ff538875(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvCreateVp</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDeleteVp"></a><a id="hvcalldeletevp"></a><a id="HVCALLDELETEVP"></a><strong>HvCallDeleteVp</strong></dt>
+<dd>
+<p>Code for the <a href="ff538911(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDeleteVp</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetVpRegisters"></a><a id="hvcallgetvpregisters"></a><a id="HVCALLGETVPREGISTERS"></a><strong>HvCallGetVpRegisters</strong></dt>
+<dd>
+<p>Code for the <a href="ff539019(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetVpRegisters</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSetVpRegisters"></a><a id="hvcallsetvpregisters"></a><a id="HVCALLSETVPREGISTERS"></a><strong>HvCallSetVpRegisters</strong></dt>
+<dd>
+<p>Code for the <a href="ff539850(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSetVpRegisters</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallTranslateVirtualAddress"></a><a id="hvcalltranslatevirtualaddress"></a><a id="HVCALLTRANSLATEVIRTUALADDRESS"></a><strong>HvCallTranslateVirtualAddress</strong></dt>
+<dd>
+<p>Code for the <a href="ff539860(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvTranslateVirtualAddress</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallReadGpa"></a><a id="hvcallreadgpa"></a><a id="HVCALLREADGPA"></a><strong>HvCallReadGpa</strong></dt>
+<dd>
+<p>Code for the <a href="ff539103(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvReadGpa</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallWriteGpa"></a><a id="hvcallwritegpa"></a><a id="HVCALLWRITEGPA"></a><strong>HvCallWriteGpa</strong></dt>
+<dd>
+<p>Code for the <a href="ff539894(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvWriteGpa</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallAssertVirtualInterrupt"></a><a id="hvcallassertvirtualinterrupt"></a><a id="HVCALLASSERTVIRTUALINTERRUPT"></a><strong>HvCallAssertVirtualInterrupt</strong></dt>
+<dd>
+<p>Code for the <a href="ff538832(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvAssertVirtualInterrupt</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallClearVirtualInterrupt"></a><a id="hvcallclearvirtualinterrupt"></a><a id="HVCALLCLEARVIRTUALINTERRUPT"></a><strong>HvCallClearVirtualInterrupt</strong></dt>
+<dd>
+<p>Code for the <a href="ff538835(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvClearVirtualInterrupt</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallCreatePort"></a><a id="hvcallcreateport"></a><a id="HVCALLCREATEPORT"></a><strong>HvCallCreatePort</strong></dt>
+<dd>
+<p>Code for the <a href="ff538870(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvCreatePort</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDeletePort"></a><a id="hvcalldeleteport"></a><a id="HVCALLDELETEPORT"></a><strong>HvCallDeletePort</strong></dt>
+<dd>
+<p>Code for the <a href="ff538908(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDeletePort</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallConnectPort"></a><a id="hvcallconnectport"></a><a id="HVCALLCONNECTPORT"></a><strong>HvCallConnectPort</strong></dt>
+<dd>
+<p>Code for the <a href="ff538838(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvConnectPort</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallGetPortProperty"></a><a id="hvcallgetportproperty"></a><a id="HVCALLGETPORTPROPERTY"></a><strong>HvCallGetPortProperty</strong></dt>
+<dd>
+<p>Code for the <a href="ff539014(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvGetPortProperty</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDisconnectPort"></a><a id="hvcalldisconnectport"></a><a id="HVCALLDISCONNECTPORT"></a><strong>HvCallDisconnectPort</strong></dt>
+<dd>
+<p>Code for the <a href="ff538926(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDisconnectPort</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallPostMessage"></a><a id="hvcallpostmessage"></a><a id="HVCALLPOSTMESSAGE"></a><strong>HvCallPostMessage</strong></dt>
+<dd>
+<p>Code for the <a href="ff539097(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvPostMessage</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSignalEvent"></a><a id="hvcallsignalevent"></a><a id="HVCALLSIGNALEVENT"></a><strong>HvCallSignalEvent</strong></dt>
+<dd>
+<p>Code for the <a href="ff539854(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSignalEvent</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSavePartitionState"></a><a id="hvcallsavepartitionstate"></a><a id="HVCALLSAVEPARTITIONSTATE"></a><strong>HvCallSavePartitionState</strong></dt>
+<dd>
+<p>Code for the <a href="ff539138(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSavePartitionState</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallRestorePartitionState"></a><a id="hvcallrestorepartitionstate"></a><a id="HVCALLRESTOREPARTITIONSTATE"></a><strong>HvCallRestorePartitionState</strong></dt>
+<dd>
+<p>Code for the <a href="ff539126(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvRestorePartitionState</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallInitializeEventLogBufferGroup"></a><a id="hvcallinitializeeventlogbuffergroup"></a><a id="HVCALLINITIALIZEEVENTLOGBUFFERGROUP"></a><strong>HvCallInitializeEventLogBufferGroup</strong></dt>
+<dd>
+<p>Code for the <a href="ff539026(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvInitializeEventLogBufferGroup</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallFinalizeEventLogBufferGroup"></a><a id="hvcallfinalizeeventlogbuffergroup"></a><a id="HVCALLFINALIZEEVENTLOGBUFFERGROUP"></a><strong>HvCallFinalizeEventLogBufferGroup</strong></dt>
+<dd>
+<p>Code for the <a href="ff538934(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvFinalizeEventLogBufferGroup</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallCreateEventLogBuffer"></a><a id="hvcallcreateeventlogbuffer"></a><a id="HVCALLCREATEEVENTLOGBUFFER"></a><strong>HvCallCreateEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff538851(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvCreateEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallDeleteEventLogBuffer"></a><a id="hvcalldeleteeventlogbuffer"></a><a id="HVCALLDELETEEVENTLOGBUFFER"></a><strong>HvCallDeleteEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff538894(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvDeleteEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallMapEventLogBuffer"></a><a id="hvcallmapeventlogbuffer"></a><a id="HVCALLMAPEVENTLOGBUFFER"></a><strong>HvCallMapEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff539062(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvMapEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallUnmapEventLogBuffer"></a><a id="hvcallunmapeventlogbuffer"></a><a id="HVCALLUNMAPEVENTLOGBUFFER"></a><strong>HvCallUnmapEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff539864(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvUnmapEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSetEventLogGroupSources"></a><a id="hvcallseteventloggroupsources"></a><a id="HVCALLSETEVENTLOGGROUPSOURCES"></a><strong>HvCallSetEventLogGroupSources</strong></dt>
+<dd>
+<p>Code for the <a href="ff539142(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSetEventLogGroupSources</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallReleaseEventLogBuffer"></a><a id="hvcallreleaseeventlogbuffer"></a><a id="HVCALLRELEASEEVENTLOGBUFFER"></a><strong>HvCallReleaseEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff539116(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvReleaseEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallFlushEventLogBuffer"></a><a id="hvcallflusheventlogbuffer"></a><a id="HVCALLFLUSHEVENTLOGBUFFER"></a><strong>HvCallFlushEventLogBuffer</strong></dt>
+<dd>
+<p>Code for the <a href="ff538955(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvFlushEventLogBuffer</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallPostDebugData"></a><a id="hvcallpostdebugdata"></a><a id="HVCALLPOSTDEBUGDATA"></a><strong>HvCallPostDebugData</strong></dt>
+<dd>
+<p>Code for the <a href="ff539094(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvPostDebugData</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallRetrieveDebugData"></a><a id="hvcallretrievedebugdata"></a><a id="HVCALLRETRIEVEDEBUGDATA"></a><strong>HvCallRetrieveDebugData</strong></dt>
+<dd>
+<p>Code for the <a href="ff539134(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvRetrieveDebugData</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallResetDebugSession"></a><a id="hvcallresetdebugsession"></a><a id="HVCALLRESETDEBUGSESSION"></a><strong>HvCallResetDebugSession</strong></dt>
+<dd>
+<p>Code for the <a href="ff539121(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvResetDebugSession</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallMapStatsPage"></a><a id="hvcallmapstatspage"></a><a id="HVCALLMAPSTATSPAGE"></a><strong>HvCallMapStatsPage</strong></dt>
+<dd>
+<p>Code for the <a href="ff539077(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvMapStatsPage</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallUnmapStatsPage"></a><a id="hvcallunmapstatspage"></a><a id="HVCALLUNMAPSTATSPAGE"></a><strong>HvCallUnmapStatsPage</strong></dt>
+<dd>
+<p>Code for the <a href="ff539874(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvUnmapStatsPage</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallMapSparseGpaPages"></a><a id="hvcallmapsparsegpapages"></a><a id="HVCALLMAPSPARSEGPAPAGES"></a><strong>HvCallMapSparseGpaPages</strong></dt>
+<dd>
+<p>Code for the <a href="ff539074(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvMapSparseGpaPages</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSetSystemProperty"></a><a id="hvcallsetsystemproperty"></a><a id="HVCALLSETSYSTEMPROPERTY"></a><strong>HvCallSetSystemProperty</strong></dt>
+<dd>
+<p>Code for the <a href="ff539848(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSetSystemProperty</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallSetPortProperty"></a><a id="hvcallsetportproperty"></a><a id="HVCALLSETPORTPROPERTY"></a><strong>HvCallSetPortProperty</strong></dt>
+<dd>
+<p>Code for the <a href="ff539150(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">HvSetPortProperty</strong></a> hypercall function. </p>
+</dd>
+<dt><a id="HvCallOutputDebugCharacter"></a><a id="hvcalloutputdebugcharacter"></a><a id="HVCALLOUTPUTDEBUGCHARACTER"></a><strong>HvCallOutputDebugCharacter</strong></dt>
+<dd>
+<p>Test code </p>
+</dd>
+<dt><a id="HvCallEchoIncrement"></a><a id="hvcallechoincrement"></a><a id="HVCALLECHOINCREMENT"></a><strong>HvCallEchoIncrement</strong></dt>
+<dd>
+<p>Test code</p>
+</dd>
+<dt><a id="HvCallPerfNop"></a><a id="hvcallperfnop"></a><a id="HVCALLPERFNOP"></a><strong>HvCallPerfNop</strong></dt>
+<dd>
+<p>Test code</p>
+</dd>
+<dt><a id="HvCallPerfNopInput"></a><a id="hvcallperfnopinput"></a><a id="HVCALLPERFNOPINPUT"></a><strong>HvCallPerfNopInput</strong></dt>
+<dd>
+<p>Test code</p>
+</dd>
+<dt><a id="HvCallPerfNopOutput"></a><a id="hvcallperfnopoutput"></a><a id="HVCALLPERFNOPOUTPUT"></a><strong>HvCallPerfNopOutput</strong></dt>
+<dd>
+<p>Test code</p>
+</dd>
+<dt><a id="HvCallCount"></a><a id="hvcallcount"></a><a id="HVCALLCOUNT"></a><strong>HvCallCount</strong></dt>
+<dd>
+<p>The total number of all hypercall codes. </p>
+</dd>
+</dl>
+<h2>Remarks</h2>
+<p>For more information about hypercall codes, see <a href="ff541397(v%3dvs.85).html">Hypercall Function Code Reference</a>. </p>
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>Hvgdk.h (include Hvgdk.h)</dt>
+</dl>
+</td></tr>
+</table>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [hypervisor\hypervisor]:%20HV_CALL_CODE enumeration%20 RELEASE:%20(11/16/2013)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/16/2013</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="BrhN2DsrhLH6G-5D6SGWsNaMJp2lP5cFjK29S1qJEIjrId2XSlLMELsHJ5kOyQNzoO31uG5i1WOZCbWPwkfImVrd4YVTQuaJqRVXnpueJAPjdJwp2Y8W5BxE37vhwtrM9Yz5wA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff539917(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539917(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="mYQNpN986mrdxOraMS-R6y8l9K50CuRvec5-sQvQGjo22a10HCSHUY6KhfY529maDz9_alVuzlU0oHw0IE6Hrrmi1aQMNp0c2ccZ_AQiI6Va1gN9AiHuH6JH3maUKi_YWSl1Gg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff539917(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"70c392c4-e41a-4ed6-a687-ec7b2b09d711\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539917(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:44:59 GMT -->
+</html>

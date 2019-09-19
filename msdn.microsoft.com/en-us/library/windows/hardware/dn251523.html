@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn251523.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 11:10:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn251523.html" />
+        <title>Windows Hardware Certification Kit (HCK) FAQ</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn251523(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251523(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251523(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251523(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA938-3:55:04 AM" />
+
+<meta name="Search.ShortId" content="dn251523" />
+
+<meta name="ms.shortidmsdn" content="dn251523" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053704&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn251523.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="hh998373.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="What's New">What's New</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="dn386003.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certification Kit Support Matrix">Certification Kit Support Matrix</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="jj125187.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Hardware Certification Program">Windows Hardware Certification Program</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="hh998767.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Testing Concepts">Testing Concepts</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="jj123537.html" id="dn247568_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Getting Started">Getting Started</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="dn423954.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows HCK Release Notes  for Windows 8.1">Windows HCK Release Notes  for Windows 8.1</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="dn284526.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Hardware Certification Kit QFE Updates">Windows Hardware Certification Kit QFE Updates</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="dn251523.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows HCK FAQ">Windows HCK FAQ</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn339175.html" id="dn369269_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Certification Newsletter Archive">Windows Certification Newsletter Archive</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="dn251495.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Download Windows HCK Documentation">Download Windows HCK Documentation</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="hh998528.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Glossary">Glossary</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="hh998725.html" id="dn247167_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="About This Guide">About This Guide</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Windows Hardware Certification Kit (HCK) FAQ</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This article provides answers to frequently asked questions about the Windows Hardware Certification Kit (HCK), including workarounds to common installation and testing questions.</p>
+      <h2 class="heading">General Questions</h2>
+      <div id="sectionSection0" class="section">
+        <p>
+          <strong>Q: Do you plan to release the Windows Hardware Certification Kit (Windows HCK) with HCK Studio &amp; HCK Manager, or put more functionality into the HCK Studio?</strong>
+        </p>
+        <p>HCK Studio and HCK Manager will be released. There is additional functionality for the HCK Studio, specifically failure issues that do not produce logs (for example, if a copy file fails, there is no log created).  Such data does exist, and can be seen in the HCK Manager. We are planning on bringing it into HCK Studio.</p>
+        <p>
+          <strong>Q: Can I run WLK 1.6 tests on Windows 8 HCK Client?</strong>
+        </p>
+        <p>No, you need to run Windows HCK on Windows 8 HCK Clients.</p>
+        <p>
+          <strong>Q: In Windows HCK, there are two HCK Studios to manage our tests: the new HCK Studio, and the old HCK Manager. Why we need two HCK Studios? Will they be combined into one HCK Studio?</strong>
+        </p>
+        <p>The Windows HCK includes both the HCK Studio and the HCK Manager. The HCK Studio is focused purely on certification, and only includes functionality specific to creating and completing a certification project. We have also included HCK Manager, as there are still some advanced operations and troubleshooting options that cannot be done in HCK Studio.</p>
+        <p>Normally, you should only need to work in HCK Studio. But occasionally, you may need to open HCK Manager for troubleshooting or advanced configuration. Also, HCK Manager is the default viewer for .wtl files, so it will pop up when you open a .wtl file in HCK Studio.</p>
+        <p>
+          <strong>Q: We have limited HCK Servers to perform testing. As a result, multiple testers may perform tests on a single HCK Server. To prevent conflicts and easily manage HCK Server, can we create multiple accounts on the HCK Server?</strong>
+        </p>
+        <p>Yes, here’s how:</p>
+        <ol class="ordered">
+          <li>
+							Add each account to the <strong>Administrators</strong> group in <strong>Computer Management</strong>.<br /><br /></li>
+          <li>
+							Log on with the account that was used to install the HCK Server, and open HCK Manager.<br /><br /></li>
+          <li>
+							Select <strong>Tools</strong>, select <strong>Management Console</strong>, and expand the <strong>Users</strong> node under <strong>Datastore</strong>.<br /><br /></li>
+          <li>
+							Right-click <strong>hck_dsowners</strong>, and select <strong>New user</strong>.<br /><br /></li>
+          <li>
+							You can add multiple accounts, separated by semi-colons (;) in the format DOMAIN\account. In a Workgroup deployment, the HCK Server machine name is the domain name.<br /><br /></li>
+          <li>
+							Each operator adds their account with the same name and password to the <strong>Administrators</strong> group on their test machine, then uses that account to install the HCK Client software.<br /><br /></li>
+        </ol>
+      </div>
+      <h2 class="heading">Installation</h2>
+      <div id="sectionSection1" class="section">
+        <p>
+          <strong>Q: An error message occurs when installing the Windows HCK Client software on the test computer. We used a hub to connect the test server and HCK Client, and installed the HCK Client from the path: \\HCK ServerName\HCKInstall\HCK Client\Setup.exe . The error message shows that the file “WPTx64-x64_en-us.msi” is not found in the directory “Redistributables”. But the target PC can be installed from another server successfully. How do I resolve this issue?</strong>
+        </p>
+        <p>This is credentials issue. Use the DNS name instead of the IP address. You need to be able to connect to the HCK Server by name rather than IP address. If you resolve any DNS issues preventing you from connecting by name, and this should resolve your issue.</p>
+        <p>Other workarounds:</p>
+        <ol class="ordered">
+          <li>
+							Ensure you are using a consistent deployment model. Both the HCK Server and System under test should be joined to the same domain, or both machines should not be in any domain, but in the same workgroup.<br /><br /></li>
+          <li>
+							Make sure the account you have logged onto the HCK Client with has administrative access on the HCK Server. We recommend that you do not use a default Administrator account, but instead one of the following:<br /><br /><ol class="ordered"><li>
+									For Domains: Use a domain user account that is in the Administrators group on both machines.<br /><br /></li><li>
+									For Workgroups: Add a local machine account to both machines with the same name and password. Make sure this account is in the Administrators group on both machines.<br /><br /></li></ol></li>
+        </ol>
+        <p>
+          <strong>Q: When a Windows HCK Client system gets a clean OS install and then a fresh Windows HCK Client install, the HCK Client "heartbeat" never advances past the prior OS install and last run. How do I work around this?</strong>
+        </p>
+        <p>When you install HCK Client, security information is saved in the C:\WLK\JobsWorkingDir folder. If HCK Client software is installed again, this security information is created again and does not match the record on the HCK Server. That is why it is necessary to delete the HCK Client in HCK Studio to re-initialize the HCK Client record with new security information.</p>
+        <p>We recommend that you compile your project and save it to a .hckx project package before moving to a new OS version on the same machine.</p>
+        <p>And alternative, thought unsupported, workaround is to save the complete C:\WLK\JobsWorkingDir from the HCK Client machine. Then, after re-imaging the system and before installing the HCK Client, restore this folder. HCK Client install will find the folder and not create new security information.</p>
+        <p>
+          <strong>Q: We would like to use SQL 2008 R2 x64. Can this be installed on the HCK Server?</strong>
+        </p>
+        <p>SQL 2008 R2 x64 is not supported, only x86. In a future build, installations will be blocked if SQL x64 is installed.</p>
+        <p>
+          <strong>Q: What is the command line for the silent install of HCK Client?</strong>
+        </p>
+        <p>For Windows RT (ARM-based): <strong>\\&lt;hck server name&gt;\HCKInstall\ArmClient\setup.exe /qb ICFAGREE=Yes</strong></p>
+        <p>For AMD64/x86: <strong>\\&lt;hck server name&gt;\HCKInstall\Client\setup.exe /qb ICFAGREE=Yes</strong></p>
+        <p>
+          <strong>Q: I got an installation error when I installed HCK Client on a Secure Boot enabled system. What’s the workaround?</strong>
+        </p>
+        <p>For non-Windows RT devices, disable Secure Boot while installing HCK Client. Secure Boot should be disabled for most HCK testing, and only enabled to run the Secure Boot tests. For Windows RT devices, a debug policy should be used.</p>
+      </div>
+      <h2 class="heading">Running the tests</h2>
+      <div id="sectionSection2" class="section">
+        <p>
+          <strong>Q:  How can I see the test times for each test item?</strong>
+        </p>
+        <p>The estimated test run time is available on the <strong>Test</strong> tab in the HCK Studio.  If you click the + sign in front of the test name on the <strong>Results</strong> page, you can see the individual test run time and the actual time that each test took to run. The test time estimate is only an estimate on how long it takes to run the tests. The actual test time may be different from the estimated time.</p>
+        <p>
+          <strong>Q:  In previous version of WLK tests, the tester had to choose the test category, such as OS version, test items, and additional items. In Window HCK, we can choose only choose from Systems, devices and printers, device manager, and software device. Will the server auto-detect the test HCK Client type?</strong>
+        </p>
+        <p>Earlier versions of the WLK used a wizard in the device console to map jobs to specified certification categories.  In the Windows HCK for Windows 8, users select the device that they want to certify, and the Windows HCK uses a process of feature query and requirement mapping to apply all jobs that match the device. This process works by mapping device data to features, features to requirements, and requirements to tests. When you select a device, the Windows HCK can query the device data and map the feature set, requirement, and tests without user intervention.</p>
+        <p>
+          <strong>Q: After setting up a Windows 8 certification test, creating a new project to run the USB test device for storage results in a lot of tests that seem to be duplicated. Is this behavior expected?</strong>
+        </p>
+        <p>Yes, this is by design. If you selected multiple devices that you want to be certified, the Windows HCK uses a process of feature query and requirement mapping to apply all jobs that match each device.</p>
+        <p>
+          <strong>Q: From within a project, I scheduled a test to execute.  When I tried to reschedule the same test again (against the same HCK Client from within the same project) prior to completing the originally scheduled test, it failed. Is this expected?</strong>
+        </p>
+        <p>Yes, this behavior is by design. The UI is intended for moderate or light users of the kit who don't need complex testing. You’ll need to use the object model to schedule multiple test runs of the same test/target.</p>
+        <p>
+          <strong>Q: Can we add test items? For example, it my test unit contains a touch screen, do we need to add touch for testing manually?</strong>
+        </p>
+        <p>You can't add test items manually according to the new job mapping methodology. All test jobs will show up automatically. If you find missing tests, or test items don’t fit the test system configuration, please submit feedback in the Hardware Dashboard in the Windows Dev Center, and attach the HCK – Hardware Certification Kit Event log to the bug. We will investigate the issue further.</p>
+        <p>
+          <strong>Q: When I select my device the product types summary in the right pane does not display the product type I want to certify. What should I do?</strong>
+        </p>
+        <p>In some cases, features that are required for a product type are not being automatically detected on your device.  In this situation, you must manually select the missing feature(s) that correspond to your product type. To manually configure your product type:</p>
+        <ol class="ordered">
+          <li>
+							Find your product type in the <a href="http://download.microsoft.com/download/2/3/6/23662F33-71E8-43C1-8547-5DE49B0374AB/windows-hck-product-type-matrix.zip">Windows HCK Product Type Test Matrix</a>.<br /><br /></li>
+          <li>
+							Determine the list of features that are required for your product type.<br /><br /></li>
+          <li>
+							In the <strong>Selection</strong> tab in HCK Studio, right-click on your selection.  You will see a list of features. The features that have been automatically detected will have a check-box.<br /><br /></li>
+          <li>
+							Select all missing features that correspond to your product type.<br /><br /></li>
+        </ol>
+        <p>After you have selected all the features, the product type will appear. When you add features to your selection, the tests that are required for those features are automatically added to your list of tests.</p>
+        <p>
+          <strong>Q: As an OEM, we typically have a large number of systems running on a single Windows HCK Server and even within a single machine pool.  Having the ability to sort the list of tests by more than one factor allows us to first sort by a single test and then by machine to see how many times a single test was run on a single system in contrast to other systems that have run the same test. Is this possible?</strong>
+        </p>
+        <p>Yes, you can sort by multiple columns. To do so, sort by the first column and then shift-click the second column.For large testing scenarios, it may be more effective to use the object model to schedule tests and analyze results rather than the simple HCK Studio UI. For more info, see the <a href="http://go.microsoft.com/fwlink/?LinkID=252800">HCK API Reference</a>.</p>
+        <p>
+          <strong>Q: My test system hangs easily; can the Windows HCK server detect test system hangs and force it to restart to complete the test tasks?</strong>
+        </p>
+        <p>No, the HCK Server cannot communicate with a system that is hung. Internally we do this by attaching our systems to a power supply that can be cycled remotely when the system is not responsive.</p>
+        <p>
+          <strong>Q: To use Update Filter, we executed updatefilters.exe, but received the error message "Invalid column name.”Can WLK filters work on the Windows HCK test results?</strong>
+        </p>
+        <p>WLK 1.6 filters will not work on Windows HCK test results. Download the latest <a href="http://msdn.microsoft.com/windows/hardware/hh852367">Windows HCK Filters</a>.</p>
+        <p>
+          <strong>Q: After the project starts and all tests are scheduled, the HCK Studio does not allow for the addition of more machine (targeted devices). Adding machines doubles or triples the amount of tests needed to complete the project, and does not distribute the already scheduled tests to them.</strong>
+        </p>
+        <p>One solution to this distributed testing, which can be done using the object model. See the <a href="http://go.microsoft.com/fwlink/?LinkID=252800">HCK API Reference</a>.</p>
+        <p>
+          <strong>Q: Can we test HCK tests with a command line like the WLK? It’s convenient to do this when we encounter a test failure.</strong>
+        </p>
+        <p>Our object model is the way to automate the HCK. You can use the object model in PowerShell to get an interactive session with your HCK objects. We don't have direct command-line support.</p>
+        <p>
+          <strong>Q: Multiple users attempting to access HCK Studio or HCK Manager on the same HCK Server receive the error "Failed to connect to database. Failed to connect to OM".</strong>
+        </p>
+        <p>See the topic “Install a remote HCK Studio” in the <a href="http://go.microsoft.com/fwlink/?LinkID=252774">HCK help documentation.</a></p>
+        <p>
+          <strong>Q: How do we run the same test item 3 or 4 times ? We could continue to select the same test item in WLK 1.6. How do we do this in HCK Studio?</strong>
+        </p>
+        <p>This issue is by design in our UI. To rerun a test, the test needs to complete first. If you'd like to queue multiple runs of the test, please use the object model to schedule the test.</p>
+        <p>
+          <strong>Q: I don’t see my device under Selection &gt; devices and printers in HCK Studio for Windows Vista, but I see my device for Windows 7 and Windows 8.</strong>
+        </p>
+        <p>The Devices and Printers capability was first introduced in the Windows 7 platform. Previous operating systems, including Windows Vista, Windows Server 2008, and Windows XP do not have the concept or APIs for “Devices and Printers,” and therefore we aren’t able to group devices into these categories. Please select the target from the <strong>Device Manager</strong> view.</p>
+        <p>
+          <strong>Q: Can we test Windows HCK by wireless if the HCK Client doesn't support RJ-45?</strong>
+        </p>
+        <p>Yes.</p>
+        <p>
+          <strong>Q: Can we test by USB LAN dongle if the HCK Client doesn't support RJ-45?</strong>
+        </p>
+        <p>Yes, we recommend a Windows-certified USB LAN dongle.</p>
+        <p>
+          <strong>Q: Can we use the Job Explorer to schedule  a job?</strong>
+        </p>
+        <p>The tests can be manually scheduled using the HCK Studio Selection page. Running from the Job Monitor isn't supported.</p>
+        <p>
+          <strong>Q: What does LLU_NAO mean?</strong>
+        </p>
+        <p>HCK tests run under the account specified in the job configuration, which is usually LLU_NAO.</p>
+      </div>
+      <h2 class="heading">System Fundamental Tests</h2>
+      <div id="sectionSection3" class="section">
+        <p>
+          <strong>Q: How do I execute the “xHCI Debug Capability Compliance(Logo)” test?</strong>
+        </p>
+        <p>When you select the <strong>xHCI Debug Capability</strong> test under <strong>Tests</strong> and click <strong>Run Selected</strong>, a <strong>Parameters</strong> dialog appears. This test requires two machines in the machine pool that are set up for debugging (one host and the system under test). This test also requires a special USB debugging cable. Please make sure that you have provided the necessary configuration for this test.</p>
+        <p>
+          <strong>Q: "xHCI Debug Capability Compliance" and "Debug Capability Test(Logo)" can't run successfully. What do I do?</strong>
+        </p>
+        <p>The host machine must be running Win8. There are no specific hardware requirements for this machine. If the host machine doesn't have USB3.0, the test running on the host machine will pass. Also, the host machine must be added to the machine pool.</p>
+        <p>
+          <strong>Q: While executing Windows HCK System test "Verifies PS2 Devices have a unique Plug and Play ID" item on W8-B8161 64-bit OS, I get the following error:</strong>
+        </p>
+        <p>
+          <strong>“Found device ACPI\PNP0303\4&amp;343AF303&amp;0</strong>
+        </p>
+        <p>
+          <strong>Error ACPI\PNP0303\4&amp;343AF303&amp;0 is not a unique ID because it contains ACPI\PNP”</strong>
+        </p>
+        <p>This test is failing correctly due to a new Windows 8 requirement. The PS/2 device does not have a unique ID because it contains ACPI\PNP,For more info, see <a href="gg487441.html">http://msdn.microsoft.com/en-us/library/windows/hardware/gg487441.aspx</a>.</p>
+        <p>
+          <strong>Q: How do I run the “Secure Boot Logo Test”?</strong>
+        </p>
+        <p>Secure Boot is a required feature for Windows 8.  To run this test, you must first enable Secure Boot in its default (shipping) configuration in the BIOS.  Next, run the test. When the <strong>Prepare for Secure Boot Out-of-Box Tests</strong> dialog appears on the target system, select <strong>Yes</strong> to indicate that you have properly configured your BIOS.  The test will not pass if you click <strong>No</strong> on this popup or fail to click it before a timeout expires.</p>
+      </div>
+      <h2 class="heading">Device Tests</h2>
+      <div id="sectionSection4" class="section">
+        <p>
+          <strong>Q: The “USB Topology Compatibility Test” runs and hangs on the HCK Client PC. The USB viewer is open on the HCK Client PC along with a command window that is blank. If you manually exit the USB viewer, the test continues and results in a failing log.</strong>
+        </p>
+        <p>On the test machine, you should see a dialog called <strong>Test Instructions</strong> in addition to the empty command window. You may need to press ALT-TAB or minimize the command window.</p>
+        <p>The test instructions outline 6 different topologies to test.  The tester should manually move the device to all of the topologies shown in that list in any order; once all topologies are complete, the test will automatically complete.</p>
+        <p>
+          <strong>Q: How do I perform the keyboard logo test in the HCK? There aren't any keyboards in the device list.</strong>
+        </p>
+        <p>You may need to select the <strong>Inbox</strong> or <strong>Hidden</strong> checkboxes to find the keyboard.</p>
+        <p>The <strong>Inbox</strong> checkbox should not be confused with a similar checkbox in the WLK New Submission Wizard. It does not necessarily mean you are making an Inbox submission, it is only a way of reducing the number of devices displayed by default on the <strong>Selection</strong> page.</p>
+        <p>
+          <strong>Q: The “USB xHCI Transfer Speed Test” fails with the following error:</strong>
+        </p>
+        <p>
+          <strong>MUTT performance tools not found: C:\usbtest\fx3perf.bat, GetLastError(): 0x3</strong>
+        </p>
+        <p>The transfer speed test requires you to attach a SuperMUTT to the system under test when executing the test. The SuperMUTT is delivered to you by the OEM engagement team. You can also acquire additional SuperMUTTs from the following vendor: <a href="http://www.jjgtechnologies.com/mutt.htm">http://www.jjgtechnologies.com/mutt.htm</a>. </p>
+        <p>Once you obtain a SuperMUTT, you will need to install the MUTT software package v1.5 from Connect. It will be available on Connect will saturate the bus so that the test can measure the performance.</p>
+        <p>
+          <strong>Q: No tests are seen for filter drivers on platforms Windows 7 x86 and x64.</strong>
+        </p>
+        <p>It is by design that the Filter.Driver.Fundamentals feature only applies to Windows 8 filter drivers. You can select the filter driver on a Windows 7 machine and the target will be added to the project, but this particular feature will not apply. Other filter driver features may or may not apply as well, depending on the specifics of the filter target itself. In the case where there are no tests for the filter driver on a downlevel OS, the target information is, however, still included in the project.</p>
+        <p>
+          <strong>Q: The INF test fails for this INF saying “The service for the function driver must have the SPSVCINST_ASSOCSERVICE flag.” </strong>
+        </p>
+        <p>A device driver INF must specify a function driver.  In this case, one is not specified and that is considered a failure.  This driver will not properly install through standard PnP mechanisms, meaning it cannot be deployed through Windows Update or offline.  The driver will also not survive an OS upgrade, or uninstall/rescan operations.  The only way this driver can be deployed is through a custom setup application.  To pass the test and ensure the package can be properly deployed, use Includes/Needs to install the appropriate function driver on the device as well as the filters.  See the <a href="ff539838(v%3dvs.85).html">keyboard filter sample in the WDK</a> for an example of how to do this properly. </p>
+        <p>
+          <strong>Q: When running some cases, I keep getting a pop-up that says “Set to TRUE if device is embedded in the system”. How do I control this input?</strong>
+        </p>
+        <p>The IsEmbeddedUSBDevice parameter should only be used for USB devices that are physically embedded into a system.  The Windows HCK will automatically detect embedded devices if the system ACPI data is set up properly to reflect the actual USB hierarchy in the system.  If the system is set up properly, embedded devices will have their container ID set to that of the system container, and the Windows HCK will use the container ID to detect embedded devices.  The IsEmbeddedUSBDevice parameter is available for an override for devices that aren't correctly mapped as embedded in system firmware.  The parameter will enable embedded device level testing (slightly different than for external devices), but will still cause the test to fail with an error stating that the container ID did not match the system.  In Windows 8 , you need to be mapped properly in system firmware, so the test will not pass cleanly until the system firmware is implemented properly.</p>
+        <p>
+          <strong>Q: The “Static Tools Logo test” failed to create the C:\DVL folder, thus failing the DevFundTests.DvlTest.DvlCheck test. How do I run this test?</strong>
+        </p>
+        <p>DVL test fails because C:\dvl folder does not exist and/or a *.dvl.xml file has not been created.</p>
+        <p>After the code analysis log and sdv logs are created, you can then generate a dvl.xml file either from the UI or a command prompt.</p>
+        <p>To generate a dvl.xml file from a command prompt, follow these steps:</p>
+        <ol class="ordered">
+          <li>
+							In Microsoft Visual Studio, select the driver project file and then right-click to open the project properties. Select <strong>Windows 8 Release</strong> as the <strong>Configuration</strong> and <strong>x64</strong> as the <strong>Platform</strong>.<br /><br /></li>
+          <li>
+							Open your driver project (.VcxProj) file in Visual Studio. From the <strong>Driver</strong> menu, click <strong>Create Driver Verification Log</strong>.<br /><br /></li>
+          <li>
+							Verify that both the <strong>Code Analysis Log</strong> and the <strong>Static Driver Verifier Log</strong> files are detected. Click <strong>Create</strong>.<br /><br /></li>
+          <li>
+							The DVL file for the driver project can be found in the driver project folder, for example, \myDriverProject\myDriverName.DVL.XML.<br /><br /></li>
+          <li>
+							Copy the DVL file(s) to the HCK Client computer’s “%SystemDrive%\dvl” folder before running the static tools logo test.<br /><br /></li>
+        </ol>
+        <p>
+          <strong>Q: For the “Static Tools Logo test,” If I create the DVL file same source code on the driver, do I have to create another new DVL file if there is a new driver release?</strong>
+        </p>
+        <p>No, you do not need to re-run Static Tools Logo Test for certification purposes, even if you have made updates to your source code.</p>
+        <p>However, we recommend that you do so to ensure your driver is of high quality and performs well in the field. Running Static Driver Verifier and Code Analysis, where are both required for DVL, will help surface defects and warnings in your driver and can help improve the quality of your driver in the long run.</p>
+        <p>
+          <strong>Q: What is the  USB Exposed Port System Test  requirement?</strong>
+        </p>
+        <p>The exposed port test requires an external USB3.0 hub to be attached to the USB3 system ports.</p>
+        <p>A USB 3.0 Hub must be attached to each exposed xHCI connector on the system.</p>
+        <p>A USB 3.0 Hub must be attached to each exposed connector of the xHCI HCK Server.In addition to the USB 3.0 Hub, a low speed and full speed device must be attached to each exposed connector of the xHCI HCK Server. For HCK Server, the USB 3.0 hub provides coverage for SuperSpeed as well as high speed device enumeration.</p>
+        <p>A USB 3.0 Hub must be attached to each downstream SuperSpeed capable connector. Note that there are no USB-IF certified USB 3.0 hubs currently available on the market since USB-IF has not started USB3.0 Hub compliance program yet. In the meantime, we validated that the following hub works well for Windows HCK purposes: <a href="http://go.microsoft.com/fwlink/?LinkId=253820">http://go.microsoft.com/fwlink/?LinkId=253820</a>. </p>
+        <p>
+          <strong>Q: USB test cases fail with the error message: "No USB devices found downstream of Xhci". How do I run USB tests in Windows HCK?</strong>
+        </p>
+        <p>USB devices must be connected to a USB 3.0 HCK Server to run these tests. This is true for all of the tests where you get this error.</p>
+        <p>The test is failing correctly, as devices need to be tested behind a USB 3.0 HCK Server on Windows 8.All USB devices (1.1, 2.0, 3.0) must be tested behind xHCI HCK Server connected to USB 3 ports with a Windows 8 stack.</p>
+        <p>For the topology test, will need EHCI and xHCI, SuperSpeed hub, High speed hub, and full speed hub.For xHCI, we recommend Renesas 200, 200A, 201/202 or Fresco Logic 1009, 1100. For USB 3 hub, there are none certified on the market since USB-IF has not started the certification program yet, but you can use the following hub: http://go.microsoft.com/fwlink/?LinkId=253820&amp;clcid=0x409</p>
+        <p>For full speed hub, try looking at compound devices like keyboards or docking stations with hubs in them. A lot of those devices still have old hubs in them. We are also working on making a programmable device that can act as a full speed hub for Windows HCK test purposes.</p>
+        <p>You then need to connect 6 topologies using recommended hardware for this test to get validated:Attach the Device-Under-Test (DUT) to the host system in the following six topologies:</p>
+        <ul>
+          <li class="unordered">
+							EHCI -&gt; DUT<br /><br /></li>
+          <li class="unordered">
+							EHCI -&gt; High Speed Hub -&gt; DUT<br /><br /></li>
+          <li class="unordered">
+							EHCI -&gt; High Speed Hub -&gt; Full Speed Hub -&gt; DUT<br /><br /></li>
+          <li class="unordered">
+							xHCI -&gt; DUT<br /><br /></li>
+          <li class="unordered">
+							xHCI -&gt; USB 3.0 Hub -&gt; DUT<br /><br /></li>
+          <li class="unordered">
+							xHCI -&gt; High Speed Hub -&gt; DUT<br /><br /></li>
+        </ul>
+        <p>
+          <strong>Q: After selecting a Web Service wireless network connected MFP, the test list does not include the Pnpx logo and vertical pairing logo tests for Windows 7 or Windows 8. Is this by design?</strong>
+        </p>
+        <p>Yes, these tests must be added manually.</p>
+        <p>
+          <strong>Q: “xHCI Debug Capability Compliance test” fails with the following error message: “with AreNotEqual(0, 0) -- XHCI controller provides debug capability.”</strong>
+        </p>
+        <p>This failure indicates the xHCI controller that you specified for certification does not have debug capability. All systems that contain one or more xHCI controllers that provide user-accessible ports are expected to provide debug capability.</p>
+      </div>
+      <h2 class="heading">Test failures</h2>
+      <div id="sectionSection5" class="section">
+        <p>
+          <strong>Q: Why are Passed tests marked as Failed in HCK Studio?</strong>
+        </p>
+        <p>If the overall job is marked as a pass, you can safely ignore the failures in the Failure column. The specific task “Copy Test Results *.txt” is configured as “IgnoreFailureAndContinue,” which means it is expected to fail in some cases.</p>
+        <p>
+          <strong>Q: Some test jobs failed, but the log file is not saved. How do I troubleshoot this?</strong>
+        </p>
+        <p>When a test fails without logs, look at the Parent and Child Job Result Reports in the HCK Manager.</p>
+      </div>
+      <h2 class="heading">Test logs</h2>
+      <div id="sectionSection6" class="section">
+        <p>
+          <strong>Q: How do I get the HCK StudioInstall.log and Windows HCK event log</strong>
+        </p>
+        <p>To find the HCK StudioInstall.log:</p>
+        <ol class="ordered">
+          <li>
+							Log onto the HCK Studio computer, and open a command prompt.<br /><br /></li>
+          <li>
+							Type <strong>CD %TEMP%.</strong> This will take you to the folder with the logs in it. Attach HCK*.log from this folder.<br /><br /></li>
+        </ol>
+        <p>To find the Windows HCK Event log:</p>
+        <ol class="ordered">
+          <li>
+							Right-click <strong>My Computer</strong>, select <strong>Manage</strong>, and open <strong>Computer Management</strong>.<br /><br /></li>
+          <li>
+							Expand <strong>Event Viewer</strong>, and then expand <strong>Applications and Services Logs</strong>.<br /><br /></li>
+          <li>
+							Right-click <strong>HCK – Hardware Certification Kit</strong>, and then select <strong>Save all events as</strong> to save the event log to an .evtx file.<br /><br /></li>
+        </ol>
+        <p>
+          <strong>Q: Is there a log viewer tool for checking logs? I know we have to install HCK Studio to check logs, but in the previous WLK, we could check the logs with the log viewer tool.</strong>
+        </p>
+        <p>Windows HCK Setup supports the installation of a standalone HCK Studio.  Run HCKSetup and select the Install option.  On the next page, you can choose to install <strong>HCK Studio Only</strong> or <strong>HCK Server</strong> + <strong>HCK Studio</strong>.  On machines that are not running Windows Server 2008 R2 x64, the <strong>HCK Server + HCK Studio</strong> option is grayed out and only the <strong>HCK Studio Only</strong> option is selectable.</p>
+        <p>
+          <strong>Q: When opening the log for a test failure, there is no explanation of the failure. It just says "Fail" after pages of log text. Is this an issue?</strong>
+        </p>
+        <p>This is most likely a problem in the driver under test, holding an IRP. When you see these messages getting printed to the console on the test machine, follow these steps:</p>
+        <ol class="ordered">
+          <li>
+							Break into the kernel debugger (make sure to enable KD on test machine first).<br /><br /></li>
+          <li>
+							Examine threads running under the test process (Te.exe - !process 0 0 Te.exe).<br /><br /></li>
+          <li>
+							See if any IRPs are stuck in your driver.<br /><br /></li>
+        </ol>
+      </div>
+      <h2 class="heading">Object model</h2>
+      <div id="sectionSection7" class="section">
+        <p>
+          <strong>Q:  What is the object model?</strong>
+        </p>
+        <p>The object model can be accessed programmatically to automate custom test scenarios. The release notes have a section on “Using the Automation Interfaces” that explains how to use the OM and includes samples.</p>
+        <p>
+          <strong>Q: Windows HCK object model function - CreateTarget from HW ID is not working properly. Is this by design?</strong>
+        </p>
+        <p>OMUtil is deprecated. Use your OM code to accomplish your goal.</p>
+        <p>
+          <strong>Q: If a machine is in a debug state at the time a project is created, Windows HCK will allocate a test to it, but actually scheduling that test to the machine will fail with an exception. The object model should not allocate tests to machines in a debug state.  Also, if a machine goes into a debug state during execution of the project, the object model should allow for re-queuing the tests allocated to the machine in the debug state so that they can be picked up by other machines.</strong>
+        </p>
+        <p>This is the correct behavior.</p>
+        <p>When a test is scheduled, all the targets’ machines for that test are checked.</p>
+        <p>Any machines that are not in a running state (manual, debug, etc.) are excluded from the list of machines that can run this test.</p>
+        <p>Filter out any machine that has been moved out of the Product instances machine pool.</p>
+        <p>If there are no machines available, an error is produced.</p>
+        <p>When specifying a list of machines to run a test, follow these steps:</p>
+        <ol class="ordered">
+          <li>
+							Get a list of all of the machines that have targets for that test.<br /><br /></li>
+          <li>
+							Filter based on running state.<br /><br /></li>
+          <li>
+							Filter out any machine that has been moved out of the Product instances machine pool.<br /><br /></li>
+          <li>
+							Filter out based on the list that was passed in.<br /><br /></li>
+        </ol>
+        <p>If there are no machines left to run the test, then an error is thrown.</p>
+        <p>
+          <strong>Q: Where can I get more info about the Windows HCK object model?</strong>
+        </p>
+        <p>The Windows HCK object model is a fully capable API interface that allows a customer to create tools and additional scripts to automate common tasks.</p>
+        <p>We do have a sample code that will enumerate through all tests in a project and rerun all of the tests that are not currently passing.</p>
+        <p>The script is a PowerShell script. To run this, please see the information in the Windows HCK help documentation.</p>
+      </div>
+      <h2 class="heading">Submission packages</h2>
+      <div id="sectionSection8" class="section">
+        <p>
+          <strong>Q: There are three options to select when creating an .hckx submission package for certification. Because we don't have a store certificate or certificate file, we just selected “Do not sign” to create a package. Can we provide the unsigned log file to our customer and have them sign it before submitting for a system certification?</strong>
+        </p>
+        <p>Yes, you can complete system testing by selecting system testing and pointing to the system you want to test in your machine pool.  After you complete testing, you create the .hckx file and send it to the OEM to submit for their certification.  They sign the file with their VeriSign signature so we know the submission is from them.  It doesn’t matter to us if you or the OEM does the testing, as long as we know that the system they want to certify passed testing.</p>
+        <p>
+          <strong>Q: The submission process has new buttons "Add driver Folders" and "Merge Package.” What do these do? Does this means submission packages must now contain all loaded drivers by default?</strong>
+        </p>
+        <p>The <strong>Add Driver Folders</strong> capability is specific to device testing. Device driver vendors can include their drivers directly in the package for uploading to the dashboard. <strong>Merge Package</strong> is used to include multiple projects in the same package for uploading to the dashboard.</p>
+        <p>
+          <strong>Q: After I complete testing want to create the test package, there are three signing options to choose from. Which one should I choose?</strong>
+        </p>
+        <p>Select one of the following options to submit your package as either signed or unsigned.  Note:  All official submissions to Microsoft must be signed.</p>
+        <ul>
+          <li class="unordered">
+							To submit your package as unsigned, for example to send to support for debugging purposes, select <strong>Do not sign</strong>.<br /><br /></li>
+          <li class="unordered">
+							To submit your package to the dashboard for submission and to store certificates in a repository (most common scenario), select <strong>Use the certificate store</strong>.<br /><br /></li>
+          <li class="unordered">
+							To submit your package to the dashboard for submission and to store certificates as individual files, select <strong>Use a certificate file</strong>.<br /><br /></li>
+        </ul>
+        <p>Signing of the package is used to validate that the test results came from the person or company that has logged into the dashboard. This is equivalent to the signing that happens within WST today. We're simply moving that into the HCK.</p>
+        <p>
+          <strong>Q: After viewing the .hckx file in HCK Studio, it can’t be read by other projects.</strong>
+        </p>
+        <p>
+          <strong>Q: If I view the file in HCK Studio, HCK Studio looks like a simple viewer. To read other projects, do I have to quit or restart HCK Studio?</strong>
+        </p>
+        <p>To view your other projects after you are done reviewing a .hckx package, click the Connect link, select HCK Server and then click OK. You can now view the current data for all of your projects.</p>
+        <p>
+          <strong>Q: With WLK 1.6, the Submission Status Report is displayed when we open a CPK file, and we can confirm the application and expiration dates of errata. Is this available with the Windows HCK</strong>?</p>
+        <p>In HCK Studio, the status report is a combination of the <strong>Results</strong> page (where applied filters appear), and the right-side summary, which shows products detected and numbers of tests passed, failed, or not-run.</p>
+        <p>
+          <strong>Q: I can’t upload my .hckx package to the dashboard. My file size is greater than 200 MB, and I’m using the 32-bit version of Internet Explorer. Is there a workaround for this?</strong>
+        </p>
+        <p>Yes, please use the 64-bit version of Internet Explorer to submit the file.</p>
+      </div>
+      <h2 class="heading">Support</h2>
+      <div id="sectionSection9" class="section">
+        <p>
+          <strong>Q: How can I open a support case?</strong>
+        </p>
+        <p>You can open a premier support case with your TAM. Or, you can go to <a href="https://support.microsoft.com/oas/default.aspx?&amp;prid=11880">https://support.microsoft.com/oas/default.aspx?&amp;prid=11880</a> and sign in with your Microsoft account.For the Windows HCK support options, go to <a href="https://support.microsoft.com/oas/default.aspx?&amp;prid=14634">https://support.microsoft.com/oas/default.aspx?&amp;prid=14634</a></p>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="JMhaa7w_QsC9Q-rU2qbYWSLN1CZeVJOkh9GaLs4C-XuxR_nss8cKuVgVzhwMweOMEWusxGO1QbDsrVrlaWpl0o1zRebT3YwDmQfeqsuAGR4MA73Pf8lDFFEvm1h4h5_U48p8VA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn251523.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn251523.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="77XN3Eswj1rH6xTkbwAzsbIOsw-FWv_XLcfCJhRvta4vru_9l28bM7884inu3heR4jQFeTpwUR9Kbjlco7gTzgsFOzADZ4eyRV9UtCoV4LX9eaKs3OtKCEg8BZftAQ96BhAyUw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn251523(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"8580f31e-e87d-494f-9e95-93d333736f70\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn251523.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 11:48:00 GMT -->
+</html>

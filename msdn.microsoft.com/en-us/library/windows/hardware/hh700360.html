@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh700360.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700360.aspx" />
+        <title>Roadmap for Windows Store apps using C++ (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh700360(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700360(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700360(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700360(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA938-9:31:54 AM" />
+
+<meta name="Search.ShortId" content="hh700360" />
+
+<meta name="ms.shortidmsdn" content="hh700360" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395073914&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh700360.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+<div class="topicNotInScope" id="topicNotInScope">
+    <div class="topicNotInScopeDisclaimer" id="topicNotInScopeDisclaimer">
+        <div class="topicNotInScopeImageContainer clip16x16">
+            <img class="topicNotInScopeInformationImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Information" />
+        </div>
+        <div class="topicNotInScopeSwitchCollectionContainer">
+            <a class="topicNotInScopeSwitchCollection" id="topicNotInScopeSwitchCollection" href="#" onclick="TopicNotInScope_ShowPicker();return false;">
+                Switch
+            </a>
+            <div class="topicNotInScopeImageContainer2 clip11x6">
+                <img class="topicNotInScopeDropdownImage" id="topicNotInScopeDropdownImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Switch" onclick="TopicNotInScope_ShowPicker()" />
+            </div>
+             <ul id="topicNotInScopeCollectionPicker" class="topicNotInScopeCollectionPicker">
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/windows/apps/ux/hh700360.aspx" title="Visual Studio">Visual Studio</a>
+                        </li>
+            </ul>
+        </div>
+        <div class="topicNotInScopeDisclaimerText">The topic you requested is included in another documentation set. For convenience, it's displayed below. Choose Switch to see the topic in its original location.</div>
+        <div class="Clear"></div>
+    </div>
+</div>
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Roadmap for Windows Store apps using C++</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>Here are key resources to help you get started with using C++ (including Visual C++ component extensions (C++/CX))  to develop Windows Store apps.  This is not a comprehensive list of all of the features or available resources. Some topics listed below  are specific to C++, and some are not specific to any single programming language.  You can bookmark this page so that you can come back to it when you want to learn how to add another feature to your app.</p>
+<p>If you'd rather use another programming language, see:</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465037.aspx">Roadmap for Windows Store apps using JavaScript</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br229583.aspx">Roadmap for Windows Store apps using C# or Visual Basic</a>
+</li>
+</ul>
+<h2><a id="Get_started"></a><a id="get_started"></a><a id="GET_STARTED"></a>Get started</h2>
+<table>
+<tr><td><a href="http://go.microsoft.com/fwlink/p/?LinkID=324134">Essential downloads</a></td><td>
+<p>Download Windows evaluation copies and Microsoft Visual Studio.</p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br211384.aspx">Develop Windows Store apps using Visual Studio</a>
+</td><td>
+<p>A guide to using Visual Studio to develop Windows Store apps.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh464920.aspx">Making great Windows Store apps</a>
+</p>
+</td><td>
+<p>This article answers the "what?" and "why?" for Windows Store app design and development, and gives you an overview of what you can do to make a great Windows Store apps.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465427.aspx">Planning Windows Store apps</a>
+</p>
+</td><td>
+<p>What kind of app should you make? How do you plan for different devices? How can you monetize your app? Make the right decisions during the planning phase to simplify deployment and maximize your app's potential.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh767284.aspx">Designing UX for apps</a>
+</p>
+</td><td>
+<p>Tips on designing for the modern user experience.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br229571.aspx">Migrating Silverlight or WPF XAML/code to a Windows Store app</a>
+</p>
+</td><td>
+<p>Reuse your skills. If you know XAML-based platforms like Windows Presentation Foundation (WPF) or Microsoft Silverlight, you can apply those skills to Windows Store apps. Develop for Windows Phone? See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452743.aspx">Resources for Windows Phone developers</a>.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465045.aspx">Create your first Windows Store app using C++</a>
+</p>
+</td><td>
+<p>Get started with the tools and create your first Windows Store app.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh768232.aspx">C#, VB, and C++ project templates for Windows Store apps</a>
+</p>
+</td><td>
+<p>You have to select a template when you start developing a  Windows Store app. Use this topic to learn what templates to use and what comes with them.</p>
+</td></tr>
+<tr><td>
+<p><a href="http://go.microsoft.com/fwlink/p/?linkid=225931">Windows Store app samples</a></p>
+</td><td>
+<p>Browse a variety of samples, which you can filter by language.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="C___CX_reference"></a><a id="c___cx_reference"></a><a id="C___CX_REFERENCE"></a>C++/CX reference</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh699871.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Visual C++ language reference (C++/CX)</strong></a>
+</p>
+</td><td>
+<p>High-level page that has links to content that's related to C++.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br212455.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Quick Reference (Windows Runtime and Visual C++)</strong></a>
+</p>
+</td><td>
+<p>Table that provides quick info about C++/CX operators and keywords.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh755822.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Type system (C++/CX) </strong></a>
+</p>
+</td><td>
+<p>Reference content for the types that are supported by C++/CX.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700129.aspx">Building apps and libraries (C++/CX)</a>
+</p>
+</td><td>
+<p>How to compile Windows Store apps,  and link to static libs and DLLs.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh832106.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Namespaces Reference (C++/CX) </strong></a>
+</p>
+</td><td>
+<p>Reference content for the namespaces that contain C++-specific types that can be used in Windows Store apps.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Asynchronous_programming_with_C__"></a><a id="asynchronous_programming_with_c__"></a><a id="ASYNCHRONOUS_PROGRAMMING_WITH_C__"></a>Asynchronous programming with C++</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh780559.aspx">Asynchronous programming in C++</a>
+</p>
+</td><td>
+<p>Describes the basic ways to use the task class to consume Windows Runtime asynchronous methods.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750082.aspx">Creating Asynchronous Operations in C++ for Windows Store apps</a>
+</p>
+</td><td>
+<p>Describes how to use create_async to produce asynchronous methods.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750113.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">task Class (Concurrency Runtime)</strong></a>
+</p>
+</td><td>
+<p>Reference documentation for the task class.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd492427.aspx">Task Parallelism (Concurrency Runtime)</a>
+</p>
+</td><td>
+<p>In-depth discussion about the task class and how to use it.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Network_programming_with_C__"></a><a id="network_programming_with_c__"></a><a id="NETWORK_PROGRAMMING_WITH_C__"></a>Network programming with C++</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/windows.web.http.httpclient.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows::Web::Http::HttpClient</strong></a>
+</p>
+</td><td>
+<p>For connecting to web services in Windows Store apps that targetWindows 8.1.</p>
+</td></tr>
+<tr><td>
+<p><a href="http://go.microsoft.com/fwlink/p/?LinkId=327756">C++ REST SDK</a></p>
+</td><td>
+<p>The C++ REST SDK provides support for accessing REST services from native code by providing asynchronous C++ bindings to HTTP, JSON, and URIs. It ships with Visual Studio as an extension SDK to help you write cross-platform C++ HTTP client side code in your Windows Store app as well as desktop apps.
+</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/windows.web.syndication.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows::Web::Syndication</strong></a>
+</p>
+</td><td>
+<p>To access Atom and RSS feeds.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/windows.ui.xaml.controls.webview.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WebView</strong></a>
+</p>
+</td><td>
+<p>To display a web page.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br229573.aspx">Connecting to peers, web and network services</a>
+</p>
+</td><td>
+<p>Additional networking APIs in the Windows Runtime.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423314.aspx">Connecting to Bing Maps using the C++ REST SDK</a>
+</p>
+</td><td>
+<p>How to use the C++ REST SDK to connect to a web service, in this case the Bing Maps Location API.</p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn468259.aspx">Connecting to Bing Maps using Windows::Web::Http::HttpClient</a>
+</td><td>
+<p>How to use <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/windows.web.http.httpclient.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows::Web::Http::HttpClient</strong></a> to connect to a web service, in this case the Bing Maps Location API.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Game_programming_in_C__"></a><a id="game_programming_in_c__"></a><a id="GAME_PROGRAMMING_IN_C__"></a>Game programming in C++</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452744.aspx">Developing games</a>
+</p>
+</td><td>
+<p>Portal page for game development in Windows Store apps.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br229580.aspx">Create your first Windows Store app using DirectX</a>
+</p>
+</td><td>
+<p>Introductory step-by-step tutorial.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh825871.aspx">DirectX and XAML interop</a>
+</p>
+</td><td>
+<p>Describes how to integrate DirectX surfaces into XAMLUI elements.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230257.aspx">Sample: Developing Marble Maze, a Windows Store game in C++ and DirectX</a>
+</p>
+</td><td>
+<p>End-to-end C++ Windows Store app sample.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750291.aspx">Windows Runtime core user interface objects and DirectX</a>
+</p>
+</td><td>
+<p>Background information about interoperation between DirectX and the Windows Runtime.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Windows_Runtime_components_in_C__"></a><a id="windows_runtime_components_in_c__"></a><a id="WINDOWS_RUNTIME_COMPONENTS_IN_C__"></a>Windows Runtime components in C++</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh441572.aspx">Creating Windows Runtime Components</a>
+</p>
+</td><td>High level introduction for all programming languages.</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh441569.aspx">Creating Windows Runtime Components in C++</a>
+</p>
+</td><td>Introduces basic concepts in Windows Runtime component development.</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh755833.aspx">Walkthrough: Creating a basic Windows Runtime component in C++ and calling it from JavaScript</a>
+</p>
+</td><td>Shows the basic steps in creating a Windows Runtime component.</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh699893.aspx">Sample: Bing Maps Trip Optimizer, a Windows Store app in JavaScript and C++</a>
+</p>
+</td><td>End-to-end sample with in-depth examples of many aspects of Windows Runtime component development.</td></tr>
+</table>
+<p> </p>
+<h2><a id="Windows_Runtime_C___Template_Library__WRL_"></a><a id="windows_runtime_c___template_library__wrl_"></a><a id="WINDOWS_RUNTIME_C___TEMPLATE_LIBRARY__WRL_"></a>Windows Runtime C++ Template Library (WRL)</h2>
+<p></p>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh438466.aspx">Windows Runtime C++ Template Library</a>
+</p>
+</td><td>
+<p>You can use WRL to write C++ applications and components that interact with the Windows Runtime through COM interfaces instead of the C++/CX. </p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Additional_useful_libraries_for_Windows_Store_app_programming"></a><a id="additional_useful_libraries_for_windows_store_app_programming"></a><a id="ADDITIONAL_USEFUL_LIBRARIES_FOR_WINDOWS_STORE_APP_PROGRAMMING"></a>Additional useful libraries for Windows Store app programming</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/c191tb28.aspx">C++ Standard Template Library</a>
+</p>
+</td><td>
+<p>Windows Runtime types play well with Standard Template Library types. Most C++ Windows Store apps use Standard Template Library collections and algorithms, except at the ABI boundary.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd492418.aspx">Parallel Patterns Library</a>
+</p>
+</td><td>
+<p>PPL provides algorithms and types that simplify task parallelism and data parallelism on the CPU. </p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh265137.aspx">C++ Accelerated Massive Parallelism (C++ AMP)</a>
+</p>
+</td><td>
+<p>C++  AMP provides access to the GPU for general-purpose data parallelism on video cards that support DirectX 11.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Basic_tasks_for_all_Windows_Store_apps"></a><a id="basic_tasks_for_all_windows_store_apps"></a><a id="BASIC_TASKS_FOR_ALL_WINDOWS_STORE_APPS"></a>Basic tasks for all Windows Store apps</h2>
+<p class="note"><strong>Important</strong>  Not all of the following topics currently have code examples in C++.  However, if an example uses classes from the Windows Runtime—as opposed to libraries that are specific to JavaScript or the .NET Framework—then   you can usually translate them to C++/CX with minimal changes. Refer to <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh699871.aspx">Visual C++ language reference</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750082.aspx">Creating Asynchronous Operations in C++ for Windows Store apps</a> for help about how to translate sample code.</p>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465340.aspx">Quickstart: Creating a user interface with XAML</a>
+</p>
+</td><td>
+<p>Extensible Application Markup Language (XAML) is the declarative language you typically use to create UI in your new Windows UI. Although you will often use tools like Microsoft Visual Studio 2012 and Blend for Microsoft Visual Studio 2012 for Windows 8 to design your UI, these tools just generate XAML and therefore it is important to understand how XAML works. For more details on  see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700354.aspx">XAML overview</a>.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465336.aspx">Quickstart: Adding controls</a>
+</p>
+</td><td>
+<p>Create controls and connect them to code.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465351.aspx">Controls list</a>
+</p>
+</td><td>
+<p>See what controls are available.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465345.aspx">Controls by function</a>
+</p>
+</td><td>
+<p>See what controls are available in various functional categories.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781232.aspx">Quickstart: Adding app bars</a>
+</p>
+</td><td>
+<p>Add an app bar (needed by most Windows Store apps).</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465381.aspx">Quickstart: Styling controls</a>
+</p>
+</td><td>
+<p>Use styles to customize the appearance of your app, and reuse your appearance settings across your app.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700391.aspx">Quickstart: Adding text input and editing controls</a>
+</p>
+</td><td>
+<p>Display text and let your user enter and edit text.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465337.aspx">Quickstart: Defining layouts</a>
+</p>
+</td><td>
+<p>Position controls and text where you want them.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465387.aspx">Quickstart: Touch input</a>
+</p>
+</td><td>
+<p>Make your app work with touch.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh868246.aspx">Responding to keyboard input</a>
+</p>
+</td><td>
+<p>Make your app work with the keyboard.</p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh994936.aspx">Responding to mouse input</a>
+</td><td>
+<p>Make your app work with the mouse.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh464936.aspx">App capability declarations</a>
+</p>
+</td><td>
+<p>Enable app capabilities like Internet access or document-library access for running in the security sandbox.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh771188.aspx">Quickstart: Navigating between pages</a>
+</p>
+</td><td>
+<p>Navigate between pages and pass data between them.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh770837.aspx">Launching, resuming, and multitasking (C#/C++/VB)</a>
+</p>
+</td><td>
+<p>This section explains how you can activate, suspend, and resume your Windows Store app in response to the normal app lifecycle events, file and protocol associations, and AutoPlay events. This is a must for most apps.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh868259.aspx">Creating and using tiles, toast, and Windows push notifications</a>
+</p>
+</td><td>
+<p>At the very least you need a tile to allow users to open your Windows Store apps. In addition, you can increase the utility and visibility of your app by using  notifications and creating "live tiles".</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465204.aspx">Quickstart: Printing</a>
+</p>
+</td><td>
+<p>Print from your app.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452680.aspx"> Accessibility for Windows Store apps</a>
+</p>
+</td><td>
+<p>Make your app accessible.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh965328.aspx">Make your Windows Store app world ready</a>
+</p>
+</td><td>
+<p>Windows is used worldwide and so it is important for you to design your Windows Store apps to appeal to an international audience in order to get maximum distribution.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465332.aspx">Adding a splash screen</a>
+</p>
+</td><td>
+<p>Add a splash screen to provide your users with immediate feedback as your app loads its resources.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700352.aspx">C#, VB, and C++ programming concepts for Windows Store apps</a>
+</p>
+</td><td>
+<p>These topics go over some basic programming concepts applicable to Windows Store apps including events and dependency properties.</p>
+</td></tr>
+<tr><td>
+<p><a href="http://go.microsoft.com/fwlink/p/?linkid=268275">Publish Windows Store apps</a></p>
+</td><td>
+<p>The Windows Store  lets you reach the millions of customers who use Microsoft Windows.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Rich_visuals_and_media"></a><a id="rich_visuals_and_media"></a><a id="RICH_VISUALS_AND_MEDIA"></a>Rich visuals and media</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465087.aspx">Quickstart: Imaging</a>
+</p>
+</td><td>
+<p>Integrate images into your app.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452701.aspx">Animating your UI</a>
+</p>
+</td><td>
+<p>An introduction to how animation works in XAML.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452703.aspx">Quickstart: Animating your UI using library animations</a>
+</p>
+</td><td>
+<p>Animations are built into many of the controls you use; however, you can add the same library of animations to other components of your UI and even create your own animations when you need to. </p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465160.aspx">Quickstart: Video and audio</a>
+</p>
+</td><td>
+<p>Integrate media into your app.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465055.aspx">Quickstart: Shapes</a>
+</p>
+</td><td>
+<p>Draw scalable vector graphics shapes, such as ellipses, rectangles, polygons, and paths.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465048.aspx">Quickstart: Brushes</a>
+</p>
+</td><td>
+<p>Draw with various colors, gradients, and even video.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700359.aspx">3-D effects for Windows Store apps using XAML</a>
+</p>
+</td><td>
+<p>You can apply 3-D effects to content in your Windows Store apps using  perspective transforms. For example, you can create the illusion that an object is rotated toward or away from you.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Working_with_data"></a><a id="working_with_data"></a><a id="WORKING_WITH_DATA"></a>Working with data</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh464965.aspx">QuickStart: Data binding to controls</a>
+</p>
+</td><td>
+<p>Bind a control to a single item or bind a list control to a collection of items. This can be used for displaying data, such as stock prices or headlines, in controls. For detailed info, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh758320.aspx">Data binding with XAML</a>.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh758325.aspx">Quickstart: Reading and writing a file</a>
+</p>
+</td><td>
+<p>Read from and write to a file.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh771180.aspx">Quickstart: Accessing files with file pickers</a>
+</p>
+</td><td>
+<p>Let the user open or save a file.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj863492.aspx">Drag</a>
+</p>
+</td><td>
+<p>How to drag items from a ListView or GridView within the same app.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Sensors"></a><a id="sensors"></a><a id="SENSORS"></a>Sensors</h2>
+<table>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465294.aspx">Responding to motion and orientation sensors</a>
+</p>
+</td><td>
+<p>Use motion and orientation sensors.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465268.aspx">Quickstart: Responding to changes in lighting (C#)</a>
+</p>
+</td><td>
+<p>Use an ambient light sensor.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465135.aspx">Quickstart: Detecting a user's location</a>
+</p>
+</td><td>
+<p>Use location services.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Searching__sharing__and_connecting"></a><a id="searching__sharing__and_connecting"></a><a id="SEARCHING__SHARING__AND_CONNECTING"></a>Searching, sharing, and connecting</h2>
+<p></p>
+<table>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465192.aspx">App to App Picking</a>
+</td><td>You can help users pick files from one app directly within another app. Users gain freedom and flexibility. Apps increase their popularity by supporting the App to App Picking contract.</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh758314.aspx">Sharing</a>
+</td><td>Great apps make it easy for users to share what they are doing with their friends and family. Apps that support the Sharing contract can automatically share content to and from any other app that also supports the Sharing contract.</td></tr>
+<tr><td><a href="http://go.microsoft.com/fwlink/p/?linkid=226413">Association launching sample</a></td><td>
+<p>Use a charm bar to search an app and share between apps. This sample shows how.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465221.aspx">Proximity and tapping</a>
+</p>
+</td><td>
+<p>Use proximity  to connect computers with a simple <em>tap</em> gesture. If two computers are near each other,  or are tapped together, the operating system becomes aware of the nearby computer.</p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465183.aspx">Streaming media to devices using Play To</a>
+</td><td>
+<p>Use the Play To contract to let users stream audio, video, or images from their computer to devices in their home network. </p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh452741.aspx">Supporting AutoPlay</a>
+</td><td>
+<p>Use AutoPlay events to make your app do the right thing automatically when a device is connected to the computer, or a camera memory card, thumb drive,  or DVD is inserted into the computer.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Guidelines_and_best_practices"></a><a id="guidelines_and_best_practices"></a><a id="GUIDELINES_AND_BEST_PRACTICES"></a>Guidelines and best practices</h2>
+<p></p>
+<table>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465424.aspx">Detailed UX guidelines for Windows Store apps</a>
+</td><td>Use this resource to find best practices for a variety of specific design implementations and features like file pickers, SemanticZoom, cross-slide, etc.</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750313.aspx">Performance best practices for C# and Visual Basic </a>
+</td><td>Here are some concepts and guidelines to consider to ensure that your app performs well on your users' computers.</td></tr>
+</table>
+<p> </p>
+<h2><a id="Concepts"></a><a id="concepts"></a><a id="CONCEPTS"></a>Concepts</h2>
+<p></p>
+<table>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh750302.aspx">Windows Store app fundamentals</a>
+</td><td>Articles that provide deeper dives into subjects such as app lifecycle, contracts, capabilities, data, and so on.</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh700352.aspx">Programming concepts</a>
+</td><td>Background articles on various aspects of XAML user interface programming.</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh465413.aspx">White papers for Windows Store apps</a>
+</td><td>Articles and downloadable white papers on various subjects.</td></tr>
+</table>
+<p> </p>
+<h2><a id="api_reference"></a><a id="API_REFERENCE"></a>API reference</h2>
+<p>Here are the key APIs that are supported in  Windows Store apps that use C# or Visual Basic.</p>
+<table>
+<tr><th>API</th><th>Description</th></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br211377.aspx">Windows Runtime</a>
+</p>
+</td><td>
+<p>If you are familiar with platforms like Silverlight, many of these APIs may be familiar. (They have "XAML" in the namespace name.) The Windows Runtime is made up of native APIs that are built into the operating system. Windows Runtime is fundamental to Windows Store apps. It's implemented in C++ and supported in JavaScript, C#, Visual Basic, and C++.</p>
+</td></tr>
+<tr><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh832106.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Namespaces Reference(C++/CX) </strong></a>
+</p>
+</td><td>
+<p>Reference content for the namespaces that contain C++-specific types that can be used in Windows Store apps.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Samples"></a><a id="samples"></a><a id="SAMPLES"></a>Samples</h2>
+<table>
+<tr><td>
+<p><a href="http://go.microsoft.com/fwlink/p/?LinkID=251262">Samples for Windows Store apps</a></p>
+</td><td>
+<p>Samples page that you can filter for C++.</p>
+</td></tr>
+<tr><td><a href="http://code.msdn.microsoft.com/Windows-Store-Hello-06b02bab">Windows Store Hello Windows app in C++</a></td><td>
+<p>Introduces the C++/CX language extensions and development environment.</p>
+</td></tr>
+<tr><td><a href="http://code.msdn.microsoft.com/Windows-Store-Simple-Blog-953302e8">Simple Blog Reader</a></td><td>
+<p>Shows how to retrieve RSS data from the internet.</p>
+</td></tr>
+<tr><td><a href="http://code.msdn.microsoft.com/Getting-started-with-afdb944f">Getting started with Mobile Services and C++ sample</a></td><td>
+<p>Shows how to add a mobile service to a Windows Store app in Visual Studio using C++ and XAML.</p>
+</td></tr>
+<tr><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj160316.aspx">Developing an end-to-end Windows Store app using C++ and XAML: Hilo</a>
+</td><td>
+<p>Larger sample that shows how to use modern C++, the Windows Runtime, asynchronous programming, XAML, and development patterns such as Model-View-ViewModel (MVVM) in your Windows Store app apps using C++.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br211361.aspx">Concepts and architecture</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/br205757.aspx">Win32 and COM for Windows Store apps</a>
+</dt>
+<dt><a href="http://go.microsoft.com/fwlink/p/?linkid=227291">Windows Runtime reference</a></dt>
+</dl>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Trx_HDeH0nhyEtg5FGRzDGhtEX2EoKQl5kCVWaVmo9KwlaxsAnhWFWAUwfhoRmroCMJ_284g9Il9ziaD0mvj_ZVeEaCJk22RAxzA3uEC46l1tsw80UcAMbMqOTyvOZEdKM5fkw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh700360.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="Chrome ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh700360.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="F4kor09wm70n7oxqR0-7loFVMQwzsihpyqP6DV7EdT2CFPE9DKol6cXhLGD86mlY8WjMjdHVx6qGKSKggt7OiPUJ9y0Giowxrf_KIx_JN3PY8vsevEMw5r71V-wvsldQrf77iQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh700360(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"1dcaa147-f738-4870-ab35-de75eb504765\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh700360.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:58 GMT -->
+</html>

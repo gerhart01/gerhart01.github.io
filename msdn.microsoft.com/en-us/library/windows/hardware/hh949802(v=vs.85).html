@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx" />
+        <title>Troubleshooting the Device Fundamentals tests using the WDK (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh949802(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DCE-9:05:46 AM" />
+
+<meta name="Search.ShortId" content="hh949802" />
+
+<meta name="ms.shortidmsdn" content="hh949802" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072346&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh949802%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554651(v=vs.85).aspx" id="hh466585_VS.85_en-us" mtpsaliasid="" mtpsassetid="6e8be17d-6e98-441e-9a2c-e62a007786ee_VS.85_en-us" mtpsshortid="ff554651_VS.85_en-us" title="Developing, Testing, and Deploying Drivers">Developing, Testing, and Deploying Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554820(v=vs.85).aspx" id="jj863692_VS.85_en-us" mtpsaliasid="" mtpsassetid="bb73768e-0ac9-4377-9caa-c0cce1d10bb8_VS.85_en-us" mtpsshortid="ff554820_VS.85_en-us" title="Testing a Driver">Testing a Driver</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx" id="dn280202_VS.85_en-us" mtpsaliasid="" mtpsassetid="50BF5B17-B7F0-49F2-9ED6-652DB32D638E_VS.85_en-us" mtpsshortid="hh454841_VS.85_en-us" title="How to test a driver at runtime using Visual Studio">How to test a driver at runtime using Visual Studio</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265574(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the HCK Test Suites in WDK 8.1">How to run the HCK Test Suites in WDK 8.1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select and configure the Device Fundamentals tests">How to select and configure the Device Fundamentals tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706275(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to test a driver package">How to test a driver package</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706274(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to read the driver test results log">How to read the driver test results log</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj674802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to test a driver at runtime from a Command Prompt">How to test a driver at runtime from a Command Prompt</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting the Device Fundamentals tests using the WDK">Troubleshooting the Device Fundamentals tests using the WDK</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Troubleshooting the Device Fundamentals tests using the WDK</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic provides suggestions for fixing problems you might encounter when you use the WDK to run the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673011(v=vs.85).aspx">Device Fundamentals Tests</a>.  For information about the tests and testing, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">How to select and configure the Device Fundamentals tests</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx">How to test a driver at runtime using Visual Studio</a>, and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj674802(v=vs.85).aspx">How to test a driver at runtime from a Command Prompt</a>. </p>
+<p class="note"><strong>Note</strong>  For information about troubleshooting the Device.Fundamentals tests using the HCK, see <a href="http://go.microsoft.com/fwlink/?LinkId=288941">Troubleshooting Device Fundamentals Reliability Testing by using the Windows HCK</a>.</p>
+<p>
+</p><ul>
+<li><a href="#_devfund_device">Device Fundamentals test fails (general)</a></li>
+<li><a href="#_defund_verifier">Driver Verifier is not enabled</a></li>
+<li><a href="#_defund_test_hang">Test is unresponsive or not running</a></li>
+<li><a href="#_defund_pnp_surprise_remove">PnP Surprise Remove Device test fails</a></li>
+</ul>
+
+<h2><a id="_devfund_device"></a><a id="_DEVFUND_DEVICE"></a></h2>
+<table>
+<tr><th>Problem: Device Fundamentals test fails (general)</th></tr>
+</table>
+<p> </p>
+<p><strong>Error condition:</strong></p>
+<p>The test fails or fails to run. For some
+
+device types there are specific requirements for running the Device Fundamentals tests. These are the same requirements you need to follow when you use the  <a href="http://go.microsoft.com/fwlink/p/?linkid=254893">Windows Hardware Certification Kit (HCK)</a>.  </p>
+<p>Before you run the following <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">Device Fundamental tests</a>, the  devices on the test computer must  be configured according to the requirements described for the specific device types.  
+ </p>
+<ul>
+<li>PCI Root Port Surprise Remove Test (PCI devices only)
+</li>
+<li>Device Path Exerciser Test (Certification)
+</li>
+<li>Sleep and PNP (disable and enable) with IO Before and After (Certification)
+</li>
+<li>Plug and Play Driver Test (Certification)
+</li>
+<li>Concurrent Hardware And Operating System (CHAOS) Test (Certification)
+</li>
+<li>Reinstall with IO Before and After (Certification)
+</li>
+<li>Device Install Check For File System Consistency (Certification)
+</li>
+<li>Device Install Check For Other Device Stability (Certification)
+</li>
+</ul>
+<p><strong>Solution:</strong></p>
+<p>Information about specific device requirements for testing are described under <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx">Provided WDTF Simple I/O plug-ins</a>.   The Device Fundamentals tests use the Provided WDTF Simple I/O plug-ins to perform device specific I/O operations to improve the effectiveness of tests.  For a description of the type of I/O the plug-ins perform, and to see if there are any special device requirements, use the following links. If there are any specific triage steps that you can follow to help debug and triage test failures those will also be shown for the device type.</p>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_audio">Audio devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_bluetooth">Bluetooth devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_cdrom">CDROM devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_disk">Disk devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_display">Display devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_gps">GPS devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_lan">LAN devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_mobile_broadband">Mobile Broadband devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_portable_devices">Portable devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_smartcard">Smart Card Readers</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_sensors">Sensor devices</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_volume">Volume</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_webcam">Webcam</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_wlan">WLAN</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx#_usb_mutt">USB Controller and HUB with Mutt</a></li>
+</ul>
+<h2><a id="_defund_verifier"></a><a id="_DEFUND_VERIFIER"></a></h2>
+<table>
+<tr><th>Problem: Driver Verifier is not enabled </th></tr>
+</table>
+<p> </p>
+<p><strong>Error message:</strong></p>
+<p>"Driver Verifier is not enabled with at least standard settings on all drivers of device(s) under test (including any upper and/or lower filter drivers. Enable Driver Verifier with at least standard settings and re-run the test."</p>
+<p><strong>Solution:</strong></p>
+<p>The Device Fundamental tests you are running require that Driver Verifier monitors the drivers associated with the device you are testing. You have two options.</p><ul>
+<li>Add the <strong>Enable Driver Verifier</strong> test to the test group and specify the same <em>DQ</em> parameter that you specified for the Device Fundamental tests you are running. </li>
+<li>Use <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a> (Verifier.exe) to manually enable Driver Verifier on all individual drivers of the device(s) under test. The  Driver Verifier standard settings must be used.  To determine which drivers require Driver Verifier,  open Device Manager (Devmgmt.msc) on the test computer. In Device Manager, right click the device that you are testing and select <strong>Properties</strong>. Click the <strong>Driver</strong> tab and then click <strong>Driver Details</strong> to identify  the names of the drivers. For network class devices, Driver Verifier also has to be enabled on Ndis.sys.
+</li>
+</ul>
+
+<h2><a id="_defund_test_hang"></a><a id="_DEFUND_TEST_HANG"></a></h2>
+<table>
+<tr><th>Problem: Test is unresponsive or not running</th></tr>
+</table>
+<p> </p>
+<p><strong>Error conditon:</strong></p>
+<p>Test is unresponsive (no apparent progress in the test command window) but the system is responsive.</p>
+<p><strong>Solution:</strong></p>
+<p>Run the test with the test system connected to a kernel debugger. Break into the debugger when the test seems to stop making progress. Review threads with high “tick count” (Ticks) and "WDTF" on the stack running in Te.ProcessHost.exe process. If Te.ProcessHost.exe process doesn’t exist, review threads running in Te.exe process.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_72e3bc4d-f486-4981-976d-12ab8029a8a6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_72e3bc4d-f486-4981-976d-12ab8029a8a6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+!process 0 0 Te.ProcessHost.exe 
+    PROCESS fffffa80093c6340
+    SessionId: 1 Cid: 1320 Peb: 7f6595b3000 ParentCid: 12a0
+    DirBase: 21eee000 ObjectTable: fffff8a0035b0a00 HandleCount: 327. 
+    Image: TE. ProcessHost.exe
+.process /p /r fffffa80093c6340
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>To list all threads running under Te.ProcessHost.exe and look for threads with WDTF* on the stack</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5f95be42-8659-4a64-85a6-088cf83a0ae4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5f95be42-8659-4a64-85a6-088cf83a0ae4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+!process fffffa80093c6340 
+
+
+        THREAD fffffa800b2be8c0  Cid 0964.0eac  Teb: 000007f601ba6000 Win32Thread: 0000000000000000 WAIT: (UserRequest) UserMode Non-Alertable
+            fffffa800b2a11d0  SynchronizationEvent
+            fffffa800b300640  SynchronizationEvent
+        Not impersonating
+        DeviceMap                 fffff8a0014b9c80
+        Owning Process            fffffa800b302940       Image:         TE.exe
+        Attached Process          N/A            Image:         N/A
+        Wait Start TickCount      210995         Ticks: 405945 (0:01:45:32.782)
+        Context Switch Count      51             IdealProcessor: 2             
+        UserTime                  00:00:00.015
+        KernelTime                00:00:00.015
+        Win32 Start Address WDTFInterfaces!TsSingleWorkerThread (0x000007fe3a567f28)
+        Stack Init fffff8800eb5edd0 Current fffff8800eb5dee0
+        Base fffff8800eb5f000 Limit fffff8800eb59000 Call 0
+        Priority 9 BasePriority 8 UnusualBoost 0 ForegroundBoost 0 IoPriority 2 PagePriority 5
+        Kernel stack not resident.
+        Child-SP          RetAddr           Call Site
+        fffff880`0eb5df20 fffff803`78b27f7c nt!KiSwapContext+0x76
+        (Inline Function) --------`-------- nt!KiSwapThread+0xf4 (Inline Function @ fffff803`78b27f7c)
+        fffff880`0eb5e060 fffff803`78aaf4ab nt!KiCommitThreadWait+0x23c
+        fffff880`0eb5e120 fffff803`78b257a0 nt!KiWaitForAllObjects+0x3bb
+        fffff880`0eb5e3c0 fffff803`78ecb3dc nt!KeWaitForMultipleObjects+0x4ae
+        fffff880`0eb5e470 fffff803`78ecb853 nt!ObWaitForMultipleObjects+0x29c
+        fffff880`0eb5e980 fffff803`78aff053 nt!NtWaitForMultipleObjects+0xe3
+        fffff880`0eb5ebd0 000007fe`45d2315b nt!KiSystemServiceCopyEnd+0x13 (TrapFrame @ fffff880`0eb5ec40)
+        00000083`7cdef148 000007fe`430912c6 ntdll!ZwWaitForMultipleObjects+0xa
+        00000083`7cdef150 000007fe`368641b5 KERNELBASE!WaitForMultipleObjectsEx+0xe5
+        00000083`7cdef430 000007fe`3a566793 WDTFAudioSimpleIoAction!CAudioImpl::RunIO+0x3d1
+        00000083`7cdef520 000007fe`3a566ea0 WDTFInterfaces!CSimpleIOEx::PerformIO+0x10f
+        00000083`7cdef5b0 000007fe`3a56706b WDTFInterfaces!CSimpleIOExWrap::PerformIO+0x28
+        00000083`7cdef5e0 000007fe`3a553fe5 WDTFInterfaces!CMTest_Receiver::Run+0x77
+        00000083`7cdefe20 000007fe`3a5578ac WDTFInterfaces!CSimpleIO_MTestEx::ActionThread+0x105
+        00000083`7cdefeb0 000007fe`3a567f3e WDTFInterfaces!CMTEXThread::ThreadWorker+0xc
+        00000083`7cdefee0 000007fe`4319167e WDTFInterfaces!TsSingleWorkerThread+0x16
+        00000083`7cdeff20 000007fe`45d3c3f1 KERNEL32!BaseThreadInitThunk+0x1a
+        00000083`7cdeff50 00000000`00000000 ntdll!RtlUserThreadStart+0x1d
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>When you are debugging PnP and power management tests that have become unresponsive, you can use the following two kernel debugger commands to help identify any active PnP and Power threads that could be preventing the tests from making progress. </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_430b1e47-78a1-467f-84a3-a01ca6824e9c');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_430b1e47-78a1-467f-84a3-a01ca6824e9c" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+!pnptriage
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_df4f9f4b-57ab-4c89-9dcc-0f11b31d00ea');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_df4f9f4b-57ab-4c89-9dcc-0f11b31d00ea" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+!poaction
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="_defund_pnp_surprise_remove"></a><a id="_DEFUND_PNP_SURPRISE_REMOVE"></a></h2>
+<table>
+<tr><th>Problem: PnP Surprise Remove Device test fails</th></tr>
+</table>
+<p> </p>
+<p><strong>Error message: </strong>"Failed to receive IRP_MN_REMOVE_DEVICE after receiving IRP_MN_SURPRISE_REMOVAL"</p>
+<p><strong>Solution:</strong></p>
+<p>The PnP Surprise Remove Device test (see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673015(v=vs.85).aspx">PnP Tests (Device Fundamentals)</a>) might fail with the following error message when the PnP manager does not send the remove IRP to the test device stack after sending the surprise remove IRP.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_2991bc7d-ef1b-430e-960d-b925fa1efde9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_2991bc7d-ef1b-430e-960d-b925fa1efde9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+"Failed to receive IRP_MN_REMOVE_DEVICE after receiving IRP_MN_SURPRISE_REMOVAL. Ensure that there are no open handles or references to the test device (in user mode or in kernel mode) preventing IRP_MN_REMOVE_DEVICE from being sent. You may need to terminate any processes or services that may have open user mode handles to this device."
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The PnP manager will not send the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551738(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IRP_MN_REMOVE_DEVICE</strong></a> request until all outstanding file handles to the device are closed. That is, the PnP manager will not send the <strong>IRP_MN_REMOVE_DEVICE</strong> request until reference count of the PDO reaches zero. See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546699(v=vs.85).aspx">Handling an IRP_MN_SURPRISE_REMOVAL Request</a> for information on how to properly handle <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551760(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IRP_MN_SURPRISE_REMOVAL</strong></a> request. </p>
+<p>To help debug this test failure, you should determine how the reference count of the physical device object (PDO) changes. That is, identify which process is changing the reference count and examine what the call stack looks like when the reference count is changed. The following steps can be used for debugging this failure:</p>
+<ol>
+<li>If you have not already done so, connect a kernel debugger to the test computer.  See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh698272(v=vs.85).aspx">Configuring a Computer for Driver Deployment, Testing, and Debugging</a>.</li>
+<li>
+<p>Set a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538165(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ba (Break on Access) breakpoint</strong></a>  at the location where the reference count of the PDO of the test device is stored.  See  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553451(v=vs.85).aspx">Processor Breakpoints (ba Breakpoints)</a> for more information about access breakpoints. In the following example, the kernel debugger <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff562345(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">!devnode</strong></a> command is used to obtain information about the devnode for the USBvideo driver. The address of the PDO for this devnode is 0x849e9648. </p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_844408d4-815f-4e13-9449-088b93ca1d23');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_844408d4-815f-4e13-9449-088b93ca1d23" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+0: kd&gt; !devnode 0 1 usbvideo
+Dumping IopRootDeviceNode (= 0x848fadd8)
+DevNode 0x849e9448 for PDO 0x849e9648
+  InstancePath is "USB\VID_045E&amp;PID_076D&amp;MI_00\7&amp;1243e0b7&amp;0&amp;0000"
+  ServiceName is "usbvideo"
+  State = DeviceNodeStarted (0x308)
+  Previous State = DeviceNodeEnumerateCompletion (0x30d)
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>Use the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff562349(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">!devobj</strong></a> command  on the PDO to display information about the reference count (RefCount) of the PDO. </p>
+
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f3d4b613-3c57-4caf-837f-7a6becce3e43');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f3d4b613-3c57-4caf-837f-7a6becce3e43" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+0: kd&gt; !devobj 0x849e9648
+Device object (849e9648) is for:
+ 0000004e \Driver\usbccgp DriverObject 8727e120
+Current Irp 00000000 RefCount 0 Type 00000022 Flags 00003040
+Dacl 82910320 DevExt 849e9700 DevObjExt 849e99e0 DevNode 849e9448 
+ExtensionFlags (0x00000800)  DOE_DEFAULT_SD_PRESENT
+Characteristics (0x00000180)  FILE_AUTOGENERATED_DEVICE_NAME, FILE_DEVICE_SECURE_OPEN
+AttachedDevice (Upper) 88310588 \Driver\usbvideo
+Device queue is not busy
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>Examine the PDO device object by using the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542772(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">dt (Display Type)</strong></a>  kernel debugger command.  The <strong>ReferenceCount</strong> shows the number of open handles for the device that are associated with the device object. </p>
+
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_dea23c23-f78c-4aa4-822a-09a0821a277d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_dea23c23-f78c-4aa4-822a-09a0821a277d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+0: kd&gt; dt nt!_DEVICE_OBJECT 849e9648  
+…
+   +0x002 Size             : 0x398
+   +0x004 ReferenceCount   : 0n0
+   +0x008 DriverObject     : 0x8727e120 _DRIVER_OBJECT
+..
+…
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>If the reference count is greater than 0 before starting the test:</p><ul>
+<li>Set a breakpoint where the PDO gets created.</li>
+<li>After the PDO is created, set the break on access (<strong>ba</strong>) breakpoint at the location where the reference count of the PDO is stored.</li>
+</ul>For example, the following command sets a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538165(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ba (Break on Access)</strong></a> breakpoint on the device object (0x849e9648). The breakpoint is set on write access to the <strong>ReferenceCount</strong> (+4 offset) with a size of 4 bytes (the size of <strong>ReferenceCount</strong>).
+
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_553befb8-2dfe-485e-930a-57217f28cd55');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_553befb8-2dfe-485e-930a-57217f28cd55" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+0: kd&gt; ba w 4 849e9648+4 
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>
+</p><ul>
+<li>If the reference count of the PDO is equal to 0 before starting the test, it is likely that running the test is what is causing the reference count of the PDO to be greater than zero at the time the test performs the surprise remove of the device. This usually is an indication of the presence of a handle leak(s). Run the <strong>PNP Surprise Remove Device test</strong> from a Command Prompt window or from Visual Studio to reproduce the failure to capture the info needed to troubleshoot the problem. Please see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673015(v=vs.85).aspx">PnP Tests (Device Fundamentals)</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">How to select and configure the Device Fundamentals tests</a> for how to run the <strong>PNP Surprise Remove Device test</strong> from Visual Studio.  </li>
+</ul>
+
+<p class="note"><strong>Note</strong>  If you set the <em>DoConcurrentIO</em> parameter to "TRUE" it causes the test to open hundreds of file handles to the PDO. It is recommended to reproduce this failure with this parameter set to "False" for the purpose of debugging this test failure.</p>
+</li>
+<li>
+<p>When the break on access (ba) breakpoint occurs, you can use the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565440(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">!thread</strong></a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551943(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">k (Display Stack Backtrace)</strong></a> kernel debugger commands to debug the failure. Because the reference count could change multiple  times during the course of running the test, as an option, you can use the <em>commandString</em> parameter of the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538165(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ba (Break on Access)</strong></a> debugger command to get the information you need on each change to the reference count and still continue testing. </p>
+<p>For example, in the following break on access command, the <em>commandString</em> consists of a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565440(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">!thread</strong></a> command that  will identify the process causing the reference count change, and the <strong>.reload ; k 100</strong> commands that will identify the call stack, a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff562349(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">!devobj</strong></a> command to print the reference count on each change, and <strong>g</strong> command to continue after the breakpoint.</p>
+
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e3e1ce7c-9a9b-4ca5-a75a-2230e7002521');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e3e1ce7c-9a9b-4ca5-a75a-2230e7002521" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+0: kd&gt; ba w 4 849e9648+4 "!thread; .thread /p /r; .reload; k 100; !devobj 849e9648; g" 
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ol>
+<h3><a id="Example"></a><a id="example"></a><a id="EXAMPLE"></a>Example</h3>
+<p>In the following example, the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFile function</strong></a> call from a thread running in cscript.exe is causing an increment to the reference count. We are also able to see the full call stack. Capturing all the instances where the reference count is changed while running the test and analyzing these call stacks after can help with identifying the handle leaks.</p>
+
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_22a9d33a-855e-4bf6-88d9-66415ec801ba');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_22a9d33a-855e-4bf6-88d9-66415ec801ba" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+THREAD 87eb3d40  Cid 1094.1490  Teb: 7f5a8000 Win32Thread: 82da2210 RUNNING on processor 3
+Not impersonating
+DeviceMap                 a71b3228
+Owning Process            88199cc0       Image:         cscript.exe
+Attached Process          N/A            Image:         N/A
+Wait Start TickCount      1232688        Ticks: 0
+Context Switch Count      18             IdealProcessor: 2             
+UserTime                  00:00:00.000
+KernelTime                00:00:00.000
+Win32 Start Address ntdll!TppWorkerThread (0x7710704d)
+Stack Init a6ebfde0 Current a6ebfa6c Base a6ec0000 Limit a6ebd000 Call 0
+Priority 9 BasePriority 8 UnusualBoost 0 ForegroundBoost 0 IoPriority 2 PagePriority 5
+ChildEBP RetAddr  Args to Child              
+a6ebfa50 814a73fe f81771f8 814a72e5 8281000e nt!IopCheckDeviceAndDriver+0x61 (FPO: [Non-Fpo]) (CONV: stdcall) [d:\w8rtm\minkernel\ntos\io\iomgr\parse.c @ 182]
+a6ebfb70 8149fb76 849e9648 848f9200 87164008 nt!IopParseDevice+0x11d (FPO: [Non-Fpo]) (CONV: stdcall) [d:\w8rtm\minkernel\ntos\io\iomgr\parse.c @ 1634]
+…
+…
+0236f874 7710689d ffffffff 77195ae2 00000000 ntdll!__RtlUserThreadStart+0x4a (FPO: [SEH]) (CONV: stdcall) [d:\w8rtm\minkernel\ntdll\rtlstrt.c @ 1021]
+0236f884 00000000 7710704d 0031c540 00000000 ntdll!_RtlUserThreadStart+0x1c (FPO: [Non-Fpo]) (CONV: stdcall) [d:\w8rtm\minkernel\ntdll\rtlstrt.c @ 939]
+
+Implicit thread is now 87eb3d40
+Connected to Windows 8 9200 x86 compatible target at (Wed Sep 19 21:04:27.601 2012 (UTC - 7:00)), ptr64 FALSE
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............
+Loading User Symbols
+................................................................
+...........................
+Loading unloaded module list
+.....................
+ChildEBP RetAddr  
+a6ebfa50 814a73fe nt!IopCheckDeviceAndDriver+0x61 [d:\w8rtm\minkernel\ntos\io\iomgr\parse.c @ 182]
+a6ebfb70 8149fb76 nt!IopParseDevice+0x11d [d:\w8rtm\minkernel\ntos\io\iomgr\parse.c @ 1634]
+…
+…
+0236f2d4 6970274e KERNELBASE!CreateFileW+0x61 [d:\w8rtm\minkernel\kernelbase\fileopcr.c @ 1194]
+0236f31c 6b6ce0e1 deviceaccess!CDeviceBroker::OpenDeviceFromInterfacePath+0x178 [d:\w8rtm\base\devices\broker\dll\broker.cpp @ 177]
+0236f34c 6b6cc5c0 MFCORE!CDevProxy::CreateKsFilter+0x46 [d:\w8rtm\avcore\mf\core\transforms\devproxy\devproxy.cpp @ 2263]
+…
+…
+0236f874 7710689d ntdll!__RtlUserThreadStart+0x4a [d:\w8rtm\minkernel\ntdll\rtlstrt.c @ 1021]
+0236f884 00000000 ntdll!_RtlUserThreadStart+0x1c [d:\w8rtm\minkernel\ntdll\rtlstrt.c @ 939]
+
+Device object (849e9648) is for:
+ 0000004e \Driver\usbccgp DriverObject 8727e120
+Current Irp 00000000 RefCount 1 Type 00000022 Flags 00003040
+Dacl 82910320 DevExt 849e9700 DevObjExt 849e99e0 DevNode 849e9448 
+ExtensionFlags (0x00000800)  DOE_DEFAULT_SD_PRESENT
+Characteristics (0x00000180)  FILE_AUTOGENERATED_DEVICE_NAME, FILE_DEVICE_SECURE_OPEN
+AttachedDevice (Upper) 88310588 \Driver\usbvideo
+Device queue is not busy.
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673011(v=vs.85).aspx">Device Fundamentals Tests</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx">How to How to test a driver at runtime using Visual Studio</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj674802(v=vs.85).aspx">How to How to test a driver at runtime from a Command Prompt</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">How to select and configure the Device Fundamentals tests</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx">Provided WDTF Simple I/O plug-ins</a>
+</dt>
+<dt><a href="http://go.microsoft.com/fwlink/?LinkId=288941">Troubleshooting Device Fundamentals Reliability Testing by using the Windows HCK</a></dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [VsDriver\vsdriver]:%20Troubleshooting the Device Fundamentals tests using the WDK%20 RELEASE:%20(1/23/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 1/23/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="yR8434UQM5oxA_zeVLUnmkWKrKOqRx_oqXE3sdYlBEvcUB5H3mnT7O2jhrtp1Lr6iAsUmI3gt3wdauWgzb-RjoqPxeCQuEhettw_KmIVIVNESsTsIFHKNK_1w2YE7ntP-JrdhA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh949802(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="Chrome ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh949802(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="UPMtcViG0ShvSL7O-i4v7jooxfsDOecJ2dZIaFouhSiItmrcHurPNY4TEWTATEsoaWbK0DIHCXmMATjOS_q1ayGkEgzlY6diHT-L4zIYAyqznVQUGha382g5Jf0PV_meDTdJSQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh949802(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"29be7af2-75a8-48ad-b8c3-f9d71b2490bd\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff547456.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547456(v=vs.85).aspx" />
+        <title>INF Models Section (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff547456(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547456(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547456(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547456(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD5-9:52:08 AM" />
+
+<meta name="Search.ShortId" content="ff547456" />
+
+<meta name="ms.shortidmsdn" content="ff547456" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075128&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff547456.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549731(v=vs.85).aspx" id="ff571583_VS.85_en-us" mtpsaliasid="" mtpsassetid="5bb4d9d3-9dcb-4820-a6ad-0345f7645c82_VS.85_en-us" mtpsshortid="ff549731_VS.85_en-us" title="Device and Driver Installation">Device and Driver Installation</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541175(v=vs.85).aspx" id="ff571911_VS.85_en-us" mtpsaliasid="" mtpsassetid="9abeb5b9-9f45-459d-a787-dd633ff2e0f3_VS.85_en-us" mtpsshortid="ff541175_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547433(v=vs.85).aspx" id="ff571914_VS.85_en-us" mtpsaliasid="" mtpsassetid="22183cd8-fbea-423d-86e0-485579a95b66_VS.85_en-us" mtpsshortid="ff547433_VS.85_en-us" title="INF File Sections and Directives">INF File Sections and Directives</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547465(v=vs.85).aspx" id="ff571918_VS.85_en-us" mtpsaliasid="" mtpsassetid="0eeab13d-9255-4faa-9cf2-de6a8f93d8dc_VS.85_en-us" mtpsshortid="ff547465_VS.85_en-us" title="INF Sections">INF Sections</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547502(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF Version Section">INF Version Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn249407(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF SignatureAttributes Section">INF SignatureAttributes Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547478(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF SourceDisksNames Section">INF SourceDisksNames Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547472(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF SourceDisksFiles Section">INF SourceDisksFiles Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546335(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF ClassInstall32 Section">INF ClassInstall32 Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546339(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF ClassInstall32.Services Section">INF ClassInstall32.Services Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547383(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DestinationDirs Section">INF DestinationDirs Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546342(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF ControlFlags Section">INF ControlFlags Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547454(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF Manufacturer Section">INF Manufacturer Section</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547456(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF Models Section">INF Models Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547344(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall Section">INF DDInstall Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547349(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.Services Section">INF DDInstall.Services Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547330(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.HW Section">INF DDInstall.HW Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547321(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.CoInstallers Section">INF DDInstall.CoInstallers Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547326(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.FactDef Section">INF DDInstall.FactDef Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547339(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.LogConfigOverride Section">INF DDInstall.LogConfigOverride Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547335(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.Interfaces Section">INF DDInstall.Interfaces Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547350(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DDInstall.WMI Section">INF DDInstall.WMI Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547446(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF InterfaceInstall32 Section">INF InterfaceInstall32 Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547356(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DefaultInstall Section">INF DefaultInstall Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547360(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF DefaultInstall.Services Section">INF DefaultInstall.Services Section</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547485(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INF Strings Section">INF Strings Section</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">INF Models Section</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_94ac8730-4876-4d1a-8afa-cb4c3a162fad');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_94ac8730-4876-4d1a-8afa-cb4c3a162fad" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+[models-section-name] |
+[models-section-name.TargetOSVersion]  (Windows XP and later versions of Windows)
+
+device-description=install-section-name[,hw-id][,compatible-id...]
+[device-description=install-section-name[,hw-id][,compatible-id]...] ...
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Description"></a><a id="description"></a><a id="DESCRIPTION"></a>Description</h2>
+<p>A per-manufacturer <em>Models</em> section identifies at least one device, references the <em>DDInstall</em> section of the INF file for that device, and specifies a unique-to-the-model-section <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546152.aspx">hardware identifier (ID)</a> for that device. </p>
+<p>Any entry in the per-manufacturer <em>Models</em> section can also specify one or more additional device IDs for models that are compatible with the device designated by the initial hardware ID and are controlled by the same drivers.</p>
+<h2><a id="Entries"></a><a id="entries"></a><a id="ENTRIES"></a>Entries</h2>
+<p></p>
+<dl>
+<dt><a id="device-description"></a><a id="DEVICE-DESCRIPTION"></a><em>device-description</em></dt>
+<dd>
+<p>Identifies a device to be installed, expressed as any unique combination of visible characters or as a <strong>%</strong><em>strkey</em><strong>%</strong> token defined in an <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547485.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF Strings section</strong></a>. The maximum length, in characters, of a device description is LINE_LEN.</p>
+</dd>
+<dt><a id="install-section-name"></a><a id="INSTALL-SECTION-NAME"></a><em>install-section-name</em></dt>
+<dd>
+<p>Specifies the undecorated name of the INF install sections to be used for the device (and compatible models of device, if any). For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547344.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF <em>DDInstall</em> Section</strong></a>.</p>
+</dd>
+<dt><a id="hw-id"></a><a id="HW-ID"></a><em>hw-id</em></dt>
+<dd>
+<p>Specifies a vendor-defined <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546152.aspx">hardware ID</a> string that identifies a device, which the PnP manager uses to find an INF-file match for this device. Such a  hardware ID has one of the following formats:</p>
+<p></p>
+<dl>
+<dt><a id="enumerator_enumerator-specific-device-id"></a><a id="ENUMERATOR_ENUMERATOR-SPECIFIC-DEVICE-ID"></a><em>enumerator\enumerator-specific-device-id</em></dt>
+<dd>
+<p> 
+Is the typical format for individual PnP devices reported to the PnP manager by a single enumerator. For example, <code>USB\VID_045E&amp;PID_00B</code> identifies the Microsoft HID keyboard device on a USB bus. Depending on the enumerator, such a specification can even include the device's hardware revision number as, for example, <code>PCI\VEN_1011&amp;DEV_002&amp;SUBSYS_00000000&amp;REV_02</code>. 
+</p>
+</dd>
+<dt><a id="_enumerator-specific-device-id"></a><a id="_ENUMERATOR-SPECIFIC-DEVICE-ID"></a><em>*enumerator-specific-device-id</em></dt>
+<dd>
+<p> 
+Indicates with the asterisk (*) that the device is supported by more than one enumerator. For example, <code>*PNP0F01</code> identifies the Microsoft serial mouse, which also has a compatible-id specification of <code>SERENUM\PNP0F01</code>. 
+</p>
+</dd>
+<dt><a id="device-class-specific-ID"></a><a id="device-class-specific-id"></a><a id="DEVICE-CLASS-SPECIFIC-ID"></a><em>device-class-specific-ID</em></dt>
+<dd>
+<p> 
+Is an I/O bus-specific format, as described in the hardware specification for the bus, for the hardware IDs of all peripheral devices on that type of I/O bus. 
+
+</p>
+</dd>
+</dl>
+<p>Be aware that a single device can have more than one <em>hw-id</em> value. The PnP manager uses each such <em>hw-id</em> value, which is usually provided by the underlying bus when it enumerates its child devices, to create a subkey for each such device in the registry <strong>Enum</strong> branch. For manually installed devices, the system's setup code uses their <em>hw-id</em> values as specified in their respective INF files to create each such registry subkey. </p>
+</dd>
+<dt><a id="compatible-id"></a><a id="COMPATIBLE-ID"></a><em>compatible-id</em></dt>
+<dd>
+<p>Specifies a vendor-defined <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff539950.aspx">compatible ID</a> string that identifies compatible devices. Any number of <em>compatible-id</em> values can be specified for an entry in the <em>Models</em> section, each separated from the next by a comma (<strong>,</strong>). All such compatible devices and/or device models are controlled by the same driver as the device designated by the initial <em>hw-id</em>. </p>
+</dd>
+</dl>
+<h2>Remarks</h2>
+<p>Each <em>models-section-name</em> must be listed in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547454.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF Manufacturer section</strong></a> of the INF file. There can be one or more entries in any per-manufacturer <em>Models</em> section, depending on how many devices (and drivers) the INF file installs for a particular manufacturer. </p>
+<p>Each <em>install-section-name</em> must be unique within the INF file and must follow the general rules for defining section names, described in <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff544990.aspx">General Syntax Rules for INF Files</a>. The <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547344.aspx"><strong xmlns="http://www.w3.org/1999/xhtml"><em>DDInstall</em></strong></a> section name referenced in a per-manufacturer <em>Models</em> section can also have extensions appended to the given <em>install-section-name</em>, thus defining additional <em>DDInstall</em> sections for the OS-specific or platform-specific installation of the given devices. For more information about how to use extensions in cross-platform system files, see also <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff549520.aspx">Creating an INF File</a>. </p>
+<p>Any specified <em>hw-id</em> or <em>compatible-id</em> value can also be specified in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546342.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF ControlFlags section</strong></a> to prevent that device from being displayed to the end-user by the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff553639.aspx">Add Hardware Wizard</a> during manual installations. For more information about <em>hw-id</em> and <em>compatible-id</em> values, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff541224.aspx">Device Identification Strings</a>. </p>
+<p>For each device and driver that is installed by using an INF file, the device installers use the information supplied in the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547454.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF Manufacturer section</strong></a> and per-manufacturer <em>Models</em> sections to generate Device Description, Manufacturer Name, Device ID (if the installation is manual), and, possibly, Compatibility List value entries in the registry.</p>
+<p>Starting with Windows XP, a <em>models section name</em> can include a <em>TargetOSVersion</em> decoration. For more information about this decoration, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547454.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">INF Manufacturer Section</strong></a>.</p>
+<p class="note"><strong>Important</strong>  Starting with Windows Server 2003 SP1, INF files must decorate <em>models-section-name</em> entries in the INF <strong>Manufacturer</strong> section, along with the associated INF <em>Models</em> section names, with <strong>.ntia64</strong> or <strong>.ntamd64</strong> platform extensions to specify non-x86 target operating system versions. 
+These platform extensions are not required in INF files for x86-based target operating system versions or non-PnP driver INF files (such as file system driver INF files for x64-based architectures). Each entry in a <em>Models</em> section is sometimes called a <em>driver node</em>.
+</p>
+<h2>Examples</h2>
+<p>This example shows a per-manufacturer  <em>Models</em> section with some representative entries from the system mouse class installer's INF file, defining the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547344.aspx"><strong xmlns="http://www.w3.org/1999/xhtml"><em>DDInstall</em></strong></a> sections for some devices/models.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a14fc187-ecfd-4ddb-9c53-acc0d5ac7359');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a14fc187-ecfd-4ddb-9c53-acc0d5ac7359" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+[Manufacturer]
+%StdMfg%    =StdMfg         ; (Standard types)
+%MSMfg%     =MSMfg          ; Microsoft
+; ... %otherMfg% omitted here
+
+[StdMfg]  ; per-Manufacturer Models section 
+  ; Std serial mouse
+%*pnp0f0c.DeviceDesc%= Ser_Inst,*PNP0F0C,SERENUM\PNP0F0C,SERIAL_MOUSE
+  ; Std InPort mouse
+%*pnp0f0d.DeviceDesc%      = Inp_Inst,*PNP0F0D
+; ... more StdMfg entries 
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff546342.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ControlFlags</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547344.aspx"><strong xmlns="http://www.w3.org/1999/xhtml"><em>DDInstall</em></strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547454.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Manufacturer</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff547485.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Strings</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [devinst\devinst]:%20INF Models Section%20 RELEASE:%20(2/13/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 2/13/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="xen1yWU-0ObppyetkJVL-IsP9gUldPq65USdltStec_DI6sRC_DM25Z-nnK8aMWFW-A_W0xP-MVxxcetpsNbgqHn6OqP2ZVC9EzF84Y2e39B2Wh1Qx_Iwxkca365V-E9Aw-a8Q2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/ff547456.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff547456.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="_C1U-dGX8bbwTzXQzV4UBMu_6USS0VT6kZNu9LCD1_onE-OmPLCwvuU7EAdHunAX4OUkW2g1Xtn8s4w87NJQVFDRwtliM4x3pmIROQ4gJHv-Mafhj5qyMtdRJvjICUZ_aWCQ7w2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff547456(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"a9a4842e-eff2-4886-b933-081a9f535544\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff547456.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:07 GMT -->
+</html>

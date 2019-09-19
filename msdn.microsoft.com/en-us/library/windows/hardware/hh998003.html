@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh998003.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998003.aspx" />
+        <title>Disk Stress (LOGO)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh998003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998003(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93A-9:03:07 AM" />
+
+<meta name="Search.ShortId" content="hh998003" />
+
+<meta name="ms.shortidmsdn" content="hh998003" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072187&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh998003.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125097.aspx" id="dn375942_WIN.10_en-us" mtpsaliasid="" mtpsassetid="ece31cbf-8dba-492f-be98-39be81c4388b_WIN.10_en-us" mtpsshortid="jj125097_WIN.10_en-us" title="Device.Storage Testing">Device.Storage Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123745.aspx" id="dn375891_WIN.10_en-us" mtpsaliasid="" mtpsassetid="7e0227d5-36a4-4d12-b51a-c0d5de782646_WIN.10_en-us" mtpsshortid="jj123745_WIN.10_en-us" title="Device.Storage Tests">Device.Storage Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124559.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="2.2 TB Boot Test">2.2 TB Boot Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125150.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="2.2 TB Boot Test (Legacy)">2.2 TB Boot Test (Legacy)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123894.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ALUA MPIO Test (LOGO)">ALUA MPIO Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123722.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BDE WLK Test">BDE WLK Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124856.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BDE WLK Test - OS Volume Only">BDE WLK Test - OS Volume Only</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123739.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Boot Test (LOGO)">Boot Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247419.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CiB Raid Controller Kit Tests">CiB Raid Controller Kit Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124374.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Converged Traffic Prerequisite">Converged Traffic Prerequisite</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998273.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Converged Traffic Test">Converged Traffic Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125308.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crashdump Support Test (LOGO)">Crashdump Support Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124164.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Disk Stress for UAS on EHCI (LOGO)">Disk Stress for UAS on EHCI (LOGO)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998003.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Disk Stress (LOGO)">Disk Stress (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998995.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Disk Verification (LOGO)">Disk Verification (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998550.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA Test (LOGO)">DMA Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125201.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EHDD Test">EHDD Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293667.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="eMMC Compliance Test">eMMC Compliance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124531.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enclosure Disk Test (LOGO)">Enclosure Disk Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998112.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enhanced Storage Test (LOGO)">Enhanced Storage Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124794.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enhanced Storage Test (LOGO) (LEGACY)">Enhanced Storage Test (LOGO) (LEGACY)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123604.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enumeration Test (LOGO)">Enumeration Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124796.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Flush Test">Flush Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123998.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HBA API Test (LOGO)">HBA API Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn468243.aspx" id="dn468244_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hybrid Tests">Hybrid Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn468245.aspx" id="dn468242_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="iSCSI Tests">iSCSI Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124235.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Media Lock Test (LOGO)">Media Lock Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998746.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multipath I-O Test (LOGO)">Multipath I-O Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998781.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multiport Disk Performance Test (LOGO)">Multiport Disk Performance Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247543.aspx" id="dn375913_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NVMe Tests">NVMe Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998719.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Offload Reset logo test">Offload Reset logo test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124369.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Offload scenario test (LOGO)">Offload scenario test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123855.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Offload SCSI Compliance Test (LOGO)">Offload SCSI Compliance Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293643.aspx" id="dn375847_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Optical Logo Tests">Optical Logo Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998199.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Optical media burning - Manual Test">Optical media burning - Manual Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124920.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Persistent Reservation Test (LOGO)">Persistent Reservation Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Piton HDD Logo Test (LOGO)">Piton HDD Logo Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998456.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Read Capacity 16 Unit Test - SCSI Compliance Test">Read Capacity 16 Unit Test - SCSI Compliance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247536.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Rotational Rate Test (LOGO)">Rotational Rate Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247369.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SAS SSD SCSI Compliance Test (LOGO)">SAS SSD SCSI Compliance Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247175.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SAS SSD Trim Performance Test">SAS SSD Trim Performance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998657.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SCSI Compliance Fuzz Test (LOGO)">SCSI Compliance Fuzz Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124001.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SCSI Compliance Test (LOGO)">SCSI Compliance Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998707.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SCSI Compliance Test 2.0 (LOGO)">SCSI Compliance Test 2.0 (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191707.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SCSI Reliability Counters Test (LOGO)">SCSI Reliability Counters Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260208.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SDHC Compliance Test">SDHC Compliance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124839.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SD Paging Tests">SD Paging Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123950.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SES Test (LOGO)">SES Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124146.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Smart Test (LOGO) (ATA Disk)">Smart Test (LOGO) (ATA Disk)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124107.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Storage Assessment Test">Storage Assessment Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124930.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Storage Imports Test (LOGO)">Storage Imports Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123623.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Storage Performance USB3">Storage Performance USB3</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125047.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Storage Query Property (LOGO)">Storage Query Property (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn268547.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Thin Provisioning Performance Test - NTFS (LOGO)">Thin Provisioning Performance Test - NTFS (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998192.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Thin Provisioning Performance Test - RAW Disk (LOGO)">Thin Provisioning Performance Test - RAW Disk (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123660.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Thin Provisioning SCSI Compliance Test (LOGO)">Thin Provisioning SCSI Compliance Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124761.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Thin Provisioning Threshold and Resource Exhaustion Test (LOGO)">Thin Provisioning Threshold and Resource Exhaustion Test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123466.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Trim Performance Test">Trim Performance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124292.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Trim Test">Trim Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998684.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Trim Zero-Range Test">Trim Zero-Range Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124674.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UAS Stress Reset logo test for UAS on EHCI">UAS Stress Reset logo test for UAS on EHCI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124021.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UAS Stress Reset logo test">UAS Stress Reset logo test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998035.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB 2.0 &amp; 3.0 SCSI Compliance test for UAS on EHCI (LOGO)">USB 2.0 &amp; 3.0 SCSI Compliance test for UAS on EHCI (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124402.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB 2.0 &amp; 3.0 SCSI Compliance test (LOGO)">USB 2.0 &amp; 3.0 SCSI Compliance test (LOGO)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124767.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WindowsToGo Performance Assessment">WindowsToGo Performance Assessment</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247170.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WindowsToGo Device Basics Test">WindowsToGo Device Basics Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260404.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WindowsToGo Device Boot Test">WindowsToGo Device Boot Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247567.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Hyper-V NPIV tests">Windows Hyper-V NPIV tests</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Disk Stress (LOGO)</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This test stresses disks on a computer by sending as much asynchronous I/O as the device can handle. The test should reach the bandwidth limit of the test device for the given test system configuration.</p>
+      <h2 class="heading">Test details</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>
+                <strong>Associated requirements</strong>
+              </p>
+            </td>
+            <td>
+              <p>Device.Storage.Controller.BasicFunction<br /> Device.Storage.Hd.BasicFunction<br /> Device.Storage.Hd.RemovableMedia.BasicFunction<br /> Device.Storage.Optical.Features</p>
+              <p>
+                <a href="http://go.microsoft.com/fwlink/?LinkID=254483">See the device hardware requirements.</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Platforms</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+									Windows 7 (x64)
+									<br />
+									Windows 7 (x86)
+									<br />
+									Windows RT (ARM-based)
+									<br />
+									Windows 8 (x64)
+									<br />
+									Windows 8 (x86)
+									<br />
+									Windows Server 2012 (x64)
+									<br />
+									Windows Server 2008 R2 (x64)
+									<br /> Windows Server 2008 x64<br /> Windows Server 2008 x86<br />Windows RT 8.1<br />Windows 8.1 x64<br />Windows 8.1 x86<br />Windows Server 2012 R2</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Expected run time</strong>
+              </p>
+            </td>
+            <td>
+              <p>~90 minutes</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Categories</strong>
+              </p>
+            </td>
+            <td>
+              <p>Certification<br /> Reliability</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Type</strong>
+              </p>
+            </td>
+            <td>
+              <p>Automated</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Running the test</h2>
+      <div id="sectionSection1" class="section">
+        <p>Before you run the test, complete the test setup as described in the following test requirements:</p>
+        <ul>
+          <li class="unordered">
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123949.aspx">Hard Disk Drive Testing Prerequisites</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998391.aspx">Optical Disk Drive Testing Prerequisites</a>
+            <br />
+            <br />
+          </li>
+        </ul>
+        <p>If you are testing any drive that requires media or testing in system-mode on a computer that contains drives that require media, you must insert media into the drives. The media that is used must be formatted and contain data that occupies at least 50% of the media's capacity.</p>
+      </div>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection2" class="section">
+        <p>For troubleshooting information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998752.aspx">Troubleshooting Device.Storage Testing</a>.</p>
+      </div>
+      <a id="BKMK_moreInfo">
+        
+      </a>
+      <h2 class="heading">More information</h2>
+      <div id="sectionSection3" class="section">
+        <p>The test is passed the instance path of the target test device. It finds all hard disks and optical drives that are equal to or connected to the test device. The test will then go through the following scenarios on all of the found devices:</p>
+        <ul>
+          <li class="unordered">
+							Sequential read<br /><br /></li>
+          <li class="unordered">
+							Sequential write<br /><br /></li>
+          <li class="unordered">
+							Sequential verify (write followed by read and comparison)<br /><br /></li>
+          <li class="unordered">
+							Random read<br /><br /></li>
+          <li class="unordered">
+							Random write<br /><br /></li>
+          <li class="unordered">
+							Random verify<br /><br /></li>
+        </ul>
+        <p>The test is given a fixed run time and runs each scenario for a fraction of that time. In the case of six scenarios and a run time of 90 minutes, each scenario is run for 15 minutes. The test displays dialog boxes with the progress of the current scenario. Any write scenarios (including verify) are skipped for optical devices. The size of the individual data transfers is determined by a command-line parameter; the default size for the logo test is 32 KB.</p>
+        <p>The test tries to do raw writes, bypassing any file system that is mounted on the hard disk if it can. The test attempts raw writes if one of the following occurs:</p>
+        <ul>
+          <li class="unordered">
+							The test can find a raw, unpartitioned disk.<br /><br /></li>
+          <li class="unordered">
+							The test can find a raw, unformatted volume.<br /><br /></li>
+          <li class="unordered">
+							The test can find a volume that it can dismount.<br /><br /></li>
+        </ul>
+        <p>If none of the preceding situations are available, the test performs I/O through the file system. This action is more CPU intensive and might not give accurate bandwidth and latency measurements for the device. In the third situation (the test finds a volume that it can dismount), which is the most common mode that the test is run in, the test allocates a test file to use and writes only to the extents of that file. This situation ensures that the test never corrupts the file system of the device that it is testing.</p>
+        <p>The amount of space that the test uses is determined by the free space that is available on the test device. To ensure best device performance, you should delete any unnecessary files from the test device and should cleanly format or defragment the device before running the test. The test warns you if the target's fragmentation might influence the test results.</p>
+        <p>Even though this test does measure device performance, there is currently no test case in the Logo version of this test that passes or fails based on these measurements.</p>
+        <h3 class="subHeading">Command syntax</h3>
+        <div class="subSection">
+          <p>
+            
+          </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Command option
+										</th>
+              <th>
+											Description
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <strong>DiskIo</strong>
+                </p>
+              </td>
+              <td>
+                <p>Runs the test.</p>
+              </td>
+            </tr>
+          </table>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="Warning" alt="Warning" src="http://i.msdn.microsoft.com/dynimg/IC174466.gif" title="Warning" xmlns="" />Warning </th>
+              </tr>
+              <tr>
+                <td>
+								For command line help for this test binary, type <code>/h</code>.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+        <h3 class="subHeading">File list</h3>
+        <div class="subSection">
+          <p>
+            
+          </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											File
+										</th>
+              <th>
+											Location
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>DiskIo.exe</p>
+              </td>
+              <td>
+                <p>
+                  <em>&lt;[testbinroot]&gt;</em>\nttest\driverstest\storage\wdk</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>StorageDevices.dll</p>
+              </td>
+              <td>
+                <p>
+                  <em>&lt;[testbinroot]&gt;</em>\nttest\driverstest\storage\wdk</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="_B1XGr_4voBdxMoNBhM4-GBEgwFxLchgvsR2p_UDQgqvEyYAeg6AC-YqChWvT0AC8wnpOjXWUOG0GICBx3CZdvOZZ9kWAOQPvSYtV_uoObgmZfMHO77UJGOZtwN-sMF5v3ToZQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh998003.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh998003.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="VScYbQBOmvd6ze18VGWMlLkfEVbesiG4AJV_e56HYMIb7SC3NfHjE3WrDazEvyXJCz0rT9TGdKrkRvWTadRHP655Hl2zXKulu5F4EQiiIduwLhgjSSAZNA4tu9rpG1Mwi0zOHA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh998003(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"912eea0d-62ef-46fb-9f6d-2d9c40fe6cfb\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh998003.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+</html>

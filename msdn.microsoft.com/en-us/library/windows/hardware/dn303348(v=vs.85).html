@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn303348(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:40:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn303348(v%3dvs.85).html" />
+        <title>How to send a USB interrupt transfer request (Windows Store app) (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn303348(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303348(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303348(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303348(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93A-8:59:10 AM" />
+
+<meta name="Search.ShortId" content="dn303348" />
+
+<meta name="ms.shortidmsdn" content="dn303348" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined4208.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395071950&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn303348%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn303342(v%3dvs.85).html" id="hh948125_VS.85_en-us" mtpsaliasid="" mtpsassetid="B3F1A1A6-0908-4144-8454-76A2FB70619B_VS.85_en-us" mtpsshortid="dn303342_VS.85_en-us" title="Developing Windows applications for USB devices">Developing Windows applications for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn303355(v%3dvs.85).html" id="jj151904_VS.85_en-us" mtpsaliasid="" mtpsassetid="DEE30A6F-15AE-413B-B3F3-1C0250037D1A_VS.85_en-us" mtpsshortid="dn303355_VS.85_en-us" title="Windows Store app for a USB device">Windows Store app for a USB device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn312121(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Talking to USB devices, start to finish (Windows Store app)">Talking to USB devices, start to finish (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303351(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to add USB device capabilities to the app manifest">How to add USB device capabilities to the app manifest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303343(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to connect to a USB device (Windows Store app)">How to connect to a USB device (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303347(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer (Windows Store app)">How to send a USB control transfer (Windows Store app)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn303348(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB interrupt transfer request (Windows Store app)">How to send a USB interrupt transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303346(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB bulk transfer request (Windows Store app)">How to send a USB bulk transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303344(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to get USB descriptors (Windows Store app)">How to get USB descriptors (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303345(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select a USB interface setting (Windows Store app)">How to select a USB interface setting (Windows Store app)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to send a USB interrupt transfer request (Windows Store app)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Summary</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>Interrupt transfers occur when the host polls the device</li>
+<li>Implement the event handler for <a href="windows.devices.usb.usbinterruptinpipe.datareceived.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe.DataReceived</strong></a>
+</li>
+<li>Register  and unregister the event handler</li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#before_you_start...">Before you start...</a></li>
+<li><a href="#writing_to_the_interrupt_out_endpoint">Writing to the interrupt OUT endpoint</a></li>
+<li><a href="#step_1__implement_the_interrupt_event_handler__interrupt_in_">Step 1: Implement the interrupt event handler (Interrupt IN)</a></li>
+<li><a href="#step_2__get_the_interrupt_pipe_object__interrupt_in_">Step 2: Get the interrupt pipe object (Interrupt IN)</a></li>
+<li><a href="#step_3__register_the_event_handler_to_start_receiving_data__interrupt_in_">Step 3: Register the event handler to start receiving data (Interrupt IN)</a></li>
+<li><a href="#step_4__unregister_the__event_handler_to_stop_receiving_data__interrupt_in_">Step 4: Unregister the  event handler to stop receiving data (Interrupt IN)</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Important APIs</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>
+<a href="windows.devices.usb.usbinterruptinpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbinterruptoutpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutPipe</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbinterruptineventargs.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInEventArgs</strong></a>
+</li>
+</ul>
+
+</div>
+</div>
+<p>A USB device can support interrupt endpoints so that it can send or receive data at regular intervals. To accomplish that, the host polls the device at regular intervals and data is transmitted each time the host polls the device. Interrupt transfers are mostly used for getting interrupt data from the device.  This topic describes how a Windows Store app can  get continuous interrupt data from  the device.</p>
+<p><strong>Interrupt endpoint information</strong></p>
+<p>For interrupt endpoints, the descriptor exposes these properties. Those values are for information only and should not affect how you manage the buffer transfer buffer. </p><ul>
+<li>How often can data be transmitted?<p>Get that information by getting  the <strong>Interval</strong> value of the endpoint descriptor (see <a href="windows.devices.usb.usbinterruptoutendpointdescriptor.interval.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutEndpointDescriptor.Interval</strong></a> or <a href="windows.devices.usb.usbinterruptinendpointdescriptor.interval.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInEndpointDescriptor.Interval</strong></a>). That value indicates how often data is sent to or received from the device in each frame on the bus. </p><p class="note"><strong>Note</strong>  The <strong>Interval</strong> property is not the <strong>bInterval</strong> value (defined in the USB specification).  </p>
+
+<p>That value indicates how often data is transmitted to or  from the device. For example, for a high speed device, if <strong>Interval</strong> is 125 microseconds, data is transmitted every 125 microseconds. If <strong>Interval</strong> is 1000 microseconds, then data is transmitted every millisecond. </p>
+</li>
+<li>How much data can be transmitted in each service interval?<p>Get the number of bytes that can transmitted by getting  the maximum packet size supported by the endpoint descriptor (see <a href="ff537069(v%3dvs.85).html">UsbInterruptOutEndpointDescriptor.MaxPacketSize</a> or UsbInterruptInEndpointDescriptor.MaxPacketSize. The maximum packet size constrained on the speed of the device. For low-speed devices up to 8 bytes. For full-speed devices, up to 64 bytes. For high-speed, high-bandwidth devices, the app can send or receive more than  maximum packet size up to 3072 bytes per microframe.</p>
+<p>
+</p><p class="note"><strong>Note</strong>  Interrupt endpoints on SuperSpeed devices are capable of transmitting even more number of bytes. That value is indicated by the <strong>wBytesPerInterval</strong> of the USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR. To retrieve the descriptor, get the descriptor buffer by using the <a href="windows.devices.usb.usbcontrolrequesttype.asbyte.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbEndpointDescriptor.AsByte</strong></a>  property and then parse that buffer by using <a href="windows.storage.streams.datareader.html"><strong xmlns="http://www.w3.org/1999/xhtml">DataReader</strong></a> methods.</p>
+
+</li>
+</ul>
+
+<p><strong>Interrupt OUT transfers</strong></p>
+<p>A USB device can support interrupt OUT endpoints that receive data from the host at regular intervals. Each time the host polls the device, the host sends data. A Windows Store app can initiate an interrupt OUT transfer request that specifies the data to send. That request is completed when the device acknowledges the data from the host. A Windows Store app can write data to the <a href="windows.devices.usb.usbinterruptoutpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutPipe</strong></a>.</p>
+<p><strong>Interrupt IN transfers</strong></p>
+<p> Conversely, a USB device can support interrupt IN endpoints as a way to inform the host about hardware interrupts generated by the device.  Typically USB Human Interface Devices (HID) such as keyboards and pointing devices support interrupt OUT endpoints. When an interrupt occurs, the endpoint stores interrupt data but that data does not reach the host immediately. The endpoint must wait for the host controller to poll the device. Because there must be minimal delay between the time data is generated and reaches the host, it polls the device at regular intervals. A Windows Store app can get data received in the <a href="windows.devices.usb.usbinterruptinpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe</strong></a>. The request that completes when data from the device is received by the host. </p>
+<p></p>
+<h2><a id="Before_you_start..."></a><a id="before_you_start..."></a><a id="BEFORE_YOU_START..."></a>Before you start...</h2>
+<p>
+</p><ul>
+<li>You must have opened the device and obtained the <a href="windows.devices.usb.usbdevice.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a> object. Read <a href="dn303343(v%3dvs.85).html">How to connect to a USB device (Windows Store App)</a>.</li>
+<li>You can see the complete code shown in this topic in the CustomUsbDeviceAccess sample, Scenario3_InterruptPipes files.</li>
+</ul>
+
+<h2><a id="Writing_to_the_interrupt_OUT_endpoint"></a><a id="writing_to_the_interrupt_out_endpoint"></a><a id="WRITING_TO_THE_INTERRUPT_OUT_ENDPOINT"></a>Writing to the interrupt OUT endpoint</h2>
+<p>The way the app sends an interrupt OUT transfer request is identical to bulk OUT transfers, except the target is an interrupt OUT pipe, represented by <a href="windows.devices.usb.usbinterruptoutpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutPipe</strong></a>. For more information, see <a href="dn303346(v%3dvs.85).html">How to send a USB bulk transfer request (Windows Store app)</a>.</p>
+<h2><a id="Step_1__Implement_the_interrupt_event_handler__Interrupt_IN_"></a><a id="step_1__implement_the_interrupt_event_handler__interrupt_in_"></a><a id="STEP_1__IMPLEMENT_THE_INTERRUPT_EVENT_HANDLER__INTERRUPT_IN_"></a>Step 1: Implement the interrupt event handler (Interrupt IN)</h2>
+<p>When data is received from the device into the interrupt pipe, it raises the  <a href="windows.devices.usb.usbinterruptinpipe.datareceived.html"><strong xmlns="http://www.w3.org/1999/xhtml">DataReceived</strong></a> event. To get the interrupt data, the app must implement an event handler. The <em>eventArgs</em> parameter of the handler, points to the data buffer.</p>
+<p>This example code shows a simple implementation of the event handler. The handler maintains the count of interrupts received. Each time the handler is invoked, it increments the count. The handler gets the data buffer from <em>eventArgs</em> parameter and displays the count of interrupts and the length of bytes received. </p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="dn303348(v%3dvs.85)64c0.html?cs-save-lang=1&amp;cs-lang=cpp#code-snippet-1">C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_56ad52ef-2ea0-4c08-b9cf-0f3d1ba65b89');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_56ad52ef-2ea0-4c08-b9cf-0f3d1ba65b89" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">private</span> <span style="color:Blue;">async</span> <span style="color:Blue;">void</span> OnInterruptDataReceivedEvent(UsbInterruptInPipe sender, UsbInterruptInEventArgs eventArgs)
+{
+    numInterruptsReceived++;
+
+    <span style="color:Green;">// The data from the interrupt</span>
+    IBuffer buffer = eventArgs.InterruptData;
+
+    <span style="color:Green;">// Create a DispatchedHandler for the because we are interracting with the UI directly and the</span>
+    <span style="color:Green;">// thread that this function is running on may not be the UI thread; if a non-UI thread modifies</span>
+    <span style="color:Green;">// the UI, an exception is thrown</span>
+
+    <span style="color:Blue;">await</span> Dispatcher.RunAsync(
+                       CoreDispatcherPriority.Normal,
+                       <span style="color:Blue;">new</span> DispatchedHandler(() =&gt;
+    {
+        ShowData(
+        <span style="color:#A31515;">"Number of interrupt events received: "</span> + numInterruptsReceived.ToString()
+        + <span style="color:#A31515;">"\nReceived "</span> + buffer.Length.ToString() + <span style="color:#A31515;">" bytes"</span>);
+    }));
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Step_2__Get_the_interrupt_pipe_object__Interrupt_IN_"></a><a id="step_2__get_the_interrupt_pipe_object__interrupt_in_"></a><a id="STEP_2__GET_THE_INTERRUPT_PIPE_OBJECT__INTERRUPT_IN_"></a>Step 2: Get the interrupt pipe object (Interrupt IN)</h2>
+<p>To register the event handler for the  <a href="windows.devices.usb.usbinterruptinpipe.datareceived.html"><strong xmlns="http://www.w3.org/1999/xhtml">DataReceived</strong></a> event, obtain a reference to the <a href="windows.devices.usb.usbinterruptinpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe</strong></a> by using any these properties:</p>
+<ul>
+<li>
+<a href="windows.devices.usb.usbinterface.interruptinpipes.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.DefaultInterface.InterruptInPipes[n]</strong></a> if your   interrupt endpoint is present in the first USB interface.</li>
+<li>
+<a href="windows.devices.usb.usbinterface.interruptinpipes.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.Configuration.UsbInterfaces[m].InterruptInPipes[n]</strong></a> for enumerating all interrupt IN pipes per  interface, supported by the device.</li>
+<li>
+<a href="windows.devices.usb.usbinterface.interruptinpipes.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface.InterfaceSettings[m].InterruptInEndpoints [n].Pipe</strong></a> for enumerating interrupt IN pipes defined by settings of an interface.</li>
+<li>
+<a href="windows.devices.usb.usbinterruptinendpointdescriptor.pipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbEndpointDescriptor.AsInterruptInEndpointDescriptor.Pipe</strong></a> for getting the pipe object from the endpoint descriptor for the interrupt IN endpoint. </li>
+</ul>
+<p class="note"><strong>Note</strong>  Avoid getting the pipe object by enumerating interrupt endpoints of an interface  setting that is not currently selected. To transfer data, pipes must be associated with endpoints in the active setting.</p>
+<h2><a id="Step_3__Register_the_event_handler_to_start_receiving_data__Interrupt_IN_"></a><a id="step_3__register_the_event_handler_to_start_receiving_data__interrupt_in_"></a><a id="STEP_3__REGISTER_THE_EVENT_HANDLER_TO_START_RECEIVING_DATA__INTERRUPT_IN_"></a>Step 3: Register the event handler to start receiving data (Interrupt IN)</h2>
+<p>Next, you must register the event handler on the <a href="windows.devices.usb.usbinterruptinpipe.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe</strong></a> object that raises the <a href="windows.devices.usb.usbinterruptinpipe.datareceived.html"><strong xmlns="http://www.w3.org/1999/xhtml">DataReceived</strong></a> event.</p>
+<p>This example code shows how to register the event handler. In this example, the class keeps track of the event handler, pipe for which the event handler is registered, and whether the pipe is currently receiving data. All that information is used for unregistering the event handler, shown in the next step. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8d4feafc-7ab5-4273-acc3-5d9e8120924f');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8d4feafc-7ab5-4273-acc3-5d9e8120924f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">private</span> <span style="color:Blue;">void</span> RegisterForInterruptEvent(TypedEventHandler&lt;UsbInterruptInPipe, UsbInterruptInEventArgs&gt; eventHandler)
+{
+    <span style="color:Green;">// Search for the correct pipe that has the specified endpoint number</span>
+    interruptPipe = usbDevice.DefaultInterface.InterruptInPipes[0];
+
+    <span style="color:Green;">// Save the interrupt handler so we can use it to unregister</span>
+    interruptEventHandler = eventHandler;
+
+    interruptPipe.DataReceived += interruptEventHandler;
+
+    registeredInterruptHandler = <span style="color:Blue;">true</span>;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_81b30fd0-b3d9-4bde-8467-3b574b0bba71');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_81b30fd0-b3d9-4bde-8467-3b574b0bba71" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">void</span> RegisterForInterruptEvent(TypedEventHandler&lt;UsbInterruptInPipe, UsbInterruptInEventArgs&gt; eventHandler)
+    <span style="color:Green;">// Search for the correct pipe that has the specified endpoint number</span>
+    interruptInPipe = usbDevice.DefaultInterface.InterruptInPipes.GetAt(pipeIndex);
+        
+    <span style="color:Green;">// Save the token so we can unregister from the event later</span>
+    interruptEventHandler = interruptInPipe.DataReceived += eventHandler;
+
+    registeredInterrupt = <span style="color:Blue;">true</span>;    
+
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>After the event handler is registered, it is invoked each time data is received in the associated interrupt pipe.</p>
+<h2><a id="Step_4__Unregister_the__event_handler_to_stop_receiving_data__Interrupt_IN_"></a><a id="step_4__unregister_the__event_handler_to_stop_receiving_data__interrupt_in_"></a><a id="STEP_4__UNREGISTER_THE__EVENT_HANDLER_TO_STOP_RECEIVING_DATA__INTERRUPT_IN_"></a>Step 4: Unregister the  event handler to stop receiving data (Interrupt IN)</h2>
+<p>After you are finished receiving data, unregister the event handler. </p>
+<p>This example code shows how to unregister the event handler. In this example, if the app has an previously registered event handler,  the method gets the tracked event handler, and unregisters it on the interrupt pipe. </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a036c92c-c050-4952-b406-c661a29c367a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a036c92c-c050-4952-b406-c661a29c367a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">private</span> <span style="color:Blue;">void</span> UnregisterInterruptEventHandler()
+{
+    <span style="color:Blue;">if</span> (registeredInterruptHandler)
+    {
+        interruptPipe.DataReceived -= interruptEventHandler;
+
+        registeredInterruptHandler = <span style="color:Blue;">false</span>;
+    }
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a8eea569-171b-47a2-99ad-93c60de5d538');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a8eea569-171b-47a2-99ad-93c60de5d538" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">void</span> UnregisterFromInterruptEvent(<span style="color:Blue;">void</span>)
+{
+    <span style="color:Blue;">if</span> (registeredInterrupt)
+    {
+        interruptInPipe.DataReceived -= eventHandler;
+
+        registeredInterrupt = <span style="color:Blue;">false</span>;
+    }
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>After the event handler is unregistered, the app stops receiving data from the interrupt pipe because the event handler is not invoked on interrupt events. This does not mean that the interrupt pipe stops getting data.</p>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to send a USB interrupt transfer request (Windows Store app)%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="xll6dZqDfXMwxvDfHr-vJu7w2YZcJw_-E5smByldtHEBw1MMfB7uigpXETbB_NFE0MicLLdYs0-2xLspyQT1t9RS1LR0nuNfLmtmiGTdI1DDBsuBOmaCg-s-tz3HM0eDgPWWlw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn303348(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn303348(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="nNWdtRR1HZqfe8gs0EfNSMMZwhlTbQqHS7G-I8hKFVweF013NwpxGlV1f_SP0cfqd9UZulHXdB_ek13mb9zSAm4MPpaJ2BgsLO8CggmusH25tJAVPlYJBZJUnp4-DFEe_0YIyA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn303348(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"20dad2ef-f0cf-402c-af0a-d6665a687bb9\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn303348(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:40:40 GMT -->
+</html>

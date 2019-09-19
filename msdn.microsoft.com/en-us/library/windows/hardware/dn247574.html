@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn247574.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:13:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn247574.html" />
+        <title>HCK Automation Tool</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn247574(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247574(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247574(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247574(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93A-4:09:58 AM" />
+
+<meta name="Search.ShortId" content="dn247574" />
+
+<meta name="ms.shortidmsdn" content="dn247574" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395054598&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn247574.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="jj125043.html" id="dn293669_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e90e9f60-29b4-4636-8e78-7f6cdf9e6583_WIN.10_en-us" mtpsshortid="jj125043_WIN.10_en-us" title="HCK Tools">HCK Tools</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="jj124905.html" id="dn247178_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HCK Studio">HCK Studio</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="dn247363.html" id="dn247205_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HCK Controller">HCK Controller</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998844.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HCK Manager">HCK Manager</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn247574.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HCK Automation Tool">HCK Automation Tool</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">HCK Automation Tool</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>The automating the Windows Hardware Certification Kit (Windows HCK) topic guides you through a series of scripting-supported steps to automate Windows HCK driver, system, and software device testing. This allows you to run the Windows HCK tests without using the Windows HCK user interface (UI).</p>
+      <div class="alert">
+        <table>
+          <tr>
+            <th align="left">
+              <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+          </tr>
+          <tr>
+            <td>
+					There is a known issue with the Windows HCK execution engine. When a test has halted or the system has stopped a machine and the Windows HCK ObjectModel interprets the test as still running, the Windows HCK execution engine does not recognize the condition and can continue to monitor the test execution indefinitely (or until the timeout value of the project is reached). The root cause for this issue is that Windows HCK execution engine gets the test result from the Windows HCK ObjectModel; in this case, it therefore thinks that the test is still running and does not start the machine monitor to wait for recovery.<p></p>
+					We recommend that you manually cancel the job and reboot the machine to alert ObjectModel. You might need to rerun the failed/cancelled test by using a shortended test collection file, or run it manually by using Windows HCK Studio. This issue will be addressed in future releases.<p></p></td>
+          </tr>
+        </table>
+        <p>
+          
+        </p>
+      </div>
+      <p>The process for running the Windows HCK tests in a series of scripted steps follows a workflow that is similar to the <a href="jj123537.html">Windows HCK Getting Started</a> Guide. </p>
+      <img id="5e630888-5ce9-4ed7-8fe5-19e672f12efd" alt="HCK automation tools test process" src="../../../../../i.msdn.microsoft.com/dynimg/IC662661.jpg" title="HCK automation tools test process" xmlns="" />
+      <p>The individual steps are as follows:</p>
+      <ul>
+        <li class="unordered">
+          <a href="#BKMK_prereq">Windows HCK automation tools prerequisites</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_installctrl">Step 1: Install Controller and supporting programs on the test server</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_installClient">Step 2: Install HCK Client on the test computer(s)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_createPDF">Step 3: Create a test Project Definition File on the Controller or test server</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_fulllist">Step 4: Generate the full list of tests based on the Project Definition File on the Controller or test server</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_filter">Step 5: Filter the full list of tests on the Controller</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_add">Step 6: Add filtered list of tests to the Project Definition File on the Controller</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_run">Step 7: Run the test project on the Controller</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#BKMK_analyze">Step 8: Analyze the test results in Excel</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#pdefref">PDEF reference</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="BKMK_prereq">
+        
+      </a>
+      <h2 class="heading">Windows HCK automation tools prerequisites</h2>
+      <div id="sectionSection0" class="section">
+        <p>Before you begin testing, make sure that you are familiar with the Windows HCK automation concepts and hardware requirements. See <a href="jj124068.html">Windows HCK Prerequisites</a>.</p>
+      </div>
+      <a id="BKMK_installctrl">
+        
+      </a>
+      <h2 class="heading">Step 1: Install Controller and supporting programs on the test server</h2>
+      <div id="sectionSection1" class="section">
+        <p>The test server computer should be installed with an operating system and configured as described in <a href="jj124068.html">Windows HCK Prerequisites</a>. You can then install the following programs:</p>
+        <ol class="ordered">
+          <li>
+							
+								Windows HCK. For detailed instructions about how to install the Windows HCK, see <a href="jj125146.html">Step 1: Install Controller and Studio on the test server</a>.<br /><br /></li>
+          <li>
+							Windows PowerShell 3.0. See <a href="http://www.microsoft.com/en-us/download/details.aspx?id=34595">KB2506143</a>. <br /><br /></li>
+          <li>
+							Microsoft Excel (Excel 2007, Excel 2010, or Excel 2013). <br /><br /></li>
+          <li>
+            <a href="http://www.microsoft.com/download/details.aspx?id=227">Office Primary Interop Assemblies for Windows XP</a>.<br /><br /><div class="alert"><table><tr><th align="left"><img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th></tr><tr><td>
+								This specific version is required to export Excel.<p></p></td></tr></table><p></p></div></li>
+          <li>
+							Download and copy office.dll and Microsoft.Office.Interop.Excel.dll to <strong>%WTTSTDIO%</strong>. Use these programs to support <a href="#BKMK_analyze">Step 8: Analyze the test results in Excel</a>.<br /><br /></li>
+        </ol>
+        <p>To verify the successful installation of the Windows HCK Controller software, check for the following programs in <strong>C:\Program Files (x86)\Windows Kits\8.1\Hardware Certification Kit\Studio</strong> on the test server:</p>
+        <ul>
+          <li class="unordered">
+            <strong>hckexecutionengine.exe</strong>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <strong>Microsoft.Windows.Kits.Hardware.Certification.Management.dll</strong>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <strong>Microsoft.Windows.Kits.Hardware.Certification.Project.dll</strong>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <strong>Microsoft.Windows.Kits.Hardware.Certification.Testcollection.dll</strong>
+            <br />
+            <br />
+          </li>
+        </ul>
+        <p>To verify the successful installation of Windows PowerShell 3.0, do the following:</p>
+        <h4 class="subHeading">Verify Windows PowerShell 3.0</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>To open a Windows PowerShell 3.0 session, x86 version on a computer that is running Windows® 7, click <strong>Start</strong>, click <strong>All Programs</strong>, click <strong>Accessories</strong>, click <strong>Windows PowerShell</strong>, right-click <strong>Windows PowerShell (x86)</strong>, and then click <strong>Run as administrator</strong>.</p>
+              <p>To open a Windows PowerShell 3.0 session, x86 version on a computer that is running Windows® 8 or Windows Server® 2012, follow the instructions at <a href="http://go.microsoft.com/fwlink/?LinkID=304169">Starting the 32-Bit Version of Windows PowerShell</a>.</p>
+            </li>
+            <li>
+              <p>Type <code>Get-Command -Module HardwareCertification</code> to see the following list of Windows HCK automation cmdlets:</p>
+              <ul>
+                <li>
+											Export-HwCertTestCollectionToXml<br /><br /></li>
+                <li>
+											Import-HwCertTestCollectionFromXml<br /><br /></li>
+                <li>
+											Merge-HwCertTestCollectionFromHckx<br /><br /></li>
+                <li>
+											Merge-HwCertTestCollectionFromXm<br /><br /></li>
+                <li>
+											New-HwCertTestCollectionExcelReport<br /><br /></li>
+                <li>
+											New-HwCertTestCollection<br /><br /></li>
+                <li>
+											New-HwCertProjectDefinitionFile<br /><br /></li>
+              </ul>
+            </li>
+            <li>
+              <p>You can optionally set debug message output with automatic continuation by using the following command:</p>
+              
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1636cd40-9ec0-4163-9fab-18f66fd829be');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1636cd40-9ec0-4163-9fab-18f66fd829be" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+$DebugPreference = "Continue";
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+            </li>
+          </ol>
+        </div>
+      </div>
+      <a id="BKMK_installClient">
+        
+      </a>
+      <h2 class="heading">Step 2: Install HCK Client on the test computer(s)</h2>
+      <div id="sectionSection2" class="section">
+        <p>To install the HCK client on a test computer, follow the instructions from the Windows HCK Users Guide Getting Started document, <a href="hh998740.html">Step 2: Install Client on the test computer(s)</a>.</p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+            </tr>
+            <tr>
+              <td>
+						When you install Windows HCK Client software on a computer, the computer is automatically added into the Windows HCK Controller Default Pool. The Default Pool is only supported in the Project Definition File that you define in the next steps.<p></p>
+						To locate the Hardware ID or Device Class of the testing device from the Device Manager of each test computer, see <a href="http://technet.microsoft.com/library/cc733122(v=WS.10).aspx">Discovering Hardware IDs and Device Setup Classes for your Devices</a>.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="BKMK_createPDF">
+        
+      </a>
+      <h2 class="heading">Step 3: Create a test Project Definition File on the Controller or test server</h2>
+      <div id="sectionSection3" class="section">
+        <p>Project Definition File (also referred as PDEF) defines the Target- and Machine-specific part of the testing project. The Test and Result-specific part is defined in the Test Collection File. Together, these files fully describe the project configuration, scope and results.</p>
+        <p>For a description of the PDEF file format and auxiliary PDEF information, see <a href="#pdefref">PDEF reference</a>. </p>
+        <p>An example test Project Definition File, called <strong>C:\Temp\DefinitionFile\device-win8client-x64-auto.xml</strong> is shown here:</p>
+        
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d943f6d9-d05e-42c1-8bb3-8e2f9d0b246b');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d943f6d9-d05e-42c1-8bb3-8e2f9d0b246b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;ProjectDefinitionData Controller="controllername" Database="DTMJobs" Timeout="120" User="user"&gt;
+    &lt;Project Name="Project-win8client-x64"&gt;
+        &lt;SchedulerType&gt;AdaptiveOrderOptimized&lt;/SchedulerType&gt;
+        &lt;MultiDeviceTestGroup&gt;true&lt;/MultiDeviceTestGroup&gt;
+        &lt;TestStatusToSkip&gt;Pass&lt;/TestStatusToSkip&gt;
+        &lt;Product Name="Product-win8client-x64" OsPlatform="Windows 8 Client x64" MachinePool="Test"&gt;
+            &lt;Family Name="Family-win8client-x64"&gt;
+                &lt;Target TargetType="Device" Id="HWID"/&gt;
+            &lt;/Family&gt;
+            &lt;Machine Name="TEST-CLIENT-A" Role="SUT"/&gt;
+            &lt;Machine Name="TEST-CLIENT-B" Role="SUT"/&gt;
+        &lt;/Product&gt;
+        &lt;Packages Path="C:\temp"/&gt;
+    &lt;/Project&gt;
+&lt;/ProjectDefinitionData&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>The following tables define child elements and the attributes, grouped by the XML node in which they should be set.</p>
+        <p>
+          <strong>Project</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>User-specified friendly name of the project.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Controller</p>
+            </td>
+            <td>
+              <p>Name of the Controller.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Database</p>
+            </td>
+            <td>
+              <p>Fixed name of the Controller database (for example, <strong>DTMJobs</strong>).</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Timeout</p>
+            </td>
+            <td>
+              <p>The time the execution tool will monitor for activity, expressed in hours. If the test pass runs longer than this value, the tool will stop all testing.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>SchedulerType</p>
+            </td>
+            <td>
+              <p>Optional enumeration value that is used for scheduling tests, to define the scheduling mode for the Execution Engine. Valid values are the following:</p>
+              <ul>
+                <li class="unordered">
+										AdaptiveOrderOptimized – tests are scheduled strictly in the order that they are defined in the Test Collection xml.<br /><br /></li>
+                <li class="unordered">
+										AdaptiveResourceOptimized – tests are scheduled in the order they are defined in the Test Collection xml, with respect to the availability of the machines for the scheduling test target.<br /><br /></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>MultiDeviceTestGroup</p>
+            </td>
+            <td>
+              <p>Boolean flag, set to TRUE to enable multi-device testing.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>TestStatusToSkip</p>
+            </td>
+            <td>
+              <p>Optional enumeration value that is used to define the skipping mode for the Execution Engine when scheduling tests. Valid values are <strong>Pass</strong>, <strong>Fail</strong>, or <strong>NoData</strong>.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>Product</p>
+            </td>
+            <td>
+              <p>The product for this project. There should be only one entry.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>Package</p>
+            </td>
+            <td>
+              <p>The path to which the HCKX package for this project should be saved.</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <strong>Product</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Friendly name of the product you test.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>OSPlatform</p>
+            </td>
+            <td>
+              <p>Version of Windows for the product. All computers that are specified for this product that are running different versions of Windows will be ignored.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>MachinePool</p>
+            </td>
+            <td>
+              <p>Machine pool that contains the test computers that are specified for the product under test. This is an optional parameter. If it is not specified, the default machine pool is used.</p>
+              <p>If a machine pool is specified, it must refer to an existing machine pool. This parameter works together with the <strong>Machine</strong> parameter. If the <strong>MachinePool</strong> parameter is specified but no <strong>Machine</strong> parameter is specified, the test runs on all computers in the specified machine pool.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>Family</p>
+            </td>
+            <td>
+              <p>A set of target families that belongs to this product.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>Machine</p>
+            </td>
+            <td>
+              <p>One or more machines that will be used for testing. If this parameter is empty, all machines in the specified pool are matched and used for testing.</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <strong>Family</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Friendly name of the Target Family of Targets that you test in the project.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>Target</p>
+            </td>
+            <td>
+              <p>A set of targets that belongs to this family. target is device or driver that can be selected for testing.</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <strong>Target</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>TargetType</p>
+            </td>
+            <td>
+              <p>Type of Target. Valid values are Device, System, and TargetCollection.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Id</p>
+            </td>
+            <td>
+              <p>Unique identifier of <strong>Target</strong>. For example, with the <strong>TargetType</strong> parameter set to the value, <strong>Device</strong>, the <strong>Id</strong> will be set to <strong>Hardware Id, HWID</strong>. If <strong>TargetType</strong> is set to the value <strong>System</strong>, the value for <strong>Id</strong> will be ignored.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Element</p>
+            </td>
+            <td>
+              <p>ManualSelectFeature</p>
+            </td>
+            <td>
+              <p>Specifies a manually added feature.</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <strong>Machine</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Name of the test computer. This is an optional parameter. If Machine Name is specified:</p>
+              <ul>
+                <li class="unordered">
+										The specified <strong>Name</strong> must exist in the specified <strong>MachinePool</strong>.<br /><br /></li>
+                <li class="unordered">
+										Only specified computers specified by the <strong>Name</strong> parameter are used for testing the product.<br /><br /></li>
+                <li class="unordered">
+										Only computers specified by <strong>Name</strong> that are running the operating system that is specified by <strong>OSPlatform</strong> are used to test the product.<br /><br /></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Role</p>
+            </td>
+            <td>
+              <p>If the computer is a system under test (SUT), this attribute should be specified as <strong>SUT</strong>. If the computer is a secondary client that is used for multi-computer testing, the attribute should be specified as <strong>CLIENT</strong>. Not specifying this attribute will default to this computer being a system under test (SUT).</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <strong>Package</strong>
+        </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Xml
+								</th>
+            <th>
+									Name
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Attribute</p>
+            </td>
+            <td>
+              <p>Path</p>
+            </td>
+            <td>
+              <p>Folder for the submission packages that are generated at project execution.</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Generating the Project Definition File</h3>
+        <div class="subSection">
+          <p>You can create the PDEF by using any xml or text editor, or by using the management tool <strong>New-HwCertProjectDefinitionFile</strong> cmdlet. If you use the management tool cmdlet, you can generate a PDEF that has the restrictions listed below. You can manually or programmatically update the generated PDEF xml by using any changes that are valid against the PDEF file schema.</p>
+          <ul>
+            <li class="unordered">
+									The generated PDEF can only have a single &lt;<strong>Project</strong>&gt; element and a single &lt;<strong>Product</strong>&gt; element for the project.<br /><br /></li>
+            <li class="unordered">
+									The &lt;<strong>Path</strong>&gt; attribute of the &lt;<strong>Packages</strong>&gt; element must be empty or set to the [PACKAGES] token.<br /><br /></li>
+            <li class="unordered">
+									The &lt;<strong>TestCollectionStatusLocation</strong>&gt; attribute of the &lt;<strong>Project</strong>&gt; element must be set to an empty string.<br /><br /></li>
+            <li class="unordered">
+									The &lt;<strong>SchedulerType</strong>&gt; element must be set to AdaptiveResourceOptimized.<br /><br /></li>
+            <li class="unordered">
+									The &lt;<strong>OsPlatform</strong>&gt; attribute of the &lt;<strong>Product</strong>&gt; element must be set to the OSPlatform value that is derived from the first machine in the specified pool for this project.<br /><br /></li>
+          </ul>
+          <p>Parameters of the New- HwCertProjectDefinitionFile cmdlet are described below:</p>
+          <ul>
+            <li class="unordered">
+              <strong>OutputAutomatedPdef</strong> – a Boolean flag that handles the automatic generation of the following PDEF xml attributes:<br /><br /><ul><li class="unordered">
+											&lt;<strong>Controller</strong>&gt; = “[MACHINE]<br /><br /></li><li class="unordered">
+											&lt;<strong>TestCollectionReadLocation</strong>&gt; = “[FILTERED_TEST_COLLECTION]<br /><br /></li><li class="unordered">
+											&lt;<strong>Path</strong>&gt; = “[PACKAGES]”<br /><br /></li></ul></li>
+            <li class="unordered">
+              <strong>TestCollectionFilePath</strong> – the full path to the test collection xml file that is stored in the &lt;<strong>TestCollectionReadLocation</strong>&gt; attribute of the &lt;<strong>Project</strong>&gt; element in the PDEF xml. If this value and <strong>OutputAutomatedPdef</strong> are not provided, the path is set to an empty string.<br /><br /></li>
+            <li class="unordered">
+              <strong>ControllerName</strong> – the name of the controller that is stored in the &lt;Controller&gt; attribute of the &lt;<strong>ProjectDefinitionData</strong>&gt; element of the PDEF xml. If this value and <strong>OutputAutomatedPdef</strong> are not provided, the controller name is set to name of the current machine.<br /><br /></li>
+            <li class="unordered">
+              <strong>PdefFilePath</strong> – the name of the output PDEF xml file. If not provided, the path is auto-generated with the following format:<br /><br />
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c28e426e-9cde-4c21-bf38-7b0a0e5e7807');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c28e426e-9cde-4c21-bf38-7b0a0e5e7807" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+%userprofile%\\desktop\\PDEF_Files\\PDEF_{time_date}\\PDEF_{os_platform_name}_{time_date}.xml
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+            <li class="unordered">ProjectName – the name of the project that is stored in the &lt;<strong>Name</strong>&gt; attribute of the &lt;<strong>Project</strong>&gt; element in the PDEF xml. If not provided, the name is auto-generated using the current date time stamp value.<br /><br /></li>
+            <li class="unordered">
+              <strong>EnableMultiDeviceTest</strong> – a Boolean flag that handles the multi-device scheduling for the project, stored in the &lt;<strong>MultiDeviceTestGroup</strong>&gt; element in the PDEF xml. If not specified, multi-device scheduling is not enabled.<br /><br /></li>
+            <li class="unordered">
+              <strong>SkipTestStatus</strong> – the skipping mode for scheduling tests, stored in the &lt;<strong>TestStatusToSkip</strong>&gt; element in the PDEF xml. Valid values are Pass, Fail, and NoData. If not provided, the default skipping mode is Pass.<br /><br /></li>
+            <li class="unordered">
+              <strong>EnableIsolateTargets</strong> – a Boolean flag that enables creation of an individual device family for each discovered target. If not specified, targets are grouped into the families by device classes.<br /><br /></li>
+          </ul>
+          <p>The following two parameters specify the machine pool for the project. You must provide only one parameter. If you do not provide a parameter, or if you provide both parameters, you will get an error.</p>
+          <ul>
+            <li class="unordered">
+              <strong>MachineList</strong> – specify machine names in a comma-delimited list. All specified machines must be in the same existing pool or in the default pool.<br /><br /></li>
+            <li class="unordered">
+              <strong>MachinePool</strong> – the name of the existing machine pool.<br /><br /></li>
+          </ul>
+          <p>The following six parameters specify the type of the targets for the project. You must provide only one parameter. If you do not provide a parameter, or if you provide multiple parameters, you will get an error.</p>
+          <ul>
+            <li class="unordered">
+              <strong>RunSystemTest</strong> – the project is for testing the whole system. One target family with a single <strong>TargetType</strong> = System is generated.<br /><br /></li>
+            <li class="unordered">
+              <strong>TestAllDevices</strong> – the project is for testing all targets discovered on the specified machines.<br /><br /></li>
+            <li class="unordered">
+              <strong>HwIdList</strong> – specify target hardware IDs in a comma-delimited list. Each hardware ID in the list can be partially-specified. In this case, the matching hardware IDs are identified by using the partially-specified value as a sub-string with respect to the hardware ID format. Strings are compared as case-insensitive ASCII.<br /><br /></li>
+            <li class="unordered">
+              <strong>DriverList</strong> – specify names of target drivers in a comma-delimited list. UMDF Drivers (.DLL) are not currently supported. These devices can still be discovered by using their HWID, as part of the Windows Device Class GUID, or all targets.<br /><br /></li>
+            <li class="unordered">
+              <strong>ContainerIdList</strong> – specify container ID values in a comma-delimited list. Each container Id value must be in GUID format.<br /><br /></li>
+            <li class="unordered">
+              <strong>ClassIdList</strong> – specify class ID values in a comma-delimited list. Each class ID value must be in GUID format.<br /><br /></li>
+          </ul>
+        </div>
+      </div>
+      <a id="BKMK_fulllist">
+        
+      </a>
+      <h2 class="heading">Step 4: Generate the full list of tests based on the Project Definition File on the Controller or test server</h2>
+      <div id="sectionSection4" class="section">
+        <p>You can use the Management Tool cmdlet, <strong>New-HwCertTestCollection</strong>, to generate the full list of tests that are required for testing targets in the project. An example of how to use the Management Tool cmdlet in the Windows Powershell session, is shown below. (This step is optional.)</p>
+        
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_206fe2a5-5d8b-4e5a-a9ed-946aacf7ecf6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_206fe2a5-5d8b-4e5a-a9ed-946aacf7ecf6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+New-HwCertTestCollection -ProjectDefinitionFile C:\Temp\DefinitionFile\device-win8client-x64-auto.xml | Export-HwCertTestCollectionToXml -Output c:\temp\master.xml -TestPassIdentifier “TP001”
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>If a target that is specified in the Project Definition File is no longer available, you will receive a warning and the test collection generation continues. In this case, we recommend the following to get the full list of tests:</p>
+        <ol class="ordered">
+          <li>
+							Create an auxiliary copy of Project Definition File that holds only those targets that were not available. Because tests list generation time depends on the number of specified targets, we strongly recommend that you keep only those targets that were not available at the previous run in the auxiliary copy.<br /><br /></li>
+          <li>
+							Fix the problem that caused the targets being not available; for example, certain machines in the pool are not in READY state.<br /><br /></li>
+          <li>
+							Generate an auxiliary list of tests by using the auxiliary copy of the Project Definition File.<br /><br /></li>
+          <li>
+							Merge the initial and auxiliary lists of tests. You can do this manually by adding &lt;<strong>TestCollectionRecord</strong>&gt; elements from the auxiliary list to the initial list.<br /><br /></li>
+        </ol>
+        <p>An example of the generated output xml file (<strong>c:\temp\master.xml</strong>) is given below.</p>
+        
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d29bae21-ec63-4bd9-97af-46ff1681a539');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d29bae21-ec63-4bd9-97af-46ff1681a539" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;?xml version="1.0" ?&gt; 
+&lt;ArrayOfTestCollectionRecord 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               mlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+               &lt;TestCollectionRecord 
+                               Name="Disk Stress (LOGO)" 
+                               Guid="738735f7-245a-4b39-9d81-20339ce31fd4" 
+                               TargetName="Disk" 
+                               TargetId="DiskId" 
+                               TargetType="Device" 
+                               HckBuildVersion="8.100.9354.9354"
+                               TestPassIdentifier="TP001"
+                               OsPlatform="Windows 8 Client x64"&gt;
+                               &lt;ContentLevelSet&gt;Reliability&lt;/ContentLevelSet&gt;
+                               &lt;ContentLevelSet&gt;Certification&lt;/ContentLevelSet&gt;
+                               &lt;ScheduleOptionSet&gt;Distributable&lt;/ScheduleOptionSet&gt;
+                               &lt;ScheduleOptionSet&gt;MultipleDEvices&lt;/ScheduleOptionSet&gt;
+                               &lt;FeatureMapped&gt;Device.Storage.Hd&lt;/FeatureMapped&gt;
+               &lt;/TestCollectionRecord&gt;
+&lt;/ArrayOfTestCollectionRecord&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>Where the attributes are defined as:</p>
+        <ul>
+          <li class="unordered">
+            <strong>TargetId</strong> – Hardware Id of the target on the test computer<br /><br /></li>
+          <li class="unordered">
+            <strong>TargetName</strong> – friendly name of the Target on the test computer<br /><br /></li>
+          <li class="unordered">
+            <strong>OSPlatform</strong> – version of Windows on the test computer for the specified Target<br /><br /></li>
+          <li class="unordered">
+            <strong>Guid</strong> – Job ID detected for testing the Target<br /><br /></li>
+          <li class="unordered">
+            <strong>Name</strong> – friendly name of the Job detected for testing the Target<br /><br /></li>
+          <li class="unordered">
+            <strong>TestPassIdentifier</strong> – string value, identifying the test pass.<br /><br /></li>
+          <li class="unordered">
+            <strong>TargetType</strong> – type of the product tested in the project (device, system, or filter)<br /><br /></li>
+          <li class="unordered">
+            <strong>Feature Mapped</strong> – feature that detected Job will test for the Target<br /><br /></li>
+          <li class="unordered">
+            <strong>ContentLevelSet</strong> – categories of the Job detected for testing the Target<br /><br /></li>
+          <li class="unordered">
+            <strong>ScheduleOptionSet</strong> – options for test scheduling. Valid values are:<br /><br /><ul><li class="unordered"><strong>Manual</strong> – test requires manual actions at execution time<br /><br /></li><li class="unordered"><strong>Distributable</strong> – test can be scheduled for multiple computers and run on the first available computer.<br /><br /></li><li class="unordered"><strong>MultipleDevices</strong> – test can be run on multiple devices simultaneously on the same computer<br /><br /></li><li class="unordered"><strong>MultipleMachines</strong> – test can be scheduled to run on multiple computers with different roles<br /><br /></li><li class="unordered"><strong>SpecialConfiguration</strong> – test requires special computer configuration in order to run the test<br /><br /></li></ul></li>
+          <li class="unordered">
+            <strong>HCKBuildVersion</strong> – version of HCK that was used to generate the test collection<br /><br /></li>
+        </ul>
+      </div>
+      <a id="BKMK_filter">
+        
+      </a>
+      <h2 class="heading">Step 5: Filter the full list of tests on the Controller</h2>
+      <div id="sectionSection5" class="section">
+        <p>You can use the Management Tool PowerShell cmdlet, <strong>Import-HwCertTestCollectionFromXml</strong>, to filter the full list of tests by a specified attribute value. (This step is optional.) Any attribute of the generated output xml file, as listed in step 4, can be used for filtering the list. The output test collection test records should be arranged in the required order for scheduling. In the following example, the <strong>Basic</strong> test category is used for filtering and sorting the master list. Type the following command in a Windows PowerShell session:</p>
+        
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a7aa91f4-062c-47a7-ac79-5a712cd2825d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a7aa91f4-062c-47a7-ac79-5a712cd2825d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Import-HwCertTestCollectionFromXml -Input C:\Temp\master.xml | ? { $_.ContentLevelSet.Contains("Basic") } | sort –Property GUID | Export-HwCertTestCollectionToXml -Output c:\temp\basic.xml
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+      </div>
+      <a id="BKMK_add">
+        
+      </a>
+      <h2 class="heading">Step 6: Add filtered list of tests to the Project Definition File on the Controller</h2>
+      <div id="sectionSection6" class="section">
+        <p>Use any text or xml editor to update the PDEF to add the location for the test collection input xml file and the location for the output test results. An example of the updated PDEF, <strong>C:\Temp\DefinitionFile\device-win8client-x64-auto-basic.xml</strong>, is given below.</p>
+        
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_540a93d5-6760-40d3-b905-83c2afd5e4c4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_540a93d5-6760-40d3-b905-83c2afd5e4c4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;ProjectDefinitionData Controller="controllername" Database="DTMJobs" Timeout="120" User="user"&gt;
+    &lt;Project Name="Project-win8client-x64" TestCollectionReadLocation="C:\temp\basic.xml" TestCollectionStatusLocation="basic_collection_status.xml"&gt;
+        &lt;MultiDeviceTestGroup&gt;true&lt;/MultiDeviceTestGroup&gt;
+        &lt;TestStatusToSkip&gt;Pass&lt;/TestStatusToSkip&gt;
+        &lt;Product Name="Product-win8client-x64" OsPlatform="Windows 8 Client x64" MachinePool="Test"&gt;
+            &lt;Family Name="Family-win8client-x64"&gt;
+                &lt;Target TargetType="Device" Id="HWID"/&gt;
+            &lt;/Family&gt;
+            &lt;Machine Name="TEST-CLIENT-A" Role="SUT"/&gt;
+            &lt;Machine Name="TEST-CLIENT-B" Role="SUT"/&gt;
+        &lt;/Product&gt;
+        &lt;Packages Path="C:\temp"/&gt;
+    &lt;/Project&gt;
+&lt;/ProjectDefinitionData&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>Where the attributes are defined as:</p>
+        <ul>
+          <li class="unordered">
+							TestCollectionReadLocation – path to the filtered test collection xml file<br /><br /></li>
+          <li class="unordered">
+							TestCollectionStatusLocation – path to the output xml file holding testing results<br /><br /></li>
+        </ul>
+      </div>
+      <a id="BKMK_run">
+        
+      </a>
+      <h2 class="heading">Step 7: Run the test project on the Controller</h2>
+      <div id="sectionSection7" class="section">
+        <p>Run the following from a command line:</p>
+        <p>
+          <strong>hckexecutionengine.exe /Project "C:\Temp\DefinitionFile\device-win8client-x64-auto-basic.xml" /RunCollection </strong>
+        </p>
+        <p>After the command completes, the following files are created:</p>
+        <ul>
+          <li class="unordered">
+							A <em>Package file name</em>.hckx is created for each test run at the location that is specified in the <strong>PackagePath</strong> attribute as defined in the PDEF (see <a href="#BKMK_createPDF">Step 3: Create a test Project Definition File on the Controller or test server</a>). The Package file name is composed from the Project friendly name and the Data and Time of the project run.<br /><br /></li>
+          <li class="unordered">
+							The results are presented in an XML file. An example results file (<strong>C:\temp\basic_collection_status.xml</strong>) is given below.<br /><br />
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1094502c-fbdf-4f47-be61-bcaca225f32a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1094502c-fbdf-4f47-be61-bcaca225f32a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;?xml version="1.0" ?&gt; 
+&lt;ArrayOfTestCollectionRecord 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               mlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+               &lt;TestCollectionRecord 
+                               Name="Disk Stress (LOGO)" 
+                               Guid="738735f7-245a-4b39-9d81-20339ce31fd4" 
+                               TargetName="Disk" 
+                               TargetId="DiskId" 
+                               TargetType="Device" 
+                               HckBuildVersion="8.100.9354.9354"
+                               TestPassIdentifier="TP001"
+                               OsPlatform="Windows 8 Client x64"&gt;
+                               &lt;ContentLevelSet&gt;Reliability&lt;/ContentLevelSet&gt;
+                               &lt;ContentLevelSet&gt;Certification&lt;/ContentLevelSet&gt;
+                               &lt;ScheduleOptionSet&gt;Distributable&lt;/ScheduleOptionSet&gt;
+                               &lt;ScheduleOptionSet&gt;MultipleDEvices&lt;/ScheduleOptionSet&gt;
+                               &lt;FeatureMapped&gt;Device.Storage.Hd&lt;/FeatureMapped&gt;
+                               &lt;Result 
+                                              StartTime="2013-03-14T17:59:45.117-07:00" 
+                                              Status="Passed" 
+                                              FiltersAppliedCount="0" 
+                                              SourcePath="TEST-MACHINE-2A" 
+                                              InstanceId="67" 
+                                              FeatureDetected="Device.DevFund.CDA Device.DevFund.DriverFramework.AllDrivers Device.DevFund.DriverFramework.KMDF Device.DevFund.INF Device.DevFund.Memory Device.DevFund.Reliability.Interrupts Device.DevFund.Reliability Device.DevFund.ReliabilityDisk Device.DevFund.Security Device.DevFund.Server Device.Storage.Hd.Iscsi Device.Storage.Hd.MultipleAccess.PersistentReservation Device.Storage.Hd.PersistentReservation Device.Storage.Hd.ScsiProtocol Device.Storage.Hd" /&gt;
+               &lt;/TestCollectionRecord&gt;
+&lt;/ArrayOfTestCollectionRecord&gt;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+							Where the attributes are defined as:<br /><br /><ul><li class="unordered">
+									StartTime – Data and Time the test run started<br /><br /></li><li class="unordered">
+									Status – set to either pass or fail<br /><br /></li><li class="unordered">
+									FiltersAppliedCount – number of filters applied to the result log<br /><br /></li><li class="unordered">
+									SourcePath – file path to the package .hckx file generated for the project run<br /><br /></li><li class="unordered">
+									InstanceID – Device instance ID of the Target on the test computer<br /><br /></li><li class="unordered">
+									FeatureDetected – features detected for the tested Target<br /><br /></li></ul></li>
+        </ul>
+        <h3 class="subHeading">Stopping/restarting test execution</h3>
+        <div class="subSection">
+          <p>You can stop and restart test runs at any time. Tests that are currently running on client machines will continue to run, but no further tests are scheduled. At most, the number of running tests is equal to the number of available machines, because the scheduling logic will not queue up more tests than available machines. While running tests will continue to execute (and can return test results back to the Windows HCK project), the status xml file that is generated by the Windows HCK Execution Engine tool will not contain the pass/fail value for those tests that were running at the time the process was stopped. Therefore, restarting a project can cause a set of tests to be run twice — one time after the automation tool exited, and one time when the process restarts. Because early termination of the process generally implies that machine state issues need to be investigated, this re-run behavior of the final batch of previously scheduled tests is by design and is generally desired.</p>
+          <p>
+            <strong>Stopping mechanism</strong>
+          </p>
+          <p>You can stop the test process by typing a <strong>Ctrl-C</strong> command in the console window. The Windows HCK Execution Engine will stop executing new tests and will begin a short cleanup process, such as writing final status to the summary xml file and to the execution engine log.</p>
+          <p>
+            <strong>Restarting mechanism</strong>
+          </p>
+          <p>A basic high-level overview of the process is as follows:</p>
+          <ol class="ordered">
+            <li>
+									Using Windows HCK Studio, create an HCKx package of the project that was running before you stopped the test process.<br /><br /></li>
+            <li>
+									Edit the Windows HCK Execution Engine project definition xml file to supply a new input and output status file.<br /><br /></li>
+            <li>
+									Restart HckExecutionEngine.exe by using the project definition file.<br /><br /></li>
+            <li>
+									Use Windows HCK Studio to merge the two partial HCK projects into a new, complete HCKx file.<br /><br /></li>
+            <li>
+									Runsthe Analyze phase on the compete HCKx file as outlined in the “Subsequent Analyze options” section in this document.<br /><br /></li>
+          </ol>
+          <p>Detailed steps of this process are as follows:</p>
+          <ol class="ordered">
+            <li>
+									To create an HCKx package of the results that were completed prior to test execution being stopped, start Windows HCK Studio.<br /><br /></li>
+            <li>
+									In Windows HCK Studio, double-click the project name of the project that was stopped. The project name is the same as in the project xml file. (The project xml file can be found under <strong>C:\Users\LocalAdminUser\Desktop\PDEF_Files</strong>, in a time-stamped folder.)<br /><br /></li>
+            <li>
+									In Windows HCK Studio, on the <strong>Package</strong> tab, click <strong>Create Package</strong> and save the package.<br /><br /><div class="alert"><table><tr><th align="left"><img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th></tr><tr><td>
+										The following step must be performed only if the initial test pass was run by having the client machines starting in the Default Pool.<p></p></td></tr></table><p></p></div></li>
+            <li>
+									Because tests can run only when machines are in a non-Default Pool, and because the Windows HCK Execution Engine does not wait for all currently running tests to complete prior to completing a <strong>Ctrl-C</strong> operation, all machines will remain in their existing machine pool after Windows HCK Execution Engine stops. If the original project xml file specified machines in the Default Pool, then you must move the client machines back to the Default Pool. You can do this by using the <strong>Configuration</strong> menu that is located at the top of the Windows HCK Studio UI, or through the Windows HCK Manager application.<br /><br /></li>
+            <li>
+									After the partial HCKx package is generated, you must update the Windows HCK Execution Engine project file to prepare for the remaining run. Navigate to <strong>C:\Users\LocalAdminUser\Desktop\PDEF_Files</strong>, and find the correct time-stamped folder from the test run. In the set of xml files in the folder, the project xml file is the one that is not preceded with “Status_”, “FTC_”, or “TC_”. In Notepad or other text editor, edit this file as follows:<br /><br />
+									In the project xml file, two fields must be edited: <em>TestCollectionReadLocation</em> and <em>TestCollectionStatusLocation</em>. For the Windows HCK Execution Engine tool to know where to resume, the previous <strong>TestCollectionStatusLocation</strong> value (the xml output file of results) must become the input file. Copy the value of <strong>TestCollectionStatusLocation</strong> to the <strong>TestCollectionReadLocation</strong> value. Then, set a new <strong>TestCollectionStatusLocation</strong> value. The <strong>TestCollectionStatusLocation</strong> value can be any value; for example, “C:\Users\LocalAdminUser\Desktop\PDEF_Files\Rerun.xml”.<br /><br />
+									Optionally modify the Project node <strong>Name</strong> value to make the project easier to find in HCK Studio later on. (Because the current <strong>Name</strong> value has already been used, Windows HCK Execution Engine will create a new project name.)<br /><br /></li>
+            <li>
+									To restart the tool, open a new command prompt window by using administrator privileges. Navigate to the Windows HCK Studio directory <strong>(%wttstdio%</strong>). Type the following command:<br /><br />
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b3382cd0-3673-494c-a5c2-820b517bbd71');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b3382cd0-3673-494c-a5c2-820b517bbd71" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+HckExecutionEngine.exe /Project &lt;project xml file location&gt; /RunCollection
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+									This command starts the Windows HCK Execution Engine, which resumes by using the previous set of tests that were running before the tool stopped. Execution can continue until all tests are completed.<br /><br /></li>
+            <li>
+									After the second set of tests are finished, you must merge the two projects together. To do this, open Windows HCK Studio. Look at the most recent projects that were created – typically the most recent project is from the second execution run that was performed (unless other users are also creating projects during this time). Or, if you changed the project <strong>Name</strong> value in the project xml file, you can identify the project by the new Name.<br /><br /></li>
+            <li>
+									Double-click the new project that was created from the second run. On the <strong>Package</strong> tab, click <strong>Merge Package</strong>. In the <strong>Package To Merge</strong> dialog, click <strong>Add</strong> and navigate to the first partial hckx package that was created from the first run of HCK Execution Engine. Click <strong>Save</strong> and click <strong>Create Package</strong> in the main window.<br /><br /></li>
+          </ol>
+        </div>
+      </div>
+      <a id="BKMK_analyze">
+        
+      </a>
+      <h2 class="heading">Step 8: Analyze the test results in Excel</h2>
+      <div id="sectionSection8" class="section">
+        <p>You can use a Management Tool PowerShell command to generate the aggregated list of test results for the project. You can then analyze the aggregated results in Excel.</p>
+        <p>There are two ways to aggregate the list of test results for a project.</p>
+        <ol class="ordered">
+          <li>
+							Use the XML-based output files. An example of how you can merge XML-based test results from the Windows PowerShell session that is open on your Controller or test server is shown here:<br /><br />
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_87570ee0-ad4c-4d8f-9c05-7f2746897a27');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_87570ee0-ad4c-4d8f-9c05-7f2746897a27" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+dir -s "c:\temp\*.xml" | Merge-HwCertTestCollectionFromXml -ValidationXmlPath "C:\temp\master.xml" | Export-HwCertTestCollectionToXml -Output "C:\Temp\merged_1.xml"  -TestPassIdentifier “TP003”
+dir -s "c:\temp\*.xml" | Merge-HwCertTestCollectionFromXml -ValidationXmlPath "C:\temp\master.xml" | Export-HwCertTestCollectionToXml -Output "C:\Temp\merged_2.xml"  -TestPassIdentifier “TP004”
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+          <li>
+							Use the project .hckx output files. An example of how you can merge .hckx output files from the Windows PowerShell session that is open on your Controller or test server is shown here:<br /><br />
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ff0c56df-98bb-49bb-a992-d3eb82d48ac1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ff0c56df-98bb-49bb-a992-d3eb82d48ac1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+dir -s "c:\temp\*.hckx" | Merge-HwCertTestCollectionFromHckx-ValidationXmlPath "C:\temp\master.xml" | Export-HwCertTestCollectionToXml -Output "C:\Temp\merged_1.xml" -TestPassIdentifier “TP003”
+dir -s "c:\temp\*.hckx" | Merge-HwCertTestCollectionFromHckx-ValidationXmlPath "C:\temp\master.xml" | Export-HwCertTestCollectionToXml -Output "C:\Temp\merged_2.xml" -TestPassIdentifier “TP004”
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</li>
+        </ol>
+        <p>When <strong>ValidationXmlPath</strong> is specified as a parameter to the Merge-HwCertTestCollectionFromXml or Merge-HwCertTestCollectionFromHckx cmdlet, the aggregation algorithm verifies if all of the tests listed in the master test collection have at least one result specified for the aggregation in any of the test collection files. This condition is checked only for the test collections that have the same <strong>TestPassIdentifier</strong> value as specified in the <strong>TestPassIdentifier</strong> cmdlet parameter. If this condition is not true, the aggregation is cancelled and an error occurs.</p>
+        <p>To determine which tests are not run for the test pass, include the master test collection into the list of test collection files that are specified for aggregation, but do not specify the <strong>ValidationXmlPath</strong>. In this case, the output aggregated test collection is generated. The collection contains all tests that are listed in the master collection, although some of them may not have results.</p>
+        <p>The aggregated list of test results (<strong>C:\temp\merged.xml</strong>) includes information for the full list of tests. If any of the required tests were never run, the aggregated list of tests results shows that a required test was not run. Because all test results are merged, running multiple test runs by using the same <strong>TestPassIdentifier</strong> attribute name value can create inconsistent results reporting. We recommend that you use a different name for each test pass.</p>
+        <p>After you have created an aggregated list of test results, you can generate an Excel spreadsheet by using commands in the Windows PowerShell session on the Controller or test server. An example of the commands that will create the Excel spreadsheet report is given here:</p>
+        
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_3ec4a17c-08f4-42b3-bd2c-f3978b4e55a4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_3ec4a17c-08f4-42b3-bd2c-f3978b4e55a4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+New-HwCertTestCollectionExcelReport ("C:\Temp\merged_1.xml", "C:\Temp\merged_2.xml" ) -ExcelPath 'c:\temp\report.xls' -ResultCount 1
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>Where <em>ResultCount</em> is defined as the maximum number of the most recent results, which is stored in the Excel report for each test.</p>
+        <p>An example of the output created after running the commands to create an Excel spreadsheet report is shown below.</p>
+        <img id="7c005389-6f37-4834-8b2a-8483bd7083c6" alt="HCK Automation Tool Example of Excel Results" src="../../../../../i.msdn.microsoft.com/dynimg/IC673858.png" title="HCK Automation Tool Example of Excel Results" xmlns="" />
+        <p>The resulting Excel report will contain the following headings:</p>
+        <ul>
+          <li class="unordered">
+							Total Test – The total number of tests in this test pass.<br /><br /></li>
+          <li class="unordered">
+							Total Pass – The total number of results in this test pass<br /><br /></li>
+          <li class="unordered">
+							Total Pass With Filter – The total number of passes with an errata filter applied to the test.<br /><br /></li>
+          <li class="unordered">
+							Total Pass Percentage – Percentage of passing tests (Total Pass / Total Test).<br /><br /></li>
+          <li class="unordered">
+							Total Fail – The total number of fails in this test pass (Total Test – Total Pass).<br /><br /></li>
+          <li class="unordered">
+							N-1 Improvement – Between this test pass and the previous test pass (column to the left), how many new passes were achieved.<br /><br /></li>
+          <li class="unordered">
+							N-1 Regression - Between this test pass and the previous test pass (column to the left), how many new fails were encountered.<br /><br /></li>
+          <li class="unordered">
+							N-1 Not Changed – Between this test pass and the previous test pass (column to the left), how many tests did not have a change in result outcome.<br /><br /></li>
+          <li class="unordered">
+							N-1 Not Compared - Between this test pass and the previous test pass (column to the left), how many tests were not compared due to the test was only available in only one of the test passes.<br /><br /></li>
+        </ul>
+      </div>
+      <a id="pdefref">
+        
+      </a>
+      <h2 class="heading">PDEF reference</h2>
+      <div id="sectionSection9" class="section">
+        <h3 class="subHeading">Auxiliary information that is specified in the PDEF</h3>
+        <div class="subSection">
+          <p>Some projects require Test-specific information for discovering and executing tests. This information includes:</p>
+          <ul>
+            <li class="unordered">
+									Test parameters that do not have default values in the tests definition. Optional &lt;Parameter&gt; elements can be specified in multiple places (see PDEF schema):<br /><br /><ul><li class="unordered">
+											Under the &lt;Test&gt; element. In this case, the parameter value is specified for the particular Test.<br /><br /></li><li class="unordered">
+											Under the &lt;Family&gt; element. In this case, the parameter value is applied for all Tests for all Targets in the Family, unless it is overwritten by the value of the same parameter that is specified for the Test<br /><br /></li><li class="unordered">
+											Under the &lt;Product&gt; element. In this case, the parameter value is applied for all Tests for all Targets in the Product, unless it is overwritten by the value of the same parameter specified for the Family or for the Test.<br /><br /></li></ul></li>
+            <li class="unordered">
+									Target features, which cannot be detected automatically. Optional &lt;ManualSelectedFeature&gt; elements can be specified under the &lt;Target&gt; element. If specified, these features, together with automatically detected features, participate in the Tests discovery and Test Collection generation.<br /><br /></li>
+          </ul>
+        </div>
+        <a id="pdfscheme">
+          
+        </a>
+        <h3 class="subHeading">Project Definition File Schema</h3>
+        <div class="subSection">
+          
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e6090374-6ef1-4f19-a682-bc77ab3ba566');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e6090374-6ef1-4f19-a682-bc77ab3ba566" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;xsd:attribute name="User" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Controller" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Timeout" type="xsd:nonNegativeInteger"/&gt;
+&lt;xsd:attribute name="Database" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Name" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Value" type="xsd:string"/&gt;
+&lt;xsd:attribute name="TestCollectionReadLocation" type="xsd:string"/&gt;
+&lt;xsd:attribute name="TestCollectionStatusLocation" type="xsd:string"/&gt;
+&lt;xsd:attribute name="OsPlatform" type="xsd:string"/&gt;
+&lt;xsd:attribute name="MachinePool" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Path" type="xsd:string"/&gt;
+&lt;xsd:attribute name="Role" type="xsd:string"/&gt;
+&lt;xsd:attribute name="TargetType"&gt;
+&lt;xsd:simpleType&gt;
+&lt;xsd:restriction base="xsd:NMTOKEN"&gt;
+&lt;xsd:pattern value="((S|s)(Y|y)(S|s)(T|t)(E|e)(M|m))|((D|d)(E|e)(V|v)(I|i)(C|c)(E|e))|((T|t)(A|a)(R|r)(G|g)(E|e)(T|t)(C|c)(O|o)(L|l)(L|l)(E|e)(C|c)(T|t)(I|i)(O|o)(N|n))"/&gt;
+&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+&lt;/xsd:attribute&gt;
+&lt;xsd:attribute name="Id" type="xsd:string"/&gt;
+&lt;xsd:attribute name="CrashDumpCopyBack"&gt;
+&lt;xsd:simpleType&gt;
+&lt;xsd:restriction base="xsd:NMTOKEN"&gt;
+&lt;xsd:pattern value="((D|d)(I|i)(S|s)(A|a)(B|b)(L|l)(E|e)|(M|m)(I|i)(N|n)(I|i))|(K|k)(E|e)(R|r)(N|n)(E|e)(L|l)|((F|f)(U|u)(L|l)(L|l))"/&gt;
+&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+&lt;/xsd:attribute&gt;
+&lt;xsd:element name="ProjectDefinitionData"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="Project" minOccurs="1"  maxOccurs="unbounded"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="User" use="optional"/&gt;
+&lt;xsd:attribute ref="Controller" use="required"/&gt;
+&lt;xsd:attribute ref="Timeout" use="optional" default="120"/&gt;
+&lt;xsd:attribute ref="Database" use="optional" default="DTMJobs"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Project"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="MultiDeviceTestGroup" minOccurs="0" maxOccurs="1"/&gt;
+&lt;xsd:element ref="TestStatusToSkip" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Product" minOccurs="1" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Packages" minOccurs="1" maxOccurs="1"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="Name" use="required"/&gt;
+&lt;xsd:attribute ref="TestCollectionReadLocation" use="optional"/&gt;
+&lt;xsd:attribute ref="TestCollectionStatusLocation" use="optional"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="MultiDeviceTestGroup" type="xsd:Boolean"/&gt;
+&lt;xsd:element name="TestStatusToSkip"&gt;
+&lt;xsd:simpleType&gt;
+&lt;xsd:restriction base="xsd:NMTOKEN"&gt;
+&lt;xsd:pattern value="((P|p)(A|a)(S|s)(S|s))|((F|f)(A|a)(I|i)(L|l))|((N|n)(O|o)(D|d)(A|a)(T|t)(A|a))"/&gt;
+&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Product"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="Family" minOccurs="1" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Machine" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="Name" use="required"/&gt;
+&lt;xsd:attribute ref="OsPlatform" use="required"/&gt;
+&lt;xsd:attribute ref="CrashDumpCopyBack" use="optional"/&gt;
+&lt;xsd:attribute ref="MachinePool" use="optional"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Family"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="Target" minOccurs="1" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="Name" use="optional"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="ManualSelectFeature" type="xsd:string"/&gt;
+&lt;xsd:element name="Target"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="ManualSelectFeature" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;xsd:element ref="Test" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="TargetType" use="required"/&gt;
+&lt;xsd:attribute ref="Id" use="required"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Test"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/&gt;
+&lt;/xsd:sequence&gt;
+&lt;xsd:attribute ref="Id" use="required"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Parameter"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:attribute ref="Name" use="required"/&gt;
+&lt;xsd:attribute ref="Value" use="required"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Machine"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:attribute ref="Name" use="required"/&gt;
+&lt;xsd:attribute ref="Role" use="optional"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;xsd:element name="Packages"&gt;
+&lt;xsd:complexType&gt;
+&lt;xsd:attribute ref="Path" use="required"/&gt;
+&lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;
+&lt;/xsd:schema&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        </div>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="jj125043.html">HCK Tools Technical Reference</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="pytUWSCKGJSTolMWzuCFB-N89ocsienPjNqknyrttylCCfacK1fd4bg4mhoMZM2ZxZ12pNaiLiu4UMJZbOLsYh2K5P48sgtLRoSnBFhTAXolUSI_CSs9I2ZxCKKvhYxKAtMlcQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn247574.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn247574.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="TBpxsfBuxzMHVfdz5fdiBKK-sTdNB4vG-AUZrmkvbArgwvB4GzhNosb9Rurw3rm8qt8z3Y7pvA4TeqSc8rGZYR87zILSQ5MoqnPWTrKl2b4Le5Q4cZlNsZWyaO-wRhiJ53BbJw2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn247574(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"2f143eb0-d9bb-419e-839f-8b0cfddf1ca2\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn247574.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:16:20 GMT -->
+</html>

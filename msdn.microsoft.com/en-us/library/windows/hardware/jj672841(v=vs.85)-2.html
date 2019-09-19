@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj672841(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672841(v=vs.85).aspx" />
+        <title>USB client driver verifier (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj672841(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672841(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672841(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672841(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DCE-9:46:37 AM" />
+
+<meta name="Search.ShortId" content="jj672841" />
+
+<meta name="ms.shortidmsdn" content="jj672841" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074797&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj672841%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj151576(v=vs.85).aspx" id="dn303361_VS.85_en-us" mtpsaliasid="" mtpsassetid="248BC997-03F7-41E8-95FC-2B295D696502_VS.85_en-us" mtpsshortid="jj151576_VS.85_en-us" title="Testing USB hardware, drivers, and apps in Windows">Testing USB hardware, drivers, and apps in Windows</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376883(v=vs.85).aspx" id="dn434091_VS.85_en-us" mtpsaliasid="" mtpsassetid="F5691A16-78BB-4A52-B417-B35704F0B71D_VS.85_en-us" mtpsshortid="dn376883_VS.85_en-us" title="USB test tools">USB test tools</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376874(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MuttUtil">MuttUtil</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672841(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB client driver verifier">USB client driver verifier</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj672840(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB hardware verifier (USB3HWVerifierAnalyzer.exe)">USB hardware verifier (USB3HWVerifierAnalyzer.exe)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376879(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USBLPM">USBLPM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376880(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USBStress">USBStress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376881(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USBTCD">USBTCD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376884(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB XHCIWMI">USB XHCIWMI</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">USB client driver verifier</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic describes the USB client driver verifier feature of the USB 3.0 driver stack that enables the client driver to test certain failure cases.</p>
+<p>
+</p><ul>
+<li><a href="#what_is__the_usb_client_driver_verifier">What is  the USB client driver verifier</a></li>
+<li><a href="#how_to_enable_the_usb_client_driver_verifier">How to enable the USB client driver verifier</a></li>
+<li><a href="#configuration__settings_for_the_usb_client_driver_verifier">Configuration  settings for the USB client driver verifier</a></li>
+</ul>
+
+<h2><a id="What_is__the_USB_client_driver_verifier"></a><a id="what_is__the_usb_client_driver_verifier"></a><a id="WHAT_IS__THE_USB_CLIENT_DRIVER_VERIFIER"></a>What is  the USB client driver verifier</h2>
+<p>The <em>USB client driver verifier</em> is a feature of the USB 3.0 driver stack, included in Windows 8. When the verifier is enabled, the USB driver stack fails or modifies certain operations performed by a client driver. Those failures simulate error conditions that might be otherwise difficult to find and can lead to undesirable results later. The simulated failures give you the opportunity to make sure that your driver is able to deal with failures gracefully. The client can deal with errors through error handling code or exercise a different code path.</p>
+<p>For example, a client driver supports I/O operations through static streams of a bulk endpoint. By using the verifier, you can make sure that driver's streams logic works regardless of the number of streams supported by various host controllers. To simulate that scenario, you can use the  <strong>UsbVerifierStaticStreamCountOverride</strong> setting (discussed later). Each time the driver calls <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a> to determine the maximum number of static streams that the host controller supports, the routine returns a different value.</p>
+<p class="note"><strong>Important</strong>  The USB client driver verifier only tests your driver against various xHCI controllers. It simulates some of the inherent 2.0 controller behaviors such as lack of chained MDL support. However, we recommend that you must test your client drivers with the USB 2.0 controllers and not use this tool as a replacement for the same.</p>
+<p>The Windows Hardware Certification Kit includes an automated test that runs the simulated test cases. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998558.aspx">USB (USBDEX) Verifier Test</a>.</p>
+<h2><a id="How_to_enable_the_USB_client_driver_verifier"></a><a id="how_to_enable_the_usb_client_driver_verifier"></a><a id="HOW_TO_ENABLE_THE_USB_CLIENT_DRIVER_VERIFIER"></a>How to enable the USB client driver verifier</h2>
+<p>In order to use the USB client driver verifier, enable it on your target computer on which running Windows 8. The target computer must have an xHCI controller to which the USB device is connected.   </p>
+<p>The USB client driver verifier is automatically enabled when you enable the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a> for the client driver. Alternatively, you can enable the verifier by setting this registry entry. </p>
+<p class="note"><strong>Note</strong>  Enabling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff556129(v=vs.85).aspx">The Windows Driver Foundation (WDF) Verifier control application (WdfVerifier.exe)</a> does not enable the USB client driver verifier automatically.</p>
+<p>
+</p><pre><strong>HKEY_LOCAL_MACHINE</strong>
+   <strong>SYSTEM</strong>
+      <strong>CurrentControlSet</strong>
+         <strong>services</strong>
+            <strong><em>&lt;Client Driver&gt;</em></strong>
+               <strong>Parameters</strong>
+                  <em>UsbVerifierEnabled (DWORD)</em></pre>
+
+<p>The  <strong>UsbVerifierEnabled</strong> registry entry takes a DWORD value. When <strong>UsbVerifierEnabled</strong> is 1, the USB client driver verifier is enabled; 0 disables it. If the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a> is enabled for the client driver and <strong>UsbVerifierEnabled</strong> is 0, the USB client driver verifier is disabled.</p>
+<h2><a id="Configuration__settings_for_the_USB_client_driver_verifier"></a><a id="configuration__settings_for_the_usb_client_driver_verifier"></a><a id="CONFIGURATION__SETTINGS_FOR_THE_USB_CLIENT_DRIVER_VERIFIER"></a>Configuration  settings for the USB client driver verifier</h2>
+<p>When the verifier is enabled, the USB driver stack keeps track of URBs that the client driver allocates by calling  <strong>USBD_xxxUrbAllocate</strong> routines (see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540046(v=vs.85).aspx#client">USB Routines</a>). If the client driver leaks any URB, the USB driver stack uses that information to cause a bugcheck through the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a>. In that case, use the <strong>!usbanalyze -v</strong> command to determine the cause of the leak. </p>
+<p>Additionally and optionally, you can configure the USB client driver verifier to modify or fail specific routines and specify how often the routine must fail. To configure the verifier, set the registry entries as shown here:</p>
+<p>
+</p><pre><strong>HKEY_LOCAL_MACHINE</strong>
+   <strong>SYSTEM</strong>
+      <strong>CurrentControlSet</strong>
+         <strong>services</strong>
+            <strong><em>&lt;Client driver&gt;</em></strong>
+               <strong>Parameters</strong>
+                  <em><em>&lt;USB client driver verifier setting&gt;</em> (DWORD)</em></pre>The  <em>&lt;USB client driver verifier setting&gt;</em> registry entry takes a DWORD value.
+<p>If you add, modify, or remove any setting, you must re-enumerate the device with the system to apply the setting.</p>
+<p>This table shows the possible values for <em>&lt;USB client driver verifier setting&gt;</em>. The settings apply to the client driver specified under the <strong>services</strong> key. </p>
+<table>
+<tr><th>USB client driver verifier setting</th><th>Choose one of these possible values:</th><th>Use to simulate... </th></tr>
+<tr><td>
+<p><strong>UsbVerifierFailRegistration</strong></p>
+<p>Fails the client driver's calls to these routines: </p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a>
+</li>
+</ul>
+
+</td><td>
+<ul>
+<li>0: Setting  is disabled.</li>
+<li>1: The call always fails.</li>
+<li><em>N</em>: The call fails with a probability of 1/<em>N</em>, where <em>N</em> is a hex value between 1 to 0x7FF. For example, if <em>N</em> is 10. The call fails once every 10 calls.</li>
+</ul>
+</td><td>
+<p><strong>Client driver registration failure.</strong></p>
+<p>One of the initialization tasks of a client driver is to register itself with the underlying driver stack. The registration is required in several subsequent calls. </p>
+<p>For example, the client driver calls <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a> for registration. Let's say the driver assumes that the routine always returns STATUS_SUCCESS, and does not implement code to handle failure.  If the routine returns an error NTSTATUS code, the driver can inadvertently ignore the error and proceed with the subsequent calls by using an invalid USBD handle. </p>
+<p>The setting allows you to fail the call so that can you can test the failure code path.</p>
+<p>Expected client driver behavior when registration fails:</p>
+<ul>
+<li>
+<p>The driver is not expected continue to function as normal.</p>
+</li>
+<li>
+<p>The  driver must not cause a system crash or become unresponsive by choosing to ignore this failure.</p>
+</li>
+</ul>
+</td></tr>
+<tr><td>
+<p><strong>UsbVerifierFailChainedMdlSupport</strong></p>
+<p>Fails the client driver's calls to  these routines when the caller passes GUID_USB_CAPABILITY_CHAINED_MDLS in the <em>CapabilityType</em> parameter. </p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a>
+</li>
+</ul>
+
+</td><td>
+<ul>
+<li>0:  Setting is disabled.</li>
+<li>1: The call always fails.</li>
+<li><em>N</em>: The call fails with a probability of 1/<em>N</em>, where <em>N</em> is a hex value between 1 to 0x7FF. For example, if <em>N</em> is 10. The call fails once every 10 calls.</li>
+</ul>
+</td><td>
+<p><strong>Communication with a host controller that does not support chained MDLs.</strong></p>
+<p>In order for the client driver to send chained MDLs (see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff565421(v=vs.85).aspx">MDL</a>), the USB driver stack and the host controller must support them.</p>
+<p>This setting allows you to test the code that is executed when the client driver sends chained MDL requests to  the device that is connected to a host controller that does not support them. The call fails regardless of whether the host controller supports chained MDLs.</p>
+<p>For more information about chained MDLs support in the USB driver stack, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450848(v=vs.85).aspx">How to Send Chained MDLs</a>.</p>
+<p>Expected client driver behavior when the host controller does not support chained MDLs:</p>
+<ul>
+<li>
+<p>The driver is expected continue to perform I/O transfers without using chained MDLs. By doing so, you will also make sure that your driver works with USB 2.0 host controllers because those controllers do not support chained MDLs.</p>
+</li>
+<li>
+<p>The  driver must not cause a system crash or become unresponsive by choosing to ignore this failure.</p>
+</li>
+</ul>
+</td></tr>
+<tr><td>
+<p><strong>UsbVerifierFailStaticStreamsSupport</strong></p>
+<p>Fails the client driver's calls to  these routines when the caller passes GUID_USB_CAPABILITY_STATIC_STREAMS in the <em>CapabilityType</em> parameter.</p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a>
+</li>
+</ul>
+
+</td><td>
+<ul>
+<li>0:  Setting is disabled.</li>
+<li>1: The call always fails.</li>
+<li><em>N</em>: The call fails with a probability of 1/<em>N</em>, where <em>N</em> is a hex value between 1 to 0x7FF. For example, if <em>N</em> is 10. The call will fail once every 10 calls.</li>
+</ul>
+</td><td>
+<p><strong>Communication with a host controller that does not support static streams.</strong></p>
+<p>In order for a client driver to send I/O transfers through static streams of a bulk endpoint, the host controller must support streams. </p>
+<p> If the device is connected to a host controller that does not support streams, and the driver attempts to perform stream I/O transfers, those transfers will fail. This setting allows you to test the code in case of such a failure.</p>
+<p>Expected client driver behavior when the host controller does not support static streams:</p>
+<ul>
+<li>
+<p>If the client driver wants to work with an xHCI controller that does not support streams, your device must be able to work without using stream-enabled bulk endpoints. </p>
+</li>
+<li>
+<p>The  driver must not cause a system crash or become unresponsive by choosing to ignore this failure.</p>
+</li>
+</ul>
+</td></tr>
+<tr><td>
+<p><strong>UsbVerifierStaticStreamCountOverride</strong></p>Changes the value received in the <em>OutputBuffer</em> parameter when the client calls to  these routines with GUID_USB_CAPABILITY_STATIC_STREAMS.<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a>
+</li>
+</ul>
+<p>The <em>OutputBuffer</em> value indicates the maximum number of static streams that the host controller supports.</p>
+</td><td>
+<ul>
+<li>0:  Setting is disabled.</li>
+<li>1: The verifier chooses the <em>OutputBuffer</em> value randomly. This value is useful for stress testing because the <em>OutputBuffer</em> value is not repeated and the call is tested with more variations.</li>
+<li><em>N</em>: Specifies the <em>OutputBuffer</em> value.<p>When the flag is enabled with <em>N</em> value, <em>N</em> must be less than the maximum number of streams that the USB driver stack supports. Therefore, before setting this flag, you must have retrieved the actual value through a successful call. </p>
+<p>If <em>N</em> is greater than the maximum number of streams, the setting is ignored.</p>
+</li>
+</ul>
+</td><td>
+<p><strong>Communication with various host controllers, each supporting a different value of maximum number of streams. </strong></p>
+<p>By using this  setting, you can make sure that driver's streams logic works regardless of the number of streams supported by various host controllers. </p>
+<p>The number of streams that you can use for I/O transfer will be limited by the number of streams that the host controller supports.</p>
+<p>For information about how to support static streams in your client driver, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450846(v=vs.85).aspx">How to Open and Close Static Streams in a USB Bulk Endpoint</a>.</p>
+<p>Expected client driver behavior when the host controller supports fewer   streams than the endpoint:</p>
+<ul>
+<li>
+<p>The client driver can choose to perform data transfers with fewer numbers of streams. </p>
+</li>
+<li>
+<p>The  driver must not cause a system crash or become unresponsive by choosing to ignore this failure.</p>
+</li>
+</ul>
+</td></tr>
+<tr><td>
+<p><strong>UsbVerifierFailEnableStaticStreams</strong></p>
+<p>Fails the  client driver's open static-streams request (URB_FUNCTION_OPEN_STATIC_STREAMS).</p>
+</td><td>
+<ul>
+<li>0:  Setting is disabled.</li>
+<li>1: The request always fails.</li>
+<li><em>N</em>: The request fails with a probability of 1/<em>N</em>, where <em>N</em> is a hex value between 1 to 0x7FF. For example, if <em>N</em> is 10. The request fails once every 10 calls.</li>
+</ul>
+<p class="note"><strong>Note</strong>  The open static-streams request fails if the previous call to <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a> failed. </p>
+</td><td>
+<p><strong>Communication with a host controller that supports  static streams but the request fails due to other reasons.</strong></p>
+<p>For instance, your device is connected to a host controller that supports streams. The client driver  sends an open streams request with a number (of streams to open) that exceeds the maximum number of streams supported  by the host controller. The USB driver stack will fail such a request.</p>
+<p>By using this setting, you can test the error handling code for open streams request failure.</p>
+<p>Expected client driver behavior when an open-streams request fails:</p>
+<ul>
+<li>
+<p>The driver is not expected continue to function as normal.</p>
+</li>
+<li>
+<p>The  driver must not cause a system crash or become unresponsive by choosing to ignore this failure.</p>
+</li>
+</ul>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450846(v=vs.85).aspx">How to Open and Close Static Streams in a USB Bulk Endpoint</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450848(v=vs.85).aspx">How to Send Chained MDLs</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj151576(v=vs.85).aspx">USB Diagnostics and Test Guide</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20USB client driver verifier%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="ZN8Pp4rhlm7aKCZu39NHwtNDfprd7W7MJStgYlBDO24KIKD8dNrqIJcDFIFDWpc-bmuNn6EBgFY3n8XU2PrmRBFzGQF69Ki07fB6v6t_GjkB1F1dzhB6XJ7ZikYzhUWplQJOrA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/jj672841(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj672841(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="V4ZoJIT7gVM9k-F6bwhjYjeU2TZ-KjPaklrW5sb4_RO_RDur6YCwgadXmhhmb9RknCd9payskbop43JqvympQseSXwzeVCoyZgsXX-cEuSne0HOIcRAtdS3bsVHkx7kgbvUPvQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj672841(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"0d352ab5-e5d8-439e-9318-a9503fd4161a\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj672841(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+</html>

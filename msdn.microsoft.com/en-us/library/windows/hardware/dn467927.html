@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn467927.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn467927.html" />
+        <title>Global Navigation Satellite System (GNSS) Test Guidance</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn467927(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn467927(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn467927(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn467927(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD6-3:59:38 AM" />
+
+<meta name="Search.ShortId" content="dn467927" />
+
+<meta name="ms.shortidmsdn" content="dn467927" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053978&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn467927.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998404.html" id="dn375838_WIN.10_en-us" mtpsaliasid="" mtpsassetid="31f60dd8-c2d5-4dab-916b-0ceec03aa949_WIN.10_en-us" mtpsshortid="hh998404_WIN.10_en-us" title="Device.Input Testing">Device.Input Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn247302.html" id="dn375846_WIN.10_en-us" mtpsaliasid="" mtpsassetid="684bf35b-a599-44fa-84df-0dbd1631df93_WIN.10_en-us" mtpsshortid="dn247302_WIN.10_en-us" title="Additional Input Resources">Additional Input Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn216076.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device Orientation Quaternion Vector Algorithm">Device Orientation Quaternion Vector Algorithm</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn467927.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Global Navigation Satellite System (GNSS) Test Guidance">Global Navigation Satellite System (GNSS) Test Guidance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="dn456917.html" id="dn456899_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Precision Touchpad Device Validation Guide">Windows Precision Touchpad Device Validation Guide</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn532239.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Precision Touchpad Certification Process">Windows Precision Touchpad Certification Process</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn481260.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Precision Touchpad HCK Requirements">Windows Precision Touchpad HCK Requirements</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Global Navigation Satellite System (GNSS) Test Guidance</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This article provides global positioning system (GPS) implementation guidelines to ensure a high-quality, competitive GPS experience in computers that run Windows® 8 and Windows 8.1. The guidelines in this article apply to original equipment manufacturers (OEMs), independent hardware vendors (IHVs), and other Microsoft partners (such as software vendors). This article focuses on testing the integration of global navigation satellite system (GNSS) devices into a Windows 8 system.</p>
+      <p>Testing of areas other than GPS is out of the scope of this document. Fully exercising the operating system components or the GNSS device is out of the scope of this document. It is assumed that the IHVs and OEMs thoroughly test their GNSS device both independently and integrated into the system. Interoperability testing is limited to the components that interact with the location platform and devices. This testing should include successful completion of the <a href="http://go.microsoft.com/fwlink/?LinkID=8705">Windows Hardware Certification Kit (Windows HCK)</a> tests, this test plan, pre-operator trial tests, and internal tests that are developed specifically for the GNSS driver and GNSS receiver.  </p>
+      <div class="alert">
+        <table>
+          <tr>
+            <th align="left">
+              <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+          </tr>
+          <tr>
+            <td>
+					In this article, the term GPS is used interchangeably with GNSS. Unless it is otherwise stated, GPS refers to satellite positioning as a location provider solution, instead of as the GPS satellite system that is deployed by the United States government.<p></p></td>
+          </tr>
+        </table>
+        <p>
+          
+        </p>
+      </div>
+      <p>Clear sky conditions are defined as GPS/GNSS satellites that receive signals without obstruction from above or from the surrounding environment down to an elevation mask of 5 degrees above the horizon. All signal levels must be consistent with unobstructed signal levels at the ground and not lower than -131 dBm.</p>
+      <p>This information applies to the following operating systems:</p>
+      <ul>
+        <li class="unordered">
+						
+							Windows 8
+						<br /><br /></li>
+        <li class="unordered">
+						
+							Windows 8.1
+						<br /><br /></li>
+      </ul>
+      <p>
+        <strong>In this article:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="#partreqs">Requirements from Partners</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#reporting">Reporting and results communication</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#equip">Test equipment</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#functtests">Functionality tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#agps">Assisted GPS tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#powercon">Power consumption tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#powerman">Power management tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#antperf">Antenna performance tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#interop">Interoperability tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#drivetests">Drive tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#simtests">Simulator tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#matrix">GPS acceptance test matrix</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="partreqs">
+        
+      </a>
+      <h2 class="heading">Requirements from Partners</h2>
+      <div id="sectionSection0" class="section">
+        <p>To receive certification, Microsoft partners must meet the following requirements:</p>
+        <p>
+          
+        </p>
+        <ul>
+          <li class="unordered">
+							To enable Assisted GPS (A-GPS) testing and the ability to cold-start a device, GNSS Drivers must support the SENSOR_PROPERTY_CLEAR_ASSISTANCE_DATA property. To enable turning on and turning off National Marine Electronics Association (NMEA) sentences in data reports, the GNSS Driver must support SENSOR_PROPERTY_TURN_ON_OFF_NMEA. By default, NMEA lines are not included in data reports. This requirement is explicitly described here:<br /><br /><br /><br />
+							//{e1e962f4-6e65-45f7-9c36-d487b7b1bd34}DEFINE_GUID(SENSOR_PROPERTY_TEST_GUID,                                0XE1E962F4, 0X6E65, 0X45F7, 0X9C, 0X36, 0XD4, 0X87, 0XB7, 0XB1, 0XBD, 0X34);DEFINE_PROPERTYKEY(SENSOR_PROPERTY_CLEAR_ASSISTANCE_DATA,             0XE1E962F4, 0X6E65, 0X45F7, 0X9C, 0X36, 0XD4, 0X87, 0XB7, 0XB1, 0XBD, 0X34, 2); //[VT_UI4]<br /><br />
+							DEFINE_PROPERTYKEY(SENSOR_PROPERTY_TURN_ON_OFF_NMEA,             0XE1E962F4, 0X6E65, 0X45F7, 0X9C, 0X36, 0XD4, 0X87, 0XB7, 0XB1, 0XBD, 0X34, 3); //[VT_UI4]<br /><br />
+							#define GNSS_CLEAR_ALL_ASSISTANCE_DATA 0x00000001<br /><br /><h3 class="subHeading"> </h3><table><tr><td><p><strong>SENSOR_PROPERTY_ CLEAR_ASSISTANCE_DATA (PID = 2)</strong></p></td><td><p><strong>VT_UI4</strong>. Write. Clear the assistance data. Setting a value of GNSS_CLEAR_ALL_ASSISTANCE_DATA signals the driver to clear all assistance data, including time, almanac, ephemeris and last position.Windows HCK tests can set this value to clear the assistance data before a cold start test, before A-GPS tests, or independently before running simulator tests where time and location is simulated. If A-GPS capabilities (for example, SUPL, LTO) are supported, the driver can try to utilize the capabilities after this operation by using the network connection. However, the device should be in a state where no assistance data is saved in the device or on the system. Any assistance data elements are downloaded again.</p></td></tr><tr><td><p><strong>SENSOR_PROPERTY_TURN_ON_OFF_NMEA (PID = 3)</strong></p></td><td><p><strong>VT_UI4</strong>. Read/Write. If set to TRUE, NMEA sentence is included in data reports. If set to False, NMEA sentence is not included in data reports. Windows HCK tests can use this property to instruct the device to start or stop including NMEA data in data reports.</p></td></tr></table></li>
+          <li class="unordered">
+							In addition to required Windows Hardware Certification Kit (Windows HCK) tests, optional Windows HCK <a href="jj124919.html">Device.Input Tests</a> must run and pass for non-ARM System on Chip (SoC) systems. (These tests are already mandatory for ARM systems). <br /><br /></li>
+          <li class="unordered">
+							OEMs and IHVs must run and document the tests that are specified in the <a href="#matrix">GPS acceptance test matrix</a> before they can submit a system, device, or driver to Microsoft.<br /><br /></li>
+          <li class="unordered">
+							IHVs should review failures as reported at http://sysdev.microsoft.com that are caused by their GPS drivers, and fix all high-impact failures.<br /><br /></li>
+          <li class="unordered">
+							Antenna requirements from OEMs must include the items that are listed in <a href="#antperf">Antenna performance tests</a>.<br /><br /></li>
+          <li class="unordered">
+							The SENSOR_DATA_TYPE_NMEA_SENTENCE property must be supported on systems to verify dynamic navigation accuracy and antenna quality.<br /><br /></li>
+          <li class="unordered">
+							No dependency on third-party services or Win32 applications can accompany the GPS solution. Third-party Win32 applications are subject to signing requirements on SoC systems and are therefore not allowed.<br /><br /></li>
+          <li class="unordered">
+							USB connected GPS devices must support selective suspend.<br /><br /></li>
+          <li class="unordered">
+							GPS on mobile broadband modules must update by using <a href="http://www.uefi.org/specifications">Unified Extensible Firmware Interface</a> (UEFI), and a standalone GPS must update by using a driver.<br /><br /></li>
+          <li class="unordered">
+							When GPS and mobile broadband exist on the same physical chip, the GPS device should be exposed as part of a USB composite device and it should have its own USB interface.<br /><br /></li>
+        </ul>
+      </div>
+      <a id="reporting">
+        
+      </a>
+      <h2 class="heading">Reporting and results communication</h2>
+      <div id="sectionSection1" class="section">
+        <p>Microsoft will communicate all issues to partners using bugs. The bugs will contain Windows HCK logs, traces, driver logs, crash dumps, and any relevant performance results and baseline performance comparison data.</p>
+      </div>
+      <a id="equip">
+        
+      </a>
+      <h2 class="heading">Test equipment</h2>
+      <div id="sectionSection2" class="section">
+        <p>The following test equipment is used to perform the tests that are described in this article:</p>
+        <ul>
+          <li class="unordered">
+            <a href="http://www.spirent.com/Products/GSS6700.aspx">Spirent GSS6700 GNSS Simulator</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+							Faraday cage <br /><br /></li>
+          <li class="unordered">
+							RF shielding box<br /><br /></li>
+          <li class="unordered">
+							Mobile Broadband SIM<br /><br /></li>
+          <li class="unordered">
+							Reference Devices: Garmin Montana; Windows Tablets that have GPs devices that are certified by using Microsoft Signature.<br /><br /></li>
+          <li class="unordered">
+							External antennas<br /><br /></li>
+        </ul>
+      </div>
+      <a id="functtests">
+        
+      </a>
+      <h2 class="heading">Functionality tests</h2>
+      <div id="sectionSection3" class="section">
+        <p>
+						Windows HCK tests that apply to GNSS devices are the first set of tests to verify the basic functionality of GPS devices. Windows HCK contains tests for GPS Sensors, Radio Manager, Device Fundamentals, System Fundamentals Power Management, and USB Hardware Certification tests (for USB connected devices) that apply to GNSS devices.</p>
+        <h3 class="subHeading">Sensor category, type, properties and data fields</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should report correct sensor category and type, support mandatory properties and data fields, and report accurate data. In addition to the mandatory sensor properties that are verified in the Windows HCK, managed program systems must support the SENSOR_DATA_TYPE_NMEA_SENTENCE property.</p>
+          <p>
+            <strong>Run Steps</strong>: Query sensor category, type, properties, and data fields the Device Under Test (DUT) reports. Confirm the accuracy of the reported data. You can use the Sensor Diagnostics Tool (SDT) in the <a href="http://go.microsoft.com/fwlink/?LinkID=256421">Windows Driver Kit (WDK)</a> to test these items.</p>
+          <p>
+            <strong>Expected Result</strong>: Mandatory fields must be supported and report accurate data.</p>
+        </div>
+        <h3 class="subHeading">State transitions</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should report changes in sensor state, as documented in <a href="http://go.microsoft.com/fwlink/?LinkID=299233">Writing a location sensor driver</a>.</p>
+          <ul>
+            <li class="unordered">
+									Data reports must be reported only after a device reaches SENSOR_STATE_READY or SENSOR_STATE_INITIALIZING.<br /><br /></li>
+            <li class="unordered">
+									A device should not report data if it does not have latitude and longitude information.<br /><br /></li>
+            <li class="unordered">
+									A GPS sensor must start in the SENSOR_STATE_INITIALIZING state before it obtains a location fix.<br /><br /></li>
+            <li class="unordered">
+									A GPS sensor should continue to acquire a location fix and must stay in the SENSOR_STATE_INITIALIZING state until the request is cancelled by the operating system. <br /><br /></li>
+            <li class="unordered">
+									A GPS sensor must go into the SENSOR_STATE_INITIALIZING state when it loses the signal and no longer has data. It should go back to into the SENSOR_STATE_READY state when it reacquires a location fix.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Run Steps</strong>: You must monitor state transitions and data events while you disable and re-enable the device. Move into an area that has no GPS signal (for example, a Faraday cage), wait for at least one minute, and return the device to an area that has coverage. </p>
+          <p>
+            <strong>Expected Result</strong>: The device should report sensor state transitions (for example, from SENSOR_STATE_INITIALIZING to SENSOR_STATE_READY), and data reports should be reported only after reaching these states. Data is only reported if latitude and longitude information is available. The device should start in the SENSOR_STATE_INITIALIZING state and should not move into the SENSOR_STATE_READY state until after it gets a location fix and has a valid error radius. When the device is moved out of a GPS signal coverage area, the device should go into the SENSOR_STATE_INITIALIZING state, and it should revert to SENSOR_STATE_READY when it is returned to a coverage area.</p>
+        </div>
+        <h3 class="subHeading">Latitude and longitude accuracy</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should provide accurate latitude and longitude values in the specified error radius.</p>
+          <p>
+            <strong>Run Steps</strong>: During static testing and in-vehicle testing, device data is compared to latitude and longitude data that reference GPS, survey markers, and a simulator report.</p>
+          <p>
+            <strong>Expected Result</strong>: The difference between the latitude and longitude values that the device reports and the reference GPS reports must be inside the error radius.</p>
+        </div>
+        <h3 class="subHeading">Speed data</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should report speed data in knots when the device is moving.</p>
+          <p>
+            <strong>Run Steps</strong>: Monitor the speed data that the device reports during simulated in-vehicle or drive tests. </p>
+          <p>
+            <strong>Expected Result</strong>: The device should report speed data that is accurate within ±15% of the speed data that a reference GPS or simulator reports.</p>
+        </div>
+        <h3 class="subHeading">Heading data</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should report headings in degrees that are relative to true north when the device is moving. </p>
+          <p>
+            <strong>Run Steps</strong>: Monitor the heading data that is reported by the device during simulated in-vehicle tests, manual walking tests, and drive tests. </p>
+          <p>
+            <strong>Expected Result</strong>: The device should report heading data, which should be within ±15% of the heading data that a reference GPS or simulator reports.</p>
+        </div>
+        <h3 class="subHeading">Other sensor properties</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: If other sensor properties are supported by the device, the properties should report valid data and accurate values.</p>
+          <p>
+            <strong>Run Steps</strong>: Monitor properties that the device supports and verify that they provide valid data within acceptable accuracy ranges. </p>
+          <p>
+            <strong>Expected Result</strong>: If a device supports a particular sensor property, the device should report accurate values within ±20% of the values that a reference GPS or simulator reports.</p>
+        </div>
+      </div>
+      <a id="agps">
+        
+      </a>
+      <h2 class="heading">Assisted GPS tests</h2>
+      <div id="sectionSection4" class="section">
+        <p>Within a few seconds of initial power-up, a GPS device should use A-GPS to return an approximated location. When the GPS uses A-GPS, the sensor should provide location data, which can be from several hundred meters to six figure numbers. When the GPS radio can obtain multiple satellite locks, the error radius should decrease to a value of 3 to 30 meters.</p>
+        <h3 class="subHeading">A-GPS</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: A-GPS should help to obtain a faster Time to First Fix (TTFF) that has higher accuracy.</p>
+          <p>
+            <strong>Run Steps</strong>: Cold-start the GPS device. Monitor latitude, longitude and error radius data fields by using the SDT.</p>
+          <p>You should run the tests under the following conditions:</p>
+          <ul>
+            <li class="unordered">
+									Clear-sky conditions (simulated or actual)<br /><br /></li>
+            <li class="unordered">
+									Subscribed for data events<br /><br /></li>
+            <li class="unordered">
+									Report interval of one second<br /><br /></li>
+            <li class="unordered">
+									Wi-Fi or cellular baseband is present and enabled<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Expected Result</strong>: The device should return a position from A-GPS as soon as possible, and should report an associated error radius. The higher error radius (for example, 300 meters if Wi-Fi is available) should decrease to 3 to 30 meters as the device acquires multiple satellite locks. GPS should report a position within 15 seconds that is based on assistance data.</p>
+        </div>
+        <h3 class="subHeading">Position injection</h3>
+        <div class="subSection">
+          <p>A GPS driver can use data from its triangulation sensors to speed up TTFF by using the Sensor API (<a href="http://go.microsoft.com/fwlink/?LinkID=288833">ISensorManager</a>). If a driver is used, the following tests apply:</p>
+          <ul>
+            <li class="unordered">
+              <strong>Connection time</strong>
+              <br />
+              <br />
+              <br />
+              <br />
+              <strong>Description</strong>: A GPS driver should close the connection to other sensors immediately after it gets a position. It should timeout after 15 seconds and it should close the connection to the Sensor API if it does not get a position.<br /><br /><strong>Run Steps</strong>: Monitor the traces from the Sensor API for the active client counts for all sensors in the system. Cold-start the GPS device and monitor the changes on the active client counts for other sensors in the system.<br /><br /><strong>Expected Result</strong>: If active client counts for other sensors are incremented, they should return to their previously recorded values after 15 seconds.<br /><br /><br /><br /></li>
+            <li class="unordered">
+              <strong>Connection type</strong>
+              <br />
+              <br />
+              <br />
+              <br />
+              <strong>Description</strong>: GPS drivers should not instantiate <a href="http://go.microsoft.com/fwlink/?LinkID=288834">ILocation</a> to get data from other location sensors. They can use the Sensor API to open a connection for instance triangulation sensors (SENSOR_TYPE_LOCATION_TRIANGULATION). A GPS driver should not get data from location sensors of the same type. For example, a GPS sensor should not use data from other sensors with type <strong>GPS</strong> to get a faster location fix.<br /><br /><strong>Run Steps</strong>: Discover the sensor type that the device is reporting; for example, SENSOR_TYPE_LOCATION_GPS. Disable all sensors except for sensors of the same type as the device. Monitor the traces from the Sensor API for the active client counts for enabled sensors in the system. Cold-start the GPS device. Monitor the changes on the active client counts for sensors in the system.<br /><br /><strong>Expected Result</strong>: The device should not increment active client counts for sensors of the same type.<br /><br /></li>
+          </ul>
+        </div>
+      </div>
+      <h2 class="heading">Robustness</h2>
+      <div id="sectionSection5" class="section">
+        <p>
+          <em>Driver Verifier</em>, <em>WDF Verifier</em>, and <em>Application Verifier</em> are enabled for the location platform and the GPS device stack to test the reliability of GPS support in the system. </p>
+        <p>Driver Verifier is part of the Windows operating system. It can be started from a command prompt that has administrative privileges by using the following settings:</p>
+        <p>
+          <strong>Verifier /standard /driver wudfpf.sys Wdf01000.sys Wdfldr.sys wudfrd.sys</strong> &lt;<em>any kernel mode driver </em>&gt;, &lt;<em>dependent kernel mode drivers </em>&gt;</p>
+        <p>Where &lt;<em>any kernel mode driver</em>&gt; is the driver to be verified, and &lt;<em>dependent kernel mode drivers</em>&gt; are the kernel mode drivers on which the GPS driver depends; for example, <strong>wmbclass.sys</strong>.</p>
+        <p>For more information about Driver Verifier, see <a href="http://go.microsoft.com/fwlink/?LinkID=288849">About Driver Verifier</a>.</p>
+        <p>WDF Verifier is enabled by default for all WDF drivers. The <strong>WdfVerifier.exe</strong> tool in the WDK can be used to control the verbosity of logging, debugger settings, and more. For more information about WDF Verifier, see <a href="http://go.microsoft.com/fwlink/?LinkID=288836">WDF Verifier Control Application</a>.</p>
+        <p>
+          <a href="fwlinkf7da.html?LinkID=254761">Application Verifier</a> (<strong>appverif.exe</strong>) is available in Windows HCK and the Windows 8.1 SDK. A minimum of basic settings is required.</p>
+        <h3 class="subHeading">Driver Verifier, WDF Verifier and Application Verifier</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: Enable Application Verifier and Driver Verifier at the beginning of testing.</p>
+          <p>
+            <strong>Run Steps</strong>: Enable Driver Verifier on all kernel mode drivers in the driver package (if any) and enable any kernel mode drivers on which the GPS driver depends. Enable Application Verifier for <strong>%windir%\system32\WUDFHost.exe</strong> and other user-mode binaries on which the GPS driver depends (for example, <strong>wwanapi.dll</strong>).</p>
+          <p>
+            <strong>Expected Result</strong>: No verifier failures.</p>
+        </div>
+        <h3 class="subHeading">Telemetry data</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: Monitor telemetry data from site http://sysdev.microsoft.com for the GPS driver.</p>
+          <p>
+            <strong>Run Steps</strong>: Monitor telemetry data from http://sysdev.microsoft.com for the GPS driver. Identify, investigate, and fix the driver failures.</p>
+          <p>
+            <strong>Expected Result</strong>: The device must report all telemetry failures; you should triage, investigate, and fix the primary problems.</p>
+        </div>
+        <h3 class="subHeading">GPS stress tests</h3>
+        <div class="subSection">
+          <p>A combination of the following operations is simultaneously performed on the GPS device during simulator testing, walk testing, and drive testing:</p>
+          <ul>
+            <li class="unordered">
+									Enable Driver Verifier<br /><br /></li>
+            <li class="unordered">
+									Enable Application Verifier<br /><br /></li>
+            <li class="unordered">
+									Repeated Windows HCK test runs (GPS Sensor, Radio Manager, System Power Management)<br /><br /></li>
+            <li class="unordered">
+									Radio management operations<br /><br /></li>
+            <li class="unordered">
+									Connected Standby<br /><br /></li>
+            <li class="unordered">
+									GPS device disable/re-enable<br /><br /></li>
+            <li class="unordered">
+									Windows Location Provider disable/re-enable<br /><br /></li>
+            <li class="unordered">
+									Mobile Broadband device disable/re-enable<br /><br /></li>
+            <li class="unordered">
+									Wi-Fi device disable/re-enable<br /><br /></li>
+            <li class="unordered">
+									Turn off Mobile Broadband radio<br /><br /></li>
+            <li class="unordered">
+									Turn off Wi-Fi Radio<br /><br /></li>
+            <li class="unordered">
+									Large download over Mobile Broadband connection<br /><br /></li>
+            <li class="unordered">
+									Large download over Wi-Fi connection<br /><br /></li>
+            <li class="unordered">
+									Bluetooth activity<br /><br /></li>
+          </ul>
+          <p>Perform a basic verification test before the stress testing. It is expected that the same verification test passes both before and after the stress tests, and that no failures are observed.</p>
+        </div>
+      </div>
+      <h2 class="heading">Performance</h2>
+      <div id="sectionSection6" class="section">
+        <p>GPS device performance is tested for cold-start TTFF, hot-start TTFF, acquisition sensitivity, tracking sensitivity, re-acquisition time, static navigation accuracy, and dynamic navigation accuracy.</p>
+        <p>A GNNS simulator that has an OTA connection can be used for performance testing.</p>
+        <h3 class="subHeading">Cold-start TTFF</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: Cold-start TTFF should be achieved in less than 45 seconds for 90% of the time. Cold-start is described as the following condition:</p>
+          <ul>
+            <li class="unordered">
+									Time is unknown<br /><br /></li>
+            <li class="unordered">
+									Current ephemeris is unknown<br /><br /></li>
+            <li class="unordered">
+									Position is unknown<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Run Steps</strong>: You can use the SDT to clear the GPS assistance data before you start the cold-start test. Ensure that the cold-start conditions described above are met. Monitor the TTFF under clear sky conditions (actual or simulated).</p>
+          <p>
+            <strong>Expected Result</strong>: The device should use the GNSS device to get a location fix within 45 seconds for 90% of the time.</p>
+        </div>
+        <h3 class="subHeading">Acquisition sensitivity</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should obtain a location fix at -150 dBm or lower power levels.</p>
+          <p>
+            <strong>Run Steps</strong>: Under simulated lab conditions, by using a direct radio frequency (RF) connection when antenna connector is accessible, expose device to low power levels up to -150 dBm.</p>
+          <p>
+            <strong>Expected Result</strong>: The device should acquire a fix at -150 dBm.</p>
+        </div>
+        <h3 class="subHeading">Tracking sensitivity</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should maintain a location fix at -155 dBm or lower power levels.</p>
+          <p>
+            <strong>Run Steps</strong>: Under simulated lab conditions, by using a direct RF connection when an antenna connector is accessible, reduce the power level to -155 dBm after the device obtains a location fix.</p>
+          <p>
+            <strong>Expected Result</strong>: The device should maintain a location fix -155 dBm.</p>
+        </div>
+        <h3 class="subHeading">Reacquisition time</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should be able to reacquire a location fix in 2 seconds. Clear sky conditions are assumed when a signal is available.</p>
+          <p>
+            <strong>Run Steps</strong>: Under simulated lab conditions, after the device obtains a location fix, reduce the power level enough to force the device to lose the fix. Then increase power levels and monitor the reacquisition time. Alternatively, you can drive through a tunnel during drive testing.</p>
+          <p>
+            <strong>Expected Result</strong>: The device should reacquire a location fix in 2 seconds.</p>
+        </div>
+        <h3 class="subHeading">Static navigation accuracy</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: The device should report accurate latitude, longitude, and altitude (if supported).</p>
+          <p>
+            <strong>Run Steps</strong>: Compare the accuracy of longitude, latitude and altitude (if available), to the location from a trusted data source. Trusted data sources can be survey markers, GNSS simulators, or a Microsoft Signature-certified Windows tablet that has GPS.</p>
+          <p>
+            <strong>Expected Result</strong>: The DUT should report horizontal accuracy of 15 meters and vertical accuracy of 30 meters for 95% of the time.</p>
+        </div>
+        <h3 class="subHeading">Dynamic navigation accuracy</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: When the DUT is mobile, the DUT should accurately report latitude, longitude and altitude if supported.</p>
+          <p>
+            <strong>Run Steps</strong>: During simulated or actual device/walk testing, compare the accuracy of longitude, latitude and altitude (if available), to the location from trusted data source. Trusted data sources can be survey markers, GNSS simulators, or a Microsoft Signature-certified Windows tablet that has GPS.</p>
+          <p>
+            <strong>Expected Result</strong>: Device should report horizontal accuracy of 15 meters and vertical accuracy of 100 meters.</p>
+        </div>
+      </div>
+      <a id="powercon">
+        
+      </a>
+      <h2 class="heading">Power consumption tests</h2>
+      <div id="sectionSection7" class="section">
+        <p>The following diagram illustrates how a driver can use WDF idle detection <strong>StopIdle/ResumeIdle</strong> methods to move between D-States.  The test cases in this section confirm that the driver is going to the correct state at the appropriate time.</p>
+        <p>&lt;<em>Art placeholder for Fig1_ Fig1_stopidle_resumeidle</em>&gt;</p>
+        <p>Figure 1. StopIdle/ResumeIdle</p>
+        <h3 class="subHeading">USB selective suspend</h3>
+        <div class="subSection">
+          <p>This test applies to USB connected devices only. A GPS device for which no clients subscribe for a report interval of 8 seconds or less should participate on selective suspend when all devices on the bus are ready to go into a Suspend state.</p>
+          <p>Device Manager and <a href="http://go.microsoft.com/fwlink/?LinkID=256040">Event Tracing for Windows (ETW)</a> events are used to monitor the USB bus state transitions.</p>
+        </div>
+        <h3 class="subHeading">Average sleep power consumption</h3>
+        <div class="subSection">
+          <p>GPS device should have a sleep average power consumption of less than 1mW, including any bus connection interfaces. If this is not the case, the device must support removing power completely from the GPS device when in D3 (D3-Cold).</p>
+        </div>
+        <h3 class="subHeading">D3-Cold</h3>
+        <div class="subSection">
+          <p>Devices that support D3cold should not degrade the TTFF performance for more than 6 seconds. For example, if a device can get a location fix in 2 seconds under hot-start conditions, it should be able to get a fix in 8 seconds or less when it resumes from D3cold. If device cannot meet this requirement, the driver should limit D3cold state transitions to when GPS Radio is disabled.</p>
+          <p>For more information about D3cold, see <a href="http://go.microsoft.com/fwlink/?LinkID=288844">Supporting D3cold in a Driver</a>.</p>
+        </div>
+      </div>
+      <a id="powerman">
+        
+      </a>
+      <h2 class="heading">Power management tests</h2>
+      <div id="sectionSection8" class="section">
+        <h3 class="subHeading">Connected Standby</h3>
+        <div class="subSection">
+          <p>Connected Standby testing includes Windows HCK PowerState tests and Device Fundamentals tests with IO cover test scenarios. </p>
+          <p>
+            <strong>Resume in no coverage area</strong>
+          </p>
+          <p>
+            <strong>Description</strong>: Put the system into the Connected Standby state when there are active clients. Resume in a no-coverage area. The device should try to acquire a location fix and enter the SENSOR_STATE_INITIALIZING state.</p>
+          <p>
+            <strong>Run Steps</strong>: When active clients are connected, put the device into Connected Standby. Wake from Connected Standby in an area that does not have a GPS signal. </p>
+          <p>
+            <strong>Expected Result</strong>: The device should acquire a location fix and go into the SENSOR_STATE_INITIALIZING state.</p>
+        </div>
+      </div>
+      <a id="antperf">
+        
+      </a>
+      <h2 class="heading">Antenna performance tests</h2>
+      <div id="sectionSection9" class="section">
+        <h3 class="subHeading">Performance tests that use an OTA connection</h3>
+        <div class="subSection">
+          <p>It is common to performance-test GNSS receivers in a lab environment over a cabled RF connection, thereby bypassing the GPS antenna and its associated circuitry. Device performance and issues in GPS antenna and its circuitry can cause poor user experience in location-based service applications. To discover these issues, you should test managed system devices for GPS performance by using an OTA test methodology.</p>
+          <p>Antenna testing includes the following requirements for certification:</p>
+          <ul>
+            <li class="unordered">
+									Systems that have GPS support must pass testing according to the <a href="http://ctia.org/">Cellular Telecommunications &amp; Internet Association (CTIA)</a> Test Plan for Mobile Station Over-the-Air Performance, Method of Measurement for Radiated Radio Frequency (RF) Power and Receiver Performance v3.0+ for A-GPS. For more information about CTIA tests, see <a href="http://ctia.org/business_resources/certification/index.cfm/AID/11259">CTIA Certification Tests</a>. In addition, Total Isotropic Sensitivity (TIS), Upper Hemisphere Isotropic Sensitivity (UHIS) and Partial Isotropic GPS Sensitivity (PIGS), must be measured; OEMs must post measurement results to Microsoft for review. These requirements apply to systems that have Mobile Broadband support.<br /><br /></li>
+            <li class="unordered">
+									The system must have TIS and UHIS free space of -140 dBm or better for GPS. For systems that have Mobile Broadband support, the measurements must follow the test methodology and test parameters that are defined in the Antenna Performance for execution guidelines for Wi-Fi-only systems section of the CTIA 3.x test plan.<br /><br /></li>
+            <li class="unordered">
+									The average gain of the GPS antenna must be better than -6dBi.<br /><br /></li>
+            <li class="unordered">
+									Performance must not drop below the minimal acceptable standard when the device is held in a common handheld position. The device must maintain over-the-air (OTA) acquisition sensitivity at -140 dBm and OTA tracking sensitivity of -145 dBm when the system is held in common positions.<br /><br /></li>
+            <li class="unordered">
+									The device must maintain OTA acquisition sensitivity at -140 dBm and OTA tracking sensitivity of -145 dBm when the keyboard or docking station is closed.<br /><br /></li>
+            <li class="unordered">
+									You must perform antenna and radiated sensitivity testing when the GPS antenna is in the expected positions in the device.<br /><br /></li>
+            <li class="unordered">
+									The intended GPS production antenna must be in its intended location for Engineering Verification (EV) systems. The antenna location must be finalized for Design Verification (DV) systems.<br /><br /></li>
+            <li class="unordered">
+									OEMs should run antenna performance and radiated sensitivity tests and understand the failures on EV units. The tests must pass prior to DV units.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>RF Sensitivity Testing for Wi-Fi-only systems</strong>
+          </p>
+          <p>A GPS IHV can provide NMEA logging and plotting tools and documentation.</p>
+          <p>Compare Signal-to-Noise Ratio (SNR) on the test device and on a reference device that has good GPS RF sensitivity at the same location under the same conditions. Enable IHV NMEA logs and take the devices for walk/drive testing for 15+ minutes under a clear sky. Analyze the logs by using the NMEA Plotting tool that the IHV provides. Compare average signal strength of the devices. </p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								If you do not have the NMEA Plotting tool from an IHV, you can use Microsoft<span class="sup">®</span> Bing<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+        <h3 class="subHeading">Human interference tests</h3>
+        <div class="subSection">
+          <p>Antenna positioning should take human interference into account. When the system is held in common states, GPS should not lose a location fix, should not increase the error radius more than 30%, and should maintain OTA acquisition sensitivity at -140 dBm and OTA tracking sensitivity of -145 dBm.</p>
+          <p>Commonly used states for slates:</p>
+          <ul>
+            <li class="unordered">
+									Hands on the sides, landscape orientation<br /><br /></li>
+            <li class="unordered">
+									Hand on bottom, landscape orientation<br /><br /></li>
+            <li class="unordered">
+									Hands on the sides, portrait orientation (start on left)<br /><br /></li>
+            <li class="unordered">
+									Hands on the bottom, portrait orientation (start on left)<br /><br /></li>
+            <li class="unordered">
+									Hands on the sides, portrait orientation (start on right)<br /><br /></li>
+            <li class="unordered">
+									Hands on the bottom, portrait orientation (start on right)<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Human interference impact on acquisition and tracking sensitivity</strong>
+          </p>
+          <p>
+            <strong>Description</strong>: The device acquisition and tracking sensitivity should not cause performance to drop below the minimal acceptable standard when the device is held at specified handgrips.</p>
+          <p>
+            <strong>Run Steps</strong>: Hold the device in common handheld positions. Check acquisition sensitivity and tracking sensitivity.</p>
+          <p>
+            <strong>Expected Result</strong>: Tracking and acquisition sensitivity should not be impacted when the device is held in certain positions. The device should maintain OTA acquisition sensitivity at -140 dBm and OTA tracking sensitivity of -145 dBm.</p>
+        </div>
+      </div>
+      <a id="interop">
+        
+      </a>
+      <h2 class="heading">Interoperability tests</h2>
+      <div id="sectionSection10" class="section">
+        <h3 class="subHeading">Mobile Broadband, Wi-Fi, and GPS interoperability</h3>
+        <div class="subSection">
+          <p>
+            <strong>Description</strong>: Disabling mobile broadband or Wi-Fi device should not prevent GPS from functioning. Turning MB or Wi-Fi radio off should not prevent GPS from getting a location fix.</p>
+          <p>
+            <strong>Run Steps</strong>:</p>
+          <ul>
+            <li class="unordered">
+									Disable Mobile Broadband and confirm that GPS can still get a location fix. Re-enable Mobile Broadband.<br /><br /><div class="alert"><table><tr><th align="left"><img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th></tr><tr><td>
+										GPS devices that use device services is an exception; these devices should first go into SENSOR_STATE_INITIALIZING state and, after 30 seconds, should go into the SENSOR_STATE_NOT_AVAILABLE state when Mobile Broadband is disabled<p></p></td></tr></table><p></p></div></li>
+            <li class="unordered">
+									Disable Wi-Fi and confirm that GPS can still get a location fix.<br /><br /></li>
+            <li class="unordered">
+									Turn off Mobile Broadband Radio and confirm that GPS can still get a location fix.<br /><br /></li>
+            <li class="unordered">
+									Turn off Wi-Fi Radio and confirm that GPS can still get a location fix.<br /><br /></li>
+            <li class="unordered">
+									Remove the Mobile Broadband SIM and confirm that GPS can get a location fix.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Expected Result</strong>: For Mobile Broadband or Wi-Fi devices, radio and SIM state should not prevent GPS from functioning. </p>
+        </div>
+        <h3 class="subHeading">Mobile Broadband, Wi-Fi, Bluetooth, Near Field Communication (NFC), and camera interference</h3>
+        <div class="subSection">
+          <p>Radios and other devices such as system cameras can interfere with the GPS. GPS devices commonly share the same module with Mobile Broadband, Wi-Fi and Bluetooth. GPS functionality should not be impacted by these devices. </p>
+          <p>
+            <strong>Description</strong>: Simultaneous usage of Mobile Broadband, Wi-Fi, Bluetooth, and camera should not degrade the performance and functionality of the GPS device, or vice versa. </p>
+          <p>Execution Steps: Run basic functionality tests with Mobile Broadband, Wi-Fi, Bluetooth, and camera on and actively in use. </p>
+          <ul>
+            <li class="unordered">
+									Perform a large download over a Mobile Broadband connection while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Perform a large download over a Wi-Fi connection while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT. <br /><br /></li>
+            <li class="unordered">
+									Perform a Bluetooth file transfer while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Perform a Wi-Fi scan while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Perform a Mobile Broadband scan while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Perform a Bluetooth scan while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Record video while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Watch a movie over the Internet while using GPS. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+            <li class="unordered">
+									Perform an NFC data transfer (for example, transfer photos) for 5 minutes. Monitor sensor state, error radius and signal strength and the event logs from SDT.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Expected Result</strong>: GPS should function normally during the time that these devices are being used. Usage of these devices should not impact sensor state, error radius and signal strength negatively.</p>
+        </div>
+      </div>
+      <a id="drivetests">
+        
+      </a>
+      <h2 class="heading">Drive tests</h2>
+      <div id="sectionSection11" class="section">
+        <p>Manual drive testing occurs when the system is taken on a drive by using a predefined route that includes tunnels and areas with different multipath impact. During the drive, the system GPS data is captured by a test application and is compared to a reference GPS. At no time should the location that the system reports be +/- the error radius outside the location reported by the reference GPS. The average error radius should be &lt;= 30 meters.</p>
+        <p>Drive testing exercises real life conditions such as dynamic navigation accuracy, reacquisition after going through a tunnel, impact of multi-path signals, and atmospheric conditions. </p>
+        <p>The following functionality tests are run during drive testing:</p>
+        <ul>
+          <li class="unordered">
+							State transitions are monitored and compared to reference GPS. <br /><br /></li>
+          <li class="unordered">
+							Latitude, longitude and altitude (if available) are monitored and compared to reference GPS. A visual map representation is used for easy comparison.<br /><br /></li>
+          <li class="unordered">
+							Speed and heading data are monitored and compared to reference GPS.<br /><br /></li>
+          <li class="unordered">
+							Acquisition time and reacquisition time after driving through tunnels are measured and compared to reference GPS.<br /><br /></li>
+          <li class="unordered">
+							Tracking sensitivity is monitored in multipath impact areas. Data report frequency and any interruptions on the data reports are monitored.<br /><br /></li>
+          <li class="unordered">
+							Dynamic navigation accuracy is monitored and compared to reference GPS by using visual map representations. <br /><br /></li>
+          <li class="unordered">
+							Device Plug and Play (PnP) and radio manager state transitions are performed during dynamic navigation.<br /><br /></li>
+          <li class="unordered">
+							Report intervals are monitored and compared to reference GPS.<br /><br /></li>
+        </ul>
+      </div>
+      <a id="simtests">
+        
+      </a>
+      <h2 class="heading">Simulator tests</h2>
+      <div id="sectionSection12" class="section">
+        <p>A GNSS simulator (Spirent GSS6700) is used to achieve controlled lab conditions. It replays same test scenarios for repetition, simulates satellite states, various locations, and time such as south of equator and 2 years later, simulates in vehicle navigation, atmospheric conditions, multi-path signals, and error conditions. The standard Spirent GSS6700 simulator test scenarios are run.</p>
+        <p>An OTA RF connection tests the system together with original antenna and shielding. Direct connection can also be used when an antenna connector is accessible for receiver testing. Simulator testing focuses on common simulator scenarios, including GNSS receiver performance characteristics and the following scenarios:</p>
+        <ul>
+          <li class="unordered">
+							Cold-start TTFF<br /><br /></li>
+          <li class="unordered">
+							Hot-start TTFF<br /><br /></li>
+          <li class="unordered">
+							Acquisition sensitivity<br /><br /></li>
+          <li class="unordered">
+							Re-acquisition sensitivity<br /><br /></li>
+          <li class="unordered">
+							Tracking sensitivity<br /><br /></li>
+          <li class="unordered">
+							Static position accuracy<br /><br /></li>
+          <li class="unordered">
+							Dynamic position accuracy<br /><br /></li>
+          <li class="unordered">
+							Multipath<br /><br /></li>
+          <li class="unordered">
+							GPS and Globalnaya navigatsionnaya sputnikovaya sistema (GLONASS)<br /><br /></li>
+        </ul>
+      </div>
+      <a id="matrix">
+        
+      </a>
+      <h2 class="heading">GPS acceptance test matrix</h2>
+      <div id="sectionSection13" class="section">
+        <ul>
+          <li class="unordered">
+							OS build tests run on:<br /><br /></li>
+          <li class="unordered">
+							Windows HCK version:<br /><br /></li>
+          <li class="unordered">
+							Platform firmware version:<br /><br /></li>
+          <li class="unordered">
+							Platform tests run on:<br /><br /></li>
+        </ul>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Test level
+								</th>
+            <th>
+									Test description
+								</th>
+            <th>
+									Verification results
+								</th>
+            <th>
+									Comments
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>Driver must be signed with the IHV certificate</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>Driver must be installed by using device manager/ Deployment Image Servicing and Management (DISM)</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Robustness.Driver Verifier, WDF Verifier and Application Verifier</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>Location Sensor WHCK tests: Device.Input.Sensor.*System tests for Location Sensors: System.Client.Sensor.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>Radio Management WHCK tests: System.Client.RadioManagement.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>In addition to required WHCK tests, Optional WHCK tests under Location Sensor WHCK tests: Device.Input.Sensor.* and System.Client.Sensor.* must run and pass for non-ARM SoC systems</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>Device Fundamentals WHCK tests: Device.DevFund.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>USB WHCK tests (USB connected devices only): Device.Connectivity.UsbDevices.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.Sensor category, type, properties and data fields</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.State Transitions</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.Accuracy of Latitude and Longitude</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.Speed Data</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.Heading Data</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Assisted GPS.A-GPS</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Assisted GPS.Position Injection. Connection Type</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Antenna Performance.OTA Connection. The device should get a location fix in clear sky outdoors as is without using external antennas or other modifications.</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Interoperability.* (GPS can get a location fix when Mobile Broadband, Bluetooth, Wi-Fi, or camera is in active use)</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Functionality.Other Sensor Properties</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Assisted GPS.Position Injection. Connection Time</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Basic (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Antenna Performance.HumanInterference Tests. Device should get a location fix in clear sky outdoors as is without any external antennas or other modifications, while it is held in common handheld positions.</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Stress (Level 2)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Robustness.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Performance (Level 2)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Performance.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Power (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Power Consumption.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Power (Level 1)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Power Management.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Antenna Performance (Level 1 for OEM)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Antenna Performance.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Drive Tests (Level 3)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Drive Tests.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Simulator Tests (Level 4)</p>
+            </td>
+            <td>
+              <p>GPS.Test Descriptions.Simulator Tests.*</p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+            <td>
+              <p>
+                
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="hh997842.html">Sensor Device Testing Prerequisites</a>
+        <br />
+        <h4 class="subHeading">Other Resources</h4>
+        <a href="http://go.microsoft.com/fwlink/?LinkID=288838">Windows Sensor and Location Platform</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=288847">Location driver guidelines for power and performance</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=28884">Writing a location sensor driver</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=288848">Filtering data</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Owz09Zc_Exs4Y58zur6EGYyhMMG9jWiehoanOlzGS2npaNtfBFUwvGau-MLO0J04No83_P4hUSAuS54m305pEWD16a2Rpzkljy8lB2OiI5zhTKxH7oX8KH1j7rD8kxndfEgtSQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn467927.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn467927.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="7lGu2uMnkJllvNmV1CJaYQF_4RncdiJvlsnKFVDkSnBW9EeX0q4u7c1uF6mSA7hfJByfNp9UrsUAhCgxto0yzCYyDxtHYpU5jPWfxMm3ujJoBs5FisO6pW8Ksc5Ra87ll8nEXA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn467927(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5bb51459-d219-423f-bf9c-2eb856483cde\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn467927.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:11:46 GMT -->
+</html>

@@ -1,0 +1,4020 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj128255 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:12:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="jj128255.html" />
+        <title>Windows Hardware Certification Requirements - Filter Driver</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj128255(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj128255(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj128255(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj128255(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD1-4:00:04 AM" />
+
+<meta name="Search.ShortId" content="jj128255" />
+
+<meta name="ms.shortidmsdn" content="jj128255" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395054004&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj128255&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="jj128256.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System Requirements">System Requirements</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj134357.html" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel0 current" data-toclevel="0">
+<a href="jj128255.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Filter Driver Requirements">Filter Driver Requirements</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Windows Hardware Certification Requirements - Filter Driver</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <div class="alert">
+        <table>
+          <tr>
+            <th align="left">
+              <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+          </tr>
+          <tr>
+            <td>
+              <strong>Microsoft Corporation Technical Documentation License Agreement</strong>
+              <p>
+                
+              </p>
+					READ THIS! THIS IS A LEGAL AGREEMENT BETWEEN MICROSOFT CORPORATION ("MICROSOFT") AND THE RECIPIENT OF THESE MATERIALS, WHETHER AN INDIVIDUAL OR AN ENTITY ("YOU"). IF YOU HAVE ACCESSED THIS AGREEMENT IN THE PROCESS OF DOWNLOADING MATERIALS ("MATERIALS") FROM A MICROSOFT WEB SITE, BY CLICKING "I ACCEPT", DOWNLOADING, USING OR PROVIDING FEEDBACK ON THE MATERIALS, YOU AGREE TO THESE TERMS. IF THIS AGREEMENT IS ATTACHED TO MATERIALS, BY ACCESSING, USING OR PROVIDING FEEDBACK ON THE ATTACHED MATERIALS, YOU AGREE TO THESE TERMS.<p></p>
+					For good and valuable consideration, the receipt and sufficiency of which are acknowledged, You and Microsoft agree as follows:<p></p><ol class="ordered"><li>
+							You may review these Materials only (a) as a reference to assist You in planning and designing Your product, service or technology ("Product") to interface with a Microsoft Product as described in these Materials; and (b) to provide feedback on these Materials to Microsoft. All other rights are retained by Microsoft; this agreement does not give You rights under any Microsoft patents. You may not (i) remove this agreement or any notices from these Materials, or (ii) give any part of these Materials, or assign or otherwise provide Your rights under this agreement, to anyone else.<br /><br /></li><li>
+							These Materials may contain preliminary information or inaccuracies, and may not correctly represent any associated Microsoft Product as commercially released. All Materials are provided entirely "AS IS." To the extent permitted by law, MICROSOFT MAKES NO WARRANTY OF ANY KIND, DISCLAIMS ALL EXPRESS, IMPLIED AND STATUTORY WARRANTIES, AND ASSUMES NO LIABILITY TO YOU FOR ANY DAMAGES OF ANY TYPE IN CONNECTION WITH THESE MATERIALS OR ANY INTELLECTUAL PROPERTY IN THEM.<br /><br /></li><li>
+							If You are an entity and (a) merge into another entity or (b) a controlling ownership interest in You changes, Your right to use these Materials automatically terminates and You must destroy them.<br /><br /></li><li>
+							You have no obligation to give Microsoft any suggestions, comments or other feedback ("Feedback") relating to these Materials. However, any Feedback you voluntarily provide may be used in Microsoft Products and related specifications or other documentation (collectively, "Microsoft Offerings") which in turn may be relied upon by other third parties to develop their own Products. Accordingly, if You do give Microsoft Feedback on any version of these Materials or the Microsoft Offerings to which they apply, You agree: (a) Microsoft may freely use, reproduce, license, distribute, and otherwise commercialize Your Feedback in any Microsoft Offering; (b) You also grant third parties, without charge, only those patent rights necessary to enable other Products to use or interface with any specific parts of a Microsoft Product that incorporate Your Feedback; and (c) You will not give Microsoft any Feedback (i) that You have reason to believe is subject to any patent, copyright or other intellectual property claim or right of any third party; or (ii) subject to license terms which seek to require any Microsoft Offering incorporating or derived from such Feedback, or other Microsoft intellectual property, to be licensed to or otherwise shared with any third party.<br /><br /></li><li>
+							Microsoft has no obligation to maintain confidentiality of any Microsoft Offering, but otherwise the confidentiality of Your Feedback, including Your identity as the source of such Feedback, is governed by Your NDA.<br /><br /></li><li>
+							This agreement is governed by the laws of the State of Washington. Any dispute involving it must be brought in the federal or state superior courts located in King County, Washington, and You waive any defenses allowing the dispute to be litigated elsewhere. If there is litigation, the losing party must pay the other party’s reasonable attorneys’ fees, costs and other expenses. If any part of this agreement is unenforceable, it will be considered modified to the extent necessary to make it enforceable, and the remainder shall continue in effect. This agreement is the entire agreement between You and Microsoft concerning these Materials; it may be changed only by a written document signed by both You and Microsoft.<br /><br /></li></ol></td>
+          </tr>
+        </table>
+        <p>
+          
+        </p>
+      </div>
+      <h2 class="heading">Windows 8.1 System Update</h2>
+      <div id="sectionSection0" class="section">
+        <p>For Windows 8.1, the critical areas that are new or have been updated are:</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Product Type
+								</th>
+            <th>
+									Summary of Changes
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Bus Controllers</p>
+            </td>
+            <td>
+              <p>Requirements for supporting I<span class="sup">2</span>C and UART Bus Controllers.  For implementation details see requirements under Device.BusControllers.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Fingerprint Reader</p>
+            </td>
+            <td>
+              <p>Inbox support for fingerprint readers is being introduced in Windows 8.1. In order for fingerprint readers to work properly with Windows 8.1, it is recommended to use the Windows 8.1 class driver.  For more information see Device.Input.FingerPrintReader.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Graphics Adapter</p>
+            </td>
+            <td>
+              <p>For Windows 8.1 all GPUs are required to have WDDM 1.3 driver which improve power management and performance.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Hard Drive</p>
+            </td>
+            <td>
+              <p>SATA Hybrid hard drives (as defined when the flash cache portion and the rotational component are in the same case) support is being added to Windows 8.1. For more details, see requirement under Device.Storage.Hd.Sata.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Near Field Proximity</p>
+            </td>
+            <td>
+              <p>NCI, a transport-independent communication protocol that standardizes the way a NFC controller and a device host, compliance is now required for Windows 8.1.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Precision Touchpad</p>
+            </td>
+            <td>
+              <p>Precision Touchpad is being introduced as a new product for Windows 8.1 Certification. In order for Precision Touchpads to function in Windows 8.1, they must meet the new requirements and exclusively utilized the Windows 8.1 class driver. Precisions Touchpads are required on all ARM based systems and are optional for x86/x64.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Video Playback</p>
+            </td>
+            <td>
+              <p>Video and audio playback requirements for both connected and non-connected standby systems (if implemented) to ensure glitch free video play of many common video formats.  Exact requirements are under System.Client.VideoPlayback.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>WLAN</p>
+            </td>
+            <td>
+              <p>Adding certification requirements to support 802.11ac, and to improve device/driver stability.</p>
+            </td>
+          </tr>
+        </table>
+        <p>
+          
+        </p>
+        <p>The following set of changes will be enforced after January 1, 2014:</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Product Type
+								</th>
+            <th>
+									Summary of Changes
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Audio</p>
+            </td>
+            <td>
+              <p>New communication fidelity (InAir) requirement for integrated speakers and microphone to ensure a great voice and video communication experience.  See requirements under Device.Audio and System.Fundamentals.SystemAudio.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Bluetooth</p>
+            </td>
+            <td>
+              <p>In Windows 8.1, to ensure a uniform experience across Windows PCs with an integrated display with wireless capabilities, Bluetooth radio support is required if Wi-Fi is present on the PC beginning with new system submissions starting January 1, 2014.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Connected Standby Power </p>
+            </td>
+            <td>
+              <p>There are two new requirements beginning January 1, 2014.  First in order to support all day usage for connected standby systems, these systems must support at least 6 hours of video playback at the displays native resolution.  In addition, if these systems have a fan for a cooling, we need the fan to report its status to the Windows Operating system.  Please see requirements under System.Client.PowerManagement and System.Fundamentals.PowerManagement for details.  </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Webcam</p>
+            </td>
+            <td>
+              <p>Starting with new system submissions on January 1, 2014, systems that have an integrated display must have a front/user facing webcam with a minimum resolution of 720p.  For complete details see the requirements under the feature System.Client.Webcam.  </p>
+            </td>
+          </tr>
+        </table>
+        <p>The following requirements will be enforced after January 1, 2015:</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Product Type
+								</th>
+            <th>
+									Summary of Changes
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Trusted Platform Module (TPM) 2.0</p>
+            </td>
+            <td>
+              <p>TPM 2.0 required to support PCR [7] in system firmware.  All new systems submitting after January 1, 2015 must have TPM 2.0.  </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Summary of Changes</h2>
+      <div id="sectionSection1" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Changed since the June 26, 2013 Publication</p>
+            </td>
+            <td>
+              <p>Comments</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Filter.Driver.vSwitchExtension.ExtensionRequirements</p>
+            </td>
+            <td>
+              <p>Updated</p>
+            </td>
+          </tr>
+        </table>
+        <div class="subSection"></div>
+      </div>
+      <h2 class="heading">Introduction</h2>
+      <div id="sectionSection2" class="section">
+        <p>These requirements are Microsoft’s guidelines for designing Windows Filtering Platform Drivers (WFP), File Systems Filter Drivers, Antivirus Filter Drivers, and Early Launch Anti-Malware (ELAM Filter Drivers). Successfully following this guidance allows a partner to receive certification and signing for their filter drivers.</p>
+        <p>The requirements are organized by feature using a Camel Case naming convention, which facilitates grouping related requirements and communicating their relationship to the Windows feature they are intended to support. Tests assessing compliance with the features are exposed during testing with the Hardware Certification Kit and can be related directly back to these requirements. Some requirements have passed forward from Logo requirements for earlier Windows versions which used a category based structure. We have included the older LogoPoint ID in the comments section for your convenience.</p>
+      </div>
+      <h2 class="heading">Optional Features and "If Implemented" Requirements</h2>
+      <div id="sectionSection3" class="section">
+        <p>The Windows Hardware Certification Kit (Windows HCK) automatically detects all features that are implemented in a product. When the detected features include all required features that are needed to define a product type, then the product is certifiable for that product type.</p>
+        <p>If additional functionality is implemented in the filter driver design beyond the minimum list of features and their underlying requirements for a given product type, then the Windows HCK identifies those additional features and tests them for compliance with the corresponding requirements. Because these optional requirements apply only if the optional features are implemented, these requirements are identified as "If Implemented" in this document. If an optional feature is exposed, the associated "If implemented" requirements must be met for the filter driver to be successfully certified.</p>
+      </div>
+      <h2 class="heading">Filter.Driver.AntiVirus</h2>
+      <div id="sectionSection4" class="section">
+        <p>Antivirus requirements for Filter drivers</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.AntiVirus.Functionality</p>
+              <p>Filter.Driver.AntiVirus.IcarDetection</p>
+              <p>Filter.Driver.AntiVirus.MiniFilter</p>
+              <p>Filter.Driver.AntiVirus.NamedPipeAndMailSlots</p>
+              <p>Filter.Driver.AntiVirus.RegistryAndProcess</p>
+              <p>Filter.Driver.AntiVirus.Winsock</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.Functionality</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows File Systems, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows File Systems, as well as interact accurately with the core components of the operating system. Some areas of particular interest are:   </p>
+          <p>Local File Systems</p>
+          <p>NT API, Win32 API and Win32 Mapped IO API usage</p>
+          <p>Object ID functionality</p>
+          <p>Reparse Points</p>
+          <p>Oplocks</p>
+          <p>System Cache usage</p>
+          <p>Transactional capability</p>
+          <p>Remote File Systems</p>
+          <p>Oplock semantics over SMB</p>
+          <p>Information about File System Behavior: http://download.microsoft.com/download/4/3/8/43889780-8d45-4b2e-9d3a-c696a890309f/File%20System%20Behavior%20Overview.pdf. Information about Oplock semantics over SMB, see the [MS-SMB2] protocol document at: http://msdn.microsoft.com/en-us/library/cc246482(PROT.13).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.IcarDetection</h3>
+        <div class="subSection">
+          <p>Anti-Virus Filter Drivers must be architected to exercise basic Anti-virus functionality, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Anti-Virus Filter Drivers must be architected to exercise basic Anti-virus functionality, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are:     </p>
+          <p>File Systems</p>
+          <p>Anti-virus functionality</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.MiniFilter</h3>
+        <div class="subSection">
+          <p>A File System Filter Driver must be a Mini-Filter driver using the File Systems Filter Manager</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement will be tested implicitly. The driver detection mechanism of the Windows Hardware Certification Kit (WHCK) will be written such that legacy file system filter drivers are not enumerated. Only minifilter drivers will be enumerated and surfaced in the WHCK. As such, a user will be unable to select a legacy filter driver for logo testing via the WHCK.Information about Filter Manger and Minifilter Drivers available here:http://msdn.microsoft.com/en-us/library/ff540402(v=VS.85).aspxhttp://msdn.microsoft.com/en-us/windows/hardware/gg462968.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.NamedPipeAndMailSlots</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Named Pipe and Mail Slots, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Named Pipe and Mail Slots, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are: </p>
+          <p>Named Pipe File System</p>
+          <p>Functionality and stress for common APIs</p>
+          <p>Anonymous pipes</p>
+          <p>Pipe modes</p>
+          <p>Open modes</p>
+          <p>Invalid pipe names</p>
+          <p>Flushing pipe</p>
+          <p>Max pipe instance</p>
+          <p>Pipe direction (in/out/duplex)</p>
+          <p>Input and output buffer sizes</p>
+          <p>Various call semantics, such as reconnecting a pipe that has been disconnected at the server end.</p>
+          <p>Behavior validation of all named pipes operations for each distinct state of a pipe instance.</p>
+          <p>Performance for named pipe creation and connection.</p>
+          <p>Through put for different in/out buffer sizes and number of clients. </p>
+          <p>Scalability of increasing number of clients to time it takes for connection to a named pipe instance </p>
+          <p>Mail Slot File System</p>
+          <p>Functionality and stress for common APIs</p>
+          <p>Information about Named Pipe and Mail Slots can be found at:http://msdn.microsoft.com/en-us/library/aa365574(v=VS.85).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.RegistryAndProcess</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of the Windows Registry and Processes, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of the Windows Registry and Processes, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are:      </p>
+          <p>Registry</p>
+          <p>NT API and Win32 API usage</p>
+          <p>Key Functions</p>
+          <p>Transaction Registry Operations</p>
+          <p>Symbolic Link behavior</p>
+          <p>Process</p>
+          <p>General Module Management</p>
+          <p>Race conditions at thread/process termination</p>
+          <p>Process management callback functionality</p>
+          <p>Thread and Process handle operations</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.AntiVirus.Winsock</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows Sockets, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.AntiVirus</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows Sockets, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are:   </p>
+          <p>Winsock</p>
+          <p>Winsock API functionality</p>
+          <p>Information about Winsock APIs can be found at:http://msdn.microsoft.com/en-us/library/ms740673(VS.85).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.EarlyLaunchAntiMalware</h2>
+      <div id="sectionSection5" class="section">
+        <p>This section describes requirements for early launch driver.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.EarlyLaunchAntiMalware.BackupDriver</p>
+              <p>Filter.Driver.EarlyLaunchAntiMalware.ELAMSignatureAttributes</p>
+              <p>Filter.Driver.EarlyLaunchAntiMalware.MVIMembership</p>
+              <p>Filter.Driver.EarlyLaunchAntiMalware.Performance</p>
+              <p>Filter.Driver.EarlyLaunchAntiMalware.SignatureData</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.EarlyLaunchAntiMalware.BackupDriver</h3>
+        <div class="subSection">
+          <p>Early Launch Anti-malware drivers include a backup copy in case of corruption</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.EarlyLaunchAntiMalware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The AM driver is critical to the boot success of the computer.  If the driver gets corrupted, then the boot may not succeed.  To provide the best user experience, it is required that when the AM driver is installed, it also installs a copy in the driver backup store.  This ensures a smooth remediation experience in the case that the primary driver gets corrupted.The location of the ELAM backup store is defined by Windows, and stored in the registry:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\EarlyLaunch ! BackupPath Design Notes:The early launch anti-malware (AM) drivers are started soon after the NTOS kernel starts.  For each subsequent boot driver the AM driver receives a callback from the PnP manager to determine whether the boot driver should be initialized.  The AM driver evaluates the boot driver and must return good, bad, or unknown.  Based on the returned classification and defined policy, the PnP manager decides whether to initialize the boot driver.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.EarlyLaunchAntiMalware.ELAMSignatureAttributes</h3>
+        <div class="subSection">
+          <p>Requirement for the SignatureAttribute section in the ELAM INF Files</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.EarlyLaunchAntiMalware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>ELAM files need to be signed with a special signature as part of the submission process. The process of determining what signature each module needs is being standardized; each INF file now must include a SignatureAttributes section uniquely identifying what type of signature is applicable for the associated driver binaries. Adding this section to existing inf files is a very simple process.</p>
+          <p>An example follows:</p>
+          <p>[SignatureAttributes]</p>
+          <p>ELAMFILE.dll = SignatureAttributes.Elam</p>
+          <p>[SignatureAttributes.Elam]</p>
+          <p>Elam=true</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.EarlyLaunchAntiMalware.MVIMembership</h3>
+        <div class="subSection">
+          <p>Early Launch Anti-malware Drivers May Only Be Created by MVI Members</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.EarlyLaunchAntiMalware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any Early Launch Anti-malware driver may only be created by Microsoft Virus Initiative (MVI) members.  Design Notes:The early launch anti-malware (AM) drivers are started soon after the NTOS kernel starts.  For each subsequent boot driver the AM driver receives a callback from the PnP manager to determine whether the boot driver should be initialized.  The AM driver evaluates the boot driver and must return good, bad, or unknown.  Based on the returned classification and defined policy, the PnP manager decides whether to initialize the boot driver.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.EarlyLaunchAntiMalware.Performance</h3>
+        <div class="subSection">
+          <p>Early Launch Anti-malware Drivers Must Be Performant</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.EarlyLaunchAntiMalware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Callback Latency:The AM driver is required to return a result for each callback within 0.5 ms of receiving the callback.Memory Allocation:The AM driver, including both the driver image as well as its configuration (signature) data, is required to have a limited memory footprint of 256KB or less.Unload Blocking:Each AM driver will receive a synchronous callback after the last boot driver has been initialized indicating that the AM driver will be unloaded. At this point the AM driver must cleanup and save any persistent status information. This must occur within 0.5 ms as measured from the time when the kernel issues the callback to the driver to the time the AM driver returns the callback.Design Notes:The early launch anti-malware (AM) drivers are started soon after the NTOS kernel starts.  For each subsequent boot driver, the AM driver receives a callback from the PnP manager to determine whether the boot driver should be initialized.  The AM driver evaluates the boot driver and must return good, bad, or unknown.  Based on the returned classification and defined policy, the PnP manager decides whether to initialize the boot driver.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.EarlyLaunchAntiMalware.SignatureData</h3>
+        <div class="subSection">
+          <p>Early Launch Anti-malware Drivers Only Use Signature Data Stored in the Microsoft-specific Location</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.EarlyLaunchAntiMalware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The AM driver must get its malware signature data from a single, well-known location and no other.  The signature data shall be stored in the registry in a new "ELAM" hive under HKLM that is loaded by Winload, and will therefore be available to the AM driver prior to the file system being initialized.   Each AM driver will have a unique key in which to store their signature blob.   The registry path and key shall be of the format  HKLM\ELAM\&lt;Vendor Name&gt;\Measured : Binary = &lt;blob&gt;. Design Notes:The early launch anti-malware (AM) drivers are started soon after the NTOS kernel starts.  For each subsequent boot driver the AM driver receives a callback from the PnP manager to determine whether the boot driver should be initialized.  The AM driver evaluates the boot driver and must return good, bad, or unknown.  Based on the returned classification and defined policy, the PnP manager decides whether to initialize the boot driver.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.FileSystem</h2>
+      <div id="sectionSection6" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.FileSystem.Functionality</p>
+              <p>Filter.Driver.FileSystem.MiniFilter</p>
+              <p>Filter.Driver.FileSystem.NamedPipeAndMailSlots</p>
+              <p>Filter.Driver.FileSystem.RegistryAndProcess</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.FileSystem.Functionality</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows File Systems, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.FileSystem</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows File Systems, as well as interact accurately with the core components of the operating system. Some areas of particular interest are:   </p>
+          <p>Local File Systems</p>
+          <p>NT API, Win32 API and Win32 Mapped IO API usage</p>
+          <p>Object ID functionality</p>
+          <p>Reparse Points</p>
+          <p>Oplocks</p>
+          <p>System Cache usage</p>
+          <p>Transactional capability</p>
+          <p>Remote File Systems</p>
+          <p>Oplock semantics over SMB</p>
+          <p>Information about File System Behavior: http://download.microsoft.com/download/4/3/8/43889780-8d45-4b2e-9d3a-c696a890309f/File%20System%20Behavior%20Overview.pdf. Information about Oplock semantics over SMB, see the [MS-SMB2] protocol document at: http://msdn.microsoft.com/en-us/library/cc246482(PROT.13).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.FileSystem.MiniFilter</h3>
+        <div class="subSection">
+          <p>A File System Filter Driver must be a Mini-Filter driver using the File Systems Filter Manager</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.FileSystem</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement will be tested implicitly. The gatherer will be written such that it enumerates and surfaces only mini-filter drivers for the Windows Hardware Certification Kit (WHCK). Hence, a user will be unable to select a legacy filter driver for certification testing.Information about Filter Manger and Mini-Filter Drivers available here:http://msdn.microsoft.com/en-us/library/ff540402(v=VS.85).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.FileSystem.NamedPipeAndMailSlots</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Named Pipe and Mail Slots, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.FileSystem</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Named Pipe and Mail Slots, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are: </p>
+          <p>Named Pipe FS</p>
+          <p>Functionality and stress for common APIs</p>
+          <p>Anonymous pipes</p>
+          <p>Pipe modes</p>
+          <p>Open modes</p>
+          <p>Invalid pipe names</p>
+          <p>Flushing pipe</p>
+          <p>Max pipe instance</p>
+          <p>Pipe direction (in/out/duplex)</p>
+          <p>Input and output buffer sizes</p>
+          <p>Various call semantics, such as reconnecting a pipe that has been disconnected at the server end.</p>
+          <p>Behavior validation of all named pipes operations for each distinct state of a pipe instance.</p>
+          <p>Performance for named pipe creation and connection.</p>
+          <p>Through put for different in/out buffer sizes and number of clients. </p>
+          <p>Scalability of increasing number of clients to time it takes for connection to a named pipe instance </p>
+          <p>Mail Slot FS</p>
+          <p>Functionality and stress for common APIs</p>
+          <p>Information about Named Pipe and Mail Slots can be found at:http://msdn.microsoft.com/en-us/library/aa365574(v=VS.85).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.FileSystem.RegistryAndProcess</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows Registry and Processes, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.FileSystem</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers must be architected to maximize the reliability and functionality of Windows Registry and Processes, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are:      </p>
+          <p>Registry</p>
+          <p>NT API and Win32 API usage</p>
+          <p>Key Functions</p>
+          <p>Transaction Registry Operations</p>
+          <p>Symbolic Link behavior</p>
+          <p>Process</p>
+          <p>General Module Management</p>
+          <p>Race conditions at thread/process termination</p>
+          <p>Process management callback functionality</p>
+          <p>Thread and Process handle operations</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.Fundamentals</h2>
+      <div id="sectionSection7" class="section">
+        <p>Corresponds to Device Driver Fundamentals, but for Filter Drivers.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.Fundamentals.DriverQuality</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.Fundamentals.DriverQuality</h3>
+        <div class="subSection">
+          <p>A Filter Driver must be of high quality</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.Fundamentals</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver components must not cause the system to crash or leak resources. These resources include but are not limited to the following: </p>
+          <p>Memory</p>
+          <p>Graphics Device Interface (GDI) or user objects</p>
+          <p>Kernel objects such as files, mutex, semaphore, and device handles</p>
+          <p>Critical sections</p>
+          <p>Disk space</p>
+          <p>Printer handles</p>
+          <p>Design Notes:Sleep &amp; PNP with IO Before And After Test - Test cycles the system through all sleep states and does basic PNP on all devices on the system.This test will be run with Driver Verifier enabled with standard settings.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.Network.LWF</h2>
+      <div id="sectionSection8" class="section">
+        <p>LAN requirements </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.Network.LWF.Base</p>
+              <p>Filter.Driver.Network.LWF.MTUSize</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.Network.LWF.Base</h3>
+        <div class="subSection">
+          <p>All light weight filters must be NDIS 6.30 or greater</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.Network.LWF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All light weight filters must be NDIS 6.30 or greater and be compliant to the NDIS specification on MSDN.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.Network.LWF.MTUSize</h3>
+        <div class="subSection">
+          <p>All light weight filters must be able to accept arbitrary packet sizes which might be greater than the miniport's MTU.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.Network.LWF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All light weight filters must be NDIS 6.30 or greater. All light weight filters must be able to accept arbitrary packet sizes which might be greater than the miniport's MTU.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.Security</h2>
+      <div id="sectionSection9" class="section">
+        <p>Additional TDI filter driver and LSP requirements related to security.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.Security.NoTDIFilterAndLSP</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.Security.NoTDIFilterAndLSP</h3>
+        <div class="subSection">
+          <p>No TDI filters or LSPs are installed by the driver or associated software packages during installation or usage</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.Security</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>There can be no use of TDI filters or LSPs by either kernel mode software or drivers, or user mode software or drivers.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.vSwitchExtension</h2>
+      <div id="sectionSection10" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.vSwitchExtension.ExtensionRequirements</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.vSwitchExtension.ExtensionRequirements</h3>
+        <div class="subSection">
+          <p>Filter drivers that implement VM Switch Extensibility must support required functionalities, modes, and protocols</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.vSwitchExtension</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Ethernet devices that implement VM Switch Extensibility must support required functionalities, modes, and protocols.</p>
+          <p>
+            
+          </p>
+          <p>Requirements</p>
+          <p>An extension must pass NDIS Filter logo requirements</p>
+          <p>An extension must have a valid INF</p>
+          <p>An extension must make only NDIS, WDF, or WDM calls; any calls to other kernel mode components are not allowed</p>
+          <p>An extension must support Hyper-V Live Migration</p>
+          <p>Don’t break LM, Save/Restore, Export/Import</p>
+          <p>Don’t block saved data from another extension</p>
+          <p>Don’t block other extension interactions</p>
+          <p>An unconfigured extension must not “break” connectivity between the host and external network</p>
+          <p>A capture extension must not “break” connectivity between vSwitch ports</p>
+          <p>An extension must pass the following switch/port/NIC configuration OIDs down the stack of an extension</p>
+          <p>OID_SWITCH_PARAMETERS</p>
+          <p>OID_SWITCH_PORT_ARRAY</p>
+          <p>OID_SWITCH_PORT_TEARDOWN</p>
+          <p>OID_SWITCH_PORT_DELETE</p>
+          <p>OID_SWITCH_NIC_ARRAY</p>
+          <p>OID_SWITCH_NIC_CONNECT</p>
+          <p>OID_SWITCH_NIC_DISCONNECT</p>
+          <p>OID_SWITCH_NIC_DELETE</p>
+          <p>OID_SWITCH_NIC_REQUEST</p>
+          <p>An extension must pass the following policy/status OIDs that it does not consume down the stack</p>
+          <p>OID_SWITCH_PORT_PROPERTY_ADD</p>
+          <p>OID_SWITCH_PORT_PROPERTY_UPDATE</p>
+          <p>OID_SWITCH_PORT_PROPERTY_DELETE</p>
+          <p>OID_SWITCH_PROPERTY_ADD</p>
+          <p>OID_SWITCH_PROPERTY_UPDATE</p>
+          <p>OID_SWITCH_PROPERTY_DELETE</p>
+          <p>OID_SWITCH_PORT_FEATURE_STATUS_QUERY</p>
+          <p>OID_SWITCH_FEATURE_STATUS_QUERY</p>
+          <p>An extension must pass the following policy OIDs down the stack</p>
+          <p>OID_SWITCH_PORT_PROPERTY_ENUM</p>
+          <p>OID_SWITCH_PROPERTY_ENUM</p>
+          <p>An extension must pass the following up the stack</p>
+          <p>NDIS_SWITCH_NIC_STATUS_INDICATION</p>
+          <p>A “capture” extension must not call any of the following functions:</p>
+          <p>SetNetBufferListSource;</p>
+          <p>AddNetBufferListDestination;</p>
+          <p>GrowNetBufferListDestinations;</p>
+          <p>UpdateNetBufferListDestinations;</p>
+          <p>CopyNetBufferListInfo;</p>
+          <p>ReportFilteredNetBufferLists;</p>
+          <p>A “filter” extension must not call any of the following functions:</p>
+          <p>AddNetBufferListDestination;</p>
+          <p>GrowNetBufferListDestinations;</p>
+          <p>A "filter" extension must never add a new destination to a NET_BUFFER_LIST. </p>
+          <p>A "forwarding" extension must only add destinations on ingress.</p>
+          <p>New packets generated by extensions must always be sent on ingress.</p>
+          <p>Calls to the following API must specify a NIC that is in Connected state (OID_SWITCH_NIC_CONNECT issued, OID_SWITCH_NIC_DISCONNECT not yet issued).</p>
+          <p>SetNetBufferListSource</p>
+          <p>AddNetBufferListDestination</p>
+          <p>UpdateNetBufferListDestinations (when adding new destinations)</p>
+          <p>ReferenceSwitchNic</p>
+          <p>Calls to the following API must specify a Port that is in Created state (OID_SWITCH_PORT_CREATE issued, OID_SWITCH_PORT_TEARDOWN not yet issued).</p>
+          <p>ReferenceSwitchPort</p>
+          <p>An extension must be capable of being enabled and disabled correctly</p>
+          <p>An extension must be packaged in a silently installable MSI to enable automatic deployment by management applications.  The MSI may only contain a single extension and must have the following string fields set on the MSI.  More information is available on MSDN under “Installing Hyper-V Extensible Switch Extensions” <a href="hh598191(v%3dvs.85).html">http://msdn.microsoft.com/en-us/library/windows/hardware/hh598191(v=vs.85).aspx</a></p>
+          <p>Description</p>
+          <p>Manufacturer</p>
+          <p>ProductVersion</p>
+          <p>ProductName</p>
+          <p>DriverID</p>
+          <p>DriverVersion</p>
+          <p>ExtensionType</p>
+          <p>IsManagedByExtensionManager (optional)</p>
+          <p>MinAplicableOSVersion</p>
+          <p>MaxAplicableOSVersion (optional)</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Oct. 30, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Filter.Driver.WindowsFilteringPlatform</h2>
+      <div id="sectionSection11" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.AppContainers.SupportModernApplications</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.CleanUninstall</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.ConnectionProxying.NoDeadlocks</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmFilters.MaintainOneTerminating</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmProviders.AssociateWithObjects</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmProviders.MaintainIdentifying</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmSublayers.UseOwnOrBuiltIn</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NetworkDiagnosticsFramework.HelperClass</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NoAccessViolations</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NoTamperingWith3rdPartyObjects</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.PacketInjection.NoDeadlocks</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.StreamInjection.NoStreamStarvation</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.SupportPowerManagedStates</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.WFPObjectACLs</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.Winsock</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.DisableWindowsFirewallProperly</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.NotOnlyPermitAllFilters</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.Support5TupleExceptions</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.SupportApplicationExceptions</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.SupportMACAddressExceptions</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Firewall.UseWindowsFilteringPlatform</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportAddressResolution</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportDynamicAddressing</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportIPv4</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportIPv6</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportNameResolution</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.Support6to4</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportAutomaticUpdates</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportBasicWebsiteBrowsing</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportFileAndPrinterSharing</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportICMPErrorMessages</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportInternetStreaming</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportMediaExtenderStreaming</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportMobileBroadBand</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportPeerNameResolution</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportRemoteAssistance</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportRemoteDesktop</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportTeredo</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.SupportVirtualPrivateNetworking</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.InteropWithOtherExtensions</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.NoEgressModification</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportLiveMigration</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportRemoval</p>
+              <p>Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportReordering</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.AppContainers.SupportModernApplications</h3>
+        <div class="subSection">
+          <p>WFP-based products must not block App Container apps operating within their declared network intentions by default, and should only do so when following specific user/admin intention or protecting the system against a specific threat</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products must not block App Container apps operating within their declared network intentions by default, and should only do so when following specific user/admin intention or protecting the system against a specific threat</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.CleanUninstall</h3>
+        <div class="subSection">
+          <p>WFP-based products stop cleanly and clean up all running state upon uninstall</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is to ensure that host firewalls do not leave unused objects upon uninstall, thereby potentially causing diagnostic issues if another separate host firewall is installed on the same PC. The following WFP objects need to be cleaned up: Provider, providerContext, Filter, subLayer, or callout  In addition, additional installation requirements for applications (via the Software certification program) must be met. Design Notes: Applications can use either an MSI, or other installer that meets this requirement to ensure a satisfactory install/uninstall experience on a Windows® based PC. The installation requirements for applications (in the Windows 7 Client Software Logo Program) are located in the following link: http://www.microsoft.com/downloads/details.aspx?FamilyID=27028822-B172-4CEC-91A3-26B610A4DA79&amp;displaylang=en.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.ConnectionProxying.NoDeadlocks</h3>
+        <div class="subSection">
+          <p>WFP-based products which redirect or proxy at redirect layers (connect redirect), must use the new proxying API so that other WFP-based products can determine that the connection has been proxied.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products which redirect or proxy at redirect layers (connect redirect), must use the new proxy'ing API so that other WFP-based products can determine that the connection has been proxy'ed.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmFilters.MaintainOneTerminating</h3>
+        <div class="subSection">
+          <p>WFP-based products must create and maintain at least 1 terminating FWPM_FILTER object.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A terminating filter is one that returns a permit / block decision. It may exist as a static filter or within a callout. The intent behind this requirement is to ensure premium host firewalls perform at least one permit or block decision and not simply maintain filters only for inspection purposes, whereas basic host firewalls may do so through WFP or through other means such as TDI, NDIS, WinSock LSP filters. Design Notes:The definition for the FWPM_FILTER object can be found in the following URL:http://go.microsoft.com/fwlink/?LinkID=116902&amp;clcid=0x409.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmProviders.AssociateWithObjects</h3>
+        <div class="subSection">
+          <p>WFP-based products must associate all of their Provider Contexts, Filters, Sublayers, and Callouts with their corresponding identifying provider object</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>For examples that illustrate the code behavior expected for various types of objects please see below:Reference the name &amp; product of the company within an identifying provider object:                const PWSTR pCompanyName = L"Microsoft Corporation";                const PWSTR pProductName = L"Windows Firewall";                FWPM_PROVIDER0 myProvider;                myProvider.displayData.name = pCompanyName;                myProvider.displayData.description = pProductName; Initialize the provider object:FWPM_PROVIDER_CONTEXT0 myProviderContext;FWPM_PROVIDER0 myProvider;myProviderContext.providerKey = &amp;(myProvider.providerKey);Initialize the subLayer object &amp; associate it to your respective provider objectFWPM_SUBLAYER0 mySubLayer;FWPM_PROVIDER0 myProvider;mySubLayer.providerKey = &amp;(myProvider.providerKey); Initialize the callout object &amp; associate it to your respective provider objectFWPM_CALLOUT0 myCallout;FWPM_PROVIDER0 myProvider;myCallout.providerKey = &amp;(myProvider.providerKey); Initialize the Filter object &amp; associate it to your respective provider objectFWPM_FILTER0 myFilter;FWPM_PROVIDER0 myProvider;myFilter.providerKey = &amp;(myProvider.providerKey); </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmProviders.MaintainIdentifying</h3>
+        <div class="subSection">
+          <p>WFP-based products must create and maintain at least 1 identifying FWPM_PROVIDER provider object</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An "identifying provider object" must reference the name &amp; product of the company as shown in the example below.  FWPM_PROVIDER01. All vendors must create and maintain at least 1 provider.2. The provider.displayData.Name must contain the name of the company3. The provider.displayData.Description must contain the name of the productAll objects created &amp; "owned" by the vendor must reference only their provider(s)const PWSTR pCompanyName = L"Microsoft Corporation";const PWSTR pProductName = L"Windows Firewall";FWPM_PROVIDER0 myProvider; myProvider.displayData.name = pCompanyName;myProvider.displayData.description = pProductName;Design Notes:The definition of the FWPM_PROVIDER object can be found in the following URL: http://go.microsoft.com/fwlink/?LinkID=116844&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.FwpmSublayers.UseOwnOrBuiltIn</h3>
+        <div class="subSection">
+          <p>WFP-based products must use only their own sublayer or one of the built-in sublayers</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A host firewall's own sublayer may be used to ensure that its filters must not be bypassed by a higher weight filter from another host firewall. In addition, a host firewall must not override filters belonging to another host firewall.Design Notes:The definition for the FWPM_SUBLAYERobject can be found in the following URL:http://go.microsoft.com/fwlink/?LinkID=116845&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NetworkDiagnosticsFramework.HelperClass</h3>
+        <div class="subSection">
+          <p>WFP-based products must include a Network Diagnostics Framework (NDF) helper class that extends the Filtering Platform helper class (FPHC)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Windows Filtering Platform (WFP) includes a Network Diagnostics Framework (NDF) helper class, called the Filtering Platform helper class (FPHC). FPHC can help identify the root causes of connectivity issues caused by WFP. A host firewall can invoke its own NDF helper class. FPHC extensibility allows these third-party helper classes to be invoked during diagnostics.FPHC can identify WFP as the cause of a connectivity issue. If available, FPHC can also identify the provider that created the filter that is blocking network traffic. FPHC passes this information to NDF, which in turn can then notify the user that WFP is causing the connectivity problem and give the name of the provider blocking traffic.However, the FPHC cannot suggest a corrective action to the user, nor can it provide the reason that the filter is blocking traffic to the user. Only a FPHC extension can perform those tasks.Host firewalls must be able to successfully diagnose the inbound/outbound connection failures caused due to the host firewall, and provide an appropriate response to the end-user based on the diagnosis. (eg. Repair mechanism, message explaining to the user the reason why the connection failed, etc).Design Notes:More information regarding NDF and FPHC can be found in the following links:NDF       : http://go.microsoft.com/fwlink/?LinkID=125463&amp;clcid=0x409FPHC     : http://go.microsoft.com/fwlink/?LinkID=125464&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NoAccessViolations</h3>
+        <div class="subSection">
+          <p>WFP-based products must not be the resulting cause of any Access Violation under high load or during driver load/unload</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products must not be the resulting cause of any Access Violation under high load or during driver load/unload (while under network load or not). </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.NoTamperingWith3rdPartyObjects</h3>
+        <div class="subSection">
+          <p>WFP-based products must not attempt to remove or alter another WFP-based product's WFP objects and built-in objects</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This ensures interoperability between multiple host firewalls' WFP objects within the Operating System. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.PacketInjection.NoDeadlocks</h3>
+        <div class="subSection">
+          <p>WFP-based products must not continually modify network packets that have already been modified and re-injected, so as to create potential deadlocks</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Firewalls may use callouts to modify and re-inject network packets, when filtering at any layer. One or many host firewalls may be present on the same system. In the case where only one host firewall is present on the system, continually modifying &amp; re-injecting the same packets may result in reduced performance and is to be avoided. In the case where multiple host firewalls (with callouts) are present on the system, the same network packet(s) may continually be modified by multiple callouts, When a host firewall continually modifies and reinjects the same packet it may result in the network packet never getting processed and could potentially create a deadlock, which is to be avoided. Host firewalls must not modify and reinject the same network packet more than 2 times per layer. If such a situation occurs, host firewalls may choose to let the packet go through, or drop the network packet.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.StreamInjection.NoStreamStarvation</h3>
+        <div class="subSection">
+          <p>WFP-based product callouts at FWPM_LAYER_STREAM must not starve ( ANDY TANG: What is the meaning of must not starve?  How do we measure that?)  the data throughput</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To "Not Starve" means Stream layer callout indications should not be pended to queue up more than 8MB of data. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.SupportPowerManagedStates</h3>
+        <div class="subSection">
+          <p>WFP-based products must ensure network connectivity upon recovering from power managed states</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Tests must be run on a machine that supports all the power states (standby, hibernate, hybrid, shutdown, restart). Host Firewalls allow the system to enter into and recover from the above mentioned power managed states. Upon resuming from those particular power managed states requirements from WFP, should be met. Firewalls should never pend packets such that a power state change refuses to work due to the pended packets </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.WFPObjectACLs</h3>
+        <div class="subSection">
+          <p>WFP-based products must ACL all of their objects in a way that any other WFP-based product can at least enumerate those objects using the corresponding WFP enumeration APIs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products must ACL all of their objects in a way that any other WFP-based product can at least enumerate those objects using the corresponding WFP enumeration APIs.This is to make sure that all WFP objects on the system can be enumerated by any Host firewall or application for diagnostic purposes.Design Notes:As an example, Filter objects must be able to be enumerated by the FwpmFilterEnum function documented in the following URL: http://go.microsoft.com/fwlink/?LinkID=116839&amp;clcid=0x409Similarly, enumeration functions for other objects (provider, sublayer etc) can be found in the following URL: http://go.microsoft.com/fwlink/?LinkID=116840&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.ArchitecturalDesign.Winsock</h3>
+        <div class="subSection">
+          <p>Kernel Mode Filter Drivers are architected to maximize the reliability and functionality of Windows Sockets, as well as interact accurately with the core components of the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Filter Drivers are architected to maximize the reliability and functionality of Windows Sockets, as well as interact accurately with the core components of the operating system.  Some areas of particular interest are:   </p>
+          <p>Winsock</p>
+          <p>Winsock API functionality</p>
+          <p>Information about Winsock APIs can be found at:http://msdn.microsoft.com/en-us/library/ms740673(VS.85).aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.DisableWindowsFirewallProperly</h3>
+        <div class="subSection">
+          <p>Host firewalls must disable Windows Firewall using only the supported method.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Host firewalls are provided the ability to selectively turn parts of Windows Firewall on or off. These parts specify different types of rules (and subsequently filter sets), and may also be referred to as categories. Filter sets that may be selectively turned off are Boot-Time Filters, Firewall Filters, Connection Security Filters, and Stealth Filters. The 'Register' interface is supported by the HNetCfg.FwProducts COM object. The put_DisplayName() call must be used to fill in your product information. Before turning off the firewall rules category, vendor firewalls must ensure that all filters must be installed. This requirement ensures better interoperability with Windows. In addition, if all installed host firewalls on the system are uninstalled for any reason, Windows Firewall is aware of this, and will automatically turn on the firewall filters, ensuring that the system is always protected. The Connection Security filters need to remain enabled to keep Windows scenarios protected. Specifically, the Connection Security filters ensure that the system supports communications which require authentication and encryptionDesign Notes: This requirement ensures that firewall vendors disable Windows Firewall per documented guidelines.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.NotOnlyPermitAllFilters</h3>
+        <div class="subSection">
+          <p>Host firewalls must not have only "permit_all" filters</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Host firewalls must not circumvent the intent of the Windows Filtering Platform API tests, by simply maintaining all 'permit_all' filters for all kinds of network traffic, which essentially is not meaningful filtering of network traffic. This applies to both, static as well as callout filters. Similarly, Host firewalls must not maintain only 'block_all' filters. However, that will be addressed when testing for consumer scenarios </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.Support5TupleExceptions</h3>
+        <div class="subSection">
+          <p>All host based firewalls must be able to Block/Allow by 5-Tuple Parts (including Port (ICMP Type and Code, UDP and TCP) IP Address, Protocol (e.g. UDP/TCP/ICMP)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All host based firewalls must be able to Block/Allow by 5-Tuple Parts (including Port (ICMP Type and Code, UDP and TCP) IP Address, Protocol (e.g. UDP/TCP/ICMP)</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.SupportApplicationExceptions</h3>
+        <div class="subSection">
+          <p>WFP-based products must support exceptions from corresponding applications</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In addition to supporting scenarios based on applications within Windows ® it is important to support applications (installed by the home user), that are registered with the host firewall for filtering purposes. Firewalls may use parameters such as path, ports, etc as basis to permit or block application specific traffic. This scenario will need to work with native IPv4, native IPv6, 6to4 and Teredo packets.The word 'support' refers to the host firewall's capability to ensure exceptions from applications work with the host firewall, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.SupportMACAddressExceptions</h3>
+        <div class="subSection">
+          <p>All host based firewalls which have filters in L2 (Native/Mac) layers must be able to Block or Allow by Mac Address</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All host based firewalls which have filters in L2 (Native/Mac) layers must be able to Block or Allow by Mac Address</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Firewall.UseWindowsFilteringPlatform</h3>
+        <div class="subSection">
+          <p>Firewalls must comply with Windows Filtering Platform based APIs for filtering network traffic on home user solutions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>There must be no TDI, NDIS, WinSock LSP filters present upon installation of the host firewall on the PC. Only Windows Filtering Platform (WFP) based static filters / callouts must be used on home user products.Design Notes:For more information on Windows Filtering Platform, please see the following link: http://go.microsoft.com/fwlink/?LinkID=116899&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportAddressResolution</h3>
+        <div class="subSection">
+          <p>WFP-based products must support allowing for successful ARP and ICMP Neighbor Discovery exchanges</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products must support ARP (for IPv4) and ICMP Neighbor Discovery (for IPv6) exchanges.Firewalls allow for the system to send out ARP and ICMP Neighbor Discovery requests and replies, as well as receive ARP and ICMP Neighbor Discovery requests and repliesThe word 'support' refers to the host firewall's capability to make ARP work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:Host firewalls should allow the PC to send out ARP request on behalf of another node rather than only on behalf of itself, when ICS running on the host.As part of Internet Connection Sharing's (ICS) DHCP functionality, ICS DHCP can send out ARP requests on behalf of another node in the subnet. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportDynamicAddressing</h3>
+        <div class="subSection">
+          <p>WFP-based products support allowing for successful DHCP exchanges over both IPv4 and IPv6</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Host Firewalls support allowing successful DHCP exchanges over both IPv4 and IPv6.DHCP DISCOVER, DHCP REQUEST &amp; DHCP INFORM packets can be transmitted over Outbound UDP Source Port 68 to Destination Port 67. DHCP OFFER &amp; DHCP ACK &amp; DHCP NACK packets can be received over Inbound UDP Source Port 67 to Destination Port 68. DHCPv6 packets can be transmitted over Outbound UDP Source Port 546 to Destination Port 547. DHCPv6 packets can be received over Inbound UDP Source Port 547 to Destination Port 546.  The word 'support' refers to the host firewall's capability to allow successful DHCP exchanges, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc. to support the required functionality, even though the functionality may not be enabled by default in the UI.Design Notes:Details can be found in the following URL: http://go.microsoft.com/fwlink/?LinkID=116834&amp;clcid=0x409Host firewalls should allow DHCP inbound and outbound as the server over the wireless interface when a service like ICS is running on the host.Internet Connection Sharing (ICS) acts as a DHCP server and expects to receive incoming DHCP clients.DHCP DISCOVER, DHCP REQUEST &amp; DHCP INFORM packets can be received over Inbound UDP Source Port 68 to Destination Port 67. DHCP OFFER &amp; DHCP ACK &amp; DHCP NACK packets can be transmitted over Outbound UDP Source Port 67 to Destination Port 68.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportIPv4</h3>
+        <div class="subSection">
+          <p>WFP-based products must support IPv4 traffic</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is to ensure that consumer host firewalls or other filtering components do not cause loss of basic IPv4 connectivity on the PC. The word 'support' refers to the host firewall's capability to make IPv4 work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI.Design Notes:More information about IPv4 RFCs can be found in the following link: http://go.microsoft.com/fwlink/?LinkID=116835&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportIPv6</h3>
+        <div class="subSection">
+          <p>WFP-based products must support IPv6 traffic</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Windows® has IPv6 enabled by default. Host firewalls should not break native IPv6 connectivity (and therefore, Windows scenarios based on IPv6) for customers. The word 'support' refers to the host firewall's capability to make IPv6 work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI.Design Notes:More information about IPv6 can be found in the following link: http://go.microsoft.com/fwlink/?LinkID=116832&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.NetworkingFundamental.SupportNameResolution</h3>
+        <div class="subSection">
+          <p>WFP-based products must support allowing for successful DNS client queries</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>DNS QUERY packet can be sent out over [Outbound UDP Destination Port 53 (Domain Name Server)] and DNS QUERY RESPONSE packet to be received over [Inbound UDP Source Port 53 (Domain Name Server)]. Host firewalls should allow successful DNS client queries over both IPv4 and IPv6. The word 'support' refers to the host firewall's capability to allow successful DNS client queries, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:More information aboutDNS RFCs can be found in the following link: http://go.microsoft.com/fwlink/?LinkID=116835&amp;clcid=0x409Host firewalls should allow this type of DNS traffic (Host as a server) over the wireless interface when a service like ICS is running on the host.This requirement applies to Internet Connection Sharing that acts as a DNS server (proxy) and expects receiving incoming DNS requests from clients on destination UDP port 53, and respond to the DNS client with DNS response with destination UDP port 53.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.Support6to4</h3>
+        <div class="subSection">
+          <p>WFP-based products must support 6to4</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In certain markets, 6to4 technologies may help certain customers move to IPv6 connectivity. The following guidelines may help meet this requirement:</p>
+          <p>Host firewalls allow for the system to send and receive IPv6 packets over IPv4 protocol 41.</p>
+          <p>The word 'support' refers to the host firewall's capability to 6to4 work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:Please refer to the following article below for further information on 6to4:http://go.microsoft.com/fwlink/?LinkID=116837&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportAutomaticUpdates</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Automatic Updates in Windows</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is related to Automatic Updates / Windows Update (WU), which is a key scenario through which important patches are installed on your PC to keep it up to date. The following guideline may help meet this requirement: </p>
+          <p>Host firewalls allow outbound TCP connections to Destination Ports 80 &amp; 443.</p>
+          <p>The word 'support' refers to the host firewall's capability to make Automatic Updates work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:For more information on Windows Updates/ Automatic Updates, please see the following link: http://go.microsoft.com/fwlink/?LinkID=116898&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportBasicWebsiteBrowsing</h3>
+        <div class="subSection">
+          <p>WFP-based products must support basic internet browsing experiences</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is to ensure that basic internet browsing experiences are supported upon installation of a host firewall on a Windows® based computer.Host firewalls must allow TCP packets over Ports 80 and 443 to support this scenario. This scenario must work with native IPv4, native IPv6, 6to4 and Teredo packets. The word 'support' refers to the host firewall's capability to ensure a successful internet browsing experience, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportFileAndPrinterSharing</h3>
+        <div class="subSection">
+          <p>WFP-based products must support file and printer sharing</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is to ensure that home-users will be able to share content to and from other PCs inside of their home network, in addition to printing content on shared printers. Host firewalls must allow UDP packets specific to protocol 17 over Ports 137 / 138, and TCP packets specific to protocol 6 over ports 139/445. This scenario must work with native IPv4, native IPv6, 6to4 and Teredo packets.  The following is not a requirement but is a requirement. TCP packets should be allowed over ports 5357/5358 &amp; UDP packets should be allowed over port 3702. This scenario should work with native IPv4, native IPv6, 6to4 and Teredo packets.  The word 'support' refers to the host firewall's capability to make file and printer sharing work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:Please refer to the following link for more information:                 http://go.microsoft.com/fwlink/?LinkID=116838&amp;clcid=0x409 In Windows 7, HomeGroup enables users to easily share files and printers between computers.Please refer to the following documents for more information:</p>
+          <p>HomeGroup Firewall Requirements: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p>Network Location Dialog: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p>PNRP: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p> </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportICMPErrorMessages</h3>
+        <div class="subSection">
+          <p>WFP-based products must support ICMP error messagesand discovery functions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is to ensure that host firewalls support ICMP error messages (per IETF RFCs 4890 and RFC 2979), for inbound/outbound packets that must not be dropped. Important discovery functions must also be supported. The specific error messages that need to be supported for both ICMPv4 and ICMPv6 are: Destination Unreachable, Time Exceeded and Parameter Problem. In addition, for ICMPv6, Packet too big, Router solicitation, Neighbor solicitation, Router advertisement, and neighbor advertisement discovery functions must be supported. The word 'support' refers to the host firewall's capability to make ICMP work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:For more information please see http://go.microsoft.com/fwlink/?LinkID=116835&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportInternetStreaming</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Internet streaming and Media sharing for media player network sharing services</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This is related to Automatic Updates / Windows Update (WU), which is a key scenario through which important patches are installed on your PC to keep it up to date. The following guidelines may help meet this requirement:Host firewalls allow outbound TCP connections to Destination Ports 80 &amp; 443.The word 'support' refers to the host firewall's capability to make Automatic Updates work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:For more information on Windows Updates/ Automatic Updates, please see the following link: http://go.microsoft.com/fwlink/?LinkID=116898&amp;clcid=0x409  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportMediaExtenderStreaming</h3>
+        <div class="subSection">
+          <p>WFP-based products must support media streaming scenarios based on extender technologies</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Extender technology is built into home entertainment devices such as TVs, DVD players, and cool, quiet components that allow you to keep your PC where it makes sense and use it as a "hub" to provide your digital entertainment to TVs throughout your house. These devices are called extender devices. For example: With the new Extenders for Windows Media Center, you can stream the digital media you have on your Windows Media Center PC in as many as five rooms in your house. Home-users may access the live and recorded TV, music, movies, videos, sports, Internet TV and other online content on Windows® PCs through wired or wireless home networks. Windows Media Center Extenders use network ports to communicate with Windows PCs. The following exceptions tabled below may be useful in meeting this requirement:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Media Center Extender SPECIFIC </p>
+              </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Binary</p>
+              </td>
+              <td>
+                <p>Port</p>
+              </td>
+              <td>
+                <p>Direction</p>
+              </td>
+              <td>
+                <p>Scope</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>svchost.exe (ssdpsrv)</p>
+              </td>
+              <td>
+                <p>UDP 1900</p>
+              </td>
+              <td>
+                <p>Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>svchost.exe (termservice)</p>
+              </td>
+              <td>
+                <p>TCP 3390</p>
+              </td>
+              <td>
+                <p>Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>svchost.exe (QWave)</p>
+              </td>
+              <td>
+                <p>TCP 2177</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>svchost.exe (QWave)</p>
+              </td>
+              <td>
+                <p>UDP 2177</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>System</p>
+              </td>
+              <td>
+                <p>TCP 10244</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehshell.exe</p>
+              </td>
+              <td>
+                <p>TCP 554</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehshell.exe</p>
+              </td>
+              <td>
+                <p>UDP 5004, 5005</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehshell.exe</p>
+              </td>
+              <td>
+                <p>TCP 8554-8558</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehshell.exe</p>
+              </td>
+              <td>
+                <p>UDP 50004-50013</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehshell.exe</p>
+              </td>
+              <td>
+                <p>UDP 7777-7781</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>mcrmgr.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>mc2prov.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Svchost.exe (mcs2svc)</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>LocalSubnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Media Center Binaries/Ports</p>
+              </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehrecvr.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehrec.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehexthost.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>mcupdate.exe</p>
+              </td>
+              <td>
+                <p>random</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Internet</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Digital Cable Receiver Device (OCUR)</p>
+              </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehprivjob.exe</p>
+              </td>
+              <td>
+                <p>UDP 5001-5006</p>
+              </td>
+              <td>
+                <p>Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>svchost.exe</p>
+              </td>
+              <td>
+                <p>UDP 1900</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>System</p>
+              </td>
+              <td>
+                <p>TCP 2869</p>
+              </td>
+              <td>
+                <p>Outbound, Inbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehprivjob.exe</p>
+              </td>
+              <td>
+                <p>TCP 554</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>ehprivjob.exe</p>
+              </td>
+              <td>
+                <p>UDP 5757-5772</p>
+              </td>
+              <td>
+                <p>Outbound</p>
+              </td>
+              <td>
+                <p>Local Subnet</p>
+              </td>
+            </tr>
+          </table>
+          <p> The word 'support' refers to the host firewall's capability to make internet streaming &amp; media sharing for media player network sharing services, work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportMobileBroadBand</h3>
+        <div class="subSection">
+          <p>WFP-based products must allow mobile broadband devices that are compliant with Windows mobile broadband driver model to function correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products must allow mobile broadband devices that are compliant with Windows mobile broadband driver model to function correctly.This is to ensure that host firewall functionality does not block the mobile broadband connectivity and the firewall functionality works with MB devices.Windows provides native support for mobile broadband (MB) data cards &amp; embedded modules to work with Windows. The MB devices need to implement their driver as per Windows mobile broadband driver model. The MB driver model defines how the devices should be exposed to Windows and network packet format in which MB devices should exchange data between network and system.Design Notes:Following links provide more information about the Windows 7 mobile broadband driver model·         http://msdn.microsoft.com/en-us/network/dd579153.aspx·         http://msdn.microsoft.com/en-us/library/dd445735.aspx·         http://msdn.microsoft.com/en-us/library/dd445729.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportPeerNameResolution</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Peer Name Resolution Protocol and the Peer-to-Peer Grouping Protocol</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Host firewalls support the Peer Name Resolution Protocol (PNRP) and the Peer-to-Peer Grouping Protocol, which are required by some Peer-to-Peer applications. The Peer Name Resolution Protocol provides secure, serverless name resolution, and the Peer-to-Peer Grouping Protocol provides secure, reliable multi-party communication. The following guidelines may be useful in meeting this requirement:</p>
+          <p>Host firewalls support native IPv6 (NETWORK-0244) as well as Teredo (NETWORK-0248) and IPv6 packets to IPv4 protocol 41 (^to4) (NETWORK-0249).</p>
+          <p>Host firewalls can allow for the system to send outbound, and receive inbound, UDP packets over port 3540.</p>
+          <p>Host firewalls can allow for the system to send outbound, and receive inbound, TCP packets over port 3587.</p>
+          <p>The word 'support' refers to the host firewall's capability to allow successful DHCP exchanges, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes: In Windows 7, HomeGroup enables users to easily share content and stream media between computers. P2P and PNRP are key components of HomeGroup.Please refer to the following documents for more information, these documents: </p>
+          <p>HomeGroup Firewall Requirements: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p>Network Location Dialog: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p>PNRP: http://technet.microsoft.com/en-us/appcompat/default.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportRemoteAssistance</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Remote Assistance scenarios</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Remote Assistance scenario is used for a helper to connect to a computer and to show the user a solution to the problem. The following guidelines may help meet this requirement:Host firewalls allow the computer to be reached by native IPv4, native IPv6, Teredo, and 6to4 (pass the corresponding tests) and also allow traffic from the Remote Assistance application within Windows® (msra.exe) through the firewall. The word 'support' refers to the host firewall's capability to make Remote Assistance work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:For information on how Remote Assistance works in general please see the article below:http://go.microsoft.com/fwlink/?LinkID=116842&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportRemoteDesktop</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Remote desktop</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Remote Desktop Connection is a technology that allows you to connect to a remote computer in a different location. Remote desktop is a key Windows® scenario that would be relevant for consumers with multiple PCs at home trying to access content that exists on one PC, from another PC. The following guideline may help meet this requirement:Host firewalls allow inbound TCP packets over Destination Port 3389 to support this scenario. This scenario will need to work with native IPv4, native IPv6, 6to4 and Teredo packets. The word 'support' refers to the host firewall's capability to make remote desktop work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:For more information on remote desktop please see the article below:http://go.microsoft.com/fwlink/?LinkID=116841&amp;clcid=0x409  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportTeredo</h3>
+        <div class="subSection">
+          <p>WFP-based products must support Teredo</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Teredo may be used as a connectivity mechanism to support certain Windows scenarios such as remote assistance, instant messaging and others. Hence preserving Teredo connectivity is critical to supporting Windows consumer scenarios. For this requirement, the following must be met:</p>
+          <p>Host firewalls allow DNS resolution of teredo.ipv6.microsoft.com. </p>
+          <p>To allow client to Teredo server communication, Host firewalls must allow for the system to send outbound UDP/IPv4 packets to UDP port 3544.</p>
+          <p>To allow Teredo connectivity, host firewalls must allow inbound and outbound UDP/IPv4 traffic over the Teredo client system ports. These ports can be obtained using the FWPMSystemPortsGet notification to determine the system port numbers used for communication using the Teredo interface.</p>
+          <p>Host firewalls support ICMP error messages &amp; discovery functions (NETWORK-0250 logo requirement)</p>
+          <p>Host firewalls allow UPnP framework packets over UDP port 1900, and UPnP frameworkpackets over TCP port 2869</p>
+          <p>The word 'support' refers to the host firewall's capability to make Teredo work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:Please refer to the following article below for further information on Teredohttp://go.microsoft.com/fwlink/?LinkID=116836&amp;clcid=0x409 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.SupportVirtualPrivateNetworking</h3>
+        <div class="subSection">
+          <p>WFP-based products must support VPN scenarios in Windows</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The following protocols and ports must be allowed:</p>
+          <p>IP protocol 50: Allow ESP traffic             </p>
+          <p>IP protocol 51: Allow AH traffic             </p>
+          <p>UDP Port 500 / 4500: Allow ISAKMP traffic            </p>
+          <p>TCP / UDP Port 88: Allow Kerberos traffic</p>
+          <p>This ensures that firewalls support IPsec scenarios, such as IPsec VPN, which are used on client PCs to connect securely over the internet. In addition, host firewalls should allow successful IPsec communication over both IPv4 and IPv6. Host firewalls should also allow UDP packets over port 1701, and TCP packets over port 443 to support this scenario. It is also recommended that host firewalls allow TCP packets specific over port 1723. IP protocol 47 based packets should also be allowed by the host firewall. The word 'support' refers to the host firewall's capability to make the VPN scenarios work, if the application/user/network needs it. The host firewall must also have properly configured objects such as filters, etc to support the required functionality, even though the functionality may not be enabled by default in the UI. Design Notes:Please refer to the following article for further information: http://go.microsoft.com/fwlink/?LinkID=116843&amp;clcid=0x409</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.InteropWithOtherExtensions</h3>
+        <div class="subSection">
+          <p>WFP must not block traffic from another vSwitch extension (WFP or LWF) by default, and should only do so when following specific user/admin intention or protecting the system against a specific threat.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP must not block traffic from another vSwitch extension (WFP or LWF) by default, and should only do so when following specific user/admin intention or protecting the system against a specific threat.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.NoEgressModification</h3>
+        <div class="subSection">
+          <p>WFP-based products that operate in the vSwitch must not modify packets on the Egress path of the vSwitch.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products that operate in the vSwitch must not modify packets on the Egress path of the vSwitch.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportLiveMigration</h3>
+        <div class="subSection">
+          <p>WFP-based products that operate in the vSwitch must present a minimal MOF for Live Migration.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products that operate in the vSwitch must present a minimal MOF for Live Migration. In the MOF it must declare itself Logo compliant for Live Migration and allow itself to be migrated or not block migration by default. The total time for migrations for Live Migration cannot be longer than 2 seconds.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportRemoval</h3>
+        <div class="subSection">
+          <p>WFP-based products that operate in the vSwitch must present be allowed to be removed when the admin disabled WFP for the vSwitch instance.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products that operate in the vSwitch must be allowed to be removed when the admin disabled WFP for the vSwitch instance. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Filter.Driver.WindowsFilteringPlatform.Scenario.vSwitch.SupportReordering</h3>
+        <div class="subSection">
+          <p>WFP-based products that operate in the vSwitch must respond to WFP vmSwitch reorder events.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Filter.Driver.WindowsFilteringPlatform</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WFP-based products that operate in the vmSwitch must respond to WFP vmSwitch reorder events.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="DVWl4qdZ4vubTTjCf51iCc0aJImI4EUue2GFJp3DFGpdXDe3DoEp4XUZMjcumteaZ_j6SKnYeNq2kCRKgI0_JbiHAVu1QcGmIBWvbIye1YkK8XEcxtUzqghj3bGQdFRahmW8fw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj128255" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj128255" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="CKz-ieh0Y17no7tvvc2Fx8GuTjiWVC4VvcT5z0z3UJDIx7AT8J-BJuVyJ30UHs2i81qCZiRikg30ePmKrGeYpfdQMl4u-DEHmntePkn0uCYmwZY-D7R_hRVeBzQFg9Bgwjg0WA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj128255(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"d7e91a1a-1e2c-4329-9612-eefaad6aa705\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj128255 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:12:40 GMT -->
+</html>

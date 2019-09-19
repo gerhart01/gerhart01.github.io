@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff554414(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554414(v=vs.85).aspx" />
+        <title>MDL (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff554414(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554414(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554414(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554414(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93B-9:56:51 AM" />
+
+<meta name="Search.ShortId" content="ff554414" />
+
+<meta name="ms.shortidmsdn" content="ff554414" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075411&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff554414%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557560(v=vs.85).aspx" id="ff576020_VS.85_en-us" mtpsaliasid="" mtpsassetid="dd284fb0-6fa6-4f10-ac82-aa3f48847631_VS.85_en-us" mtpsshortid="ff557560_VS.85_en-us" title="Kernel-Mode Driver Architecture">Kernel-Mode Driver Architecture</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553217(v=vs.85).aspx" id="ff573518_VS.85_en-us" mtpsaliasid="" mtpsassetid="9ca2dfee-abb3-40cb-aa04-b9e1bc0b1fa5_VS.85_en-us" mtpsshortid="ff553217_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553197(v=vs.85).aspx" id="ff573847_VS.85_en-us" mtpsaliasid="" mtpsassetid="db510a8b-cb2b-4d98-b66a-392c9e67f5b9_VS.85_en-us" mtpsshortid="ff553197_VS.85_en-us" title="Kernel Data Types">Kernel Data Types</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564540(v=vs.85).aspx" id="ff574052_VS.85_en-us" mtpsaliasid="" mtpsassetid="9ef7d7a5-0217-430b-8768-a0a5edb31924_VS.85_en-us" mtpsshortid="ff564540_VS.85_en-us" title="System-Defined Data Structures">System-Defined Data Structures</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540605(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ANSI_STRING">ANSI_STRING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406359(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BDCB_IMAGE_INFORMATION">BDCB_IMAGE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406363(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BDCB_STATUS_UPDATE_CONTEXT">BDCB_STATUS_UPDATE_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540653(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BOOTDISK_INFORMATION_EX">BOOTDISK_INFORMATION_EX</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540652(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BOOTDISK_INFORMATION">BOOTDISK_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541782(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_CONTAINER_INFORMATION">CLFS_CONTAINER_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541790(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_INFORMATION">CLFS_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541794(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_IO_STATISTICS">CLFS_IO_STATISTICS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541798(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_IO_STATISTICS_HEADER">CLFS_IO_STATISTICS_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541814(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_LOG_NAME_INFORMATION">CLFS_LOG_NAME_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541824(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_LSN">CLFS_LSN</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541841(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_MGMT_CLIENT_REGISTRATION">CLFS_MGMT_CLIENT_REGISTRATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541842(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_MGMT_POLICY">CLFS_MGMT_POLICY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541856(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_SCAN_CONTEXT">CLFS_SCAN_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541869(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_STREAM_ID_INFORMATION">CLFS_STREAM_ID_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541891(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CLFS_WRITE_ENTRY">CLFS_WRITE_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541930(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_EISA_FUNCTION_INFORMATION">CM_EISA_FUNCTION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541941(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_EISA_SLOT_INFORMATION">CM_EISA_SLOT_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541947(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_FLOPPY_DEVICE_DATA">CM_FLOPPY_DEVICE_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541954(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_FULL_RESOURCE_DESCRIPTOR">CM_FULL_RESOURCE_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541963(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_INT13_DRIVE_PARAMETER">CM_INT13_DRIVE_PARAMETER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541967(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_KEYBOARD_DEVICE_DATA">CM_KEYBOARD_DEVICE_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541971(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_MCA_POS_DATA">CM_MCA_POS_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541977(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_PARTIAL_RESOURCE_DESCRIPTOR">CM_PARTIAL_RESOURCE_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541981(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_PARTIAL_RESOURCE_LIST">CM_PARTIAL_RESOURCE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541989(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_POWER_DATA">CM_POWER_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541994(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_RESOURCE_LIST">CM_RESOURCE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541998(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_SCSI_DEVICE_DATA">CM_SCSI_DEVICE_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542003(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CM_SERIAL_DEVICE_DATA">CM_SERIAL_DEVICE_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542058(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CONTROLLER_OBJECT">CONTROLLER_OBJECT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542081(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="COUNTED_REASON_CONTEXT">COUNTED_REASON_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543095(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DEVICE_CAPABILITIES">DEVICE_CAPABILITIES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543107(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DEVICE_DESCRIPTION">DEVICE_DESCRIPTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543134(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DEVICE_INTERFACE_CHANGE_NOTIFICATION">DEVICE_INTERFACE_CHANGE_NOTIFICATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543147(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DEVICE_OBJECT">DEVICE_OBJECT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544062(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_ADAPTER">DMA_ADAPTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450993(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_ADAPTER_INFO">DMA_ADAPTER_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450995(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_ADAPTER_INFO_V1">DMA_ADAPTER_INFO_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451001(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_TRANSFER_INFO">DMA_TRANSFER_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451003(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_TRANSFER_INFO_V1">DMA_TRANSFER_INFO_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544071(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DMA_OPERATIONS">DMA_OPERATIONS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544174(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRIVER_OBJECT">DRIVER_OBJECT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544273(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EPROCESS">EPROCESS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544319(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ETHREAD">ETHREAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544329(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EVENT_TRACE_HEADER">EVENT_TRACE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj569379(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EX_RUNDOWN_REF">EX_RUNDOWN_REF</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265199(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EX_TIMER">EX_TIMER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265194(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EXT_DELETE_PARAMETERS">EXT_DELETE_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265196(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EXT_SET_PARAMETERS">EXT_SET_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545715(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FAST_MUTEX">FAST_MUTEX</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545733(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_ACCESS_INFORMATION">FILE_ACCESS_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545740(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_ALIGNMENT_INFORMATION">FILE_ALIGNMENT_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545743(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_ALL_INFORMATION">FILE_ALL_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545750(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_ATTRIBUTE_TAG_INFORMATION">FILE_ATTRIBUTE_TAG_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545762(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_BASIC_INFORMATION">FILE_BASIC_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545765(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_DISPOSITION_INFORMATION">FILE_DISPOSITION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545773(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_EA_INFORMATION">FILE_EA_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545780(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_END_OF_FILE_INFORMATION">FILE_END_OF_FILE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545788(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_FS_DEVICE_INFORMATION">FILE_FS_DEVICE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545793(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_FULL_EA_INFORMATION">FILE_FULL_EA_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545809(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_MODE_INFORMATION">FILE_MODE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545817(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_NAME_INFORMATION">FILE_NAME_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545822(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_NETWORK_OPEN_INFORMATION">FILE_NETWORK_OPEN_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545834(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_OBJECT">FILE_OBJECT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545848(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_POSITION_INFORMATION">FILE_POSITION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_IO_PRIORITY_HINT_INFORMATION">FILE_IO_PRIORITY_HINT_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545855(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_STANDARD_INFORMATION">FILE_STANDARD_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545873(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FILE_VALID_DATA_LENGTH_INFORMATION">FILE_VALID_DATA_LENGTH_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546526(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GENERIC_MAPPING">GENERIC_MAPPING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546539(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GROUP_AFFINITY">GROUP_AFFINITY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff546980(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HARDWARE_COUNTER">HARDWARE_COUNTER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547073(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HWPROFILE_CHANGE_NOTIFICATION">HWPROFILE_CHANGE_NOTIFICATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547825(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="INTERFACE">INTERFACE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550541(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_CONNECT_INTERRUPT_PARAMETERS">IO_CONNECT_INTERRUPT_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550560(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_CSQ">IO_CSQ</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550567(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_CSQ_IRP_CONTEXT">IO_CSQ_IRP_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550569(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_DISCONNECT_INTERRUPT_PARAMETERS">IO_DISCONNECT_INTERRUPT_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550571(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_ERROR_LOG_PACKET">IO_ERROR_LOG_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550576(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_INTERRUPT_MESSAGE_INFO">IO_INTERRUPT_MESSAGE_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550579(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_INTERRUPT_MESSAGE_INFO_ENTRY">IO_INTERRUPT_MESSAGE_INFO_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj158877(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_REPORT_INTERRUPT_ACTIVE_STATE_PARAMETERS">IO_REPORT_INTERRUPT_ACTIVE_STATE_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550598(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_RESOURCE_DESCRIPTOR">IO_RESOURCE_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550600(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_RESOURCE_LIST">IO_RESOURCE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550609(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_RESOURCE_REQUIREMENTS_LIST">IO_RESOURCE_REQUIREMENTS_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550613(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_SECURITY_CONTEXT">IO_SECURITY_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550619(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_SESSION_CONNECT_INFO">IO_SESSION_CONNECT_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550636(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_SESSION_STATE_INFORMATION">IO_SESSION_STATE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550643(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_SESSION_STATE_NOTIFICATION">IO_SESSION_STATE_NOTIFICATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550659(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_STACK_LOCATION">IO_STACK_LOCATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550671(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_STATUS_BLOCK">IO_STATUS_BLOCK</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550679(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IO_WORKITEM">IO_WORKITEM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550694(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IRP">IRP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551839(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KBUGCHECK_ADD_PAGES">KBUGCHECK_ADD_PAGES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551853(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KBUGCHECK_CALLBACK_RECORD">KBUGCHECK_CALLBACK_RECORD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551868(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KBUGCHECK_DUMP_IO">KBUGCHECK_DUMP_IO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551873(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KBUGCHECK_REASON_CALLBACK_RECORD">KBUGCHECK_REASON_CALLBACK_RECORD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551879(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KBUGCHECK_SECONDARY_DUMP_DATA">KBUGCHECK_SECONDARY_DUMP_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551882(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KDPC">KDPC</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544087(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KDPC_WATCHDOG_INFORMATION">KDPC_WATCHDOG_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554229(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KE_PROCESSOR_CHANGE_NOTIFY_CONTEXT">KE_PROCESSOR_CHANGE_NOTIFY_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553355(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_BASIC_INFORMATION">KEY_BASIC_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553358(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_CACHED_INFORMATION">KEY_CACHED_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553367(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_FULL_INFORMATION">KEY_FULL_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553381(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_NAME_INFORMATION">KEY_NAME_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553392(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_NODE_INFORMATION">KEY_NODE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553403(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_USER_FLAGS_INFORMATION">KEY_USER_FLAGS_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553410(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_VALUE_BASIC_INFORMATION">KEY_VALUE_BASIC_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554214(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_VALUE_ENTRY">KEY_VALUE_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554217(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_VALUE_FULL_INFORMATION">KEY_VALUE_FULL_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554220(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_VALUE_PARTIAL_INFORMATION">KEY_VALUE_PARTIAL_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554221(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_VIRTUALIZATION_INFORMATION">KEY_VIRTUALIZATION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554226(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KEY_WRITE_TIME_INFORMATION">KEY_WRITE_TIME_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554233(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KFLOATING_SAVE">KFLOATING_SAVE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554235(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KGUARDED_MUTEX">KGUARDED_MUTEX</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554237(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KINTERRUPT">KINTERRUPT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554247(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KLOCK_QUEUE_HANDLE">KLOCK_QUEUE_HANDLE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554250(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KTIMER">KTIMER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554296(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LIST_ENTRY">LIST_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554316(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LOG_FILE_OBJECT">LOG_FILE_OBJECT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554329(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LOOKASIDE_LIST_EX">LOOKASIDE_LIST_EX</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554334(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LUID">LUID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn342885(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MM_COPY_ADDRESS">MM_COPY_ADDRESS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj206445(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MM_PHYSICAL_ADDRESS_LIST">MM_PHYSICAL_ADDRESS_LIST</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554414(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MDL">MDL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556431(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NPAGED_LOOKASIDE_LIST">NPAGED_LOOKASIDE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558714(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_CALLBACK_REGISTRATION">OB_CALLBACK_REGISTRATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558718(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_OPERATION_REGISTRATION">OB_OPERATION_REGISTRATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558720(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_POST_CREATE_HANDLE_INFORMATION">OB_POST_CREATE_HANDLE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558722(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_POST_DUPLICATE_HANDLE_INFORMATION">OB_POST_DUPLICATE_HANDLE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558723(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_POST_OPERATION_INFORMATION">OB_POST_OPERATION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558724(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_POST_OPERATION_PARAMETERS">OB_POST_OPERATION_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558725(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_PRE_CREATE_HANDLE_INFORMATION">OB_PRE_CREATE_HANDLE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558726(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_PRE_DUPLICATE_HANDLE_INFORMATION">OB_PRE_DUPLICATE_HANDLE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558729(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_PRE_OPERATION_INFORMATION">OB_PRE_OPERATION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558739(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OB_PRE_OPERATION_PARAMETERS">OB_PRE_OPERATION_PARAMETERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557749(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OBJECT_ATTRIBUTES">OBJECT_ATTRIBUTES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558675(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OBJECT_TYPE">OBJECT_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558741(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OEM_STRING">OEM_STRING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558775(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PAGED_LOOKASIDE_LIST">PAGED_LOOKASIDE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558786(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PCI_COMMON_CONFIG">PCI_COMMON_CONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558790(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PCI_SLOT_NUMBER">PCI_SLOT_NUMBER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558796(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PHYSICAL_COUNTER_RESOURCE_DESCRIPTOR">PHYSICAL_COUNTER_RESOURCE_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558798(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PHYSICAL_COUNTER_RESOURCE_LIST">PHYSICAL_COUNTER_RESOURCE_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558805(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PLUGPLAY_NOTIFICATION_HEADER">PLUGPLAY_NOTIFICATION_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff559608(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PNP_BUS_INFORMATION">PNP_BUS_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff559842(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="POWER_STATE">POWER_STATE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff559868(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PRIVILEGE_SET">PRIVILEGE_SET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff559913(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PROCESSOR_NUMBER">PROCESSOR_NUMBER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff559960(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PS_CREATE_NOTIFY_INFO">PS_CREATE_NOTIFY_INFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560919(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_CALLBACK_CONTEXT_CLEANUP_INFORMATION">REG_CALLBACK_CONTEXT_CLEANUP_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560920(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_CREATE_KEY_INFORMATION">REG_CREATE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560922(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_CREATE_KEY_INFORMATION_V1">REG_CREATE_KEY_INFORMATION_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560926(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_DELETE_KEY_INFORMATION">REG_DELETE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560929(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_DELETE_VALUE_KEY_INFORMATION">REG_DELETE_VALUE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560932(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_ENUMERATE_KEY_INFORMATION">REG_ENUMERATE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560936(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_ENUMERATE_VALUE_KEY_INFORMATION">REG_ENUMERATE_VALUE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560938(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_FLUSH_KEY_INFORMATION">REG_FLUSH_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560943(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_KEY_HANDLE_CLOSE_INFORMATION">REG_KEY_HANDLE_CLOSE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560948(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_LOAD_KEY_INFORMATION">REG_LOAD_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560957(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_OPEN_KEY_INFORMATION">REG_OPEN_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560959(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_OPEN_KEY_INFORMATION_V1">REG_OPEN_KEY_INFORMATION_V1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560962(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_POST_CREATE_KEY_INFORMATION">REG_POST_CREATE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560967(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_POST_OPEN_KEY_INFORMATION">REG_POST_OPEN_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560971(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_POST_OPERATION_INFORMATION">REG_POST_OPERATION_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560973(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_PRE_CREATE_KEY_INFORMATION">REG_PRE_CREATE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560978(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_PRE_OPEN_KEY_INFORMATION">REG_PRE_OPEN_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560980(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_QUERY_KEY_INFORMATION">REG_QUERY_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560983(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_QUERY_KEY_SECURITY_INFORMATION">REG_QUERY_KEY_SECURITY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560985(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION">REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560991(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_QUERY_VALUE_KEY_INFORMATION">REG_QUERY_VALUE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560994(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_RENAME_KEY_INFORMATION">REG_RENAME_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560998(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_REPLACE_KEY_INFORMATION">REG_REPLACE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561002(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_RESTORE_KEY_INFORMATION">REG_RESTORE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561005(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_SAVE_KEY_INFORMATION">REG_SAVE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561009(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_SET_INFORMATION_KEY_INFORMATION">REG_SET_INFORMATION_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561012(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_SET_KEY_SECURITY_INFORMATION">REG_SET_KEY_SECURITY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561016(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_SET_VALUE_KEY_INFORMATION">REG_SET_VALUE_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561018(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REG_UNLOAD_KEY_INFORMATION">REG_UNLOAD_KEY_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563614(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTL_BITMAP">RTL_BITMAP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563620(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTL_OSVERSIONINFOEXW">RTL_OSVERSIONINFOEXW</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563624(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTL_OSVERSIONINFOW">RTL_OSVERSIONINFOW</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563626(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTL_RUN_ONCE">RTL_RUN_ONCE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563664(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SCATTER_GATHER_LIST">SCATTER_GATHER_LIST</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563687(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SECTION_OBJECT_POINTERS">SECTION_OBJECT_POINTERS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563689(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SECURITY_DESCRIPTOR">SECURITY_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563714(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SECURITY_SUBJECT_CONTEXT">SECURITY_SUBJECT_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563799(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SINGLE_LIST_ENTRY">SINGLE_LIST_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563805(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SLIST_ENTRY">SLIST_ENTRY</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff563810(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SLIST_HEADER">SLIST_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj835780(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SYSTEM_POWER_STATE_CONTEXT">SYSTEM_POWER_STATE_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564596(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TARGET_DEVICE_CUSTOM_NOTIFICATION">TARGET_DEVICE_CUSTOM_NOTIFICATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564601(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TARGET_DEVICE_REMOVAL_NOTIFICATION">TARGET_DEVICE_REMOVAL_NOTIFICATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564879(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UNICODE_STRING">UNICODE_STRING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451586(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VPCI_INVALIDATE_BLOCK_OUTPUT">VPCI_INVALIDATE_BLOCK_OUTPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451588(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VPCI_READ_BLOCK_INPUT">VPCI_READ_BLOCK_INPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh451590(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VPCI_WRITE_BLOCK_INPUT">VPCI_WRITE_BLOCK_INPUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565811(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WMIGUIDREGINFO">WMIGUIDREGINFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565813(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WMILIB_CONTEXT">WMILIB_CONTEXT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565827(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WMIREGGUID">WMIREGGUID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565832(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WMIREGINFO">WMIREGINFO</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566372(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_ALL_DATA">WNODE_ALL_DATA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566373(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_EVENT_ITEM">WNODE_EVENT_ITEM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566374(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_EVENT_REFERENCE">WNODE_EVENT_REFERENCE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566375(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_HEADER">WNODE_HEADER</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566376(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_METHOD_ITEM">WNODE_METHOD_ITEM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566377(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_SINGLE_INSTANCE">WNODE_SINGLE_INSTANCE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566378(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_SINGLE_ITEM">WNODE_SINGLE_ITEM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566379(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNODE_TOO_SMALL">WNODE_TOO_SMALL</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff566414(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="XSTATE_SAVE">XSTATE_SAVE</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">MDL</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>An <strong>MDL</strong> structure is a partially opaque structure that represents a memory descriptor list (MDL).</p>
+<h2><a id="Accessible_Members"></a><a id="accessible_members"></a><a id="ACCESSIBLE_MEMBERS"></a>Accessible Members</h2>
+<p></p>
+<dl>
+<dt><a id="PMDLNext"></a><a id="pmdlnext"></a><a id="PMDLNEXT"></a><strong>PMDL</strong><strong>Next</strong></dt>
+<dd>
+<p>Pointer to the next MDL in an MDL chain. For more information about MDL chains, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff565421(v=vs.85).aspx">Using MDLs</a>.</p>
+</dd>
+</dl>
+<h2>Remarks</h2>
+<p>An MDL describes the layout of a virtual memory buffer in physical memory. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff565421(v=vs.85).aspx">Using MDLs</a>.</p>
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>Wdm.h (include Wdm.h, Ntddk.h, or Ntifs.h)</dt>
+</dl>
+</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff548263(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IoAllocateMdl</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554530(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MmGetMdlByteCount</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554533(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MmGetMdlByteOffset</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554537(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MmGetMdlPfnArray</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554539(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MmGetMdlVirtualAddress</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554568(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MmInitializeMdl</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [kernel\kernel]:%20MDL%20 RELEASE:%20(2/11/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 2/11/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="IAI9XI5JoeYlQWj6gDqEp1YGlqYXsXZp5UhnyM9uGbA9ZXuseZlKZj2YSUbQrdTamucfBR86wRKA2UQR2wtDqtGY6nLpTWOlK2nnw4Q9sKLBv7nUFzHB0mzJRvn86T9tN2hWsg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/ff554414(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff554414(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="rG_D-usQ1mvW2IfWd5bKmtFClp-6RSlsMpxnkYwwHI_kJKmVIpPgEaL_pjE0sRQcmqdGNyoVirNS2zNiW-ad9IRsPrg70mUwTeKCsbaCQvY7LsZFqDx2qIngHK_9yLL1X_qYrg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff554414(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"a6108203-1edb-45d1-8b45-f2c17d8a5142\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff554414(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+</html>

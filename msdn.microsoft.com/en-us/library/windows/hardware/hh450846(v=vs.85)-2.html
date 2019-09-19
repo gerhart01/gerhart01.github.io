@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh450846(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(v=vs.85).aspx" />
+        <title>How to open and close static streams in a USB bulk endpoint (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh450846(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD5-9:55:28 AM" />
+
+<meta name="Search.ShortId" content="hh450846" />
+
+<meta name="ms.shortidmsdn" content="hh450846" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075328&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh450846%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406260(v=vs.85).aspx" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539286(v=vs.85).aspx" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968306(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968308(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539199(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450846(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406225(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450848(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968307(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539193(v=vs.85).aspx" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to open and close static streams in a USB bulk endpoint</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>  This topic discusses  <em>static streams capability</em> and explains how a USB client driver can open and close streams in a bulk endpoint of a USB 3.0 device.</p>
+<p> In USB 2.0 and earlier devices, a bulk endpoint can send or receive a single data stream through the endpoint. In USB 3.0 devices, bulk endpoints have the capability to send and receive multiple data streams through the endpoint. </p>
+<p>The Microsoft-provided  USB driver stack in Windows 8 supports multiple streams. This enables a client driver to send independent I/O requests to each stream associated with  a bulk endpoint in a USB 3.0 device.   The requests to different streams are not serialized. </p>
+<p>For a client driver, streams  represent multiple logical endpoints that have the same set of characteristics.     To send a request to a particular stream, the client driver needs a handle to that stream (similar to a pipe handle for an endpoint). The URB for an I/O request to a stream is similar to an URB for a I/O request to a bulk endpoint. The only difference is the pipe handle. To send an I/O request to a stream, the driver specifies the pipe handle to the stream. </p>
+<p>During device configuration, the client driver sends a select-configuration request and optionally a select-interface request. Those requests retrieve a set of pipe handles to the  endpoints that are defined in the active setting of an interface. For an endpoint that supports streams, the endpoint pipe handle can be used to send I/O requests to the to the <em>default stream</em> (the first stream) until the driver has opened streams (discussed next). </p>
+<p> If the client driver wants to send requests to  streams other than the default stream, the driver must open and obtain handles to all streams.  To do so, the client driver sends an <em>open-streams request</em> by specifying the number of streams to open. After the client driver is finished using streams, the driver  can optionally close them  by sending a <em>close-streams request</em>. </p>
+<p>Kernel Mode Driver Framework (KMDF) does not support static streams intrinsically. The client driver must send Windows Driver Model (WDM) style URBs that open and close streams. This topic  describes how to format and send those URBs. A User Mode Driver Framework (UMDF)-client driver cannot use the static streams capability.</p>
+<p>The topic contains some notes that are labeled as <strong>WDM drivers</strong>. Those notes describe routines for a WDM-based USB client driver that wants to send stream requests.</p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>Before a client driver can open or close streams, the driver must have:</p><ul>
+<li>Called  the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> method. <p>The method requires the client contract version to be USBD_CLIENT_CONTRACT_VERSION_602. By specifying that version the  client driver must adhere to a set of rules. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406258(v=vs.85).aspx">Best Practices: Using URBs</a>. </p>
+<p>The call retrieves a WDFUSBDEVICE handle to the framework's USB target device object.  That handle is required in order to make subsequent calls to open streams. Typically, the client driver registers itself in  the driver's  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a> event callback routine.</p>
+<p><strong> WDM drivers:  </strong>Call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a> routine and obtain a USBD handle for the driver's registration with the USB driver stack.</p>
+</li>
+<li>Configured the device and obtained a WDFUSBPIPE pipe handle to  the bulk endpoint that supports streams.  To obtain the pipe handle, call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550057(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a> method on the current alternate setting of an interface in the selected configuration. <p><strong> WDM drivers:  </strong>Obtain a USBD pipe handle by sending a select-configuration or select-interface request. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/gg615081(v=vs.85).aspx">How to Select a Configuration for a USB Device</a>.</p>
+</li>
+</ul>
+
+<h2>Instructions</h2>
+<h3><a id="How_to_open_static_streams"></a><a id="how_to_open_static_streams"></a><a id="HOW_TO_OPEN_STATIC_STREAMS"></a>How to open static streams</h3><a id="open_streams"></a><a id="OPEN_STREAMS"></a><ol>
+<li>Determine whether the underlying USB driver stack and the host controller supports the static streams capability by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a> method. Typically, the client driver calls the routine in the driver's  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540880(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a> event callback routine.<p><strong> WDM drivers:  </strong>Call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a> routine. Typically, the driver queries for the capabilities that it wants to use in the driver's start-device routine (<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551749(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IRP_MN_START_DEVICE</strong></a>). For code example, see <strong>USBD_QueryUsbCapability</strong>.</p>
+<p>Provide the following information:</p>
+<ul>
+<li>A handle to the USB device object that was retrieved, in a previous call to  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439428(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>, for client driver registration. <p><strong> WDM drivers:  </strong>Pass the USBD handle that was retrieved in the previous call to <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a>.</p>
+<p>If the client driver wants to use a particular capability, the driver must first query the underlying USB driver stack to determine whether the driver stack and the host controller support the capability. If the capability is supported, only then, the driver should send a request to use the capability. Some requests require URBs, such as the streams capability (discussed in step 5). For those requests, make sure that you use the same handle to query capabilities and allocate URBs. That is because the driver stack uses handles to track the supported capabilities that a driver can use. 
+</p>
+<p>For instance, if you obtained a USBD_HANDLE (by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a>), query the driver stack by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>, and allocate the URB by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a>. Pass the same USBD_HANDLE in both those calls. 
+</p>
+<p>If you call KMDF methods, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a> and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a>, specify the same WDFUSBDEVICE handle to the framework target object in those method calls.
+</p>
+</li>
+<li>The GUID assigned to GUID_USB_CAPABILITY_STATIC_STREAMS.</li>
+<li>An output buffer (pointer to USHORT). Upon completion the buffer is filled with the maximum number of streams (per endpoint) that are supported by the host controller.</li>
+<li>The length, in bytes, of the output buffer. For streams the length is <code>sizeof (USHORT)</code>.</li>
+</ul>
+</li>
+<li>Evaluate the returned NTSTATUS value. If the routine completes successfully, returns STATUS_SUCCESS, the static streams capability is supported. Otherwise, the method returns an appropriate error code.</li>
+<li>Determine the number of streams to open. The maximum number of streams that can be opened is limited by:<ul>
+<li>The maximum number of streams supported by the host controller. That number is received by <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a> (for WDM drivers, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>), in the caller-supplied output buffer. The Microsoft-provided USB driver stack supports up to 255 streams. <strong>WdfUsbTargetDeviceQueryUsbCapability</strong> takes that limitation into consideration while calculating the number of streams. The method never returns a value that is greater than 255. </li>
+<li>The maximum number of streams supported by the endpoint in the device. To get that number, inspect the endpoint companion descriptor (see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406269(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR</strong></a> in Usbspec.h). To obtain the endpoint companion descriptor, you must parse the configuration descriptor. To obtain the configuration descriptor, the client driver must call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550098(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceRetrieveConfigDescriptor</strong></a> method. You must use the helper routines, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff539102(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_ParseConfigurationDescriptorEx</strong></a> and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff539109(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_ParseDescriptor</strong></a>. For code example, see the example function named RetrieveStreamInfoFromEndpointDesc in <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh968306(v=vs.85).aspx">How to enumerate USB pipes</a>.</li>
+</ul>To determine the maximum number of streams, choose the lesser of two values supported by the host controller and the endpoint. </li>
+<li>Allocate an array of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406247(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_STREAM_INFORMATION</strong></a> structures with <em>n</em> elements, where <em>n</em> is the number of streams to open. The client driver is responsible for releasing this array after the driver is finished using streams. </li>
+<li>Allocate an URB for the open-streams request by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a> method. If the call completes successfully, the method retrieves a WDF memory object and the address of the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure that is allocated by the USB driver stack. <p><strong> WDM drivers:  </strong>Call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a> routine.</p>
+</li>
+<li>Format the  URB for the open-stream request. The URB uses the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406294(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_OPEN_STATIC_STREAMS</strong></a> structure to define the request. To format the URB you need: <ul>
+<li>The USBD pipe handle to the endpoint. If you have a WDF pipe object, you can obtain the USBD pipe handle by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551162(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWdmGetPipeHandle</strong></a>  method.</li>
+<li>The stream array (created in step 4)</li>
+<li>A pointer to the  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure (created in step 5).</li>
+</ul>  To format the URB, call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406226(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildOpenStaticStreamsRequest</strong></a> and pass the required information as parameter values. Make sure that the number of streams specified to <strong>UsbBuildOpenStaticStreamsRequest</strong> does not exceed the maximum number of supported streams. </li>
+<li>Send the URB as a WDF request object by calling the  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a> method. To send the request synchronously, call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a> method instead.<p><strong> WDM drivers:  </strong>Associate the URB with an IRP, and submit the IRP to the USB driver stack. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450899(v=vs.85).aspx">How to Submit an URB</a>.</p>
+</li>
+<li>After the request is complete, check the status of the request.<p>If USB driver stack fails the request, the URB status contains the relevant error code. Some common failure conditions are described in the Remarks section. </p>
+</li>
+</ol>
+<p>If the status of the request (IRP or the WDF request object) indicates USBD_STATUS_SUCCESS, the request was completed successfully. Inspect the array of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406247(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_STREAM_INFORMATION</strong></a> structures received on completion. The array is filled  with information about the requested streams. The USB driver stack populates each structure in the array with stream information, such as handles (received as USBD_PIPE_HANDLE), stream identifiers, and the maximum number transfer size.  Streams are now open to transfer data. </p>
+<p>For an open-streams request, you'll need to allocate an URB and an array. The client driver must release the URB by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff548734(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfObjectDelete</strong></a> method on the associated WDF memory object, after the open streams request completes. If the driver sent the request synchronously by calling  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a>, then it must release the WDF memory object, after the method returns. If the client driver sent the request asynchronously by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a>, the driver must release the WDF memory object in the driver-implemented completion routine associated with the request.</p>
+<p>The stream array can be released after the client driver is finished using streams or has stored them for I/O requests. In the code example included in this topic, the driver stores the streams array in the device context. The driver releases the device context just before releasing the device object is removed.   </p>
+<h3><a id="How_to_transfer_data_to_a_particular_stream"></a><a id="how_to_transfer_data_to_a_particular_stream"></a><a id="HOW_TO_TRANSFER_DATA_TO_A_PARTICULAR_STREAM"></a>How to transfer data to a particular stream</h3>
+<p>To send a data transfer request to a particular stream, you'll need a WDF request object. Typically, the client driver is not required to allocate a WDF request object. When the I/O Manager receives a request from an application, the I/O Manager creates an IRP for the request. That IRP is intercepted by the framework. The framework then allocates a WDF request object to represent the IRP. After that, the framework passes the WDF request object to the client driver. The client driver can then associate the request object with the data transfer URB and send it down to the USB driver stack.</p>
+<p>If the client driver does not receive a WDF request object from the framework and wants to send the request asynchronously, the driver must allocate a WDF request object by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff549951(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCreate</strong></a> method. Format the new object  by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551139(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForUrb</strong></a>, and the send the request by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a>. </p>
+<p>In the synchronous cases, passing a  WDF request object is optional. </p>
+<p>To transfer data to streams, you must use URBs. The URB must be formatted by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551139(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForUrb</strong></a>. </p>
+<p> The following WDF methods are <em>not</em> supported for streams:</p>
+<p>
+</p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551136(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForRead</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551141(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForWrite</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551155(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeReadSynchronously</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551163(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWriteSynchronously</strong></a>
+</li>
+</ul>
+
+<p>The following procedure assumes that the client driver receives the request object from framework.</p>
+<p>
+</p><ol>
+<li>Allocate an URB by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a>. This method allocates a WDF memory object that contains the newly allocated URB. The client driver can choose to allocate an URB for every I/O request or allocate an URB and reuse it for the same type of request.</li>
+<li>Format the URB for a bulk transfer by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538953(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildInterruptOrBulkTransferRequest</strong></a>. In the <em>PipeHandle</em> parameter, specify the handle to the stream. The stream handles were obtained in a previous request, described in the <a href="#open_streams">How to open static streams</a> section.</li>
+<li>Format the WDF request object by calling the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551139(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForUrb</strong></a> method. In the call, specify the WDF memory object that contains the data transfer URB. The memory object was allocated in step 1. </li>
+<li>Send the URB as a WDF request either by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff551158(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeSendUrbSynchronously</strong></a>. If you call <strong>WdfRequestSend</strong>, you must specify a completion routine by calling  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550030(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSetCompletionRoutine</strong></a> so that the client driver can get notified when the asynchronous operation is complete.  You must free the data transfer URB in the completion routine.</li>
+</ol>
+<p><strong> WDM drivers:  </strong>Allocate an URB by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a> and format it for bulk transfer (see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540352(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_BULK_OR_INTERRUPT_TRANSFER</strong></a>). To format the URB, you can call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538953(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildInterruptOrBulkTransferRequest</strong></a> or format the URB structure manually. Specify the handle to the stream in the URB's <strong>UrbBulkOrInterruptTransfer.PipeHandle</strong> member.</p>
+
+<h3><a id="How_to_close_static_streams"></a><a id="how_to_close_static_streams"></a><a id="HOW_TO_CLOSE_STATIC_STREAMS"></a>How to close static streams</h3>
+<p>The client driver can close streams after the driver is finished using them. However, the close-stream request is optional. The USB driver stack closes all streams when the endpoint associated with the streams is de-configured. An endpoint is de-configured when an alternate configuration or interface is selected, the device is removed, and so on.  A client driver must close streams if the driver wants to open a different number of streams. To send a close-stream request:</p>
+<ol>
+<li>Allocate an <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439423(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateUrb</strong></a>. </li>
+<li>Format the URB for the close-streams request. The  <strong>UrbPipeRequest</strong> member of the  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure is an <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540419(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_PIPE_REQUEST</strong></a> structure. Fill in its members as follows: <ul>
+<li>The <strong>Hdr</strong> member of <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540419(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_PIPE_REQUEST</strong></a> must be URB_FUNCTION_CLOSE_STATIC_STREAMS</li>
+<li>The <strong>PipeHandle</strong> member must be the handle to the endpoint that contains the  open streams in use.  </li>
+</ul>
+</li>
+<li>Send the URB as a WDF request either by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550027(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff550105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a>.</li>
+</ol>
+<p>The close-handle request closes all streams that were previously opened by the client driver. The client driver cannot use the request to close  specific streams in the endpoint.</p>
+<h2>Remarks</h2>
+<p><strong>Best practices for sending a static streams request</strong></p>
+<p>The USB driver stack performs a number of validations on the received URB. To avoid validation errors, the client driver must consider the following:</p>
+<ul>
+<li>Do not send an open-stream or close-stream request to an endpoint that does not support streams. Call  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh439434(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceQueryUsbCapability</strong></a> (for WDM drivers, <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh406230(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_QueryUsbCapability</strong></a>) to determine static streams support and only send streams requests if the endpoint supports them.</li>
+<li>Do not request a number (of streams to open) that exceeds the maximum number of streams supported or send a request without specifying the number of streams. Determine the number of streams based on the number of streams supported by the USB driver stack and the device's endpoint.</li>
+<li>Do not send an open-stream request to an endpoint that already has open streams.</li>
+<li>Do not send a close-stream request to an endpoint that does not have open streams.</li>
+<li>After static streams are open for an endpoint, do not send I/O requests by using the endpoint pipe handle that was obtained through a select-configuration or select-interface requests. This is true even if the static streams have been closed. 
+</li>
+</ul>
+<p><strong>Reset and abort pipe operations</strong></p>
+<p>At times, transfers to or  from an endpoint can fail. Such failures can result from an error condition on the endpoint or  host controller, such as a stall or halt condition. To clear the error condition, the client driver first cancels pending transfers and then resets the pipe with which the endpoint is associated. To cancel pending transfers, the client driver can send an abort-pipe request. To reset a pipe, the client driver must send a reset-pipe request. </p>
+<p>In the case of stream transfers, both abort-pipe and reset-pipe requests are not supported for individual streams associated with the bulk endpoint. If a transfer fails on a particular stream pipe, the host controller stops transfers on all other pipes (for other streams). To recover from the error condition, the client driver should manually cancel transfers to each stream. Then, the client driver must send a reset-pipe request by using the pipe handle to bulk endpoint. For that request, the client driver must specify the pipe handle to the endpoint in a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540419(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_PIPE_REQUEST</strong></a> structure and set the URB function (<strong>Hdr.Function</strong>) to URB_FUNCTION_SYNC_RESET_PIPE_AND_CLEAR_STALL.</p>
+<h2><a id="Complete_example"></a><a id="complete_example"></a><a id="COMPLETE_EXAMPLE"></a>Complete example</h2>
+<p>The following code example shows how to open streams.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_eb48bc97-1ac9-4f82-8ae5-be2ac4b15116');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_eb48bc97-1ac9-4f82-8ae5-be2ac4b15116" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS
+    OpenStreams (
+    _In_ WDFDEVICE Device,
+    _In_ WDFUSBPIPE Pipe)
+{
+    NTSTATUS status;
+
+    PDEVICE_CONTEXT deviceContext;
+
+    PPIPE_CONTEXT pipeContext;
+
+    USHORT cStreams = 0;
+
+    USBD_PIPE_HANDLE usbdPipeHandle;
+
+    WDFMEMORY urbMemory = NULL;
+    PURB      urb = NULL;
+
+    PAGED_CODE();
+
+    deviceContext =GetDeviceContext(Device);
+
+    pipeContext = GetPipeContext (Pipe);
+
+    if (deviceContext-&gt;MaxStreamsController == 0)
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Static streams are not supported.");
+
+        status = STATUS_NOT_SUPPORTED;
+
+        goto Exit;
+
+    }
+
+    // If static streams are not supported, number of streams supported is zero. 
+
+    if (pipeContext-&gt;MaxStreamsSupported == 0)
+    {
+        status = STATUS_DEVICE_CONFIGURATION_ERROR;
+
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Static streams are not supported by the endpoint.");
+
+        goto Exit;
+    }
+
+    // Determine the number of streams to open.
+    // Compare the number of streams supported by the endpoint with the 
+    // number of streams supported by the host controller, and choose the 
+    // lesser of the two values. The deviceContext-&gt;MaxStreams value was 
+    // obtained in a previous call to WdfUsbTargetDeviceQueryUsbCapability
+    // that determined whether or not static streams is supported and
+    // retrieved the maximum number of streams supported by the 
+    // host controller. The device context stores the values for IN and OUT 
+    // endpoints.
+
+    // Allocate an array of USBD_STREAM_INFORMATION structures to store handles to streams.
+    // The number of elements in the array is the number of streams to open.
+    // The code snippet stores the array in its device context.
+
+
+    cStreams = min(deviceContext-&gt;MaxStreamsController, pipeContext-&gt;MaxStreamsSupported);
+
+    // Allocate an array of streams associated with the IN bulk endpoint
+    // This array is released in CloseStreams.
+
+    pipeContext-&gt;StreamInfo = (PUSBD_STREAM_INFORMATION) ExAllocatePoolWithTag (
+        NonPagedPool,
+        sizeof (USBD_STREAM_INFORMATION) * cStreams,
+        USBCLIENT_TAG);
+
+    if (pipeContext-&gt;StreamInfo == NULL)
+    {
+        status = STATUS_INSUFFICIENT_RESOURCES;
+
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Could not allocate stream information array.");
+
+        goto Exit;
+    }
+
+    RtlZeroMemory (pipeContext-&gt;StreamInfo,  
+        sizeof (USBD_STREAM_INFORMATION) * cStreams);
+
+    // Get USBD pipe handle from the WDF target pipe object. The client driver received the
+    // endpoint pipe handles during device configuration.
+
+    usbdPipeHandle = WdfUsbTargetPipeWdmGetPipeHandle (Pipe);
+
+
+    // Allocate an URB for the open streams request. 
+    // WdfUsbTargetDeviceCreateUrb returns the address of the 
+    // newly allocated URB and the WDFMemory object that 
+    // contains the URB.
+
+    status = WdfUsbTargetDeviceCreateUrb (
+        deviceContext-&gt;UsbDevice,
+        NULL,
+        &amp;urbMemory,
+        &amp;urb);
+
+    if (status != STATUS_SUCCESS)
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Could not allocate URB for an open-streams request.");
+
+        goto Exit;
+    }
+
+    // Format the URB for the open-streams request.
+    // The UsbBuildOpenStaticStreamsRequest inline function formats the URB by specifying the
+    // pipe handle to the entire bulk endpoint, number of streams to open, and the array of stream structures.
+
+    UsbBuildOpenStaticStreamsRequest (
+        urb,
+        usbdPipeHandle,
+        (USHORT)cStreams,
+        pipeContext-&gt;StreamInfo);
+
+
+    // Send the request synchronously.
+    // Upon completion, the USB driver stack populates the array of with handles to streams.
+
+    status = WdfUsbTargetPipeSendUrbSynchronously (
+        Pipe,
+        NULL,
+        NULL,
+        urb);
+
+    if (status != STATUS_SUCCESS)
+    {
+        goto Exit;
+    }
+
+Exit:
+
+    if (urbMemory)
+    {
+        WdfObjectDelete (urbMemory);
+    }
+
+    return status;
+
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff539286(v=vs.85).aspx">USB I/O Operations</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to open and close static streams in a USB bulk endpoint%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="zcw9njCudwfbsICKaeWMhmIr4F5Mfvz18ChoJSdlKDT1rzwXk67pKCjbbgVYwlkFz_GEKqhat-XrOzAgGqpo86Y6ev0c0af3hJNqCyQtx0E7WritS29SRGDI8rHgLn2NO39SwQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/hh450846(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh450846(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="yBWLsJsI-J08WRhYGADI0-XU7FxSFr_51yIfT65DjK_vP4gMUVVwKeQEmPhk4BT8VqbaFoIOTvveFMehhKE2tdeOTo5K2nvTOanJRhXklPsAAbkkrU8MmqSqKgaFrdRcxl5Udg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh450846(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5a253fe9-7194-4455-86e7-bca87c02dd7a\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh450846(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:09 GMT -->
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn312121.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn312121(v=vs.85).aspx" />
+        <title>Talking to USB devices, start to finish (Windows Store app) (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn312121(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn312121(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn312121(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn312121(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93C-9:49:47 AM" />
+
+<meta name="Search.ShortId" content="dn312121" />
+
+<meta name="ms.shortidmsdn" content="dn312121" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074987&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn312121.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303342(v=vs.85).aspx" id="hh948125_VS.85_en-us" mtpsaliasid="" mtpsassetid="B3F1A1A6-0908-4144-8454-76A2FB70619B_VS.85_en-us" mtpsshortid="dn303342_VS.85_en-us" title="Developing Windows applications for USB devices">Developing Windows applications for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303355(v=vs.85).aspx" id="jj151904_VS.85_en-us" mtpsaliasid="" mtpsassetid="DEE30A6F-15AE-413B-B3F3-1C0250037D1A_VS.85_en-us" mtpsshortid="dn303355_VS.85_en-us" title="Windows Store app for a USB device">Windows Store app for a USB device</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn312121(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Talking to USB devices, start to finish (Windows Store app)">Talking to USB devices, start to finish (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303351(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to add USB device capabilities to the app manifest">How to add USB device capabilities to the app manifest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303343(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to connect to a USB device (Windows Store app)">How to connect to a USB device (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303347(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer (Windows Store app)">How to send a USB control transfer (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303348(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB interrupt transfer request (Windows Store app)">How to send a USB interrupt transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303346(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB bulk transfer request (Windows Store app)">How to send a USB bulk transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303344(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to get USB descriptors (Windows Store app)">How to get USB descriptors (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303345(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select a USB interface setting (Windows Store app)">How to select a USB interface setting (Windows Store app)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Talking to USB devices, start to finish (Windows Store app)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Summary</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>End-to-end walkthrough for creating a Windows Store app that talks to a USB device </li>
+<li><strong>Companion sample</strong>: <a href="http://go.microsoft.com/fwlink/?LinkID=309716">Custom USB device access sample</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#walkthroughwriting_windows_store_app_for_usb_devices">Walkthrough—Writing Windows Store app for USB devices</a></li>
+<li><a href="#want_to_know_more_">Want to know more?</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Important APIs</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows.Devices.Usb</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows.Devices.Enumeration</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.background.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows.Devices.Background</strong></a>
+</li>
+</ul>
+
+</div>
+</div>
+<p>Use the Windows Runtime APIs, introduced in Windows 8.1, to write Windows Store apps that gives users access to their peripheral USB device. Such apps can connect to a device based on user-specified criteria, get information about the device, send data to the device and conversely get data steams from the device, and poll the device for interrupt data.</p>
+<p> Here we describe, how your Windows Store app using C++, C#, or Visual Basic app can implement those tasks, and link to examples that demonstrate the use of classes included in <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Windows.Devices.Usb</strong></a>. We'll go over the device capabilities required in the app manifest and how to launching the app when the device is connected. And we'll  show how to   run a data transfer task in the background even when the app is suspended to conserve battery life. </p>
+<p>Follow the steps in this section or, skip directly to the <a href="http://go.microsoft.com/fwlink/?LinkID=309716">Custom USB device access sample</a>. The companion sample implements all the steps here, but to keep things moving we won't walk through the code. Certain steps have a <strong>Find it in the sample</strong> section to help you find the code quickly.
+
+The structure of the sample's source files is simple and flat so you can easily find code without having to drill down through multiple layers of source files. But you may prefer to break up and organize your own project differently. 
+</p>
+<p>
+</p><h2><a id="in_this_section"></a>In this section</h2>
+<ul>
+<li><a href="#step1">Step 1—Install the Microsoft-provided WinUSB driver as function driver for your device.</a></li>
+<li><a href="#step2">Step 2—Get the device interface GUID, hardware ID, and device class information about your device.</a></li>
+<li><a href="#step3">Step 3—Determine whether the device class, subclass, and protocol allowed by the Windows Runtime USB API set. </a></li>
+<li><a href="#step4">Step 4—Create a basic Microsoft Visual Studio 2013 project that you can extend in this tutorial. </a></li>
+<li><a href="#step5">Step 5—Add USB device capabilities to the app manifest.</a></li>
+<li><a href="#step6">Step 6—Extend the app to open the device for communication. </a></li>
+<li><a href="#step7">Step 7—Study your USB device layout. (Recommended)</a></li>
+<li><a href="#step8">Step 8—Extend the app to get and show USB descriptors in the UI. </a></li>
+<li><a href="#step9">Step 9—Extend the app to send vendor-defined USB control transfers. </a></li>
+<li><a href="#step10">Step 10—Extend the app to read or write bulk data. </a></li>
+<li><a href="#step11">Step 11—Extend the app to get hardware interrupt data.</a></li>
+<li><a href="#step12">Step 12—Extend the app to select an interface setting that is not currently active. </a></li>
+<li><a href="#step13">Step 13—Close the device.</a></li>
+<li><a href="#step14">Step 14—Create a device metadata package for the app. </a></li>
+<li><a href="#step15">Step 15—Extend the app to implement AutoPlay activation so that the app is launched when the device is connected to the system. </a></li>
+<li><a href="#step16">Step 16—Extend the app to implement a background task that can perform lengthy USB transfers to the device, such as firmware update without the app getting suspended. </a></li>
+<li><a href="#step17">Step 17—Run Windows App Certification Kit.</a></li>
+</ul>
+
+<h2><a id="WalkthroughWriting_Windows_Store_app_for_USB_devices"></a><a id="walkthroughwriting_windows_store_app_for_usb_devices"></a><a id="WALKTHROUGHWRITING_WINDOWS_STORE_APP_FOR_USB_DEVICES"></a>Walkthrough—Writing Windows Store app for USB devices</h2>
+<table>
+<tr><th>Step</th><th>Description</th></tr>
+<tr><td><a id="step1"></a><a id="STEP1"></a><p><strong>Step 1</strong>—Install the Microsoft-provided WinUSB driver as function driver for your device.</p>
+</td><td>
+<p><strong>QuickStart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540283.aspx">WinUSB (Winusb.sys) Installation</a>
+</p>
+<p>You can install Winusb.sys in these ways:</p><ul>
+<li>When you connect your device, you might notice that Windows loads Winusb.sys automatically because the device is a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh450799.aspx">WinUSB Device</a>.</li>
+<li>Install the driver  by specifying  the system-provided device class in Device Manager.</li>
+<li>Install the driver by using a custom INF. You can get the INF in either of these two ways:<ul>
+<li>Get the INF from the hardware vendor.</li>
+<li>Write a custom INF that references the Microsoft-provided Winusb.inf file. For more information, see 
+
+
+
+
+
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540283.aspx">WinUSB (Winusb.sys) Installation</a>.</li>
+</ul>
+</li>
+</ul>
+
+</td></tr>
+<tr><td><a id="step2"></a><a id="STEP2"></a><p><strong>Step 2</strong>—Get the device interface GUID, hardware ID, and device class information about your device.</p>
+</td><td>
+<p>You can obtain that information from the device manufacturer. </p><ul>
+<li><strong>Vendor and product identifiers</strong><p>In Device Manager, view the device properties. On the <strong>Details</strong> tab, view the <strong>Hardware Id</strong> property value. That value is a combination of those two identifiers. For example, for the SuperMUTT device, the <strong>Hardware Id</strong> is "USB\VID_045E&amp;PID_F001"; vendor ID  is "0x045E" and product ID is "0xF001".</p>
+</li>
+<li><strong>Device class, subclass, and protocol codes</strong></li>
+<li><strong>Device interface GUID</strong></li>
+</ul>Alternatively, you can view information the registry. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj649944.aspx">USB Device Registry Entries</a>.
+</td></tr>
+<tr><td><a id="step3"></a><a id="STEP3"></a><p><strong>Step 3</strong>—Determine whether the device class, subclass, and protocol allowed by the Windows Runtime USB API set.</p>
+</td><td>
+<p>You can write a Windows Store app, if device class, subclass, and protocol code of the device is one of the following:</p><ul>
+<li><code>name:cdcControl,           classId:02 * *</code></li>
+<li><code>name:physical, classId:05 * *</code></li>
+<li><code>name:personalHealthcare,   classId:0f 00 00</code></li>
+<li><code>name:activeSync,           classId:ef 01 01</code></li>
+<li><code>name:palmSync,             classId:ef 01 02</code></li>
+<li><code>name:deviceFirmwareUpdate, classId:fe 01 01</code></li>
+<li><code>name:irda,                 classId:fe 02 00
+    </code></li>
+<li><code>name:measurement,          classId:fe 03 *</code></li>
+<li><code>name:vendorSpecific,       classId:ff * *</code></li>
+</ul>
+
+</td></tr>
+<tr><td><a id="step4"></a><a id="STEP4"></a><p><strong>Step 4</strong>—Create a basic Visual Studio 2013 project that you can extend in this tutorial.  </p>
+</td><td>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211386.aspx">Getting started with Windows Store apps</a>.</td></tr>
+<tr><td><a id="step5"></a><a id="STEP5"></a><p><strong>Step 5</strong>—Add USB device capabilities to the app manifest.</p>
+</td><td>
+<p><strong>QuickStart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303351.aspx">How to add USB device capabilities to the app manifest</a>
+</p>
+<p>Open your Package.appxmanifest file in a text editor and add the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/br211430.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceCapability</strong></a> element with <strong>Name</strong> attribute set to "usb" as shown in this example. </p><p class="note"><strong>Note</strong>  You cannot modify the USB device capability in  Visual Studio 2013. You must right-click the Package.appxmanifest file in <strong>Solution Explorer</strong> and select <strong>Open With...</strong>, and then <strong>XML (Text) Editor</strong>. The file opens in plain XML. </p>
+
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_555ddf52-0f9f-49e3-905a-975daf6829da');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_555ddf52-0f9f-49e3-905a-975daf6829da" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+&lt;Capabilities&gt;
+      &lt;!--When the device's classId is FF * *, there is a predefined name for the class. 
+          You can use the name instead of the class id. 
+          There are also other predefined names that correspond to a classId.--&gt;
+      &lt;m2:DeviceCapability Name="usb"&gt;
+          &lt;!--SuperMutt Device--&gt;
+          &lt;m2:Device Id="vidpid:045E 0611"&gt;
+              &lt;!--&lt;wb:Function Type="classId:ff * *"/&gt;--&gt;
+              &lt;m2:Function Type="name:vendorSpecific"/&gt;
+          &lt;/m2:Device&gt;
+      &lt;/m2:DeviceCapability&gt;
+  &lt;/Capabilities&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p><strong>Find it in the sample:</strong> The USB device capabilities are added in the Package.appxmanifest file.</p>
+</td></tr>
+<tr><td><a id="step6"></a><a id="STEP6"></a><p><strong>Step 6</strong>— Extend the app to open the device for communication. </p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303343.aspx">How to connect to a USB device (Windows Store app)</a>
+</p>
+<ol>
+<li>Find the device by building an Advanced Query Syntax (AQS) string that contains search criteria for finding the device in the enumerated device collection.</li>
+<li>Open the device in one of two ways:<ul>
+<li>Passing the AQS to <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.findallasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FindAllAsync</strong></a> and get the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceInformation</strong></a> object for the device.<p>For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh872189.aspx">Quickstart: enumerating commonly used devices</a>.</p>
+</li>
+<li>By using a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.devicewatcher.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceWatcher</strong></a> object to detect when the device is added to or removed from the system. <ol>
+<li>Pass the AQS to <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.createwatcher.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateWatcher</strong></a> and get a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.devicewatcher.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceWatcher</strong></a> object. </li>
+<li>Register event handlers on the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.devicewatcher.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceWatcher</strong></a> object. </li>
+<li>Get the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceInformation</strong></a> object for the device in your <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.devicewatcher.added.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Added</strong></a> event handler. </li>
+<li>Start and stop the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.devicewatcher.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceWatcher</strong></a> object.</li>
+</ol>For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh967756.aspx">How to get notifications if devices are added, removed, or changed</a>. </li>
+</ul>
+</li>
+<li>Get the device instance from the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.id.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceInformation.Id</strong></a> property.</li>
+<li>Call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.fromidasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FromIdAsync</strong></a> by passing the device instance string and get the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a> object. 
+</li>
+</ol>
+<p><strong>Find it in the sample:</strong> See files named Scenario1_DeviceConnect.</p>
+</td></tr>
+<tr><td><a id="step7"></a><a id="STEP7"></a><p><strong>Step 7</strong>(Recommended)—Study your <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh920375.aspx">USB device layout</a>.</p>
+</td><td>
+<p>Review basic USB concepts about configuring the device and performing data transfers: <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303352.aspx">Concepts for all USB developers</a>.</p>
+<p>View the device  configuration descriptor, interface descriptors for each supported alternate settings, and their endpoint descriptors. By using <a href="http://msdn.microsoft.com/en-us/library/ff560019(VS.85).aspx">USBView</a>, you can browse all USB controllers and the USB devices connected to them, and also inspect the device configuration.  </p>
+</td></tr>
+<tr><td><a id="step8"></a><a id="STEP8"></a><p><strong>Step 8</strong>— Extend the app to get and show USB descriptors in the UI. </p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303344.aspx">How to get USB descriptors (Windows Store app)</a>
+</p>
+<p>
+</p><ul>
+<li>Get the device descriptor by getting the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.devicedescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.DeviceDescriptor</strong></a> value.</li>
+<li>Get the configuration descriptor by getting the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbconfiguration.configurationdescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.ConfigurationDescriptor</strong></a> value.<ul>
+<li>Get the full configuration descriptor set by getting the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbconfiguration.descriptors.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.Descriptors</strong></a> property.</li>
+</ul>
+</li>
+<li>Get the array of interfaces within the configuration by getting the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbconfiguration.usbinterfaces.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.UsbInterfaces</strong></a> property.  </li>
+<li>Get the array of alternate settings  by getting <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterface.interfacesettings.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface.InterfaceSettings</strong></a>.</li>
+<li>Within the active alternate setting enumerate pipes and get the associated endpoints.<p>Endpoint descriptors are represented by these objects:</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbbulkinendpointdescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkInEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbbulkoutendpointdescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkOutEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterruptinendpointdescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterruptoutendpointdescriptor.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutEndpointDescriptor</strong></a>
+</li>
+</ul>
+</li>
+</ul>
+
+<p><strong>Find it in the sample:</strong> See files named Scenario5_UsbDescriptors.</p>
+</td></tr>
+<tr><td><a id="step9"></a><a id="STEP9"></a><p><strong>Step 9</strong>— Extend the app to send vendor-defined USB control transfers. </p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303347.aspx">How to send a USB control transfer request (Windows Store app)</a>
+</p>
+<p>
+</p><ol>
+<li>Get the vendor command from the hardware specification of the device.</li>
+<li>Create a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbsetuppacket.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbSetupPacket</strong></a> object and populate the setup packet by setting various properties.</li>
+<li>Start an asynchronous operation to send the control transfer by these methods depending on the direction of the transfer:<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.sendcontrolintransferasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SendControlInTransferAsync</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.sendcontrolouttransferasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SendControlOutTransferAsync</strong></a>
+</li>
+</ul>
+</li>
+</ol>
+
+<p><strong>Find it in the sample:</strong> See files named Scenario2_ControlTransfer.</p>
+</td></tr>
+<tr><td><a id="step10"></a><a id="STEP10"></a><p><strong>Step 10</strong>— Extend the app to read or write bulk data. </p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303346.aspx">How to send a USB bulk transfer request (Windows Store app)</a>
+</p>
+<p>
+</p><ol>
+<li>Get the bulk pipe object (<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbbulkoutpipe.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkOutPipe</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbbulkinpipe.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkInPipe</strong></a>).</li>
+<li>Configure the bulk pipe to set policy parameters.</li>
+<li>Set up the data stream by using the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.storage.streams.datareader.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DataReader</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.storage.streams.datawriter.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DataWriter</strong></a> object.</li>
+<li>Start an asynchronous transfer operation by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.storage.streams.datareader.loadasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DataReader.LoadAsync</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.storage.streams.datawriter.storeasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DataWriter.StoreAsync</strong></a>.</li>
+<li>Get results of the transfer operation.</li>
+</ol>
+
+<p><strong>Find it in the sample:</strong> See files named Scenario4_BulkPipes.</p>
+</td></tr>
+<tr><td><a id="step11"></a><a id="STEP11"></a><p><strong>Step 11</strong>— Extend the app to get hardware interrupt data.</p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303348.aspx">How to send a USB interrupt transfer request (Windows Store app)</a>
+</p>
+<p>
+</p><ol>
+<li>Get the interrupt pipe object (<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterruptinpipe.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInPipe</strong></a> or <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterruptoutpipe.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutPipe</strong></a>).</li>
+<li>Implement the interrupt handler for the  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterruptinpipe.datareceived.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DataReceived</strong></a> event.</li>
+<li>Register the event handler to start receiving data.</li>
+<li>Unregister the  event handler to stop receiving data.</li>
+</ol>
+
+<p><strong>Find it in the sample:</strong> See files named Scenario3_InterruptPipes.</p>
+</td></tr>
+<tr><td><a id="step12"></a><a id="STEP12"></a><p><strong>Step 12</strong>— Extend the app to select an interface setting that is not currently active. </p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303345.aspx">How to select a USB interface setting (Windows Store app)</a>
+</p>
+<p>When the device is opened for communication, the default interface and its first setting is selected. If you want to change that setting, follow these steps:</p><ol>
+<li>Get the active setting of a USB interface by using the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterfacesetting.selected.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterfaceSetting.Selected</strong></a> value.</li>
+<li>Set a USB interface setting by starting an asynchronous operation by calling <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbinterfacesetting.selectsettingasync.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterfaceSetting.SelectSettingAsync</strong></a>.</li>
+</ol>
+
+</td></tr>
+<tr><td><a id="step13"></a><a id="STEP13"></a><p><strong>Step 13</strong>— Close the device.</p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn303343.aspx">How to connect to a USB device (Windows Store app)</a>
+</p>
+<p>After you are finished using the UsbDevice object, close the device. </p>
+<p>C++ apps must release the reference  by using the <strong>delete</strong> keyword. C#/VB apps must call the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.dispose.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.Dispose</strong></a>  method. JavaScript apps must call <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.usb.usbdevice.close.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.Close</strong></a>.</p>
+<p><strong>Find it in the sample:</strong> See files named Scenario1_DeviceConnect.</p>
+</td></tr>
+<tr><td><a id="step14"></a><a id="STEP14"></a><p><strong>Step 14</strong>—Create a device metadata package for the app. </p>
+</td><td><strong>Tool: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh454213.aspx">Device Metadata Authoring Wizard</a>
+<ul>
+<li>If you have the Windows Driver Kit (WDK) installed, open <strong>Driver</strong> &gt; <strong>Device Metadata</strong> &gt; <strong>Authoring</strong>.</li>
+<li>If you have the Standalone SDK installed, the tool is located at <em>&lt;install_path&gt;</em>\bin\x86\DeviceMetadataWizardexe.</li>
+</ul>
+<p>Associate your app with the device by following the steps in the wizard. Enter this information about your device:</p>
+<p>
+</p><ul>
+<li>On the <strong>Device Info</strong> page, enter <strong>Model Name</strong>, <strong>Manufacturer</strong>, and <strong>Description</strong>.</li>
+<li>On the <strong>Hardware Info</strong> page, enter the hardware ID of your device.</li>
+</ul>
+
+<p class="proch"><img id="wedge" alt="Dn312121.wedge(en-us,VS.85).gif" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Dn312121.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>To declare the app as a privileged app for your device, follow these instructions:</strong></p>
+<ol>
+<li>On the <strong>App Info</strong> page, in the <strong>Privileged application</strong> group, enter the <strong>Package name</strong>, <strong>Publisher name</strong>, and <strong>Windows Store App ID</strong>.<p><img id="privileged_app" alt="device metatdata for privileged apps" src="http://i.msdn.microsoft.com/dynimg/IC666744.png" title="device metatdata for privileged apps" xmlns="" /></p><p class="note"><strong>Note</strong>  Do not check the <strong>Access custom driver</strong> option.</p>
+
+</li>
+<li>Open the <strong>Finish</strong> tab. Select the <strong>Copy packages to your system's local metadata store</strong> check box.</li>
+<li>Connect the device, in Control Panel, open <strong>View devices and printers</strong> and verify that the icon of the device is correct. </li>
+</ol>
+<p><strong>Find it in the sample:</strong> See the DeviceMetadata folder.</p>
+</td></tr>
+<tr><td><a id="step15"></a><a id="STEP15"></a><p><strong>Step 15</strong>—Extend the app to implement AutoPlay activation so that the app is launched when the device is connected to the system.
+</p>
+</td><td>
+<p><strong>Quickstart: </strong><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx">Register an app for an AutoPlay device</a>
+</p>
+<p>You can add AutoPlay capabilities so that app is launched when the device is connected to the system. You can enable Autoplay for all Windows Store apps (privileged or otherwise).</p>
+<p>
+</p><ol>
+<li>In your device metadata package, you must specify how the device should respond to an AutoPlay notification. On the <strong>Windows Info</strong> tab, select the <strong>Windows Store device app</strong> option and enter app information as shown here: </li>
+<li>In the app manifest, add <strong>AutoPlay Device</strong> declaration and launch information as shown here: <p><img id="AutoPlay" alt="AutoPlay" src="http://i.msdn.microsoft.com/dynimg/IC666745.png" title="AutoPlay" xmlns="" /></p>
+</li>
+<li>In the OnActivated method of the App class, check if the app is activated by the device. If it is, then the method receives a DeviceEventArgs parameter value that contains the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.enumeration.deviceinformation.id.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceInformation.Id</strong></a> property value. This is the same value described in <a href="#step6">Step 6—Extend the app to open the device for communication</a>.</li>
+</ol>
+
+<p><strong>Find it in the sample:</strong> See files named Autoplay. For JavaScript, see default.js.</p>
+</td></tr>
+<tr><td><a id="step16"></a><a id="STEP16"></a><p><strong>Step 16</strong>—Extend the app to implement a background task that can perform length transfers to the device, such as firmware update without the app getting suspended. </p>
+</td><td>
+<p>To implement background task, you need two classes.  </p><p>The background task class implements the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.applicationmodel.background.ibackgroundtask.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IBackgroundTask</strong></a> interface and contains the actual code you create to either sync or update your peripheral device. The background task class is executed when the background task is triggered and from the entry point provided in your app’s application manifest. </p>
+<p class="note"><strong>Note</strong>  The device background tasks infrastructure provided by Windows 8.1. For more information about Windows background tasks see  <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh977056.aspx">Supporting your app with background tasks</a>.</p>
+<p class="proch"><img id="wedge" alt="Dn312121.wedge(en-us,VS.85).gif" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="Dn312121.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Background task class</strong></p>
+<ol>
+<li>Implements the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.applicationmodel.background.ibackgroundtask.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IBackgroundTask</strong></a> interface required by the Windows background task infrastructure.</li>
+<li>Obtains the DeviceUseDetails instance passed to the class in the <strong>Run</strong> method and uses this instance to report progress back to the Windows Store app and to register for cancellation events.
+</li>
+<li>The <strong>Run</strong> method also calls the private OpenDevice and WriteToDeviceAsync methods that implement the background device sync code.
+</li>
+</ol>
+<p>The Windows Store app registers and triggers a DeviceUseTrigger background task. The app register, trigger, and handle progress on a background task.
+</p>
+<p class="note"><strong>Note</strong>  The example code that follows can be applied to the DeviceServicingTrigger background task by use the corresponding objects. The only difference between the two trigger objects and their corresponding APIs are the policy checks made by Windows. 
+</p>
+<ol>
+<li>Creates DeviceUseTrigger and BackgroundTaskRegistration objects.
+</li>
+<li>Checks to see if any background tasks were previously registered by this sample application and cancels them by calling the Unregister method on the task.
+</li>
+<li>Registers the background task that will sync with the device. The SetupBackgroundTask method is called from the SyncWithDeviceAsync method in the next step.
+<ol>
+<li>Initializes the DeviceUseTrigger and saves it for later use.
+</li>
+<li>Creates a BackgroundTaskBuilder object and uses its Name, TaskEntryPoint and SetTrigger properties and method to register the app’s DeviceUseTrigger object and background task name. The BackgroundTaskBuilder object’s TaskEntryPoint property is set to the full name of the background task class that will be run when the background task is triggered.
+</li>
+<li>Registers for completion and progress events from the background task so the Windows Store app can provide completion and progress updates to the user.
+</li>
+</ol>
+</li>
+<li>The private SyncWithDeviceAsync method registers the background task that will sync with the device and starts the background sync.<ol>
+<li>Calls the SetupBackgroundTask method from the previous step and registers the background task that will sync with the device.
+</li>
+<li>Calls the private StartSyncBackgroundTaskAsync method which starts the background task.
+</li>
+<li>Closes the app’s handle to the device to ensure that the background task is able to open the device when it starts.
+<p class="note"><strong>Note</strong>  The background task will need to open the device to perform the update so the Windows Store app must close its connections to the device before calling RequestAsync</p>
+</li>
+<li>Calls the DeviceUseTrigger object’s RequestAsync method which starts triggers the background task and returns the DeviceTriggerResults object from RequestAsync used to determine if the background task started successfully.
+<p class="note"><strong>Note</strong>  Windows checks to ensure that all necessary task initiation policy checks have been completed. If all policy checks are completed the update operation is now running as a background task outside of the Windows Store app, allowing the app to be safely suspended while the operation is in progress. Windows will also enforce any runtime requirements and cancel the background task if those requirements are no longer met.
+</p>
+</li>
+<li>Uses the DeviceTriggerResults object returned from StartSyncBackgroundTaskAsync to determine if the background task started successfully. A switch statement is used to inspect the result from DeviceTriggerResults.</li>
+</ol>
+</li>
+<li>Implements a private OnSyncWithDeviceProgress event handler that will update the app UI with progress from the background task.</li>
+<li>Implements a private OnSyncWithDeviceCompleted event handler to handle the transition from background tasks to foreground app when the background task has completed.<ol>
+<li>Uses the CheckResults method of the BackgroundTaskCompletedEventArgs object to determine if any exceptions were thrown by the background task.
+</li>
+<li>The app reopens the device for use by the foreground app now that the background task is complete and updates the UI to notify the user.
+</li>
+</ol>
+</li>
+<li>Implements private button click event handlers from the UI to start and cancel the background task.
+<ol>
+<li>The private Sync_Click event handler calls the SyncWithDeviceAsync method described in the previous steps.
+</li>
+<li>The private CancelSync_Click event handler calls the private CancelSyncWithDevice method to cancel the background task.
+</li>
+</ol>
+</li>
+<li>The private CancelSyncWithDevice method unregisters and cancels any active device syncs so the device can be reopened by using the Unregister method on the BackgroundTaskRegistration object.</li>
+</ol>
+
+<p><strong>Find it in the sample:</strong> See files named Scenario7_Sync files. Background class is implemented in IoSyncBackgroundTask. </p>
+</td></tr>
+<tr><td><a id="step17"></a><a id="STEP17"></a><p><strong>Step 17</strong>—Run Windows App Certification Kit.</p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh694081.aspx">Using the Windows App Certification Kit</a>
+</p>
+<p>Recommended. Running WACK helps you make sure your app fulfills Windows Store requirements, so you should do this when you've added major functionality to your app.</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="Want_to_know_more_"></a><a id="want_to_know_more_"></a><a id="WANT_TO_KNOW_MORE_"></a>Want to know more?</h2>
+<p>Learn more from related samples.</p><p><strong>Related Samples</strong></p>
+<ul>
+<li><a href="http://go.microsoft.com/fwlink/?LinkID=309716">USB CDC Control sample</a></li>
+<li><a href="http://go.microsoft.com/fwlink/?LinkID=309716">Firmware Update USB Device sample</a></li>
+</ul>
+
+<p>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn263191.aspx">Design and create a Windows Store app UI, start to finish</a>
+</p>
+<p>Learn more about designing Windows Store app UI. </p>
+<p>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/br229583.aspx">Roadmap for Windows Store apps using  C# and Visual Basic</a> and <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh700360.aspx">Roadmap for Windows Store apps using C++</a>
+</p>
+<p>Learn more about creating Windows Store apps using C++, C#, or Visual Basic in general.</p>
+<p>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh464924.aspx">Asynchronous programming (Windows Store apps)</a>
+</p>
+<p>Learn about how to make your apps stay responsive when they do work that might take an extended amount of time. </p>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20Talking to USB devices, start to finish (Windows Store app)%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="52o-3cgVIpJGVAfNHbGy_v10Kivqfreq3u3QdIPn5DM3Qzy88f5NfvynNizWbYe7aCXjDV9e15xV2udObRGDuOi24UB-e5etZft_d72xj9imZTz_9fltLoOil29HqbgHzH24Mg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/dn312121.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn312121.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="Gx2MpQI7Ul79G0XkxH7JDQZQCqwX7UE7T-5bTl_pJHac25tNX9PHIMrFzZ_z9vkGzp9iOxW0WvBkOPoLRNhFZvcfkLviKUyWCePEeQJ8NLTcIZN8Ps7EI7NeYj9IOAtE0YRssQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn312121(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"694f02cc-197d-4a13-9f78-8af20e413d98\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn312121.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:06 GMT -->
+</html>
