@@ -1,143 +1,311 @@
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Hyper-V documentation" />
-	<meta name="keywords" content="Hyper-V, Hyper-V internals, Hyper-V MSDN, Hyper-V API" />
-	<title>Hyper-V documentation (MSDN copy, 2013)</title>
-	<style type="text/css">
-	<!--
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Навигация</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-	margin: 0;  padding: 0;  margin-bottom: 15px;  margin-top: 8px;
-	background: #77b;
-}
-body, td {
-	font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	}
+    :root {
+      --bg: #f0f5fb;
+      --surface: #ffffff;
+      --text: #111c2d;
+      --muted: rgba(17,28,45,0.44);
+      --blue: linear-gradient(110deg,
+        #7ab4e8 0%,
+        #2e6fba 20%,
+        #5a9fd4 38%,
+        #1a4f8a 55%,
+        #4888c4 70%,
+        #82b8ec 85%,
+        #2e6fba 100%
+      );
+      --blue-glow: rgba(46,111,186,0.16);
+      --blue-border: rgba(46,111,186,0.26);
+      --blue-border-hover: rgba(46,111,186,0.72);
+    }
 
-#subTitle {
-	background: #000;  color: #fff;  padding: 4px;  font-weight: bold; 
-	}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-#siteNavigation a, #siteNavigation .current {
-	font-weight: bold;  color: #448;
-	}
-#siteNavigation a:link    { text-decoration: none; }
-#siteNavigation a:visited { text-decoration: none; }
+    body::before {
+      content: '';
+      position: fixed;
+      width: 640px; height: 440px;
+      background: radial-gradient(ellipse, rgba(46,111,186,0.12) 0%, transparent 70%);
+      top: -120px; right: -80px;
+      filter: blur(100px);
+      pointer-events: none;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      width: 520px; height: 380px;
+      background: radial-gradient(ellipse, rgba(90,159,212,0.09) 0%, transparent 70%);
+      bottom: -80px; left: -60px;
+      filter: blur(120px);
+      pointer-events: none;
+      animation: drift 18s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift { from { transform: translate(0,0); } to { transform: translate(24px,16px); } }
 
-#siteNavigation .current { background-color: #ccd; }
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: min(480px, 92vw);
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-#siteNavigation a:hover   { text-decoration: none;  background-color: #fff;  color: #000; }
-#siteNavigation a:active  { text-decoration: none;  background-color: #ccc; }
+    .rule {
+      width: 48px; height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
 
+    .eyebrow {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
 
-a:link    { text-decoration: underline;  color: #00f; }
-a:visited { text-decoration: underline;  color: #000; }
-a:hover   { text-decoration: underline;  color: #c00; }
-a:active  { text-decoration: underline; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
 
-#pageContent {
-	clear: both;
-	border-bottom: 6px solid #000;
-	padding: 10px;  padding-top: 20px;
-	line-height: 1.65em;
-	background-image: url(backblue.gif);
-	background-repeat: no-repeat;
-	background-position: top right;
-	}
+    .subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
 
-#pageContent, #siteNavigation {
-	background-color: #ccd;
-	}
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
+    .nav-item {
+      opacity: 0;
+      animation: slideIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .nav-item:nth-child(1) { animation-delay: 0.25s; }
+    .nav-item:nth-child(2) { animation-delay: 0.40s; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
 
-.imgLeft  { float: left;   margin-right: 10px;  margin-bottom: 10px; }
-.imgRight { float: right;  margin-left: 10px;   margin-bottom: 10px; }
+    .nav-link {
+      display: flex;
+      align-items: stretch;
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: 0 0 0 1.5px var(--blue-border),
+                  0 1px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+    }
 
-hr { height: 1px;  color: #000;  background-color: #000;  margin-bottom: 15px; }
+    .nav-link:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 0 1.5px var(--blue-border-hover),
+                  0 8px 28px var(--blue-glow),
+                  0 2px 10px rgba(0,0,0,0.06);
+    }
 
-h1 { margin: 0;  font-weight: bold;  font-size: 2em; }
-h2 { margin: 0;  font-weight: bold;  font-size: 1.6em; }
-h3 { margin: 0;  font-weight: bold;  font-size: 1.3em; }
-h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
+    /* Cool blue specular shimmer */
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(122,180,232,0.18) 38%,
+        rgba(210,232,252,0.34) 50%,
+        rgba(122,180,232,0.18) 62%,
+        transparent 80%
+      );
+      transform: translateX(-130%);
+      transition: transform 0.60s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .nav-link:hover::before { transform: translateX(130%); }
 
-.blak { background-color: #000; }
-.hide { display: none; }
-.tableWidth { min-width: 400px; }
+    /* Blue left accent bar */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 18%; bottom: 18%;
+      width: 3.5px;
+      background: var(--blue);
+      border-radius: 0 3px 3px 0;
+      transform: scaleY(0);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+      transform-origin: center;
+      z-index: 2;
+    }
+    .nav-link:hover::after { transform: scaleY(1); }
 
-.tblRegular       { border-collapse: collapse; }
-.tblRegular td    { padding: 6px;  background-image: url(fade.gif);  border: 2px solid #99c; }
-.tblHeaderColor, .tblHeaderColor td { background: #99c; }
-.tblNoBorder td   { border: 0; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 22px 26px;
+      position: relative;
+      z-index: 2;
+    }
 
+    .link-text { display: flex; flex-direction: column; gap: 4px; }
 
-// -->
-</style>
+    .link-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
 
+    .link-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* Polished blue button */
+    .link-arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(145deg,
+        #a8d0f0 0%,
+        #3a80cc 28%,
+        #1a508c 55%,
+        #5898d4 78%,
+        #c0daf4 100%
+      );
+      box-shadow:
+        0 2px 10px rgba(30,80,160,0.30),
+        inset 0 1.5px 2px rgba(255,255,255,0.65),
+        inset 0 -1px 1.5px rgba(0,0,0,0.14);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+    }
+    .nav-link:hover .link-arrow {
+      transform: translateX(3px) rotate(45deg);
+      box-shadow:
+        0 4px 18px rgba(30,80,160,0.40),
+        inset 0 1.5px 2px rgba(255,255,255,0.65),
+        inset 0 -1px 1.5px rgba(0,0,0,0.14);
+    }
+    .link-arrow svg {
+      stroke: rgba(255,255,255,0.92);
+      filter: drop-shadow(0 0.5px 1px rgba(0,40,100,0.30));
+    }
+
+    /* Subtle psychology note */
+    .note {
+      margin-top: 32px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: rgba(46,111,186,0.06);
+      border: 1px solid rgba(46,111,186,0.12);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      animation: fadeUp 0.8s 0.6s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .note strong {
+      color: #2e6fba;
+      font-weight: 500;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(17,28,45,0.22);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+  </style>
 </head>
+<body>
+  <main class="wrapper">
+    <div class="rule"></div>
+    <span class="eyebrow">Содержание</span>
+    <h1>Выберите страницу</h1>
+    <p class="subtitle">Здесь собраны ссылки на доступные разделы сайта</p>
 
-<table width="76%" border="0" align="center" cellspacing="0" cellpadding="3" class="tableWidth">
-	<tr>
-	<td id="subTitle">Hyper-V documentation</td>
-	</tr>
-</table>
-<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0" class="tableWidth">
-<tr class="blak">
-<td>
-	<table width="100%" border="0" align="center" cellspacing="1" cellpadding="0">
-	<tr>
-	<td colspan="6"> 
-		<table width="100%" border="0" align="center" cellspacing="0" cellpadding="10">
-		<tr> 
-		<td id="pageContent"> 
-<!-- ==================== End prologue ==================== -->
-
-	<meta name="generator" content="HTTrack Website Copier/3.x">
-	<TITLE>Local index - Hyper-V</TITLE>
-</HEAD>
-<BODY>
-<H1 ALIGN=Center>Index of locally available sites:</H1>
-	<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="0">
-		<TR>
-			<TD BACKGROUND="fade.gif">
-				&middot;
-					<A HREF="msdn.microsoft.com/en-us/library/windows/hardware/ff542584(v%3dvs.85).html">
-						Hypervisor (Windows Drivers)
-					</A>		
-			</TD>
-		</TR>
-	</TABLE>
-	<BR>
-	<BR>
-	<BR>
-  	<H6 ALIGN="RIGHT">
-	<I>Mirror and index made by HTTrack Website Copier [XR&amp;CO'2008]</I>
-	</H6>
-	<!-- Mirror and index made by HTTrack Website Copier/3.47-27 [XR&CO'2013] -->
-	<!-- Thanks for using HTTrack Website Copier! -->
-	<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=msdn.microsoft.com/en-us/library/windows/hardware/ff542584(v%3dvs.85).html">
-
-
-<!-- ==================== Start epilogue ==================== -->
-		</td>
-		</tr>
-		</table>
-	</td>
-	</tr>
-	</table>
-</td>
-</tr>
-</table>
-
-<table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-	<tr>
-	<td id="footer"><small>&copy; 2008 Xavier Roche & other contributors - Web Design: Leto Kauler.</small></td>
-	</tr>
-</table>
-
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="HyperVResearchesHistory.html" class="nav-link">
+          <div class="nav-inner">
+            <div class="link-text">
+              <span class="link-title">Hyper-V reseaches history list</span>
+              <span class="link-desc">HyperVResearchesHistory.html</span>
+            </div>
+            <div class="link-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="msdn_archive.html" class="nav-link">
+          <div class="nav-inner">
+            <div class="link-text">
+              <span class="link-title">MSDN archive with Hyper-V documentation</span>
+              <span class="link-desc">msdn_archive.html</span>
+            </div>
+            <div class="link-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <p class="footer">index.html</p>
+  </main>
 </body>
-
 </html>
-
-
