@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134355.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" />
+        <title>Device.Streaming Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134355(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93C-9:12:15 AM" />
+
+<meta name="Search.ShortId" content="jj134355" />
+
+<meta name="ms.shortidmsdn" content="jj134355" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072735&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134355.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.Streaming Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.Streaming.HMFT</h2>
+      <div id="sectionSection0" class="section">
+        <p>Hardware Media Foundation Transform</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Streaming.HMFT.Decoding</p>
+              <p>Device.Streaming.HMFT.Encoding</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Streaming.HMFT.Decoding</h3>
+        <div class="subSection">
+          <p>Hardware Media Foundation Transform (HMFT) supports video decoding.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.HMFT</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Supported FormatsHMFT video decoder is only supported for MPEG-4 Part 2 and MJPEG.Media Foundation Compliance The video decoder Hardware Media Foundation Transform (HMFT) must fully comply with the following Media Foundation Transform (MFT) interfaces:</p>
+          <p>IMFTransform </p>
+          <p>IMFMediaEventGenerator </p>
+          <p>IMFShutdown </p>
+          <p>IMFQualityAdvise </p>
+          <p>IMFRealTimeClientEx</p>
+          <p>The HMFT video decoder must use Media Foundation work queue support (no thread creation) via IMFRealTimeCLientEx::SetWorkQueue. This ensures the following: </p>
+          <p>Multimedia Class Scheduler Service (MMCSS) support for playback and capture/encode</p>
+          <p>Improved core scalability</p>
+          <p>The HMFT video decoder must support IMF2DBuffer2 for enhanced security, but also work with input buffers of type IMF2DBuffer, and IMFMediaBuffer in that order of preference.DirectX RenderingThe video decoder HMFT must support both DirectX(DX)9 and DX11 devices, and it must avoid copies in or out of DX11 components. On MFT_Set_D3D_Manager, the video decoder HMFT must first query for DirectX Graphics Infrastructure (DXGI) Manager and then query for D3D9 Manager if DXGI Manager is not found.The HMFT video decoder must support system memory output because some transforms in the pipeline may support only system memory buffers.If the HMFT video decoder is based on GPU must support DX11.Memory UsageThe HMFT video decoder must be an asynchronous MFT. This reduces the memory working set by about 50 percent.Trusted Merit Certification and VerificationThe video decoder HMFT must support the Trusted Merit Certification and Verification process, as defined across the Windows Hardware Certification Kit. Each HMFT video decoder must be provided as a separate binary and must be individually signed.HMFT video decoders must not advertise support for more than one compression standard.All HMFTs must set the following Media Foundation attributes while registering the MFT with the system:</p>
+          <p>MFT_ENUM_HARDWARE_URL_Attribute</p>
+          <p>MFT_ENUM_HARDWARE_VENDOR_ID_Attribute</p>
+          <p>Format RequirementsHMFT video decoders must not advertise support for inbox formats supported by DirectX Video Acceleration (DXVA) (H.264, WMV, MPEG2). If implemented, the HMFT video decoder for MPEG-4 Part 2 must support Simple and Advanced Simple Profile (If Global Motion Compensation (GMC) is not supported, then the media type must be rejected to allow the software decoder to be used for playback), and all levels. </p>
+          <p>The decoder must be fully conformant to specifications that are defined for the format.</p>
+          <p>The MPEG-4 Part 2 decoder must fully support H.263baseline content and advertise support for this media type. </p>
+          <p>In addition to the preceding requirements, we recommend that the decoder support post-processing for deblocking and deringing. Vendors may provide other HMFTs video decoders for formats that are not supported inbox, but there are no verification tests or logo certification available. Note: The recommendations and requirements that are defined in this document apply to all formats.FunctionalityThe video decoder HMFT must support the following functionalities:</p>
+          <p>Dynamic format and resolution changes</p>
+          <p>Trick modes (playback rate control, thinning mode) and seek</p>
+          <p>Performance The HMFT video decoder must be able to decode 40 megabits per second (Mbps) at 1080p in real time. Interlace SupportThe HMFT video decoder must support the input format for both interlaced and progressive bit streams. It must not de-interlace. It may support inverse telecine (IVTC).Multiple InstancesThe HMFT video decoder must support multiple instances of the decoder in parallel (both in-process and out of process) to enable multiple concurrent video playback streams in the same or different applications.Design NotesThe HMFT video decoder must be installed and uninstalled through a device driver that meets Windows security requirements.  The driver must not cause the operating system to crash or hang, and must disallow memory violations.Each HMFT component must be a separate binary, individually certified and signed.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>HMFT is a feature that enables Independent Hardware Vendors (IHVs) to provide to hardware media solutions for non-DXVA supported formats.DX9 support is required for older applications. DX11 support is required for the new features, scenarios and improved performance.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.HMFT.Encoding</h3>
+        <div class="subSection">
+          <p>Hardware Media Foundation Transform (HMFT) supports video encoding</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.HMFT</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A. H.264 Encode </p>
+          <p>-----------------------------------------------------</p>
+          <p>If your hardware supports H.264 Encode, you must:</p>
+          <p>A.1 On input: </p>
+          <p>A.1.1 Support NV12</p>
+          <p>A.1.2 If your hardware supports it: </p>
+          <p>A.1.2.1 Support IYUV and YUY2</p>
+          <p>A.1.3 Support input buffers of (and query in this order):</p>
+          <p>A.1.3.1 IMF2DBuffer2</p>
+          <p>A.1.3.2 <a href="http://msdn.microsoft.com/library/ms699894(VS.85).aspx">IMF2DBuffer</a></p>
+          <p>A.1.3.3 <a href="http://msdn.microsoft.com/library/ms696261(VS.85).aspx">IMFMediaBuffer</a></p>
+          <p>A.2 On output: </p>
+          <p>A.2.1 Support Baseline profile</p>
+          <p>A.2.2 Support Constrained Baseline profile</p>
+          <p>A.2.3 Support Main profile</p>
+          <p>A.2.4 Support Constrained High profile</p>
+          <p>A.3 Your H.264 encoder must expose the following interfaces: </p>
+          <p>A.3.1<a href="http://msdn.microsoft.com/library/ms696260(VS.85).aspx">IMFTransform </a></p>
+          <p>A.3.1.1 <a href="http://msdn.microsoft.com/en-US/library/ms695394(v=vs.85).aspx">IMFTransform::ProcessEvent</a></p>
+          <p>Must handle the MEEncodingParameters event</p>
+          <p>A.3.2 <a href="http://msdn.microsoft.com/library/dd311953(VS.85).aspx">ICodecAPI</a></p>
+          <p>A.3.2.1 ICodecAPI requires the following functions to be implemented:</p>
+          <p>A.3.2.1.1 <a href="http://msdn.microsoft.com/library/dd311960(v=VS.85).aspx">IsSupported </a></p>
+          <p>A.3.2.1.2 <a href="http://msdn.microsoft.com/library/dd311958(v=VS.85).aspx">GetValue </a></p>
+          <p>A.3.2.1.3 <a href="http://msdn.microsoft.com/library/dd311966(v=VS.85).aspx">SetValue </a></p>
+          <p>A.3.2.1.4 <a href="http://msdn.microsoft.com/en-us/library/dd311956(v=vs.85).aspx">GetParameterRange</a></p>
+          <p>A.3.2.1.5 <a href="http://msdn.microsoft.com/en-us/library/dd311957(v=vs.85).aspx">GetParameterValues</a></p>
+          <p>A.3.2.2 ICodecAPI requires the following properties to be supported:</p>
+          <p>A.3.2.2.1 Peak-constrained VBR mode </p>
+          <p>A.3.2.2.2 Quality-based VBR mode </p>
+          <p>A.3.2.2.3 CBR encoding </p>
+          <p>A.3.2.2.4 GOP distance </p>
+          <p>Must support parameter range with maximum value IntMAX</p>
+          <p>A.3.2.2.5 Frame-QP control </p>
+          <p>Must support at minimum QP range from 20 to 40. Must return error when invalid value (e.g. 52) is set.</p>
+          <p>A.3.2.2.6 Force-Key-frame control </p>
+          <p>IDR must be preceded with SPS/PPS. When number of temporal layers &gt; 1, Key frame must be inserted in the next base temporal layer frame in order to preserve temporal structure. For single layer bitstream, key frame must be inserted in the next frame.</p>
+          <p>A.3.2.2.7 QualityVsSpeed control </p>
+          <p>A.3.2.2.8 Low-latency encoding </p>
+          <p>Need to force POC type 2 in low latency mode or VUI bitstream_restriction flas is TRUE and VUI num_reorder_frames is 0</p>
+          <p>A.3.2.2.9 Temporal-layer encoding (1-3 layers)</p>
+          <p>A.3.2.2.10 CODECAPI_AVEncVideoMaxNumRefFrame</p>
+          <p>A.3.2.2.11 CODECAPI_AVEncSliceControlMode</p>
+          <p>A.3.2.2.12 CODECAPI_AVEncSliceControlSize</p>
+          <p>A.3.2.2.13 CODECAPI_AVEncVideoMeanAbsoluteDifference</p>
+          <p>A.3.2.2.14 CODECAPI_AVEncVideoEncodeFrameTypeQP</p>
+          <p>A.3.2.2.15 CODECAPI_AVEncVideoMaxQP</p>
+          <p>A.3.2.3 It is recommended that you additionally implement the following functions:</p>
+          <p>A.3.2.3.1 <a href="http://msdn.microsoft.com/library/dd311955(v=VS.85).aspx">GetDefaultValue </a></p>
+          <p>A.3.2.3.4 <a href="http://msdn.microsoft.com/library/dd311959(v=VS.85).aspx">IsModifiable </a></p>
+          <p>A.3.2.3.5 <a href="http://msdn.microsoft.com/library/dd311962(v=VS.85).aspx">SetAllDefaults</a></p>
+          <p>A.3.2.4 If your H.264 encoder implements Long Term Reference frames, then the following CodecAPI interfaces should be implemented (completed within one frame delay):</p>
+          <p>A.3.2.4.1 CODECAPI_AVEncVideoLTRBufferControl</p>
+          <p>A.3.2.4.2 CODECAPI_AVEncVideoMarkLTRFrame</p>
+          <p>A.3.2.4.3 CODECAPI_AVEncVideoUseLTRFrame</p>
+          <p>Note: IMFSample attribute LongTermReferenceFrameInfo must be supported. IMFSample is also recommended to return MAD for each frame.</p>
+          <p>If LTR is supported by the encoder, it must support at minimum 2 LTR frames in both trust modes</p>
+          <p>A.3.3 <a href="http://msdn.microsoft.com/library/ms704598(VS.85).aspx">IMFAttributes</a></p>
+          <p>A.3.3.1 Via <a href="http://msdn.microsoft.com/library/ms703141(v=VS.85).aspx">IMFTransform::</a><a href="http://msdn.microsoft.com/library/ms703141(v=VS.85).aspx">GetAttributes</a></p>
+          <p>A.3.3.1.1 The three required attributes are:</p>
+          <p>A.3.3.1.2 <a href="http://msdn.microsoft.com/library/dd388664(VS.85).aspx">MFT_ENUM_HARDWARE_URL_Attribute</a></p>
+          <p>A.3.3.1.3 <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh162798(v=vs.85).aspxhttp:/msdn.microsoft.com/en-us/library/windows/desktop/hh162798(v=vs.85).aspx">MFT_ENUM_HARDWARE_VENDOR_ID_Attribute</a></p>
+          <p>A.3.3.1.4 MFT_ENCODER_SUPPORTS_CONFIG_EVENT</p>
+          <p>A.3.4 It is recommended that you implement an <a href="http://msdn.microsoft.com/library/dd317909(VS.85).aspx">asynchronous MFT</a></p>
+          <p>A.3.4.1 Asynchronous MFTs require the following additional interfaces:</p>
+          <p>A.3.4.1.1 <a href="http://msdn.microsoft.com/library/ms701755(VS.85).aspx">IMFMediaEventGenerator </a></p>
+          <p>A.3.4.1.2 <a href="http://msdn.microsoft.com/library/ms703054(v=VS.85).aspx">IMFShutdown</a></p>
+          <p>A.3.4.2 Asynchronous MFTs are encouraged to avoid creating threads and are recommended to use the MF Thread Pool</p>
+          <p>A.3.4.2.1 Registration with MMCS via IMFRealTimeCLientEx::SetWorkQueue is critical to meet performance goals</p>
+          <p>A.3.5 <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh448047(v=VS.85).aspx">IMFRealTimeClientEx</a> is recommended</p>
+          <p>A.4 Encoding settings </p>
+          <p>A.4.1 Through input media type negotiation, the H.264 Encoder must support:</p>
+          <p>A.4.1.1 <a href="http://msdn.microsoft.com/library/ms694868(VS.85).aspx">MF_MT_INTERLACE_MODE</a></p>
+          <p>A.4.1.1.1 The encoder must preserve interlace from input to output or reject interlace</p>
+          <p>A.4.1.2 <a href="http://msdn.microsoft.com/library/ms700173(VS.85).aspx">MF_MT_MINIMUM_DISPLAY_APERTURE</a></p>
+          <p>A.4.2 Through output media type negotiation, the H.264 Encoder must support:</p>
+          <p>A.4.2.1 <a href="http://msdn.microsoft.com/library/ms700208(VS.85).aspx">MF_MT_SUBTYPE </a></p>
+          <p>A.4.2.2 <a href="http://msdn.microsoft.com/library/ms700173(v=VS.85).aspx">MF_MT_MINIMUM_DISPLAY_APERTURE </a></p>
+          <p>A.4.2.3 <a href="http://msdn.microsoft.com/library/ms700140(v=VS.85).aspx">MF_MT_FRAME_RATE </a></p>
+          <p>A.4.2.4 <a href="http://msdn.microsoft.com/en-us/library/ms701619(v=vs.85).aspx">MF_MT_FRAME_SIZE</a></p>
+          <p>A.4.2.5 <a href="http://msdn.microsoft.com/library/ms703792(v=VS.85).aspx">MF_MT_AVG_BITRATE </a></p>
+          <p>A.4.2.6 <a href="http://msdn.microsoft.com/library/ms700193(v=VS.85).aspx">MF_MT_MPEG2_PROFILE </a><span class="unresolvedLink">(MF_MT_VIDEO_PROFILE)</span></p>
+          <p>A.4.2.7 <a href="http://msdn.microsoft.com/library/ms700203(v=VS.85).aspx">MF_MT_MPEG2_LEVEL </a><span class="unresolvedLink">(MF_MT_VIDEO_LEVEL)</span></p>
+          <p>A.4.2.8 <a href="http://msdn.microsoft.com/library/ms704767(v=VS.85).aspx">MF_MT_PIXEL_ASPECT_RATIO</a></p>
+          <p>
+            <span class="unresolvedLink">A.4.2.9 MF_MT_H264_MAX_MB_PER_SEC (for App to query encoder capabilities)</span>
+          </p>
+          <p>A.4.3 It is recommended that your H.264 Encoder supports:</p>
+          <p>A.4.3.1 B frame encoding</p>
+          <p>A.5 Multiple Instances </p>
+          <p>A.5.1 It is required that your H.264 encoder must support a minimum of 3 concurrent instances. Encoder should not put any limitation on number of instances. It should be bounded by the memory usage.</p>
+          <p>A.5.1.1 These instances may be in the same process or in different processes</p>
+          <p>A.6 Merit Validation </p>
+          <p>A.6.1 It is required that your H.264 encoder supports the trusted merit verification process</p>
+          <p>A.6.2 It is required that your H.264 encoder be a separate binary, individually certified and signed</p>
+          <p>A.7 Additional Requirements </p>
+          <p>A.7.1 Your H.264 encoder must work with the <a href="http://msdn.microsoft.com/library/dd757763(VS.85).aspx">Windows MP4 file sink</a></p>
+          <p>A.7.2 Your H.264 encoder must implement proper order of encoding configuration</p>
+          <p>A.7.3 Your H.264 encoder must be capable of producing valid bitstreams with up to 3 temporal layers</p>
+          <p>A.7.4 Your H.264 encoder prefix NALU prepends each slice and is syntax correct with bitstreams with 1-3 temporal layers</p>
+          <p>A.7.5 Your H.264 encoder must send one batched GPU request per frame</p>
+          <p>A.7.6 Your H.264 encoder must insert an AUD NALU before each frame</p>
+          <p>A.7.7 Your H.264 encoder must work correctly in session 0</p>
+          <p>A.8 Installation </p>
+          <p>A.8.1 It is required that your H.264 encoder is registered and unregistered along with the device driver used in the encoder</p>
+          <p>A.9 Performance </p>
+          <p>A.9.1 It is required that your H.264 encoder must be capable of real-time encoding 1080p@30fps up to 12Mbps (Level 4.1) is preferred.</p>
+          <p>A.9.2 VideoEncoderCreationLatency:</p>
+          <p>System latency in HMFT creation is shorter than 100ms each in 10 runs</p>
+          <p>A.9.3 VideoEncoderHighGPUUsage</p>
+          <p>Your H.264 encoder must preserve one-in-one-out behavior in low-latency mode even if GPU is under stress (e.g: simultaneous 720p encode and decode) while bitstream quality is preserved.</p>
+          <p>A.10 Dynamic Format Change</p>
+          <p>It is required that your H.264 encoder supports dynamic format changes of the following within one frame latency:</p>
+          <p>Profile Change</p>
+          <p>Resolution and Frame Rate Change</p>
+          <p>Add and Delete Temporal Layers</p>
+          <p>Maximum allowed number of reference frames</p>
+          <p>When multiple changes are requested before an output frame is produced, the last change should be honored.</p>
+          <p>A.11 New MF Attributes</p>
+          <p>Your H.264 encoder must support the following new MF attributes:</p>
+          <p>MF_MT_VIDEO_NOMINAL_RANGE</p>
+          <p>MFSampleExtension_MeanAbsoluteDifference</p>
+          <p>MFSampleExtension_LongTermReferenceFrameInfo</p>
+          <p>MFSampleExtension_ROIRectangles</p>
+          <p>A.12 Quality</p>
+          <p>Your H.264 encoder must be within 1dB or better than the inbox H.264 encoder where quality is measured over an R-D curve.</p>
+          <p>B. VC-1 Encode (Required fpr Windows RT)</p>
+          <p>-----------------------------------------------------</p>
+          <p>If your hardware supports VC-1 Encode, you must:</p>
+          <p>B.1 On input: </p>
+          <p>B.1.1 Support NV12</p>
+          <p>B.1.2 If your hardware supports it:</p>
+          <p>B.1.2.1 Support IYUV and YUY2</p>
+          <p>B.1.3 Support input buffers of (and query in this order):</p>
+          <p>B.1.3.1 IMF2DBuffer2</p>
+          <p>B.1.3.2 <a href="http://msdn.microsoft.com/library/ms699894(VS.85).aspx">IMF2DBuffer</a></p>
+          <p>B.1.3.3 <a href="http://msdn.microsoft.com/library/ms696261(VS.85).aspx">IMFMediaBuffer</a></p>
+          <p>B.2 On output: </p>
+          <p>B.2.1 Support Simple profile</p>
+          <p>B.2.2 Support Main profile</p>
+          <p>B.2.3 Support Advanced profile</p>
+          <p>B.3 Your VC-1 encoder must expose the following interfaces: </p>
+          <p>B.3.1 <a href="http://msdn.microsoft.com/library/ms696260(VS.85).aspx">IMFTransform </a></p>
+          <p>B.3.2 <a href="http://msdn.microsoft.com/library/dd311953(VS.85).aspx">ICodecAPI</a></p>
+          <p>B.3.2.1 ICodecAPI requires the following functions to be implemented:</p>
+          <p>B.3.2.1.1 <a href="http://msdn.microsoft.com/library/dd311960(v=VS.85).aspx">IsSupported </a></p>
+          <p>B.3.2.1.2 <a href="http://msdn.microsoft.com/library/dd311958(v=VS.85).aspx">GetValue </a></p>
+          <p>B.3.2.1.3 <a href="http://msdn.microsoft.com/library/dd311966(v=VS.85).aspx">SetValue </a></p>
+          <p>B.3.2.2 ICodecAPI requires the following properties to be supported:</p>
+          <p>B.3.2.2.1 Peak-constrained VBR mode </p>
+          <p>B.3.2.2.2 Quality-based VBR mode </p>
+          <p>B.3.2.2.3 CBR encoding </p>
+          <p>B.3.2.2.4 GOP distance </p>
+          <p>B.3.2.2.5 Frame-QP control </p>
+          <p>B.3.2.2.6 Adaptive bitrate control </p>
+          <p>B.3.2.2.7 Force-Key-frame control </p>
+          <p>B.3.2.2.8 QualityVsSpeed control </p>
+          <p>B.3.2.2.9 Low-latency encoding </p>
+          <p>B.3.2.3 It is recommended that you additionally implement the following functions:</p>
+          <p>B.3.2.3.1 <a href="http://msdn.microsoft.com/library/dd311955(v=VS.85).aspx">GetDefaultValue </a></p>
+          <p>B.3.2.3.2 <a href="http://msdn.microsoft.com/library/dd311956(v=VS.85).aspx">GetParameterRange </a></p>
+          <p>B.3.2.3.3 <a href="http://msdn.microsoft.com/library/dd311957(v=VS.85).aspx">GetParameterValues </a></p>
+          <p>B.3.2.3.4 <a href="http://msdn.microsoft.com/library/dd311959(v=VS.85).aspx">IsModifiable </a></p>
+          <p>B.3.2.3.5 <a href="http://msdn.microsoft.com/library/dd311962(v=VS.85).aspx">SetAllDefaults</a></p>
+          <p>B.3.3 <a href="http://msdn.microsoft.com/library/ms704598(VS.85).aspx">IMFAttributes</a></p>
+          <p>B.3.3.1 Via <a href="http://msdn.microsoft.com/library/ms703141(v=VS.85).aspx">IMFTransform::</a><a href="http://msdn.microsoft.com/library/ms703141(v=VS.85).aspx">GetAttributes</a></p>
+          <p>B.3.3.2 The two required attributes are:</p>
+          <p>B.3.3.2.1 <a href="http://msdn.microsoft.com/library/dd388664(VS.85).aspx">MFT_ENUM_HARDWARE_URL_Attribute</a></p>
+          <p>B.3.3.2.2 MFT_ENUM_HARDWARE_VENDOR_ID_Attribute</p>
+          <p>B.3.4 It is recommended that you implement an <a href="http://msdn.microsoft.com/library/dd317909(VS.85).aspx">asynchronous MFT</a></p>
+          <p>B.3.4.1 Asynchronous MFTs require the following additional interfaces:</p>
+          <p>B.3.4.1.1 <a href="http://msdn.microsoft.com/library/ms701755(VS.85).aspx">IMFMediaEventGenerator </a></p>
+          <p>B.3.4.1.2 <a href="http://msdn.microsoft.com/library/ms703054(v=VS.85).aspx">IMFShutdown</a></p>
+          <p>B.3.4.2 Asynchronous MFTs are encouraged to avoid creating threads and are recommended to use the MF Thread Pool</p>
+          <p>B.3.4.2.1 Registration with MMCS via IMFRealTimeCLientEx::SetWorkQueue is critical to meet performance goals</p>
+          <p>B.3.5 IMFRealTimeClientEx is recommended</p>
+          <p>B.4 Encoding Settings </p>
+          <p>B.4.1 Through input media type negotiation, the VC-1 Encoder must support:</p>
+          <p>B.4.1.1 <a href="http://msdn.microsoft.com/library/ms694868(VS.85).aspx">MF_MT_INTERLACE_MODE</a></p>
+          <p>B.4.1.1.1 The encoder must preserve interlace from input to output or reject interlace </p>
+          <p>B.4.1.2 <a href="http://msdn.microsoft.com/library/ms700173(VS.85).aspx">MF_MT_MINIMUM_DISPLAY_APERTURE</a></p>
+          <p>B.4.2 Through output media type negotiation, the VC-1 Encoder must support:</p>
+          <p>B.4.2.1 <a href="http://msdn.microsoft.com/library/ms700208(VS.85).aspx">MF_MT_SUBTYPE</a></p>
+          <p>B.4.2.2 <a href="http://msdn.microsoft.com/library/ms701619(VS.85).aspx">MF_MT_FRAME_SIZE </a></p>
+          <p>BC.4.2.3 <a href="http://msdn.microsoft.com/library/ms700140(v=VS.85).aspx">MF_MT_FRAME_RATE </a></p>
+          <p>B.4.2.4 <a href="http://msdn.microsoft.com/library/ms703792(v=VS.85).aspx">MF_MT_AVG_BITRATE </a></p>
+          <p>B.4.2.5 <a href="http://msdn.microsoft.com/library/ms704767(v=VS.85).aspx">MF_MT_PIXEL_ASPECT_RATIO</a></p>
+          <p>B.4.3 It is recommended that your VC-1 Encoder supports:</p>
+          <p>B.4.3.1. B frame encoding</p>
+          <p>B.5 Multiple Instances </p>
+          <p>B.5.1 It is required that your VC-1 encoder must support a minimum of 3 concurrent instances. Encoder should not put any limitation on number of instances. It should be bounded by the memory usage.</p>
+          <p>B.5.1.1 These instances may be in the same process or in different processes</p>
+          <p>B.6 Merit Validation </p>
+          <p>B.6.1 It is required that your VC-1 encoder supports the trusted merit verification process</p>
+          <p>B.6.2 It is required that your VC-1 encoder be a separate binary, individually certified and signed</p>
+          <p>B.7 Additional Requirements </p>
+          <p>B.7.1 Your VC-1 encoder must work with the <a href="http://msdn.microsoft.com/library/ee663576(VS.85).aspx">Windows ASF file sink</a></p>
+          <p>B.7.2 Your VC-1 encoder must implement proper order of encoding configuration</p>
+          <p>B.7.3 Your VC-1 encoder must work correctly in session 0</p>
+          <p>B.8 Installation </p>
+          <p>B.8.1 It is required that your VC-1 encoder is registered and unregistered along with the device driver used in the encoder</p>
+          <p>B.9 Performance </p>
+          <p>B.9.1 It is required that your VC-1 encoder must be capable of real-time encoding 1280x720x30fps up to 7 Mbps on x86/x64 systems</p>
+          <p>B.9.2 VC1 encoder must be capable of real-time encoding 720x480x30fps up to 5 Mbps on ARM systems</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>HMFT is a feature introduced in Windows 7 to enable Independent Hardware Vendors (IHVs) to provide hardware media solutions</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Streaming.Webcam.Base</h2>
+      <div id="sectionSection1" class="section">
+        <p>Webcam features</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Streaming.Webcam.Base.AVStreamWDMAndInterfaceRequirements</p>
+              <p>Device.Streaming.Webcam.Base.BasicPerf</p>
+              <p>Device.Streaming.Webcam.Base.DirectShowAndMediaFoundation</p>
+              <p>Device.Streaming.Webcam.Base.KSCategoryVideoCameraRegistration</p>
+              <p>Device.Streaming.Webcam.Base.MultipleClientAppSupport</p>
+              <p>Device.Streaming.Webcam.Base.SurpriseRemoval</p>
+              <p>Device.Streaming.Webcam.Base.UsageIndicator</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.AVStreamWDMAndInterfaceRequirements</h3>
+        <div class="subSection">
+          <p>Streaming media device driver must be based on AVStream class and WDM, and must meet interface requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>WDM RequirementDevice drivers for any streaming media device must use the AVStream class and Windows Driver Model (WDM) as defined in the Windows Driver Kit. AVStream is the replacement technology for the older stream class driver model, which is outdated and will no longer be enhanced. Drivers for streaming media devices must also support all of the required pins, properties, and settings as defined in the Windows Driver Kit.Note: Peripheral Component Interconnect Express (PCI-e)-based video capture devices must use the AVStream class. USB based devices must be USB Video Class (UVC) compliant as defined in Device.Streaming.Webcam.USBClassDriver.UVCDriver and Device.Streaming.Webcam.USBClassDriver.UVC.Error ConditionsError conditions include (but are not limited to) forced invalid pin connections, invalid property sets, buffers with invalid data, null pointers, and error conditions from drivers above or below on the stack.Interface Requirements: IVideoEncoderAPI and ICodecAPIStreaming media devices that encode video streams must use IVideoEncoderAPI and ICodecAPI. This enables the device driver to uniformly configure hardware and software encoders in the system.To support the Media Center functionality, broadcast receivers must support encoding by using the Video Encoder application programming interface (API). Support for this feature enables Media Center to explicitly set the video data rate for optimal compatibility with DVD burning.Specifically, the device and driver must support VariableBitratePeak mode defined by IVideoEncoderAPI to allow for limiting peak video rate. The device and driver must support setting the ENCAPIPARAM_PEAK_BITRATE property correctly through IVideoEncoderAPI to a value of 8. The ENCAPIRARAM_BITRATE value may be set to any value below the value of ENCAPIPARAM_PEAK_BITRATE to enable variable bit rate (VBR) recordings.The video compression encoder for the tuner hardware must do the following: </p>
+          <p>Generate DVD-compliant MPEG-2 elementary video streams when the bit rate is set at or below 9 megabits per second (Mbps) VBR. If the software application sets the bit rate above allowable DVD data rates, DVD compliance is not required (Required on x86 and x64 architectures and operating systems only).</p>
+          <p>Support dynamic bit rate change during run time. The encoder must be capable of dynamically changing the encoding quality bit rate up or down without requiring the Microsoft® DirectShow® filter to be stopped and restarted by changing the ENCAPIPARAM_BITRATE value. The ENCAPIPARAM_PEAK_BITRATE value is not required to change dynamically.</p>
+          <p>Support all compression bit rates at least up to a maximum bit rate of 9 Mbps in VariableBitrateAverage mode defined by IVideoEncoderAPI. Higher peak rates are encouraged but are not required. </p>
+          <p>Support setting ENCAPIPARAM_BITRATE correctly through IVideoEncoderAPI to a value of 2, up to a value of 9. Higher average rates are encouraged but are not required. </p>
+          <p>To enable Media Center to detect whether a driver can support dynamic bit rate change, the .inf file must contain the GUID. In addition, the driver must place the GUID in the registry. The registry value must be a DWORD with a value of 1 (meaning supported) and 0 or Not Present (meaning unsupported). Add the following in the .inf file under HKR,Capabilities."{BB4FAA02-596C-4129-8FB3-74E75421FA02}", 0x00010001,1[KEY]"{BB4FAA02-596C-4129-8FB3-74E75421FA02}"=dword:1where [KEY] is the HKEY returned by IGetCapabilitiesKey::GetCapabilitiesKey()Design Notes: For implementation details, see "Streaming Devices (Video and Audio)", "AVStream Class minidrivers", and "Stream Class Minidrivers" in the Windows Driver Kit. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.BasicPerf</h3>
+        <div class="subSection">
+          <p>Captured frame data must be provided within two frame periods</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Video camera hardware must provide captured frame data to the driver within two frame periods of the initiation of capture from the sensor.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.DirectShowAndMediaFoundation</h3>
+        <div class="subSection">
+          <p>Support for streaming media device must be based on DirectShow or Media Foundation architectures</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Support for streaming media devices must be based on the Microsoft DirectShow or Microsoft Media Foundation. Substitute components may be used instead of DirectShow components that are provided with the operating system. Substitute components must include equivalent functionality based on the components provided with the operating system and must support at least the same inputs and outputs defined for DirectShow.Design NotesDirectShow support is available on x86 and x64 platforms only.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.KSCategoryVideoCameraRegistration</h3>
+        <div class="subSection">
+          <p>Non-Microsoft webcam driver must register under KSCategory_Video_Camera</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All non-Microsoft webcam drivers must register under the category for Media Foundations Capture Applications to detect the camera.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.MultipleClientAppSupport</h3>
+        <div class="subSection">
+          <p>Streaming media device must support multiple client applications and instances by using a single device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Application SharingThe client applications must be able to open the device and then use the device simultaneously or sequentially, depending on the device's capabilities. The device can allow one application to actively use it while the other application is in a pause or stop state, or the device can allow both applications to use it simultaneously. Multiple InstancesStreaming media devices must be able to control multiple instances of the device with usage of multiple applications. An example is a computer that has three identical USB webcams, each being used by a different application. Another example is a computer that has two TV receivers, each being independently used by two different applications.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.SurpriseRemoval</h3>
+        <div class="subSection">
+          <p>Removable streaming media device must support surprise removal of that device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All hot-pluggable streaming media devices must support their surprise removal from the host bus.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.Base.UsageIndicator</h3>
+        <div class="subSection">
+          <p>Video capture device must have a visual indicator other than the main display to indicate usage</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A video capture device must have a visual indicator other than the main display (for example an LED)that indicates when it is recording a user. The visual indicator should be on when device is capturing video and off when the device is not capturing video.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Streaming.Webcam.H264</h2>
+      <div id="sectionSection2" class="section">
+        <p>Webcam features</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Streaming.Webcam.H264.H264Support</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Streaming.Webcam.H264.H264Support</h3>
+        <div class="subSection">
+          <p>If implemented, H.264 implementation must comply with USB Video Class driver</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.H264</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If H.264 format is supported by the device, the implementation must be compliant with the Windows USB Video Class (UVC) driver. Windows driver follows the following spec: http://go.microsoft.com/fwlink/?LinkId=233063At minimum following must be supported:Pins</p>
+          <p>A preview pin on the same device with uncompressed output type YUY2 and/or NV12 </p>
+          <p>H.264 format must be on a separate video capture pin</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Streaming.Webcam.NonMSDriver</h2>
+      <div id="sectionSection3" class="section">
+        <p>Webcam features</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Streaming.Webcam.NonMSDriver.VideoInfoHeader2</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Streaming.Webcam.NonMSDriver.VideoInfoHeader2</h3>
+        <div class="subSection">
+          <p>Video capture driver must implement VIDEOHEADER2</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.NonMSDriver</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Drivers for Windows Driver Model (WDM) streaming video capture devices must implement support for the VIDEOINFOHEADER2 structure. This support indicates video source information such as interlace format, aspect ratio, and color space information (if the device supports capturing of interlaced video, pixel aspect ratios other than 1:1, or nonstandard YCbCr transfer matrix), gamma curve, chromaticity coordinates, or reference black and white levels. Note: This requirement applies to both USB-based and Peripheral Component Interconnect Express (PCI-e)-based video capture devices.Design Notes: For implementation details, see "Streaming Devices" and the AVStream sample capture driver in the Windows Driver Kit.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Streaming.Webcam.USBClassDriver</h2>
+      <div id="sectionSection4" class="section">
+        <p>Webcam features</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Streaming.Webcam.USBClassDriver.UVC</p>
+              <p>Device.Streaming.Webcam.USBClassDriver.UVCDriver</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Streaming.Webcam.USBClassDriver.UVC</h3>
+        <div class="subSection">
+          <p>USB streaming video camera must comply with USB Video Class specifications</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.USBClassDriver</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB streaming video cameras must comply with the USB Video Class specifications. At a minimum, all mandatory properties and commands must be implemented. All implemented commands must comply with the specifications.  USB streaming video cameras that use MJPEG, or YUY2 for capture, or Digital Video (DV) for capture or render, must also work with the Microsoft-provided USB Video Class driver. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Streaming.Webcam.USBClassDriver.UVCDriver</h3>
+        <div class="subSection">
+          <p>UVC-capable device must comply with USB Video Class specifications and work with the Microsoft UVC driver</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Streaming.Webcam.USBClassDriver</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that are designed to comply with the USB Video Class (UVC) specifications must work with the Microsoft UVC driver. These devices also must comply with the requirements set in the UVC specifications. At a minimum, all mandatory properties and commands must be implemented. All implemented commands must comply with the specifications.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="GXbjzWNYwYpJRqUMkKg2aGLcFQBwHXgW0ED419HzwzY24XzMmyPgZeJY_kKBh0gZo0plbfmSWaGrmxFoSXzM_nutauekDd91tjeXKAd5xeVmtuNqQl68WCPAdbPaHOJP87V6dA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/jj134355.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134355.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="eudfUEs909Gv1oI7G95SyhBb1rh9ONpLcrLisyv6RZaGreU7lV4sttX-2jkqc6JRhjNfjpmGGrKQu0nhkHBuv1SomN7qokIicTFfKiZb-oOr8bednbHjihXrDhyuA51O9rYbBA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134355(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"961fdfa2-c941-4c59-88c5-fbaa09369496\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134355.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

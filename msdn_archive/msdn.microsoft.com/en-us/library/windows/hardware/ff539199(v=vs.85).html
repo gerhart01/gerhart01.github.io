@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539199(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:39:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff539199(v%3dvs.85).html" />
+        <title>How to send USB bulk transfer requests (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff539199(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539199(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539199(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539199(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93A-8:58:54 AM" />
+
+<meta name="Search.ShortId" content="ff539199" />
+
+<meta name="ms.shortidmsdn" content="ff539199" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395071934&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539199%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh406260(v%3dvs.85).html" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff539286(v%3dvs.85).html" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968308(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff539199(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450846(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh406225(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450848(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968307(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff539193(v%3dvs.85).html" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to send USB bulk transfer requests</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic provides a brief overview about USB bulk transfers. It also provides step-by-step instructions about how a client driver can send and receive bulk data from the device.</p>
+<p>
+</p><ul>
+<li><a href="#ddk_usb_bulk_and_interrupt_transfer_kg">About bulk endpoints</a></li>
+<li><a href="#bulk_transactions">Bulk transactions</a></li>
+<li><a href="#usb_client_driver_tasks_for_a_bulk_transfer">USB client driver tasks for a bulk transfer</a></li>
+<li><a href="#bulk_transfer_request_example">Bulk transfer request example</a><ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#step_1__get_the_transfer_buffer._">Step 1: Get the transfer buffer. </a></li>
+<li><a href="#step_2__format_and_send_a_framework_request_object_to_the_usb_driver_stack.">Step 2: Format and send a framework request object to the USB driver stack.</a></li>
+<li><a href="#step_3__implement_a_completion_routine_for_the_request.">Step 3: Implement a completion routine for the request.</a></li>
+</ul>
+</li>
+</ul>
+
+<h2><a id="ddk_usb_bulk_and_interrupt_transfer_kg"></a><a id="DDK_USB_BULK_AND_INTERRUPT_TRANSFER_KG"></a>About bulk endpoints</h2>
+<p>A USB bulk endpoint can transfer large amounts of data. Bulk transfers are reliable that allow hardware error detection, and involves limited number of retries in the hardware.  For transfers to bulk endpoints, bandwidth is not reserved on the bus. When there are multiple transfer requests that target different types of endpoints, the controller first schedules transfers for time critical data, such as isochronous and interrupt packets. Only if there is unused bandwidth available on the bus, the controller schedules bulk transfers. Where there is no other significant traffic on the bus, bulk transfer can be fast. However, when the bus is busy with other transfers, bulk data can wait indefinitely.
+
+</p>
+<p>Here are the key features of a bulk endpoint:
+</p><ul>
+<li>Bulk endpoints are optional. They are supported by a USB device that wants to transfer large amounts of data. For example, transferring files to a flash drive, data to or from a printer or a scanner.</li>
+<li>USB full speed, high speed, and SuperSpeed devices support bulk endpoints. Low speed devices do not support bulk endpoints. 
+</li>
+<li>The endpoint is a unidirectional and data can be transferred either in an IN or OUT direction. Bulk IN endpoint is used to read data from the device to the host and bulk OUT endpoint is used to send data from the host to the device. </li>
+<li>The endpoint has CRC bits to check for errors and thus provides data integrity. For CRC errors, data is retransmitted automatically.</li>
+<li>A SuperSpeed bulk endpoint can support streams. Streams allow the host to send transfers to individual stream pipes.</li>
+<li>Maximum packet size of a bulk endpoint depends on the bus speed of the device. For full speed, high speed, and SuperSpeed; the maximum packet sizes are 64, 512, and 1024 bytes respectively. 
+</li>
+</ul>
+
+<h2><a id="Bulk_transactions"></a><a id="bulk_transactions"></a><a id="BULK_TRANSACTIONS"></a>Bulk transactions</h2>
+<p>Like all other USB transfers, the host always initiates a bulk transfer. The communication takes place between the host and the target endpoint. The USB protocol does not enforce any format on the data sent in a bulk transaction. </p>
+<p>How the host and device communicate on the bus depends on the speed at which the device is connected. This section describes some examples of high speed and SuperSpeed bulk transfers that show the communication between the host and device.</p>
+<p>You can see the structure of transactions and packets by using any USB analyzer, such as Beagle, Ellisys, LeCroy USB protocol analyzers. An analyzer device shows how data is sent to or received from a USB device over the wire. In this example, let's examine some traces captured by a LeCroy USB analyzer. This example is for information only. This is not an endorsement by Microsoft.</p>
+<p><strong>Bulk OUT transaction example</strong></p>
+<p>This analyzer trace shows an example bulk OUT transaction at high speed.</p>
+<p><img id="bulk_OUT_HS" alt="Ff539199.bulk_OUT_HS(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC585198.png" title="Ff539199.bulk_OUT_HS(en-us,VS.85).png" xmlns="" /></p>
+<p>In the preceding trace, the host initiates a bulk OUT transfer to a high-speed bulk endpoint, by sending a token packet with PID set to OUT (OUT token). The packet  contains the address of the device and target endpoint. After the OUT packet, the host sends a data packet that contains the bulk payload. If the endpoint accepts the incoming data, it sends an ACK packet. In this example, we can see that the host sent 31 bytes to device address:1; endpoint address: 2.</p>
+<p>If the endpoint is busy at the time the data packet arrives and is not able to receive data, the device can send a NAK packet. In that case, the host starts sending PING packets to the device. The device responds with NAK packets as long as the device is not ready to receive data. When the device is ready, it responds with an ACK packet. The host can then resume the OUT transfer. </p>
+<p>This analyzer trace shows an example SuperSpeed bulk OUT transaction.</p>
+<p><img id="bulk_OUT" alt="Ff539199.bulk_OUT(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC585199.png" title="Ff539199.bulk_OUT(en-us,VS.85).png" xmlns="" /></p>
+<p>In the preceding trace, the host initiates an OUT transaction to a SuperSpeed bulk endpoint by sending a data packet. The data packet contains the bulk payload, device, and endpoint addresses. In this example, we can see that the host sent 31 bytes to device address:4; endpoint address: 2. </p>
+<p>The device receives and acknowledges data packet and sends an ACK packet back to the host. If the endpoint is busy at the time the data packet arrives and is not able to receive data, the device can send a NRDY packet. Unlike high speed, after receiving the NRDY packet, the host does not repeatedly poll the device. Instead, the host waits for an ERDY from the device. When the device is ready, it sends an ERDY packet and the host can then send data to the endpoint.</p>
+<p><strong>Bulk IN transaction example</strong></p>
+<p>This analyzer trace shows an example bulk IN transaction at high speed.</p>
+<p><img id="bulk_IN_HS" alt="Ff539199.bulk_IN_HS(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC585200.png" title="Ff539199.bulk_IN_HS(en-us,VS.85).png" xmlns="" /></p>
+<p>In the preceding trace, the host initiates the transaction by sending a token packet with PID set to IN (IN token). The device then sends a data packet with bulk payload. If the endpoint has no data to send or is not yet ready to send data, the device can send a NAK handshake packet. The host retries the IN transfer until it receives an ACK packet from the device. That ACK packet  implies that the device has accepted the data. </p>
+<p>This analyzer trace shows an example SuperSpeed bulk IN transaction.</p>
+<p><img id="bulk_IN" alt="Ff539199.bulk_IN(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC581058.png" title="Ff539199.bulk_IN(en-us,VS.85).png" xmlns="" /></p>
+<p>To initiate a bulk IN transfer from a SuperSpeed endpoint, the host starts a bulk transaction by sending an ACK packet. The USB Specification version 3.0 optimizes this initial portion of the transfer by merging ACK and IN packets into one ACK packet. Instead of an IN token, for SuperSpeed, the host sends an ACK token to initiate a bulk transfer.  The device responds with a data packet. The host then acknowledges the data packet by sending an ACK packet. If the endpoint is busy and was not able to send data, the device can send status of NRDY. In that case, the host waits for until it gets an ERDY packet from the device. </p>
+<h2><a id="USB_client_driver_tasks_for_a_bulk_transfer"></a><a id="usb_client_driver_tasks_for_a_bulk_transfer"></a><a id="USB_CLIENT_DRIVER_TASKS_FOR_A_BULK_TRANSFER"></a>USB client driver tasks for a bulk transfer</h2>
+<p>An application or a driver on the host always initiates a bulk transfer to send or receive data. The client driver submits the request to the USB driver stack. The USB driver stack programs the request into the host controller and then sends the protocol packets (as described in the preceding section) over the wire to the device. </p>
+<p>Let's see how the client driver submits the request for a bulk transfer as a result of an application's or another driver's request. Alternatively, the driver can initiate the transfer on its own. Irrespective of the approach, a  driver must have the transfer buffer and the request in order to initiate the bulk transfer.   </p>
+<p>For a KMDF driver, the request is described in a framework request object (see <a href="ff542982(v%3dvs.85).html">Framework Request Object Reference</a>). The client driver calls methods of the request object by specifying the WDFREQUEST handle to send the request to the USB driver stack. If the client driver is sending a bulk transfer in response to a request from an application or another driver, the framework creates a request object and delivers the request to the client driver by using a framework queue object. In that case, the client driver may use that request for the purposes of sending the bulk transfer. If the client driver initiated the request, the driver may choose to allocate its own request object.</p>
+<p>If the application or another driver  sent or requested data, the transfer buffer is  passed to the driver by the framework. Alternatively, the client driver can allocate the transfer buffer and create the request object if the driver initiates the transfer on its own.</p>
+<p> Here are the main tasks for the client driver:
+</p>
+<ol>
+<li>Get the transfer buffer.</li>
+<li>Get, format, and send a framework request object to the USB driver stack.
+</li>
+<li>Implement a completion routine to get notified when the USB driver stack completes the request.
+</li>
+</ol>
+<p>This topic describes those tasks by using an example in which the driver initiates a bulk transfer as a result of an application's request to send or receive data. </p>
+<p>To read data from the device, the client driver can use the framework provided continuous reader object. For more information, see <a href="hh968308(v%3dvs.85).html">How to use the continuous reader for reading data from a USB pipe</a>.</p>
+<h2><a id="Bulk_transfer_request_example"></a><a id="bulk_transfer_request_example"></a><a id="BULK_TRANSFER_REQUEST_EXAMPLE"></a>Bulk transfer request example</h2>
+<p>Consider an example scenario, where an application wants to read or write data to your device. The application calls Windows APIs to send such requests. In this example, the application opens a handle to the device by using the device interface GUID published by your driver in kernel mode. The application then calls <a href="aa365467(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a> or <a href="aa365747(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFile</strong></a> to initiate a read or write request. In that call, the application also specifies a buffer that contains the data to read or write and the length of that buffer.</p>
+<p>The I/O Manager receives the request, creates an I/O Request Packet (IRP), and forwards it to the client driver.</p>
+<p>The framework intercepts the request, creates a framework request object, and adds it to the framework queue object. The framework then notifies the client driver  that a new request is waiting to be processed. That notification is done by invoking the driver’s queue callback routines for <a href="ff541776(v%3dvs.85).html"><em xmlns="http://www.w3.org/1999/xhtml">EvtIoRead</em></a> or <a href="ff541813(v%3dvs.85).html"><em xmlns="http://www.w3.org/1999/xhtml">EvtIoWrite</em></a>.</p>
+<p>When the framework delivers the request to the client driver, it receives these parameters:</p><ul>
+<li>WDFQUEUE handle to the framework queue object that contains the request.</li>
+<li>WDFREQUEST handle to the framework request object that contains details about this request.</li>
+<li>The transfer length, that is, the number of bytes to read or write.
+</li>
+</ul>
+
+<p>In the client driver's implementation of <a href="ff541776(v%3dvs.85).html"><em xmlns="http://www.w3.org/1999/xhtml">EvtIoRead</em></a> or <a href="ff541813(v%3dvs.85).html"><em xmlns="http://www.w3.org/1999/xhtml">EvtIoWrite</em></a>, the driver inspects the request parameters and can optionally perform validation checks.</p>
+<p>If you are using streams of a SuperSpeed bulk endpoint, you will send the request in an URB because KMDF does not support streams intrinsically. For information about submitting a request for transfer to streams of a bulk endpoint, see <a href="hh450846(v%3dvs.85).html">How to open and close static streams in a USB bulk endpoint</a>.</p>
+<p>If you are not using streams, you can use KMDF defined methods to send the request as described in the following procedure:</p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>Before you begin, make sure that you have this information:</p>
+<ul>
+<li>The client driver must have created the framework USB target device object and obtained the WDFUSBDEVICE handle by calling the <a href="hh439428(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> 
+
+method. <p>If you 
+
+are using the USB templates that are provided with Microsoft Visual Studio Professional 2012,  the template code   
+
+performs those tasks. The template code obtains the handle to the target device object and 
+
+stores in the device context. For more information, see "Device source code" in <a href="hh770892(v%3dvs.85).html">Understanding the USB client driver 
+
+code structure (KMDF)</a>.</p>
+</li>
+<li>WDFREQUEST handle to the framework request object that contains details about this request.
+</li>
+<li>The number of bytes to read or write.
+</li>
+<li>The WDFUSBPIPE handle to the framework pipe object that is associated with the target endpoint. You must have obtained pipe handles during device configuration by enumerating pipes. For more information, see <a href="hh968306(v%3dvs.85).html">How to enumerate USB pipes</a>.<p>If the bulk endpoint supports streams, you must have the pipe handle to the stream. For more information, see <a href="hh450846(v%3dvs.85).html">How to open and close static streams in a USB bulk endpoint</a>.</p>
+</li>
+</ul>
+<h3><a id="Step_1__Get_the_transfer_buffer._"></a><a id="step_1__get_the_transfer_buffer._"></a><a id="STEP_1__GET_THE_TRANSFER_BUFFER._"></a>Step 1: Get the transfer buffer. </h3>
+<p> The transfer buffer or the transfer buffer MDL contains the data to send or receive. This topic assumes that you are sending or receiving data in a  transfer buffer. The transfer buffer is described in a WDF memory object (see <a href="ff542850(v%3dvs.85).html">Framework Memory Object Reference</a>). To get the memory object associated with the transfer buffer, call one of these methods:</p><ul>
+<li>For a bulk IN transfer request, call the <a href="ff550019(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputMemory</strong></a> method.</li>
+<li>For a bulk OUT transfer request, call the <a href="ff550015(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputMemory</strong></a> method.</li>
+</ul>
+
+<p>The client driver does not need to release this memory. The memory is associated with the parent request object and is released when the parent is released. </p>
+<h3><a id="Step_2__Format_and_send_a_framework_request_object_to_the_USB_driver_stack."></a><a id="step_2__format_and_send_a_framework_request_object_to_the_usb_driver_stack."></a><a id="STEP_2__FORMAT_AND_SEND_A_FRAMEWORK_REQUEST_OBJECT_TO_THE_USB_DRIVER_STACK."></a>Step 2: Format and send a framework request object to the USB driver stack.</h3>
+<p> You can send the transfer request asynchronously or synchronously. </p>
+<p>These are the asynchronous methods:</p>
+<ul>
+<li>
+<a href="ff551136(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForRead</strong></a>
+</li>
+<li>
+<a href="ff551141(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeFormatRequestForWrite</strong></a>
+</li>
+</ul>
+<p>The methods in this list format the request. If you send the request asynchronously, set a pointer to the driver-implemented completion routine by calling the <a href="ff550030(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSetCompletionRoutine</strong></a> method (described in the next step). To send the request,  call the <a href="ff550027(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a> method.</p>
+<p>If you send the request synchronously, call these methods:</p><ul>
+<li>
+<a href="ff551155(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeReadSynchronously</strong></a>
+</li>
+<li>
+<a href="ff551163(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWriteSynchronously</strong></a>
+</li>
+</ul>For code examples, see the Examples section of the reference topics for those methods.
+<h3><a id="Step_3__Implement_a_completion_routine_for_the_request."></a><a id="step_3__implement_a_completion_routine_for_the_request."></a><a id="STEP_3__IMPLEMENT_A_COMPLETION_ROUTINE_FOR_THE_REQUEST."></a>Step 3: Implement a completion routine for the request.</h3>
+<p>If the request is sent asynchronously, you must implement a completion routine to get notified when the USB driver stack completes the request. Upon completion, the framework invokes the driver's completion routine. The framework passes these parameters: </p><ul>
+<li>WDFREQUEST handle to the request object.</li>
+<li>WDFIOTARGET handle to the I/O target object for the request.</li>
+<li>A pointer to a <a href="ff552454(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_COMPLETION_PARAMS</strong></a> structure that contains completion information. USB-specific information is contained in the <strong>CompletionParams-&gt;Parameters.Usb</strong> member.</li>
+<li>WDFCONTEXT handle to the context that the driver specified in its call to <a href="ff550030(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSetCompletionRoutine</strong></a>.</li>
+</ul>
+
+<p> In the completion routine, perform these tasks:</p><ul>
+<li>Check the status of the request by getting the <strong>CompletionParams-&gt;IoStatus.Status</strong> value.</li>
+<li>Check the USBD status set by the USB driver stack.</li>
+<li>In case of pipe errors, perform error recovery operations. For more information, see <a href="hh968307(v%3dvs.85).html">How to recover from USB pipe errors</a>.</li>
+<li>Check the number of bytes transferred. <p>A bulk transfer is complete when the requested number of bytes have been transferred to or from the device.  If you send the request buffer by calling KMDF method, then check the value received in <strong>CompletionParams-&gt;Parameters.Usb.Completion-&gt;Parameters.PipeWrite.Length</strong> or <strong>CompletionParams-&gt;Parameters.Usb.Completion-&gt;Parameters.PipeRead.Length</strong> members.</p>
+<p> In a simple transfer where the USB driver stack sends all the requested bytes in one data packet, you can check compare the <strong>Length</strong> value with the number of bytes requested. If the USB driver stack transfers the request in multiple data packets, you must keep track of the number of bytes transferred and the remaining number of bytes.</p>
+</li>
+<li>If total number of bytes were transferred, complete the request. If an error condition occurred, complete the request with the returned error code. Complete the request by calling the <a href="ff549945(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestComplete</strong></a> method. If you want to set information, such as the number of bytes transferred, call <a href="ff549948(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCompleteWithInformation</strong></a>.</li>
+<li>Make sure that when you complete the request with information, the number of bytes must be equal to or less than the number of bytes requested. The framework validates those values. If length set in the completed request is greater than the original request length, a bugcheck can occur. </li>
+</ul>
+
+<p>This example code shows how the client driver can submit a bulk transfer request. The driver sets a completion routine. That routine is shown in the next code block. </p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fa04ed6a-599a-4f1b-80ae-18d59e3bd310');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fa04ed6a-599a-4f1b-80ae-18d59e3bd310" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+/*++
+
+Routine Description:
+
+This routine sends a bulk write request to the 
+USB driver stack. The request is sent asynchronously and 
+the driver gets notified through a completion routine.
+
+Arguments:
+
+Queue - Handle to a framework queue object.
+Request - Handle to the framework request object.
+Length - Number of bytes to transfer.
+
+
+Return Value:
+
+VOID
+
+--*/
+
+
+VOID Fx3EvtIoWrite(
+    IN WDFQUEUE  Queue,
+    IN WDFREQUEST  Request,
+    IN size_t  Length
+    )
+{
+    NTSTATUS  status;
+    WDFUSBPIPE  pipe;
+    WDFMEMORY  reqMemory;
+    PDEVICE_CONTEXT  pDeviceContext;
+ 
+    pDeviceContext = GetDeviceContext(WdfIoQueueGetDevice(Queue));
+ 
+    pipe = pDeviceContext-&gt;BulkWritePipe;
+
+    status = WdfRequestRetrieveInputMemory(
+                                           Request,
+                                           &amp;reqMemory
+                                           );
+    if (!NT_SUCCESS(status))
+    {
+        goto Exit;
+    }
+
+    status = WdfUsbTargetPipeFormatRequestForWrite(
+                                                   pipe,
+                                                   Request,
+                                                   reqMemory,
+                                                   NULL
+                                                   );
+    if (!NT_SUCCESS(status))
+	   {
+        goto Exit;
+    }
+
+    WdfRequestSetCompletionRoutine(
+                                   Request,
+                                   BulkWriteComplete,
+                                   pipe
+                                   );
+
+    if (WdfRequestSend( Request,
+                        WdfUsbTargetPipeGetIoTarget(pipe),
+                        WDF_NO_SEND_OPTIONS) == FALSE) 
+	   {
+        status = WdfRequestGetStatus(Request);
+        goto Exit;
+    }
+
+Exit:
+    if (!NT_SUCCESS(status)) {
+        WdfRequestCompleteWithInformation(
+                                          Request,
+                                          status,
+                                          0
+                                          );
+    }
+    return;
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>This example code shows the completion routine implementation for a bulk transfer. The client driver completes the request in the completion routine and sets this request information: status and the number of bytes transferred.  </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1ed68c36-ba4e-4ef1-9019-a4f752e7e18c');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1ed68c36-ba4e-4ef1-9019-a4f752e7e18c" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+/*++
+
+Routine Description:
+
+This completion routine is invoked by the framework when
+the USB drive stack completes the previously sent 
+bulk write request. The client driver completes the 
+the request if the total number of bytes were transferred
+to the device.
+In case of failure it queues a work item to start the 
+error recovery by resetting the target pipe.
+
+Arguments:
+
+Queue - Handle to a framework queue object.
+Request - Handle to the framework request object.
+Length - Number of bytes to transfer.
+Pipe - Handle to the pipe that is the target for this request.
+
+Return Value:
+
+VOID
+
+--*/
+
+VOID BulkWriteComplete(  
+    _In_ WDFREQUEST                  Request,  
+    _In_ WDFIOTARGET                 Target,  
+    PWDF_REQUEST_COMPLETION_PARAMS   CompletionParams,  
+    _In_ WDFCONTEXT                  Context  
+    )  
+{
+
+    PDEVICE_CONTEXT deviceContext;
+
+    size_t          bytesTransferred=0; 
+
+    NTSTATUS        status;
+
+
+    UNREFERENCED_PARAMETER (Target);
+    UNREFERENCED_PARAMETER (Context);
+
+
+    KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, 
+        "In completion routine for Bulk transfer.\n"));
+
+    // Get the device context. This is the context structure that
+    // the client driver provided when it sent the request.
+
+    deviceContext = (PDEVICE_CONTEXT)Context;
+
+    // Get the status of the request
+    status = CompletionParams-&gt;IoStatus.Status;
+    if (!NT_SUCCESS (status))
+    {
+        // Get the USBD status code for more information about the error condition.
+        status = CompletionParams-&gt;Parameters.Usb.Completion-&gt;UsbdStatus;
+
+        KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL,
+            "Bulk transfer failed. 0x%x\n",  
+            status));		
+
+        // Queue a work item to start the reset-operation on the pipe
+        // Not shown.
+
+        goto Exit;
+    }
+
+    // Get the actual number of bytes transferred.
+    bytesTransferred = 
+            CompletionParams-&gt;Parameters.Usb.Completion-&gt;Parameters.PipeWrite.Length;
+
+    KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL,
+            "Bulk transfer completed. Transferred %d bytes. \n",  
+            bytesTransferred));
+
+Exit:
+
+    // Complete the request and update the request with 
+    // information about the status code and number of bytes transferred.
+
+    WdfRequestCompleteWithInformation(Request, status, bytesTransferred);
+
+    return;
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff539286(v%3dvs.85).html">USB I/O Transfers</a>
+</dt>
+<dt>
+<a href="hh450846(v%3dvs.85).html">How to open and close static streams in a USB bulk endpoint</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to send USB bulk transfer requests%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="1NqiDXO_sd7_dsNP-PTTqwfWLfuueajjBfHdNJY3CfiYuUIfpUsZv6zhZW6wEeUnZNhkYguG_dPRGSEWe3J3YRXa9vqdP0U9b3xIcSvPNFfprAh3qJ7zHHR186K400Gj3dwkmA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff539199(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539199(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="6nMDvVNkUBcFouG988FbK-S_c79xAYAh-6MimTHSZXfWDqNA4MJZMU2BgeP7DBJKdk6hVaoUn3iMSEF4jT1KE_ZEnKFqzPJpEg2cxFh1rxOHfpjNR0TTFKKGdwS1YG4Rb-APLg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff539199(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"896a61a3-ee93-48bd-81cd-2c71f7b91ba9\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539199(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:39:26 GMT -->
+</html>

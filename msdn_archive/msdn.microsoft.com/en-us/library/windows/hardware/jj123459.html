@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj123459.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459.aspx" />
+        <title>Windows Pen Range Test (System)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj123459(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA938-9:09:07 AM" />
+
+<meta name="Search.ShortId" content="jj123459" />
+
+<meta name="ms.shortidmsdn" content="jj123459" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072547&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj123459.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124339.aspx" id="dn375918_WIN.10_en-us" mtpsaliasid="" mtpsassetid="b0fe3c4f-e723-4e28-b71f-f3e48949babf_WIN.10_en-us" mtpsshortid="jj124339_WIN.10_en-us" title="System.Client Testing">System.Client Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997939.aspx" id="dn375950_WIN.10_en-us" mtpsaliasid="" mtpsassetid="0d6e8690-4329-477e-b600-e4e4edd7264e_WIN.10_en-us" mtpsshortid="hh997939_WIN.10_en-us" title="System.Client Tests">System.Client Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124058.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Aero Acceptance Test">Aero Acceptance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390913.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Accelerometer Sensor Shake Event Test (System)">Accelerometer Sensor Shake Event Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn383624.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Ambient Light Sensor Calibration Test (ARM System)">Ambient Light Sensor Calibration Test (ARM System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn383602.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Ambient Light Sensor Calibration Test (System)">Ambient Light Sensor Calibration Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390892.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Arm HMFT Encoder System Test - H264">Arm HMFT Encoder System Test - H264</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390887.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Arm HMFT Encoder System Test - VC1">Arm HMFT Encoder System Test - VC1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124622.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Brightness Test">Brightness Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390865.aspx" id="dn375879_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Camera Driver Tests">Camera Driver Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191674.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Change Display Settings Test - Smooth Rotation">Change Display Settings Test - Smooth Rotation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123515.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Check Thermal Zones">Check Thermal Zones</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390879.aspx" id="dn375858_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Combined Radio Tests">Combined Radio Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124325.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crashdump through Capsules, Firmware Support Test">Crashdump through Capsules, Firmware Support Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247336.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test (System) - Windows 8.1">DRM Test (System) - Windows 8.1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998384.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX10 Graphics Enforcement Test (System)">DX10 Graphics Enforcement Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123610.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FireWallCheck">FireWallCheck</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn479420.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FSVPTest">FSVPTest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251515.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for Glitchfree HD Video Playback on AC ( Manual on mobile systems )">Full Trace Gatherer for Glitchfree HD Video Playback on AC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251529.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for Glitchfree HD Video Playback on Battery (DC) Power Source ( Manual on mobile systems )">Full Trace Gatherer for Glitchfree HD Video Playback on Battery (DC) Power Source ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251507.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on AC ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on AC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251520.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on AC during Connected Standby ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on AC during Connected Standby ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251501.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on AC with Audio Offload ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on AC with Audio Offload ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251526.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on DC ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on DC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251518.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on DC during Connected Standby ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on DC during Connected Standby ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251506.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Full Trace Gatherer for WNGlitchfree HD Video Playback on DC with Audio Offload ( Manual on mobile systems )">Full Trace Gatherer for WNGlitchfree HD Video Playback on DC with Audio Offload ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123754.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Glitchfree HD Video Playback on AC ( Manual on mobile systems )">Glitchfree HD Video Playback on AC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124007.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Glitchfree HD Video Playback on Battery (DC) Power Source ( Manual on mobile systems )">Glitchfree HD Video Playback on Battery (DC) Power Source ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123787.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Glitchfree Playback (Windows 7)">Glitchfree Playback (Windows 7)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn375901.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Gyroscope Sensor Test (System)">Gyroscope Sensor Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123711.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HID Radio Button - Verify HID Usages">HID Radio Button - Verify HID Usages</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191678.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BatteryTest">BatteryTest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123985.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MADT FVT Testing">MADT FVT Testing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390863.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Capture base - System">MF Basic Capture base - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390872.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Capture USBVideo - System">MF Basic Capture USBVideo - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390878.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Photo base - System">MF Basic Photo base - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390877.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Photo USBVideo - System">MF Basic Photo USBVideo - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390891.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Preview  base - System">MF Basic Preview  base - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390894.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Basic Preview USBVideo - System">MF Basic Preview USBVideo - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998393.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Camera Capture System Test">MF Camera Capture System Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124101.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Multiple Camera Capture Stress System">MF Multiple Camera Capture Stress System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390862.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Video Capture H.264 base - System">MF Video Capture H.264 base - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390869.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Video Capture H.264 USBVideo - System">MF Video Capture H.264 USBVideo - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390911.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Video Capture Stress base - System">MF Video Capture Stress base - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390895.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MF Video Capture Stress USBVideo - System">MF Video Capture Stress USBVideo - System</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998325.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Mobile Broadband Requires GPS">Mobile Broadband Requires GPS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997789.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NPCTEST - Clock Interrupt Test">NPCTEST - Clock Interrupt Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998801.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NPCTEST - KeDelayExecutionThread Test">NPCTEST - KeDelayExecutionThread Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125208.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NPCTEST - Profile Interrupt Test">NPCTEST - Profile Interrupt Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191698.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PPM Logo Test">PPM Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn448403.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Push Button Reset Configuration Test">Push Button Reset Configuration Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998778.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="QPC Validation Test">QPC Validation Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124991.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Radio Manager - Verify Radio State">Radio Manager - Verify Radio State</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123505.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Radio Manager - Verify SetRadioState">Radio Manager - Verify SetRadioState</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124421.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTCWakeTest">RTCWakeTest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247317.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Accuracy Calibration Test (System)">Sensor Accuracy Calibration Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293650.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Accuracy Persistence Test (System)">Sensor Accuracy Persistence Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260413.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor DataEvents Test (ARM System)">Sensor DataEvents Test (ARM System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293598.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor DataEvents Test (System)">Sensor DataEvents Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293769.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor DataReport Validation Test (System)">Sensor DataReport Validation Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293556.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor HID Firmware Test (ARM System)">Sensor HID Firmware Test (ARM System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293663.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor HID Firmware Test (System)">Sensor HID Firmware Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247278.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor PowerState Test (ARM System)">Sensor PowerState Test (ARM System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260172.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor PowerState Test (System)">Sensor PowerState Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260214.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Properties Test (System)">Sensor Properties Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293632.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor ReadyState Verification Test (System)">Sensor ReadyState Verification Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247590.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Required Properties Test (System)">Sensor Required Properties Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260168.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Settable Properties Verification Test (System)">Sensor Settable Properties Verification Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260323.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sensor Static Properties Test (System)">Sensor Static Properties Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998195.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Single Computer Display Object Test">Single Computer Display Object Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124740.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Single Computer Display Object test">Single Computer Display Object test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124827.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Screen-Rotation Perf Test">Screen-Rotation Perf Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn508134.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SysFX Test (System)">SysFX Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293671.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth 2.1 Logo Tests (Windows v6.3)">System - Bluetooth 2.1 Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124184.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth AOAC Logo Tests (Windows v6.3)">System - Bluetooth AOAC Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260257.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth Inband SCO Tests (Windows v6.3)">System - Bluetooth Inband SCO Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247307.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth LE Dual-Mode Logo Tests (Windows v6.3)">System - Bluetooth LE Dual-Mode Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293625.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth LE Logo Tests (Windows v6.3)">System - Bluetooth LE Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260286.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth Non-USB Logo Tests (Windows v6.3)">System - Bluetooth Non-USB Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260320.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Bluetooth Point to Point Tests (Windows v6.3)">System - Bluetooth Point to Point Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247268.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Check For Bluetooth LE Filter Drivers (Windows v6.3)">System - Check For Bluetooth LE Filter Drivers (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260318.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth 2.1 Logo Tests (Windows 8)">System - Downlevel - Bluetooth 2.1 Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293614.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth AOAC Logo Tests (Windows 8)">System - Downlevel - Bluetooth AOAC Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260179.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth Inband SCO Tests (Windows 8)">System - Downlevel - Bluetooth Inband SCO Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293658.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth LE Dual-Mode Logo Tests (Windows 8)">System - Downlevel - Bluetooth LE Dual-Mode Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247339.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth LE Logo Tests (Windows 8)">System - Downlevel - Bluetooth LE Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247342.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth Non-USB Logo Tests (Windows 8)">System - Downlevel - Bluetooth Non-USB Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247253.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Bluetooth Point to Point Tests (Windows 8)">System - Downlevel - Bluetooth Point to Point Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247445.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Downlevel - Radio On-Off Logo Tests (Windows 8)">System - Downlevel - Radio On-Off Logo Tests (Windows 8)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997933.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Partition Validation">System - Partition Validation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247580.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Radio On-Off Logo Tests (Windows v6.3)">System - Radio On-Off Logo Tests (Windows v6.3)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124334.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System Information Test">System Information Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997826.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System Transcode Faster Than Real Time on AC Power Source ( Manual on mobile devices )">System Transcode Faster Than Real Time on AC Power Source ( Manual on mobile devices )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123995.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System Transcode Faster Than Real Time on Battery (DC) Power Source ( Manual on mobile devices )">System Transcode Faster Than Real Time on Battery (DC) Power Source ( Manual on mobile devices )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124639.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Touch Slate HW LOGO test">Touch Slate HW LOGO test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293711.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 Verify Existence for Client Systems">TPM 2.0 Verify Existence for Client Systems</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997769.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UEFI GOP mode Test">UEFI GOP mode Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123898.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Unexpected Sensor Activity Test">Unexpected Sensor Activity Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376522.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Unexpected Sensor Activity Test (System)">Unexpected Sensor Activity Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998231.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Device Driver Is WDDM">Verify Device Driver Is WDDM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124294.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Graphics Device Count is one">Verify Graphics Device Count is one</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123989.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Post Device Supports Display And Render">Verify Post Device Supports Display And Render</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn375834.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Sensor Orientation - 3D Accelerometer (System)">Verify Sensor Orientation - 3D Accelerometer (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn375894.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Sensor Orientation - 3D Compass (System)">Verify Sensor Orientation - 3D Compass (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn375854.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify Sensor Orientation - 3D Inclinometer (System)">Verify Sensor Orientation - 3D Inclinometer (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125075.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify when Render Only device exists that a full device from the same vendor exists">Verify when Render Only device exists that a full device from the same vendor exists</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998203.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM CCD Test for verifying only one internal target active on GPU">WDDM CCD Test for verifying only one internal target active on GPU</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123557.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam BasicPerf System  (Manual)">Webcam BasicPerf System  (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn466524.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Controls - FlashMode - Manual System Test">Webcam Controls - FlashMode - Manual System Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn283533.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Controls Tests (System)">Webcam Controls Tests (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn390885.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Controls - Photo Sequence - System Test">Webcam Controls - Photo Sequence - System Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn268590.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Glitch free record System Test - WNCameraRequirements (Manual)">Webcam Glitch free record System Test - WNCameraRequirements (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125138.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Location, Registration, Metadata, and Dependency Tests">Webcam Location, Registration, Metadata, and Dependency Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251511.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Performance System Test">Webcam Performance System Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn375917.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Performance System Test - WNCameraRequirements">Webcam Performance System Test - WNCameraRequirements</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293812.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Webcam Sensor Quality System Test - WNCameraRequirements (Manual)">Webcam Sensor Quality System Test - WNCameraRequirements (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124223.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximitySystemTest- SystemImplementingProximity">WHCKProximitySystemTest- SystemImplementingProximity</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123545.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximitySystemTest- SystemNFCPlacement">WHCKProximitySystemTest- SystemNFCPlacement</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998135.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximitySystemTest- SystemRange">WHCKProximitySystemTest- SystemRange</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998063.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHCKProximitySystemTest- Touchmark">WHCKProximitySystemTest- Touchmark</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384096.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Win6_3.MBN.SYSTEM.TestConnect">Win6_3.MBN.SYSTEM.TestConnect</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384093.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Win6_3.MBN.SYSTEM.TestClassDriver">Win6_3.MBN.SYSTEM.TestClassDriver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998482.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Win8.MBN.SYSTEM.TestClassDriver">Win8.MBN.SYSTEM.TestClassDriver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124439.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Win8.MBN.SYSTEM.TestConnect">Win8.MBN.SYSTEM.TestConnect</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124786.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows System Check For WDDM">Windows System Check For WDDM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124479.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Digitizer Test (Windows 7 System)">Windows Digitizer Test (Windows 7 System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998649.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Pen Hover Accuracy Test (System)">Windows Pen Hover Accuracy Test (System)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Pen Range Test (System)">Windows Pen Range Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124907.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Pen Resolution Test (System)">Windows Pen Resolution Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124460.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Base Digitizer Test (System)">Windows Base Digitizer Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123928.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Recovery Environment Boot Test">Windows Recovery Environment Boot Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998679.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Tablet Test (System)">Windows Tablet Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998053.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Digitizer Jitter Test (System)">Windows Touch Digitizer Jitter Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124309.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Extra Input Behavior Test (System)">Windows Touch Extra Input Behavior Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997824.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Five Point Minimum Test (System)">Windows Touch Five Point Minimum Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124676.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch High Resolution Timestamp Test (System)">Windows Touch High Resolution Timestamp Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124029.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Input Separation Test (System)">Windows Touch Input Separation Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124515.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Noise Suppression Test (System)">Windows Touch Noise Suppression Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998819.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Physical Input Position Test (System)">Windows Touch Physical Input Position Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998549.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Reporting Rate Test (System)">Windows Touch Reporting Rate Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998906.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Resolution Test (System)">Windows Touch Resolution Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125240.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Response Latency (Down) Test (System)">Windows Touch Response Latency (Down) Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293589.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Response Latency (Panning) Test (System)">Windows Touch Response Latency (Panning) Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998109.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Test (System)">Windows Touch Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998708.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Test (Windows 7 System)">Windows Touch Test (Windows 7 System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998242.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch UX Test (System)">Windows Touch UX Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124892.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Z Axis Allowance Test (System)">Windows Touch Z Axis Allowance Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251519.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on AC ( Manual on mobile systems )">WNGlitchfree HD Video Playback on AC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251508.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on AC during Connected Standby ( Manual on mobile systems )">WNGlitchfree HD Video Playback on AC during Connected Standby ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251525.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on AC with Audio Offload ( Manual on mobile systems )">WNGlitchfree HD Video Playback on AC with Audio Offload ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251500.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on DC ( Manual on mobile systems )">WNGlitchfree HD Video Playback on DC ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251509.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on DC during Connected Standby ( Manual on mobile systems )">WNGlitchfree HD Video Playback on DC during Connected Standby ( Manual on mobile systems )</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn251496.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WNGlitchfree HD Video Playback on DC with Audio Offload ( Manual on mobile systems )">WNGlitchfree HD Video Playback on DC with Audio Offload ( Manual on mobile systems )</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Windows Pen Range Test (System)</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This manual test verifies a system's pen digitizer range. The pen digitizer must prevent false recognition of touch gestures from the non-interactive hand.</p>
+      <h2 class="heading">Test details</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>
+                <strong>Associated requirements</strong>
+              </p>
+            </td>
+            <td>
+              <p>System.Client.Digitizer.Pen.PenRange<br /> System.Client.Digitizer.Touch.ColdBootLatency</p>
+              <p>
+                <a href="http://go.microsoft.com/fwlink/?LinkID=254482">See the system hardware requirements.</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Platforms</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+									Windows RT (ARM-based)
+									<br />
+									Windows 8 (x64)
+									<br />
+									Windows 8 (x86)
+									<br />
+									Windows RT 8.1
+									<br />
+									Windows 8.1 x64
+									<br />
+									Windows 8.1 x86
+								</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Expected run time</strong>
+              </p>
+            </td>
+            <td>
+              <p>~2 minutes</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Categories</strong>
+              </p>
+            </td>
+            <td>
+              <p>Certification</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Type</strong>
+              </p>
+            </td>
+            <td>
+              <p>Manual</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Running the test</h2>
+      <div id="sectionSection1" class="section">
+        <p>Before you run the test, complete the test setup as described in the test requirements: <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998357.aspx">System Client Testing Prerequisites</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998919.aspx">Digitizer Testing Prerequisites</a>.</p>
+      </div>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection2" class="section">
+        <p>For troubleshooting information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123581.aspx">Troubleshooting System Client Testing</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123662.aspx">Troubleshooting Device Digitizer Testing</a>.</p>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="FZ9C3IO8SMgqbOC7ls3qLfXl7y6v4KPWuYmogD58Vbe2I7xXf64sJUD9d3s7rlzVWohTQJp_5R59WAgHBW8SfI4A2hdypdI-Ik_shoOJHIJ_KjjR0W6aljdN_FTnnxBgaJkybw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj123459.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj123459.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="7unL3BWB5iDxnrTkKKNfAR2m2qEIJSjD7XL0RPdV7lA8_6E7ieRVQBSAdjhObSQ9zzS85UC0FjY-EPEM_NSLHBy6w8TqR2HnyPS5XhzfV34CxIgaF49xWvtmf9ad-UfRVdtlCQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj123459(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"fa9c5481-973a-4379-b85f-54dd76bb6246\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj123459.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

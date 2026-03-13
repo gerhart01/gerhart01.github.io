@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff544607(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544607(v=vs.85).aspx" />
+        <title>Sample KMDF Drivers (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff544607(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544607(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544607(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544607(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93C-9:55:22 AM" />
+
+<meta name="Search.ShortId" content="ff544607" />
+
+<meta name="ms.shortidmsdn" content="ff544607" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075322&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff544607%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557565(v=vs.85).aspx" id="dn279975_VS.85_en-us" mtpsaliasid="" mtpsassetid="a3243ae3-1bc3-42d5-8975-b0588ae94dba_VS.85_en-us" mtpsshortid="ff557565_VS.85_en-us" title="Windows Driver Frameworks">Windows Driver Frameworks</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265580(v=vs.85).aspx" id="dn279976_VS.85_en-us" mtpsaliasid="" mtpsassetid="46009B18-7EDD-4E58-B561-36775A335B87_VS.85_en-us" mtpsshortid="dn265580_VS.85_en-us" title="WDF Driver Development Guide">WDF Driver Development Guide</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553112(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Writing a Simple WDF Driver">Writing a Simple WDF Driver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545545(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using the Framework to Develop a Driver">Using the Framework to Develop a Driver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384105(v=vs.85).aspx" id="dn384136_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Getting Started with UMDF">Getting Started with UMDF</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff542842(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Framework Library Versioning">Framework Library Versioning</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544309(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KMDF Version History">KMDF Version History</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561356(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UMDF Version History">UMDF Version History</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544607(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sample KMDF Drivers">Sample KMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn383673(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sample UMDF Drivers">Sample UMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn569312(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Sample Toaster Driver Programming Tour">Sample Toaster Driver Programming Tour</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn605830(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Developing Drivers with the Windows Driver Foundation: Reference Book">Developing Drivers with the Windows Driver Foundation: Reference Book</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265646(v=vs.85).aspx" id="dn280012_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF Objects">WDF Objects</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265588(v=vs.85).aspx" id="dn280016_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PnP and Power Management">PnP and Power Management</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265584(v=vs.85).aspx" id="dn280017_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Handling I/O Requests">Handling I/O Requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545479(v=vs.85).aspx" id="dn280020_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using I/O Targets">Using I/O Targets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265593(v=vs.85).aspx" id="dn280021_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Synchronization Techniques">Synchronization Techniques</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265668(v=vs.85).aspx" id="dn280023_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF Support Objects">WDF Support Objects</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543281(v=vs.85).aspx" id="dn280024_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Handling Hardware Interrupts">Handling Hardware Interrupts</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543260(v=vs.85).aspx" id="dn280026_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Handling DMA Operations in KMDF Drivers">Handling DMA Operations in KMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544711(v=vs.85).aspx" id="dn280027_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Supporting WMI in KMDF Drivers">Supporting WMI in KMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540702(v=vs.85).aspx" id="dn280028_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Accessing WDM Interfaces in KMDF Drivers">Accessing WDM Interfaces in KMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543307(v=vs.85).aspx" id="dn280029_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Handling Hardware Resources">Handling Hardware Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265579(v=vs.85).aspx" id="dn280033_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Building, Installing, and Testing">Building, Installing, and Testing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540790(v=vs.85).aspx" id="dn280035_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Debugging WDF Drivers">Debugging WDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg583865(v=vs.85).aspx" id="dn376914_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Porting a Driver from WDM to WDF">Porting a Driver from WDM to WDF</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265586(v=vs.85).aspx" id="dn383708_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Additional Topics for KMDF Drivers">Additional Topics for KMDF Drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561365(v=vs.85).aspx" id="dn605852_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UMDF 1.x Design Guide">UMDF 1.x Design Guide</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Sample KMDF Drivers</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic lists the Kernel-Mode Driver Framework (KMDF) sample drivers that you can download from  the <a href="http://go.microsoft.com/fwlink/p/?linkid=256387">Windows Dev Center - Hardware</a>.</p>
+<h2><a id="ddk_sample_framework_based_drivers_df"></a><a id="DDK_SAMPLE_FRAMEWORK_BASED_DRIVERS_DF"></a></h2>
+<p>For information on building the samples, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff554644(v=vs.85).aspx">Building a Driver</a>.</p>
+<p></p>
+<dl>
+<dt><a id="1394"></a>1394</dt>
+<dd>
+<p>Demonstrates how to interact with the 1394 driver stack.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256208">1394VDEV and 1394DIAG - WDF Version</a>.</p>
+</dd>
+<dt><a id="AMCC5933"></a><a id="amcc5933"></a>AMCC5933</dt>
+<dd>
+<p>Demonstrates how to write driver for a PCI device that supports direct memory access (DMA) and uses the AMCC PCI Matchmaker Developer's kit (S5935DK1) board.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256077">AMCC5933 - PCI Device Driver Using WDF</a>.</p>
+</dd>
+<dt><a id="ECHO"></a><a id="echo"></a>ECHO</dt>
+<dd>
+<p>Demonstrates how to use the framework's queue and request objects and automatic synchronization.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256129">KMDF Echo Sample</a>.</p>
+</dd>
+<dt><a id="FakeModem"></a><a id="fakemodem"></a><a id="FAKEMODEM"></a>FakeModem</dt>
+<dd>
+<p>Demonstrates a simple controllerless modem driver that sends and receives AT commands.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256110">Fakemodem Driver</a>.</p>
+</dd>
+<dt><a id="FIREFLY"></a><a id="firefly"></a>FIREFLY</dt>
+<dd>
+<p>Demonstrates programming a human input device (HID) device by using I/O control codes (IOCTLs), and provides a Windows Management Instrumentation (WMI) interface.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256113">FIREFLY - WDF filter driver for HID device</a>.</p>
+<p>This sample is installed in the <em>\src\hid</em> subdirectory.</p>
+</dd>
+<dt><a id="HIDUSBFX2"></a><a id="hidusbfx2"></a>HIDUSBFX2</dt>
+<dd>
+<p>Demonstrates how to write a minidriver for a HID device and how to map a non-HID USB device to a HID device. The device is contained in the OSR USB-FX2 Learning Kit. </p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256121">HIDUSBFX2</a>.</p>
+</dd>
+<dt><a id="KbFiltr"></a><a id="kbfiltr"></a><a id="KBFILTR"></a>KbFiltr</dt>
+<dd>
+<p>Demonstrates an upper device filter driver for a PS/2 keyboard.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256125">Keyboard Input WDF Filter Driver (Kbfiltr)</a>.</p>
+</dd>
+<dt><a id="NDISProt"></a><a id="ndisprot"></a><a id="NDISPROT"></a>NDISProt</dt>
+<dd>
+<p>Demonstrates a connection-less NDIS 5.0/5.1 and NDIS 6.0 protocol driver.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256145">NDISProt Connection-less WDF Protocol </a>.</p>
+</dd>
+<dt><a id="NONPNP"></a><a id="nonpnp"></a>NONPNP</dt>
+<dd>
+<p>Demonstrates a non-Plug and Play (PnP) driver that uses the framework.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256148">NONPNP</a>.</p>
+</dd>
+<dt><a id="KMDF_FX2"></a><a id="kmdf_fx2"></a>KMDF_FX2</dt>
+<dd>
+<p>Demonstrates how to perform bulk and interrupt data transfers to the USB device that is contained in the OSR USB-FX2 Learning Kit.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256131">kmdf_fx2</a>.</p>
+</dd>
+<dt><a id="PCIDRV"></a><a id="pcidrv"></a>PCIDRV</dt>
+<dd>
+<p>A fully functional framework-based driver for Intel 82557/82558-based PCI Ethernet adapters (10/100) and Intel compatibles.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256154">PCIDRV - WDF Driver for PCI Device</a>.</p>
+</dd>
+<dt><a id="PCMCIA"></a><a id="pcmcia"></a>PCMCIA</dt>
+<dd>
+<p>The PCMCIA Smart Card Driver is used for the SCM PCMCIA smart card reader.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256155">PCMCIA Smart Card Driver</a>.</p>
+</dd>
+<dt><a id="PLX9x5x"></a><a id="plx9x5x"></a><a id="PLX9X5X"></a>PLX9x5x</dt>
+<dd>
+<p>Demonstrates how to write a driver for a generic PCI device that supports DMA and uses the PLX9656/9653RDK-LITE board.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256157">PLX9x5x PCI Driver</a>.</p>
+</dd>
+<dt><a id="RAMDISK"></a><a id="ramdisk"></a>RAMDISK</dt>
+<dd>
+<p>Demonstrates a software-only driver.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256171">RAMDisk Storage Driver</a>.</p>
+</dd>
+<dt><a id="Serial"></a><a id="serial"></a><a id="SERIAL"></a>Serial</dt>
+<dd>
+<p>A framework-based serial driver that is based on the WDM serial sample driver.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256183">Serial sample</a>.</p>
+</dd>
+<dt><a id="Storage_SDIO"></a><a id="storage_sdio"></a><a id="STORAGE_SDIO"></a>Storage SDIO</dt>
+<dd>
+<p>A framework-based driver for an SDIO development board (Mars board). The board implements the SDIO protocol without additional functionality.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256105">Storage SDIO Driver</a>.</p>
+</dd>
+<dt><a id="Toaster"></a><a id="toaster"></a><a id="TOASTER"></a>Toaster</dt>
+<dd>
+<p>Framework-based versions of the WDM toaster sample drivers. The toaster sample includes a filter driver, a function driver, and a bus driver that create a single driver stack. The sample also includes an additional kernel-mode driver that uses a remote I/O target to communicate with the driver stack.</p>
+<p>For more information about this sample, see <a href="http://go.microsoft.com/fwlink/p/?linkid=256195">Toaster</a>.</p>
+</dd>
+<dt><a id="UsbSamp"></a><a id="usbsamp"></a><a id="USBSAMP"></a>UsbSamp</dt>
+<dd>
+<p>Demonstrates how to use the framework to perform bulk and isochronous data transfers to a USB device.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256204">Usbsamp Sample</a>.</p>
+</dd>
+<dt><a id="WmiSamp"></a><a id="wmisamp"></a><a id="WMISAMP"></a>WmiSamp</dt>
+<dd>
+<p>Demonstrates how to register WMI providers and create provider instances for framework device objects and how to handle WMI queries that applications send to the device.</p>
+<p>For more information about this sample, see the <a href="http://go.microsoft.com/fwlink/p/?linkid=256220">WmiSamp WMI Provider</a>.</p>
+</dd>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [wdf\wdf]:%20Sample KMDF Drivers%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="bkL4NYpzsK-kCOJW0-Y1pRs0dM46TrMXHn_uFptenEf7eQmamO5AqnhfmlbeTDgXvENY1AB8B0vjBEvNHm7FV6BfLkD0_b1IGNKIvePPgBOIRbFV669vppzsNdETKUO-LOPYyA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/ff544607(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff544607(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="dU0BCpbyz8moNM48IxUKP6COqPQPmXZII4n-GDvdZXQe2-9UdLa1cqKtN0yuXAQ-B1890gAua9OCFnant_Fba9oHIqrFjEFPe-SV7puGMmsnmIAm7qdLCMUXipzHSpKawP1SeQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff544607(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"9df37bd4-4c95-4b06-9a4c-586dff74ce09\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff544607(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:09 GMT -->
+</html>

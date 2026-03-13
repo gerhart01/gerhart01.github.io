@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/apps/jj161017.aspx" />
+        <title>Quickstart: Register an app for an AutoPlay device (Windows Store apps using C#/VB/C++ and XAML) (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj161017(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj161017(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj161017(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj161017(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD1-9:49:04 AM" />
+
+<meta name="Search.ShortId" content="jj161017" />
+
+<meta name="ms.shortidmsdn" content="jj161017" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074944&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj161017.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+<div class="topicNotInScope" id="topicNotInScope">
+    <div class="topicNotInScopeDisclaimer" id="topicNotInScopeDisclaimer">
+        <div class="topicNotInScopeImageContainer clip16x16">
+            <img class="topicNotInScopeInformationImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Information" />
+        </div>
+        <div class="topicNotInScopeSwitchCollectionContainer">
+            <a class="topicNotInScopeSwitchCollection" id="topicNotInScopeSwitchCollection" href="#" onclick="TopicNotInScope_ShowPicker();return false;">
+                Switch
+            </a>
+            <div class="topicNotInScopeImageContainer2 clip11x6">
+                <img class="topicNotInScopeDropdownImage" id="topicNotInScopeDropdownImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Switch" onclick="TopicNotInScope_ShowPicker()" />
+            </div>
+             <ul id="topicNotInScopeCollectionPicker" class="topicNotInScopeCollectionPicker">
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-US/windows/apps/ux/jj161017.aspx" title="Visual Studio">Visual Studio</a>
+                        </li>
+            </ul>
+        </div>
+        <div class="topicNotInScopeDisclaimerText">The topic you requested is included in another documentation set. For convenience, it's displayed below. Choose Switch to see the topic in its original location.</div>
+        <div class="Clear"></div>
+    </div>
+</div>
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Quickstart: Register an app for an AutoPlay device (Windows Store apps using C#/VB/C++ and XAML)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>You can register apps as options for AutoPlay device events. AutoPlay device events are raised when a device is connected to a computer.</p>
+<p><strong>Roadmap:</strong> How does this topic relate to others? See:
+</p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/br229583.aspx">Roadmap for Windows Store apps using C# or Visual Basic</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh700360.aspx">Roadmap for Windows Store apps using C++</a>
+</li>
+</ul>
+
+<p>This sample shows how to identify your app as an AutoPlay option when a camera is connected to a computer. The app registers as a handler for the <strong>WPD\ImageSource</strong> AutoPlay event. This is a common event that the Windows Portable Device (WPD) system raises when cameras and other imaging devices notify it that they are an ImageSource using MTP. For more information, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff597729.aspx">Windows Portable Devices</a>.</p>
+<p>If you are a device manufacturer and you want to associate your <a href="http://go.microsoft.com/fwlink/p/?LinkID=301381">Windows Store device app</a> as an AutoPlay handler for your device, you can identify that app in the device metadata.   If you associate your app as the auto-installed app for the experience ID of your device, then Windows will discover the association when your device is connected to a computer. If the computer does not have your app installed, Windows will automatically download and install your app. AutoPlay will present your app as the first option for the user to choose as the handler for your device. For more info, see <a href="http://go.microsoft.com/fwlink/p/?LinkId=306684">AutoPlay for Windows Store device apps</a>.</p>
+<p><strong>Objective: </strong>Create an app to handle an AutoPlay device event.</p>
+<h2><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h2>
+<p>Microsoft Visual Studio</p>
+<h2>Instructions</h2>
+<h3><a id="Create_a_new_project_and_add_AutoPlay_declarations"></a><a id="create_a_new_project_and_add_autoplay_declarations"></a><a id="CREATE_A_NEW_PROJECT_AND_ADD_AUTOPLAY_DECLARATIONS"></a>1. Create a new project and add AutoPlay declarations</h3>
+<ol>
+<li>Open Visual Studio and select <strong>New Project</strong> from the <strong>File</strong> menu. In the <strong>Visual C#</strong> or <strong>Visual Basic</strong> section, select <strong>Windows Store</strong>. Name the application <strong>AutoPlayDevice_Camera</strong> and click <strong>OK.</strong></li>
+<li>Open the Package.appxmanifest file and select the <strong>Capabilities</strong> tab. Select the <strong>Removable Storage</strong> capability. This gives the app access to the data on the camera as a removable storage volume device.</li>
+<li>In the manifest file, select the <strong>Declarations</strong> tab. In the <strong>Available Declarations</strong> drop-down list, select <strong>AutoPlay Device</strong> and click <strong>Add</strong>. Select the new <strong>AutoPlay Device</strong> item that was added to the <strong>Supported Declarations</strong> list.</li>
+<li>An <strong>AutoPlay Device</strong> declaration identifies your app as an option when AutoPlay raises a device event for known events. <p>In the <strong>Launch Actions</strong> section, enter the following values for the first launch action.</p>
+<table>
+<tr><th>Setting</th><th>Value</th></tr>
+<tr><td>Verb</td><td>show</td></tr>
+<tr><td>Action Display Name</td><td>Show Pictures</td></tr>
+<tr><td>Content Event</td><td>WPD\ImageSource</td></tr>
+</table>
+<p> </p>
+<p>The <strong>Action Display Name</strong> setting identifies the string that AutoPlay displays for your app. The <strong>Verb</strong> setting identifies a value that is passed to your app for the selected option. You can specify multiple  launch actions for an AutoPlay event and use the <strong>Verb</strong> setting to determine which option a user has selected for your app. You can tell which option the user selected by checking the <strong>verb</strong> property of the startup event arguments passed to your app. You can use any value for the <strong>Verb</strong> setting except, <strong>open</strong>, which is reserved. For an example of using multiple verbs in a single app, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh452739.aspx">Quickstart: how to register an app for AutoPlay content</a>.</p>
+</li>
+<li>In the <strong>Available Declarations</strong> drop-down list, select <strong>File Type Associations</strong> and click <strong>Add</strong>. In the Properties of the new <strong>File Type Associations</strong> declaration, set the <strong>Display Name</strong> field to <strong>Show Images from Camera</strong> and the <strong>Name</strong> field to <strong>camera_association1</strong>. In the <strong>Supported File Types</strong> section, click <strong>Add New</strong>. Set the <strong>File Type</strong> field to <strong>.jpg</strong>. In the <strong>Supported File Types</strong> section, click <strong>Add New</strong> again. Set the <strong>File Type</strong> field of the new file association to <strong>.png</strong>. For content events, AutoPlay filters out any file types that are not explicitly associated with your app.</li>
+<li>Save and close the manifest file.</li>
+</ol>
+<h3><a id="Add_XAML_UI"></a><a id="add_xaml_ui"></a><a id="ADD_XAML_UI"></a>2. Add XAML UI</h3>
+<ul>
+<li>Open the MainPage.xaml file and add the following XAML to the default &lt;Grid&gt; section.
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>XAML</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a7e8664c-59fc-4847-8bfe-0ac4f1adb820');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a7e8664c-59fc-4847-8bfe-0ac4f1adb820" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">&lt;</span><span style="color:#A31515;">StackPanel</span> <span style="color:Red;">Orientation</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Vertical</span><span style="color:Black;">"</span> <span style="color:Red;">Margin</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">10,0,-10,0</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">TextBlock</span> <span style="color:Red;">FontSize</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">24</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>Device Information<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">TextBlock</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">StackPanel</span> <span style="color:Red;">Orientation</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Horizontal</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">TextBlock</span> <span style="color:Red;">x:Name</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">DeviceInfoTextBlock</span><span style="color:Black;">"</span> <span style="color:Red;">FontSize</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">18</span><span style="color:Black;">"</span> <span style="color:Red;">Height</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">400</span><span style="color:Black;">"</span> <span style="color:Red;">Width</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">400</span><span style="color:Black;">"</span> <span style="color:Red;">VerticalAlignment</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Top</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ListView</span> <span style="color:Red;">x:Name</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">ImagesList</span><span style="color:Black;">"</span> <span style="color:Red;">HorizontalAlignment</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Left</span><span style="color:Black;">"</span> <span style="color:Red;">Height</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">400</span><span style="color:Black;">"</span> <span style="color:Red;">VerticalAlignment</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Top</span><span style="color:Black;">"</span> <span style="color:Red;">Width</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">400</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ListView.ItemTemplate</span><span style="color:Blue;">&gt;</span>
+                <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataTemplate</span><span style="color:Blue;">&gt;</span>
+                    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">StackPanel</span> <span style="color:Red;">Orientation</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Vertical</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+                        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Image</span> <span style="color:Red;">Source</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">{Binding Path=Source}</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+                        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">TextBlock</span> <span style="color:Red;">Text</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">{Binding Path=Name}</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+                    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">StackPanel</span><span style="color:Blue;">&gt;</span>
+                <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataTemplate</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ListView.ItemTemplate</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ListView.ItemsPanel</span><span style="color:Blue;">&gt;</span>
+                <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ItemsPanelTemplate</span><span style="color:Blue;">&gt;</span>
+                    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">WrapGrid</span> <span style="color:Red;">Orientation</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Horizontal</span><span style="color:Black;">"</span> <span style="color:Red;">ItemHeight</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">100</span><span style="color:Black;">"</span> <span style="color:Red;">ItemWidth</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">120</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">WrapGrid</span><span style="color:Blue;">&gt;</span>
+                <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ItemsPanelTemplate</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ListView.ItemsPanel</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ListView</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">StackPanel</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">StackPanel</span><span style="color:Blue;">&gt;</span>
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ul>
+<h3><a id="Add_activation_code"></a><a id="add_activation_code"></a><a id="ADD_ACTIVATION_CODE"></a>3. Add activation code</h3>
+<p>The code in this step references the camera as a <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.portable.storagedevice.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">StorageDevice</strong></a> by passing the device information Id of the camera to the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.portable.storagedevice.fromid.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FromId</strong></a> method. The device information Id of the camera is obtained by first casting the event arguments as <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.applicationmodel.activation.deviceactivatedeventargs.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceActivatedEventArgs</strong></a>, and then getting the value from the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.applicationmodel.activation.deviceactivatedeventargs.deviceinformationid.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceInformationId</strong></a> property.</p>
+<ul>
+<li>Open the App.xaml.cs or  App.xaml.vb file and add the following code to the <strong>App</strong> class.
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-2">C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-2">VB</a></div><div class="codeSnippetContainerTabPhantom" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_06dcf45e-9fe8-4414-8f58-16fdcde5a76c');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_06dcf45e-9fe8-4414-8f58-16fdcde5a76c" class="codeSnippetContainerCode" dir="ltr">
+            No code example is currently available or this language may not be supported.
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ul>
+<h3><a id="Add_code_to_display_device_information"></a><a id="add_code_to_display_device_information"></a><a id="ADD_CODE_TO_DISPLAY_DEVICE_INFORMATION"></a>4. Add code to display device information</h3>
+<p>You can obtain information about the camera from the properties of the <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/windows.devices.portable.storagedevice.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">StorageDevice</strong></a> class. The code in this step displays the device name and other information to the user when the app runs. The code then calls the getImages method, which you will add in the next step, to display thumbnails of the images stored on the camera.</p>
+<ul>
+<li>In the MainPage.xaml.cs or MainPage.xaml.vb file add the following code to the <strong>MainPage</strong> class.
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-3">C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-3">VB</a></div><div class="codeSnippetContainerTabPhantom" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d68d282d-aed7-409f-9f21-d7c026f76218');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d68d282d-aed7-409f-9f21-d7c026f76218" class="codeSnippetContainerCode" dir="ltr">
+            No code example is currently available or this language may not be supported.
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ul>
+<h3><a id="Add_code_to_display_images"></a><a id="add_code_to_display_images"></a><a id="ADD_CODE_TO_DISPLAY_IMAGES"></a>5. Add code to display images</h3>
+<p>The code in this step displays thumbnails of the images stored on the camera. The code makes asynchoronous calls to the camera to get the thumbnail image. However, the next asynchronous call does not occur until the previous asynchronous call completes. This ensures that only one request is made to the camera at a time.</p>
+<ul>
+<li>In the MainPage.xaml.cs or MainPage.xaml.vb file add the following code to the <strong>MainPage</strong> class.
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-4">C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-4">VB</a></div><div class="codeSnippetContainerTabPhantom" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_aeafa9ce-6b5a-4220-b34f-3a65a1a0f81e');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_aeafa9ce-6b5a-4220-b34f-3a65a1a0f81e" class="codeSnippetContainerCode" dir="ltr">
+            No code example is currently available or this language may not be supported.
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ul>
+<h3><a id="Build_and_run_the_app"></a><a id="build_and_run_the_app"></a><a id="BUILD_AND_RUN_THE_APP"></a>6. Build and run the app</h3>
+<ol>
+<li>Press F5 to build and deploy the app (in debug mode).</li>
+<li>To run your app, connect a camera to your machine. Then select the app from the AutoPlay list of options. <p class="note"><strong>Note</strong>  Not all cameras advertise for the <strong>WPD\ImageSource</strong> AutoPlay device event.</p>
+</li>
+</ol>
+<h2><a id="summary"></a><a id="SUMMARY"></a>Summary</h2>
+<p>In this tutorial, you created an app that displays image files from a camera device. You registered the app for the AutoPlay <strong>WPD\ImageSource</strong> device event.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/hh452741.aspx">Auto-launching with AutoPlay</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/br229583.aspx">Roadmap for creating apps using C#, C++, or VB</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="SSfaLbEQ4E6Smn2YNffbabya5xCX5__NexR_8KGKxCY-eGT0ywZiXls7JWiqhZaevpac40W9M2pzlj5Vi_HOud4i8cZtGaL2vVA_OIw18xvOMYLWRJrBGB2TOitJbtJGAUThUA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/jj161017.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj161017.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="OVCU-XDfyVKqlKlB5NISK1Bl1RkJc4I26FmVSMc6d_VLZ8LEoBASeG8_pcACYmOy3kDFRb8slsCmZxDRXfLZPdpfxNhAii4fPf7171V7Taq-Hk9RCL91c8RksewGu_Va1Zmzew2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj161017(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"18227fc7-4a5a-4626-8269-71326e0a8afa\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj161017.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:06 GMT -->
+</html>

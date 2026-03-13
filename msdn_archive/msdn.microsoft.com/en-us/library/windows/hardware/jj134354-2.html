@@ -1,0 +1,3311 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134354.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" />
+        <title>Device.Audio Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134354(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93B-9:11:52 AM" />
+
+<meta name="Search.ShortId" content="jj134354" />
+
+<meta name="ms.shortidmsdn" content="jj134354" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072712&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134354.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.Audio Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.Audio.APO.WinPEConformance</h2>
+      <div id="sectionSection0" class="section">
+        <p>System effect APOs comply with Windows Protected Environment conformance and compliance criteria</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Target Feature</p>
+            </td>
+            <td>
+              <p>Device.Audio.APO</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Applies to</p>
+            </td>
+            <td>
+              <p>Windows 7 Client x86, x64</p>
+              <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+              <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              <p>Windows Server 2012 R2 x64</p>
+              <p>Windows Server 2008 Release 2 x64</p>
+              <p>Windows Server 2012 x64</p>
+            </td>
+          </tr>
+        </table>
+        <p>Description</p>
+        <p>Audio Processing Objects (APOs) that are loaded into the system effect infrastructure by the audio device driver INF must be signed with a certificate indicating conformance and compliance with the robustness rules of the Windows Protected Environment. This signature attribute is granted automatically as part of the submission process dependent on signing of the Test Agreements.See Code Signing for Protected Media Components in Windows at http://go.microsoft.com/fwlink/?LinkId=70751. </p>
+        <p>Additional Information</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Enforcement Date</p>
+            </td>
+            <td>
+              <p>Jul. 17, 2008</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Device.Audio.AudioController</h2>
+      <div id="sectionSection1" class="section">
+        <p>This Audio Controller must match all Audio Controller tests</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.AudioController.HDControllerCompliance</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.AudioController.HDControllerCompliance</h3>
+        <div class="subSection">
+          <p>HD Audio controllers comply with the Intel HD Audio specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.AudioController</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirement Device.Audio.AudioController.HDAudioVersionNumber has been merged with this one.</p>
+          <p>An audio or modem controller must be implemented as an HD Audio controller (except where noted otherwise within this document). The controller must:</p>
+          <p>Be implemented according to Intel High Definition Audio Controller specification, Revision 1.0.</p>
+          <p>Be updated to comply with future specification revisions.</p>
+          <p>Comply with the latest HD Audio specification ECRs in accordance with policies around new hardware requirements.</p>
+          <p>HD Audio hardware that complies with HD Audio specification version 1.0 must set the correct version number in the appropriate registers. The VMAJ and VMIN registers must specify a major version number of 01h and a minor version number of 00h.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Devices that support Always On Always Connected (AOAC) and hardware offloading are exempt from the UAA requirements and therefore are not required to use an HD Audio controller.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 12, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Audio.Base</h2>
+      <div id="sectionSection2" class="section">
+        <p>This Device must match all base tests.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.Base.AudioProcessing</p>
+              <p>Device.Audio.Base.BasicDataFormats</p>
+              <p>Device.Audio.Base.ChannelMasks</p>
+              <p>Device.Audio.Base.DCOffset</p>
+              <p>Device.Audio.Base.DRM</p>
+              <p>Device.Audio.Base.ExposedAudioEndpointsAreFunctional</p>
+              <p>Device.Audio.Base.JackConnectorStateDescription</p>
+              <p>Device.Audio.Base.JackDetection</p>
+              <p>Device.Audio.Base.KSPROPERTYAUDIOVOLUMELEVEL</p>
+              <p>Device.Audio.Base.KSTopologyCompliance</p>
+              <p>Device.Audio.Base.NoUncontrollableStreamRouting</p>
+              <p>Device.Audio.Base.NoUndiscoverableDevice</p>
+              <p>Device.Audio.Base.PowerManagement</p>
+              <p>Device.Audio.Base.RealtimeDriversSupportStandardLoopedStreaming</p>
+              <p>Device.Audio.Base.ReportSupportedProperties</p>
+              <p>Device.Audio.Base.SamplePositionAccuracy</p>
+              <p>Device.Audio.Base.TimeSynchronizedSampleRates</p>
+              <p>Device.Audio.Base.TipRing</p>
+              <p>Device.Audio.Base.TwoDMAEnginesAndConnections</p>
+              <p>Device.Audio.Base.VolumeControl</p>
+              <p>Device.Audio.Base.WAVEFORMATEXTENSIBLESupport</p>
+              <p>Device.Audio.Base.WaveRTConformance</p>
+              <p>Device.Audio.Base.ZeroGlitch</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.Base.AudioProcessing</h3>
+        <div class="subSection">
+          <p>Audio devices support proper audio processing discovery and control.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement was formally known as Device.Audio.Base.NoUndiscoverableDevice.</p>
+          <p>Drivers</p>
+          <p>A Driver must support a raw pin at minimum but may support a raw and default pin as long as both are available simultaneously.  On the pins provided to the system the hardware must supply a post-mix volume and mute on the render side and peak metering for both render and capture.  Bluetooth and USB drivers which are powering devices that have processing which cannot be turned off are allowed to support default mode without raw mode.</p>
+          <p>Endpoint effects must be scenario neutral.  The endpoint effects should work in all scenarios.  For effects that may harm a scenario such as real time communications or only be beneficial to one scenario, the effect should be placed into the mode effects that are specific to that scenario.</p>
+          <p>In addition drivers that support the RAW mode must support the following depending on your driver structure:</p>
+          <p>A driver that supports mixing without offload support (supports multiple concurrent modes but does not support offload) shall include a KSNODETYPE_SUM node and no KSNODETYPE_AUDIO_ENGINE node. The node shall have a single input connection coming from the software pin factory, and represents the point where multiple instances of the pin are mixed.</p>
+          <p>The KSNODETYPE_AUDIO_ENGINE or KSNODETYPE_SUM node shall be in the path between the software pin factories and the endpoint bridge pin. The node shall be in the same filter as the software pin factories.</p>
+          <p>The node shall support KSPROPERTY_AUDIOSIGNALPROCESSING_MODES.</p>
+          <p>For Port Class drivers, the miniport shall support IMiniportAudioSignalProcessing. The port shall add KSPROPERTY_AUDIOSIGNALPROCESSING_MODES to the appropriate pin.</p>
+          <p>A driver that supports mixing (with offload and/or multiple modes) shall support a loopback pin.</p>
+          <p>Loopback pins shall be in new pin category KSPINCATEGORY_AUDIOLOOPBACK. The topology shall have a path from the software pin factory to the loopback pin factory. Audio endpoint builder shall not consider these pins when determining unique endpoints.</p>
+          <p>A driver that does not support mixing shall support KSPROPERTY_AUDIOSIGNALPROCESSING_MODES on the endpoint's software pin factory.</p>
+          <p>For Port Class drivers, the miniport shall support IMiniportAudioSignalProcessing. The port shall add KSPROPERTY_AUDIOSIGNALPROCESSING_MODES to the appropriate pin.</p>
+          <p>The software pin factory data ranges shall include KSATTRIBUTE_AUDIO_SIGNALPROCESSINGMODE. The attribute shall not be marked KSATTRIBUTE_REQUIRED.</p>
+          <p>The pin creation code shall check for KSDATAFORMAT_ATTRIBUTES in the data format and process the KSATTRIBUTE_AUDIOSIGNALPROCESSINGMODE if present.</p>
+          <p>For Port Class drivers, the driver's implementation of NewStream on IMiniportWaveRT, IMiniportWavePci, or IMiniportWaveCyclic shall support KSDATAFORMAT_ATTRIBUTES.APOs</p>
+          <p>If the driver's APOs support DEFAULT then the offload pin shall support DEFAULT. </p>
+          <p>The APOs shall support all modes that are supported by the offload pin. </p>
+          <p>APOs shall support all the modes supported by the host pin.</p>
+          <p>Offload may support RAW.</p>
+          <p>Discovery</p>
+          <p>Driver must expose all audio effect via the FXStreamCLSID, FXModeCLSID, and FXEndpointCLSID APOs (or proxy APOs).  The APOs must send an accurate list of effects that are enabled to the system when queried.  Drivers must support APO change notifications and only notify the system when an APO change has occurred.</p>
+          <p>There shall be no undiscoverable or uncontrollable hardware, firmware or 3rd party software-based AGC, AEC, Beam Forming, Noise suppression or anything else that significantly alters the audio samples (e.g. non-linear processing) from/to the device. </p>
+          <p>Loopback</p>
+          <p>The loopback stream should represent the stream coming out of the speaker.  Drivers with hardware processing must provide the system an accurate loopback stream.</p>
+          <p>Non-offload drivers that support mixing must support DRMRIGHTS on all pin instances. If any stream in the graph on a given pin instance requires loopback constriction, then the audio system asserts DRMRIGHTS.CopyProtect on that pin.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>Windows 8 and Windows 7 drivers do not have to implement the new method of processing discovery, however they cannot have uncontrollable processing as described above.  This processing is allowable on audio recording or playback streams if a means is provided for users to disable the processing on their systems, either by exposing the effects as APOs or through another solution.  Once disabled by a user, processing must remain off on that product until a user turns it back on.  Digital effects may default to enabled or disabled on first use.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.BasicDataFormats</h3>
+        <div class="subSection">
+          <p>Audio subsystem supports basic data formats</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The requirement Device.Audio.Base.IndependentInputOutputFormatSelection has been merged with this one.</p>
+          <p>When the Microsoft software sample rate conversion (SRC) is used, hardware SRC is not required. Windows provides software mixing and SRC, which eliminates the requirement for hardware to support multiple sample rates. </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Device Type</p>
+              </td>
+              <td>
+                <p>Required Sample Rate</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Communications-only audio device</p>
+              </td>
+              <td>
+                <p>At least one of 16 kHz, 44.1 kHz, or 48 kHz*</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>General-purpose or media-capable audio device</p>
+              </td>
+              <td>
+                <p>At least one of 44.1 kHz or 48 kHz**</p>
+              </td>
+            </tr>
+          </table>
+          <p>* Bluetooth HFP drivers that do not implement wideband speech are bound by the standard to support only 8 kHz.  This is an accepted exception.</p>
+          <p>** Unless further specified by external specifications or other WHCK requirements.  For example, HDMI audio requires both 44.1 kHz and 48 kHz, and Bluetooth A2DP requires both 44.1 kHz and 48 kHz for a Bluetooth sink.  Windows HCK tests may enforce these stricter specifications.  Hardware offload pins must support additional formats as specified in Device.Audio.HardwareAudioProcessing.AudioHardwareOffloading.</p>
+          <p>Support for other rates (such as 8, 11.025, 16, 22.05, 32, 96, 192, and 384 kHz) in hardware is optional.</p>
+          <p>This requirement is valid for both input and output devices.</p>
+          <p>If the built-in or external audio device includes both input and output capabilities, the audio device must support independent selection of input and output sample rates and support concurrent streaming at arbitrarily selected sample rates.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Justification Full duplex audio is essential to support emerging communications applications such as Internet Protocol (IP) telephony, conferencing, and network gaming. These applications require the audio system to play back and record simultaneously. The following requirements ensure that full duplex operation is available and performance is consistent across implementations.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.ChannelMasks</h3>
+        <div class="subSection">
+          <p>Audio device that supports multichannel audio formats properly handles channel masks</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the audio device supports multichannel audio formats, the audio device driver must deal with channel masks consistent with the content and the current selected speaker configuration. If supported, the device properly handles 5.1 and 7.1 PCM formats. The channels are routed to the proper analog lines, and these requirements apply for all the channels except LFE.See the Audio Driver Support for Home Theater Speaker Configurations whitepaper at http://go.microsoft.com/fwlink/?LinkId=65430. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.DCOffset</h3>
+        <div class="subSection">
+          <p>Audio capture device DC offset is limited within range of + or - 0.15 on a scale from -1.0 to +1.0</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Audio capture device DC offset is limited within range of + or - 0.15 on a scale from -1.0 to +1.0</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.DRM</h3>
+        <div class="subSection">
+          <p>Audio device implements DRM support as defined in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Audio devices must comply with Windows trusted audio paths for digital rights management (DRM). Hardware that complies with Windows DRM supports DRM level 1300. The audio drivers must not call the DrmForwardContentToFileObject function.The DRM requirement does not apply if the underlying device is a Bluetooth audio device. Design Notes: See the"Digital Rights Management" topic in the Windows Driver Kit.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.ExposedAudioEndpointsAreFunctional</h3>
+        <div class="subSection">
+          <p>Audio device must be functional (capable of capture/render) all the time while the system is powered on.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Exposed Audio Endpoints in a system must be functional (capable of capture/render) all the time while the system is powered on. Built-in speakers and microphones must work while the system is operational.Exposed audio end points continue to function even during system state changes such as:* while the power source changes from external to battery or vice versa* while the GPU switches from a to b</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.JackConnectorStateDescription</h3>
+        <div class="subSection">
+          <p>Audio drivers support specific properties to describe state of jack/connector</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Audio drivers must support the following properties: KSPROPERTY_JACK_DESCRIPTION and KSPROPERTY_JACK_DESCRIPTION2. * For every endpoint exposed by an HD Audio driver, the driver must respond to a KSPROPERTY_JACK_DESCRIPTION request with a KSJACK_DESCRIPTION structure.* For every endpoint exposed by an HD Audio driver, the driver must respond to a KSPROPERTY_JACK_DESCRIPTION2 request with a KSJACK_DESCRIPTION2 structure.* The structures must be populated to accurately reflect the hardware state.* Third-party jack-presence-detecting drivers use KSJACK_DESCRIPTION.IsConnected for KSPROPERTY_JACK_DESCRIPTION and jackdesc2_presence_detect_capability for KSPROPERTY_JACK_DESCRIPTION2.Refer to http://msdn.microsoft.com/en-us/library/ff537484(v=VS.85).aspx </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>USB audio 1.0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.JackDetection</h3>
+        <div class="subSection">
+          <p>Audio devices need to support jack detection</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Base.DockingStation, Device.Audio.HDAudio.AnalogJackDetection, and Device.Audio.HDAudio.DigitalJackDetection have been merged with this one</p>
+          <p>General Jack Detection:</p>
+          <p>Analog and digital jacks need to support jack presence detection, except for USB Audio 1.0 devices and S/PDIF. Third party drivers must advertise this to the OS via KSJACK_DESCRIPTION2.JackCapabilities and relay jack connection state to the OS via KSJACK_DESCRIPTION.IsConnected</p>
+          <p>Jacks on the device should show up as disconnected in control panel if they are not connected but are accessible for use.</p>
+          <p>Dock Jack Detection:</p>
+          <p>Audio jacks on docking stations need to support the below three states:</p>
+          <p>The system is not plugged in to the dock: The dock audio device should not appear in the Sound control panel at all.</p>
+          <p>The system is plugged in to the dock, but nothing is plugged into the jack: The dock audio device should appear in the Sound control panel as "unplugged" (DEVICE_STATE_DISCONNECTED.)</p>
+          <p>The system is plugged in to the dock, and something is plugged into the jack: The dock audio device should appear in the Sound control panel as "working" (DEVICE_STATE_ACTIVE.)</p>
+          <p>When the system is undocked and is using the HD Audio class driver, it is acceptable for devices on dock to show as unplugged.  USB Audio 1.0 cannot be used in docks if they only expose audio jacks.  If audio jacks are provided on a dock, they must support jack detection.  USB Audio 1.0 can be used for speakers integrated into a dock.</p>
+          <p>Additional Notes for Analog HDAudio Jacks:</p>
+          <p>The HD Audio codec and the system board must implement HD Audio-compliant jack-presence detection for analog jacks. Presence detection implies that the codec with required system components (jack connector and jack detection circuit) must be able to detect the presence of jack insertion into and jack removal from the input/output connectors that the codec is using. When this occurs an unsolicited response is sent so that software can be notified without constantly polling the device. Implementation of unsolicited response support for jack detection events is required for Windows although it may be worded as optional in the HD Audio specification. </p>
+          <p>This requirement is unrelated to the feature of automatic sensing of what the peripheral might be. Sensing by using impedance matching is not required.</p>
+          <p>This requirement specifically means that the codec implements presence detection on each exposed pin that is connected to a system connecter (jack) and that the system board implements an audio jack detection circuit (HD Audio Specification section 7.4.2) external to the codec for each jack on the system. This requirement does not apply to device types defined in the HD Audio codec's pin configuration register defaults as a Line Connector device using an RCA type physical connector.</p>
+          <p>See the Microsoft UAA HD Audio Pin Configuration Programming Guidelines white paper for additional clarifications on the specified jack connectors that require jack detection.</p>
+          <p>http://www.microsoft.com/whdc/device/audio/PinConfig.mspx</p>
+          <p>Additional Notes for Digital HDAudio Jacks:</p>
+          <p>The HD Audio codec and the system board must implement HD Audio-compliant jack-presence detection for digital jacks. Presence detection implies that the codec with required system components (jack connector and jack detection circuit) must be able to detect the presence of jack insertion into and jack removal from the input/output connectors that the codec is using except for S/PDIF jacks. When this occurs an unsolicited response is sent so that software can be notified without constantly polling the device. Implementation of unsolicited response support for jack detection events is required for Windows although it may be worded as optional in the HD Audio specification. </p>
+          <p>This requirement is unrelated to the feature of automatic sensing of what the peripheral might be.</p>
+          <p>Additional Notes about USB Devices:</p>
+          <p>All USB version references in this requirement are in terms of the release versions of the USB Device Class Definition for Audio Devices document not the USB Bus Specification versions.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>This requirement helps Windows conform to default device heuristics in routing audio streams to appropriate end points.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.KSPROPERTYAUDIOVOLUMELEVEL</h3>
+        <div class="subSection">
+          <p>Audio driver that implements KSNODETYPE_VOLUME correctly supports the KSPROPERTY_AUDIO_VOLUMELEVEL property</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a driver implements support for KSNODETYPE_VOLUME, that node must correctly support the KSPROPERTY_AUDIO_VOLUMELEVEL property whose value is a multiple of decibels. Design Notes: See the Windows Driver kit, "KSNODETYPE_VOLUME." The decibel values are documented on MSDN.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.KSTopologyCompliance</h3>
+        <div class="subSection">
+          <p>Audio Device Driver provides kernel streaming topology according to the documentation in the Microsoft Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Some important examples (not inclusive of all the driver has to adhere to, see the WDK for full disclosure): Check Pin KsDataRangeIf a datarange structure (KSDATARANGE structure) has a "Specifier" value KSDATAFORMAT_SPECIFIER_WAVEFORMATEX, then: FormatSize must be sizeof(KSDATARANGE_AUDIO).KSDATARANGE_AUDIO values must have: - SampleFrequency is between 1 Hz and 2,000,000 Hz - BitsPerSample are between 8 and 32 bits.Check Orphaned PinsAll pins must have at least one internal connection and none can be orphaned.Node Verifications:All Nodes Pin I/O CountFor all node types specified in the MSDN, the following is a list of the required number of input and output connections.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>KS Node</p>
+              </td>
+              <td>
+                <p>Number of Inputs</p>
+              </td>
+              <td>
+                <p>Number of Outputs</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>KSNODETYPE_MUX</p>
+              </td>
+              <td>
+                <p>&gt;= 1</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>KSNODETYPE_SUM</p>
+              </td>
+              <td>
+                <p>&gt; =1</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>KSNODETYPE_DEMUX</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>&gt; 1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>KSNODETYPE_ACOUSTIC_ECHO_CANCEL</p>
+              </td>
+              <td>
+                <p>2</p>
+              </td>
+              <td>
+                <p>2</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>KSNODETYPE_DEV_SPECIFIC</p>
+              </td>
+              <td>
+                <p>Not Specified</p>
+              </td>
+              <td>
+                <p>Not Specified</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>All other nodes</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+            </tr>
+          </table>
+          <p>Check Orphaned Nodes Checks to make sure that all nodes have connections to other nodes and no orphaned nodes are left.All channel properties, including channels returning Boolean values, such as mute, must include one MembersHeader, and the MembersCount field must accurately describe the number of channels. This requirement also applies to mono controls.Test your device driver with the KS Topology test to ensure compliance with this requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.NoUncontrollableStreamRouting</h3>
+        <div class="subSection">
+          <p>Audio driver does not perform undiscoverable stream redirection or perform other hidden stream handling that is unknown and/or uncontrollable by user or the Windows Audio System.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x64 ARM (Windows RT)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirement Device.Audio.Base.NoHiddenStreamRouting has been merged with this one.</p>
+          <p>Audio driver does not perform undiscoverable stream redirection or perform other hidden stream handling that is unknown and/or uncontrollable by user or the Windows Audio System.</p>
+          <p>Audio driver does not perform hidden stream redirection, routing, switching, splitting, mixing, muxing to other exposed or hidden logical audio devices, applications or other entities but ensures the audio stream from the audio system endpoint for a particular logical device is only directed to that particular logical device that the application is streaming to, as set by the Windows user in the Windows Sound control panel.</p>
+          <p>The handling of streams is an application layer feature and must not be performed by audio drivers in fashions not discoverable to Windows.</p>
+          <p>Audio device must not require analog circuitry designed to mix audio signals between the various device inputs and outputs or signals routing from one DAC to multiple output connectors or from multiple input connectors to one ADC for playback and capture operations in other ways than defined in the UAA HD Audio Pin Config Guidelines. </p>
+          <p>The device must be able to rely on the operating system to support various throughput and monitoring scenarios and provide independent or otherwise pre-defined by Microsoft audio device implementation guidelines audio connectivity on the PC.</p>
+          <p>This requirement does not prohibit a codec from having a mixer, it implies that the codec must not require the mixer for I/O. </p>
+          <p>This requirement does not prohibit hardware from supporting audio hardware offloading, provided the HW audio capabilities are exposed in a manner consistent with Windows and meet the Device.Audio.HardwareAudioProcessing requirements.</p>
+          <p>DAC's and ADC's must have direct I/O from jacks to the operating system.</p>
+          <p>A Windows friendly audio driver exposes the capabilities and peculiarities of the independent logical audio endpoints that the audio device or system audio implementation supports. The audio driver provides other hardware specific support enabling use of the device on Windows but the audio driver does not enact policies on the streams coming from the Windows application layer destined for a selected logical audio endpoint on the device or other devices.</p>
+          <p>The PC streaming audio device should behave like a transparent entity without any processing, including mixing paths in the analog domain that the operating system is unaware of. This enables predictability and a uniform audio experience for all Windows users.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>The move towards a discoverable audio subsystem empowers WIndows applications and Windows itself to provide flexible and powerful media streaming policies for user/OEm control. This initiative abstracts the choices of where streams go from the hardware and kernel mode driver code where it is hidden and uncontrollable by the Windows user in most cases. This requirement will enable a more powerful, feature rich Windows audio system in the future and also allow more control to the applications run</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.NoUndiscoverableDevice</h3>
+        <div class="subSection">
+          <p>Audio device does not use undiscoverable and/or uncontrollable non-linear audio processing that is on by default.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Some applications depend on accessing unaltered audio data to provide the intended user experience.  Products must be capable of providing audio data from Windows applications to listener's ear, or from user's mouth to Windows application that is not modified in any way by the Audio Device in hardware, firmware or 3rd party software.  This means that there shall be no undiscoverable or uncontrollable hardware, firmware or 3rd party software-based AGC, AEC, Beam Forming, Noise suppression or anything else that significantly alters the audio samples (e.g. non-linear processing) from/to the device. Processing of this type is allowable on audio recording or playback streams if a means is provided for users to disable the processing on their systems, either by exposing the effects as APOs or through another solution.  Once disabled by a user, processing must remain off on that product until a user turns it back on.There is an exception for processing that protects system reliability.  This may be on by default and not provide a disable mechanism.   Companies that implement reliability effects must ensure the processing elements are reliable and do not pose compatibility issues with the wide range of Windows application needs.  Digital effects may default to enabled or disabled on first use.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.PowerManagement</h3>
+        <div class="subSection">
+          <p>Audio device complies with related power management specifications</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Base.RestartWithinASpecifiedDuration and Device.Audio.Base.ResumeLatency have been merged into this one.</p>
+          <p>Audio devices must comply with Audio Device Class Power Management Reference Specification, Version 1.0, which provides definitions of the OnNow device power states (D0–D3) for these devices. The specification also covers the device functionality expected in each power state and the possible wake-up event definitions for the class. The device and driver must implement support for power state D3. Support for other device power management states is optional.</p>
+          <p>For implementation details, refer to Audio Device Power Management Reference Specification, Version 1.0, at http://go.microsoft.com/fwlink/?LinkId=58377.</p>
+          <p>Audio device restarts working within a delay of 10 seconds for S1-S3 and 15 seconds for S4.</p>
+          <p>Refer to: http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/AudPMSpc.rtf</p>
+          <p>For Windows 8 and beyond, Audio adapter should have resume latency to running state (D0) less than the specified values</p>
+          <p>Using the new IAdapterPowerManagement3 interface, PortCls generates a new D3 exit latency tolerance and communicates it dynamically to the audio miniport.  These tolerances are represented as PC_EXIT_LATENCY enumeration values as defined below.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>PC_EXIT_LATENCY</p>
+              </td>
+              <td>
+                <p>Maximum Time to Resume to D0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>PcExitLatencyInstant</p>
+              </td>
+              <td>
+                <p>&lt;1 ms (Do not power down – will only be sent when device is in D0)</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>PcExitLatencyFast</p>
+              </td>
+              <td>
+                <p>35 ms</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>PcExitLatencyResponsive</p>
+              </td>
+              <td>
+                <p>300 ms</p>
+              </td>
+            </tr>
+          </table>
+          <p>On systems that support AOAC (always on always connected), each audio device (this includes integrated devices as well as Bluetooth, USB, etc.) should be able to render and capture even when the screen is off with no glitches or gaps.  This includes the period of transition from screen on to screen off.  Furthermore, the system should enter its low power audio platform state if the only devices being used support hardware offloading.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.RealtimeDriversSupportStandardLoopedStreaming</h3>
+        <div class="subSection">
+          <p>KS category realtime drivers need to support at least standard looped streaming. Other KS category audio drivers need to support standard streaming.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To enable user to take advantage of the most efficient lowest latency path and to play audio correctly on the windows platform, the windows audio engine requires:* KS category realtime drivers to support at least standard looped streaming.* Other KS category audio drivers to support at least standard streaming.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.ReportSupportedProperties</h3>
+        <div class="subSection">
+          <p>The audio driver correctly reports all supported properties</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirement Device.Audio.Base.KSPROPERTYAUDIOMIXLEVELTABLE has been merged with this one.</p>
+          <p>If the audio device and driver support additional properties, the audio driver must report all supported properties correctly to optimize speaker configuration.</p>
+          <p>If a driver implements support for KSNODETYPE_SUPERMIX then that node must correctly support the KSPROPERTY_AUDIO_MIX_LEVEL_TABLE property whose value is a multiple of decibels.</p>
+          <p>If the driver has analog output, the driver exposes a DAC node in its topology.  The driver must then support KSPROPSETID_Audio and KSPROPERTY_AUDIO_CHANNEL_CONFIG on that node through a filter handle. The driver then correctly reports support for this property (that is, BASIC_SUPPORT call with KSP_NODE.  [node ID of DAC] must succeed) and reports the _GET and _SET capabilities. See the Windows Driver Kit, "Streaming Devices."</p>
+          <p>See the Windows Driver kit, "KSNODETYPE_SUPERMIX." The decibel values are documented on MSDN.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.SamplePositionAccuracy</h3>
+        <div class="subSection">
+          <p>Audio driver reports render sample position with defined accuracy for stream synchronization</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Device.Audio.Base.SamplingAccuracy requirement has been merged with this one</p>
+          <p>HD Audio drivers must be able to report the current position of the buffer being rendered with an accuracy of 0.05 ms, or with frame accuracy (as defined in the HD Audio specification) the current position of the buffer being rendered, in relation to the samples given to the codec. This applies to both the compressed and uncompressed data.</p>
+          <p>This requirement does not imply that the compressed and uncompressed streams are synchronized. The requirement covers both types of streams but that is the extent of the interaction between the stream types. </p>
+          <p>For USB audio devices, the required accuracy is 1ms for USB Audio 1.0 implementations and 0.125ms for USB Audio 2.0 implementations.</p>
+          <p>For all other audio devices, the required accuracy is 1ms.</p>
+          <p>For all devices, audio sampling position error needs to be less than 0.02 % in order to help accurate echo cancellation when using the device for communication purposes. Sampling rates for capture or render shall be one of the following: 48kHz, 44.1kHz or 16kHz.</p>
+          <p>For capture and loopback pins, the following additional requirements must be met:</p>
+          <p>The time stamp indicates the position of the capture stream with respect to the CPU clock. If the time stamp error is too high, then the acoustic echo canceller cannot align the loudspeaker and microphone signal stream very accurately and this can cause echo to appear in VoIP calls.</p>
+          <p>Time stamp is determined by device streaming positions (DevPos), application streaming position (AppPos) and system performance counter (QPC: query performance counter) by using the IAudioCaptureClient::GetBuffer method. Assuming that the audio stream sampling rate is FS, the time stamp is calculated as: TS=QPC+(AppPos-DevPos)/FS.</p>
+          <p>The requirements for timestamps are:</p>
+          <p>Timestamp error needs to be equal to or smaller than the render accuracy listed above.</p>
+          <p>Timestamp glitch needs to be smaller than 3 glitches per minute</p>
+          <p>Timestamp drift needs to be smaller than 0.08%</p>
+          <p>The time stamp error is defined as the difference between the actual time stamp and the time stamp computed based on claimed sampling rate. The maximum time stamp error is defined as the average value of the 1% highest absolute time stamp error. </p>
+          <p>Timestamp glitch refers to a discontinuity in the audio timestamp with respect to the number of samples given by the driver at the nominal sampling rate. Specifically, if the timestamp difference between two successive calls of IAudioCaptureClient::GetBuffer differs from the number of samples received in the second call (the number of samples is converted to elapsed time based on nominal sampling rate) by more than a threshold, a glitch is said to have happened. The threshold is adaptively calculated based on timestamp error.</p>
+          <p>Timestamp drift is defined as the difference between CPU clock frequency and device clock frequency. This is measured as a relative quantity with respect to CPU clock rate: Drift = (ActualSamplingFreq/NominalSamplingFrequency) – 1. ActualSamplingFrequency is calculated by applying linear regression analysis on the timestamp value</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>To be able to ensure the most accurate synchronization between audio streams and between audio and video streams the position information provided by the audio driver must be accurate. This accuracy will help improve the PC media consumption user experience to the level of Consumer Electronics which is important as the PC moves into the home entertainment space. This requirement also helps real time communication (RTC) features like Automatic Echo Cancellation work better and provide an improved user experience in applications such as Skype and Lync.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.TimeSynchronizedSampleRates</h3>
+        <div class="subSection">
+          <p>Audio subsystem supports time-synchronized sample rates if both input and output capabilities are present</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the built-in or external audio device includes input and output capabilities, the timing relationship between input and output sample rates must remain constant (that is, no drift). For example, if 8 kHz is selected for both input and output sampling rate, audio hardware must ensure that the sampling rate for input and output is precisely matched.Further, when input and output sample rates are set to integer ratios, the actual sample rate ratios must match (that is, no drift). For example, if an 8-kHz input sampling rate and a 32-kHz output sampling rate are selected, the ratio of actual sampling rates must be precisely 8:32. This requirement can be accomplished by ensuring that both input and output sampling rates are derived from the same clock and that sample rate divisors are set correctly.  Design Notes: This requirement helps ensure that AEC and NS algorithms maintain performance and convergence. This requirement does not apply to inputs and outputs where the input source sets a clock such as a digital S/PDIF input.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Full duplex audio is essential to support emerging communications applications such as Internet Protocol (IP) telephony, conferencing, and network gaming. These applications require the audio system to play back and record simultaneously. The following requirements ensure that full duplex operation is available and performance is consistent across implementations.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.TipRing</h3>
+        <div class="subSection">
+          <p>Audio jacks must use defined tip/ring or tip/ring/ring connections to ensure proper audio channel path.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the system exposes a multi-channel analog logical device, then each analog output must have independent DAC resource.</p>
+          <p>The audio jacks must use defined tip/ring connections to ensure proper audio channel path.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Audio line in</p>
+              </td>
+              <td>
+                <p>Left line in</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>Right line in</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Audio line out (front left and right)</p>
+              </td>
+              <td>
+                <p>Left front out</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>Right front out</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Microphone in (mono)</p>
+              </td>
+              <td>
+                <p>Microphone in</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>4V Bias</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Microphone in (stereo)</p>
+              </td>
+              <td>
+                <p>Left Mic in</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>Right Mic in</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Side surround left and right out</p>
+              </td>
+              <td>
+                <p>Left surround</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>Right surround</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Rear surround left and right out</p>
+              </td>
+              <td>
+                <p>Left back</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>Right back</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Center speaker and LFE (subwoofer) out</p>
+              </td>
+              <td>
+                <p>Front center out</p>
+              </td>
+              <td>
+                <p>Tip of connector</p>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <p>LFE (subwoofer) out</p>
+              </td>
+              <td>
+                <p>Ring of connector</p>
+              </td>
+            </tr>
+          </table>
+          <p>Design Notes: See the Intel HD Audio Specification, Revision 1.0, and Microsoft HD Audio Pin Configuration Programming Guidelines.</p>
+          <p>See recommended requirements in the Universal Audio Architecture UAA Hardware Design Guidelines at http://go.microsoft.com/fwlink/?LinkId=50734.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.TwoDMAEnginesAndConnections</h3>
+        <div class="subSection">
+          <p>Audio device that supports digital output has at least two independent DMA engines and a separate physical connection for digital output using one of the available DMA engines</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The audio controller that supports digital output must have two independent DMA engines, one that can be used for wave output and the other to make it possible to support AC-3 over S/PDIF at the same time. The digital audio output capability is supported through a separate physical connector identified for digital audio output and used only for digital audio output.Given physical limitations, PC system may have limited input and/or output streams. Secondary HD audio controller in such systems may implement fewer DMA engines. Design Notes: With support for two independent DMA engines, a different signal can be streamed to each connector simultaneously. For example, sending a DVD player application's Dolby Digital stream to the S/PDIF connector while simultaneously sending a voice conversation to the analog connectors. The S/PDIF port needs to be represented as its own audio "device" separate from the analog outputs. Therefore, it will have its own policy configuration, including the preferred data format for a specific signal.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.VolumeControl</h3>
+        <div class="subSection">
+          <p>Audio driver volume controls are linear and have adequate resolution</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirement Device.Audio.Base.VolumeGranularity has been merged with this one.</p>
+          <p>Signal response (as measured by electrical or digital signal level) changes in linearity with the volume control within 3% tolerance. For example: a volume slider change of 10dB should result in an measured volume change within 10dB + or - 0.3dB</p>
+          <p>Topology volume nodes must have a resolution equal to or better than 1.5dB and implement driver support for volume level as defined in the Windows Driver Kit.</p>
+          <p>See the Windows Driver Kit, "KSPROPERTY_AUDIO_VOLUMELEVEL” for more details.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.WAVEFORMATEXTENSIBLESupport</h3>
+        <div class="subSection">
+          <p>Audio device driver supports WAVEFORMATEXTENSIBLE</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The audio device driver must support the WAVEFORMATEXTENSIBLE format. Design Notes: Due to the audio system design in Windows and the availability of a Local Effect (LFX) insert in the audio engine we need to ensure consistency and simplification for audio drivers and the format container that they should expect.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.WaveRTConformance</h3>
+        <div class="subSection">
+          <p>Audio device is designed to be WaveRT-port-friendly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Base.IMiniportWaveRTStreamNotification and Device.Audio.Base.WaveRTImplementation have been merged with this one.</p>
+          <p>Description: A UAA HD Audio-compatible implementation meets this requirement automatically. To be considered WaveRT port friendly, the audio subsystem must support the following:</p>
+          <p>Cyclic DMA engine with a scatter-gather list.  </p>
+          <p>Ability to split samples between pages. </p>
+          <p>Ability to loop on buffers without software intervention.</p>
+          <p>Integrated or discrete audio device driver must be based on the Microsoft Windows WaveRT miniport WDM driver model.  Requirement details are defined in the white paper titled "A Wave Port Driver for Real-Time Audio Streaming." </p>
+          <p>WaveRT drivers must support pull mode audio streaming technology by implementing the IMiniportWaveRTStreamNotification interface.  By supporting this functionality in the driver, future Microsoft Windows operating systems will be able to employ more efficient techniques for supplying and retrieving data buffers from the audio device. In turn, this will reduce the overall audio latency on the system.</p>
+          <p>The legacy ports WaveCyclic or WavePCI are not used to support audio devices on Windows.</p>
+          <p>Design Notes: </p>
+          <p>The driver INF will also need to be modified with the following changes to support event notifications:</p>
+          <p>Use AddReg directive to reference a new add-registry-section to add endpoint property keys. This step can be skipped if such a section already exists. The following example adds a new add-registry-section (HDAudio.EPProperties.AddReg) under HdAudModel.PrimarySpeakerTopo:</p>
+          <p>[HdAudModel.PrimarySpeakerTopo]</p>
+          <p>AddReg = HDAudio.EPProperties.AddReg</p>
+          <p>Next, create an add-registry-section, if it does not already exist, to add endpoint property keys to the registry. Example below adds the appropriate property key for the first endpoint declared in this INF:</p>
+          <p>[HDAudio.EPProperties.AddReg]</p>
+          <p>HKR,"EP\\0",%PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%</p>
+          <p>HKR,"EP\\0",%PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1</p>
+          <p>In the strings section, add the following section for the value of the property keys used in Step 2 above:</p>
+          <p>PKEY_AudioEndpoint_Association = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},2"</p>
+          <p>PKEY_AudioEndpoint_Supports_EventDriven_Mode = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},7"</p>
+          <p>Please reference Windows Driver Kit documentation for details on writing an INF file.</p>
+          <p>For more details, see "A Wave Port Driver for Real-Time Audio Streaming" at http://go.microsoft.com/fwlink/?LinkId=40502.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This requirement does not apply to external or internal USB audio, Bluetooth and 1394 audio devices. If the audio processing is offloaded to hardware, it is acceptable to use the WaveCyclic driver model.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>This improves reliability of audio drivers by avoiding kernel mode audio processing.</p>
+                <p>Additionally, Glitch Resilient OS features combined with simple and effective WaveRT drivers running on UAA compliant hardware creates the best possible media playback and recording experience possible on Windows.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Base.ZeroGlitch</h3>
+        <div class="subSection">
+          <p>Audio devices do not glitch during multiple simultaneous streaming</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Audio device can support streams in the scenarios below that make it to the output with zero glitches both in audio software and offload hardware during such simultaneous streaming.  </p>
+          <p>Scenarios:</p>
+          <p>12 simultaneous render streams</p>
+          <p>5 simultaneous capture streams</p>
+          <p>3 simultaneous render streams while the CPU is at 100% load</p>
+          <p>2 simultaneous capture streams while the CPU is at 100% load</p>
+          <p>Systems must pass this requirement with audio effects enabled, if that is the default configuration for the product</p>
+          <p>CPU Load for this requirement is created using the Real World Stress Tool and sets the CPU load to 100% at thread priority 8.</p>
+          <p>All streams will be rendered using the default mix format for the device.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Audio.Bluetooth</h2>
+      <div id="sectionSection3" class="section">
+        <p>This audio device uses the Bluetooth Audio Driver.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.Bluetooth.AtleastOneProfileSupport</p>
+              <p>Device.Audio.Bluetooth.DriverReqs</p>
+              <p>Device.Audio.Bluetooth.HCIDisconnect</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.Bluetooth.AtleastOneProfileSupport</h3>
+        <div class="subSection">
+          <p>Bluetooth Audio Device needs to support at least one of the below profiles.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Bluetooth</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Bluetooth.AutomaticReconnectAttempt, Device.Audio.Bluetooth.ConnectDisconnectBluetooth, Device.Audio.Bluetooth.HandsFreeCallControl, and Device.Audio.Bluetooth.MajorMinorClassID have been merged with this one</p>
+          <p>The Bluetooth Audio Device must be Bluetooth SIG compliant in at least one of the following profiles:</p>
+          <p>A2DP profile as defined in the “Advanced Audio Distribution Profile version 1.2” (A2DP_SPEC_V12) Bluetooth SIG specification. </p>
+          <p>Hands-Free as defined in the “Hands-Free Version 1.5” (HFP 1.5_SPEC_V10) Bluetooth SIG specification. </p>
+          <p>AVRCP as defined in the “Audio/Video Remote Control Profile Version 1.3” (AVRCP_SPEC_V13) Bluetooth SIG specification.</p>
+          <p>Special attention should be made to the following points in the Bluetooth SIG specifications:</p>
+          <p>The reconnection method must follow the appropriate connection procedures for connection to an Audio Gateway</p>
+          <p>Bluetooth audio devices must expose the proper Major and Minor Class of Device identifier. The values chosen must accurately reflect the form factor and primary usage of the device.</p>
+          <p>For A2DP devices, class of device ID is defined in Section 5.3 "SDP Interoperability Requirements" of the Advanced Audio Distribution Profile Specification “A2DP_SPEC_V12" document.</p>
+          <p>For Hands-Free devices, class of device ID is defined in Section 5.5.1 "Class of Device" of the Hands-Free Profile Specification version 1.5 in the "HFP 1.5_SPEC_V10" document.</p>
+          <p>There are a few additional Microsoft specific requirements for Bluetooth:</p>
+          <p>Bluetooth audio devices support the properties required for Sound Control Panel to control their connection and disconnection. More info at http://msdn.microsoft.com/en-us/library/ff537446(VS.85).aspx.  KSPROPSETID_BtAudio needs to support both: </p>
+          <p>KSPROPERTY_ONESHOT_DISCONNECT</p>
+          <p>KSPROPERTY_ONESHOT_RECONNECT </p>
+          <p>3rd parties who create Hands-Free device drivers and opt to use the Bluetooth Call Control platform API/DDI must follow the details, usage, and implemenation in the document entitled, “Call Control Platform API/DDI” which can be found on http://msdn.microsoft.com.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>•          Bluetooth SIG compliance allows for the display and usage of the Bluetooth icon and name. This is important for consumer device branding recognition.</p>
+                <p>•          Assured compatibility with OS supplied components that rely on Bluetooth SIG defined functionality</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Bluetooth.DriverReqs</h3>
+        <div class="subSection">
+          <p>Bluetooth Audio Device Driver Requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Bluetooth</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Bluetooth SIG QualificationThe Bluetooth Audio driver must pass the necessary Bluetooth SIG Qualification tests required by the Bluetooth SIG for the profiles listed in the "Bluetooth Profiles" section above.</p>
+          <p>HID Call ControlThe Bluetooth Audio driver must map the Hands-free call control information to the appropriate HID Call Control messages as defined in the "Windows 7 HID Call Control" specification.</p>
+          <p>Volume Change NotificationIf volume change notifications are received from the hands-free profile that indicate the volume level of the Bluetooth audio device has changed, the driver must inform the OS of the volume change, consistent with Section 4.28 of the Bluetooth audio Hands-Free specification, "HFP 1.5_SPEC_V10." Design Notes: Bluetooth Profiles and SIG QualificationThe Bluetooth Audio Profile documentation is maintained by the Bluetooth SIG.  The Bluetooth SIG Qualification is owned and defined by the Bluetooth SIG. Qualification is a necessary pre-condition of the necessary intellectual property license for the Bluetooth wireless technology. Detailed information can be found on the Bluetooth SIG's website at http://www.bluetooth.org.Volume Change NotificationThe KSEVENTSETID_AudioControlChange is used by the Bluetooth audio driver to notify the OS that the Bluetooth audio device volume level has changed. Not all Bluetooth Hands-free devices will notify the driver of volume changes made by the user. For those that do, the Bluetooth audio driver must use this event to notify the OS of the change. Note that this is not to be used for AVRCP volume notifications as those volume change notifications are handled by the OS. Additional information on KSEVENTSETID_AudioControlChange can be found at http://msdn.microsoft.com</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>The requirements listed here are necessary to provide support for the basic audio functionality included in Windows for Bluetooth audio devices. This functionality has been implemented in the Windows Bluetooth audio class driver and it is important that 3rd party Bluetooth audio drivers comply with required functionality such that the basic Windows audio features function properly.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.Bluetooth.HCIDisconnect</h3>
+        <div class="subSection">
+          <p>Bluetooth Audio Devices must complete an HCIDisconnect before powering down</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.Bluetooth</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This step is required to allow for timely notification to the system that the device is no longer available. This is needed in order to reroute audio to an alternate audio sink seamlessly when the Bluetooth audio device is turned off providing for a good end user experience.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>This is needed in order for our stream routing mechanism to function in a timely manner. ScenarioUser is listening to music on desktop speakers. They turn on their BT Headphones. Music is automatically routed to the BT headphones. They then turn off their BT headphones. Music is automatically routed 'in a timer manner' back to the desktop speakers.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Audio.HardwareAudioProcessing</h2>
+      <div id="sectionSection4" class="section">
+        <p>HardwareAudioProcessing</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.HardwareAudioProcessing.AudioHardwareOffloading</p>
+              <p>Device.Audio.HardwareAudioProcessing.ETWEvent</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Device.Audio.HardwareAudioProcessing.AudioHardwareOffloading</h2>
+      <div id="sectionSection5" class="section">
+        <p>Hardware that supports offloaded audio render processing meets this requirement</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Target Feature</p>
+            </td>
+            <td>
+              <p>Device.Audio.HardwareAudioProcessing</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Applies to</p>
+            </td>
+            <td>
+              <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+              <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              <p>Windows Server 2012 R2 x64</p>
+              <p>Windows Server 2012 x64</p>
+            </td>
+          </tr>
+        </table>
+        <p>Description</p>
+        <p>The requirement Device.Audio.HardwareAudioProcessing.IMiniport.xml has been merged with this one.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the driver must expose a KS filter and a single KSNODETYPE_AUDIO_ENGINE node with appropriate pin factories connected.</p>
+        <p>If a hardware solution supports the offloading of audio render processing, mixing, or decoding, the driver must expose a KS filter.  For each rendering path through that filter that supports hardware offloading the driver must expose a single KSNODETYPE_AUDIO_ENGINE node, connecting directly to only the following pin factories:</p>
+        <p>two KS sink pin factories </p>
+        <p>a single KS source pin factory for reference stream support</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver and hardware must support base-level functionality.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver and hardware must support the following capabilities:</p>
+        <p>Audio mixer with at least 3 simultaneous inputs (2 offload and 1 host process) </p>
+        <p>Volume and mute capabilities both pre- and post-mixing </p>
+        <p>Metering reporting (support for querying per-stream peak values, both pre &amp; post-mix) </p>
+        <p>For stream metering (pre-mixing), metering levels should be reported after the LFX and before volume control </p>
+        <p>For endpoint metering (post-mixing), metering levels should be reported: </p>
+        <p>Before volume control and GFX, when the GFX is an encoder </p>
+        <p>After the GFX and before volume control, when the GFX is not an encoder</p>
+        <p>Reference stream (support for sending the audio stream post-mix back to the Windows audio stack) </p>
+        <p>The reference stream provided should be the final output to the audio device, or, if encoding is taking place, just prior to encoding.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must support KSPROPSETID_AudioEngine with certain properties.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must support KSPROPSETID_AudioEngine with the following properties:</p>
+        <p>KSPROPERTY_AUDIOENGINE_LFXENABLE </p>
+        <p>KSPROPERTY_AUDIOENGINE_GFXENABLE </p>
+        <p>KSPROPERTY_AUDIOENGINE_MIXFORMAT </p>
+        <p>KSPROPERTY_AUDIOENGINE_DEVICEFORMAT </p>
+        <p>KSPROPERTY_AUDIOENGINE_SUPPORTEDDEVICEFORMATS </p>
+        <p>KSPROPERTY_AUDIOENGINE_DESCRIPTOR </p>
+        <p>KSPROPERTY_AUDIOENGINE_WAVERT_CURRENT_WRITE_POSITION </p>
+        <p>KSPROPERTY_AUDIOENGINE_BUFFER_SIZE_RANGE </p>
+        <p>KSPROPERTY_AUDIOENGINE_LOOPBACK_PROTECTION </p>
+        <p>KSPROPERTY_AUDIOENGINE_VOLUMELEVEL </p>
+        <p>KSPROPERTY_AUDIO_VOLUMELEVEL </p>
+        <p>KSPROPERTY_AUDIO_MUTE </p>
+        <p>KSPROPERTY_AUDIO_PEAKMETER2 </p>
+        <p>KSPROPERTY_AUDIO_PRESENTATION_POSITION</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must expose certain pin factories.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must expose the following pin factories:</p>
+        <p>Host process pin factory </p>
+        <p>Must support only a single instance</p>
+        <p>Offload pin factory </p>
+        <p>Must support at least two instances</p>
+        <p>Loopback pin factory </p>
+        <p>Must support at least a single instance</p>
+        <p>In addition, the following must be met:</p>
+        <p>Loopback pins must: </p>
+        <p>Have a “Possible Global Instances” of at least 1 </p>
+        <p>Support at least 1 instance regardless of what else is going on in the system</p>
+        <p>To enable scenarios like cross-fade, offload-capable endpoints must support 1 loopback pin instance + 1 host pin instance + each of the following in isolation, assuming no other offload endpoints are being used at the time: </p>
+        <p>Any required PCM format + Any required PCM format (the same, or different) </p>
+        <p>The loopback pin must support </p>
+        <p>The HW mix format </p>
+        <p>The device format (which can be publically queried from the endpoint property store)</p>
+        <p>If a hardware solution supports offloaded audio render processing, the same functionality provided in hardware (e.g., processing, effects, etc.) must be available in software as well.</p>
+        <p>In order to provide a consistent user experience and prevent confusion when a user enables or configures functionality that exists in only hardware or only software, the capabilities provided must be equal in both hardware and software.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must support streaming specific PCM formats.</p>
+        <p>If a driver exposes a KSNODETYPE_AUDIO_ENGINE node, the driver must support streaming the following PCM formats on the offload pins:</p>
+        <p>Sampling rates: </p>
+        <p>8 kHz </p>
+        <p>11.025 kHz </p>
+        <p>16 kHz </p>
+        <p>22.050 kHz </p>
+        <p>32 kHz </p>
+        <p>44.1 kHz </p>
+        <p>48 kHz </p>
+        <p>88.2 kHz </p>
+        <p>96 kHz </p>
+        <p>176.4 kHz </p>
+        <p>192 kHz </p>
+        <p>Bit Depths: </p>
+        <p>8-bit </p>
+        <p>16-bit </p>
+        <p>24-bit </p>
+        <p>Channel configurations of 1.0, 2.0,2.1, 3.1, 4.0, 5.0 and 5.1</p>
+        <p>If hardware supports offloaded audio render processing, the steady-state latency for real-time PCM audio must be less than 20 ms.</p>
+        <p>If hardware supports offloaded audio render processing, the steady-state latency (as measured between the render KS endpoint and the capture KS endpoint on the same device with all processing disabled and the smallest supported buffer sizes being used) must be less than 20 ms.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the startup latency must be less than 15ms for PCM. </p>
+        <p>If hardware supports offloaded audio render processing, the startup latency (as defined as the time between just before KSCreatePin and the audio play position beginning to advance) must be less than 15ms for PCM.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the hardware must support certain buffer sizes.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the hardware must support buffer sizes:</p>
+        <p>As large as (or larger than) 1 second </p>
+        <p>As small as (or smaller than) 10 milliseconds</p>
+        <p>Times above assume an audio format of 2 channels, 48 kHz, 16-bit PCM.   </p>
+        <p>If a hardware solution supports offloaded audio render processing, the pause or stop latency must be less than 10ms.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the pause or stop latency (as measured between a pause/stop command and the audio pausing/stopping) must be less than 10ms.</p>
+        <p>The CPU consumption by an audio driver must be less than 5% and memory usage must be less than 100MB.</p>
+        <p>An audio driver must not consume more than 5% of the total CPU processing available and must not consume more than 100MB of system RAM.</p>
+        <p>Systems that support connected standby must support certain codecs and processing capabilities.</p>
+        <p>In order to ensure a high-quality user experience on systems that support connected standby where the in-box Windows codecs may be unavailable, the follow codecs and processing functionality are required:</p>
+        <p>Sample rate converter</p>
+        <p>All processing functionality provided must be exposed via support for the corresponding KS properties via the Portcls WaveRT driver.</p>
+        <p>Other Considerations</p>
+        <p>Offloaded audio devices must accept and properly react to end of segment (EOS) communication from the operating system.</p>
+        <p>If a hardware solution supports offloaded audio render processing, the driver must implement IMiniportAudioEngineNode and IMiniportStreamAudioEngineNode</p>
+        <p>IMiniportAudioEngineNode contains a list of methods related to the offload KS properties targeting the audio engine node via KS filter handle.  A miniport driver's WaveRT miniport class needs to inherit not only from IMiniportWaveRT interface, it also needs to inherit IMiniportAudioEngineNode interface and implement all the defined methods.</p>
+        <p>IMiniportStreamAudioEngineNode contains a list of methods related to the offload KS properties targeting the audio engine node via pin instance handle.  A miniport driver's WaveRT miniport class needs to inherit not only from IMiniportWaveRTStreamNotification interface, it also needs to inherit IMiniportStreamAudioEngineNode interface and implement all the defined methods.</p>
+        <p>Additional Information</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Enforcement Date</p>
+            </td>
+            <td>
+              <p>Jun. 26, 2013</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Device.Audio.HardwareAudioProcessing.ETWEvent</h2>
+      <div id="sectionSection6" class="section">
+        <p>If a hardware solution supports offloaded audio render processing, then the driver must raise an ETW event to report glitches detected by the hardware audio engine.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Target Feature</p>
+            </td>
+            <td>
+              <p>Device.Audio.HardwareAudioProcessing</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Applies to</p>
+            </td>
+            <td>
+              <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+              <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              <p>Windows Server 2012 R2 x64</p>
+              <p>Windows Server 2012 x64</p>
+            </td>
+          </tr>
+        </table>
+        <p>Description</p>
+        <p>The audio driver needs to raise an Event Tracing for Windows (ETW) event to report glitches detected by the HW Audio Engine. This event should at least include the reason of the glitching and the DMA buffer information.The following events are defined for the miniport to reports events through Portcls interface callbacks. typedef enum {    eMINIPORT_IHV_DEFINED = 0,     eMINIPORT_BUFFER_COMPLETE,    eMINIPORT_PIN_STATE,    eMINIPORT_GET_STREAM_POS,    eMINIPORT_SET_WAVERT_BUFFER_WRITE_POS,    eMINIPORT_GET_PRESENTATION_POS,    eMINIPORT_PROGRAM_DMA,    eMINIPORT_GLITCH_REPORT} ePcMiniportEngineEvent;</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Event type</p>
+            </td>
+            <td>
+              <p>Parameter 1</p>
+            </td>
+            <td>
+              <p>Parameter 2</p>
+            </td>
+            <td>
+              <p>Parameter 3</p>
+            </td>
+            <td>
+              <p>Parameter 4</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>IHV specific event types(defined and used by IHVs)</p>
+            </td>
+            <td>
+              <p>Defined and used by IHVs</p>
+            </td>
+            <td>
+              <p>Defined and used by IHVs</p>
+            </td>
+            <td>
+              <p>Defined and used by IHVs</p>
+            </td>
+            <td>
+              <p>Defined and used by IHVs</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Buffer complete</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>Data length completed</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Pin State</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>0-&gt;KS_STOP1-&gt;KS_ACQUIRE2-&gt;KS_PAUSE3-&gt;KS_RUN</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Get stream position</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Set WaveRt buffer write position</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition received from portcls</p>
+            </td>
+            <td>
+              <p>Target WaveRtBufferWritePosition received from portcls</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Get Presentation Position</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>Presentation position</p>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Program DMA</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>Starting  WaveRt buffer offset</p>
+            </td>
+            <td>
+              <p>Data length</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Glitch detection</p>
+            </td>
+            <td>
+              <p>Current linear buffer position</p>
+            </td>
+            <td>
+              <p>Current WaveRtBufferWritePosition</p>
+            </td>
+            <td>
+              <p>1:WaveRT buffer under run2:decoder errors3: receive the same wavert buffer write pos two in a row</p>
+            </td>
+            <td>
+              <p>When it's 3, the offending write position</p>
+            </td>
+          </tr>
+        </table>
+        <p>  </p>
+        <p>Additional Information</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Enforcement Date</p>
+            </td>
+            <td>
+              <p>Aug. 08, 2011</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Device.Audio.HDAudio</h2>
+      <div id="sectionSection7" class="section">
+        <p>This audio device uses the HD Audio Driver.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.HDAudio.HDAudioCodecAdditionalReqs</p>
+              <p>Device.Audio.HDAudio.HDAudioSpecCompliance</p>
+              <p>Device.Audio.HDAudio.HDMIDCN</p>
+              <p>Device.Audio.HDAudio.INFHasDeviceID</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.HDAudio.HDAudioCodecAdditionalReqs</h3>
+        <div class="subSection">
+          <p>HD Audio codec supports additional requirements not specified in the Intel High Definition Audio specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.HDAudio</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The following requirements have been merged with this one:</p>
+          <p>Device.Audio.HDAudio.PnPCodecDeviceID</p>
+          <p>Device.Audio.HDAudio.PinConfigPortConnectivity</p>
+          <p>Device.Audio.HDAudio.UniqueSequenceNumbers</p>
+          <p>Device.Audio.HDAudio.OneCodecPortOneConnector</p>
+          <p>Device.Audio.HDAudio.DefaultAssociationNotZero</p>
+          <p>Device.Audio.Base.HDAudioRemoveDevicePowerState</p>
+          <p>To be UAA compliant, an HD Audio codec must implement the following features, which are not necessarily required by Intel High Definition Audio Specification:</p>
+          <p>Speaker compensation is the only valid scenario for audio signal processing of an audio stream by a codec, and then it is valid only if the speakers are hardwired to the pin complex that contains the processing node (such as integrated laptop speakers). This requirement does not apply to decryption of protected audio streams.</p>
+          <p>When all of an HDAudio codec's widgets are configured in the benign processing state, the codec performs no nonlinear or time-variant processing on the audio streams that pass through it. </p>
+          <p>Software must be able to set all processing nodes to the benign processing state, and the codec must function according to UAA baseline requirements while in this state. </p>
+          <p>An HDAudio codec must be accessible only through the HDAudio bus controller. The codec must not expose registers or other hardware mechanisms that are accessible through either memory or I/O address space. This requirement does not encompass HDMI or DisplayPort. For HDMI or DisplayPort, please refer to the the HD audio HDMI DCN. </p>
+          <p>Modem and audio functionality must not be combined. Although the same piece of silicon can house both modem and audio devices, the functions must be separate devices and must not share any software or hardware resources (such as ADCs or DACs). </p>
+          <p>When the HD Audio link is in a running state (HD Audio controller is in D0), UAA-compliant HD Audio codecs must respond to commands even when powered down in all required device power-management states. In effect, the digital section of the codec must remain powered. </p>
+          <p>Codecs must respond to a verb even if addressed at a nonexistent widget or if the verb itself is invalid. </p>
+          <p>Function group nodes must have node IDs in the range 0 to 127. This restriction does not apply to node IDs for widget nodes. </p>
+          <p>In a system with one or more HDAudio codecs, the system BIOS must initialize the Configuration Default Register for each codec pin widget based on the system configuration/implementation of the HD Audio codec while considering the Microsoft Pin Configuration Programming Guidelines so that the UAA HDAudio function class driver's topology parser can create a functional device topology for the codec. The default data in the HD Audio codec pin configuration registers must not misrepresent the hardware capabilities, and the Configuration Default Registers must not be null (all zeros). </p>
+          <p>A function group in an HDAudio codec must expose a nonzero subsystem ID. The BIOS overwrites the subsystem ID if necessary. If the BIOS cannot program the subsystem ID or if it does so incorrectly, the hardware must supply a default, vendor-specific subsystem ID.</p>
+          <p>HD Audio codecs must comply with the Plug and Play requirements for proper identification that are described in Plug and Play Guidelines for High Definition Audio Devices, "HD Audio Codec." (See Guidelines at http://www.microsoft.com/whdc/device/audio/HD-aud_PnP.mspx)</p>
+          <p>A pin widget's port connectivity value of 0x01 (No Connection) is valid only when a system in which the HD Audio codec resides has no jack or integrated device attached to the pin widget.  A port connectivity setting of 0x02 (10b) should be used only in those cases where a trace on a circuit board directly connects the codec and an integrated device such as a speaker amplifier or microphone. A port connectivity setting of 0x03 (011b) is specifically disallowed. Each pin widget must connect to a single audio endpoint.</p>
+          <p>In the data configured by the BIOS or in the default values from the codec manufacturer, the sequence numbers within the pin configuration register's default association must be unique within the same association except for association 0xf, in which all instances should support Sequence ==0. (See Pin Configuration Guidelines for High Definition Audio Devices, at http://go.microsoft.com/fwlink/?LinkId=58572.)</p>
+          <p>Each HD Audio codec port connects to one and only one audio source, destination, or jack. For compatibility with the UAA class driver do not double-up on input or output ports in ways that cannot be exposed to the class driver through the information in the pin configuration registers.  Designs that use GPIOs under control of third-party function drivers must default to an appropriate hardware configuration when the UAA class driver is loaded.</p>
+          <p>Values in the Default Association field of the HD Audio codec pin configuration register are not set to zero (reserved value)</p>
+          <p>HD Audio Codec Driver Must Not Leave Function Group in D3Cold State Upon Unload.  By the exit of the IRP handler for IRP_MJ_PNP/IRP_MN_REMOVE_DEVICE, an HD Audio Codec driver must have </p>
+          <p>Remembered or discovered the current power state of the function group and </p>
+          <p>If that current function group power state was D3 Cold, the driver must have changed it to a different power state.  The function group power state upon exit is required to be D3.</p>
+          <p>There are some exceptions for feature number 13:</p>
+          <p>Combination jacks (headphone/S/PDIF) are allowed if the digital output is exposed as a separate, independent always on device using the HD Audio pin configuration register values and the analog section of the jack supports jack presence detection. </p>
+          <p>Combination jacks that have both a speaker and a microphone are also acceptable provided the connector supports microphone and speaker jack presence detection. </p>
+          <p>There is another exception to this requirement with regards to an audio device pin that feeds two different connectors intended for SPDIF protocol content. In the case where a system or device exposes an RCA jack (Co-ax) and an optical output for the SPDIF protocol stream from one codec pin this is permitted only if the audio driver exposes the pin as outlined in the design note section below </p>
+          <p>It is also acceptable to build a system that has two headphone jacks fed by the same HD Audio pin.</p>
+          <p>There are some extra design notes also associated with feature 13:</p>
+          <p>An array of jack descriptions can also be used to show that a pair of jacks is equivalent. The following example would indicate to the user that the yellow RCA jack and the black “digital optical” jack will carry the same signal:</p>
+          <p>KSJACK_DESCRIPTION ar_SPDIF_Jacks[] = </p>
+          <p>{</p>
+          <p>// jack 1</p>
+          <p>{</p>
+          <p>(SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT), // ChannelMapping (L,R)</p>
+          <p>RGB(255,255,0), // Color (yellow)</p>
+          <p>eConnTypeRCA, // ConnectionType (RCA)</p>
+          <p>eGeoLocRear, // GeoLocation</p>
+          <p>eGenLocPrimaryBox, // PortConnection</p>
+          <p>TRUE // IsConnected</p>
+          <p>},</p>
+          <p>// jack 2</p>
+          <p>{</p>
+          <p>(SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT), // (L,R)</p>
+          <p>RGB(0,0,0), // (black)</p>
+          <p>eConnTypeOptical, // (optical)</p>
+          <p>eGeoLocRear,</p>
+          <p>eGenLocPrimaryBox,</p>
+          <p>TRUE</p>
+          <p>}</p>
+          <p>};</p>
+          <p>Clarification: This exception has nothing to do with HDMI Audio, it only covers SPDIF on two physically different SPDIF connectors and this exception does NOT allow HDMI Audio outputs to share a codec pin with SPDIF. That is still prohibited.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.HDAudio.HDAudioSpecCompliance</h3>
+        <div class="subSection">
+          <p>HD Audio codec for audio complies with the Intel High Definition Audio specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.HDAudio</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.HDAudio.CopyBitPolarityClarification, Device.Audio.HDAudio.LowPowerDCN, have been merged with this one.</p>
+          <p>If the codec is for an audio implementation, it must be implemented according to Intel High Definition Audio Specification, Revision 1.0, and updated when commercially possible to comply with HD Audio specification DCNs.</p>
+          <p>Although the implementation must comply with all DCNs, particular attention should be made to the following:</p>
+          <p>HD Audio devices that expose a digital output must meet HD audio design change notification "Copy Bit Clarification".  Refer to http://download.intel.com/design/chipsets/hdaudio/HDA041-A_DCN_-_Copy_Bit_Polarity_Clarification_rev1p0.pdf</p>
+          <p>An HD audio Low-Power Design Change Notification (DCN) compatible HD Audio 1.0 based codec implements Low-Power capabilities according to the Low-Power specification and Microsoft UAA Hardware Design Guidelines.  See the RAND licensed Intel HD Audio specification, the HD Audio Low-Power DCN amendment to that specification and the Microsoft UAA Hardware Design Guidelines</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.HDAudio.HDMIDCN</h3>
+        <div class="subSection">
+          <p>If hardware supports multi-channel HDMI or DisplayPort audio consistent with the method defined by HD Audio, then the hardware must comply with the HD Audio HDMI Design Change Notifications (DCN).</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.HDAudio</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.HDAudio.2AudioChannelsForHDMIorDisplayPort and Device.Audio.HDAudio.HDMIKSPROPERTYJACKSINKINFO have been merged with this one.</p>
+          <p>If hardware supports multi-channel HDMI or DisplayPort audio consistent with the method defined by HD Audio, then the hardware must comply with the HD Audio HDMI Design Change Notifications (DCN).</p>
+          <p>If hardware supports HDMI or DisplayPort audio and implements any of the verbs listed below, the hardware must comply with the following HD Audio DCNs:</p>
+          <p>HDA034-A2: HDMI Content Protection and Multi-Channel Support</p>
+          <p>HDA039-A: HDMI/ELD Memory Structure</p>
+          <p>HDA036-A: DisplayPort Support and HDMI Miscellaneous Corrections</p>
+          <p>If hardware supports HDMI or DisplayPort audio, implements any of the verbs listed below and supports the transmission of high bit-rate (HBR) formats, the hardware must comply with the HD Audio DCN HDA035-A: HDMI High Bit Rate Support.</p>
+          <p>Verbs:</p>
+          <p>F2Fh (Get HDMI ELD Data)</p>
+          <p>F2Dh (Get Converter Channel Count)</p>
+          <p>72Dh (Set Converter Channel Count)</p>
+          <p>F2Eh (Get HDMI Data Island Packet – Size Info)</p>
+          <p>72Eh (Set HDMI Data Island Packet – Size Info)</p>
+          <p>F30h (Get HDMI Data Island Packet – Index)</p>
+          <p>730h (Set HDMI Data Island Packet – Index)</p>
+          <p>F31h (Get HDMI Data Island Packet – Data)</p>
+          <p>731h (Set HDMI Data Island Packet – Data)</p>
+          <p>F32h (Get HDMI Data Island Packet – Transmit-Control)</p>
+          <p>732h (Set HDMI Data Island Packet – Transmit-3Control)</p>
+          <p>F33h (Get Content Protection Control)</p>
+          <p>733h (Set Content Protection Control)</p>
+          <p>F34h (Get Converter Channel to HDMI Slot Mapping)</p>
+          <p>734h (Set Converter Channel to HDMI Slot Mapping)</p>
+          <p>Audio drivers that expose HDMI or DisplayPort endpoints must support the KSPROPERTY_JACK_SINK_INFO property.  For every endpoint exposed by an audio driver that supports HDMI or DisplayPort audio, the driver must respond to a KSPROPERTY_JACK_SINK_INFO request with a KSJACK_SINK_INFORMATION structure. The structure shall be correctly populated.</p>
+          <p>Display adapter or chipset with HDMI audio or DisplayPort audio capabilities must implement two channel audio support that is compliant with the HD Audio specification</p>
+          <p>A display subsystem on a platform that does not support connected standby but supports HDMI audio or DisplayPort audio capabilities must implement a minimum of two channel audio support compliant with HD Audio specification. </p>
+          <p>The minimum requirement is to use an HD Audio compliant solution exposing an SPDIF Output with a static format support of Stereo PCM, 16bit depth with sampling rate of 44.1kHz and 48kHz.</p>
+          <p>HDMI endpoints do not have to be based on HD Audio if they are a part of Systems that support connected standby.</p>
+          <p>Additional information on how to expose an SPDIF Output in an HD Audio compliant controller/codec configuration can be found in the Intel HD Audio specification. </p>
+          <p>Expose the logical independent HDMI Audio or DisplayPort audio device as outlined below to be exposed as an HDMI Audio device in Windows:</p>
+          <p>Intel HMDI Audio HD Audio Spec ECR:</p>
+          <p>Pin complex.PinCaps.HdmiCapable == 1, </p>
+          <p>AND PinConfig.DefDevice = DigitalOtherOut (0x5)</p>
+          <p>General/Geometric location irrelevant here</p>
+          <p>Intel HD Audio 1.0 method:</p>
+          <p>Pin config general location is internal (1) </p>
+          <p>AND geometric location is “Special1” (0x8)</p>
+          <p>AND PinConfig.DefDevice = DigitalOtherOut (0x5)</p>
+          <p>Pincaps.HdmiCapable is irrelevant here.</p>
+          <p>Also, see the UAA Hardware Design Guidelines available at http://go.microsoft.com/fwlink/?linkid=50734.</p>
+          <p>(Added additonal information on how to expose an S/PDIF Output in an HD Audio compliant controller)</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.HDAudio.INFHasDeviceID</h3>
+        <div class="subSection">
+          <p>INF file for HD Audio codec includes properly formatted device ID string for each supported codec device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.HDAudio</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Vendors that supply custom HD Audio function drivers must include an INF file that follows guidelines for device identification strings that are defined in Plug and Play Guidelines for High Definition Audio Devices, "INF Files for HD Audio Codecs." Design Notes: See Guidelines at http://www.microsoft.com/whdc/device/audio/HD-aud_PnP.mspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Audio.UAACompliance</h2>
+      <div id="sectionSection8" class="section">
+        <p>This audio device uses HD Audio, Bluetooth, or USB Audio Drivers</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.UAACompliance.UAA</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.UAACompliance.UAA</h3>
+        <div class="subSection">
+          <p>Audio device is compliant with one of the appropriate technology specifications supported by the UAA initiative</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.UAACompliance</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Base.DevicesWorkWithoutExtraSoftware, Device.Audio.Base.VoiceCommunicationUAA, device.audio.UAACompliance.TestUsingBluetoothClassDriver, and system.fundamentals.systemaudio.3rdpartydriver have been merged with this one.</p>
+          <p>An audio device must comply with the appropriate standard as supported by the Microsoft Universal Audio Architecture Initiative. The supported standards are USB Audio, IEEE 1394 Audio, Bluetooth Audio (Bluetooth devices (e.g. headset, speakers) need to use Windows Bluetooth Audio Class drivers for certification.) and High Definition Audio. The relevant Windows audio class driver loads, runs, and passes functionality tests on the implementation. This includes meeting minimum performance requirements as defined in the Microsoft UAA Hardware Design Guidelines.</p>
+          <p>This requirement does not apply to systems that support connected standby or devices that support USB Audio 2.0.</p>
+          <p>See "Universal Audio Architecture" at http://go.microsoft.com/fwlink/?LinkId=40631.</p>
+          <p>See "USB Audio Devices and Windows" at http://go.microsoft.com/fwlink/?LinkId=40632.</p>
+          <p>Additional details:</p>
+          <p>UAA audio devices must meet basic functionality requirements following a new Windows installation and prior to the installation of any additional software (drivers, system services or applications).  When running exclusively with the built-in Windows support, audio devices as a minimum shall:</p>
+          <p>Correctly render stereo sound from built-in speakers</p>
+          <p>Correctly render mono sound from mono render devices</p>
+          <p>Correctly transmit a stereo sound signal through line output connectors</p>
+          <p>Correctly capture a stereo line-in signal</p>
+          <p>Correctly capture a stereo mic-in signal</p>
+          <p>Correctly capture a mono sound from mono capture devices</p>
+          <p>Correctly support, Mute, Volume Control  </p>
+          <p>Identical functionality must also be supported with any custom driver provided with the device.</p>
+          <p>If the physical design implements line-in and/or mic-in, then line-in and/or mic-in should work with class drivers in Windows.</p>
+          <p>This requirement checks the interaction of the UAA compatible devices with the class driver and insures it is equivalent on basic functionality to that provided by third party drivers.  </p>
+          <p>UAA class drivers support:</p>
+          <p>HD Audio</p>
+          <p>High Definition Audio Specification Revision 1.0.</p>
+          <p>USB Audio 1.0</p>
+          <p>Universal Serial Bus Device Class Definition for Audio Devices Release 1.0</p>
+          <p>Universal Serial Bus Device Class Definition for Audio Data Formats Release 1.0</p>
+          <p>Universal Serial Bus Device Class Definition for Terminal Types Release 1.0</p>
+          <p>Universal Serial Bus Device Class Definition for MIDI Devices Release 1.0</p>
+          <p>Hardware mute and volume controls if implemented must be compatible with Windows class drivers.  In particular:</p>
+          <p>HD Audio hardware volume controls if implemented must be designed as amplifier widgets, and not as HD Audio volume knob widgets.  See HD Audio spec sections 7.3.3.7 "Amplifier Gain/Mute", 7.3.4.10 "Amplifier Capabilities", and not 7.3.3.29 "Volume Knob". </p>
+          <p>HD Audio mute is implemented many ways in the class driver.  If an amplifier widget has the "mute capable" bit set, sending a mute control down must mute the signal path through that amplifier widget.  See HD Audio spec sections 7.3.3.7 "Amplifier Gain/Mute" and 7.3.4.10 "Amplifier Capabilities".  If a pin widget has "input capable" or "output capable" set, setting "input enable" or "output enable" to 0 must mute the signal path through that pin widget.  See HD Audio spec sections 7.3.3.13 "Pin Widget Control" and 7.3.4.9 "Pin Capabilities." Setting "digital enable" bit to 0 on a digital converter must mute the signal path through that digital converter.  See HD Audio spec sections 7.3.3.9 "Digital Converter Control" and 7.3.4.6 "Audio Widget Capabilities." </p>
+          <p>USB hardware volume controls if implemented must be designed as the proper set of descriptors and associated command responses. Refer to USB Audio Specification 1.0, Mute Control and Volume Control as defined in sections 5.2.2.4.3.1 and 5.2.2.4.3.2.</p>
+          <p>Voice Communications:</p>
+          <p>Voice communication devices must expose themselves to the operating system as Universal Audio Architecture (UAA)-compliant audio devices. The devices must include an appropriate communication-centric form factor, such as a headset or handset, that Windows® can recognize and support. </p>
+          <p>Webcams that have a microphone expose a microphone form factor device by using USB descriptors according to the USB Audio 1.0 specification.</p>
+          <p>Aggregate USB audio devices (that is, audio devices that have input and output on the same device) expose themselves to Windows as handset or headset device types by using USB descriptors according to the USB Audio 1.0 specification.</p>
+          <p>For integrated and PCI audio devices that have analog jacks, the jacks are exposed accurately by using the pin configuration registers and driver topology. The driver topology uses relevant KSNODETYPE descriptors.</p>
+          <p>There are two options to identify devices as communication-class devices for audio testing with Windows.</p>
+          <p>Option 1:</p>
+          <p>Audio endpoint devices of certain KSNODETYPE descriptors are automatically treated as communication devices for testing purposes. Custom drivers should map to one of these KSNODETYPEs for the device to be recognized as a communication-class device.  The following list is a full list of communication-class KSNODETYPE descriptors:</p>
+          <p>KSNODETYPE_MICROPHONE</p>
+          <p>KSNODETYPE_DESKTOP_MICROPHONE</p>
+          <p>KSNODETYPE_PERSONAL_MICROPHONE</p>
+          <p>KSNODETYPE_OMNI_DIRECTIONAL_MICROPHONE</p>
+          <p>KSNODETYPE_MICROPHONE_ARRAY</p>
+          <p>KSNODETYPE_PROCESSING_MICROPHONE_ARRAY</p>
+          <p>KSNODETYPE_COMMUNICATION_SPEAKER</p>
+          <p>KSNODETYPE_HANDSET</p>
+          <p>KSNODETYPE_HEADSET</p>
+          <p>KSNODETYPE_SPEAKERPHONE_NO_ECHO_REDUCTION</p>
+          <p>KSNODETYPE_ECHO_SUPPRESSING_SPEAKERPHONE</p>
+          <p>KSNODETYPE_ECHO_CANCELLING_SPEAKERPHONE</p>
+          <p>KSNODETYPE_PHONE_LINE</p>
+          <p>KSNODETYPE_TELEPHONE</p>
+          <p>KSNODETYPE_DOWN_LINE_PHONE</p>
+          <p>Microsoft® class drivers map device types to these KSODETYPE descriptors based on information from device hardware or firmware.  For example, the Microsoft USB Audio class driver directly maps the USB Audio terminal types that are defined in tables 2-2, 2-4, and 2-5 of the Universal Serial Bus Device Class Definition for Terminal Types, Revision 1.0, March, 1998 to the corresponding KSNODETYPE descriptors above, with three exceptions that do not clearly imply a communication function.  These exceptions are the following:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Terminal Type</p>
+              </td>
+              <td>
+                <p>Code</p>
+              </td>
+              <td>
+                <p>I/O</p>
+              </td>
+              <td>
+                <p>Description</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Input Undefined</p>
+              </td>
+              <td>
+                <p>0x0200</p>
+              </td>
+              <td>
+                <p>I</p>
+              </td>
+              <td>
+                <p>Input terminal, undefined type</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Bi-directional Undefined</p>
+              </td>
+              <td>
+                <p>0x0400</p>
+              </td>
+              <td>
+                <p>I/O</p>
+              </td>
+              <td>
+                <p>Bi-directional terminal, undefined type</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Telephony Undefined</p>
+              </td>
+              <td>
+                <p>0x0500</p>
+              </td>
+              <td>
+                <p>I/O</p>
+              </td>
+              <td>
+                <p>Telephony terminal, undefined type</p>
+              </td>
+            </tr>
+          </table>
+          <p>To see the Universal Serial Bus Device Class Definition for Terminal Types, Revision 1.0, March, 1998, visit the following website:</p>
+          <p>http://www.usb.org/developers/devclass_docs/termt10.pdf</p>
+          <p>Communication-class USB audio device manufacturers must use one of the mapped terminal types to be tested against communication class requirements and to be used correctly in Windows.</p>
+          <p>Other drivers may choose different mapping criteria.  As long as they map to a KSNODETYPE descriptor that is listed above, the drivers will be considered communication-class during  testing. For information on expressing KSNODETYPE descriptors in a WDM driver, see the following website:</p>
+          <p>http://msdn.microsoft.com/en-us/library/ms790325.aspx</p>
+          <p>Option 2:</p>
+          <p>KSNODETYPE mappings are the preferred solution. However, if these mappings are not sufficient, it is possible to declare a given device as communication-class by adding the .inf driver.To use the .inf method, follow these steps:</p>
+          <p>1.Use the AddReg directive to reference a new add-registry section to add endpoint property keys. This step can be skipped if such a section already exists. The following example adds a new Endpoint.AddReg add-registry section under the USBAudio.MyDevice.Interface section/method/other element:</p>
+          <p>[USBAudio.MyDevice.Interface]</p>
+          <p>AddReg=Endpoint.AddReg</p>
+          <p>2.Next, create an add-registry section, if it does not already exist, to add endpoint property keys to the registry. The following example adds the appropriate property key for the first capture endpoint that is declared to be a communication device. The capture endpoint is declared in this INF method for the KSNODETYPE_ANY node:</p>
+          <p>[Endpoint.AddReg]</p>
+          <p>HKR,"EP\\0",%PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%</p>
+          <p>HKR,"EP\\0",%PKEY_Endpoint_EndpointRoleAffinity%,0x00010001,0x00000204</p>
+          <p>Note that there are three possible valid values for this key, based on whether the device is a render device, a capture device, or both:</p>
+          <p>0x00000104 – A render device of the associated KSNODETYPE descriptor would be tested as a communication device. </p>
+          <p>0x00000204 – A capture device of the associated KSNODETYPE descriptor would be tested as a communication device. </p>
+          <p>0x00000304 – A both render and capture device of the associated KSNODETYPE descriptor would be tested as a communication device.</p>
+          <p>3.In the strings section, add the following section for the value of the property keys that are used in step 2:</p>
+          <p>PKEY_AudioEndpoint_Association = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},2"</p>
+          <p>PKEY_Endpoint_EndpointRoleAffinity = "{b3f8fa53-0004-438e-9003-51a46e139bfc},13" </p>
+          <p>For more information about writing an INF file, see the Windows Driver Kit documentation.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Audio.USB</h2>
+      <div id="sectionSection9" class="section">
+        <p>This audio device uses the USB Audio Driver.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Audio.USB.HIDControls</p>
+              <p>Device.Audio.USB.USB</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Audio.USB.HIDControls</h3>
+        <div class="subSection">
+          <p>USB audio device uses USB HID audio controls to keep the operating system informed of user interactions with the device.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.USB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirement Device.Audio.USB.HIDCommunications has been merged with this one.</p>
+          <p>USB audio devices must use USB HID specification-compliant HID to control basic functions. If volume adjustment controls are implemented on the USB audio device, it must declare itself as a consumer control device (usage 0x01), as defined in Consumer Page (page 0x0C) in the USB Usage Tables for HID Power Devices, Release 1.1, and in Windows support for HID-based audio controls. </p>
+          <p>Communication devices that implement a USB HID interface must be compliant with the USB Device Class Definition for Human Interface Devices (HID), Version 1.1, and USB Usage Tables for HID Power Devices, Version 1.12. </p>
+          <p>Devices may not use Reserved usages from any Standard Usage Page.</p>
+          <p>See "HID Audio Controls and Windows" at <a href="http://go.microsoft.com/fwlink/?LinkId=40491">http://go.microsoft.com/fwlink/?LinkId=40491</a> and the Windows Driver Kit, "HID and Windows" for more design information.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Without knowledge of volume/mute settings on the device the OS cannot make intelligent policy decisions that enable more predictable and better fidelity user experiences with Windows</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 17, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Audio.USB.USB</h3>
+        <div class="subSection">
+          <p>USB Audio Device follows UAA USB Audio Design Guidelines</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Audio.USB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Requirements Device.Audio.Base.ProperUSBDescriptors and Device.Audio.USB.MicArray have been merged with this one.</p>
+          <p>Description: A USB audio-based audio device in a stand-alone external form factor or in an AVR or in other permutations follows the Microsoft UAA USB Audio Design Guidelines. </p>
+          <p>Special attention should be made to the following:</p>
+          <p>USB audio device must properly set descriptor to indicate the purpose of device according to the USB spec http://www.usb.org/developers/devclass_docs/termt10.pdf</p>
+          <p>An externally connected USB based microphone array device must comply with the UAA-supported technology standard, must comply with the USB Device Class Definition for Audio Devices 1.0, and must be implemented according to the guidelines in "Microphone Array Support in Windows Vista."  The device must report itself and its capabilities according to the design guidelines in the Microsoft USB Audio Microphone Array Design Guidelines.</p>
+          <p>Design Notes: See Microsoft UAA USB Audio Design Guidelines at <a href="http://go.microsoft.com/fwlink/?LinkId=50734">http://go.microsoft.com/fwlink/?LinkId=50734</a>.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>To maintain the choice within the UAA initiative it is necessary to have 1394 audio devices implemented according to the Microsoft UAA 1394 audio design guidelines.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="gWDEPFQVEJP9n8vwe0nZcT0EciJeNdApTCa8jR04bYvEOsxXb4BWRQaBfL6_mXg2mQ6izx6zdONd5M4MKDtdg1aso9d4zDDtMZtvmGN0xh8vgrUSBC0CoMP0YORDEQEmRJXIlw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/jj134354.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134354.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="ykC3vyAYlhFJWZn7E1ge82lRvDSJqXOS4BXWY_lDtj1yscH59e0sPEU5CAfkeb2iwzBE_cgYXW4NG9hf0-Yh3o5OIT_tMINUQIzBz1X6IUzmveTqee8uFtMXmj0gaHi6KlKIug2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134354(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"16107d8d-e5fc-45c5-8cbd-98513ffabbc8\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134354.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

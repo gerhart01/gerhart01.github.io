@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/Dn550976(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/dn550976(v=vs.85).aspx" />
+        <title>Windows Hardware Dev Center Archive (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn550976(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn550976(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn550976(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn550976(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD1-9:21:39 AM" />
+
+<meta name="Search.ShortId" content="dn550976" />
+
+<meta name="ms.shortidmsdn" content="dn550976" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395073299&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fDn550976%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0 current" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn550976(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Hardware Dev Center Archive">Windows Hardware Dev Center Archive</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Windows Hardware Dev Center Archive</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>
+</p><p>Looking  for  content about earlier versions of Windows? Then check out these archived topics.  But note that they haven't been validated or updated since they were first published.</p>
+<p>For up-to-date content about our latest technologies and features, please use our site search or navigation.</p>
+
+<p>This page contains the following sections:</p>
+<p>
+</p><ul>
+<li><a href="#_#64-bit_system_archive">64-bit System Archive</a></li>
+<li><a href="#acpi___power_management_archive">ACPI / Power Management Archive</a></li>
+<li><a href="#audio_archive">Audio Archive</a></li>
+<li><a href="#debugging_archive">Debugging Archive</a></li>
+<li><a href="#device_metadata">Device Metadata</a></li>
+<li><a href="#display_and_graphics_archive">Display and Graphics Archive</a></li>
+<li><a href="#driver_archive">Driver Archive</a></li>
+<li><a href="#imaging_archive">Imaging Archive</a></li>
+<li><a href="#infrared_remote_control_and_receiver_approval_process">Infrared Remote Control and Receiver Approval Process</a></li>
+<li><a href="#input___hid_archive">Input / HID Archive</a></li>
+<li><a href="#networking___wireless_archive">Networking / Wireless Archive</a></li>
+<li><a href="#pc_design_archive">PC Design Archive</a></li>
+<li><a href="#print___scan_archive">Print / Scan Archive</a></li>
+<li><a href="#smart_card_archive">Smart Card Archive</a></li>
+<li><a href="#storage_archive">Storage Archive</a></li>
+<li><a href="#system_internals_archive">System Internals Archive</a></li>
+<li><a href="#usb_and_1394_archive">USB and 1394 Archive</a></li>
+<li><a href="#windows_hardware_error_architecture_archive">Windows Hardware Error Architecture Archive</a></li>
+<li><a href="#windows_hardware_logo_requirements">Windows Hardware Logo Requirements</a></li>
+<li><a href="#windows_logo_program_requirements_2.2">Windows Logo Program Requirements 2.2</a></li>
+<li><a href="#windows_rally_archive">Windows Rally Archive</a></li>
+<li><a href="#windows_server_platform">Windows Server Platform</a></li>
+</ul>
+
+<h2><a id="64-bit_System_Archive"></a><a id="64-bit_system_archive"></a><a id="64-BIT_SYSTEM_ARCHIVE"></a>64-bit System Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/A/F/7/AF7777E5-7DCD-4800-8A0A-B18336565F5B/wow64_bestprac.docx">Best Practices for WOW64</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/mmcodec_amd64.doc">Porting and Optimizing Multimedia Codecs for AMD64 Architecture on Windows [304 KB]</a></dd>
+</dl>
+<p></p>
+<h2><a id="ACPI___Power_Management_Archive"></a><a id="acpi___power_management_archive"></a><a id="ACPI___POWER_MANAGEMENT_ARCHIVE"></a>ACPI / Power Management Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/0/0/b/00bba048-35e6-4e5b-a3dc-36da83cbb0d1/ACPIDriver_Vista.doc">ACPI Driver Interface in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/PCI ASPM.doc">Active State Power Management in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/d/f/6/df6accd5-4bf2-4984-8285-f4f23b7b1f37/WinHEC2007_PowerFriendlyDevices.doc">Designing Power-Friendly Devices</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/WinACPI_OSI.docx">How to Identify the Windows Version in ACPI by Using _OSI</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/S0idle_driver.docx">Increase System Power Efficiency with Idle Detection</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/AvailabilityRequests.docx">Power Availability Requests</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/Svr_Pwr_ITAdminV2.docx">Power In, Dollars Out: How to Stem the Flow in the Data Center</a></dd>
+<dd><a href="http://download.microsoft.com/download/2/c/1/2c16c7e0-96c1-40f5-81fc-3e4bf7b65496/microsoft_asl_compiler-v4-0-0.msi">Power Management and ACPI - Architecture and Driver Support: Microsoft ASL Compiler, v.4.0.0 [788 KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/0/b/00bba048-35e6-4e5b-a3dc-36da83cbb0d1/ProcPowerMgmt.docx">PPM (Processor Power Management) in Windows Vista and Windows Server 2008</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/Science-Sleep.docx">The Science of Sleep</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/PowerCfg.docx">Using PowerCfg to Evaluate System Energy Efficiency</a></dd>
+</dl>
+<p></p>
+<h2><a id="Audio_Archive"></a><a id="audio_archive"></a><a id="AUDIO_ARCHIVE"></a>Audio Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/hdaudio11.ppt">HD Audio UAA Class Driver 1.1 Overview</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/HD-aud_PnP.doc">Plug and Play Guidelines for High Definition Audio Devices</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/Win7Logo_Aud.docx">Windows 7 Audio Logo Changes</a></dd>
+</dl>
+<p></p>
+<h2><a id="Debugging_Archive"></a><a id="debugging_archive"></a><a id="DEBUGGING_ARCHIVE"></a>Debugging Archive</h2>
+<dl>
+<dd><a href="http://msdn.microsoft.com/en-us/windows/hardware/hh134820">Debug Port Specification</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463020">Debugging Kernel-Mode Driver Framework Drivers</a></dd>
+</dl>
+<p></p>
+<h2><a id="Device_Metadata"></a><a id="device_metadata"></a><a id="DEVICE_METADATA"></a>Device Metadata</h2>
+<dl>
+<dd><a href="http://www.microsoft.com/en-us/download/details.aspx?id=30727">Device Metadata Package Pipeline</a></dd>
+</dl>
+<p></p>
+<h2><a id="Display_and_Graphics_Archive"></a><a id="display_and_graphics_archive"></a><a id="DISPLAY_AND_GRAPHICS_ARCHIVE"></a>Display and Graphics Archive</h2>
+<dl>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg487382">Brightness Control in WDDM</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/ColorMgmtConcepts.doc">Color Management Concepts</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/colormgmt_ecosystem.ppt">Evolution in the Microsoft Color Management Ecosystem</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/GraphicsGuideWin7.docx">Graphics Guide for Windows 7</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/wcs_drvs-apps.ppt">How WCS (Windows Color System) in Windows Vista works with Drivers and Applications</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/MSColorCaseStudy.doc">sRGB Color Management Case Studies</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463407">Temporal Rate Conversion</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/TransientMultimonManager.doc">Transient Multimon Manager (TMM)</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/windowscolorsystem_api.ppt">Windows Color System and API: An Overview</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/aero_rules.docx">Windows Vista Rules for Enabling Windows Aero</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463449">Write-Combining Memory in Video Miniport Drivers</a></dd>
+</dl>
+<p></p>
+<h2><a id="Driver_Archive"></a><a id="driver_archive"></a><a id="DRIVER_ARCHIVE"></a>Driver Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/umdf-arch.doc">Architecture of the User-Mode Driver Framework</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/AwayModeDDK-WindowsVista.exe">Away Mode DDK for Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/AwayMode.docx">Away Mode in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/BitLockerExt.doc">Bitlocker Drive Encryption: Value-Add Extensibility Options</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/UMDF_COM_QS.docx">COM QuickStart for UMDF Developers</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/CustomIcon.docx">Creating Custom Device Icons</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/Diagnose.doc">Debugging Device Installation in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/deploy.doc">Designing Driver Packages for Corporate Deployment</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/d/f/adf1347d-08dc-41a4-9084-623b1194d4b2/BackgroundProcs.docx">Developing Efficient Background Processes for Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/XPinfguide.doc">Device Driver INF Guidelines for Windows XP</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/InstallRules.doc">Device Installation Rules for Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/DrvPkg_Errors.doc">Driver Package Compatibility for Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/Win7DriverVer.docx">Driver Verifier in Windows 7</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/VistaVerifier.docx">Driver Verifier in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/d/6/5d6eaf2b-7ddf-476b-93dc-7cf0072878e6/WPP_Intro.doc">Getting Started with Software Tracing in Windows Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/MB_CustGuide.docx">Guidelines for Customizing Mobile Broadband in Windows 7</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/IRPs.doc">Handling IRPs: What Every Driver Writer Needs to Know</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/KMDF-Build.doc">How to Build, Install, Test, and Debug KMDF Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/Developing-KMDF-Drvs.ppt">How to Develop a KMDF Driver [517 KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/8/5/785396D5-CB71-4809-BA50-2969FC1F4C06/TDDD05007.wvx">How to Develop a KMDF Driver: Part 1</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/8/5/785396D5-CB71-4809-BA50-2969FC1F4C06/TDDD05009.wvx">How to Develop a KMDF Driver: Part 2</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/Porting-WDM-Drvs-to-KMDF.ppt">How to Port a WDM Driver to KMDF [749 KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/8/5/785396D5-CB71-4809-BA50-2969FC1F4C06/TDDD05006.wvx">How to Port a WDM Driver to KMDF: Part 1</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/8/5/785396D5-CB71-4809-BA50-2969FC1F4C06/TDDD05008.wvx">How to Port a WDM Driver to KMDF: Part 2</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/IOreq_flow.doc">I/O Flow and Dispatching in WDF Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/Priorityio.doc">I/O Prioritization in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/IO-rsc.doc">I/O Resource Usage Reduction</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/PBDA_Parental_Controls.docx">Implementing Parental Controls by Using PBDA</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/PBDA_SourceTypeXML.docx">Implementing the SourceType XML Element in PBDA Devices</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/3/6/036012C4-0D71-43A8-8329-B55C12D5E18C/wdf-installation.docx">Installation of WDF Device Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/awaymode.doc">Installing and Configuring Away Mode</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/2/0/9200a84d-6c21-4226-9922-57ef1dae939e/Interrupt_Affinity_Policy_Tool.msi">Interrupt-Affinity Policy Tool</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/drvqa.doc">Kernel-Mode Drivers: Fixing Common Driver Reliability Issues</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/KMDF-arch.doc">KMDF Kernel-Mode Driver Framework Architecture for Driver Developers</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/kmdf_howtodevelopframeworkdrivers.pptx">KMDF: How to Develop Framework Drivers [1.9 MB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/4/a/6/4a69c696-e308-4f36-b474-8d4f4972f827/KrView_100-82.exe">KrView - the Kernrate Viewer</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/PCIe_LockedOperations.doc">Locked Operations on PCI Express</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/Win7Perf.docx">Performance Testing Guide for Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/d/6/5d6eaf2b-7ddf-476b-93dc-7cf0072878e6/PREfast_steps_15.doc">PREfast Step-by-Step 1.5</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/d/6/5d6eaf2b-7ddf-476b-93dc-7cf0072878e6/PREfast_steps_21.doc">PREfast Step-by-Step 2.1</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/PREfast_steps_80.doc">PREfast Step-by-Step 8.0</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/PREfast-drv.doc">PREfast with Driver-Specific Rules</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/process_Vista.doc">Protected Processes in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/KMDF-samp.doc">Sample Drivers for the Kernel Mode Driver Framework</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/UMDF-samp.doc">Sample Drivers for the User-Mode Driver Framework</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/IRQL_thread.doc">Scheduling, Thread Context, and IRQL</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/D/6/5D6EAF2B-7DDF-476B-93DC-7CF0072878E6/secure-start_exec.doc">Secure Startup - Full Volume Encryption: Executive Overview</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/D/6/5D6EAF2B-7DDF-476B-93DC-7CF0072878E6/secure-start_tech.doc">Secure Startup - Full Volume Encryption: Technical Overview</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/SetupAPILog.doc">Setup API Log File Guidelines for Driver Developers and Testers</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Logo-SpecList.docx">Specifications: Hardware and Firmware Standards</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/ACPI_SxD.rtf">System State-to-Device State Mappings (SxD)</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/Timer-Resolution.docx">Timers, Timer Resolution, and Development of Efficient Code</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/KM-UMGuide.doc">User-Mode Interactions: Guidelines for Kernel-Mode Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/d/1/d/d1dd7745-426b-4cc3-a269-abbbe427c0ef/dde-t685_ddc08.pptx">Using KMDF in Miniport Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/umdf_intro.doc">WDF UMDF User-Mode Driver Framework Introduction for Driver Developers</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/D/6/5D6EAF2B-7DDF-476B-93DC-7CF0072878E6/wdf-arch.doc">Architecture of the Windows Driver Foundation</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/WDFVersioning.doc">WDF Windows Driver Foundation Versioning</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/DrvTest_BestPrac.doc">Windows Driver Testing Best Practices</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/sdv-wdm_lab.docx">Windows Hardware Platform Lab Previews: Static Driver Verifier for WDM Drivers: WHDC Lab </a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/Windows Native Processor Performance Control.doc">Windows Native Processor Performance Control</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/C/A/3CA9058B-7EE5-4191-99E2-DB5917877522/OnOffTransPerf.docx">Windows On/Off Transition Performance Analysis</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/OnOffTrans.docx">Windows On/Off Transitions Solutions Guide</a></dd>
+<dd><a href="http://download.microsoft.com/download/8/A/2/8A2FB72D-9B96-4E2D-A559-4A27CF905A80/windows-platform-binary-table.docx">Windows Platform Binary Table (WPBT)</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/C/5/9C5B2167-8017-4BAE-9FDE-D599BAC8184A/TimerCoal.docx">Windows Timer Coalescing</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/WU_Logic.doc">Windows Update Logic for Offering a Driver</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/BitLockerReq.doc">Windows Vista BitLocker Client Platform Requirements</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463519">Windows Vista Driver Development</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/FTdrv.doc">Writing Drivers for Fault Tolerant Systems</a></dd>
+</dl>
+<p></p>
+<h2><a id="Imaging_Archive"></a><a id="imaging_archive"></a><a id="IMAGING_ARCHIVE"></a>Imaging Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/1/7/4/1743e193-c99b-4ffa-9365-b3bb4c2a736a/hdphoto_1.0_dpk_setup.exe">HD Photo Device Porting Kit Download</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/Webcam_VidTests.docx">Webcam Video Fidelity Tests</a></dd>
+</dl>
+<p></p>
+<h2><a id="Infrared_Remote_Control_and_Receiver_Approval_Process"></a><a id="infrared_remote_control_and_receiver_approval_process"></a><a id="INFRARED_REMOTE_CONTROL_AND_RECEIVER_APPROVAL_PROCESS"></a>Infrared Remote Control and Receiver Approval Process</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/0/7/E/07EF37BB-33EA-4454-856A-7D663BC109DF/WMC-KLLA-2010.pdf">Key Logo License Agreement</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/7/E/07EF37BB-33EA-4454-856A-7D663BC109DF/GreenButtonManufacturingAgreement-4-6-2011.pdf">Manufacturing and Distribution Agreement</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/7/E/07EF37BB-33EA-4454-856A-7D663BC109DF/Microsoft-Philips-RC6-OEM-license-agreement-05-2010.pdf">Philips WMC-RC6 Protocol Licensing Agreement</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/7/E/07EF37BB-33EA-4454-856A-7D663BC109DF/Windows-Media-Center-RC-IR-Collection-Green-Button-Specification-03-08-2011-V2.pdf">Remote Control and Receiver-Transceiver Specifications and Requirements for Windows Media Center in Windows Operating Systems</a></dd>
+<dd><a href="http://download.microsoft.com/download/0/7/E/07EF37BB-33EA-4454-856A-7D663BC109DF/SMK-MSFT-3-way-license-2010.pdf">SMK WMC-Quattro Pro Licensing Agreement</a></dd>
+</dl>
+<p></p>
+<h2><a id="Input___HID_Archive"></a><a id="input___hid_archive"></a><a id="INPUT___HID_ARCHIVE"></a>Input / HID Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/scancode.doc">Archive: Key Support, Keyboard Scan Codes, and Windows: Keyboard Scan Code Specification</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/SideShow_Gaming_Solutions.docx">Compelling Solutions for PC Gamers by Using Windows SideShow</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/KVM-Win7.docx">Display Guidelines for KVM Switches in Windows 7</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/SideShow_TVExperience.docx">Enhancing the Television Experience by Using Windows SideShow</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/hid-sensors-usages (archive).docx">HID Sensors Usages</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Univ-Drv_SideShow.docx">Using the Universal Driver for Windows SideShow</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/4/1/541c58b2-4960-4a02-9ffe-bf762602ac48/SideShowSDKforNETMF.msi">Windows SideShow Device SDK for .NET Micro Framework v1.4</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/8/5/6852cea2-bc7a-4ac7-b7e9-99c13bd778c6/windowssideshowuseguidelines.doc">Windows SideShow Use Guidelines</a></dd>
+</dl>
+<p></p>
+<h2><a id="Networking___Wireless_Archive"></a><a id="networking___wireless_archive"></a><a id="NETWORKING___WIRELESS_ARCHIVE"></a>Networking / Wireless Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/a/d/f/adf1347d-08dc-41a4-9084-623b1194d4b2/NetMediaDevices_Cert.docx">Building Windows Certified Network Media Devices</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/mb_cm_integration.pptx">Connection Manager Integration with Mobile Broadband [1.6 MB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/MB_ManagedCode.docx">How to Write Managed Code That Uses the Mobile Broadband API</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/HDSplit.doc">Network Driver Compatibility with the Header-Data Split Feature</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/NetExplorer.doc">Network Explorer Extensibility</a></dd>
+<dd><a href="http://download.microsoft.com/download/F/4/9/F49C6DE3-3BD1-405B-BA03-539EB58B57E8/DVC-T214.pptx">Overview of the Windows 7 Network Media Devices Logo Program: PPT</a>, <a href="http://download.microsoft.com/download/E/1/1/E11521B7-409B-4924-806A-F2D84007EB5D/HDI-ITPro-Windowssummit-winvideo-DVC-T214.wmv">WMV</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/MSPDBA_v1.3.1.msi">Protected Broadcast Driver Architecture Specification</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/WPA_Overview.doc">WiFi Protected Access Overview</a></dd>
+<dd><a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463504">Wireless Provisioning Services</a></dd>
+</dl>
+<p></p>
+<h2><a id="PC_Design_Archive"></a><a id="pc_design_archive"></a><a id="PC_DESIGN_ARCHIVE"></a>PC Design Archive</h2>
+<dl>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg487362">Building a Great Media Center PC</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/PMP-sign.doc">Code Signing for Protected Media Components in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/MCPCdeploy.doc">Design and Deploy a Great Media Center PC</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/SpecGuide_v1a.doc">Guidelines for Bus and Device Specifications</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/Designing Hardware for Surprise Removal_v8.doc">Hardware Design for Surprise Removal</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Mobile_bat.docx">Mobile Battery Solutions Guide for Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/ButtonIcons.exe">Mobile PC Hardware Button Recommendations</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/PBDA_TV_Pipeline.docx">Requirements for TV Pipeline Formats and Media Streams</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/WMC_ProdReqs.xps">Windows Media Center Customized Product Requirements</a></dd>
+</dl>
+<p></p>
+<h2><a id="Print___Scan_Archive"></a><a id="print___scan_archive"></a><a id="PRINT___SCAN_ARCHIVE"></a>Print / Scan Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/DistributedScan-Device.msi">Distributed Scan Device (WS-DSD)</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/DistributedScan-Processing.msi">Distributed Scan Processing (WS-DSP)</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/VistaPnPSec.doc">Point and Print Security on Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/drv-compat.doc">Printer Driver Compatibility with Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/pkginstall.doc">Printer Installation in Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/DistributedScan-ScanProcess.msi">Scan Process</a></dd>
+</dl>
+<p></p>
+<h2><a id="Smart_Card_Archive"></a><a id="smart_card_archive"></a><a id="SMART_CARD_ARCHIVE"></a>Smart Card Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/sc_minidriver_specs_V5.doc">Smart Card Minidriver Specification, v.5.07</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/sc-minidriver_specs_V6-final.docx">Smart Card Minidriver Specification, v.6.02</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/sc-minidriver_specs_V7.docx">Smart Card Minidriver Specification, v.7</a></dd>
+</dl>
+<p></p>
+<h2><a id="Storage_Archive"></a><a id="storage_archive"></a><a id="STORAGE_ARCHIVE"></a>Storage Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/ATAPortInfo.docx">Bus Type and SCSI Address Reporting for ATA Devices</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/RAID_design.doc">Designing RAID Adapters to Work with Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/subsys_perf.doc">Disk Subsystem Performance Analysis for Windows</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463007">FAQ for PCI and PCIe Issues for “Designed for Windows” Logo</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/PCI-rsc.doc">Firmware Allocation of PCI Device Resources in Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/BIOS_PCIe_HotPlug.doc">Firmware Support for PCI Express Hot-Plug and Windows</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg487502">IDs and Serial Numbers for ISA Plug and Play</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/eSATA.docx">Internal and External SATA Port Configuration</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463528">Large Logical Unit Support and Windows Server 2003 SP1</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/LocFileSys.doc">Local File Systems for Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/pci-express_windows.doc">PCI Express and Windows</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463285">PCI Express FAQ for Graphics</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/pci-pcie_faq.doc">PCI, PCI-X, and PCI Express FAQ</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463291">PCI Power Management and Device Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/HiberFootprint.docx">Reducing the Disk Footprint for Windows 7 Hibernation</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/C/5/9C5B2167-8017-4BAE-9FDE-D599BAC8184A/RegReflect.docx">Registry Reflection in Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/b/5/5b5bec17-ea71-4653-9539-204a672f11cf/PCIbridge-subtr.doc">Supporting Subtractive PCI-to-PCI Bridges in Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Disk_Idle_Detection.doc">Windows Disk Idle Detection</a></dd>
+</dl>
+<p></p>
+<h2><a id="System_Internals_Archive"></a><a id="system_internals_archive"></a><a id="SYSTEM_INTERNALS_ARCHIVE"></a>System Internals Archive</h2>
+<dl>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg463344">Advances in Memory Management for Windows</a></dd>
+<dd><a href="http://msdn.microsoft.com/library/windows/hardware/gg462964">APIC-Based Interrupt Subsystems on Uniprocessor PCs</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/mem-corrupt.docx">Firmware Corruption of Memory During Sleep Transitions</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/kernel-en.doc">Kernel Enhancements for Windows Vista and Windows Server 2008</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/wmi_security.doc">Kernel WMI Object Security</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/MemorySizingGuidanceWin7.docx">Memory Sizing Guidance for Windows 7</a></dd>
+<dd><a href="http://download.microsoft.com/download/f/0/5/f05a42ce-575b-4c60-82d6-208d3754b2d6/memorymanagerinwindows.ppt">The Memory Manager in Windows Server 2003 and Windows Vista</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/MP_issues.doc">Multiprocessor Considerations for Kernel-Mode Drivers</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/Hyper-thread_Windows.doc">Windows Support for Hyper-Threading Technology</a></dd>
+</dl>
+<p></p>
+<h2><a id="USB_and_1394_Archive"></a><a id="usb_and_1394_archive"></a><a id="USB_AND_1394_ARCHIVE"></a>USB and 1394 Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf">Archive: Key Support, Keyboard Scan Codes, and Windows: Download USB HID to PS/2 Scan Code Translation Table in PDF format</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/USB-HC_PwrMgmt.doc">Archive: Power Management of USB Host Controllers</a></dd>
+<dd><a href="http://download.microsoft.com/download/A/7/5/A751E1C1-66DF-4888-846A-296B045B6E38/microsoft-proposed-extensions-usb-video-class-h264.docx">Microsoft Proposed Extensions to the USB Video Class for H.264</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/USBTelephony-v091.doc">USB Handset Peripherals and Windows</a></dd>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/USB-Win7MigrationDLL.docx">USB Migration Support for Windows 7 Upgrade Scenarios</a></dd>
+</dl>
+<p></p>
+<h2><a id="Windows_Hardware_Error_Architecture_Archive"></a><a id="windows_hardware_error_architecture_archive"></a><a id="WINDOWS_HARDWARE_ERROR_ARCHITECTURE_ARCHIVE"></a>Windows Hardware Error Architecture Archive</h2>
+<dl>
+<dd><a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463511">Windows Hardware Error Architecture ACPI Table Specification</a></dd>
+</dl>
+<p></p>
+<h2><a id="Windows_Hardware_Logo_Requirements"></a><a id="windows_hardware_logo_requirements"></a><a id="WINDOWS_HARDWARE_LOGO_REQUIREMENTS"></a>Windows Hardware Logo Requirements</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/F/4/9/F49C6DE3-3BD1-405B-BA03-539EB58B57E8/SYS-T164.pptx">Understanding the Windows Logo Program for Systems: PPT</a>, <a href="http://download.microsoft.com/download/9/B/6/9B68AED1-7D00-4F2B-B9E2-582E08AB2653/HDI-ITPro-Windowssummit-winvideo-SYS-T164.wmv">WMV</a>, <a href="http://download.microsoft.com/download/9/B/6/9B68AED1-7D00-4F2B-B9E2-582E08AB2653/HDI-ITPro-Windowssummit-mp4video-SYS-T164.m4v">MP4</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-additional-qualification.zip">windows-hardware-logo-requirements-additional-qualification.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-audio.zip">windows-hardware-logo-requirements-audio.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-buscontrollers-ports.zip">windows-hardware-logo-requirements-buscontrollers-ports.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-communication.zip">windows-hardware-logo-requirements-communication.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-device.zip">windows-hardware-logo-requirements-device.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-display.zip">windows-hardware-logo-requirements-display.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-game.zip">windows-hardware-logo-requirements-game.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-imaging.zip">windows-hardware-logo-requirements-imaging.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-input.zip">windows-hardware-logo-requirements-input.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-other-devices.zip">windows-hardware-logo-requirements-other-devices.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-network.zip">windows-hardware-logo-requirements-network.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-portable-devices.zip">windows-hardware-logo-requirements-portable-devices.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-system-motherboard.zip">windows-hardware-logo-requirements-system-motherboard.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-systems.zip">windows-hardware-logo-requirements-systems.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-storage.zip">windows-hardware-logo-requirements-storage.zip</a></dd>
+<dd><a href="http://download.microsoft.com/download/6/9/4/694DAD2D-B38D-4BA5-95DE-7F0193233817/windows-hardware-logo-requirements-streaming-media.zip">windows-hardware-logo-requirements-streaming-media.zip</a></dd>
+</dl>
+<p></p>
+<h2><a id="Windows_Logo_Program_Requirements_2.2"></a><a id="windows_logo_program_requirements_2.2"></a><a id="WINDOWS_LOGO_PROGRAM_REQUIREMENTS_2.2"></a>Windows Logo Program Requirements 2.2</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/3/2/c/32cb69db-71e3-447e-a91b-4070cdc4548a/Microsoft-iSCSI-Logo-Requirements-1.0.doc">Designed for Windows Requirements for iSCSI Hardware Targets and iSCSI Hardware Initiators (HBAs)</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/hwlogov1-1.doc">Desktop and Mobile PC Requirements, Version 1.1</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/HWLogoFAQ1_1.doc">Desktop and Mobile PC FAQ for Version 1.1</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/WLP21a_FAQ.doc">FAQ for System and Device Requirements, Version 2.1a</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/HWlogo2_Faq.doc">FAQ and Changes for System and Device Requirements, Version 2.0</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/WLP2.1aPrint.doc">Windows Logo Program System and Device Requirements, Version 2.1a</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/2/c/32cb69db-71e3-447e-a91b-4070cdc4548a/WLP22-10_a.doc">Windows Logo Program System and Device Requirements, Version 2.2.1a</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/hwlogo2-prn.doc">Windows Logo Program System and Device Requirements, Version 2.0</a></dd>
+</dl>
+<p></p>
+<h2><a id="Windows_Rally_Archive"></a><a id="windows_rally_archive"></a><a id="WINDOWS_RALLY_ARCHIVE"></a>Windows Rally Archive</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/RallyComponentLicense.docx">Specifications and Tools: Windows Rally Component License</a></dd>
+<dd><a href="http://download.microsoft.com/download/3/0/2/3027D574-C433-412A-A8B6-5E0A75D5B237/RallyDevKitLicense.docx">Specifications and Tools: Windows Rally Dev Kit License</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/WSondevices.doc">Web Services on Devices and Windows Rally Technologies</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/WCN-UFD_Vistaspec.doc">Windows Connect Now-UFD (USB Flash Drive) and Windows Vista Specification</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/f/7/af7777e5-7dcd-4800-8a0a-b18336565f5b/WCN-UFD_XPspec.doc">Windows Connect Now-UFD for Windows XP Specification</a></dd>
+</dl>
+<p></p>
+<h2><a id="Windows_Server_Platform"></a><a id="windows_server_platform"></a><a id="WINDOWS_SERVER_PLATFORM"></a>Windows Server Platform</h2>
+<dl>
+<dd><a href="http://download.microsoft.com/download/7/E/7/7E7662CF-CBEA-470B-A97E-CE7CE0D98DC2/AppInit_Win7.docx">AppInit DLLs in Windows 7 and Windows Server 2008 R2</a></dd>
+<dd><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/hw-firmwareforheadlesswindows-v100a.doc">Building Hardware and Firmware to Complement Headless Functionality in Windows [296 KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/ems.doc">Emergency Management Services [159 KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/standardizingoutofbandmanagementconsoleoutput090.doc">Standardizing Out-of-Band Management Console Output and Terminal Emulation (VT-UTF8 and VT100+) [v.0.9; 69KB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/a/d/f/adf1347d-08dc-41a4-9084-623b1194d4b2/RSS_Server2008.docx">Receive-Side Scaling Enhancements in Windows Server 2008</a></dd>
+<dd><a href="http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/ServerPowerBudget.docx">Recommendations for Power Budgeting with Windows Server</a></dd>
+<dd><a href="http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/windowsserver2003emssacxml.doc">Windows Server 2003 EMS SAC XML Encoding [1.16 MB]</a></dd>
+<dd><a href="http://download.microsoft.com/download/5/7/7/577a5684-8a83-43ae-9272-ff260a9c20e2/Windows .NET Datacenter Driver Program for OEMs and IxVs.doc">Windows .NET Datacenter Driver Program for OEMs and IxVs</a></dd>
+</dl>
+<p></p>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/en-us/library/windows/hardware/community/add/Dn550976(v=vs.85).aspx">
+                    <span class="communityContentAddButton" title="Add">
+                        ADD
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/windows/hardware/community/comments/Dn550976(v=vs.85).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="04YoZpjUapDi-Hh9Zd49iqxx7vPnuZ3aWtT_HPUFmZnUiRvz8lqlD-e3Y0OHn3ZB-D3Eu2P_LwWwk1q0Ak6nFGRnpd95ZkecJmpTZDC28f63OusEEYU9KTlcsHod9jWuIoZexQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/Dn550976(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fDn550976(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="83xOxC44Mktu5PotAHybkn5l87RIMwurr6rO5aRoGj4lQw4vqc5dyrsn-XhX5uoRtAzkrXBl4iK__axbs4jgkLhpQLT6iI1UOOF_eMlnUVUzzj6zdfNPcpr0ZpnSntmCn-lrqg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn550976(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"7a571e70-909d-475f-8fa1-7f3e94f80597\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=B046CF4083BA9678132B518022920A8B" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,2:Rating,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1,/Areas/Epx/Themes/Base/Content:2\u0026amp;hashKey=E0ADCE6B79455234471CB12A3F97CE03" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/Dn550976(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:56 GMT -->
+</html>

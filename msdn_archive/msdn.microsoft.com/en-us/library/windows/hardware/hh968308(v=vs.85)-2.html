@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh968308(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:55:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="hh968308(v%3dvs.85).html" />
+        <title>How to use the continuous reader for reading data from a USB pipe (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh968308(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968308(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968308(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh968308(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA939-9:01:36 AM" />
+
+<meta name="Search.ShortId" content="hh968308" />
+
+<meta name="ms.shortidmsdn" content="hh968308" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072096&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh968308%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh406260(v%3dvs.85).html" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff539286(v%3dvs.85).html" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="hh968308(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539199(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450846(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh406225(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450848(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968307(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff539193(v%3dvs.85).html" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to use the continuous reader for reading data from a USB pipe</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic describes the WDF-provided continuous reader object. The procedures in this topic provide step-by-step instructions about how to configure the object and use it to read data from a USB pipe.</p>
+<p>Windows Driver Framework (WDF) provides a specialized object called the <em>continuous reader</em>. This object enables a USB client driver to read data from bulk and interrupt endpoints continuously, as long as there is data available. In order to use the reader, the client driver must have  a handle to a USB target pipe object that is associated with the endpoint from which the driver reads data. The endpoint must be in the active configuration. You can make a configuration active in one of two ways: by selecting a USB configuration or by changing the alternate setting in the current configuration. For more information about those operations, see <a href="gg615081(v%3dvs.85)-2.html">How to Select a Configuration for a USB Device</a> and <a href="hh968309(v%3dvs.85)-2.html">How to select an alternate setting in a USB interface</a>.</p>
+<p>After creating the continuous reader, the client driver can start and stop the reader as and when necessary. The continuous reader that ensures that a read request is always available on the target pipe object  and the client driver is always ready to receive data from the endpoint. </p>
+<p>The continuous reader is not automatically power managed by the framework. This means that the client driver must stop the reader when the device enters a lower power state and restart the reader when the device enters working state. </p>
+<h2><a id="What_you_need_to_know"></a><a id="what_you_need_to_know"></a><a id="WHAT_YOU_NEED_TO_KNOW"></a>What you need to know</h2>
+<h3><a id="Technologies"></a><a id="technologies"></a><a id="TECHNOLOGIES"></a>Technologies</h3>
+<ul>
+<li>
+<a href="ff544396(v%3dvs.85)-2.html">Kernel-Mode Driver Framework</a>
+</li>
+<li>
+<a href="ff560456(v%3dvs.85)-2.html">User-Mode Driver Framework</a>
+</li>
+</ul>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>Before the client driver can use the continuous reader, make sure that these requirements are met:  </p>
+<ul>
+<li>Your USB device must have an IN endpoint. Check the device configuration in <a href="http://msdn.microsoft.com/en-us/library/ff560019(VS.85).aspx">USBView</a>. Usbview.exe is an application that allows you to browse all USB controllers and the USB devices connected to them. Typically, USBView is installed in the <strong>Debuggers</strong> folder in the Windows Driver Kit (WDK). 
+ </li>
+<li>The client driver must have created the framework USB target device object. <p>If you are using the USB templates that are provided with Microsoft Visual Studio Professional 2012,  the template code   performs those tasks. The template code obtains the handle to the target device object and stores in the device context. </p><p><strong>KMDF client driver:  </strong></p><p class="note">A KMDF client driver must obtain a WDFUSBDEVICE handle by calling the <a href="hh439428(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> method. For more information, see "Device source code" in <a href="hh770892(v%3dvs.85)-2.html">Understanding the USB client driver code structure (KMDF)</a>.</p>
+
+<p><strong>UMDF client driver:  </strong></p><p class="note">A UMDF client driver must obtain an <a href="ff560362(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice</strong></a> pointer by querying the framework target device object. For more information, see "<a href="ff556764(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware</strong></a> implementation and USB-specific tasks" in <a href="hh770893(v%3dvs.85)-2.html">Understanding the  USB client driver code structure (UMDF)</a>.</p>
+
+
+</li>
+<li>The device must have an active configuration. <p>If you are using USB templates,  the code selects the first configuration and the default alternate setting in each interface. For information about how to change the alternate setting, see <a href="hh968309(v%3dvs.85)-2.html">How to select an alternate setting in a USB interface</a>.</p>
+<p><strong>KMDF client driver:  </strong></p><p class="note">A KMDF client driver must call the <a href="ff550101(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a> method.</p>
+
+<p><strong>UMDF client driver:  </strong></p><p>For a UMDF client  driver, the framework selects the first configuration and the default alternate setting for each interface in that configuration. 
+</p>
+
+</li>
+<li>The client driver must have a handle to the framework target pipe object for the IN endpoint. For more information, see <a href="hh968306(v%3dvs.85)-2.html">How to enumerate USB pipes</a>.</li>
+</ul>
+<h2>Instructions</h2>
+<h3><a id="Using_the_continuous_reader_-_KMDF_client_driver"></a><a id="using_the_continuous_reader_-_kmdf_client_driver"></a><a id="USING_THE_CONTINUOUS_READER_-_KMDF_CLIENT_DRIVER"></a>Using the continuous reader - KMDF client driver</h3>
+<ol>
+<li>Configure the continuous reader.<ol>
+<li>Initialize a <a href="ff552561(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG</strong></a> structure by calling the <a href="ff552566(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong></a> macro.</li>
+<li>Specify its configuration options in the <a href="ff552561(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG</strong></a> structure. </li>
+<li>Call the <a href="ff551130(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeConfigContinuousReader</strong></a> method.</li>
+</ol>
+<p>The following example code configures the continuous reader for the specified target pipe object. </p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ac85d622-5f2b-4b5d-9194-8bbb5ea080f2');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ac85d622-5f2b-4b5d-9194-8bbb5ea080f2" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+NTSTATUS FX3ConfigureContinuousReader(
+    _In_ WDFDEVICE Device,
+    _In_ WDFUSBPIPE Pipe)
+{
+    NTSTATUS status;
+
+    PDEVICE_CONTEXT                     pDeviceContext;       
+
+    WDF_USB_CONTINUOUS_READER_CONFIG    readerConfig;
+
+    PPIPE_CONTEXT                       pipeContext;  
+
+    PAGED_CODE();
+
+    pDeviceContext = WdfObjectGet_DEVICE_CONTEXT(Device);
+
+    pipeContext = GetPipeContext (Pipe);
+
+    WDF_USB_CONTINUOUS_READER_CONFIG_INIT(  
+        &amp;readerConfig,  
+        FX3EvtReadComplete,  
+        pDeviceContext,  
+        pipeContext-&gt;MaxPacketSize);  
+
+
+    readerConfig.EvtUsbTargetPipeReadersFailed=FX3EvtReadFailed;  
+
+    status = WdfUsbTargetPipeConfigContinuousReader(  
+        Pipe,  
+        &amp;readerConfig);  
+
+    if (!NT_SUCCESS (status))
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! WdfUsbTargetPipeConfigContinuousReader failed 0x%x", status);
+
+        goto Exit;
+    }
+
+
+Exit:
+    return status;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Typically the client driver configures the continuous reader in the <a href="ff540880(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDevicePrepareHardware</em></a> callback function after enumerating the target pipe objects in the active setting.</p>
+<p>In the preceding example, the client driver specifies its configuration options in two ways. First by calling <a href="ff552566(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong></a> and then by setting <a href="ff552561(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG</strong></a> members. Notice the parameters for <strong>WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong>. These values are mandatory. In this example, the client driver specifies:</p><ul>
+<li>A pointer to a completion routine that the driver implements. The framework calls this routine when it completes a read request. In the completion routine, the driver can access the memory location that contains the data that was read. The implementation of the completion routine is discussed in step 2.</li>
+<li>A pointer to the driver-defined context.</li>
+<li>The number of bytes that can be read from the device in a single transfer. The client driver can obtain that  information in a <a href="ff553037(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_PIPE_INFORMATION</strong></a>  structure by calling <a href="ff550057(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredPipe</strong></a>or <a href="ff551142(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetInformation</strong></a> method. For more information, see <a href="hh968306(v%3dvs.85)-2.html">How to enumerate USB pipes</a>.</li>
+</ul>
+
+<p>
+<a href="ff552566(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong></a> configures the continuous reader to use the default value for <em>NumPendingReads</em>. That value determines the number of read requests that the framework adds to the pending queue. The default value has been determined to provide reasonably good performance for many devices on many processor configurations.</p>
+<p>In addition to the configuration parameters specified in <a href="ff552566(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong></a>, the example also sets a failure routine in <a href="ff552561(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG</strong></a>. This failure routine is optional.</p>
+<p>In addition to the failure routine, there are other members in <a href="ff552561(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG</strong></a> that the client driver can use to specify the layout of the transfer buffer. For example, consider a network driver that uses the continuous reader to receive network packets. Each packet contains header, payload, and footer data. To describe the packet, the driver must first specify the size of the packet in its call to <a href="ff552566(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</strong></a>. Then, the driver must specify the length of the header and footer by setting <strong>HeaderLength</strong> and <strong>TrailerLength</strong> members of <strong>WDF_USB_CONTINUOUS_READER_CONFIG</strong>. The framework uses those values to calculate the byte offsets on either side of the payload. When payload data is read from the endpoint, the framework stores that data in the part of the buffer between the offsets.  </p>
+</li>
+<li>Implement the completion routine.<p>The framework invokes the client-driver implemented completion routine each time a request is completed. The framework passes the number of bytes read and a WDFMEMORY object whose buffer contains the data that is read from the pipe.</p>
+<p>The following example code shows the completion  routine implementation. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4b2ab5c5-f2f1-4b18-a55d-0d2145a2ad4e');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4b2ab5c5-f2f1-4b18-a55d-0d2145a2ad4e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+EVT_WDF_USB_READER_COMPLETION_ROUTINE FX3EvtReadComplete;
+
+VOID FX3EvtReadComplete(
+    __in  WDFUSBPIPE Pipe,
+    __in  WDFMEMORY Buffer,
+    __in  size_t NumBytesTransferred,
+    __in  WDFCONTEXT Context
+    )
+{
+
+    PDEVICE_CONTEXT  pDeviceContext;  
+    PVOID  requestBuffer;    
+
+
+    pDeviceContext = (PDEVICE_CONTEXT)Context;
+
+    if (NumBytesTransferred == 0)
+    {
+        return;
+    }
+
+    requestBuffer = WdfMemoryGetBuffer(Buffer, NULL);
+
+    if (Pipe == pDeviceContext-&gt;InterruptPipe)
+    {
+        KdPrintEx(( DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL,
+			                     "Interrupt endpoint: %s.\n", 
+			                      requestBuffer )); 
+    }
+
+
+    return;
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The framework invokes the client-driver implemented completion routine each time a request is completed. The framework allocates a memory object for each read operation.  In the completion routine, the framework passes the number of bytes read and a WDFMEMORY handle to the memory object. The memory object buffer contains the data that is read from the pipe. The client driver must not free the memory object. The framework releases the object after each completion routine returns. If the client driver wants to store the received data, the driver must copy the contents of the buffer in the completion routine.</p>
+</li>
+<li>Implement the failure routine.<p>The framework invokes the client-driver implemented failure routine to inform the driver that the continuous reader has reported an error while processing a read request. The framework passes the pointer to the target pipe object on which the request failed and error code values. Based on those error code values the driver can implement its error recovery mechanism. The driver must also return an appropriate value that indicates to the framework whether the framework should restart the continuous reader.</p>
+<p>The following example code shows a  failure routine implementation. </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_886e73bf-49a8-487d-a029-3aa8884ae740');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_886e73bf-49a8-487d-a029-3aa8884ae740" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+EVT_WDF_USB_READERS_FAILED FX3EvtReadFailed;  
+  
+BOOLEAN  
+FX3EvtReadFailed(  
+    WDFUSBPIPE      Pipe,  
+    NTSTATUS        Status,  
+    USBD_STATUS     UsbdStatus  
+    )  
+{      
+    UNREFERENCED_PARAMETER(Status);  
+
+    TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! ReadersFailedCallback failed NTSTATUS 0x%x, UsbdStatus 0x%x\n", 
+                 status,
+                 UsbdStatus);
+
+      
+    return TRUE;  
+}  
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In the preceding example, the driver returns TRUE. This value indicates to the framework that it must reset the pipe and then restart the continuous reader. 
+</p>
+<p>Alternatively, the client driver can return FALSE and provide an error recovery mechanism if a stall condition occurs on the pipe. For example, the driver can check the USBD status and issue a reset-pipe request to clear the stall condition.
+</p>
+<p>For information about error recovery in pipes, see <a href="hh968307(v%3dvs.85)-2.html">How to recover from USB pipe errors</a>. </p>
+</li>
+<li>Instruct the framework to start the continuous reader when the device enters working state; stop the reader when the device leaves working state. Call these methods and specify the target pipe object as the I/O target object.<ul>
+<li>
+<a href="ff548677(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStart</strong></a>
+</li>
+<li>
+<a href="ff548680(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStop</strong></a>
+</li>
+</ul>
+<p>The continuous reader is not automatically power managed by the framework. Therefore, the client driver must explicitly start or stop the target pipe object when the power state of the device changes. The driver calls <a href="ff548677(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStart</strong></a> in the driver's <a href="ff540848(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceD0Entry</em></a> implementation. This call ensures that the  queue delivers requests only when the device is in working state. Conversely, the driver calls  <a href="ff548680(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStop</strong></a> in the drivers <a href="ff540855(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceD0Exit</em></a> implementation so that the queue stops delivering requests when the device enters a lower power state.</p>
+</li>
+</ol>
+<p>The following example code configures the continuous reader for the specified target pipe object. </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8760b4a6-dd8c-419c-9048-71896d458378');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8760b4a6-dd8c-419c-9048-71896d458378" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+
+EVT_WDF_DEVICE_D0_ENTRY FX3EvtDeviceD0Entry;
+
+NTSTATUS FX3EvtDeviceD0Entry(
+    __in  WDFDEVICE Device,
+    __in  WDF_POWER_DEVICE_STATE PreviousState
+    )
+{
+    PDEVICE_CONTEXT  pDeviceContext;
+
+    NTSTATUS status;
+
+    PAGED_CODE();
+
+    pDeviceContext = WdfObjectGet_DEVICE_CONTEXT(Device);
+
+
+    status = WdfIoTargetStart (WdfUsbTargetPipeGetIoTarget (pDeviceContext-&gt;InterruptPipe));
+
+    if (!NT_SUCCESS (status))
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, TRACE_DEVICE, 
+            "%!FUNC! Could not start interrupt pipe failed 0x%x", status);
+    }
+
+}
+
+EVT_WDF_DEVICE_D0_EXIT FX3EvtDeviceD0Exit;
+
+NTSTATUS FX3EvtDeviceD0Exit(
+    __in  WDFDEVICE Device,
+    __in  WDF_POWER_DEVICE_STATE TargetState
+    )
+{
+    PDEVICE_CONTEXT  pDeviceContext;      
+
+    NTSTATUS status;
+
+    PAGED_CODE();
+
+    pDeviceContext = WdfObjectGet_DEVICE_CONTEXT(Device);
+
+
+    WdfIoTargetStop (WdfUsbTargetPipeGetIoTarget (pDeviceContext-&gt;InterruptPipe), WdfIoTargetCancelSentIo));
+
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The preceding example shows the implementation for <a href="ff540848(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceD0Entry</em></a> and <a href="ff540855(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceD0Exit</em></a> callback routines. The Action parameter of <a href="ff548680(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfIoTargetStop</strong></a> allows the client driver to decide the action for the pending requests in the queue when the device leaves working state. In the example, the driver specifies <strong>WdfIoTargetCancelSentIo</strong>. That option instructs the framework to cancel all pending requests in the queue. Alternatively, the driver can instruct the framework to wait for pending requests to get completed before stopping the I/O target or keep the pending requests and resume when the I/O target restarts.</p>
+<h3><a id="Using_the_continuous_reader_-_UMDF_client_driver"></a><a id="using_the_continuous_reader_-_umdf_client_driver"></a><a id="USING_THE_CONTINUOUS_READER_-_UMDF_CLIENT_DRIVER"></a>Using the continuous reader - UMDF client driver</h3>
+<p>Before you start using the continuous reader, you must configure the reader in your implementation of <a href="ff556766(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware::OnPrepareHardware</strong></a> method. After you get a pointer to <a href="ff560391(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe</strong></a> interface of the target pipe object associated with the IN endpoint, perform these steps:</p>
+<p class="proch"><img id="wedge" alt="Hh968308.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Hh968308.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Configure the continuous reader</strong></p>
+<ol>
+<li>Call  <a href="ff560391(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe::QueryInterface</strong></a> on the target pipe object and query for the <a href="ff560394(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe2</strong></a> interface.</li>
+<li>Call <strong>QueryInterface</strong> on the device callback object and query for the <a href="ff556908(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete</strong></a> interface.  In order to use the continuous reader, you must implement IUsbTargetPipeContinuousReaderCallbackReadComplete. The implementation is described later in this topic.</li>
+<li>Call <strong>QueryInterface</strong> on the device callback object and query for the <a href="ff556914(v%3dvs.85)-2.html">IUsbTargetPipeContinuousReaderCallbackReadersFailed</a> interface if you have implemented a failure callback. The implementation is described later in this topic.</li>
+<li>Call the <a href="ff560395(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe2::ConfigureContinuousReader</strong></a> method and specify the configuration parameters, such as header, trailer, number of pending requests, and references to the completion and failure callback methods.<p>The method configures the continuous reader for the target pipe object. The continuous reader creates queues that manage a set of read requests as they are sent and received from the target pipe object. </p>
+</li>
+</ol>
+<p>The following example code configures the continuous reader for the specified target pipe object. The example assumes that the target pipe object specified by the caller is associated with an IN endpoint. The continuous reader is configured to read USBD_DEFAULT_MAXIMUM_TRANSFER_SIZE bytes; to use the default number of pending requests using by the framework; to invoke the client driver-supplied completion and failure callback methods. Buffer received will not contain any header or trailer data.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_59ef0e14-a7e9-428c-96a2-10e385acbed4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_59ef0e14-a7e9-428c-96a2-10e385acbed4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HRESULT CDeviceCallback::ConfigureContinuousReader (IWDFUsbTargetPipe* pFxPipe)
+{
+    if (!pFxPipe)
+    {
+        return E_INVALIDARG;
+    }
+
+    IUsbTargetPipeContinuousReaderCallbackReadComplete *pOnCompletionCallback = NULL;
+    IUsbTargetPipeContinuousReaderCallbackReadersFailed *pOnFailureCallback = NULL;
+    IWDFUsbTargetPipe2* pFxUsbPipe2 = NULL;
+
+    HRESULT hr = S_OK;
+
+    // Set up the continuous reader to read from the target pipe object.
+
+    //Get a pointer to the target pipe2 object.
+    hr = pFxPipe-&gt;QueryInterface(IID_PPV_ARGS(&amp;pFxUsbPipe2));
+    if (FAILED(hr))
+    {   
+        goto ConfigureContinuousReaderExit;
+    }
+
+    //Get a pointer to the completion callback.
+    hr = QueryInterface(IID_PPV_ARGS(&amp;pOnCompletionCallback));
+    if (FAILED(hr))
+    {   
+        goto ConfigureContinuousReaderExit;
+    }
+
+    //Get a pointer to the failure callback.
+    hr = QueryInterface(IID_PPV_ARGS(&amp;pOnFailureCallback));
+    if (FAILED(hr))
+    {   
+        goto ConfigureContinuousReaderExit;
+    }
+
+    //Get a pointer to the target pipe2 object.
+    hr = pFxUsbPipe2-&gt;ConfigureContinuousReader (	
+        USBD_DEFAULT_MAXIMUM_TRANSFER_SIZE, //size of data to be read
+        0, //Header
+        0, //Trailer
+        0, // Number of pending requests queued by WDF
+        NULL, // Cleanup callback. Not provided.
+        pOnCompletionCallback, //Completion routine.
+        NULL, //Completion routine context. Not provided.
+        pOnFailureCallback); //Failure routine. Not provided
+
+    if (FAILED(hr))
+    {   
+        goto ConfigureContinuousReaderExit;
+    }
+
+ConfigureContinuousReaderExit:
+
+    if (pOnFailureCallback)
+    {
+        pOnFailureCallback-&gt;Release();
+        pOnFailureCallback = NULL;
+    }
+
+    if (pOnCompletionCallback)
+    {
+        pOnCompletionCallback-&gt;Release();
+        pOnCompletionCallback = NULL;
+    }
+
+    if (pFxUsbPipe2)
+    {
+        pFxUsbPipe2-&gt;Release();
+        pFxUsbPipe2 = NULL;
+    }
+
+    return hr;
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>
+</p><p>Next, specify the state of the target pipe object, when the device enters and exits a working state (<strong>D0</strong>).</p>
+<p>If a client driver uses a power-managed queue to send requests to a pipe, the queue delivers requests only when the device is in the <strong>D0</strong> state.  If the power state of the device changes from <strong>D0</strong> to a lower power state (on <strong>D0</strong> exit),  the target pipe object completes the pending requests and the queue stops submitting requests to the target pipe object. Therefore, the client driver is not required to start and stop the target pipe object.</p>
+<p>The continuous reader does not use power-managed queues to submit  requests. Therefore, you must explicitly start or stop the target pipe object when the power state of the device changes. For changing the state of the target pipe object, you can use the <a href="ff559198(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement</strong></a> interface implemented by the framework. After you get a pointer to <a href="ff560391(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe</strong></a> interface of the target pipe object associated with the IN endpoint, perform the following steps:</p>
+<p class="proch"><img id="wedge" alt="Hh968308.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Hh968308.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Implement state management</strong></p>
+<ol>
+<li>In your implementation of <a href="ff556766(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware::OnPrepareHardware</strong></a>,  call  <a href="ff560391(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe::QueryInterface</strong></a> on the target pipe object and query for the <a href="ff559198(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement</strong></a> interface. Store the reference in a member variable of your device callback class.</li>
+<li>Implement the <a href="ff556762(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallback</strong></a> interface on the device callback object.</li>
+<li>In the implementation of the <a href="ff556799(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallback::OnD0Entry</strong></a> method, call <a href="ff559213(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement::Start</strong></a> to start the continuous reader.</li>
+<li>In the implementation of the <a href="ff556803(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallback::OnD0Exit</strong></a> method, call <a href="ff559217(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement::Stop</strong></a> to stop the continuous reader. </li>
+</ol>After the device enters a working state (<strong>D0</strong>), the framework calls the client-driver supplied D0-entry callback method that starts the target pipe object. When the device leaves the <strong>D0</strong> state, the framework calls the D0-exit callback method. The target pipe object completes the number of pending read requests, configured by the client driver,  and stops accepting  new requests.     
+<p>The following example code implements the  <a href="ff556762(v%3dvs.85)-2.html">IPnpCallback</a> interface on the device callback object. </p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_dfc13e6b-4b0c-47ee-95df-0fc1b6e4d7d7');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_dfc13e6b-4b0c-47ee-95df-0fc1b6e4d7d7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+class CDeviceCallback : 
+    public IPnpCallbackHardware, 
+    public IPnpCallback,
+{
+public:
+    CDeviceCallback();
+    ~CDeviceCallback();
+    virtual HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, VOID** ppvObject);
+    virtual ULONG STDMETHODCALLTYPE AddRef();
+    virtual ULONG STDMETHODCALLTYPE Release();
+
+    virtual HRESULT STDMETHODCALLTYPE OnPrepareHardware(IWDFDevice* pDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnReleaseHardware(IWDFDevice* pDevice); 
+
+    virtual HRESULT STDMETHODCALLTYPE OnD0Entry(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual HRESULT STDMETHODCALLTYPE OnD0Exit(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual void STDMETHODCALLTYPE OnSurpriseRemoval(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryRemove(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryStop(IWDFDevice*  pWdfDevice);    
+
+private:
+    LONG m_cRefs;
+    IWDFUsbTargetPipe* m_pFxUsbPipe;
+    IWDFIoTargetStateManagement* m_pFxIoTargetInterruptPipeStateMgmt;
+
+    HRESULT CreateUSBTargetDeviceObject (IWDFDevice* pFxDevice, IWDFUsbTargetDevice** ppUSBTargetDevice);
+    HRESULT ConfigureContinuousReader (IWDFUsbTargetPipe* pFxPipe);
+};
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows how to get a pointer to the IWDFIoTargetStateManagement interface of the target pipe object in the IPnpCallback::OnPrepareHardware method</p>
+
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4f64b7bc-573a-4e59-a8a5-2599617e0646');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4f64b7bc-573a-4e59-a8a5-2599617e0646" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+   //Enumerate the endpoints and get the interrupt pipe.
+
+    for (UCHAR index = 0; index &lt; NumEndpoints; index++)
+    {
+        hr = pFxInterface-&gt;RetrieveUsbPipeObject(index, &amp;pFxPipe);
+
+        if (SUCCEEDED (hr) &amp;&amp; pFxPipe)
+        {
+            if ((pFxPipe-&gt;IsInEndPoint()) &amp;&amp; (pFxPipe-&gt;GetType()==UsbdPipeTypeInterrupt))
+            {
+                //Pipe is for an interrupt IN endpoint.
+
+                hr = pFxPipe-&gt;QueryInterface(IID_PPV_ARGS(&amp;m_pFxIoTargetInterruptPipeStateMgmt));
+
+                if (m_pFxIoTargetInterruptPipeStateMgmt)
+                {				
+                    m_pFxUsbPipe = pFxPipe;
+
+                    break;
+                }
+
+            }
+            else
+            {
+                //Pipe is NOT for an interrupt IN endpoint.
+
+                pFxPipe-&gt;Release();
+                pFxPipe = NULL;
+            }
+        }
+        else
+        {
+             //Pipe not found.
+        }
+    }
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows how to get a pointer to the <a href="ff559198(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement</strong></a> interface of the target pipe object in the <a href="ff556766(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallback::OnPrepareHardware</strong></a> method.</p>
+
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_eac6801e-3840-47b3-a7b4-e892b491379d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_eac6801e-3840-47b3-a7b4-e892b491379d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+ HRESULT CDeviceCallback::OnD0Entry(
+    IWDFDevice*  pWdfDevice,
+    WDF_POWER_DEVICE_STATE  previousState
+    )
+{
+
+    if (!m_pFxIoTargetInterruptPipeStateMgmt)
+    {
+        return E_FAIL;
+    }
+
+    HRESULT hr = m_pFxIoTargetInterruptPipeStateMgmt-&gt;Start();
+
+    if (FAILED (hr))
+    {
+        goto OnD0EntryExit;
+    }
+
+OnD0EntryExit:
+    return hr;
+}
+
+HRESULT CDeviceCallback::OnD0Exit(
+    IWDFDevice*  pWdfDevice,
+    WDF_POWER_DEVICE_STATE  previousState
+    )
+{
+    if (!m_pFxIoTargetInterruptPipeStateMgmt)
+    {
+        return E_FAIL;
+    }
+
+    // Stop the I/O target always succeeds.
+    
+    (void)m_pFxIoTargetInterruptPipeStateMgmt-&gt;Stop(WdfIoTargetCancelSentIo);
+
+    return S_OK;
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>After the continuous reader completes a read request, the client driver must provide  a way to get notified when the request completes a read request successfully. The client driver must add this code to the device callback object. </p>
+<p class="proch"><img id="wedge" alt="Hh968308.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Hh968308.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Provide a completion callback by implementing IUsbTargetPipeContinuousReaderCallbackReadComplete</strong></p>
+<ol>
+<li>Implement the <a href="ff556908(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete</strong></a> interface on the device callback object. </li>
+<li>Make sure the <strong>QueryInterface</strong> implementation of the device callback object increments the reference count of the callback object and then returns the <a href="ff556908(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete</strong></a> interface pointer.</li>
+<li>In the implementation of the <a href="ff556910(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete::OnReaderCompletion</strong></a> method, access the data read that was read from the pipe. The <em>pMemory</em> parameter points to the memory allocated by the framework that contains the data. You can call <a href="ff562631(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFMemory::GetDataBuffer</strong></a> to get the buffer that contains the data. The buffer includes the header however the  length of data indicated by the <em>NumBytesTransferred</em> parameter of  <strong>OnReaderCompletion</strong> does not include the header length. The header length is specified by the client driver while configuring the continuous reader in the driver's call to <a href="ff560395(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe2::ConfigureContinuousReader</strong></a>. </li>
+<li>Supply a pointer to the completion callback in the <em>pOnCompletion</em> parameter of the <a href="ff560395(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe2::ConfigureContinuousReader</strong></a> method.</li>
+</ol>
+<p>Each time that data is available on the endpoint on the device, the target pipe object completes a read request. If the read request completed successfully, the framework notifies the client driver by calling <a href="ff556910(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete::OnReaderCompletion</strong></a>.
+Otherwise, the framework calls a client driver-supplied failure callback when the target pipe object reports an error on the read request.</p>
+<p>The following example code implements the  <a href="ff556908(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete</strong></a> interface on the device callback object. </p>
+
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fad0d58d-a796-4db5-b2c9-eb3b03fe69c6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fad0d58d-a796-4db5-b2c9-eb3b03fe69c6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+class CDeviceCallback : 
+    public IPnpCallbackHardware, 
+    public IPnpCallback,   
+    public IUsbTargetPipeContinuousReaderCallbackReadComplete
+
+{
+public:
+    CDeviceCallback();
+    ~CDeviceCallback();
+    virtual HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, VOID** ppvObject);
+    virtual ULONG STDMETHODCALLTYPE AddRef();
+    virtual ULONG STDMETHODCALLTYPE Release();
+
+    virtual HRESULT STDMETHODCALLTYPE OnPrepareHardware(IWDFDevice* pDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnReleaseHardware(IWDFDevice* pDevice); 
+
+    virtual HRESULT STDMETHODCALLTYPE OnD0Entry(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual HRESULT STDMETHODCALLTYPE OnD0Exit(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual void STDMETHODCALLTYPE OnSurpriseRemoval(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryRemove(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryStop(IWDFDevice*  pWdfDevice);    
+
+    virtual VOID STDMETHODCALLTYPE OnReaderCompletion(IWDFUsbTargetPipe* pPipe, IWDFMemory* pMemory, SIZE_T NumBytesTransferred, PVOID Context);    
+
+
+private:
+    LONG m_cRefs;
+    IWDFUsbTargetPipe* m_pFxUsbPipe;
+    IWDFIoTargetStateManagement* m_pFxIoTargetInterruptPipeStateMgmt;
+
+    HRESULT CreateUSBTargetDeviceObject (IWDFDevice* pFxDevice, IWDFUsbTargetDevice** ppUSBTargetDevice);
+    HRESULT ConfigureContinuousReader (IWDFUsbTargetPipe* pFxPipe);
+};
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows the QueryInterface implementation of the device callback object. </p>
+
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a686e8ea-dd5d-427b-8a72-2bd6296c8868');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a686e8ea-dd5d-427b-8a72-2bd6296c8868" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HRESULT CDeviceCallback::QueryInterface(REFIID riid, LPVOID* ppvObject)
+{
+    if (ppvObject == NULL)
+    {
+        return E_INVALIDARG;
+    }
+
+    *ppvObject = NULL;
+
+    HRESULT hr = E_NOINTERFACE;
+
+    if(  IsEqualIID(riid, __uuidof(IPnpCallbackHardware))   ||  IsEqualIID(riid, __uuidof(IUnknown))  )
+    {  
+        *ppvObject = static_cast&lt;IPnpCallbackHardware*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+
+    }
+
+    if(  IsEqualIID(riid, __uuidof(IPnpCallback)))
+    {  
+        *ppvObject = static_cast&lt;IPnpCallback*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+
+    }
+
+    if(  IsEqualIID(riid, __uuidof(IUsbTargetPipeContinuousReaderCallbackReadComplete)))
+    {  
+        *ppvObject = static_cast&lt;IUsbTargetPipeContinuousReaderCallbackReadComplete*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+
+    }
+
+    return hr;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows how to get data from the buffer returned by  <a href="ff556910(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadComplete::OnReaderCompletion</strong></a>. Each time the target pipe object completes a read request successfully, the framework calls <strong>OnReaderCompletion</strong>. The example gets the buffer that containsng data and prints the contents on the debugger output.</p>
+
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cf80021a-742a-427b-8443-7e1ce711998f');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cf80021a-742a-427b-8443-7e1ce711998f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+ VOID CDeviceCallback::OnReaderCompletion(
+    IWDFUsbTargetPipe* pPipe,
+    IWDFMemory* pMemory,
+    SIZE_T NumBytesTransferred,
+    PVOID Context)
+{        
+    if (pPipe != m_pFxUsbInterruptPipe)
+    {
+        return;
+    }
+
+    if (NumBytesTransferred == 0) 
+    {
+        // NumBytesTransferred is zero.
+
+        return;
+    }
+
+    PVOID pBuff = NULL;
+    LONG CurrentData = 0;
+    char data[20];
+
+    pBuff = pMemory-&gt;GetDataBuffer(NULL);
+
+    if (pBuff)
+    {
+        CopyMemory(&amp;CurrentData, pBuff, sizeof(CurrentData));
+        sprintf_s(data, 20, "%d\n", CurrentData);
+        OutputDebugString(data);
+        pBuff = NULL;
+    }
+    else
+    {
+        OutputDebugString(TEXT("Unable to get data buffer."));
+    }
+}
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The client driver can get notifications from the framework when a failure occurs in the target pipe object while completing a read request. To get notifications, the client driver must implement a failure callback and supply a pointer to the callback while configuring the continuous reader. The following procedure describes how to implement the failure callback. </p>
+<p class="proch"><img id="wedge" alt="Hh968308.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Hh968308.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Provide a failure callback by implementing IUsbTargetPipeContinuousReaderCallbackReadersFailed</strong></p>
+<ol>
+<li>Implement the <a href="ff556914(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadersFailed</strong></a> interface on the device callback object. </li>
+<li>Make sure the <strong>QueryInterface</strong> implementation of the device callback object increments the reference count of the callback object and then returns the <a href="ff556914(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadersFailed</strong></a> interface pointer.</li>
+<li>In the implementation of the <a href="ff556915(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadersFailed::OnReaderFailure</strong></a> method, provide error handling of the failed read request. <p>If the continuous reader fails to complete a read request and the client driver provides a failure callback, the framework invokes the <a href="ff556915(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">OnReaderFailure</strong></a> method. The framework provides an HRESULT value in the <em>hrStatus</em> parameter that indicates the error code that occurred in the target pipe object. Based on that error code you might provide certain error handling. For example, if you want the framework to reset the  pipe and then restart the continuous reader, make sure that the callback returns TRUE.
+</p><p class="note"><strong>Note</strong>  Do not call <a href="ff559213(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement::Start</strong></a> and <a href="ff559217(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoTargetStateManagement::Stop</strong></a> within the failure callback.</p>
+
+</li>
+<li>Supply a pointer to the failure callback in the <em>pOnFailure</em> parameter of the <a href="ff560395(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe2::ConfigureContinuousReader</strong></a> method.</li>
+</ol>
+<p>The following example code implements the  <a href="ff556914(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">IUsbTargetPipeContinuousReaderCallbackReadersFailed</strong></a> interface on the device callback object. </p>
+
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d6d41ed7-cb2f-4605-b8c8-58cf30e08fbc');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d6d41ed7-cb2f-4605-b8c8-58cf30e08fbc" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+class CDeviceCallback : 
+    public IPnpCallbackHardware, 
+    public IPnpCallback,
+    public IUsbTargetPipeContinuousReaderCallbackReadComplete,
+    public IUsbTargetPipeContinuousReaderCallbackReadersFailed
+{
+public:
+    CDeviceCallback();
+    ~CDeviceCallback();
+    virtual HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, VOID** ppvObject);
+    virtual ULONG STDMETHODCALLTYPE AddRef();
+    virtual ULONG STDMETHODCALLTYPE Release();
+
+    virtual HRESULT STDMETHODCALLTYPE OnPrepareHardware(IWDFDevice* pDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnReleaseHardware(IWDFDevice* pDevice); 
+
+    virtual HRESULT STDMETHODCALLTYPE OnD0Entry(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual HRESULT STDMETHODCALLTYPE OnD0Exit(IWDFDevice*  pWdfDevice, WDF_POWER_DEVICE_STATE  previousState);
+    virtual void STDMETHODCALLTYPE OnSurpriseRemoval(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryRemove(IWDFDevice*  pWdfDevice);
+    virtual HRESULT STDMETHODCALLTYPE OnQueryStop(IWDFDevice*  pWdfDevice);    
+
+    virtual VOID STDMETHODCALLTYPE OnReaderCompletion(IWDFUsbTargetPipe* pPipe, IWDFMemory* pMemory, SIZE_T NumBytesTransferred, PVOID Context);    
+    virtual BOOL STDMETHODCALLTYPE OnReaderFailure(IWDFUsbTargetPipe * pPipe, HRESULT hrCompletion);
+
+private:
+    LONG m_cRefs;
+    IWDFUsbTargetPipe* m_pFxUsbInterruptPipe;
+    IWDFIoTargetStateManagement* m_pFxIoTargetInterruptPipeStateMgmt;
+
+    HRESULT CreateUSBTargetDeviceObject (IWDFDevice* pFxDevice, IWDFUsbTargetDevice** ppUSBTargetDevice);
+    HRESULT RetrieveUSBDeviceDescriptor (IWDFUsbTargetDevice* pUSBTargetDevice, PUSB_DEVICE_DESCRIPTOR DescriptorHeader, PULONG cbDescriptor);
+    HRESULT ConfigureContinuousReader (IWDFUsbTargetPipe* pFxPipe);
+};
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows the QueryInterface implementation of the device callback object. </p>
+
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_9738d3ab-b5ca-4984-b418-69ed561ee921');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9738d3ab-b5ca-4984-b418-69ed561ee921" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HRESULT CDeviceCallback::QueryInterface(REFIID riid, LPVOID* ppvObject)
+{
+    if (ppvObject == NULL)
+    {
+        return E_INVALIDARG;
+    }
+
+    *ppvObject = NULL;
+
+    HRESULT hr = E_NOINTERFACE;
+
+    if(  IsEqualIID(riid, __uuidof(IPnpCallbackHardware))   ||  IsEqualIID(riid, __uuidof(IUnknown))  )
+    {  
+        *ppvObject = static_cast&lt;IPnpCallbackHardware*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+
+    }
+
+    if(  IsEqualIID(riid, __uuidof(IPnpCallback)))
+    {  
+        *ppvObject = static_cast&lt;IPnpCallback*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+ 
+    }
+
+    if(  IsEqualIID(riid, __uuidof(IUsbTargetPipeContinuousReaderCallbackReadComplete)))
+    {  
+        *ppvObject = static_cast&lt;IUsbTargetPipeContinuousReaderCallbackReadComplete*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+    }
+
+    if(  IsEqualIID(riid, __uuidof(IUsbTargetPipeContinuousReaderCallbackReadersFailed)))
+    {  
+        *ppvObject = static_cast&lt;IUsbTargetPipeContinuousReaderCallbackReadersFailed*&gt;(this);
+        reinterpret_cast&lt;IUnknown*&gt;(*ppvObject)-&gt;AddRef();
+        hr = S_OK;
+    }
+
+    return hr;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code shows an implementation of a failure callback. If a read request fails, the method prints the error code reported by the framework in the debugger and instructs the framework to reset the  pipe and then restart the continuous reader. </p>
+
+<div id="code-snippet-14" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cd935f1d-bbe3-4c06-aef2-8d93bb4ebb11');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cd935f1d-bbe3-4c06-aef2-8d93bb4ebb11" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+ BOOL CDeviceCallback::OnReaderFailure(
+    IWDFUsbTargetPipe * pPipe,
+    HRESULT hrCompletion
+    )
+{
+    UNREFERENCED_PARAMETER(pPipe);  
+    UNREFERENCED_PARAMETER(hrCompletion);     
+
+    return TRUE;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>If the client driver does not provide a failure callback and an error occurs, the framework resets the USB pipe and restarts the continuous reader. 
+</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff539286(v%3dvs.85)-2.html">USB I/O Transfers</a>
+</dt>
+<dt>
+<a href="hh968306(v%3dvs.85)-2.html">How to enumerate USB pipes</a>
+</dt>
+<dt>
+<a href="gg615081(v%3dvs.85)-2.html">How to Select a Configuration for a USB Device</a>
+</dt>
+<dt>
+<a href="hh968309(v%3dvs.85)-2.html">How to select an alternate setting in a USB interface</a>
+</dt>
+<dt>
+<a href="hh406288(v%3dvs.85)-2.html">Common tasks for USB client drivers</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to use the continuous reader for reading data from a USB pipe%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="SE2__T_OV9D6J2t3ZAHWRsS7BR00yjLJu5WVz87XkstuBnAaEmn4yPeNA19i-wdTrAXkWna6HLPaqo8YPB8juBJH8NOH43N_wShGFj8wyDmSZgsKS-bN53eS6Mk-9EtrJ2wjtg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/hh968308(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh968308(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="1hwxIh-i1AR8gZTdaFTzpYaXUE72dB2rp34dsXgFvkLKe6dswTniLdynscgwe_X0NLVhTsbpbfj7SD3nLupjjLkyYCjubmzc4SqqFyRsMRcjQ890o4sxcN-eFEIf50HMiWERCQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh968308(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"e724f58a-9203-48f0-ace0-fa64713fd9d8\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh968308(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:55:57 GMT -->
+</html>

@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134363 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" />
+        <title>Device.Imaging Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134363(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA939-9:12:27 AM" />
+
+<meta name="Search.ShortId" content="jj134363" />
+
+<meta name="ms.shortidmsdn" content="jj134363" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072747&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134363&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.Imaging Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.Imaging.Printer.Base</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.Base.applicationVerifier</p>
+              <p>Device.Imaging.Printer.Base.autoConfiguration</p>
+              <p>Device.Imaging.Printer.Base.configurationFiles</p>
+              <p>Device.Imaging.Printer.Base.connectionRecovery</p>
+              <p>Device.Imaging.Printer.Base.connectivityRobustness</p>
+              <p>Device.Imaging.Printer.Base.deviceCapabilities</p>
+              <p>Device.Imaging.Printer.Base.DocumentProperties</p>
+              <p>Device.Imaging.Printer.Base.driverCategory</p>
+              <p>Device.Imaging.Printer.Base.DriverEventFiles</p>
+              <p>Device.Imaging.Printer.Base.driverIsolation</p>
+              <p>Device.Imaging.Printer.Base.driverPackage</p>
+              <p>Device.Imaging.Printer.Base.driverStability</p>
+              <p>Device.Imaging.Printer.Base.faxModem</p>
+              <p>Device.Imaging.Printer.Base.faxTIA592</p>
+              <p>Device.Imaging.Printer.Base.faxV34</p>
+              <p>Device.Imaging.Printer.Base.GDLFile</p>
+              <p>Device.Imaging.Printer.Base.infFile</p>
+              <p>Device.Imaging.Printer.Base.jobCancellation</p>
+              <p>Device.Imaging.Printer.Base.metadata</p>
+              <p>Device.Imaging.Printer.Base.portMonitors</p>
+              <p>Device.Imaging.Printer.Base.PrinterExtension</p>
+              <p>Device.Imaging.Printer.Base.printerInterfaces</p>
+              <p>Device.Imaging.Printer.Base.printProcessor</p>
+              <p>Device.Imaging.Printer.Base.printRegions</p>
+              <p>Device.Imaging.Printer.Base.printTicket</p>
+              <p>Device.Imaging.Printer.Base.rendering</p>
+              <p>Device.Imaging.Printer.Base.TCPMon</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.applicationVerifier</h3>
+        <div class="subSection">
+          <p>Printer driver components must comply with Application Verifier test criteria</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All user-mode modules (.dll or .exe files) that are part of a printer driver must satisfy the criteria for Application Verifier tests. During driver testing, Application Verifier must be turned on for processes in which the driver modules execute. Application Verifier causes a break when Application Verifier detects an error.For printer drivers, common applications that must have Application Verifier turned on during testing are the following:</p>
+          <p>Splwow64.exe.</p>
+          <p>Spoolsv.exe. The process loads the rendering and UI portions of the driver during print testing.</p>
+          <p>Printfilterpipelinesvc.exe. The process loads the XPS rendering filters.</p>
+          <p>Any vendor-supplied applications that are part of the driver package, such as a custom status monitor. All portions of the driver package that is being signed must be robust.</p>
+          <p>Any tests that load driver modules for rendering or UI purposes. The tests commonly load UI and rendering modules</p>
+          <p>The following Application Verifier tests must be turned on for these processes during testing:</p>
+          <p>Heap</p>
+          <p>Locks</p>
+          <p>Handles</p>
+          <p>FilePaths</p>
+          <p>HighVersionLie</p>
+          <p>DFWChecksNonSetup</p>
+          <p>SecurityChecks</p>
+          <p>Printing</p>
+          <p>Design Notes: For information about Application Verifier, see http://go.microsoft.com/fwlink/?LinkId=58371.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 11, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.autoConfiguration</h3>
+        <div class="subSection">
+          <p>Printers must support autoconfiguration</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the print device supports installable hardware options, such as memory, duplex units, or finisher units, the print driver must support the automatic update of the device configuration that is registered in the system. Device configuration includes print UIs that are associated with the driver and the result of platform APIs that report device configuration. Automatic updates must not require end-user intervention. A device that does not support installable hardware options automatically satisfies this requirement.Design Notes: The next version of Windows supports print driver autoconfiguration as defined in the Windows Driver Kit documentation. Although this requirement does not require autoconfiguration as defined in the Windows Driver Kit documentation, it is recommended.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.configurationFiles</h3>
+        <div class="subSection">
+          <p>Version 4 print drivers provide valid configuration files.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Version 4 print drivers must provide valid configuration files. </p>
+          <p>These files must be syntactically valid according to the WDK.</p>
+          <p>When supported by the hardware, the configuration files must support the following features:</p>
+          <p>Orientation</p>
+          <p>Duplexing</p>
+          <p>Collate</p>
+          <p>N-Up</p>
+          <p>Paper Size</p>
+          <p>Paper Type</p>
+          <p>Tray</p>
+          <p>Quality</p>
+          <p>Color</p>
+          <p>Stapling</p>
+          <p>Hole-punches</p>
+          <p>Binding</p>
+          <p>GPD or PPD files should define the majority of the features and constraints represented in the driver's PrintCapabilities. JavaScript implementations should supplement these capabilities as needed. </p>
+          <p>JavaScript files must be syntactically valid according to the WDK.</p>
+          <p>They must be included in the driver package and cannot be in a subdirectory in the package.</p>
+          <p>They may be included only with version 4 print drivers</p>
+          <p>They should be designed securely and validate any untrusted data that will be parsed; this includes PrintCapabilities, PrintTicket, XPS Documents and Property Bags. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.connectionRecovery</h3>
+        <div class="subSection">
+          <p>A printer must continue to operate normally if a computer becomes unavailable during a print job</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a computer becomes unavailable during a print job (for example, if the computer enters a sleep state or a network failure or other event interrupts the connection between the computer and printer), the printer must recover so that normal print operations can continue without user interaction.Design Notes: Specifically, the printer must not fail into a state in which the end user must manually power cycle the printer or clear a paper jam.The printer does not have to complete or continue the failed print job when the computer becomes available again. However, when computer-to-printer communication is restored, new print jobs must be able to spool and complete normally.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.connectivityRobustness</h3>
+        <div class="subSection">
+          <p>A printer must recover from a surprise disconnect or reconnect</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printers must be able to recover from a surprise disconnect or reconnect from the host or the network, regardless of what the printer is doing at the time. The disconnect or reconnect must leave the system in a consistent state. The host must be able to submit the next print job. It is not acceptable to require a reboot of the host or the printer to re-establish communications. The existing job does not have to complete after the reconnect occurs.Design Notes: The printer does not have to finish or resume the current print job or any print jobs already in the printer's memory. The printer must behave normally after the computer reconnects. All print jobs must print normally after communication is restored.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.deviceCapabilities</h3>
+        <div class="subSection">
+          <p>A printer must correctly support the DeviceCapabilities and GetDeviceCaps application programming interfaces (APIs) based on the guidelines in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement clarifies the use of existing WLK tests. The Print Driver Device Capabilities test determines whether the printer driver returns the correct information for the DeviceCapabilities and GetDeviceCaps API calls.For more information, see http://msdn.microsoft.com/en-us/library/dd183552(v=vs.85).aspxand http://msdn.microsoft.com/en-us/library/ff566075(v=VS.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.DocumentProperties</h3>
+        <div class="subSection">
+          <p>A driver must implement the DocumentProperty API according to the guidelines in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This test clarifies the use of existing WLK tests. The Document Properties test exercises a printer driver's user interface (UI). The test calls the DocumentProperties API by using various well-formed and malformed parameters. The test then validates the results. For more information, see http://msdn.microsoft.com/en-us/library/ff562200(v=vs.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.driverCategory</h3>
+        <div class="subSection">
+          <p>Version 4 printer drivers must declare a valid printer category</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All V4 printer drivers must declare a valid DriverCategory in their driver manifest.  V3 drivers are not required to declare a category.  If a V3 driver does declare a DriverCategory, it must be valid value.The DriverCategory must be one of the following values:</p>
+          <p>PrintFax.Printer</p>
+          <p>PrintFax.Fax</p>
+          <p>PrintFax.Printer.File</p>
+          <p>PrintFax.Printer.Virtual</p>
+          <p>PrintFax.Printer.Service</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 10, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.DriverEventFiles</h3>
+        <div class="subSection">
+          <p>Driver Event files are implemented according to the guidance in the WDK</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver Event files are implemented according to the guidance in the WDK</p>
+          <p>Driver Event files are syntactically valid</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.driverIsolation</h3>
+        <div class="subSection">
+          <p>A printer driver that supports driver isolation must do so as defined in Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Print drivers must support driver isolation as defined in the Windows Driver Kit. With driver isolation, the printer executes print-related plug-ins such as drivers and print processors out of the spooler process. This increases print system stability.Design Notes: The Print Driver Sandboxing technical whitepaper is planned for a future date. Please send requests to prninfo@microsoft.com.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.driverPackage</h3>
+        <div class="subSection">
+          <p>Print device drivers must support package installation infrastructure</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p> A driver that depends on other driver packages must declare that it is package-aware and use the new dependency definition keywords.Design Notes: Vendors must use the package installation infrastructure as defined in the Windows Driver Kit. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.driverStability</h3>
+        <div class="subSection">
+          <p>Printer driver components do not cause a break in any process in which they are loaded</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A driver must not cause a break in the spooler service (spoolsv.exe) or in any other process in which the driver's components are loaded. Breaks must not occur in the driver modules themselves or indirectly through leaving the process in an inconsistent state, such as by corrupting process memory.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.faxModem</h3>
+        <div class="subSection">
+          <p>Fax modem successfully sets up a connection and transmits pages</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A fax modem must meet the following requirements:The modem must be able to send and receive five faxes of 10 pages in various document formats. When a service shutdown or hibernate is requested, the modem must abort all ongoing calls (both send and receive).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.faxTIA592</h3>
+        <div class="subSection">
+          <p>Fax Class 2.0 implementations must comply with the TIA-592 command set</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the device supports Fax Class 2.0, the fax must comply with the TIA-592 standard.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.faxV34</h3>
+        <div class="subSection">
+          <p>Any Fax V.34 implementation must comply with ITU-T recommendation V.34</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A fax that supports V.34 must adhere to International Telecommunications Union Telecommunication Standardization Sector (ITU-T) recommendation V.34: "A modem operating at data signaling rates of up to 33,600 bit/s for use on the general switched telephone network and on leased point-to-point 2-wire telephone-type circuits".</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.GDLFile</h3>
+        <div class="subSection">
+          <p>GDL files must use correct syntax according to the guidelines in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement clarifies the use of existing WLK tests. The Generic Description Language (GDL) Correctness Test determines whether GDL files use correct syntax according to the WDK.For more information, see http://msdn.microsoft.com/en-us/library/ff549787(v=VS.85).aspx and http://msdn.microsoft.com/en-us/library/ff563355(v=VS.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.infFile</h3>
+        <div class="subSection">
+          <p>INF files must use the correct syntax according to the guidelines in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement clarifies the use of existing WLK tests.INFGate determines whether INF files and v4 manifest use correct syntax according to the WDK. Version 4 print drivers use version 4 INFs and manifest files. V4 driver INF must:</p>
+          <p>Define a PrinterDriverID for each driver in the INF to indicate when drivers are compatible for the sake of printer sharing</p>
+          <p>PrinterDriverID must be GUID</p>
+          <p>Set a DataFile as a GPD or PPD file</p>
+          <p>Use only the following DestinationDirs: DriverStore, 66000; or Color directory, 66003</p>
+          <p>Must specify a filter xml pipeline config file named *-pipelineconfig.xml, OR specify RequiredClass  in the v4 driver manifest</p>
+          <p>V4 driver manifest files must:</p>
+          <p>Define a PrinterDriverID for each driver in the manifest to indicate when drivers are compatible for the sake of printer sharing.</p>
+          <p>PrinterDriverID must be GUID</p>
+          <p>Set a DataFile as a GPD or PPD file</p>
+          <p> V4 drivers must not:</p>
+          <p>Utilize any of the following INF directives ClassInstall32, ClassInstall32.Services, DDInstall.Services, DDInstall.HW, DDInstall.CoInstallers, DDInstall.FactDef, DDInstall.LogConfigOverride, DDInstall.Interfaces, InterfaceInstall32, DefaultInstall, DefaultInstall.Services, AddReg, DelReg, DelFiles, RenFiles, AddService, DelService, AddInterface, BitReg, LogConfig, UpdateInis, UpdateIniFields, or Ini2Reg. </p>
+          <p>Version 3 INF files must use correct syntax according to the WDK.For more information on v3 INF files, see http://msdn.microsoft.com/en-us/library/ff560902(v=VS.85).aspx and http://msdn.microsoft.com/en-us/library/ff563414(v=VS.85).aspx. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.jobCancellation</h3>
+        <div class="subSection">
+          <p>A printer must handle software problems or print job cancellations gracefully</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a driver encounters a software-related problem when the driver spools or de-spools a print job, the driver must ensure that jobs can successfully print in the future.Printers also must be able to handle a job being canceled at any time without wasting consumables, such as print media, or entering a state that requires human intervention to print.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 10, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.metadata</h3>
+        <div class="subSection">
+          <p>Printer and MFP driver components must include an authored device metadata document</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that provide DeviceStage metadata that includes a photorealistic image of the device, company logo, and basic task information must do so correctly. Tasks must only appear when the tasks are available. For example, scanner tasks must not appear on a printer-only connection, and Internet tasks must not appear if the Internet is unavailable. Design Notes: More information available in the Windows SDK and in the WDK. Please send questions to prninfo@microsoft.com. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.portMonitors</h3>
+        <div class="subSection">
+          <p>A v4 print driver must use an inbox provided port monitor.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Custom port monitors are not allowed for v4 printer drivers.  They must use an inbox provided port monitor.  </p>
+          <p>V3 printer driver, print processor, or language monitor may use a custom port monitor, but must be able to de-spool print jobs when the device is configured in a queue that uses any port monitor</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.PrinterExtension</h3>
+        <div class="subSection">
+          <p>Printer extensions are implemented according to the guidance in the WDK</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printer extensions are implemented according to the guidance in the WDK</p>
+          <p>They must run in the appropriate integrity level</p>
+          <p>They should be designed securely and validate any untrusted data that will be parsed; this includes PrintCapabilities, PrintTicket, XPS Documents and Property Bags. </p>
+          <p>They must not register system services on installation</p>
+          <p>They must register with the print system for any events they should be invoked for</p>
+          <p>They must communicate with the print system using the prescribed interfaces</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.printerInterfaces</h3>
+        <div class="subSection">
+          <p>A printer device must support at least one non-legacy interface</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printers and multi-function print (MFP) devices must be able to connect to the computer through a non-legacy interface such as Ethernet, USB, IEEE 1394, or Bluetooth. Printing devices may offer IEEE 1284 (parallel) ports in addition to a non-legacy connector.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.printProcessor</h3>
+        <div class="subSection">
+          <p>Print processors must be implemented based on the guidelines in the Windows Driver Kit</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement clarifies the use of existing WLK tests. The Print Processor API test helps ensure that print processors are implemented based on WDK guidelines.All print processors must support the following endpoints:</p>
+          <p>OpenPrintProcessor</p>
+          <p>ClosePrintProcessor</p>
+          <p>ControlPrintProcessor</p>
+          <p>EnumPrintProcessorDatatypesW</p>
+          <p>PrintDocumentOnPrintProcessor</p>
+          <p>GetPrintProcessorCapabilities </p>
+          <p>For more information, seehttp://msdn.microsoft.com/en-us/library/ff566084(v=VS.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.printRegions</h3>
+        <div class="subSection">
+          <p>A printer must support printable regions accurately</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The printer must be able to print output for the entire area that appears in the printable region that the user can select in the Windows UI.Design Notes: Note that if the printer supports a "borderless" printing feature, this restriction may be relaxed to allow for devices whose printable region extends beyond the dimensions of the physical media sheet. In these cases, the printer must be able to print output to the extent of the page dimension.This test applies to all paper sizes that the printer physically supports. If the printer supports auto-scaling and the UI exposes additional paper sizes to the user that cannot be physically loaded into the printer, the printer must maintain correct aspect ratios during resizing. In this context, "auto-scaling" is any feature in the hardware or driver that changes the print job to fit on an available paper size without user interaction or warning.If the printer does not support printing on a physical medium that is at least 4" x 4" in size, the printer is exempt from this requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.printTicket</h3>
+        <div class="subSection">
+          <p>Printer driver supports PrintTicket/PrintCapabilities</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Print devices must fully support the PrintTicket and PrintCapabilities objects. Depending on your print driver implementation, this may or may not require implementing certain PrintTicket or PrintCapabilities interfaces. For more information, see the WDK documentation. Printer drivers must support the public Print Schema element types for each keyword if the printer driver or print device includes the specified functionality. Printer drivers must also support the public Print Schema element types for each keyword if the appropriate functionality is present but non-configurable. The element types that the printer driver must support for each keyword include all such Features, Options, ParameterDef, ParameterRef, Property, and ScoredProperty that the public Print Schema definition contains. Printer drivers do not have to support public Print Schema keywords if the printer driver or print device does not include the specified functionality.Printer drivers must support the following basic Print Schema element types:</p>
+          <p>DocumentCollate </p>
+          <p>JobCopiesAllDocuments</p>
+          <p>JobDuplexAllDocumentsContiguously</p>
+          <p>PageColorManagement</p>
+          <p>PageImageableSize</p>
+          <p>PageMediaSize</p>
+          <p>PageMediaType</p>
+          <p>PageOrientation</p>
+          <p>PageOutputColor</p>
+          <p>PageResolution</p>
+          <p>PageICMRenderingIntent</p>
+          <p>One of the following: JobInputBin, DocumentInputBin, or PageInputBin</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 12, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.rendering</h3>
+        <div class="subSection">
+          <p>A printer must correctly render print jobs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement clarifies the use of the following existing WLK tests to ensure that printers correctly render print jobs:</p>
+          <p>Pgremlin/Pgremlin2</p>
+          <p>This test produces numerous pages of output that include shapes, gradient fills, alpha blends and some complex fonts. The test checks Device Driver Interface (DDI) calls that a driver can make.</p>
+          <p>WinFX Markup Content Rendering Test</p>
+          <p>The WinFX Markup Content Rendering test loads eight WinFX XAML files and produces output on the specified printer.</p>
+          <p>Photo Print Test</p>
+          <p>The Photo Print Test prints landscape- and portrait-oriented photos to exercise printer functionality.For more information about Pgremlin, seehttp://msdn.microsoft.com/en-us/library/ff566081(v=VS.85).aspx.For more information about Pgremlin2, seehttp://msdn.microsoft.com/en-us/library/ff566079(v=VS.85).aspx.For more information about the WinFX Markup Content Rendering Test,seehttp://msdn.microsoft.com/en-us/library/ff569275(v=VS.85).aspx.For more information about the Photo Print Test, see http://msdn.microsoft.com/en-us/library/ff565234(v=VS.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.Base.TCPMon</h3>
+        <div class="subSection">
+          <p>Network-connected printers that support Port 9100 printing with the Microsoft Standard Port Monitor (TCPMon) must provide rich status for the device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If the printer uses a network interface port connection and supports Port 9100 printing (raw printing) with the Microsoft Standard Port Monitor (TCPmon), it must also support Simple Network Management Protocol (SNMP), Host Resource Management Information Base (MIB), and Common Printer MIB, and Printer Port Monitor MIB 1.0 (IEEE-ISTO5107.1-2005) so that the operating system can provide rich status for the device.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 27, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Printer.Cluster</h2>
+      <div id="sectionSection1" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.Cluster.cluster</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.Cluster.cluster</h3>
+        <div class="subSection">
+          <p>Print driver implements cluster requirements</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.Cluster</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2008 Release 2 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Many printers may be hosted on clustered print servers. To work properly on a cluster, print drivers must:</p>
+          <p>Use only one print processor binary, defined in the INF</p>
+          <p>Implement InitializePrintMonitor2 on any custom port monitors used and access the registry only through the provided interface. </p>
+          <p> Design Notes:  Print ProcessorPrint processor binaries must be a single file and be defined in the driver INF using the PrintProcessor directive.  Other print processor binaries may not migrate or work properly in cluster failover. Print processors may call into other DLLs if they are:</p>
+          <p>A system DLL </p>
+          <p>In the print processor's directory </p>
+          <p>A print driver file in the driver's directory </p>
+          <p>AND it gracefully handles cases where a print driver file no longer exists. </p>
+          <p>Port MonitorsThe InitializePrintMonitor2 interface provides the port monitor with rich information about the system environment (local-only, cluster-only, or both). It helps isolate the port monitor from potential compatibility or migration issues. Port monitors should not attempt to access the registry outside this interface. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Printer.OXPS</h2>
+      <div id="sectionSection2" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.OXPS.OXPS</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.OXPS.OXPS</h3>
+        <div class="subSection">
+          <p>V4 drivers that support OpenXPS must be implemented according to the rules specified in the WDK.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.OXPS</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>For Windows 8, a correctly implemented version 4 print driver will satisfy the XPS requirements.  The v4 driver can support either MSXPS or Open XPS.V4 print drivers that support OpenXPS, either exclusively or in dual-format support mode with XPS , must satisfy the following requirements:</p>
+          <p>Driver manifest must specify either "XpsFormat=OpenXPS", "XpsFormat=OpenXPS, XPS" or "XpsFormat=XPS, OpenXPS" in the DriverRender section</p>
+          <p>The first filter must be able to consume OpenXPS document format when provided such by the print filter pipeline manager</p>
+          <p>All filters must conform to the rendering rules in the ECMA Open XML Paper Specification v. 1.0 (Ecma 388)</p>
+          <p>All filters must conform to the PrintTicket processing rules in the PrintSchema Specification 1.0.</p>
+          <p>The v4 driver filter pipeline must produce a PDL that the target print device can interpret.</p>
+          <p>Filters in the v4 driver pipeline supporting OpenXPS must NOT do the following:</p>
+          <p>Call into the Common Language Runtime (CLR) or the WinFX run-time components for any functionality.</p>
+          <p>Display user interface (UI) content.</p>
+          <p>OpenXPS supporting drivers must adhere to all other v4 rules.  Dual-format drivers must adhere to both OpenXPS and MSXPS requirements and successfully handle either format.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 12, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Printer.USB</h2>
+      <div id="sectionSection3" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.USB.CompatID</p>
+              <p>Device.Imaging.Printer.USB.JSBidiExtender</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.USB.CompatID</h3>
+        <div class="subSection">
+          <p>Printers must implement a Compatible ID in their IEEE1284 string according to the rules specified in the WDK.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.USB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printers must implement a Compatible ID in their IEEE1284 string for devices that connect over USB and WSD using the Port Monitor MIB.The Compatible ID must indicate:</p>
+          <p>Manufacturer Name or Code</p>
+          <p>Device Class Description</p>
+          <p>Recommended:</p>
+          <p>Include PDL</p>
+          <p>any other relevant device class information</p>
+          <p>Example: Fabrikam_XPS_A3_laser</p>
+          <p>Devices that receive the Windows 7 logo before June 1,2012 are exempt from this requirement.Link to Compatible ID Whitepaper: http://msdn.microsoft.com/en-us/windows/hardware/gg463313.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.USB.JSBidiExtender</h3>
+        <div class="subSection">
+          <p>USB JavaScript Bidi Extenders are implemented according to the guidance in the WDK</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.USB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>USB JavaScript Bidi Extenders are implemented according to the guidance in the WDK</p>
+          <p>They must be included in the driver package and cannot be in a subdirectory in the package. </p>
+          <p>They may only be included with version 4 print drivers.</p>
+          <p>They should be designed securely and validate any untrusted data that will be parsed. </p>
+          <p>They must be referenced in the v4 manifest files.</p>
+          <p>They must use syntactically valid JavaScript, implemented according to the WDK.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Printer.WSD</h2>
+      <div id="sectionSection4" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.WSD.CompatID</p>
+              <p>Device.Imaging.Printer.WSD.Rally</p>
+              <p>Device.Imaging.Printer.WSD.WSPrint</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.WSD.CompatID</h3>
+        <div class="subSection">
+          <p>Printers must implement a Compatible ID in their IEEE1284 string according to the rules specified in the WDK.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printers must implement a Compatible ID in their IEEE1284 string for devices that connect over USB and WSD using the Port Monitor MIB.The Compatible ID must indicate:</p>
+          <p>Manufacturer Name or Code</p>
+          <p>Device Class Description</p>
+          <p>Recommended:</p>
+          <p>Include PDL</p>
+          <p>any other relevant device class information</p>
+          <p>Example: Fabrikam_XPS_A3_laser</p>
+          <p>Devices that receive the Windows 7 logo before June 1,2012 are exempt from this requirement.Link to Compatible ID Whitepaper: http://msdn.microsoft.com/en-us/windows/hardware/gg463313.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.WSD.Rally</h3>
+        <div class="subSection">
+          <p>Network-attached printers and MFPs must implement the Windows Rally Technologies</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Network-connected printers, scanners, and MFPs that implement any of the following Windows Rally requirements must comply completely with the implemented requirement: </p>
+          <p>Connect-0098 (optional): Devices that implement 802.3 or 802.11 may implement the Link Layer Topology Discovery (LLTD) protocol. This requirement applies only if the device implements LLTD. LLTD implementation is not required.</p>
+          <p>Connect-0099 (required): A 802.11 network-enabled device that operates as a station must implement WCN-NET and meet basic 802.11 requirements. </p>
+          <p>Connect-0100 (required): A network-enabled device that implements Plug and Play Extensions (PnP-X) must comply with the specification. </p>
+          <p>IMAGING-0004 (required): A network-connected device must implement Windows network-connected Web Services for Devices (WSD) correctly for the device type.</p>
+          <p>Design Notes: For more information, see the PnP-X: Plug and Play Extensions for Windows specification at http://go.microsoft.com/fwlink/?LinkID=123172, </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Printer.WSD.WSPrint</h3>
+        <div class="subSection">
+          <p>Network-connected printers must implement Windows network-connected Web Services for Devices</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Printers or MFP devices must support the Device Profile for Web Services and the Print Web Development Partnership (WDP) by using the Microsoft WSD Port Monitor (WSDMon). The printer or MFP device must support the following events that the Print Service Definition includes:</p>
+          <p>PrinterElementsChangeEvent</p>
+          <p>PrinterStatusSummaryEvent</p>
+          <p>PrinterStatusConditionEvent</p>
+          <p>PrinterStatusConditionClearedEvent</p>
+          <p>JobStatusEvent</p>
+          <p>JobEndStateEvent</p>
+          <p>In addition, the printer or MFP device must support all required operations that Section 5, Table 2 of the Print Service Definition outlines. Design Notes: For more information, see the Print Service Definition 1.0 at  http://go.microsoft.com/fwlink/?LinkId=109841.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 12, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Printer.XPS</h2>
+      <div id="sectionSection5" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Printer.XPS.XPS</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Printer.XPS.XPS</h3>
+        <div class="subSection">
+          <p>A printer must have a driver that correctly implements XPSDrv printer driver architecture</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Printer.XPS</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>For Windows 8, a correctly implemented version 4 print driver will satisfy this requirement.  The v4 driver can support either MSXPS or Open XPS.V4 print drivers that support MSXPS, either exclusively or in dual-format support mode with Open XPS , must satisfy the following requirements:</p>
+          <p>Driver manifest must specify either "XpsFormat=OpenXPS", "XpsFormat=OpenXPS, XPS" or "XpsFormat=XPS, OpenXPS" in the DriverRender section</p>
+          <p>The first filter must be able to consume XPS document format when provided such by the print filter pipeline manager </p>
+          <p>All filters must conform to the rendering rules in the XML Paper Specification </p>
+          <p>All filters must conform to the PrintTicket processing rules in the PrintSchema Specification 1.0?</p>
+          <p>The v4 driver filter pipeline must produce a PDL that the target print device can interpret. </p>
+          <p>Filters in the v4 driver pipeline supporting XPS must NOT do the following: </p>
+          <p>Call into the Common Language Runtime (CLR) or the WinFX run-time components for any functionality. </p>
+          <p>Display user interface (UI) content.</p>
+          <p>XPS supporting drivers must adhere to all other v4 rules.  Dual-format drivers must adhere to both OpenXPS and MSXPS requirements and successfully handle either format.</p>
+          <p>For Windows 7, Windows Server 2008 R2 and later, a printer must have a driver that correctly implements XPSDrv printer driver architecture.  An XPSDrv driver is not required for Windows Vista Basic, and Windows Server 2008 and earlier. A v3 driver that implements the XPSDrv printer driver architecture must do the following:</p>
+          <p>Implement a Version 3 driver architecture configuration module. The configuration module must support PrintTicket and PrintCapabilities objects for all functionality. </p>
+          <p>Include a valid filter pipeline configuration file.</p>
+          <p>A driver that implements the XPSDrv printer driver architecture must not do the following:</p>
+          <p>Implement a GDI rendering module. Is this what we used to say? </p>
+          <p>Implement a print processor.</p>
+          <p>If the XPSDrv driver supports a print device that can consume the XPS Document format as a printer description language (PDL), no filters are required. Otherwise, or if the driver supplies filters, the driver must satisfy the following requirements:</p>
+          <p>The first filter in the XPSDrv driver filter pipeline must consume the XPS Document format. </p>
+          <p>The XPSDrv driver filter pipeline must produce a PDL that the target print device can interpret. </p>
+          <p>Filters in the XPSDrv driver filter pipeline must do the following: </p>
+          <p>Conform to the rendering rules in the XML Paper Specification. </p>
+          <p>Conform to the PrintTicket processing rules in the XML Paper Specification.</p>
+          <p>Filters in the XPSDrv driver filter pipeline must not do the following: </p>
+          <p>Call into the Common Language Runtime (CLR) or the WinFX run-time components for any functionality. </p>
+          <p>Display user interface (UI) content.</p>
+          <p>XPSDrv must fully support the PrintTicket and PrintCapabilities objects. XPSDrv drivers must also support the following additional keywords in the described under the printTicket requirement. </p>
+          <p>PageScaling </p>
+          <p>JobDigitalSignatureProcessing </p>
+          <p>PagePhotoPrintingIntent </p>
+          <p>PageOutputQuality</p>
+          <p> </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jul. 12, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Scanner.Base</h2>
+      <div id="sectionSection6" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Scanner.Base.dataTransfer</p>
+              <p>Device.Imaging.Scanner.Base.driverInstallation</p>
+              <p>Device.Imaging.Scanner.Base.errorHandling</p>
+              <p>Device.Imaging.Scanner.Base.metadata</p>
+              <p>Device.Imaging.Scanner.Base.MFPmultiplePorts</p>
+              <p>Device.Imaging.Scanner.Base.RawFileFormat</p>
+              <p>Device.Imaging.Scanner.Base.scannerInterfaces</p>
+              <p>Device.Imaging.Scanner.Base.statusMessages</p>
+              <p>Device.Imaging.Scanner.Base.wia20</p>
+              <p>Device.Imaging.Scanner.Base.WIAArchitecture</p>
+              <p>Device.Imaging.Scanner.Base.WIAProperties</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.dataTransfer</h3>
+        <div class="subSection">
+          <p>WIA drivers must support specific data transfer implementations</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Windows Image Acquisition (WIA) drivers must do the following:</p>
+          <p>Use only the Write, Seek, and SetSizeIStream methods during downloads.</p>
+          <p>Use only the Read, Seek, and StatIStream methods during uploads.</p>
+          <p>Send valid lPercentComplete values during calls to the IWiaMiniDrvTransferCallback::SendMessage&lt;element&gt;.  lPercentComplete must be between 0 and 100 inclusive. </p>
+          <p>Send correct ulTransferredBytes values during calls to IWiaMiniDrvTransferCallback::SendMessage.</p>
+          <p>Append new data to the end of streams that the IWiaMiniDrvTransferCallback::GetNextStream&lt;element&gt; receives if the streams are not empty.</p>
+          <p>Return success values from the IWia( SYLVIA PEARCE: Should this be IWia (as it is in other instances)?)  MiniDrv::drvAcquireItemData method ( SYLVIA PEARCE: If this isn't correct, please replace it with the correct element.)  when the driver calls IWiaMiniDrv::drvAcquireItemData by using good parameters in all supported formats.</p>
+          <p>Release their references to the application's IStream object before their IWiaMiniDrv::drvAcquireItemData methods return or call IWiaMiniDrvTransferCallback::GetNextStream.</p>
+          <p>Send one stream that contains a multi-page file during downloads by using all supported TYMED_MULTIPAGE_FILE formats.</p>
+          <p>Send one stream for each item during downloads by using all supported TYMED_FILE formats.</p>
+          <p>Return S_FALSE from IWiaMiniDrv::drvAcquireItemData if IWiaMiniDrvTransferCallback::SendMessage returns S_FALSE.</p>
+          <p>Continue to transfer any subsequent items during multi-item downloads after IWiaMiniDrvTransferCallback::GetNextStream returns WIA_STATUS_SKIP_ITEM.</p>
+          <p>Return S_OK from IWiaMiniDrv::drvAcquireItemData during single-item and multi-item downloads after the IWiaMiniDrvTransferCallback::GetNextStream returns WIA_STATUS_SKIP_ITEM for any item.</p>
+          <p>Abort transfer of all items after IWiaMiniDrvTransferCallback::GetNextStream returns S_FALSE.</p>
+          <p>Return from IWiaMiniDrv::drvAcquireItemData calls during canceled transfers in less time than during completed transfers.</p>
+          <p>Return a failure code from IWiaMiniDrv::drvAcquireItemData if IWiaMiniDrvTransferCallback::GetNextStream fails.</p>
+          <p>Return a standard COM failure code from IWiaMiniDrv::drvAcquireItemData if IWiaMiniDrvTransferCallback::GetNextStream returns a NULL stream pointer.</p>
+          <p>Return a failure code from IWiaMiniDrv::drvAcquireItemData if IWiaMiniDrvTransferCallback::SendMessage fails.</p>
+          <p>Successfully transfer items when an identical device is installed and when the identical device transfers an item simultaneously.</p>
+          <p>Return a failure code from IWiaMiniDrv::drvAcquireItemData if an IStream method fails.</p>
+          <p>Seek to the correct stream position after the driver begins the transfer or calls IWiaMiniDrvTransferCallback::GetNextStream or IWiaMiniDrvTransferCallback::SendMessage.</p>
+          <p>Function correctly if the WIA service terminates during a transfer and is then restarted, and a new transfer is requested.</p>
+          <p>Ignore calls to the drvNotifyPnPEvent&lt;element&gt; that contain WIA_EVENT_CANCEL_IO if a transfer is not occurring, and not crash or hang.</p>
+          <p>Successfully transfer items after a valid WIA_IPA_TYMED property value is written by using a signed or unsigned variant type.</p>
+          <p>WIA drivers must not do the following:</p>
+          <p>Call a method of an application's IStream object other than the IUnknown::Release method after an application's transfer callback returns S_FALSE, WIA_STATUS_SKIP_ITEM, or an error.</p>
+          <p>Call a method of an application's IStream object other than the IUnknown::Release method after the driver's IWiaMiniDrv::drvAcquireItemData method returns or calls IWiaMiniDrvTransferCallback::GetNextStream during a multi-item transfer.</p>
+          <p>Call IWiaMiniDrvTransferCallback::SendMessage by using WIA_TRANSFER_MSG_END_OF_STREAM and WIA_TRANSFER_MSG_END_OF_TRANSFER messages.</p>
+          <p>Call IWiaMiniDrvTransferCallback::SendMessage or IWiaMiniDrvTransferCallback::GetNextStream after IWiaMiniDrvTransferCallback::SendMessage returns S_FALSE or an error.</p>
+          <p>Crash or hang if a device requests an upload by using an invalid or empty stream.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.driverInstallation</h3>
+        <div class="subSection">
+          <p>A WIA driver must be installed for scanners and MFPs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In cases in which a scanner or MFP that has scanning functionality initiates a plug and play installation event, a WIA driver must be installed. On a software-first installation for this device, a WIA driver must be staged to the driver store so that plug and play installations are successful. This requirement does not prevent the manufacturer from installing other software, such as a TWAIN data source. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.errorHandling</h3>
+        <div class="subSection">
+          <p>WIA drivers that support error handling must comply with specified error handling implementations</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Error handling in WIA drivers must comply with the following requirements:</p>
+          <p>IWiaErrorHandler::GetStatusDescription methods must return S_OK or WIA_STATUS_NOT_HANDLED when the driver calls the methods by using good parameters.</p>
+          <p>IWiaErrorHandler::ReportStatus and IWiaErrorHandler::GetStatusDescription methods must return a standard COM failure code if the driver calls the methods by using a NULL pWiaItem2 parameter.</p>
+          <p>WIA drivers must:</p>
+          <p>Cancel transfers and return S_FALSE when IWiaErrorHandler::ReportStatus is called by using a device status message and returns S_FALSE.</p>
+          <p>Cancel transfers and return a standard COM failure code when IWiaErrorHandler::ReportStatus is called by using a device status message and returns a failure code.</p>
+          <p>WIA drivers must not:</p>
+          <p>Call IWiaMiniDrvTransferCallback::SendMessage by using WIA_STATUS_CLEAR messages.</p>
+          <p>Call ReportStatus by using failure device status messages when the driver calls IWiaMiniDrv::drvAcquireItemData by using good parameters.</p>
+          <p>IWiaErrorHandler::ReportStatus methods must:</p>
+          <p>Return only S_OK or WIA_STATUS_NOT_HANDLED when called by using good parameters and without user input.</p>
+          <p>Return S_OK when called by using good parameters and without user input when a device status message is sent that is identical to a message that an active modeless window handles.</p>
+          <p>Return a standard COM failure code when called by using good parameters and without user input when a modeless error handler window is open and a device status message is sent that is not identical to the message that the existing window handles.</p>
+          <p>Return S_OK when called by using a WIA_STATUS_CLEAR message while an error handler is either active or inactive.</p>
+          <p>IWiaErrorHandler::ReportStatus methods must not:</p>
+          <p>Create or remove any windows when called by using good parameters and without user input when a device status message is sent that is identical to a message that an active modeless window handles.</p>
+          <p>IWIA driver error handlers must:</p>
+          <p>Return without user input when IWiaErrorHandler::ReportStatus is called by using a success device status message.</p>
+          <p>Consistently choose whether to handle specific device status messages for each item category. For example, a flatbed item may not only sometimes handle the WIA_STATUS_WARMING_UP message.</p>
+          <p>Create modeless windows when IWiaErrorHandler::ReportStatus returns S_OK after IWiaErrorHandler::ReportStatus is called by using a success device status message.</p>
+          <p>Remove their active modeless windows when IWiaErrorHandler::ReportStatus is called by using a WIA_STATUS_CLEAR message.</p>
+          <p>Create modal windows when IWiaErrorHandler::ReportStatus returns S_OK after IWiaErrorHandler::ReportStatus is called by using a failure device status message.</p>
+          <p>Return a valid pbstrDescription value when IWiaErrorHandler::GetStatusDescription succeeds and does not return WIA_STATUS_NOT_HANDLED.</p>
+          <p>Return S_OK and a valid pbstrDescription value when IWiaErrorHandler::GetStatusDescription is called by using good parameters and a custom device status message that the driver sent during a transfer.</p>
+          <p>Return a standard COM failure code when IWiaErrorHandler::GetStatusDescription is called by using a NULL pbstrDescription parameter.</p>
+          <p>IWIA driver error handlers must not:</p>
+          <p>Return without user input when IWiaErrorHandler::ReportStatus is called by using a failure device status message and does not return WIA_STATUS_NOT_HANDLED.</p>
+          <p>Create windows when IWiaErrorHandler::ReportStatus returns WIA_STATUS_NOT_HANDLED.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.metadata</h3>
+        <div class="subSection">
+          <p>Scanner and MFP driver components must include an authored device metadata document</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that provide DeviceStage metadata must do so correctly. The metadata must include a photorealistic image of the device, the company logo, and basic task information.Tasks must only appear when the tasks are available. For example, scanner tasks must not appear on a printer-only connection. Internet tasks must not appear if the Internet is unavailable. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.MFPmultiplePorts</h3>
+        <div class="subSection">
+          <p>MFP devices that have multiple identical ports must expose the same functionality on all ports</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If an MFP device has identical multiple ports, the device must expose identical functionality on each port. For example, if one USB port supports print and scan functionality, all other USB ports must support print and scan functionality. This requirement does not extend to bandwidth concerns (that is, a device can have a USB 1.1 port and a USB 2.0 port). All other functionality must be exposed on both ports.Telephone jacks for fax functionality can behave differently to support line-in and line-out telephony connections.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.RawFileFormat</h3>
+        <div class="subSection">
+          <p>A scanning device that supports the WIA Raw Transfer Image file format must implement it correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that support WIA Raw Transfer Image File must support transferring data in all supported WIA_IPA_DATATYPE, WIA_IPA_DEPTH and WIA_COMPRESSION_NONE modes in the WIA Raw Format (WIA_IPA_FORMAT set to WiaImgFmt_RAW, WIA_IPA_TYMED set to TYMED_FILE). In other words the uncompressed variant (WIA_RAW_HEADER::Compression set to WIA_COMPRESSION_NONE) is required. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.scannerInterfaces</h3>
+        <div class="subSection">
+          <p>A scanning device must support at least one non-legacy interface</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Scanners and MFP devices must be able to connect to the computer through a non-legacy interface such as Ethernet, USB, IEEE 1394, or Bluetooth.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.statusMessages</h3>
+        <div class="subSection">
+          <p>Scanning device sends device status messages correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>A scanning device that sends device status messages must do so correctly. The device must also implement the error handler correctly if the device implements an error handler.Design Notes: For more information, see the Windows Driver Kit content on IWiaErrorHandler at http://msdn.microsoft.com/en-us/library/ff543907.aspAlternatively, send an e-mail message to wiainfo@microsoft.com.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.wia20</h3>
+        <div class="subSection">
+          <p>Scanners and multi-function printers that have scanning ability must implement the WIA 2.0 driver architecture according to the Windows Driver Kit guidelines</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Scanners and multi-function printers that have scanning ability must implement the WIA 2.0 driver architecture according to the guidelines in the Windows Driver Kit. Scanners support stream-based image transfers. In stream-based transfers, the application gives WIA the stream to use, and then the driver reads or writes to the stream. The stream may be a file stream, a memory stream, or any other type of stream. The stream is transparent to the driver. Using streams also provides easy integration with the image processing filter. This helps prevent complications that occur because of the destination type (memory or file).Scanners need to correctly implement the Windows WIA Scanner Item Architecture for flatbed, ADF, and film scanners and scanners that have storage. The Windows Driver Kit reference documents and tools outline the WIA scanner item architecture. Device manufacturers must implement WIA support as described in the Windows Driver Kit.Design Notes: WIA 2.0 enables new stream-based transfer models and certain extensions that include an image-processing filter, a segmentation filter, and error handling. For more information about WIA 2.0, see "Introduction to WIA 2.0" at http://www.microsoft.com/whdc/device/stillimage/WIA20-intro.mspx and "What's new in WIA 2.0" at http://msdn.microsoft.com/en-us/library/ms630379(VS.85).aspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.WIAArchitecture</h3>
+        <div class="subSection">
+          <p>A scanner device driver must implement WIA driver architecture</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Scanner device drivers must support still image devices under WIA architecture or ISO/PRF (formerly PIMA) 15740. The scanner vendor must provide a WIA driver. A WIA driver is required for all local busses on which a scanner enumerates to Windows. If the device supports network-based scanning using WS-Scan or Distributed Scan Management, the device must do so as outlined in those requirements.Design Notes: An optimal user experience is seamless integration of the imaging peripheral with the Windows environment. The operating system detects hot-pluggable WIA devices such as digital cameras, providing a seamless interface with the device. For persistent-connection devices, such as scanners, implementation of device events through buttons and sensors delivers this functionality after initial installation. In addition to WIA, scanners can optionally support TWAIN.See the Windows Driver Kit, "Still Image Drivers."</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.Base.WIAProperties</h3>
+        <div class="subSection">
+          <p>Scanners must implement support for all required WIA properties and property values</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.Base</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The Windows Driver Kit (WDK) reference documents and tools outline the properties and property values for WIA. Scanners must implement WIA as described in the WDK.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Scanner.DistributedScanManagement</h2>
+      <div id="sectionSection7" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Scanner.DistributedScanManagement.DistributedScanManagement</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Scanner.DistributedScanManagement.DistributedScanManagement</h3>
+        <div class="subSection">
+          <p>A scanner that supports the Distributed Scan Management protocols must implement the protocols correctly</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.DistributedScanManagement</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any device that interacts with Windows Server Active Directory and a Windows Server scan server that implements the Distributed Scan Management Web service protocols must do so correctly.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.Imaging.Scanner.WSD</h2>
+      <div id="sectionSection8" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.Imaging.Scanner.WSD.Rally</p>
+              <p>Device.Imaging.Scanner.WSD.WSScan</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.Imaging.Scanner.WSD.Rally</h3>
+        <div class="subSection">
+          <p>Network-attached scanners and MFPs must implement the Windows Rally Technologies</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Network-connected scanners and MFPs that implement any of the following Windows Rally requirements must comply with the implemented requirement completely. </p>
+          <p>Connect-0098 (optional): Devices that implement 802.3 or 802.11 may implement the Link Layer Topology Discovery (LLTD) protocol. This applies only if the device implements LLTD. LLTD implementation is not required.</p>
+          <p>Connect-0099 (required): An 802.11 network-enabled device that operates as a station must implement WCN-NET and meet basic 802.11 requirements. </p>
+          <p>Connect-0100 (required): A network-enabled device that implements Plug and Play Extensions (PnP-X) must comply with the specification. </p>
+          <p>IMAGING-0004 (required): Network-connected devices must implement Windows network-connected Web Services for Devices (WSD) correctly for their device type.</p>
+          <p>Design Notes: For more information, see the PnP-X: Plug and Play Extensions for Windows Specification at http://go.microsoft.com/fwlink/?LinkID=123172</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.Imaging.Scanner.WSD.WSScan</h3>
+        <div class="subSection">
+          <p>Scanners that have a network connection must implement WS-Scan protocol</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.Imaging.Scanner.WSD</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>This requirement applies to scanners or multifunction printers that have scanning ability, connect to the network, and have a physical scan button on the device. These scanners or multifunction printers must implement the following WS-Scan protocol requirements as outlined in the WS-Scan specification v1.0: </p>
+          <p>The device must correctly implement all events and operations that the specification defines.</p>
+          <p>The device must support the ScanAvailableEvent so that users can initiate a scan from the scanner and push the document to a scanning application.</p>
+          <p>The device must support the Microsoft WSD scan class driver for all device features that WS-Scan exposes.</p>
+          <p>If the device has ADF and plate scanning, the device must support those media over WS-Scan.</p>
+          <p>For more information, see "Implementing Web Services on Devices for Printing and Scanning" at http://www.microsoft.com/whdc/connect/rally/wsdspecs.mspx.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2011</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="nxVvYXtQQRfAU3xGu-HH5S3rmB51iLhlQfQIT6hSA9tsxXRwdx0uE9058J5lBUuPgwgyFvGbitq1R2ho9Uwmk49OkkVl9Wrrj15JWxlUz3ZJmvQJnp1F7__MD9z8rqUQ_kJMnQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj134363" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj134363" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="KCXUbnslRILitY69SIxyqeveRfc7iSCXYoh_rjXfnl176u_0PM3Ws-3I_80xXAy1X7D84LwZt9pfDkEky_WcI4W8NLp7nKN6jFsjqSPTbhEDEPCcnZtyjhkaYOLzfOGJp_d1FA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134363(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"f5bd84d8-92ee-4295-a5ab-d1e66349abb5\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj134363 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

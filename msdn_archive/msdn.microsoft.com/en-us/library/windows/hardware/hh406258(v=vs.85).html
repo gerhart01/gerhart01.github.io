@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh406258(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406258(v=vs.85).aspx" />
+        <title>Best Practices: Using URBs (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh406258(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406258(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406258(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406258(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DCF-9:35:22 AM" />
+
+<meta name="Search.ShortId" content="hh406258" />
+
+<meta name="ms.shortidmsdn" content="hh406258" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074122&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh406258%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406260(v=vs.85).aspx" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537056(v=vs.85).aspx" id="hh948136_VS.85_en-us" mtpsaliasid="" mtpsassetid="15be1e51-5ab2-40c4-95a8-8555c92523aa_VS.85_en-us" mtpsshortid="ff537056_VS.85_en-us" title="About USB Block Requests (URBs)">About USB Block Requests (URBs)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450844(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Allocating and Building URBs">Allocating and Building URBs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450899(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to Submit an URB">How to Submit an URB</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406258(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Best Practices: Using URBs">Best Practices: Using URBs</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Best Practices: Using URBs</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic describes best practices for a client driver for allocating, building, and sending an URB to the USB driver stack included with Windows 8. </p>
+<p>Windows 8 includes a new USB driver stack to support Universal Serial Bus (USB) 3.0 devices. The new USB 3.0 driver stack implements several  new capabilities, as per the USB 3.0 specification. In addition, the driver stack includes other capabilities that enable a client driver to perform common tasks efficiently. For instance, the new driver stack accepts chained-MDLs that allows the client driver to send a transfer buffer in discontiguous pages in physical memory.</p>
+<p>Before a client driver can use the new capabilities of the USB driver stack for  Windows 8, the driver must register itself with the underlying USB driver stack that is loaded by Windows for the device. To register the client driver, call <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406241(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_CreateHandle</strong></a> and specify a <em>contract version</em>. If the client driver is intended to build, run, and use the improvements and the new capabilities on Windows 8, the client contract version is USBD_CLIENT_CONTRACT_VERSION_602.  </p>
+<p>For a USBD_CLIENT_CONTRACT_VERSION_602 version client driver, the USB driver stack assumes that the client driver conforms to the following set of rules: </p>
+<p>
+</p><ul>
+<li><a href="#do_not_send_i_o_requests_by_using_stale_or_invalid_pipe_handles">Do not send I/O requests by using stale or invalid pipe handles</a></li>
+<li><a href="#allocate_urbs_by_calling_allocation_routines_in_windows_8">Allocate URBs by calling allocation routines in Windows 8</a></li>
+<li><a href="#do_not_reuse_active_urbs_associated_with_pending_requests">Do not reuse active URBs associated with pending requests</a></li>
+<li><a href="#do_not_use_polling_period_greater_than_8_for_high_speed_and_superspeed_isochronous_transfers">Do not use polling period greater than 8 for high speed and SuperSpeed isochronous transfers</a></li>
+<li><a href="#make_sure_that_the_number_of_isochronous_packets_that_is_a_multiple_of_number_of_packets_per_frame">Make sure that the number of isochronous packets that is a multiple of number of packets per frame</a></li>
+<li><a href="#call_the_routine_at_the_documented_irql_level">Call the routine at the documented IRQL level</a></li>
+<li><a href="#related_topics">Related topics</a></li>
+</ul>
+
+<p>The USB driver stack performs validations on the received requests and handles the violations whenever possible. Failure to do so might lead to an undefined behavior.</p>
+<h2><a id="Do_not_send_I_O_requests_by_using_stale_or_invalid_pipe_handles"></a><a id="do_not_send_i_o_requests_by_using_stale_or_invalid_pipe_handles"></a><a id="DO_NOT_SEND_I_O_REQUESTS_BY_USING_STALE_OR_INVALID_PIPE_HANDLES"></a>Do not send I/O requests by using stale or invalid pipe handles</h2>
+<p>The client driver must <em>not</em> use stale pipe handles to send I/O requests to the USB driver stack. A <em>stale pipe handle</em> refers to a pipe handle that was obtained in a request to select a configuration, an interface, or an alternate setting  that is no longer selected in the device. To avoid stale pipe handles, every time the client driver selects a configuration or an interface, the driver must refresh its cache  of pipe handles (usually stored in the device context). Certain race conditions can also result in stale pipe handles. For instance, the client driver sends an I/O request by using a pipe handle on the selected interface. Before the request completes, the client driver selects an alternate setting that does not use the same endpoint associated with the pipe handle in use. Both of those pending requests might cause a race condition making the pipe handle invalid.
+</p>
+<h2><a id="Allocate_URBs_by_calling_allocation_routines_in_Windows_8"></a><a id="allocate_urbs_by_calling_allocation_routines_in_windows_8"></a><a id="ALLOCATE_URBS_BY_CALLING_ALLOCATION_ROUTINES_IN_WINDOWS_8"></a>Allocate URBs by calling allocation routines in Windows 8</h2>
+<p>Windows 8 provides new routines for allocating, building, and releasing USB Request Blocks (URBs). To allocate URBs, a Windows Driver Model (WDM) client driver must always use the new routines shown in the following list:
+</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406231(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_IsochUrbAllocate</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406243(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406245(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectInterfaceUrbAllocateAndBuild</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406252(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbFree</strong></a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406228(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_AssignUrbToIoStackLocation</strong></a>
+</li>
+</ul>
+<p>The routines in the preceding list might attach an opaque URB context to the allocated URB in order to improve tracking and processing. The client driver cannot view  or modify the contents of the URB context. For more information about URB allocation in Windows 8, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh450844(v=vs.85).aspx">Allocating and Building URBs</a>.</p>
+<p>If a Windows Driver Framework (WDF) client driver that identifies its version as USBD_CLIENT_CONTRACT_VERSION_602  during registration (see <strong>WdfUsbTargetDeviceCreateWithParameters</strong>), the USB driver stack expects the client driver to allocate memory for the URB by calling the new <strong>WdfUsbTargetDeviceCreateUrb</strong>. </p>
+<h2><a id="Do_not_reuse_active_URBs_associated_with_pending_requests"></a><a id="do_not_reuse_active_urbs_associated_with_pending_requests"></a><a id="DO_NOT_REUSE_ACTIVE_URBS_ASSOCIATED_WITH_PENDING_REQUESTS"></a>Do not reuse active URBs associated with pending requests</h2>
+<p>The USB driver stack deliberately bugchecks if it detects that an active URB that has been resubmitted before the request associated with the URB. An URB is active as long as the request is pending, and the client driver's IRP completion routine has not been called. Do not perform the following tasks on an active URB.</p>
+<ul>
+<li>Do <em>not</em> resubmit an active URB for another request (associate the URB with another IRP).</li>
+<li>Do <em>not</em> modify the contents of an active URB.</li>
+<li>Do <em>not</em> free an active URB.</li>
+</ul>
+<p>After the client driver's completion routine is called, the drivers can resubmit URBs for the certain types of request within the completion routine. The following rules apply for resubmissions: </p><ul>
+<li>The client driver must not reuse an URB that is allocated by <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406243(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a> for any type of request other than a select-configuration request to select the same configuration. 
+</li>
+<li>The client driver must not reuse an URB that is  allocated by <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406245(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectInterfaceUrbAllocateAndBuild</strong></a> for any type of request other than a select-interface request to select the same alternate setting in an interface. For an example, see Remarks in <strong>USBD_SelectInterfaceUrbAllocateAndBuild</strong>.</li>
+<li>	An URB that is allocated by <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406231(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_IsochUrbAllocate</strong></a> must be reused only for isochronous transfer requests. Conversely, an URB that is allocated for other types of I/O requests (control, bulk, or interrupt) must not be used for an isochronous request.<p>For instance, a client driver allocates and builds an <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure for a bulk transfer request. The client driver also wants to send data to isochronous endpoints in the device. After a bulk transfer request completes, the client driver must <em>not</em> reformat and submit the URB for an isochronous request. That is because an URB associated with an isochronous request, has a variable length depending on the number of packets. In addition, the packets are required to start and end on a frame boundary. The allocated URB (for the bulk transfer) might not fit the buffer layout required for an isochronous transfer and the request might fail.</p>
+</li>
+<li>An URB that is allocated by <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406250(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_UrbAllocate</strong></a> must not be reused for an isochronous,  a select-configuration, or a select-interface request. 
+The URB can be reused for selecting a NULL configuration to disable the selected configuration in the device. The URB must not be active and  the client driver must reformat the URB by calling the  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538968(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildSelectConfigurationRequest</strong></a> macro and passing NULL in the <em>ConfigurationDescriptor</em> parameter.</li>
+<li>Before resubmitting an URB, the client driver must reformat the URB by using the appropriate <strong>UsbBuildXxx</strong> macro defined for the type of request. It is important for the driver to format the URB, because the USB stack might have altered some of its contents. <p>For instance, suppose a driver calls <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538953(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildInterruptOrBulkTransferRequest</strong></a> to initialize an URB  for a  bulk transfer request (see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540352(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_BULK_OR_INTERRUPT_TRANSFER</strong></a>). If the driver initializes the <strong>TransferBufferMDL</strong> member of the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538923(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure to NULL, the USB driver stack uses the transfer buffer, specified <strong>TransferBuffer</strong>, in  to exchange data with the device instead of an MDL. However, internally, the USB driver stack might create an MDL, store a pointer to the MDL in <strong>TransferBufferMDL</strong>, and use the MDL to pass data down the stack. Even though the USB driver stack frees the MDL memory, <strong>TransferBufferMDL</strong> might not be NULL when the client driver is processing the URB in the completion routine. To ensure that the members of the URB are properly formatted, the driver must call <strong>UsbBuildInterruptOrBulkTransferRequest</strong> again to reformat the URB before submitting the request,</p>
+</li>
+</ul>
+
+<h2><a id="Do_not_use_polling_period_greater_than_8_for_high_speed_and_SuperSpeed_isochronous_transfers"></a><a id="do_not_use_polling_period_greater_than_8_for_high_speed_and_superspeed_isochronous_transfers"></a><a id="DO_NOT_USE_POLLING_PERIOD_GREATER_THAN_8_FOR_HIGH_SPEED_AND_SUPERSPEED_ISOCHRONOUS_TRANSFERS"></a>Do not use polling period greater than 8 for high speed and SuperSpeed isochronous transfers</h2>
+<p>The USB driver stack supports high speed and SuperSpeed isochronous pipes with a polling period numbers of 1, 2, 4, or 8. 
+A client driver must not send IO to an endpoint that has a period of greater than 8. Doing so might lead to a bugcheck. 
+
+</p>
+<h2><a id="Make_sure_that_the_number_of_isochronous_packets_that_is_a_multiple_of_number_of_packets_per_frame"></a><a id="make_sure_that_the_number_of_isochronous_packets_that_is_a_multiple_of_number_of_packets_per_frame"></a><a id="MAKE_SURE_THAT_THE_NUMBER_OF_ISOCHRONOUS_PACKETS_THAT_IS_A_MULTIPLE_OF_NUMBER_OF_PACKETS_PER_FRAME"></a>Make sure that the number of isochronous packets that is a multiple of number of packets per frame</h2>
+<p>For high speed and SuperSpeed isochronous transfers, the number of isochronous packets per frame is calculated as 8 / polling period. The client driver must make sure that the <strong>NumberOfPackets</strong> value specified in the URB (see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540414(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_ISOCH_TRANSFER</strong></a>) is a multiple of number of packets per frame. </p>
+<p>The USB driver stack does not support isochronous transfer URBs in which the <strong>NumberOfPackets</strong> is not a multiple of number of packets per frame. 
+</p>
+<h2><a id="Call_the_routine_at_the_documented_IRQL_level"></a><a id="call_the_routine_at_the_documented_irql_level"></a><a id="CALL_THE_ROUTINE_AT_THE_DOCUMENTED_IRQL_LEVEL"></a>Call the routine at the documented IRQL level</h2>
+<p>If you register your  client driver with USBD_CLIENT_CONTRACT_VERSION_602 as the contract version, the USB driver stack assumes that the client driver sent the request at the appropriate IRQL level. If a client driver sends a request at DISPATCH_LEVEL, which should be sent at PASSIVE_LEVEL. Upon receiving the request,  in some cases, the USB driver stack validates the IRQL value and fails the request. However, in other cases, the USB driver stack might generate a bugcheck.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537056(v=vs.85).aspx">Sending Requests to a USB Device</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20Best Practices: Using URBs%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="vsjFTTrcI7ZppOZs_vANGha9plXTKwZENfh3foARhhUcr9WzeHZQ5Bmzox9rF6_VoS4zL562fFRzmPla2b_YqiIDmTyvVUUkxiebNvrvcjVxtYwpaM1MnojCu39_dkCZfJJp7g2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh406258(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh406258(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="UKyZmfUZNIymsK8XgLtj_4Avqa1GnFaUtMwepRLHPcttPFeAPmDD3vMVXT3_KPvvvprLQcwasTgLSSpkGGdbMYwyzd1MudlCnHB8UWzubTXGKEW0K9njtsllYwL8KBeIqNtEHQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh406258(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"256f86d5-783a-4370-afee-873a1e4af5c0\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh406258(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:00 GMT -->
+</html>

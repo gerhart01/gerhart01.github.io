@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn169214 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169214.aspx" />
+        <title>How to run the Windows HCK Tests for Touch and Pen Devices</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn169214(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169214(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169214(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169214(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD1-9:11:19 AM" />
+
+<meta name="Search.ShortId" content="dn169214" />
+
+<meta name="ms.shortidmsdn" content="dn169214" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072679&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn169214&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998100.aspx" id="dn375949_WIN.10_en-us" mtpsaliasid="" mtpsassetid="19922dd7-c8d5-4eab-bcd4-305157cbce9f_WIN.10_en-us" mtpsshortid="hh998100_WIN.10_en-us" title="Device.Digitizer Testing">Device.Digitizer Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247279.aspx" id="dn375953_WIN.10_en-us" mtpsaliasid="" mtpsassetid="5f43a6ff-791a-4176-ba02-0bfec29a6277_WIN.10_en-us" mtpsshortid="dn247279_WIN.10_en-us" title="Additional Digitizer Resources">Additional Digitizer Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn195876.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Down Latency by using an Acoustic Measurement Tool">How to measure Touch Down Latency by using an Acoustic Measurement Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn266003.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Panning Latency">How to measure Touch Panning Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343548.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run HCK Motion Sensor Tests">How to run HCK Motion Sensor Tests</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169214.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the Windows HCK Tests for Touch and Pen devices">How to run the Windows HCK Tests for Touch and Pen devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn281959.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the Precision Touch Testing Tool">How to use the Precision Touch Testing Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293768.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overview of measuring Touch Down Hardware Latency">Overview of measuring Touch Down Hardware Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj906442.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using Robot Automation for Touch Hardware Certification Tests">Using Robot Automation for Touch Hardware Certification Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169213.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service">Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">How to run the Windows HCK Tests for Touch and Pen Devices</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This article provides information to help you use the Windows touch quality certification tests to test touch hardware for Windows® 8 and Windows 8.1. It discusses the equipment and software that you need to run the tests, briefly reviews the test suite, and adds general information that should make the tests useful and easy to apply. The information in this article applies to Windows 8 and Windows 8.1.</p>
+      <p>The touch quality tests enforce the touch quality requirements that are detailed in the following resources:</p>
+      <ul>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj128252">Windows 8 Hardware Certification Requirements</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj128256">Windows Hardware Certification Requirements for Client and Server Systems</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357">Windows Hardware Certification Requirements: Devices</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/library/windows/hardware/hh748188">Windows 8 Hardware Certification Requirements (PDF)</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <p>All tests also enforce the Human Interface Device (HID) protocol that is described in <a href="http://go.microsoft.com/fwlink/?LinkID=226808">Windows Pointer Device Data Delivery Protocol</a> and defined in the <a href="http://go.microsoft.com/fwlink/?LinkID=286770">HID I2C v1.0 Protocol Specification</a>.</p>
+      <p>Some touch quality tests require high-precision tools. To learn about the tools that Microsoft provides and about other tools that can be purchased, see the following articles:</p>
+      <ul>
+        <li class="unordered">
+          <a href="http://go.microsoft.com/fwlink/?LinkID=286931">How to Use the Precision Touch Testing Tool</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://go.microsoft.com/fwlink/?LinkID=286934">How to Measure Touch Panning Latency</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://go.microsoft.com/fwlink/?LinkID=286935">How to Measure Touch Down Latency</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <p>
+        <strong>In this article:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="#enviro">The Windows Hardware Certification Kit test environment</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#process">Windows HCK certification process</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#howtorun">How to run a touch quality test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#cat">Windows HCK touch test categories</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#testdescs">Windows HCK touch device test descriptions</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#hiderrors">Touch device HID compliance errors</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="enviro">
+        
+      </a>
+      <h2 class="heading">The Windows Hardware Certification Kit test environment</h2>
+      <div id="sectionSection0" class="section">
+        <p>You must install at least a minimal configuration of the <a href="http://go.microsoft.com/fwlink/?LinkID=8705">Windows Hardware Certification Kit (Windows HCK)</a>. The Windows HCK provides you with the tools, processes, and tests to create and upload submission packages to certify devices and systems. The Windows HCK eliminates the need for external tools such as the WLK Log Viewer. For instructions about how to install the Windows HCK, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123537">Windows HCK Getting Started</a>. This document assumes that you are familiar with the Windows HCK.</p>
+        <p>The Windows HCK requires that you install at least one test controller and one test computer. The test computer must have a clean install of the Windows 8 client operating system and it must support touch input according to the HID protocol. You must manually install all required drivers to enable touch devices to function correctly. </p>
+        <p>The touch quality tests are integrated into the Windows HCK, and you can run them by using Windows HCK Studio or as stand-alone tests. </p>
+        <a id="studio">
+          
+        </a>
+        <h3 class="subHeading">Windows HCK Studio</h3>
+        <div class="subSection">
+          <p>You can run the Windows 8 test management console <a href="http://go.microsoft.com/fwlink/?LinkID=286937">Windows HCK Studio</a> on the Windows HCK test controller. Touch tests display in the Windows HCK Studio when touch hardware is discovered. The Windows HCK Studio allows you to organize tests into projects, view features and tests that are associated with your device, run selected tests, and create a submission package.</p>
+        </div>
+        <a id="standalone">
+          
+        </a>
+        <h3 class="subHeading">Stand-alone tests</h3>
+        <div class="subSection">
+          <p>You can bypass using the Windows HCK Studio and run the tests directly on the test computer. However, you must have access to a Windows HCK controller to do this.</p>
+          <p>Stand-alone tests exist in JavaScript Object Notation (JSON) files and are started by using a single executable file: <strong>Logo3.exe</strong>. In most cases, a single JSON file tests one requirement, but there are exceptions. For example, all of the tests that are contained in the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124650">Windows Touch Ux Test</a> suite are also contained in the file <strong>UxTests.json</strong> (which relies on two DLLs: <strong>WTTLog.dll</strong> and <strong>WLKLogAnnotation.dll</strong>).</p>
+          <h4 class="subHeading">To run a stand-alone test</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>On a Windows HCK test controller, navigate to <strong>%system%\Program Files (x86)\Windows Kits\8.1\Hardware Certification Kit\Tests</strong>.</p>
+              </li>
+              <li>
+                <p>Navigate to the folder that matches the architecture of the test computer; that is, AMD64, ARM, or x86.</p>
+              </li>
+              <li>
+                <p>Copy the following files from the test folder into a single folder on the computer that is to be tested; for example:</p>
+                <p>Copy <strong>\\</strong><em>&lt;ControllerName&gt;</em><strong>\Program Files (x86)\Windows Kits\8.1\Hardware Certification Kit\Tests \</strong><em>&lt;platform&gt;</em><strong>\digitizer\Win8Touch \* </strong></p>
+                <p>Where <em>&lt;ControllerName&gt;</em> is the Windows HCK test controller name and <em>&lt;platform&gt;</em> is AMD64, ARM, or x86.</p>
+              </li>
+              <li>
+                <p>On the test computer, open a <strong>Command Prompt</strong> window by using administrative privileges and navigate to the folder where you saved the test files.</p>
+              </li>
+              <li>
+                <p>Type the test command by using the syntax <strong>Logo3.exe /config</strong><em>&lt;testname&gt;</em><strong>.json</strong>, where <em>&lt;testname&gt;</em> is the name of the test to run. For example, to run the Digitizer Jitter tests, use the following command syntax:</p>
+                <p>
+                  <strong>Logo3.exe /config DigitizerJitter.json</strong>
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <a id="process">
+        
+      </a>
+      <h2 class="heading">Windows HCK certification process</h2>
+      <div id="sectionSection1" class="section">
+        <p>All automatic and manual tests that are listed in this article must pass before a touch device can be Windows-certified. All tests enforce the HID protocol and all tests are mandatory for certification.</p>
+        <a id="ffu">
+          
+        </a>
+        <h3 class="subHeading">Field Firmware Upgradeable (FFU) </h3>
+        <div class="subSection">
+          <p>
+								Windows 8.1 touch controllers are required to be field-firmware upgradeable (FFU) to support firmware bug fixes and feature additions. After testing is complete, a firmware update is applied to confirm that the device meets the Device.Digitizer.Touch.FieldFirmwareUpdatable requirement. For more about this requirement, see Field Firmware Upgradeable (FFU) in <a href="http://go.microsoft.com/fwlink/?LinkId=253058&amp;clcid=0x409">Windows 8 Hardware Certification Requirements (.PDF)</a>.</p>
+          <p>Depending on the platform and the architecture of the device, a touch controller can obtain firmware updates in one of three ways:</p>
+          <ul>
+            <li class="unordered">
+              <strong>UEFI Capsule Based Update</strong>: Firmware and configuration files can be stored in the <a href="http://www.uefi.org/specs/">Unified Extensible Firmware Interface</a> (UEFI) capsule. Users can concurrently update the firmware and configuration when they update the UEFI.<br /><br /></li>
+            <li class="unordered">
+              <strong>Driver-Based Update</strong>: A driver can communicate with and write to a hardware device. The driver exists only for the purpose of writing to the device, and does not persist on the system after the update is applied.<br /><br /></li>
+            <li class="unordered">
+              <strong>User Mode Application-Based Update</strong>: A graphical user interface (GUI) or command-line tool can check or update the firmware and configuration files.<br /><br /></li>
+          </ul>
+          <p>
+            
+          </p>
+        </div>
+        <a id="thqa">
+          
+        </a>
+        <h3 class="subHeading">Touch Hardware Quality Assurance Key</h3>
+        <div class="subSection">
+          <p>The first time that you run a certification test against a touch device, a 256-byte space is reserved in firmware for the Touch Hardware Quality Assurance (THQA) key. To confirm this reservation, the <strong>Getthqablob</strong> tool inserts and verifies a sample binary large object (BLOB) into the firmware. This test signature and tool are available at the following download sites: https://connect.microsoft.com/site1304/Downloads/DownloadDetails.aspx?DownloadID=47730, http://connect.microsoft.com/site1094/Downloads/DownloadDetails.aspx?DownloadID=47717, and http://connect.microsoft.com/site1094/Downloads/DownloadDetails.aspx?DownloadID=47718. If you do not have access to these sites, contact your Microsoft representative. The following procedure shows you how to run the <strong>Getthqablob</strong> tool.</p>
+          <h4 class="subHeading">To run Getthqablob</h4>
+          <div class="subSection">
+            <ol class="ordered">
+              <li>
+                <p>On the test computer, open a <strong>Command Prompt</strong> by using administrative privileges. </p>
+              </li>
+              <li>
+                <p>Type <strong>GetTHQABlob.exe -verifySample</strong></p>
+              </li>
+            </ol>
+          </div>
+          <p>After a device passes the logo requirements, Microsoft issues a cryptographically signed binary BLOB (THQA key) to the device manufacturer. The manufacturer puts this key into the device firmware prior to production. When a touch device attempts to connect to the Windows operating system, the signature is verified by Windows.</p>
+          <p>When you submit a touch controller to the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn169213">Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service</a>, the touch controller has a preloaded and configured firmware that is ready for Windows HCK testing and validation.</p>
+          <p>The system that is submitted to WTTL must have a new firmware payload ready. The payload can have only the minimal change of a firmware version number increment and application instructions. Upon receipt of the device, WTTL verifies the firmware version (RevisionID) as reported in either the HID Descriptor for HID I2C-based touch controllers or the USB Descriptor for HID USB-based touch controllers. WTTL applies the firmware update and ensures that the firmware version has incremented.</p>
+          <p>If the version has incremented, the FFU requirement has been met; otherwise, this requirement is not met.</p>
+        </div>
+      </div>
+      <a id="howtorun">
+        
+      </a>
+      <h2 class="heading">How to run a touch quality test</h2>
+      <div id="sectionSection2" class="section">
+        <p>Before it starts to run any series of tests, WTTL runs the physical dimension test (Device.Digitizer.Touch.PhysicalDimension), in the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998109">Windows Touch Test (System)</a> collection of tests. The measured size value reflects the size and separation of various user interface (UI) elements in the test and in the operating system. This value must be consistent and accurate before you can proceed because further test results would be flawed by any differential. If there is a difference between the physical size as measured by the WTTL and the reported size from the device, then the test fails. </p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+            </tr>
+            <tr>
+              <td>
+						The tests are designed to run in landscape orientation and might not display correctly in portrait mode. If you are testing a device that boots into portrait mode, change to landscape orientation before you run the tests.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        <p>After you start a touch quality test, a screen displays the available scenarios for the selected requirement. There is typically more than one scenario per requirement, and more than one test per scenario. To begin a scenario, tap its tile.</p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="Tip" alt="Tip" src="http://i.msdn.microsoft.com/dynimg/IC115537.gif" title="Tip" xmlns="" />Tip </th>
+            </tr>
+            <tr>
+              <td>
+						You can return to the test selection screen at any time by tapping <strong>Back to Index</strong> in the floating UI in the test tool.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        <p>Each scenario presents a set of instructions to complete the tests. The tool notifies you when you have completed all tests, and it reports the result of the scenario. You can return to the index to select any remaining scenarios or to review the progress of the requirement test.</p>
+        <p>After all scenarios are validated, tap the <strong>Exit</strong> tile to finish the test and initiate the reporting that determines success or failure in the Windows HCK controller.</p>
+        <p>For example, the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998497">Windows Touch Reporting Rate Test</a> index presents the following five test scenarios, which you can complete in any order:</p>
+        <ul>
+          <li class="unordered">
+							Touch.ReportingRate (Single Stationary)<br /><br /></li>
+          <li class="unordered">
+							Touch.ReportingRate (Single Moving)<br /><br /></li>
+          <li class="unordered">
+							Touch.ReportingRate (Multi Stationary)<br /><br /></li>
+          <li class="unordered">
+							Touch.ReportRate (Five Moving)<br /><br /></li>
+          <li class="unordered">
+							Touch.ReportRate (Maximum Moving)<br /><br /></li>
+        </ul>
+        <p>You can use the following procedure to test the Touch.ReportingRate (Single Moving) scenario:</p>
+        <h4 class="subHeading">To test Touch.ReportingRate (Single Moving)</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>Tap the tile for the <strong>Touch.Reporting.Rate (Single Moving)</strong> scenario; the image shown in <em>Figure 1. Single Moving Test</em>, displays:</p>
+              <img id="2503b277-131d-409e-b1f1-ec33925699aa" alt="Single Moving" src="http://i.msdn.microsoft.com/dynimg/IC665585.jpg" title="Single Moving" xmlns="" />
+            </li>
+            <li>
+              <p>Follow the onscreen instructions. After you complete the test, you are notified whether the test passed or failed, and you can return to the test index. The test index indicates the changed status of the completed test, as shown in <em>Figure 2. Updated Test Index</em>.</p>
+              <img id="1b4f7f41-092a-425a-8d80-3d52104b594f" alt="Updated Test Index" src="http://i.msdn.microsoft.com/dynimg/IC665586.png" title="Updated Test Index" xmlns="" />
+            </li>
+            <li>
+              <p>After you run all the tests, you can tap the <strong>Exit</strong> tile to exit the test suite. Results are reported to the Windows HCK controller after you tap the <strong>Exit</strong> tile.</p>
+              <div class="alert">
+                <table>
+                  <tr>
+                    <th align="left">
+                      <img id="Tip" alt="Tip" src="http://i.msdn.microsoft.com/dynimg/IC115537.gif" title="Tip" xmlns="" />Tip </th>
+                  </tr>
+                  <tr>
+                    <td>
+										You can also tap any test tile to review the results of the test. You can rerun any failed test.<p></p></td>
+                  </tr>
+                </table>
+                <p>
+                  
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <h3 class="subHeading">Debugging the test</h3>
+        <div class="subSection">
+          <p>Error messages describe expected and actual behavior. When an error occurs, only one error is displayed in the error message, but all the errors that happened during the test are logged. For example, if five errors occurred, the error message states “Error 1/5: &lt;<em>error message</em>&gt;”. This indicates that the interaction produced five types of errors and the &lt;<em>error message</em>&gt; describes one of them. Each type of error is counted one time. If the interaction produced backwards motion ten times, only one of these occurrences are counted and logged.</p>
+          <p>All error types that occur during the interaction are logged. The log contains actionable items to help debug the failure. The logging details are of the following four unique types:</p>
+          <ul>
+            <li class="unordered">
+									The first error type is used for tests such as DigitizerJitter, Input Separation, and Physical Input. These tests log the Test region in himetric units. The test region is represented as a rectangle where the top left point and bottom right point are denoted as &lt;(x,y), (w,z)&gt;.<br /><br /></li>
+            <li class="unordered">
+									The second error type logs up to 10 unique coordinates that are reported in himetric units &lt;x,y&gt;. This type is used in the NoiseSuppression and ZAxisAllowance tests.<br /><br /></li>
+            <li class="unordered">
+									The third error type logs the history of contacts reported in the format of &lt;scan time&gt; &lt;# of contacts&gt; whenever the number of contacts change. This type is used by the 5TouchPointMinimum and ExtraInputBehaviorTests.<br /><br /></li>
+            <li class="unordered">
+									Errors from automatically executed binaries such as HIDValidator.exe and GetTHQABlob.exe are logged.<br /><br /></li>
+          </ul>
+          <p>
+            <strong>Screenshots</strong>
+          </p>
+          <p>When a test fails, a screenshot is taken. Screenshots are named after the DUT (device under test), the test that caused the failure, and the date and time of the screen capture in UTC. For example, if the DUT is named Testingmachine1 and the test is Digitizer Jitter, the screenshot on March 12th 2013 would be named <strong>Testingmachine1_DigitizerJitter2013-3-12-151410.jpg</strong>.</p>
+          <p>Screenshots are saved any time the UI transitions from a test scenario to the table of contents, when the clear overlay button is clicked, and when the test application is exited from within a test scenario. In all cases, the screenshot is saved only if at least one failure has occurred since the last screenshot. Screenshots are not generated for yes/no questions. The capability to save screenshots when the test fails is enabled by default. Failures in saving any screenshots are silent, they do not result in failing the test scenario, and they do not cause the application to be terminated. Screenshots are copied to the Windows HCK Controller and are integrated into part of the Windows HCK log. Failures that occur during the copying of the screenshots to the controller do not result in a test failure. If logo3.exe is executed standalone, the screenshots are collected in the current working directory.</p>
+          <p>To get a screenshot that is generated as part of a test, follow these steps:</p>
+          <ol class="ordered">
+            <li>
+									Open the project in Windows HCK Studio. If necessary, connect to an existing HCKX package.<br /><br /></li>
+            <li>
+									Click the <strong>Results</strong> tab, and expand the entry that relates to the test.<br /><br /></li>
+            <li>
+									Right-click <strong>RunJob-Copy Screenshots</strong>.<br /><br /></li>
+            <li>
+									Expand <strong>Task Logs</strong> and click <strong>Show All</strong>.<br /><br />
+									A folder displays that contains all screenshots from the failed test.<br /><br /></li>
+          </ol>
+        </div>
+      </div>
+      <a id="cat">
+        
+      </a>
+      <h2 class="heading">Windows HCK touch test categories</h2>
+      <div id="sectionSection3" class="section">
+        <p>Touch quality certification tests are broadly grouped into two categories: <em>Core Requirements</em> tests and <em>User Experience</em> tests.</p>
+        <p>The Core Requirements tests consist of 13 Windows HCK jobs, each of which maps to one or more Windows touch requirement. Each test usually contains several scenarios that combine to stress the requirements under test. For example, the Digitizer Jitter test asks you to measure jitter in several different situations, such as a single stationary contact, a single moving contact, many moving contacts, and two contacts in radial motion.</p>
+        <p>The User Experience tests are contained in one Windows HCK job that is titled <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124650">Windows Touch Ux Test</a>. These tests present a set of common Windows scenarios that combine several requirements to emulate real-life situations. Examples of common tasks are to ask the tester to rearrange a tile on the <strong>Start</strong> screen, to type on the software keyboard, and to tap a link. </p>
+      </div>
+      <a id="testdescs">
+        
+      </a>
+      <h2 class="heading">Windows HCK touch device test descriptions</h2>
+      <div id="sectionSection4" class="section">
+        <p>This section describes the required automated and manual tests for touch devices. Be aware that many device tests have an identical system test, but that not all system tests have device equivalents. In the latter case, the listed requirement explicitly shows the system path in the requirement name. </p>
+        <p>This article provides only a brief description of each test; for more information about any specific test including tested requirements, click the test name to see the detailed test reference article for that test.</p>
+        <a id="autotests">
+          
+        </a>
+        <h3 class="subHeading">Automated touch device tests</h3>
+        <div class="subSection">
+          <p>The following table lists the automated tests that are mandatory for device certification. The total estimated completion time for automation tests is 40 hours and 45 minutes.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Test name
+										</th>
+              <th>
+											Purpose
+										</th>
+              <th>
+											Estimated run time
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124262">TDI filters and LSPs are not allowed</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that no TDI Filters or LSPs are installed by the driver or associated software packages.</p>
+              </td>
+              <td>
+                <p>5 minutes</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286999">Reinstall with IO Before and After (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Uninstalls and reinstalls the drivers for selected devices and runs IO on devices; verifies that no device or driver, except the device under test, has been affected by devices, driver installations, or co-install processes; verifies that no system resources are overwritten during a device or driver package installation.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124431">DevFund INF Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies the INF file against DevFund.INF devices.</p>
+              </td>
+              <td>
+                <p>1 minute</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286993">Device Path Exerciser Test (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies basic reliability and security of a driver.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=287000">Verify Driver Load Order Group is not WdfLoadGroup</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that WdfLoadGroup is not the Load Order Group value for the device under test.</p>
+              </td>
+              <td>
+                <p>2 minutes</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125291">Device Driver INF Verification Test (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Validates a driver INF file against the Device Fundamentals ProperINF requirement.</p>
+              </td>
+              <td>
+                <p>5 minutes</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124553">Driver Memory Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Checks the memory that drivers are using, and verifies that the memory consumed by graphic drivers does not exceed the specified amount.</p>
+              </td>
+              <td>
+                <p>30 minutes</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997786">System - Sleep and PNP (disable and enable) with IO Before and After (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Cycles the system through various sleep states and performs IO and basic Plug and Play (PnP) (disable/enable) on devices before and after each sleep state cycle.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286994">Plug and Play Driver Test (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Exercises various PnP-related code paths in the driver and user-mode components.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286995">Concurrent Hardware And Operating System (CHAOS) Test (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Runs PnPDTest and FuzzTest in parallel while cycling the system through all supported system power states.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286996">Embedded Signature Verification Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Checks whether the driver under test is embedded signed (for boot start drivers).</p>
+              </td>
+              <td>
+                <p>1 minute</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286997">Device Install Check For Other Device Stability (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that no device or driver except the device under test is affected by the device(s)/driver(s) install or co-install process.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=286998">Device Install Check For File System Consistency (Certification)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that no system resources are overwritten during a device/driver package install process.</p>
+              </td>
+              <td>
+                <p>5 hours</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998407">DevFund Broker Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies all device interface paths for a device node against Device.Fundamental requirements.</p>
+              </td>
+              <td>
+                <p>1 minute</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a id="manualtests">
+          
+        </a>
+        <h3 class="subHeading">Manual touch device tests</h3>
+        <div class="subSection">
+          <p>The following table lists the manual tests that are mandatory for device certification. The total estimated completion time for manual tests is two hours. </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Test name
+										</th>
+              <th>
+											Purpose
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125183">Windows Touch Five Point Minimum Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device supports a minimum of five simultaneous touch inputs.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123946">Windows Touch Digitizer Jitter Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device does not exceed the allowable amount of jitter (a maximum of 1mm over 10mm of travel).</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124203">Windows Touch Extra Input Behavior Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device does not report inputs that are greater than the maximum allowed values that are defined in the test requirements.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998790">Windows Touch High Resolution Timestamp Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that the device supports the microsecond-level time stamp and does not drift more than the amount that is specified in the test requirements. During this test, you must hold a contact for the stated time while the tool inspects the HID reports.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998630">Windows Touch Input Separation Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a device meets requirements during horizontal, vertical, and diagonal motion, and during a pinch gesture.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998267">Windows Touch Noise Suppression Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device does not report data for locations where touch input doesn't occur.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125304">Windows Touch Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Combines a set of simple manual tests. Measured requirements include: having a bezel that is flush with the display, specifying physical dimensions that match the device's true physical dimensions, and passing the HID Validator tool's static test. </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124986">Windows Touch Physical Input Position Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device reports all inputs within plus or minus 1mm of the center of the physical input, for all touchable areas.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998497">Windows Touch Reporting Rate Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device correctly reports physical contact between the device and the contact position.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://go.microsoft.com/fwlink/?LinkID=287001">Windows Touch Response Latency Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device meets the response latency requirements for both idle and active states.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124753">Windows Touch Resolution Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device has a 100-Hertz minimum reporting rate for all touch inputs.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124650">Windows Touch Ux Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Tests the user experience that is associated with the hardware requirements. Tests are designed to run freehand.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998891">Windows Touch Z Axis Allowance Test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a touch device does not exceed the maximum z-axis allowance (0.5 millimeters) for touch detection.</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a id="systests">
+          
+        </a>
+        <h3 class="subHeading">Touch system and pen tests</h3>
+        <div class="subSection">
+          <p>The following table lists the system and pen tests that are mandatory for device certification. Pen tests are included in this category. These tests are run for system-level testing, but associated device-level tests also apply in most cases. </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Test name
+										</th>
+              <th>
+											Purpose
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998679">Windows Tablet Test (System)</a>
+                </p>
+              </td>
+              <td>
+                <p>Tests the resume time for systems that support InstantGo.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124639">Touch Slate HW LOGO test</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that the components of a tablet meet the Windows 8 logo requirements.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998649">Windows Pen Hover Accuracy Test (System)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies pen hover accuracy.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123459">Windows Pen Range Test (System)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies pen digitizer range.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124907">Windows Pen Resolution Test (System)</a>
+                </p>
+              </td>
+              <td>
+                <p>Verifies that a pen digitizer resolution is at least 150 pixels per inch and equal to the native display resolution or greater.</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <a id="hiderrors">
+        
+      </a>
+      <h2 class="heading">Touch device HID compliance errors</h2>
+      <div id="sectionSection5" class="section">
+        <p>The following table lists dynamic HID compliance errors that can occur during touch testing:</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <th>
+									Error message
+								</th>
+            <th>
+									Description
+								</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Backward motion</p>
+            </td>
+            <td>
+              <p>This error is presented in the Digitizer Jitter tests and signals that a report was sent that has co-ordinates that suggest motion that is opposite to the direction of travel. The Windows HCK tests have no allowance for backward motion.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Duplicate packets</p>
+            </td>
+            <td>
+              <p>This error occurs when consecutive identical co-ordinates are reported during a period of motion. This check is triggered only when it can be determined that movement is taking place. This error is not triggered by a stationary contact, even if the contact has only temporarily ceased movement.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Fabricated center</p>
+            </td>
+            <td>
+              <p>This error appears when the system detects that the device is fabricating its reports. It applies beyond the center to include pressure, tilt, twist, azimuth and geometry. This error can occur when a value is always the same.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>In-range didn't move</p>
+            </td>
+            <td>
+              <p>This error is the in-range analog to the <em>Tip didn't move</em> error.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>In-range invalid</p>
+            </td>
+            <td>
+              <p>This error occurs for devices that report in-range data when a packet is reported with the Tip flag ON but the In-range flag OFF.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid other</p>
+            </td>
+            <td>
+              <p>This error indicates that one or more of the following properties reported a value outside the valid range: pressure, x tilt, y tilt, twist, or azimuth.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid packet</p>
+            </td>
+            <td>
+              <p>A packet did not include x-coordinate or y-coordinate data.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid packet transition</p>
+            </td>
+            <td>
+              <p>The "Button State Transitions" section of the <a href="http://go.microsoft.com/fwlink/?LinkID=226808">Windows Pointer Device Data Delivery Protocol</a> document presents two transition tables: one table for devices that support z-height (or hover), and one table for devices that do not support z-height. This error indicates that transitions in the digitizer reports do not conform to either table.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid scan time</p>
+            </td>
+            <td>
+              <p>
+                <em>Scan time</em> is new in Windows 8. It represents a specific time stamp and is logically tied to the time that a contact was actually scanned. The operating system uses this data extensively to enable smooth user interactions, especially for zooming, panning, and similar gestures. This error indicates that something is wrong in scan-time reporting or that scan-time is not being reported at all. This error most commonly occurs when consecutive scan-time reports exceed the allowed time, and when scan time is not implemented.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid width or height</p>
+            </td>
+            <td>
+              <p>This error indicates that the geometry data that is reported by the device is incorrect. The error usually occurs when the physical dimensions that are reported for a contact exceed the stated dimensions in that device's descriptor. When this error occurs, consider errors in the unit of measurement or in translation between units.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid X size</p>
+            </td>
+            <td>
+              <p>The device specified a bit size for the center x-coordinate that was either 0 or greater than 32.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid xy</p>
+            </td>
+            <td>
+              <p>This error usually indicates that either x-coordinates or y-coordinates do not exist in a packet. It can also occur if either value is outside the allowable range, as specified in the <a href="http://go.microsoft.com/fwlink/?LinkID=226808">Windows Pointer Device Data Delivery Protocol</a> document.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Invalid Y size</p>
+            </td>
+            <td>
+              <p>The device specified a bit size for the center y-coordinate that was either 0 or greater than 32.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Last move location different</p>
+            </td>
+            <td>
+              <p>This error indicates that the last packet reported a location that is different from the location of the preceding packet. The <strong>up</strong> packet must specify the same location as the last move packet.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing in-range</p>
+            </td>
+            <td>
+              <p>This error occurs when the first packet without the Tip and In-range flags is not preceded by a packet with the Tip flag off and the In-range flag on. The digitizer missed the hover state.</p>
+              <p>This error can also occur if the device indicates in its descriptor that it supports z-height, but does not report the in-range bit in actual report packets. For more information, see the <a href="http://go.microsoft.com/fwlink/?LinkID=226808">Windows Pointer Device Data Delivery Protocol</a> document.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing in-range off &amp; tip-off</p>
+            </td>
+            <td>
+              <p>This error indicates that a mistake occurred during the transition to the out-of-range state. The last packet must have both the Tip and In-range flags OFF. This error applies to devices that report in-range data.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing in-range on &amp; tip-off</p>
+            </td>
+            <td>
+              <p>This error indicates that a sequence was reported in which a packet with <strong>Tip on</strong> immediately followed a packet that did not have the <strong>In-range</strong> flag. This error applies to devices that report in-range data.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing tip</p>
+            </td>
+            <td>
+              <p>This error applies to devices that do not report in-range data. It indicates that a final packet that did not have the Tip flag was not present. This condition appears to the system as a stream of data that has been interrupted, because no removal of the Tip flag reported <strong>up</strong>.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing tip-off</p>
+            </td>
+            <td>
+              <p>This error indicates that the last packet still had the Tip flag on. This essentially means that the device didn't report an <strong>up</strong>. This error also applies to devices that do not report in-range data.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Missing tip-on</p>
+            </td>
+            <td>
+              <p>This error occurs when the first packet from a non-hovering device does not contain the Tip flag.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Out-of-range location different</p>
+            </td>
+            <td>
+              <p>This error is similar to the <em>Last move location different</em> error. In this case, the packet that follows the last in-range packet specified a location that is different from the location of the in-range packet. These packets must have the same coordinates.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Scaling factor too high</p>
+            </td>
+            <td>
+              <p>This error indicates that an unexpected zoom-in gesture was performed. This usually occurs during execution of the Semantic Zoom tests because in those tests, attention must be paid to the direction of the gesture. This error also occurs during the Quick Toss and backstack tests (in the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124650">Windows Touch Ux Test</a>) if the contacts travel too far apart: it is important that the contacts stay roughly parallel and end side-by-side.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Scaling factor too low</p>
+            </td>
+            <td>
+              <p>See the <em>Scaling factor too high</em> error. In the Quick Toss test, this error indicates that the contacts travelled too far toward one another.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Tip didn't move</p>
+            </td>
+            <td>
+              <p>For devices that do not report in-range data, this error indicates that a packet was received with the Tip flag on and the next packet did not have the Tip flag. This constitutes a <strong>down</strong> immediately followed by an <strong>up</strong>, with no intermediate moves; this is not valid.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Unknown reason</p>
+            </td>
+            <td>
+              <p>This error occurs during a test that has a speed or angle requirement. For example, the User Experience Edge test requires movement above a certain speed and within a certain angle (also within a certain amount of time). If any of those conditions does not hold, this error displays. </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125187">Windows Hardware Certification Program</a>
+        <br />
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj906442">Using Robot Automation for Touch Hardware Certification Tests</a>
+        <br />
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124005">Windows Touch Testing Prerequisites</a>
+        <br />
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998100">Device.Digitizer Testing</a>
+        <br />
+        <h4 class="subHeading">Other Resources</h4>
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123662">Troubleshooting Device.Digitizer Testing</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=246621">Windows Hardware Development Center</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=286928">Windows Certification Program Policies and Processes</a>
+        <br />
+        <a href="http://go.microsoft.com/fwlink/?LinkID=285943">Touch in Windows 8</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="lQy8aWNW8DiUDLG9t8salNaE8eGAKycFZRBL_dPxiKLzt_KJf6Z0WyaH8V2Q-r0M6dJpHM_3wXMTIQ_r0icAsIMktBdAqemAI-CfRqkg_ltP4B1wzNQwz_kaV-vVitzFNurQDQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn169214" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="Chrome ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn169214" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="fWbXGQBNVLDzwHwy4BQxz30pWEi0PHfUO0c4Igjw1EWn8H7Q3Ts3-6jc-eMv_qNZ_fTX01G0hGsj2xnyoiT0WQ6aVVMyclcs7SnOcOqQ999lzhayZkow5menRCJ95LsoVWOECA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn169214(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"af6ec1df-5874-456c-b866-b9b96c32a8f0\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn169214 by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

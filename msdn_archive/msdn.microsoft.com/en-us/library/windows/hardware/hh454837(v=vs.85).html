@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx" />
+        <title>How to select and configure the Device Fundamentals tests (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh454837(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD1-9:04:11 AM" />
+
+<meta name="Search.ShortId" content="hh454837" />
+
+<meta name="ms.shortidmsdn" content="hh454837" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072251&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh454837%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554651(v=vs.85).aspx" id="hh466585_VS.85_en-us" mtpsaliasid="" mtpsassetid="6e8be17d-6e98-441e-9a2c-e62a007786ee_VS.85_en-us" mtpsshortid="ff554651_VS.85_en-us" title="Developing, Testing, and Deploying Drivers">Developing, Testing, and Deploying Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff554820(v=vs.85).aspx" id="jj863692_VS.85_en-us" mtpsaliasid="" mtpsassetid="bb73768e-0ac9-4377-9caa-c0cce1d10bb8_VS.85_en-us" mtpsshortid="ff554820_VS.85_en-us" title="Testing a Driver">Testing a Driver</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx" id="dn280202_VS.85_en-us" mtpsaliasid="" mtpsassetid="50BF5B17-B7F0-49F2-9ED6-652DB32D638E_VS.85_en-us" mtpsshortid="hh454841_VS.85_en-us" title="How to test a driver at runtime using Visual Studio">How to test a driver at runtime using Visual Studio</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265574(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the HCK Test Suites in WDK 8.1">How to run the HCK Test Suites in WDK 8.1</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select and configure the Device Fundamentals tests">How to select and configure the Device Fundamentals tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706275(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to test a driver package">How to test a driver package</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706274(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to read the driver test results log">How to read the driver test results log</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj674802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to test a driver at runtime from a Command Prompt">How to test a driver at runtime from a Command Prompt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting the Device Fundamentals tests using the WDK">Troubleshooting the Device Fundamentals tests using the WDK</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to select and configure the Device Fundamentals tests</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>
+</p><p>The WDK for Windows 8 provides a driver testing framework that includes a set of tests called the Device Fundamentals tests. The Device Fundamentals tests are a collection of tests that are used both internally at Microsoft for testing the drivers and driver samples that ship with Windows and the WDK, and externally as part of the <a href="http://go.microsoft.com/fwlink/p/?linkid=8705">Windows Certification Program for Hardware</a>.
+
+You can run the tests from your development environment. When you run the tests, you can use the same parameters that are used for Windows Certification testing, or you can configure and customize the run-time parameters according to your testing and debugging needs.</p>
+
+<h2><a id="Getting_the_most_from_the_Device_Fundamentals_tests"></a><a id="getting_the_most_from_the_device_fundamentals_tests"></a><a id="GETTING_THE_MOST_FROM_THE_DEVICE_FUNDAMENTALS_TESTS"></a>Getting the most from the Device Fundamentals tests</h2>
+<p>To get the most benefit from the Device Fundamentals tests,  your device must be supported by the default I/O plug-ins.  To see whether your device type is supported and to determine whether there are specific requirements for testing, refer to <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx">Provided WDTF Simple I/O plug-ins</a>. The Device Fundamentals test also include a utility you can use to test  your device to see whether it is supported. If your device is not supported, you can create a WDTF Simple I/O plug-in. in Visual Studio. For more information, see  <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706277(v=vs.85).aspx">How to customize I/O for your device using the WDTF Simple I/O Action Plug-in</a>. </p>
+<h2><a id="About_the_Device_Fundamentals_Tests"></a><a id="about_the_device_fundamentals_tests"></a><a id="ABOUT_THE_DEVICE_FUNDAMENTALS_TESTS"></a>About the Device Fundamentals Tests</h2>
+<p>The WDK provides the Device Fundamentals tests in two configurations, Basic and Certification. In both configurations, you can edit the test parameters to vary the length of the test, the number of test cycles to perform, and other test parameters, depending upon how you want to test the targeted devices or drivers. The Basic configuration is intended for general driver and device testing and debugging. Use the Basic configuration early on and throughout the development cycle. The tests in the Basic configuration have the same settings that are used in the Windows Certification testing, with the exception of having a shorter run time. In the Certification configuration, the tests have the same settings that are used in the Windows Certification testing. Use the Certification configuration to verify readiness for testing your device or driver for the <a href="http://go.microsoft.com/fwlink/p/?linkid=8705">Windows Certification Program for Hardware</a>.</p>
+<p>The <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673011(v=vs.85).aspx">Device Fundamentals Tests</a> include tests in the following categories. </p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673008(v=vs.85).aspx">CHAOS Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673009(v=vs.85).aspx">Coverage Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673010(v=vs.85).aspx">CPUStress Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673012(v=vs.85).aspx">Driver Install Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673013(v=vs.85).aspx">I/O Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673014(v=vs.85).aspx">Penetration Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673015(v=vs.85).aspx">PNP  Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673016(v=vs.85).aspx">Reboot Tests (Device Fundamentals)</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673017(v=vs.85).aspx">Sleep Tests (Device Fundamentals)</a>
+</li>
+<li><a href="#utility_tests">Utility</a></li>
+<li><a href="#utility_tests">Driver Verifier</a></li>
+</ul>
+<h3><a id="Setting_the_run-time_test_parameters"></a><a id="setting_the_run-time_test_parameters"></a><a id="SETTING_THE_RUN-TIME_TEST_PARAMETERS"></a>Setting the run-time test parameters</h3>
+<p>You can edit the run-time parameters for many of the Device Fundamentals tests.  In the Driver Test Group window, an arrow (») next to a test name indicates that the test has parameters that you can change.   Click the arrow (») to display the run-time parameters. </p>
+<p>One of the most useful parameters is <em>DQ</em>, which specifies the target device to test. The default value (<strong>IsDevice</strong>) tests all of the devices on the target computer.  The <em>DQ</em> parameter takes a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539547(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDTF</strong></a>         <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539571(v=vs.85).aspx">SDEL</a> query that identifies the target devices.  You can specify a particular  device for testing, for example:   </p>
+<p><strong>DeviceID=’USB\ROOT_HUB\4&amp;1CD5D022&amp;0’</strong> 
+ selects only the device for testing with the specified <strong>DeviceID</strong>. </p>
+<p>For more information about <em>DQ</em> and the other run-time parameters, see <a href="#DevFund_Params">Device Fundamentals test parameters</a>. </p>
+<h2><a id="DevFund_Params"></a><a id="devfund_params"></a><a id="DEVFUND_PARAMS"></a>Device Fundamentals Test Parameters</h2>
+<p></p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>
+<p><a id="DQ"></a><a id="dq"></a><em>DQ</em></p>
+</td><td>
+<p>Identifies the  device or devices that should be used for testing. The <em>DQ</em> parameter takes a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539547(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WDTF </strong></a>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539571(v=vs.85).aspx">SDEL</a> query that identifies the target devices. This query can be very flexible and it can be used to express any number of devices, from a single device to all devices in the system.  
+
+                 
+
+ 
+                
+                   </p>
+<p>Common examples: </p>
+<p></p>
+<dl>
+<dt><a id="To_test_all_devices_that_were_installed_with_a_specific_INF_File_"></a><a id="to_test_all_devices_that_were_installed_with_a_specific_inf_file_"></a><a id="TO_TEST_ALL_DEVICES_THAT_WERE_INSTALLED_WITH_A_SPECIFIC_INF_FILE_"></a>To test all devices that were installed with a specific INF File:</dt>
+<dd>
+<p><strong>INF::FileName=</strong><em>INF_File_Name</em></p>
+<p>For example, <strong>INF::OriginalInfFileName='%InfFileName%'</strong></p>
+<p>This is the default value. </p>
+</dd>
+<dt><a id="To_test_a_device_with_a_specific_Device_Id__"></a><a id="to_test_a_device_with_a_specific_device_id__"></a><a id="TO_TEST_A_DEVICE_WITH_A_SPECIFIC_DEVICE_ID__"></a>To test a device with a specific Device Id: </dt>
+<dd>
+<p><strong>DeviceId=’</strong><em>DeviceId</em><strong>’</strong></p>
+<p>For example, <strong>DeviceID=’USB\ROOT_HUB\4&amp;1CD5D022&amp;0’</strong></p>
+</dd>
+<dt><a id="_To_test_a_device_with_a_specific_interface_"></a><a id="_to_test_a_device_with_a_specific_interface_"></a><a id="_TO_TEST_A_DEVICE_WITH_A_SPECIFIC_INTERFACE_"></a>	To test a device with a specific interface:</dt>
+<dd>
+<p><strong>Interfaces::</strong><em>InterfaceGUID</em></p>
+</dd>
+<dt><a id="To_test_a_device_with_a_specific_driver_letter_"></a><a id="to_test_a_device_with_a_specific_driver_letter_"></a><a id="TO_TEST_A_DEVICE_WITH_A_SPECIFIC_DRIVER_LETTER_"></a>To test a device with a specific driver letter:</dt>
+<dd>
+<p><strong>Volume::DriverLetter=’</strong><em>DriveLetter</em><strong>’</strong></p>
+<p>For example, <strong>Volume::DriverLetter=’c:\’</strong></p>
+</dd>
+<dt><a id="To_test_a_device_with_a_specific_driver____"></a><a id="to_test_a_device_with_a_specific_driver____"></a><a id="TO_TEST_A_DEVICE_WITH_A_SPECIFIC_DRIVER____"></a>To test a device with a specific driver: 
+
+</dt>
+<dd>
+<p><strong>DriverBinaryNames=</strong><em>mydriver.sys</em></p>
+</dd>
+<dt><a id="____To_test_all_device_of_a_specific_device_Class___________________"></a><a id="____to_test_all_device_of_a_specific_device_class___________________"></a><a id="____TO_TEST_ALL_DEVICE_OF_A_SPECIFIC_DEVICE_CLASS___________________"></a> 
+
+
+To test all device of a specific device Class:
+
+                </dt>
+<dd>
+<p>For example, <strong>Class=CDROM 
+                                      </strong> would test all device of class CDROM.</p>
+<p>For example, <strong>ClassGUID= {36fc9e60-c465-11cf-8056-444553540000}</strong>
+                               
+                                                                    would test all the devices whose class GUID matches the specified GUID. In this case, 
+                                                                 the GUID is for the USB class.  
+
+
+</p>
+</dd>
+</dl>
+</td></tr>
+<tr><td>
+<p><a id="DoPoolCheck"></a><a id="dopoolcheck"></a><a id="DOPOOLCHECK"></a><em>DoPoolCheck</em></p>
+</td><td>
+<p>True or False. Monitors the driver's use of the paged and 
+
+nonpaged system memory pools by using pool tags and lookaside lists. This option also monitors changes in the number of 
+
+exceptions handled which might indicate errors in exception handling.</p>
+</td></tr>
+<tr><td>
+<p><a id="ChangeBufferProtectionFlags"></a><a id="changebufferprotectionflags"></a><a id="CHANGEBUFFERPROTECTIONFLAGS"></a><em>ChangeBufferProtectionFlags</em></p>
+</td><td>
+<p>True or False. Changes the memory 
+
+protection flags of buffers passed to the tested device. The memory protection flags alternates between 
+
+no access, read-only, and read-only with page guard.</p>
+</td></tr>
+<tr><td>
+<p><a id="DoSimpleIO"></a><a id="dosimpleio"></a><a id="DOSIMPLEIO"></a><em>DoSimpleIO</em></p>
+</td><td>
+<p>True or False. Runs SimpleI/O (if found) on test devices before and after performing PNP operations. </p>
+</td></tr>
+<tr><td>
+<p><a id="DoConcurrentIO"></a><a id="doconcurrentio"></a><a id="DOCONCURRENTIO"></a><em>DoConcurrentIO</em></p>
+</td><td>
+<p>True or False. Uses <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539547(v=vs.85).aspx">WDTF</a> concurrent I/O interface to send I/O requests to target device stacks while performing PnP operations.</p>
+</td></tr>
+<tr><td>
+<p><a id="FillZeroPageWithNull"></a><a id="fillzeropagewithnull"></a><a id="FILLZEROPAGEWITHNULL"></a><em>FillZeroPageWithNull</em></p>
+</td><td>
+<p>True or False. Maps the zero page and fills it 
+
+with NULL values. This test identifies drivers that do not verify a 
+
+pointer reference before dereferencing the pointer.</p>
+</td></tr>
+<tr><td>
+<p><a id="FuzzTestPeriod"></a><a id="fuzztestperiod"></a><a id="FUZZTESTPERIOD"></a><em>FuzzTestPeriod</em></p>
+</td><td>
+<p>Fuzz test period in minutes.</p>
+</td></tr>
+<tr><td>
+<p><a id="HPU"></a><a id="hpu"></a><em>HPU</em></p>
+</td><td>
+<p>Specifies the high processor utilization percentage.</p>
+</td></tr>
+<tr><td>
+<p><a id="Impersonate"></a><a id="impersonate"></a><a id="IMPERSONATE"></a><em>Impersonate</em></p>
+</td><td>
+<p>True or False. Runs the test as a user without administrator privileges.  </p>
+</td></tr>
+<tr><td>
+<p><a id="IOPeriod"></a><a id="ioperiod"></a><a id="IOPERIOD"></a><em>IOPeriod</em></p>
+</td><td>
+<p>Specifies the I/O period in minutes.</p>
+</td></tr>
+<tr><td>
+<p><a id="IOType"></a><a id="iotype"></a><a id="IOTYPE"></a><em>IOType</em></p>
+</td><td>
+<p>Specifies the type of I/O stress test: SimpleIOStressEx or SimpleIOStressProc (I/O in a separate process).</p>
+</td></tr>
+<tr><td>
+<p><a id="LPU"></a><a id="lpu"></a><em>LPU</em></p>
+</td><td>
+<p>Specifies the low processor utilization percentage</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxInBuffer"></a><a id="maxinbuffer"></a><a id="MAXINBUFFER"></a><em>MaxInBuffer</em></p>
+</td><td>
+<p>Specifies the maximum size, in bytes, of the input buffers 
+
+that the test passes to the driver in FSCTLs (or IOCTLs for IOCTL tests).</p>
+</td></tr>
+<tr><td>
+<p><a id="MinInBuffer"></a><a id="mininbuffer"></a><a id="MININBUFFER"></a><em>MinInBuffer</em></p>
+</td><td>
+<p>Specifies the minimum size, in bytes, of the input buffers 
+
+that the test passes to the driver in FSCTLs (or IOCTLs for IOCTL tests).</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxOutBuffer"></a><a id="maxoutbuffer"></a><a id="MAXOUTBUFFER"></a><em>MaxOutBuffer</em></p>
+</td><td>
+<p>Specifies the maximum size, in bytes, of the output 
+
+buffers that the test passes to the driver in FSCTLs (or IOCTLs for IOCTL tests).</p>
+</td></tr>
+<tr><td>
+<p><a id="MinOutBuffer"></a><a id="minoutbuffer"></a><a id="MINOUTBUFFER"></a><em>MinOutBuffer</em></p>
+</td><td>
+<p>Specifies the minimum size, in bytes, of the output 
+
+buffers that the test passes to the driver in FSCTLs (or IOCTLs for IOCTL tests).</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxRandomCalls"></a><a id="maxrandomcalls"></a><a id="MAXRANDOMCALLS"></a><em>MaxRandomCalls</em></p>
+</td><td>
+<p>Specifies the maximum number of calls that the test 
+
+issues.</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxTailoredCalls"></a><a id="maxtailoredcalls"></a><a id="MAXTAILOREDCALLS"></a><em>MaxTailoredCalls</em></p>
+</td><td>
+<p>Specifies the maximum number of calls that the test 
+
+issues during the tailored random test.</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxDeviceType"></a><a id="maxdevicetype"></a><a id="MAXDEVICETYPE"></a><em>MaxDeviceType</em></p>
+</td><td>
+<p>Specifies the maximum value of the DeviceType field in 
+
+the FSCTLs (or IOCTLs for IOCTL tests). The maximum possible value is 65535.</p>
+</td></tr>
+<tr><td>
+<p><a id="MinDeviceType"></a><a id="mindevicetype"></a><a id="MINDEVICETYPE"></a><em>MinDeviceType</em></p>
+</td><td>
+<p>Specifies the minimum value of the DeviceType field in 
+
+the FSCTLs (or IOCTLs for IOCTL tests). The minimum possible value is 0.</p>
+</td></tr>
+<tr><td>
+<p><a id="MaxFunctionCode"></a><a id="maxfunctioncode"></a><a id="MAXFUNCTIONCODE"></a><em>MaxFunctionCode</em></p>
+</td><td>
+<p>Specifies the maximum value of the FunctionCode field 
+
+in the FSCTLs (or IOCTLs for IOCTL tests). The maximum possible value is 4095.</p>
+</td></tr>
+<tr><td>
+<p><a id="MinFunctionCode"></a><a id="minfunctioncode"></a><a id="MINFUNCTIONCODE"></a><em>MinFunctionCode</em></p>
+</td><td>
+<p>Specifies the minimum value of the FunctionCode field 
+
+in the FSCTLs (or IOCTLs for IOCTL tests). The minimum possible value is 0.</p>
+</td></tr>
+<tr><td>
+<p><a id="PU"></a><a id="pu"></a><em>PU</em></p>
+</td><td>
+<p>Specifies the processor utilization percentage</p>
+</td></tr>
+<tr><td>
+<p><a id="PingPongPeriod"></a><a id="pingpongperiod"></a><a id="PINGPONGPERIOD"></a><em>PingPongPeriod</em></p>
+</td><td>
+<p>Specifies the ping pong period in minutes; the time   the processor alternates between high (HPU) and low (LPU) processor utilization levels. </p>
+</td></tr>
+<tr><td>
+<p><a id="ResumeDelay"></a><a id="resumedelay"></a><a id="RESUMEDELAY"></a><em>ResumeDelay</em></p>
+</td><td>
+<p>The delay time (in seconds) after the machine resumes from sleep mode and before the next I/O cycle starts. The delay time is necessary to allow devices to restore their working state (renew IP address for network card and so on).
+</p>
+</td></tr>
+<tr><td>
+<p><a id="TestCycles"></a><a id="testcycles"></a><a id="TESTCYCLES"></a><em>TestCycles</em></p>
+</td><td>
+<p>Specifies the number of test cycles (iterations) to perform.</p>
+</td></tr>
+<tr><td>
+<p><a id="WDTFREMOTESYSTEM"></a><a id="wdtfremotesystem"></a><em>WDTFREMOTESYSTEM</em></p>
+</td><td>
+<p>This parameter is required only if the device under test, or one of its child devices, is a wired network adapter that does not have an IPv6 gateway address. If this parameter is required on your network, you must provide an IPv6 address that the test network adapter can ping to test network.
+</p>
+<p>Example: <strong>fe80::78b6:810:9c12:46cd
+</strong></p>
+</td></tr>
+<tr><td>
+<p><a id="Wpa2PskAesSsid"></a><a id="wpa2pskaesssid"></a><a id="WPA2PSKAESSSID"></a><em>Wpa2PskAesSsid</em></p>
+</td><td>
+<p>This parameter is required only if the device under test or one of its child devices is a WiFi adapter. Provide the SSID of a WPA2 AES WiFi network that the test can use to test the WiFi adapter.</p>
+<p>Default value: <strong>kitstestssid</strong></p>
+</td></tr>
+<tr><td>
+<p><a id="Wpa2PskPassword"></a><a id="wpa2pskpassword"></a><a id="WPA2PSKPASSWORD"></a><em>Wpa2PskPassword</em></p>
+</td><td>
+<p>This parameter is required only if the device under test or one of its child devices is a WiFi adapter. Provide password of the WPA2 AES WiFi network that is specified by using the Wpa2PskAesSsid parameter. 
+</p>
+<p>Default value: <strong>password</strong></p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="utility_tests"></a><a id="UTILITY_TESTS"></a>Utility tests</h2>
+<p></p>
+<table>
+<tr><th>Test</th><th>Description</th></tr>
+<tr><td>
+<p><a id="Display_devices_that_have_WDTF_Simple_I_O_plug-ins"></a><a id="display_devices_that_have_wdtf_simple_i_o_plug-ins"></a><a id="DISPLAY_DEVICES_THAT_HAVE_WDTF_SIMPLE_I_O_PLUG-INS"></a>Display devices that have WDTF Simple I/O plug-ins</p>
+</td><td>
+<p><strong>Parameters:</strong> None</p>
+</td></tr>
+<tr><td>
+<p><a id="Display_devices_that_have_Driver_Verifier_enabled"></a><a id="display_devices_that_have_driver_verifier_enabled"></a><a id="DISPLAY_DEVICES_THAT_HAVE_DRIVER_VERIFIER_ENABLED"></a>Display devices that have Driver Verifier enabled</p>
+</td><td>
+<p><strong>Parameters:</strong> None</p>
+</td></tr>
+<tr><td>
+<p><a id="Display_devices"></a><a id="display_devices"></a><a id="DISPLAY_DEVICES"></a>Display devices</p>
+</td><td>
+<p><strong>Parameters:</strong> None</p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="dvrf_tests"></a><a id="DVRF_TESTS"></a>Driver Verifier</h2>
+<p></p>
+<table>
+<tr><th>Test</th><th>Description</th></tr>
+<tr><td>
+<p><a id="Disable_Driver_Verifier"></a><a id="disable_driver_verifier"></a><a id="DISABLE_DRIVER_VERIFIER"></a>Disable Driver Verifier</p>
+</td><td>
+<p>Disables <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a> on the test computer.</p>
+<p><strong>Parameters:</strong> None</p>
+</td></tr>
+<tr><td>
+<p><a id="Enable_Driver_Verifier"></a><a id="enable_driver_verifier"></a><a id="ENABLE_DRIVER_VERIFIER"></a>Enable Driver Verifier</p>
+</td><td>
+<p>You can use this test to enable <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545448(v=vs.85).aspx">Driver Verifier</a> for all drivers of a device (or devices) on the test computer.</p>
+<p><strong>Parameters:</strong> - See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff545470(v=vs.85).aspx">Driver Verifier Options</a>. </p>
+</td></tr>
+</table>
+<p> </p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx">How to How to test a driver at runtime using Visual Studio</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673011(v=vs.85).aspx">Device Fundamentals Tests</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx">Provided WDTF Simple I/O plug-ins</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706277(v=vs.85).aspx">How to customize I/O for your device using the WDTF Simple I/O Action Plug-in</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [VsDriver\vsdriver]:%20How to select and configure the Device Fundamentals tests%20 RELEASE:%20(1/23/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 1/23/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="_nWe-PKWzmoXtbaICRphOtYiCe9senoTkfYSvFCbUpF1VY3iCxQZmM4AGtHhVUD7es5Pj5VhLzpQ05VwDO1LFg-K5WF-s0zFsnv8onUNDmVuPdJbAzXo9p9eSCc4XsaOy1c1Cg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh454837(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="Chrome ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh454837(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="RBhR9t3lfTFLXaH3nYiq1FvYFC8PZCzAUAqgLPjlg82NdNf4VD779OqUqa2XXxH3pJFGkLUygbuQ6uDGqU-pF1PflPhusV-XjRimYgFmmR6PsbeePkZohcrjr26T13UzVMTj0A2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh454837(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5feea70b-66f5-427d-b63a-7bc61ba4ef9b\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+</html>

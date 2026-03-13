@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff540174(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:37:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff540174(v%3dvs.85).html" />
+        <title>How to Access a USB Device by Using WinUSB Functions (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff540174(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540174(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540174(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540174(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93B-8:58:25 AM" />
+
+<meta name="Search.ShortId" content="ff540174" />
+
+<meta name="ms.shortidmsdn" content="ff540174" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined4208.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395071905&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff540174%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn303342(v%3dvs.85).html" id="hh948125_VS.85_en-us" mtpsaliasid="" mtpsassetid="B3F1A1A6-0908-4144-8454-76A2FB70619B_VS.85_en-us" mtpsshortid="dn303342_VS.85_en-us" title="Developing Windows applications for USB devices">Developing Windows applications for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn376885(v%3dvs.85).html" id="dn376892_VS.85_en-us" mtpsaliasid="" mtpsassetid="CECFF842-73BD-4FB2-9FC5-E531D10E74EC_VS.85_en-us" mtpsshortid="dn376885_VS.85_en-us" title="Windows desktop app for a USB device">Windows desktop app for a USB device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn376872(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Write a Windows desktop app based on the WinUSB template">Write a Windows desktop app based on the WinUSB template</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff540174(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to Access a USB Device by Using WinUSB Functions">How to Access a USB Device by Using WinUSB Functions</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn376866(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Send USB isochronous transfers from a WinUSB desktop app">Send USB isochronous transfers from a WinUSB desktop app</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff728833(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Functions for Pipe Policy Modification">WinUSB Functions for Pipe Policy Modification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff728834(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Power Management">WinUSB Power Management</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to Access a USB Device by Using WinUSB Functions</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Summary</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>Opening the device and obtaining WinUSB handle.</li>
+<li>Getting information about the device, configuration, and interface settings of all interfaces,, and their endpoints.</li>
+<li>Reading and writing data to bulk and interrupt endpoints.</li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#pre">Prerequisites</a></li>
+<li><a href="#setup">Step 1: Create a skeleton app based on the WinUSB template</a></li>
+<li><a href="#query">Step 2: Query the Device for USB Descriptors</a></li>
+<li><a href="#control">Step 3: Send Control Transfer to the Default Endpoint</a></li>
+<li><a href="#IO">Step 4: Issue I/O Requests</a></li>
+<li><a href="#step_5__release_the_device_handles">Step 5: Release the Device Handles</a></li>
+<li><a href="#step_6__implement_main">Step 6: Implement Main</a></li>
+<li><a href="#next_steps">Next steps</a></li>
+<li><a href="#related_topics">Related topics</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Important APIs</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>
+<a href="ff550855(v%3dvs.85).html">SetupAPI Functions</a>
+</li>
+<li><a href="ff540046(v%3dvs.85).html#winusb">WinUSB Functions</a></li>
+</ul>
+
+</div>
+</div>
+<p>This topic includes a detailed walkthrough of how to use <a href="ff540046(v%3dvs.85).html#winusb">WinUSB Functions</a> to communicate with a USB device that is using Winusb.sys as its function driver. </p><p>If you are using Microsoft Visual Studio 2013, create your skeleton app by using the WinUSB template. In that case, skip steps 1 through 3 and proceed from step 4 in this topic. The template opens a file handle to the device and obtains the WinUSB handle required for subsequent operations. That handle is stored in the app-defined DEVICE_DATA structure in device.h.</p>
+<p>For more information about the template, see Write a Windows desktop app based on the WinUSB template. </p>
+
+<p><strong>Note</strong>  WinUSB functions require Windows XP or later. You can use these functions in your C/C++ application to communicate with your USB device. Microsoft does not provide a managed API for WinUSB.</p>
+<p></p>
+<h2><a id="pre"></a><a id="PRE"></a>Prerequisites</h2>
+<p>The following items apply to this walkthrough:</p>
+<ul>
+<li>This information applies to Windows 8.1, Windows 8, Windows 7,
+	Windows Server 2008, Windows Vista, and
+	Windows XP
+versions of Windows.</li>
+<li>You have installed Winusb.sys as the device's function driver. For more information about this process, see <a href="ff540283(v%3dvs.85).html">WinUSB (Winusb.sys) Installation</a>.</li>
+<li>The examples in this topic are based on the <a href="http://www.osronline.com/">OSR USB FX2 Learning Kit device</a>. You can use these examples to extend the procedures to other USB devices. </li>
+</ul>
+<h2><a id="setup"></a><a id="SETUP"></a>Step 1: Create a skeleton app based on the WinUSB template</h2>
+<p>To access a USB device, start by creating a skeleton app based on the WinUSB template included in the integrated environment of Windows Driver Kit (WDK) (with  Debugging Tools for Windows) and  Microsoft Visual Studio.You can use the template as a starting point. </p>
+<p>For information about the template code, how to create, build, deploy, and debug the skeleton app, see <a href="dn376872(v%3dvs.85).html">Write a Windows desktop app based on the WinUSB template</a>.</p>
+<p>The template enumerates devices by using <a href="ff550855(v%3dvs.85).html">SetupAPI</a> routines, opens a file handle for the device, and creates a WinUSB interface handle required for subsequent tasks. 
+For example code that gets the device handle and opens the device, see  <a href="dn376872(v%3dvs.85).html#code">Template code discussion</a>. </p>
+<h2><a id="query"></a><a id="QUERY"></a>Step 2: Query the Device for USB Descriptors</h2>
+<p>Next, query the device for USB-specific information such as device speed, interface descriptors, related endpoints, and their pipes. The procedure is similar to the one that USB device drivers use. However, the application completes device queries by calling <a href="ff540257(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_GetDescriptor</strong></a>.</p>
+<p>The following list shows the WinUSB functions that you can call to get USB-specific information:</p>
+<ul>
+<li>Additional device information.<p>Call <a href="ff540290(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_QueryDeviceInformation</strong></a> to request information from the device descriptors for the device. To get the device's speed, set DEVICE_SPEED (0x01) in the <em>InformationType</em> parameter. The function returns LowSpeed (0x01) or HighSpeed (0x03).
+</p>
+</li>
+<li>Interface descriptors<p>Call <a href="ff540292(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_QueryInterfaceSettings</strong></a> and pass the device's interface handles to obtain the corresponding interface descriptors. The WinUSB interface handle corresponds to the first interface. Some USB devices, such as the OSR Fx2 device, support only one interface without any alternative setting. Therefore, for these devices the  <em>AlternateSettingNumber</em> parameter is set to zero and the function is called only one time. <strong>WinUsb_QueryInterfaceSettings</strong> fills the  caller-allocated <a href="ff540065(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">USB_INTERFACE_DESCRIPTOR</strong></a> structure (passed in the  <em>UsbAltInterfaceDescriptor</em> parameter) with information about the interface. For example, the number of endpoints in the interface is set in the <strong>bNumEndpoints</strong> member  of <strong>USB_INTERFACE_DESCRIPTOR</strong>.
+</p>
+<p>For devices that support multiple interfaces, call <a href="ff540245(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_GetAssociatedInterface</strong></a> to obtain interface handles for associated interfaces by specifying the alternative settings in the <em>AssociatedInterfaceIndex</em> parameter.
+</p>
+</li>
+<li>Endpoints<p>Call <a href="ff540293(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_QueryPipe</strong></a> to obtain information about each endpoint on each interface. <strong>WinUsb_QueryPipe</strong> populates the caller-allocated <a href="ff540285(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WINUSB_PIPE_INFORMATION</strong></a> structure with information about the specified endpoint's pipe. The endpoints' pipes are identified by a zero-based index, and must be less than the value in the <strong>bNumEndpoints</strong> member of the interface descriptor that is retrieved in the previous call to <a href="ff540292(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_QueryInterfaceSettings</strong></a>.
+The OSR Fx2 device has one interface that has three endpoints. For this device, the function's <em>AlternateInterfaceNumber</em> parameter is set to 0, and the value of the <em>PipeIndex</em> parameter varies from 0 to 2.</p>
+<p> To determine the pipe type, examine the <a href="ff540285(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WINUSB_PIPE_INFORMATION</strong></a> structure's <strong>PipeInfo</strong> member. This member is set to one of the <a href="ff539119(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_TYPE</strong></a> enumeration values: UsbdPipeTypeControl, UsbdPipeTypeIsochronous, UsbdPipeTypeBulk, or UsbdPipeTypeInterrupt.
+The OSR USB FX2 device supports an interrupt pipe, a bulk-in pipe, and a bulk-out pipe, so <strong>PipeInfo</strong> is set to either UsbdPipeTypeInterrupt or UsbdPipeTypeBulk.
+The UsbdPipeTypeBulk value identifies bulk pipes, but does not provide the pipe's direction. The direction information is encoded in the high bit of the pipe address, which is stored in the <strong>WINUSB_PIPE_INFORMATION</strong> structure's <strong>PipeId</strong> member. The simplest way to determine the direction of the pipe is to pass the <strong>PipeId</strong> value to one of the following macros from Usb100.h:</p><ul>
+<li>The <code>USB_ENDPOINT_DIRECTION_IN (PipeId)</code> macro returns <strong>TRUE</strong> if the direction is in.</li>
+<li>The <code>USB_ENDPOINT_DIRECTION_OUT(PipeId)</code> macro returns <strong>TRUE</strong> if the direction is out.</li>
+</ul>
+The application uses the <strong>PipeId</strong> value to identify which pipe to use for data transfer in calls to WinUSB functions, such as <a href="ff540297(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ReadPipe</strong></a> (described in the "Issue I/O Requests" section of this topic), so the example stores all three <strong>PipeId</strong> values for later use.
+</li>
+</ul>
+<p>The following example code gets the speed of the device that is specified by the WinUSB interface handle. </p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_9cc773e3-cbd2-49a9-a282-147ea401d4aa');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9cc773e3-cbd2-49a9-a282-147ea401d4aa" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+BOOL GetUSBDeviceSpeed(WINUSB_INTERFACE_HANDLE hDeviceHandle, UCHAR* pDeviceSpeed)
+{
+    <span style="color:Blue;">if</span> (!pDeviceSpeed || hDeviceHandle==INVALID_HANDLE_VALUE)
+    {
+        <span style="color:Blue;">return</span> FALSE;
+    }
+
+    BOOL bResult = TRUE;
+
+    ULONG length = <span style="color:Blue;">sizeof</span>(UCHAR);
+
+    bResult = WinUsb_QueryDeviceInformation(hDeviceHandle, DEVICE_SPEED, &amp;length, pDeviceSpeed);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        printf(<span style="color:#A31515;">"Error getting device speed: %d.\n"</span>, GetLastError());
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    <span style="color:Blue;">if</span>(*pDeviceSpeed == LowSpeed)
+    {
+        printf(<span style="color:#A31515;">"Device speed: %d (Low speed).\n"</span>, *pDeviceSpeed);
+        <span style="color:Blue;">goto</span> done;
+    }
+    <span style="color:Blue;">if</span>(*pDeviceSpeed == FullSpeed)
+    {
+        printf(<span style="color:#A31515;">"Device speed: %d (Full speed).\n"</span>, *pDeviceSpeed);
+        <span style="color:Blue;">goto</span> done;
+    }
+    <span style="color:Blue;">if</span>(*pDeviceSpeed == HighSpeed)
+    {
+        printf(<span style="color:#A31515;">"Device speed: %d (High speed).\n"</span>, *pDeviceSpeed);
+        <span style="color:Blue;">goto</span> done;
+    }
+
+done:
+    <span style="color:Blue;">return</span> bResult;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following example code queries the various descriptors for the USB device that is specified by the WinUSB interface handle. The example function retrieves the types of supported endpoints and their pipe identifiers. The example stores all three PipeId values for later use. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_75a364fa-9bfa-4c7d-aa94-68b1727195d4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_75a364fa-9bfa-4c7d-aa94-68b1727195d4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">struct</span> PIPE_ID
+{
+    UCHAR  PipeInId;
+    UCHAR  PipeOutId;
+};
+
+BOOL QueryDeviceEndpoints (WINUSB_INTERFACE_HANDLE hDeviceHandle, PIPE_ID* pipeid)
+{
+    <span style="color:Blue;">if</span> (hDeviceHandle==INVALID_HANDLE_VALUE)
+    {
+        <span style="color:Blue;">return</span> FALSE;
+    }
+
+    BOOL bResult = TRUE;
+
+    USB_INTERFACE_DESCRIPTOR InterfaceDescriptor;
+    ZeroMemory(&amp;InterfaceDescriptor, <span style="color:Blue;">sizeof</span>(USB_INTERFACE_DESCRIPTOR));
+
+    WINUSB_PIPE_INFORMATION  Pipe;
+    ZeroMemory(&amp;Pipe, <span style="color:Blue;">sizeof</span>(WINUSB_PIPE_INFORMATION));
+
+    
+    bResult = WinUsb_QueryInterfaceSettings(hDeviceHandle, 0, &amp;InterfaceDescriptor);
+
+    <span style="color:Blue;">if</span> (bResult)
+    {
+        <span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> index = 0; index &lt; InterfaceDescriptor.bNumEndpoints; index++)
+        {
+            bResult = WinUsb_QueryPipe(hDeviceHandle, 0, index, &amp;Pipe);
+
+            <span style="color:Blue;">if</span> (bResult)
+            {
+                <span style="color:Blue;">if</span> (Pipe.PipeType == UsbdPipeTypeControl)
+                {
+                    printf(<span style="color:#A31515;">"Endpoint index: %d Pipe type: Control Pipe ID: %d.\n"</span>, index, Pipe.PipeType, Pipe.PipeId);
+                }
+                <span style="color:Blue;">if</span> (Pipe.PipeType == UsbdPipeTypeIsochronous)
+                {
+                    printf(<span style="color:#A31515;">"Endpoint index: %d Pipe type: Isochronous Pipe ID: %d.\n"</span>, index, Pipe.PipeType, Pipe.PipeId);
+                }
+                <span style="color:Blue;">if</span> (Pipe.PipeType == UsbdPipeTypeBulk)
+                {
+                    <span style="color:Blue;">if</span> (USB_ENDPOINT_DIRECTION_IN(Pipe.PipeId))
+                    {
+                        printf(<span style="color:#A31515;">"Endpoint index: %d Pipe type: Bulk Pipe ID: %c.\n"</span>, index, Pipe.PipeType, Pipe.PipeId);
+                        pipeid-&gt;PipeInId = Pipe.PipeId;
+                    }
+                    <span style="color:Blue;">if</span> (USB_ENDPOINT_DIRECTION_OUT(Pipe.PipeId))
+                    {
+                        printf(<span style="color:#A31515;">"Endpoint index: %d Pipe type: Bulk Pipe ID: %c.\n"</span>, index, Pipe.PipeType, Pipe.PipeId);
+                        pipeid-&gt;PipeOutId = Pipe.PipeId;
+                    }
+
+                }
+                <span style="color:Blue;">if</span> (Pipe.PipeType == UsbdPipeTypeInterrupt)
+                {
+                    printf(<span style="color:#A31515;">"Endpoint index: %d Pipe type: Interrupt Pipe ID: %d.\n"</span>, index, Pipe.PipeType, Pipe.PipeId);
+                }
+            }
+            <span style="color:Blue;">else</span>
+            {
+                <span style="color:Blue;">continue</span>;
+            }
+        }
+    }
+
+done:
+    <span style="color:Blue;">return</span> bResult;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="control"></a><a id="CONTROL"></a>Step 3: Send Control Transfer to the Default Endpoint</h2>
+<p>Next, communicate with the device by issuing control request to the default endpoint. </p>
+<p>All USB devices have a default endpoint in addition to the endpoints that are associated with interfaces. The primary purpose of the default endpoint is to provide the host with information that it can use to configure the device. However, devices can also use the default endpoint for device-specific purposes. For example, the OSR USB FX2 device uses the default endpoint to control the light bar and seven-segment digital display.</p>
+<p>Control commands consist of an 8-byte setup packet, which includes a request code that specifies the particular request, and an optional data buffer. The request codes and buffer formats are vendor defined. In this example, the application sends data to the device to control the light bar. The code to set the light bar is 0xD8, which is defined for convenience as SET_BARGRAPH_DISPLAY. For this request, the device requires a 1-byte data buffer that specifies which elements should be lit by setting the appropriate bits. </p>
+<p>The application can set this through the user interface (UI), such as by providing a set of eight check box controls to specify which elements of the light bar should be lit. The specified elements correspond to the appropriate bits in the buffer.
+To avoid UI code, the example code in this section sets the bits so that alternate lights get lit up.</p>
+<p>
+</p><p class="proch"><img id="wedge" alt="Ff540174.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Ff540174.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>Use the following steps to issue a control request.</strong></p>
+<ol>
+<li>Allocate a 1-byte data buffer and load the data into the buffer that specifies the elements that should be lit by setting the appropriate bits. </li>
+<li>Construct a setup packet in a caller-allocated <a href="ff540313(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WINUSB_SETUP_PACKET</strong></a> structure. Initialize the members to represent the request type and data as follows:<ul>
+<li>The <strong>RequestType</strong> member specifies request direction. It is set to 0, which indicates host-to-device data transfer. For device-to-host transfers, set RequestType to 1.</li>
+<li>The <strong>Request</strong> member is set to the vendor-defined code for this request, 0xD8. It is defined for convenience as SET_BARGRAPH_DISPLAY.</li>
+<li>The <strong>Length</strong> member is set to the size of the data buffer.
+
+</li>
+<li>The <strong>Index</strong> and <strong>Value</strong> members are not required for this request, so they are set to zero.</li>
+</ul>
+</li>
+<li>Call <a href="ff540219(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ControlTransfer</strong></a> to transmit the  request to the default endpoint by passing the device's WinUSB interface handle, the setup packet, and the data buffer. The function receives the number of bytes that were transferred to the device in the <em>LengthTransferred</em> parameter.
+</li>
+</ol>
+
+<p>The following  code example sends a control request to the specified USB device to control the lights on the light bar.</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cdaf4d52-5f90-44fd-b631-74529aa1fdd3');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cdaf4d52-5f90-44fd-b631-74529aa1fdd3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+BOOL SendDatatoDefaultEndpoint(WINUSB_INTERFACE_HANDLE hDeviceHandle)
+{
+    <span style="color:Blue;">if</span> (hDeviceHandle==INVALID_HANDLE_VALUE)
+    {
+        <span style="color:Blue;">return</span> FALSE;
+    }
+
+    BOOL bResult = TRUE;
+
+    
+    UCHAR bars = 0;
+
+    WINUSB_SETUP_PACKET SetupPacket;
+    ZeroMemory(&amp;SetupPacket, <span style="color:Blue;">sizeof</span>(WINUSB_SETUP_PACKET));
+    ULONG cbSent = 0;
+
+    <span style="color:Green;">//Set bits to light alternate bars</span>
+    <span style="color:Blue;">for</span> (<span style="color:Blue;">short</span> i = 0; i &lt; 7; i+= 2)
+    {
+        bars += 1 &lt;&lt; i;
+    }
+
+    <span style="color:Green;">//Create the setup packet</span>
+    SetupPacket.RequestType = 0;
+    SetupPacket.Request = 0xD8;
+    SetupPacket.Value = 0;
+    SetupPacket.Index = 0; 
+    SetupPacket.Length = <span style="color:Blue;">sizeof</span>(UCHAR);
+
+    bResult = WinUsb_ControlTransfer(hDeviceHandle, SetupPacket, &amp;bars, <span style="color:Blue;">sizeof</span>(UCHAR), &amp;cbSent, 0);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    printf(<span style="color:#A31515;">"Data sent: %d \nActual data transferred: %d.\n"</span>, <span style="color:Blue;">sizeof</span>(bars), cbSent);
+
+
+done:
+    <span style="color:Blue;">return</span> bResult;
+
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="IO"></a><a id="io"></a>Step 4: Issue I/O Requests</h2>
+<p>Next, send data to the device's bulk-in and bulk-out endpoints that can be used for read and write requests, respectively. On the OSR USB FX2 device, these two endpoints are configured for loopback, so the device moves data from the bulk-in endpoint to the bulk-out endpoint. It does not change the value of the data or add any new data. For loopback configuration, a read request reads the data that was sent by the most recent write request. WinUSB provides the following functions for sending write and read requests: </p><ul>
+<li>
+<a href="ff540322(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_WritePipe</strong></a>
+</li>
+<li>
+<a href="ff540297(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ReadPipe</strong></a>
+</li>
+</ul>
+<p class="proch"><img id="wedge" alt="Ff540174.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Ff540174.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>To send a write request</strong></p>
+<ol>
+<li>Allocate a buffer and fill it with the data that you want to write to the device. There is no limitation on the buffer size if the application does not set RAW_IO as the pipe's policy type. WinUSB divides the buffer into appropriately sized chunks, if necessary. If RAW_IO is set, the size of the buffer is limited by the maximum transfer size supported by WinUSB. </li>
+<li>Call <a href="ff540322(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_WritePipe</strong></a> to write the buffer to the device. Pass the WinUSB interface handle for the device, the pipe identifier for the bulk-out pipe (as described in the <a href="#query">Query the Device for USB Descriptors</a> section of this topic), and the buffer. The function returns the number of bytes that are actually written to the device in the <em>bytesWritten</em> parameter.
+The <em>Overlapped</em>   parameter is set to <strong>NULL</strong> to request a synchronous operation. To perform an asynchronous write request, set <em>Overlapped</em> to a pointer to an <strong>OVERLAPPED</strong> structure.
+</li>
+</ol>Write requests that contain zero-length data are forwarded down the USB stack. If the transfer length is greater than a maximum transfer length, WinUSB divides the request into smaller requests of maximum transfer length and submits them serially.
+<p>The following  code example allocates a string and sends it  to the bulk-out endpoint of the device.
+</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_2179a99a-544d-44dc-97b7-5a665cf4ea51');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_2179a99a-544d-44dc-97b7-5a665cf4ea51" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+BOOL WriteToBulkEndpoint(WINUSB_INTERFACE_HANDLE hDeviceHandle, UCHAR* pID, ULONG* pcbWritten)
+{
+    <span style="color:Blue;">if</span> (hDeviceHandle==INVALID_HANDLE_VALUE || !pID || !pcbWritten)
+    {
+        <span style="color:Blue;">return</span> FALSE;
+    }
+
+    BOOL bResult = TRUE;
+
+    UCHAR szBuffer[] = <span style="color:#A31515;">"Hello World"</span>;
+    ULONG cbSize = strlen(szBuffer);
+    ULONG cbSent = 0;
+
+    bResult = WinUsb_WritePipe(hDeviceHandle, *pID, szBuffer, cbSize, &amp;cbSent, 0);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    printf(<span style="color:#A31515;">"Wrote to pipe %d: %s \nActual data transferred: %d.\n"</span>, *pID, szBuffer, cbSent);
+    *pcbWritten = cbSent;
+
+
+done:
+    <span style="color:Blue;">return</span> bResult;
+
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>
+</p><p class="proch"><img id="wedge" alt="Ff540174.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Ff540174.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>To send a read request</strong></p>
+<ul>
+<li>Call <a href="ff540297(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ReadPipe</strong></a> to read data from the bulk-in endpoint of the device. Pass the WinUSB interface handle of the device, the pipe identifier for the bulk-in endpoint, and an appropriately sized empty buffer. When the function returns, the buffer contains the data that was read from the device. The number of bytes that were read is returned in the function's <em>bytesRead</em> parameter. For read requests, the buffer must be a multiple of the maximum packet size.
+</li>
+</ul>Zero-length read requests complete immediately with success and are not sent down the stack. If the transfer length is greater than a maximum transfer length, WinUSB divides the request into smaller requests of maximum transfer length and submits them serially. If the transfer length is not a multiple of the endpoint's <strong>MaxPacketSize</strong>, WinUSB increases the size of the transfer to the next multiple of MaxPacketSize. If a device returns more data than was requested, WinUSB saves the excess data. If data remains from a previous read request, WinUSB copies it to the beginning of the next read request and completes the request, if necessary.
+<p>The following  code example reads data from the bulk-in endpoint of the device.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5e31c76a-6740-40a0-a14a-b8b4b6301f05');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5e31c76a-6740-40a0-a14a-b8b4b6301f05" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+BOOL ReadFromBulkEndpoint(WINUSB_INTERFACE_HANDLE hDeviceHandle, UCHAR* pID, ULONG cbSize)
+{
+    <span style="color:Blue;">if</span> (hDeviceHandle==INVALID_HANDLE_VALUE)
+    {
+        <span style="color:Blue;">return</span> FALSE;
+    }
+
+    BOOL bResult = TRUE;
+
+    UCHAR* szBuffer = (UCHAR*)LocalAlloc(LPTR, <span style="color:Blue;">sizeof</span>(UCHAR)*cbSize);
+    
+    ULONG cbRead = 0;
+
+    bResult = WinUsb_ReadPipe(hDeviceHandle, *pID, szBuffer, cbSize, &amp;cbRead, 0);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    printf(<span style="color:#A31515;">"Read from pipe %d: %s \nActual data read: %d.\n"</span>, *pID, szBuffer, cbRead);
+
+
+done:
+    LocalFree(szBuffer);
+    <span style="color:Blue;">return</span> bResult;
+
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Step_5__Release_the_Device_Handles"></a><a id="step_5__release_the_device_handles"></a><a id="STEP_5__RELEASE_THE_DEVICE_HANDLES"></a>Step 5: Release the Device Handles</h2>
+<p>After you have completed all the required calls to the device, release the file handle and the WinUSB interface handle for the device. 
+
+For this, call the following functions:</p>
+<ul>
+<li><strong>CloseHandle</strong> to release the handle that was created by <strong>CreateFile</strong>, as described in the step 1.</li>
+<li>
+<a href="ff540233(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Free</strong></a> to release the WinUSB interface handle for the device, which is returned by <a href="ff540277(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Initialize</strong></a>. </li>
+</ul>
+<h2><a id="Step_6__Implement_Main"></a><a id="step_6__implement_main"></a><a id="STEP_6__IMPLEMENT_MAIN"></a>Step 6: Implement Main</h2>
+<p>The following code example shows the main function of your console application.</p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_37f673c3-c622-4ec3-82da-294fe1feda08');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_37f673c3-c622-4ec3-82da-294fe1feda08" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+<span style="color:Blue;">int</span> _tmain(<span style="color:Blue;">int</span> argc, _TCHAR* argv[])
+{
+
+    GUID guidDeviceInterface = OSR_DEVICE_INTERFACE; <span style="color:Green;">//in the INF file</span>
+
+    BOOL bResult = TRUE;
+
+    PIPE_ID PipeID;
+
+    HANDLE hDeviceHandle = INVALID_HANDLE_VALUE;
+    WINUSB_INTERFACE_HANDLE hWinUSBHandle = INVALID_HANDLE_VALUE;
+    
+    UCHAR DeviceSpeed;
+    ULONG cbSize = 0;
+
+    bResult = GetDeviceHandle(guidDeviceInterface, &amp;hDeviceHandle);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = GetWinUSBHandle(hDeviceHandle, &amp;hWinUSBHandle);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = GetUSBDeviceSpeed(hWinUSBHandle, &amp;DeviceSpeed);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = QueryDeviceEndpoints(hWinUSBHandle, &amp;PipeID);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = SendDatatoDefaultEndpoint(hWinUSBHandle);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = WriteToBulkEndpoint(hWinUSBHandle, &amp;PipeID.PipeOutId, &amp;cbSize);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+    bResult = ReadFromBulkEndpoint(hWinUSBHandle, &amp;PipeID.PipeInId, cbSize);
+    <span style="color:Blue;">if</span>(!bResult)
+    {
+        <span style="color:Blue;">goto</span> done;
+    }
+
+
+    system(<span style="color:#A31515;">"PAUSE"</span>);
+
+done:
+    CloseHandle(hDeviceHandle);
+    WinUsb_Free(hWinUSBHandle);
+
+    <span style="color:Blue;">return</span> 0;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Next_steps"></a><a id="next_steps"></a><a id="NEXT_STEPS"></a>Next steps</h2>
+<p>If your device supports isochronous endpoints, you can use <a href="ff540046(v%3dvs.85).html#winusb">WinUSB Functions</a> to send transfers. This feature is only supported in Windows 8.1.</p>
+<p>For more information, see <a href="dn376866(v%3dvs.85).html">Send USB isochronous transfers from a WinUSB desktop app</a>.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff540196(v%3dvs.85).html">WinUSB</a>
+</dt>
+<dt>
+<a href="ff540207(v%3dvs.85).html">WinUSB Architecture and Modules</a>
+</dt>
+<dt>
+<a href="ff540283(v%3dvs.85).html">WinUSB (Winusb.sys) Installation</a>
+</dt>
+<dt>
+<a href="ff728833(v%3dvs.85).html">WinUSB Functions for Pipe Policy Modification</a>
+</dt>
+<dt>
+<a href="ff728834(v%3dvs.85).html">WinUSB Power Management</a>
+</dt>
+<dt><a href="ff540046(v%3dvs.85).html#winusb">WinUSB Functions</a></dt>
+<dt>
+<a href="dn376872(v%3dvs.85).html">Write a Windows desktop app based on the WinUSB template</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to Access a USB Device by Using WinUSB Functions%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="sd-DYDOcj7wrydZnjq4V7Pe8LsB76oC8JkLWN9Xq__W2otUEOUXvMaIZtBTi3yVSW2hQ-0IldGKgBZosDGOoX4SRNEJwQ_u9i5pPhlkCJVi1EV6YOOP_fNuVE5ev6UJhlLfV7w2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff540174(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="FF ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff540174(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="zm1iPg-tC22qA_QK5W9mEPMX0WZm6Fbi1lqA2-xC6qhKPgbAAIAF8Wj8t32xfLyv17CbGsfUeXHRWU2_yZHfDOaUbKAheUxAFOzuou4zB1uFSTtmCGR5QVE1THdlfhoYXiOpVA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff540174(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"342c78e7-4ad5-42d0-b1ee-9fe9bf7f791e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff540174(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:37:08 GMT -->
+</html>

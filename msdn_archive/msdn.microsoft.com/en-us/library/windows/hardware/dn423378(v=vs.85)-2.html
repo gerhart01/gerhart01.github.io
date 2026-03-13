@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn423378(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423378(v=vs.85).aspx" />
+        <title>USB ContainerIDs in Windows (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn423378(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423378(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423378(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423378(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA938-9:47:24 AM" />
+
+<meta name="Search.ShortId" content="dn423378" />
+
+<meta name="ms.shortidmsdn" content="dn423378" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074844&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn423378%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557557(v=vs.85).aspx" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557547(v=vs.85).aspx" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff538930(v=vs.85).aspx" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn385698(v=vs.85).aspx" id="hh968310_VS.85_en-us" mtpsaliasid="" mtpsassetid="6592268C-D843-41A3-B6ED-CE56C7894D8F_VS.85_en-us" mtpsshortid="dn385698_VS.85_en-us" title="Building USB devices for Windows">Building USB devices for Windows</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537430(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Microsoft OS Descriptors for USB Devices">Microsoft OS Descriptors for USB Devices</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423378(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB ContainerIDs in Windows">USB ContainerIDs in Windows</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn379336(v=vs.85).aspx" id="hh968312_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Link Power Management in USB 3.0 Hardware">Link Power Management in USB 3.0 Hardware</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff537061(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Configuring USB Devices that Require Firmware Downloads">Configuring USB Devices that Require Firmware Downloads</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">USB ContainerIDs in Windows</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#how_a_usb_containerid_is_generated">How a USB ContainerID Is Generated</a></li>
+<li><a href="#usb_containerid_contents">USB ContainerID Contents</a></li>
+<li><a href="#usb_containerid_syntax">USB ContainerID Syntax</a></li>
+<li><a href="#microsoft_os_descriptor_changes">Microsoft OS Descriptor Changes</a></li>
+<li><a href="#container_view_of_a_usb_multifunction_device">Container View of a USB Multifunction Device</a></li>
+<li><a href="#usb_containerid_hck_requirements">USB ContainerID HCK Requirements</a></li>
+</ul>
+
+</div>
+</div>
+<p>This paper provides information about USB <strong>ContainerID</strong>s for the Windows operating system. It includes guidelines for device manufacturers to program their multifunction USB devices so that they can be correctly detected by Windows.</p>
+<p>Starting in Windows 7, users can take advantage of all the capabilities of the devices that are connected to their computers. This includes multifunction devices, such as a combination printer, scanner, and copier device. Windows 7 includes support for consolidating all the functionality of a single physical device into a device container. A device container is a virtual representation of the physical device. This consolidation is achieved by assigning a <strong>ContainerID</strong> property to each device function that is enumerated for the physical device. By assigning the same <strong>ContainerID</strong> value to each device function, Windows 7 recognizes that all device functions belong to the same physical device.
+</p>
+<p>All types of devices that connect to a computer through different bus types can support device containers. However, not all bus types use the same mechanism for generating a <strong>ContainerID</strong>. For USB devices, device vendors can use a <strong>ContainerID</strong> descriptor to describe the <strong>ContainerID</strong> for a physical device. A <strong>ContainerID</strong> descriptor is a Microsoft OS feature descriptor that can be stored in the USB device's firmware. USB device manufacturers must correctly implement these <strong>ContainerID</strong> descriptors in their devices to take advantage of the new device capabilities that are available in Windows 7. USB device manufacturers need to implement only a single <strong>ContainerID</strong> for each physical device, regardless of how many device functions are supported by the device.
+</p>
+<p>For more information about consolidating all the functionality of a single device into a device container, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463141.aspx">Multifunction Device Support and Device Container Groupings</a>.
+</p>
+<p>For more information about Microsoft OS descriptors for USB devices, see <a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff537430(v=vs.85).aspx">Microsoft OS Descriptors for USB Devices</a>.
+</p>
+<p></p>
+<h2><a id="How_a_USB_ContainerID_Is_Generated"></a><a id="how_a_usb_containerid_is_generated"></a><a id="HOW_A_USB_CONTAINERID_IS_GENERATED"></a>How a USB ContainerID Is Generated</h2>
+<p>The following are two ways to generate a <strong>ContainerID</strong> for a USB device:</p>
+<ul>
+<li>The manufacturer of the USB device specifies the <strong>ContainerID</strong> in the device's firmware by using a Microsoft OS <strong>ContainerID</strong> descriptor.
+</li>
+<li>The Microsoft USB hub driver automatically creates a <strong>ContainerID</strong> for the device from the combination of the device's product ID (PID), vendor ID (VID), revision number, and serial number. In this situation, the Microsoft USB hub driver creates a <strong>ContainerID</strong> with minimal functionality. This method applies only to devices that have a unique serial number.
+</li>
+</ul>
+<h2><a id="USB_ContainerID_Contents"></a><a id="usb_containerid_contents"></a><a id="USB_CONTAINERID_CONTENTS"></a>USB ContainerID Contents</h2>
+<p>A USB <strong>ContainerID</strong> is presented to the operating system in the form of a universally unique identifier (UUID) string. The <strong>ContainerID</strong> UUID is contained within a <strong>ContainerID</strong> descriptor. A <strong>ContainerID</strong> descriptor is a device-level Microsoft OS feature descriptor. As such, when the operating system requests a USB <strong>ContainerID</strong>, the wValue field of the descriptor request must always be set to zero. For more information about Microsoft OS feature descriptors and descriptor requests, see <a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463179">Microsoft OS 1.0 Descriptors Specification</a>.</p>
+<p>A <strong>ContainerID</strong> descriptor consists of a header section.</p><table>
+<tr><th>Offset</th><th>Field</th><th>Size</th><th>Type</th><th>Description</th></tr>
+<tr><td>0</td><td><strong>dwLength</strong></td><td>4</td><td>Unsigned DWord</td><td>The length, in bytes, of the entire <strong>ContainerID</strong> descriptor. This field must always be set to a value of 0x18.</td></tr>
+<tr><td>4</td><td><strong>bcdVersion</strong></td><td>2</td><td>BCD</td><td>The version number of the <strong>ContainerID</strong> descriptor, in binary coded decimal (BCD), where each nibble corresponds to a digit. The most-significant byte (MSB) contains the two digits before the decimal point, and the least-significant byte (LSB) contains the two digits after the decimal point. For example, version 1.00 is represented as 0x0100. This field must always be set to 0x0100.</td></tr>
+<tr><td>6</td><td><strong>wIndex</strong></td><td>2</td><td>Word</td><td>This field is always set to 6 for USB <strong>ContainerID</strong> descriptors.</td></tr>
+</table>
+<p> </p>
+
+<p>A <strong>ContainerID</strong> descriptor consists of a ContainerID section. </p>
+<p>
+</p><table>
+<tr><th>Offset</th><th>Field</th><th>Size</th><th>Type</th><th>Description</th></tr>
+<tr><td>0</td><td><strong>bContainerID</strong></td><td>16</td><td>Unsigned DWord</td><td><strong>ContainerID</strong> data. </td></tr>
+</table>
+<p> </p>Device manufacturers are responsible for ensuring that each instance of a device has a universally unique 16-byte value for the <strong>ContainerID</strong>. Also, a device must report the same <strong>ContainerID</strong> value each time it is powered on.
+
+<p>There are several established algorithms for generating UUIDs with almost zero chance of duplication. Device manufacturers can select the UUID generation algorithm that best suits their needs. It does not matter which UUID generation algorithm is used as long as the result is unique.
+</p>
+<h2><a id="USB_ContainerID_Syntax"></a><a id="usb_containerid_syntax"></a><a id="USB_CONTAINERID_SYNTAX"></a>USB ContainerID Syntax</h2>
+<p>A <strong>ContainerID</strong> is reported in the standard UUID string format of {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}. The following is an example representation in firmware for a 0C B4 A7 2C D1 7B 25 4F B5 73 A1 3A 97 5D DC 07 USB <strong>ContainerID</strong>, which is formatted as a {2CA7B40C-7BD1-4F25-B573-A13A975DDC07} UUID string.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1c016d3e-f40e-44c1-8191-1f7dd63ba484');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1c016d3e-f40e-44c1-8191-1f7dd63ba484" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+UCHAR Example&lt;mark type="member"&gt;ContainerID&lt;/mark&gt;Descriptor[24] =
+{
+    0x18, 0x00, 0x00, 0x00,     // dwLength - 24 bytes
+    0x00, 0x01,                 // bcdVersion - 1.00
+    0x06, 0x00,                 // wIndex – 6 for a &lt;mark type="member"&gt;ContainerID&lt;/mark&gt;
+
+    0x0C, 0xB4, 0xA7, 0x2C,     // b&lt;mark type="member"&gt;ContainerID&lt;/mark&gt; -
+    0xD1, 0x7B, 0x25, 0x4F,     // {2CA7B40C-7BD1-4F25-B573-A13A975DDC07}
+    0xB5, 0x73, 0xA1, 0x3A,     // 0C B4 A7 2C D1 7B 25 4F B5 73 A1 3A 97 5D DC 07
+    0x97, 0x5D, 0xDC, 0x07      //
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Note the change in the byte order of the first 8 bytes when it is formatted as a UUID string.</p>
+<h2><a id="Microsoft_OS_Descriptor_Changes"></a><a id="microsoft_os_descriptor_changes"></a><a id="MICROSOFT_OS_DESCRIPTOR_CHANGES"></a>Microsoft OS Descriptor Changes</h2>
+<p>To preserve legacy <strong>ContainerID</strong> functionality, a new flags field has been added to the Microsoft OS string descriptor that can be used to indicate support for the <strong>ContainerID</strong> descriptor.</p>
+<p>
+The current definition of the Microsoft OS string descriptor includes a 1-byte pad field, <strong>bPad</strong>, at the end of the descriptor that is normally set to zero. For USB devices that support the new <strong>ContainerID</strong>, the <strong>bPad</strong> field is redefined as a flags field, <strong>bFlags</strong>. Bit 1 of this field is used to indicate support for the <strong>ContainerID</strong> descriptor. Table 3 describes the fields of the Microsoft OS string descriptor for USB devices.
+</p>
+<p>
+</p><table>
+<tr><th>Field</th><th>Length (bytes)</th><th>Value</th><th>Description</th></tr>
+<tr><td><strong>bLength</strong></td><td>1</td><td>0x12</td><td>Length of the descriptor.</td></tr>
+<tr><td><strong>bDescriptorType</strong></td><td>1</td><td>0x03</td><td>Descriptor type. A value of 0x03 indicates a Microsoft OS string descriptor.</td></tr>
+<tr><td><strong>qwSignature</strong></td><td>14	</td><td>‘MSFT100’</td><td>Signature field.</td></tr>
+<tr><td><strong>bMS_VendorCode</strong></td><td>1</td><td>Vendor Code</td><td>Vendor code.</td></tr>
+<tr><td><strong>bFlags</strong></td><td>1</td><td>0x02</td><td>
+<p>Bit 0: Reserved
+</p>
+<p>Bit 1: <strong>ContainerID</strong> Support
+    </p><ul>
+<li>0: Does not support <strong>ContainerID</strong></li>
+<li>1: Supports <strong>ContainerID</strong></li>
+</ul>
+
+<p>Bits 2–7: Reserved
+</p>
+</td></tr>
+</table>
+<p> </p>Currently shipping USB devices that support the Microsoft OS descriptor but do not support the <strong>ContainerID</strong> descriptor have the <strong>bPad</strong> field set to 0x00. The USB hub driver does not query such devices for the USB <strong>ContainerID</strong> descriptor.
+<h2><a id="Container_View_of_a_USB_Multifunction_Device"></a><a id="container_view_of_a_usb_multifunction_device"></a><a id="CONTAINER_VIEW_OF_A_USB_MULTIFUNCTION_DEVICE"></a>Container View of a USB Multifunction Device</h2>
+<p>The <strong>ContainerID</strong> provides information to consolidate devices for multifunction USB devices. Figure 1 shows an example of how all devices in a multifunction printer are consolidated into a single device container when all individual devices within the product use the same <strong>ContainerID</strong>.
+ 
+</p>
+<p><img id="ContainerID_multifunction" alt="Consolidation of all devices in a multifunction printer" src="http://i.msdn.microsoft.com/dynimg/IC675746.png" title="Consolidation of all devices in a multifunction printer" xmlns="" /></p>
+<p>By consolidating all devices for a multifunction USB device, the physical product can be shown as a single device in Devices and Printers in Windows 7. Figure 2 shows an example of a USB multifunction keyboard and mouse device that appears as a single device in Devices and Printers.
+ 
+</p>
+<p><img id="ContainerID_multifunction1" alt="multifunction device in Devices and Printers" src="http://i.msdn.microsoft.com/dynimg/IC675747.png" title="multifunction device in Devices and Printers" xmlns="" /></p>
+<h2><a id="USB_ContainerID_HCK_Requirements"></a><a id="usb_containerid_hck_requirements"></a><a id="USB_CONTAINERID_HCK_REQUIREMENTS"></a>USB ContainerID HCK Requirements</h2>
+<p>Device manufacturers must ensure that each instance of a device that they produce has a globally unique <strong>ContainerID</strong> value so that Windows can successfully consolidate the functionality of each USB multifunction device. The Windows Hardware CertificationWindows Hardware Certification Kit includes a requirement, DEVFUND-0034, for a USB <strong>ContainerID</strong> if it is implemented in a device. If a device implements a USB <strong>ContainerID</strong>, the Windows Hardware Certification tests the <strong>ContainerID</strong> as part of the Microsoft OS Descriptor tests and checks whether the <strong>ContainerID</strong> value is globally unique.
+For more details on these Windows Hardware Certification requirements, see the Windows Hardware Certification Web site.
+</p>
+<p>Recommendations for Implementing a USB <strong>ContainerID</strong>
+The following are recommendations for device vendors that design, manufacture, and ship USB devices:</p><ul>
+<li>Learn how Windows 7 improves the support for multifunction and multiple transport USB devices through the use of a <strong>ContainerID</strong>. We recommend that you start by reading “Multifunction Device Support and Device Container Groupings in Windows 7.”
+</li>
+<li>Make sure that the serial number on each USB device is unique. A Windows Hardware Certification requirement states that, if your device includes a serial number, the serial number must be unique for each instance of your device. For more information about the WLK test for USB serial numbers, see ”USB Serial Number” on MSDN®.
+</li>
+<li>Do not provide a <strong>ContainerID</strong> for a USB device that is embedded in a system. Integrated USB devices should rely on ACPI BIOS settings or the USB hub descriptor <strong>DeviceRemovable</strong> bit for the port.
+</li>
+<li>Ensure that all USB devices that are attached to a system have unique <strong>ContainerID</strong> values. Do not share <strong>ContainerID</strong> values or USB serial numbers across your product lines.
+</li>
+<li>Make sure to set the Removable Device Capability correctly for your device.
+
+<p class="note"><strong>Note</strong>  Device vendors that add a USB <strong>ContainerID</strong> descriptor to a previously shipping USB device must increment the device release number (<strong>bcdDevice</strong>) in the device’s device descriptor. This is required because the USB hub driver caches the Microsoft OS string descriptor (or the lack of one) based on a device’s vendor ID, product ID, and device release number. If you do not increment the device release number, the hub driver does not query for the USB <strong>ContainerID</strong> of a new device if it previously enumerated an instance of the device with the same vendor ID, product ID, and device release number that did not support the USB  <strong>ContainerID</strong> descriptor.</p>
+</li>
+</ul>
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/dn385698(v=vs.85).aspx">Building USB devices for Windows</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-US/library/windows/hardware/ff540084(v=vs.85).aspx">Container IDs for USB Devices</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20USB ContainerIDs in Windows%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="voygHk3RUGBOtOFq6BikmcxJoxvopGhkk_XOmeivm-jyEUy_zz_-zjM8E3C8_LKjHTPFlbF_RE9MFaGlplrPi9VbG4spP150QieUdkqyvvehpdTExJzOokAWqZ7XyosVrzvatw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/dn423378(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn423378(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="950s8QLlZKaA4FN-M7rdb2vE40SOhCslNXQhM6RG2pRLc7U03Ye71cL3oldkYI9gqtRFivwnIQHp2rXNecAElS96AyEeh1gmrkRYVQbnk8doNl4MtUvmHf1VYkhhGHRAefySUA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn423378(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"04104d64-60ed-45f3-b10b-da8e546d2207\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn423378(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+</html>

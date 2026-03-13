@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh406225(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:56:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="hh406225(v%3dvs.85).html" />
+        <title>How to transfer data to USB isochronous endpoints (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh406225(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406225(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406225(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh406225(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD0-9:01:54 AM" />
+
+<meta name="Search.ShortId" content="hh406225" />
+
+<meta name="ms.shortidmsdn" content="hh406225" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072114&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh406225%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh406260(v%3dvs.85).html" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff539286(v%3dvs.85).html" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968308(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539199(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450846(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="hh406225(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450848(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968307(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff539193(v%3dvs.85).html" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to transfer data to USB isochronous endpoints</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic describes how a client driver can build a USB Request Block (URB) to transfer data to and from isochronous endpoints in a USB device.</p>
+<p>A Universal Serial Bus (USB) device can support isochronous endpoints to transfer time-dependent data at a steady rate, such as with audio/video streaming. To transfer data, the client driver issues a request to read or write data to an isochronous endpoint. As a result, the host controller initiates an isochronous transfer that sends or receives data by polling the device at regular intervals.
+</p>
+<p>For high speed and full speed devices, the polling is done by using (IN/OUT) token packets. When the endpoint is ready to send data, the device responds to one of the IN token packets by sending data. To write to the device, the host controller sends an OUT token packet followed by data packets. The host controller or device does not send any handshake packets, and therefore, there is no guaranteed delivery. Because the host controller does not attempt to retry the transfer, data might be lost if an error occurs. 
+</p>
+<p>For isochronous transfers the host controller reserves certain periods of time on the bus. To manage the reserved time for isochronous endpoints, the time is divided into consecutive logical chucks are called <em>bus intervals</em>. The unit of bus interval depends on the bus speed. </p>
+<p>For full speed, a bus interval is a <em>frame</em>. The length of a frame is 1 millisecond.</p>
+<p>For high speed and SuperSpeed, the bus interval is a microframe. The length of a microframe is 125 microseconds. Eight consecutive microframes constitute one high-speed or SuperSpeed frame.</p>
+<p>Isochronous transfers are packet based. The term <em>isochronous packet</em> in this topic refers to the amount of data that is transferred in one bus interval. The characteristics of the endpoint determine the size of each packet is fixed and determined by the characteristics of the endpoint.</p>
+<p>The client driver starts an isochronous transfer by creating an URB for the request and submitting the URB to the USB driver stack. The request is handled by one of the lower drivers in the USB driver stack. Upon receiving the URB, the USB driver stack performs a set of validations and schedules transactions for the request. For full speed, an isochronous packet to be transferred in each bus interval is contained in a single transaction on the wire. Certain high-speed devices permit multiple transactions in a bus interval. In that case, the client driver can send or receive more data in the isochronous packet in a single request (URB). SuperSpeed devices support multiple transactions and burst transfers, allowing even more bytes per bus interval. For more information about burst transfers, see USB 3.0 specification page 9-42.</p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>Before you create a request for an isochronous transfer, you must have information about the pipe that is opened for the isochronous endpoint.</p>
+<p>A client driver that uses Windows Driver Model (WDM) routines has the pipe information in one of the <a href="ff539114(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> structures of a <a href="ff539076(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_INTERFACE_LIST_ENTRY</strong></a> array. The client driver obtained that array in the driver's previous request to select a configuration or an interface in the device.</p>
+<p>A Windows Driver Framework (WDF) client driver must get a reference to the framework's target pipe object and call     <a href="ff551142(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetInformation</strong></a> to obtain pipe information in a <a href="ff553037(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_PIPE_INFORMATION</strong></a> structure.</p>
+<p>Based on the pipe information, determine this set of information:</p>
+<ul>
+<li>How much data can the host controller send to the pipe in each packet. <p>The amount of data that the client driver can send in a request cannot exceed the maximum number of bytes that the host controller can send or receive from an endpoint. The maximum number of bytes is indicated by the <strong>MaximumPacketSize</strong> member of <a href="ff539114(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> and <a href="ff553037(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_PIPE_INFORMATION</strong></a> structures. The USB driver stack sets the <strong>MaximumPacketSize</strong> value the during a select-configuration or select-interface request.</p>
+<p>For full speed devices, <strong>MaximumPacketSize</strong> is derived from the first 11 bits of the <strong>wMaxPacketSize</strong> field of the endpoint descriptor, which indicates the maximum number of bytes that the endpoint can send or receive in a transaction. For full speed devices the controller sends one transaction per bus interval. </p>
+<p>In a high-speed isochronous transfer, the host controller can send additional transactions in a bus interval if the endpoint allows them. The number of additional transactions is set by the device and indicated in bits 12..11 of the <strong>wMaxPacketSize</strong>. That number can be 0, 1, or 2. If 12..11 indicate 0, additional transactions per microframe are not supported by the endpoint. If the number is 1, then the host controller can send an additional transaction (total of two transactions per microframe); 2 indicates two additional transactions (total of three transactions per microframe). The <strong>MaximumPacketSize</strong> value that is set by the USB driver stack includes the number of bytes that can be sent in additional transactions.</p>
+<p>For SuperSpeed isochronous transfer, certain values of USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR (see Usbspec.h) are important. The USB driver stack uses those values to calculate the maximum number of bytes in a bus interval.</p><ul>
+<li><strong>Isochronous.Mult</strong> field of endpoint companion descriptor. In SuperSpeed isochronous transfers, the additional transactions (much like high-speed devices) are referred to as burst transactions. The <strong>Mult</strong> value indicates the maximum number of burst transactions that the endpoint supports. There can be up to three burst transactions (indexed 0 to 2) in a service interval.</li>
+<li><strong>bMaxBurst</strong> field of the endpoint companion descriptor. This value indicates the number of chunks of <strong>wMaxPacketSize</strong> that can be present in a single burst transaction. There can be up to 16 chunks (indexed 0 to 15) in a burst transaction.</li>
+<li><strong>wBytesPerInterval</strong> indicates the total number of bytes that the host can send or receive in a bus interval. Even though the maximum number of bytes per bus interval can be calculated as (<strong>bMaxBurst</strong>+1) * (<strong>Mult</strong>+1) * <strong>wMaxPacketSize</strong>, the USB 3.0 specification recommends using the <strong>wBytesPerInterval</strong> value instead. The <strong>wBytesPerInterval</strong> value must be less than or equal to that calculated value.</li>
+</ul>
+<p class="note"><strong>Important</strong>  For a client driver the values described in the preceding is for information only. The driver must always use the <strong>MaximumPacketSize</strong> value of the endpoint descriptor to determine the layout of the transfer buffer. </p>
+
+</li>
+<li>How often does the endpoint send or receive data.<p>The <strong>Interval</strong> member is used to determine how often the endpoint can send or receive data. The device sets that  value and the client driver cannot changed it. The USB driver stack uses another number to determine the frequency with which it inserts isochronous packets into the data stream: the polling period, which is derived from the <strong>Interval</strong> value.</p>
+<p>For full-speed transmissions, the <strong>Interval</strong> and polling period values are always 1; the USB driver stack ignores other values.</p>
+<p>The following table shows <strong>Interval</strong> and the calculated polling period for high speed and SuperSpeed transfers:</p>
+<table>
+<tr><th>Interval</th><th>Polling period (2Interval-1)</th></tr>
+<tr><td>1</td><td>1; Data is transferred every bus interval.</td></tr>
+<tr><td>2</td><td>2; Data is transferred every second bus interval.</td></tr>
+<tr><td>3</td><td>4; Data is transferred every fourth bus interval.</td></tr>
+<tr><td>4</td><td>8; Data is transferred every eighth bus interval.</td></tr>
+</table>
+<p> </p>
+</li>
+<li>What are the restrictions on the number of packets for each bus speed. <p>In an URB, you can only send up to 255 isochronous packets for a full-speed device; 1024 packets in an URB for in high speed and SuperSpeed devices. The number of packets you send in the URB must be a multiple of the number of packets in each frame. </p><table>
+<tr><th>Polling period</th><th>Number of Packets for high speed/SuperSpeed </th></tr>
+<tr><td>1</td><td>Multiple of 8</td></tr>
+<tr><td>2</td><td>Multiple of 4</td></tr>
+<tr><td>3</td><td>Multiple of 2</td></tr>
+<tr><td>4</td><td>Any</td></tr>
+</table>
+<p> </p>
+
+</li>
+</ul>
+<p>Consider an example full-speed endpoint with <strong>wMaxPacketSize</strong> is 1,023.
+For this example, the application supplied buffer of 25,575 bytes. The transfer for that buffer requires 25 isochronous packets (25575/1023).
+</p>
+<p>Consider an example high-speed endpoint with the following characteristics indicated in the endpoint descriptor.</p>
+<ul>
+<li><strong>wMaxPacketSize</strong> is 1,024.</li>
+<li>Bits 12..11 indicate two additional transactions.</li>
+<li><strong>Interval</strong> is 1.</li>
+</ul>
+<p>After the client driver selects a configuration, <strong>MaximumPacketSize</strong> for the isochronous pipe indicates 3,072 bytes (total transactions * <strong>wMaxPacketSize</strong>). The additional transactions allow the client driver to transfer 3,072 bytes in every microframe, and total 24,576 bytes in one frame. The following illustration shows how often an isochronous packet is transferred in one microframe for high-speed transmissions.</p>
+<p><img id="iso_packets" alt="Isochronous Transfer" src="../../../../../i.msdn.microsoft.com/dynimg/IC534882.png" title="Isochronous Transfer" xmlns="" /></p>
+<p>Consider an example SuperSpeed endpoint with these characteristics indicated in the endpoint and SuperSpeed endpoint companion descriptors:</p>
+<ul>
+<li><strong>wMaxPacketSize</strong> is 1,024.</li>
+<li><strong>bMaxBurst</strong> is 15.</li>
+<li><strong>Interval</strong> is 1.</li>
+<li><strong>Isochronous.Mult</strong> is 2.</li>
+<li><strong>wBytesPerInterval</strong> is 45000.</li>
+</ul>
+<p>In preceding example, even though maximum number of bytes can be calculated as <strong>wMaxPacketSize</strong> * (<strong>bMaxBurst</strong> +1) * (<strong>Mult</strong> + 1) resulting in 49,152 bytes, the device limits the value to the <strong>wBytesPerInterval</strong> value that is 45,000 bytes. That value is also reflected in <strong>MaximumPacketSize</strong>  45,000. The client driver must only use the <strong>MaximumPacketSize</strong> value. In this example, the request can be divided into three burst transactions. The first two burst transactions each contain 16 chunks of <strong>wMaxPacketSize</strong>.  The last burst transaction contains 12 chunks to hold the remaining bytes.  This image shows the polling interval and bytes transferred through an isochronous packet for SuperSpeed transmission.</p>
+<p><img id="iso_packets_superspeed" alt="SuperSpeed Isochronous" src="../../../../../i.msdn.microsoft.com/dynimg/IC600805.png" title="SuperSpeed Isochronous" xmlns="" /></p>
+<p>
+</p><p>The following procedure describes how to build a request for an isochronous transfer.</p>
+<ol>
+<li>Get the size of each isochronous packet. 
+</li>
+<li>Determine the number of isochronous packets per frame. 
+</li>
+<li>Calculate the number of isochronous packets that are required to hold the entire transfer buffer. 
+</li>
+<li>Allocate a <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure to describe the details of the transfer. 
+</li>
+<li>Specify the details of each isochronous packet, such as packet offset. 
+</li>
+</ol>
+
+<p>For complete code example about sending isochronous transfer requests, USBSAMP.  </p>
+<p>This example in this topic simplifies USBSAMP implementation of isochronous transfer. The sample calculates the total number frames required for the transfer. Based on the amount of data that can be sent in a frame, the transfer buffer is divided into smaller chunk-sized bytes. 
+</p>
+<p>The following procedure elaborates the preceding steps and shows calculations and routines that a client driver can use to build and send an isochronous transfer request for a high-speed isochronous endpoint. The values used in the procedure are based on the example endpoint characteristics described earlier.
+</p>
+<h2>Instructions</h2>
+<h3><a id="Get_the_size_of_an_isochronous_packet._"></a><a id="get_the_size_of_an_isochronous_packet._"></a><a id="GET_THE_SIZE_OF_AN_ISOCHRONOUS_PACKET._"></a>Step 1: Get the size of an isochronous packet. </h3>
+<p>Determine the size of an isochronous packet by inspecting the pipe's  <strong>MaximumPacketSize</strong> value. </p>
+<p>For full-speed transmissions, the size of an isochronous packet is the number of bytes you can transfer in one frame. For high-speed and SuperSpeed transmissions, the size of an isochronous packet is the total number of bytes that can be transferred in one microframe. Those values are indicated in the pipe’s <strong>MaximumPacketSize</strong>.
+</p>
+<p>In the example, <strong>MaximumPacketSize</strong> is 1023 bytes per frame (full speed); 3072 bytes per microframe (high speed); 45,000 bytes per microframe (SuperSpeed).
+</p>
+<p>
+</p><p class="note"><strong>Note</strong>  The <strong>MaximumPacketSize</strong> value indicates the maximum permitted size of the isochronous packet. The client driver can set the size of each isochronous packet to any value less than the <strong>MaximumPacketSize</strong> value.  </p>
+
+<h3><a id="Determine_the_number_of_isochronous_packets_per_frame."></a><a id="determine_the_number_of_isochronous_packets_per_frame."></a><a id="DETERMINE_THE_NUMBER_OF_ISOCHRONOUS_PACKETS_PER_FRAME."></a>Step 2: Determine the number of isochronous packets per frame.</h3>
+<p>For full-speed transmissions, you transfer one isochronous packet in each frame.</p>
+<p>For high-speed and SuperSpeed transmissions, this value must be derived from the Interval value. In the example, Interval is 1. Therefore, the number of isochronous packets must be eight per frame. For other Interval values, see the table in the Prerequisites section.</p>
+<h3><a id="Calculate_the_number_of_isochronous_packets_that_are_required_to_hold_the_entire_transfer_buffer."></a><a id="calculate_the_number_of_isochronous_packets_that_are_required_to_hold_the_entire_transfer_buffer."></a><a id="CALCULATE_THE_NUMBER_OF_ISOCHRONOUS_PACKETS_THAT_ARE_REQUIRED_TO_HOLD_THE_ENTIRE_TRANSFER_BUFFER."></a>Step 3: Calculate the number of isochronous packets that are required to hold the entire transfer buffer.</h3>
+<p>Calculate the number of isochronous packets that are required to transfer the entire buffer. This value can be calculated by dividing the length of the transfer buffer by the size of an isochronous packet. </p>
+<p>In this example, we assume that size of each isochronous packet is <strong>MaximumPacketSize</strong> and  the transfer buffer length is a multiple of <strong>MaximumPacketSize</strong> value.</p>
+<p>For example, for full-speed transfer a supplied buffer of 25,575 bytes requires 25 isochronous packets (25575/1023). For high-speed transfer, a buffer of size 24,576 is divided into eight isochronous packets (24576 /3072) for the transfer. For SuperSpeed, a buffer of size 360,000 bytes fits in eight isochronous packets (360000/45000). </p>
+<p>The client driver should validate these requirements:</p><ul>
+<li>The number of isochronous packets must be a multiple of the number of packets per frame.</li>
+<li>The maximum number of isochronous packets that are required to make the transfer must not exceed 255 for full-speed device; 1024 for a high-speed or SuperSpeed device. 
+</li>
+</ul>
+
+<h3><a id="Allocate_an_URB_structure_to_describe_the_details_of_the_transfer."></a><a id="allocate_an_urb_structure_to_describe_the_details_of_the_transfer."></a><a id="ALLOCATE_AN_URB_STRUCTURE_TO_DESCRIBE_THE_DETAILS_OF_THE_TRANSFER."></a>Step 4: Allocate an URB structure to describe the details of the transfer.</h3>
+<ol>
+<li>Allocate an <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure in nonpaged pool. <p>If your client driver uses WDM routines, the driver must call the <a href="hh406231(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_IsochUrbAllocate</strong></a> if you have the Windows Driver Kit (WDK) for Windows 8. A client driver can uses the routine to target Windows Vista and later versions of the Windows operating system. If you do not have the  WDK for Windows 8 or if the client driver is intended for an earlier version of the operating system, you can allocate the structure on the stack or in nonpaged pool by calling <a href="ff544520(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">ExAllocatePoolWithTag</strong></a>. </p>
+<p>A WDF client driver can call the <a href="hh439420(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateIsochUrb</strong></a> method to allocate memory for the <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure. </p>
+</li>
+<li>The <strong>UrbIsochronousTransfer</strong> member of the <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure points to a <a href="ff540414(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_ISOCH_TRANSFER</strong></a> structure that  describes the details of an isochronous transfer. Initialize the following <strong>UrbIsochronousTransfer</strong> members  as follows:<ul>
+<li>Set the <strong>UrbIsochronousTransfer.Hdr.Length</strong> member to the size of the URB. To get the size of the URB, call <a href="ff537144(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">GET_ISO_URB_SIZE</strong></a> macro and specify the number of packets. </li>
+<li>Set the <strong>UrbIsochronousTransfer.Hdr.Function</strong> member to <code>URB_FUNCTION_ISOCH_TRANSFER</code>.  </li>
+<li>Set the <strong>UrbIsochronousTransfer.NumberOfPackets</strong> member to the number of isochronous packets.</li>
+<li>Set the <strong>UrbIsochronousTransfer.PipeHandle</strong> to the opaque handle for the pipe that is associated with the endpoint. Make sure that the pipe handle is the USBD pipe handle used by the Universal Serial Bus (USB) driver stack.<p>To obtain the USBD pipe handle, a WDF client driver can call the <a href="ff551162(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeWdmGetPipeHandle</strong></a> method and specify the WDFUSBPIPE handle to the framework's pipe object.  A WDM client driver must use the same handle that was obtained in the  <strong>PipeHandle</strong>  member of the <a href="ff539114(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_PIPE_INFORMATION</strong></a> structure. </p>
+</li>
+<li>Specify the direction of the transfer. Set <strong>UrbIsochronousTransfer.TransferFlags</strong> to USBD_TRANSFER_DIRECTION_IN for an isochronous IN transfer (reading from the device); USBD_TRANSFER_DIRECTION_OUT for an isochronous OUT transfer (writing to the device).</li>
+<li>Specify the USBD_START_ISO_TRANSFER_ASAP flag in <strong>UrbIsochronousTransfer</strong>.TransferFlags. The flag instructs the USB driver stack to send the transfer in the next appropriate frame. For the first time that the client driver sends an isochronous URB for this pipe, the driver stack sends the isochronous packets in the URB as soon as it can. The USB driver stack tracks the next frame to use for subsequent URBs on that pipe. If there is a delay in sending a subsequent isochronous URB that uses the USBD_START_ISO_TRANSFER_ASAP flag, the driver stack considers some or all packets of that URB to be late and does not transfer those packets.<p>The USB driver stack resets its USBD_START_ISO_TRANSFER_ASAP start frame tracking, if the stack does not receive an isochronous URB for 1024 frames after it completed the previous URB for that pipe. Instead of specifying the USBD_START_ISO_TRANSFER_ASAP flag, you can specify the start frame. For more information, see the Remarks section.</p>
+</li>
+<li>Specify the transfer buffer and its size. You can set a pointer to the buffer in <strong>UrbIsochronousTransfer.TransferBuffer</strong> or  the <a href="ff554414(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">MDL</strong></a> that describes the buffer in <strong>UrbIsochronousTransfer.TransferBufferMDL</strong>. <p>To retrieve the <a href="ff554414(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">MDL</strong></a> for the transfer buffer, a WDF client driver can call <a href="ff550021(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputWdmMdl</strong></a> or <a href="ff550016(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputWdmMdl</strong></a>, depending on the direction of the transfer.  </p>
+</li>
+</ul>
+</li>
+</ol>
+<h3><a id="Specify_the_details_of_each_isochronous_packet_in_the_transfer."></a><a id="specify_the_details_of_each_isochronous_packet_in_the_transfer."></a><a id="SPECIFY_THE_DETAILS_OF_EACH_ISOCHRONOUS_PACKET_IN_THE_TRANSFER."></a>Step 5: Specify the details of each isochronous packet in the transfer.</h3>
+<p>The USB driver stack allocates the new <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> structure that is large enough to hold information about each isochronous packet,  but not the data contained in the packet. In the <strong>URB</strong> structure,  the <strong>UrbIsochronousTransfer.IsoPacket</strong> member is an array of <a href="ff539084(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_ISO_PACKET_DESCRIPTOR</strong></a> that describes the details of each isochronous packet in the transfer. Packets must be contiguous. The number of elements in the array  must be the number of isochronous packets specified in  the URB's <strong>UrbIsochronousTransfer.NumberOfPackets</strong> member.</p>
+<p>For a high-speed transfer, each element in the array correlates to one  isochronous packet in one microframe. For full-speed, each element correlates to one isochronous packet transferred in one frame.  </p>
+<p>For each element, specify the byte offset of each isochronous packet from the start of the entire transfer buffer for the request. You can specify that value by setting the  <strong>UrbIsochronousTransfer.IsoPacket[i].Offset</strong> member. The USB driver stack uses the specified value to track the amount of data to send or receive. </p>
+<p><strong>Setting Offset for a Full-Speed Transfer</strong></p>
+<p>For the example, these are the array entries for the transfer buffer in full speed. In full speed, the client driver has one frame to transfer one isochronous packet up to 1,023 bytes. A transfer buffer of 25,575  bytes can hold 25 isochronous packets, each 1,023 bytes long. A total of 25 frames are required for the entire buffer.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_bbf69f3d-b3b8-42d7-9adf-2121e170c6b1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bbf69f3d-b3b8-42d7-9adf-2121e170c6b1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Frame 1 IsoPacket [0].Offset = 0 (start address)
+Frame 2 IsoPacket [1].Offset = 1023
+Frame 3 IsoPacket [2].Offset = 2046
+Frame 4 IsoPacket [3].Offset = 3069
+...
+Frame 25 IsoPacket [24].Offset = 24552
+
+Total length transferred is 25,575 bytes.
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p><strong>Setting Offset for a High-Speed Transfer</strong></p>
+<p>For the example, these are the array entries for a transfer buffer in high speed. The example assumes that the buffer is 24,576 bytes, and the client driver has one frame to transfer eight isochronous packets, each 3,072 bytes long.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f73a85d9-4ad0-4b65-9f37-3525b2079828');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f73a85d9-4ad0-4b65-9f37-3525b2079828" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Microframe 1 IsoPacket [0].Offset = 0 (start address)
+Microframe 2 IsoPacket [1].Offset = 3072
+Microframe 3 IsoPacket [2].Offset = 6144
+Microframe 4 IsoPacket [3].Offset = 9216
+Microframe 5 IsoPacket [4].Offset = 12288
+Microframe 6 IsoPacket [5].Offset = 15360
+Microframe 7 IsoPacket [6].Offset = 18432
+Microframe 8 IsoPacket [7].Offset = 21504
+
+Total length transferred is 24,576 bytes.
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p><strong>Setting Offset for a SuperSpeed Transfer</strong></p>
+<p>For the example, this is the array offset for SuperSpeed. You can transfer up to 45,000 bytes in one frame. The transfer buffer of size 360,000 fits within eight microframes. </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cc2dffc6-ccc6-484d-86df-ce21abcfa3e6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cc2dffc6-ccc6-484d-86df-ce21abcfa3e6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Microframe 1 IsoPacket [0].Offset = 0 (start address)
+Microframe 2 IsoPacket [1].Offset = 45000
+Microframe 3 IsoPacket [2].Offset = 90000
+Microframe 4 IsoPacket [3].Offset = 135000
+Microframe 5 IsoPacket [4].Offset = 180000
+Microframe 6 IsoPacket [5].Offset = 225000
+Microframe 7 IsoPacket [6].Offset = 270000
+Microframe 8 IsoPacket [7].Offset = 315000
+
+Total length transferred is 360,000 bytes.
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The <strong>UrbIsochronousTransfer.IsoPacket[i]</strong>.Length member does not imply the length of each packet of the isochronous URB. <strong>IsoPacket[i].Length</strong> is updated by the USB driver stack to indicate the actual number of bytes that are received from the device for isochronous IN transfers. For isochronous OUT transfers, the driver stack ignores the value that is set in <strong>IsoPacket[i].Length</strong>.</p>
+<h2>Remarks</h2>
+<p><strong>Specify the starting USB frame number for the transfer</strong></p>
+<p>The <strong>UrbIsochronousTransfer.StartFrame</strong> member of the URB specifies the starting USB frame number for the transfer. There is always latency between the time that the client driver submits an URB and the time that the USB driver stack processes the URB. Therefore, the client driver should always specify a start frame that is later than the frame that is current when the driver submits the URB. To retrieve the current frame number, the client driver can send the URB_FUNCTION_GET_CURRENT_FRAME_NUMBER request to the USB driver stack (<a href="ff540401(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_GET_CURRENT_FRAME_NUMBER</strong></a>).</p>
+<p>For isochronous transfers, the absolute difference between the current frame and the <strong>StartFrame</strong> value must be less than USBD_ISO_START_FRAME_RANGE. If StartFrame is not within the proper range, the USB driver stack sets the <strong>Status</strong> member of the URB header (see <a href="ff540409(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_HEADER</strong></a>) to USBD_STATUS_BAD_START_FRAME and discards the entire URB.</p>
+<p>The <strong>StartFrame</strong> value specified in the URB indicates the frame number in which the first isochronous packet of the URB is transferred. The frame number for subsequent packets depends on the bus speed and polling period values of the endpoint. For example, for a full speed transmission, the first packet is transferred in <strong>StartFrame</strong>; second packet is transferred in <strong>StartFrame</strong>+1, and so on. The way in which the USB driver stack transfers isochronous packets, for full speed,  in frames is shown as follows:</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cd378756-0154-4bd0-9f43-599288663aae');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cd378756-0154-4bd0-9f43-599288663aae" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Frame (StartFrame)   IsoPacket [0]
+Frame (StartFrame+1) IsoPacket [1]
+Frame (StartFrame+2) IsoPacket [2]
+Frame (StartFrame+3) IsoPacket [3]
+...
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>For high-speed device with Interval value of 1, the frame number changes every eighth microframe. The way in which the USB driver stack transfers isochronous packets, for high speed, in frames is shown as follows:</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c7de5d65-88f1-411c-b7f2-8ea85cde2794');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c7de5d65-88f1-411c-b7f2-8ea85cde2794" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Frame (StartFrame) Microframe 1 IsoPacket [0]
+...
+Frame (StartFrame) Microframe 8 IsoPacket [7]
+Frame (StartFrame+1) Microframe 1 IsoPacket [8]
+...
+Frame (StartFrame+1) Microframe 8 IsoPacket [15]
+Frame (StartFrame+2) Microframe 1 IsoPacket [16]
+...
+Frame (StartFrame+2) Microframe 8 IsoPacket [23]
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>When the USB driver stack processes the URB, the driver discards all isochronous packets in the URB whose frame numbers are lower than the current frame number. The driver stack sets the <strong>Status</strong> member of the packet descriptor for each discarded packet to USBD_STATUS_ISO_NA_LATE_USBPORT, USBD_STATUS_ISO_NOT_ACCESSED_BY_HW, or USBD_STATUS_ISO_NOT_ACCESSED_LATE. Even though  some packets in the URB are discarded, the driver stack attempts to transmit only those packets whose frame numbers are higher than the current frame number.</p>
+<p>The check for a valid <strong>StartFrame</strong> member is slightly more complicated in high-speed transmissions because the USB driver stack  loads each isochronous packet into a high-speed microframe; however, the value in <strong>StartFrame</strong> refers to the 1-millisecond (full-speed) frame number, and not the microframe. For example, if the <strong>StartFrame</strong> value recorded in the URB is one less than the current frame, the driver stack can discard as many as eight packets. The exact number of discarded packets depends on the polling period that is associated with the isochronous pipe.</p>
+<h2>Isochronous Transfer Example</h2>
+<p>The following code example shows how to create an URB for an isochronous transfer for full speed, high speed, and SuperSpeed transmission. </p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_53e24a67-0f29-46ce-b3c9-47ab580939d8');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_53e24a67-0f29-46ce-b3c9-47ab580939d8" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#define MAX_SUPPORTED_PACKETS_FOR_HIGH_OR_SUPER_SPEED 1024
+#define MAX_SUPPORTED_PACKETS_FOR_FULL_SPEED 255
+
+NTSTATUS CreateIsochURB  ( PDEVICE_OBJECT         DeviceObject,
+                          PUSBD_PIPE_INFORMATION  PipeInfo,
+                          ULONG                   TotalLength,
+                          PMDL                    RequestMDL,
+                          PURB                    Urb)
+{  
+    PDEVICE_EXTENSION        deviceExtension;
+    ULONG                    numberOfPackets;
+    ULONG                    numberOfFrames; 
+    ULONG                    isochPacketSize = 0;
+    ULONG                    transferSizePerFrame;
+    ULONG                    currentFrameNumber;
+    size_t                   urbSize;
+    ULONG                    index;
+    NTSTATUS                 ntStatus;  
+
+    deviceExtension = (PDEVICE_EXTENSION) DeviceObject-&gt;DeviceExtension;
+
+    isochPacketSize = PipeInfo-&gt;MaximumPacketSize;
+
+    // For high-speed transfers
+    if (deviceExtension-&gt;IsDeviceHighSpeed || deviceExtension-&gt;IsDeviceSuperSpeed) 
+    {
+
+        // Ideally you can pre-calculate numberOfPacketsPerFrame for the Pipe and 
+        // store it in the pipe context.
+
+        switch (PipeInfo-&gt;Interval) 
+        {
+        case 1:
+            // Transfer period is every microframe (eight times a frame).
+            numberOfPacketsPerFrame = 8;
+            break;
+
+        case 2:
+            // Transfer period is every 2 microframes (four times a frame).
+            numberOfPacketsPerFrame = 4;
+            break;
+
+        case 3:
+            // Transfer period is every 4 microframes (twice in a frame).
+            numperOfPacketsPerFrame = 2;
+            break;
+
+        case 4:
+        default: 
+            // Transfer period is every 8 microframes (once in a frame).
+            numberOfPacketsPerFrame = 1;
+            break;
+        }
+
+
+        //Calculate the number of packets.
+        numberOfPackets = TotalLength / isochPacketSize;
+
+        if (numberOfPackets &gt; MAX_SUPPORTED_PACKETS_FOR_HIGH_OR_SUPER_SPEED) 
+        {
+            // Number of packets cannot be  greater than 1024.  
+            ntStatus = STATUS_INVALID_PARAMETER;
+            goto Exit;
+        }
+
+        if (numberOfPackets % numberOfPacketsPerFrame != 0) 
+        {
+
+            // Number of packets should be a multiple of numberOfPacketsPerFrame
+            ntStatus = STATUS_INVALID_PARAMETER;
+            goto Exit;
+        }
+
+    } 
+    else if (deviceExtension-&gt;IsDeviceFullSpeed) 
+    {
+        //For full-speed transfers
+        // Microsoft USB stack only supports bInterval value of 1 for
+        // full-speed isochronous endpoints.
+
+
+        //Calculate the number of packets.
+        numberOfPacketsPerFrame = 1;
+        
+        numberOfPackets = TotalLength / isochPacketSize;
+
+        if (numberOfPackets &gt; MAX_SUPPORTED_PACKETS_FOR_FULL_SPEED) 
+        {
+            // Number of packets cannot be greater than 255. 
+            ntStatus = STATUS_INVALID_PARAMETER;
+            goto Exit;
+        }
+
+    }
+
+    // Allocate an isochronous URB for the transfer
+    ntStatus = USBD_IsochUrbAllocate (deviceExtension-&gt;UsbdHandle, 
+        numberOfPackets, 
+        &amp;Urb);
+
+    if (!NT_SUCCESS(ntStatus)) 
+    {
+        ntStatus = STATUS_INSUFFICIENT_RESOURCES;
+        goto Exit;
+    }
+
+    urbSize = GET_ISO_URB_SIZE(numberOfPackets);
+
+    Urb-&gt;UrbIsochronousTransfer.Hdr.Length = (USHORT) urbSize;
+    Urb-&gt;UrbIsochronousTransfer.Hdr.Function = URB_FUNCTION_ISOCH_TRANSFER;
+    Urb-&gt;UrbIsochronousTransfer.PipeHandle = PipeInfo-&gt;PipeHandle;
+
+    if (USB_ENDPOINT_DIRECTION_IN(PipeInfo-&gt;EndpointAddress)) 
+    {
+        Urb-&gt;UrbIsochronousTransfer.TransferFlags = USBD_TRANSFER_DIRECTION_IN;
+    }
+    else
+    {
+        Urb-&gt;UrbIsochronousTransfer.TransferFlags = USBD_TRANSFER_DIRECTION_OUT;
+    }
+
+    Urb-&gt;UrbIsochronousTransfer.TransferBufferLength = TotalLength;
+    Urb-&gt;UrbIsochronousTransfer.TransferBufferMDL = RequestMDL;
+    Urb-&gt;UrbIsochronousTransfer.NumberOfPackets = numberOfPackets;
+    Urb-&gt;UrbIsochronousTransfer.UrbLink = NULL;
+
+
+    // Set the offsets for every packet for reads/writes
+
+    for (index = 0; index &lt; numberOfPackets; index++) 
+    {
+        Urb-&gt;UrbIsochronousTransfer.IsoPacket[index].Offset = index * isochPacketSize;
+    } 
+
+    // Length is a return value for isochronous IN transfers.  
+    // Length is ignored by the USB driver stack for isochronous OUT transfers.
+
+    Urb-&gt;UrbIsochronousTransfer.IsoPacket[index].Length = 0;
+    Urb-&gt;UrbIsochronousTransfer.IsoPacket[index].Status = 0;
+
+    // Set the USBD_START_ISO_TRANSFER_ASAP. The USB driver stack will calculate the start frame.
+    // StartFrame value set by the client driver is ignored.
+    Urb-&gt;UrbIsochronousTransfer.TransferFlags |= USBD_START_ISO_TRANSFER_ASAP;
+
+
+Exit:
+
+    return ntStatus;  
+}  
+
+
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="ff539286(v%3dvs.85)-2.html">USB I/O Operations</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to transfer data to USB isochronous endpoints%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="56MDxSkI1nxKMeQe-fni_owRuogDgye-0cA23Wddm91YzF_K13cL1IWe_-5UywUdhKXrcYgFxCaPLERfJayHduVk0aFf0kbppI-huhBK9Srz6TRRV4BMp_R3nFxdB6a30BuvYA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/hh406225(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fhh406225(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="F9t5M5YsYkkS5h4PHIUGIuGKgRsEpegdt8oLSKD5AohHhhlRPM4cBUJ0w0GX-u64MAri29-wqHG7r7DV9MDm-H_f8yWRGmWeoemfLUWXBk1WD8YacGxI74geqlHbJsKgqRAziQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh406225(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"bc338c40-8fbe-40a2-9434-266e249215ef\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/hh406225(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:56:56 GMT -->
+</html>

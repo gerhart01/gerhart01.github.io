@@ -1,0 +1,5493 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff541519(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:54:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff541519(v%3dvs.85).html" />
+        <title>Hypervisor Handling of Architectural CPUID Leaves (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff541519(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541519(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541519(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541519(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA93B-3:43:44 AM" />
+
+<meta name="Search.ShortId" content="ff541519" />
+
+<meta name="ms.shortidmsdn" content="ff541519" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053024&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff541519%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff542584(v%3dvs.85).html" id="ff572457_VS.85_en-us" mtpsaliasid="" mtpsassetid="3b405260-c3db-4f46-a083-f053b5d5c3d1_VS.85_en-us" mtpsshortid="ff542584_VS.85_en-us" title="Hypervisor">Hypervisor</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff541470(v%3dvs.85).html" id="ff572460_VS.85_en-us" mtpsaliasid="" mtpsassetid="cee8106e-aefa-4d7e-9ccc-695bb53f79ab_VS.85_en-us" mtpsshortid="ff541470_VS.85_en-us" title="Design Guide">Design Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff541492(v%3dvs.85).html" id="ff572472_VS.85_en-us" mtpsaliasid="" mtpsassetid="9a2b90fe-6680-4d74-8008-4c8b5196a51e_VS.85_en-us" mtpsshortid="ff541492_VS.85_en-us" title="Hypervisor Features">Hypervisor Features</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff541515(v%3dvs.85).html" id="ff572578_VS.85_en-us" mtpsaliasid="" mtpsassetid="228af669-04fb-4167-b35a-7428d645ec3e_VS.85_en-us" mtpsshortid="ff541515_VS.85_en-us" title="Hypervisor Features Quick Reference">Hypervisor Features Quick Reference</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541397(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypercall Function Code Reference">Hypercall Function Code Reference</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541429(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypercall Return Code Reference">Hypercall Return Code Reference</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff541519(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Handling of Architectural CPUID Leaves">Hypervisor Handling of Architectural CPUID Leaves</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541441(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Boot-time CPUID Feature Requirements">Hypervisor Boot-time CPUID Feature Requirements</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541524(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Handling of Architectural MSRs">Hypervisor Handling of Architectural MSRs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541626(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Vendor-Specific MSRs">Hypervisor Vendor-Specific MSRs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541620(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Synthetic MSRs">Hypervisor Synthetic MSRs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541484(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Event Log Entries">Hypervisor Event Log Entries</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541603(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hypervisor Statistics Counter Definition">Hypervisor Statistics Counter Definition</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Hypervisor Handling of Architectural CPUID Leaves</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>The following table lists the architectural CPUID leaves and describes how the hypervisor virtualizes them. <em>Passthrough</em> indicates that the register value is used and passed through to the guest. The value is identical on all logical processors in the computer.</p>
+<table>
+<tr><th>Leaf index</th><th>Register</th><th>Description</th><th>Start bit</th><th>End bit</th><th>Virtualized value root</th><th>Virtualized value non-root</th></tr>
+<tr><td rowspan="5">
+<p>0x00000000</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Maximum valid standard CPUID index</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Minimum of the hardware value on the current logical processor and 0x00000006.</p>
+</td><td>
+<p>Minimum of the hardware value across all logical processors and 0x00000006.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="70">
+<p>0x00000001</p>
+</td></tr>
+<tr><td rowspan="8">
+<p>EAX</p>
+</td><td>
+<p>Stepping</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough minimum stepping across all logical processors.</p>
+</td></tr>
+<tr><td>
+<p>Base model</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>Base family</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>Processor type</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Extended model</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>Extended family</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>EBX</p>
+</td><td colspan="5">
+<p><strong>Miscellaneous information</strong></p>
+</td></tr>
+<tr><td>
+<p>Brand identifier</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value that was received from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>CL flush size</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>Maximum LPs in a physical package</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>If HT is disabled, set to number of cores. </p>
+<p>If HT enabled, passthrough.</p>
+</td></tr>
+<tr><td>
+<p>Initial APIC ID</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Return value of the <em>HvX64RegisterInitialApicId</em>.</p>
+</td></tr>
+<tr><td rowspan="23">
+<p>ECX</p>
+</td><td colspan="5">
+<p><strong>Feature flags   and identifiers</strong></p>
+</td></tr>
+<tr><td>
+<p>SSE3</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>MONITOR</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>DS-CPL</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>VMX</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EST</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>TM2</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SSSE3</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>CNXTID</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>CMPXCHG16B</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>xTPR</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>PDCM</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>DCA</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SSE4.1</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>SSE4.2</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Population count</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>30</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Hypervisor present</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td rowspan="33">
+<p>EDX</p>
+</td><td colspan="5">
+<p><strong>Feature information</strong></p>
+</td></tr>
+<tr><td>
+<p>FPU</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>VME</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>DE</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PSE</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>TSC</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MSR</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PAE</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MCE</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>CMPXCHG8B</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>APIC</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SEP</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MTRR</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PGE</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MCA</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>CMOV</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PAT</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PSE-36</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PSN</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>CLFSH</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>DS </p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ACPI</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>MMX</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>FXSR</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>SSE </p>
+</td><td>
+<p>25</p>
+</td><td>
+<p>25</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>SSE2</p>
+</td><td>
+<p>26</p>
+</td><td>
+<p>26</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>SS</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>HTT</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>TM </p>
+</td><td>
+<p>29</p>
+</td><td>
+<p>29</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>30</p>
+</td><td>
+<p>30</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>PBE</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x00000002</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Cache and TLB descriptors</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td><td>
+<p>Passthrough value from processor 0 on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Cache and TLB descriptors</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td><td>
+<p>Passthrough value from processor 0 on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Cache and TLB descriptors</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td><td>
+<p>Passthrough value from processor 0 on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Cache and TLB descriptors</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td><td>
+<p>Passthrough value from processor 0 on Intel-based systems.</p>
+<p>Cleared on AMD-based systems.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x00000003</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Processor serial number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor serial number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor serial number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor serial number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="15">
+<p>0x00000004</p>
+</td></tr>
+<tr><td rowspan="9">
+<p>EAX</p>
+</td><td>
+<p>Cache type</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Cache level</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Self-initializing cache level</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Fully associative</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Write back invalidate/invalidate</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Cache inclusiveness</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Maximum threads in cache</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>25</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>If HT disabled, scale the value down by the number of threads per core. </p>
+<p>If HT enabled, set to the number of logical processors per package.</p>
+</td></tr>
+<tr><td>
+<p>Max cores per package</p>
+</td><td>
+<p>26</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>If HT enabled, scale this value up by number of threads per core. </p>
+<p>If HT disabled, passthrough the value from processor 0.</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>EBX</p>
+</td><td>
+<p>Coherency line size</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough the value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Physical line partitions</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough the value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Ways of association</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough the value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Number of sets</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough the value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="14">
+<p>0x00000005</p>
+</td><td colspan="6">
+<p><strong>MONITOR/MWAIT</strong></p>
+</td></tr>
+<tr><td rowspan="2">
+<p>EAX</p>
+</td><td>
+<p>MonLineSizeMin</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="2">
+<p>EBX</p>
+</td><td>
+<p>MonLineSizeMax</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>ECX</p>
+</td><td>
+<p>EMX</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>IBE</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="6">
+<p>EDX</p>
+</td><td>
+<p>C0SubstatesUsingMwait</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>C1SubstatesUsingMwait</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>C2SubstatesUsingMwait</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>C3SubstatesUsingMwait</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>C4SubstatesUsingMwait</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="10">
+<p>0x00000006</p>
+</td><td colspan="6">
+<p><strong>Power management feature enumeration function</strong></p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EAX</p>
+</td><td>
+<p>Digital temperature sensor supported</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>Dynamic acceleration enabled</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>Constant rate timer</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td rowspan="2">
+<p>EBX</p>
+</td><td>
+<p>Thermal threshold count</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td rowspan="2">
+<p>ECX</p>
+</td><td>
+<p>Hardware coordination feedback</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td><td>
+<p>Passthrough for the partition possessing the CPUManagement privilege; otherwise Cleared.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x00000007</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x00000008</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x00000009</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x0000000A</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Architectural perfmon</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Architectural perfmon</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Architectural perfmon</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Architectural perfmon</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x40000000</p>
+</td><td colspan="6">
+<p><strong>Hypervisor CPUID leaf range and vendor ID signature</strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>The maximum input value for hypervisor CPUID information</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>At least 0x40000005</p>
+</td><td>
+<p>At least 0x40000005.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Hypervisor vendor ID signature</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>0x7263694D--"Micr"</p>
+</td><td>
+<p>0x7263694D--"Micr"</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Hypervisor vendor ID signature</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>0x666F736F--"osof"</p>
+</td><td>
+<p>0x666F736F--"osof"</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Hypervisor vendor ID signature</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>0x76482074--"t Hv"</p>
+</td><td>
+<p>0x76482074--"t Hv"</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x40000001</p>
+</td><td colspan="6">
+<p><strong>Hypervisor vendor-neutral interface identification</strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Hypervisor Interface signature</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>0x31237648--"Hv#1"</p>
+</td><td>
+<p>0x31237648--"Hv#1"</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="7">
+<p>0x40000002</p>
+</td><td colspan="6">
+<p><strong>Operating system identity</strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Build number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td rowspan="2">
+<p>EBX</p>
+</td><td>
+<p>Minor version</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>15</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Major version</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Service pack</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td rowspan="2">
+<p>EDX</p>
+</td><td>
+<p>Service number</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>23</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Service branch</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td rowspan="35">
+<p>0x40000003</p>
+</td><td colspan="6">
+<p><strong>Feature identification </strong></p>
+</td></tr>
+<tr><td rowspan="11">
+<p>EAX</p>
+</td><td colspan="5">
+<p><strong>Partition privileges</strong></p>
+</td></tr>
+<tr><td>
+<p>VP runtime available</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Partition reference counter available</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Basic SynIC MSRs available</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Synthetic timer MSRs available</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>APIC access MSRs available</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Hypercall MSRs available</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Access virtual processor index MSR available</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Virtual system reset MSR available</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Access statistics pages MSRs available</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="15">
+<p>EBX</p>
+</td><td colspan="5">
+<p><strong>Partition creation flags</strong></p>
+</td></tr>
+<tr><td>
+<p>CreatePartitions</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>AccessPartitionId</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>AccessMemoryPool</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>AdjustMessageBuffers</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>PostMessages</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>SignalEvents</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>CreatePort</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>ConnectPort</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>AccessStats</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>IteratePhysicalHardware</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>DeprecatedExposeHyperthreads</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Debugging</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>11</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>CPUManagement</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>12</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>ECX</p>
+</td><td colspan="5">
+<p><strong>Power management</strong></p>
+</td></tr>
+<tr><td>
+<p>Maximum processor power state: 0 is C0, 1 is C1, 2 is C2, 3 is C3.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>3</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>EDX</p>
+</td><td colspan="5">
+<p><strong>Miscellaneous</strong></p>
+</td></tr>
+<tr><td>
+<p>The MWAIT instruction is available.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Guest debugging support is available.</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Performance monitor support is available.</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="12">
+<p>0x40000004</p>
+</td><td colspan="6">
+<p><strong>Implementation recommendations</strong></p>
+</td></tr>
+<tr><td rowspan="8">
+<p>EAX</p>
+</td></tr>
+<tr><td>
+<p>Recommend using hypercall for address space switches rather than MOV to CR3 instruction.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Recommend using hypercall for local TLB flushes rather than INVLPG or MOV to CR3 instructions.</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Recommend using hypercall for remote TLB flushes rather than inter-processor interrupts.</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Recommend using MSRs for accessing APIC registers EOI, ICR and TPR rather than their memory-mapped counterparts.</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Recommend using the hypervisor-provided MSR to initiate a system RESET.</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Recommend using relaxed timing for this partition.</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Recommended number of attempts to retry a spinlock failure before notifying the hypervisor about the failures.</p><p class="note"><strong>Note</strong>  0xFFFFFFFF indicates never to retry.</p>
+
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x40000005</p>
+</td><td colspan="6">
+<p><strong>Implementation limits</strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>The maximum number of virtual processors supported.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>The maximum number of logical processors supported.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="8">
+<p>0x40000006</p>
+</td><td colspan="6">
+<p><strong>Implementation hardware features</strong></p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EAX</p>
+</td><td>
+<p>Support for APIC overlay assist is detected and in use.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Support for MSR bitmaps is detected and in use.</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>Support for architectural performance counters is detected and in use.</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>RsvdZ for future Intel-specific features.</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>31</p>
+</td><td /><td /></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ for future AMD-specific features.</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="2">
+<p>0x40000007 - 0x4000007F</p>
+</td></tr>
+<tr><td>
+<p>EAX - EDX</p>
+</td><td colspan="5">
+<p>Reserved for use of intercept handlers in the parent partition.</p>
+</td></tr>
+<tr><td rowspan="2">
+<p>0x40000080 - 0x400000FF</p>
+</td></tr>
+<tr><td>
+<p>EAX - EDX</p>
+</td><td colspan="5">
+<p>Reserved for use of intercept handlers in the parent partition.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000000</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Highest extended CPUID leaf</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Minimum of the hardware value on current logical processor and 0x8000001A</p>
+</td><td>
+<p>Minimum of the hardware value across all logical processors in the system and 0x8000001.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor vendor string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td rowspan="61">
+<p>0x80000001</p>
+</td></tr>
+<tr><td rowspan="8">
+<p>EAX</p>
+</td><td>
+<p>Stepping</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Minimum across all logical processors</p>
+</td></tr>
+<tr><td>
+<p>Base model</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Base family</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>Processor type</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Extended model</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>Extended family</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>EBX</p>
+</td><td>
+<p>Brand ID</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Package type</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="16">
+<p>ECX</p>
+</td><td colspan="5">
+<p><strong>Extended feature flags and feature identifiers</strong></p>
+</td></tr>
+<tr><td>
+<p>LahfSahf</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>CmpLegacy</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>SVM</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ExtApicSpace</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>AltMovCr8</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>ABM</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>SSE4A</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>MisAlignSse</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0;</p>
+</td></tr>
+<tr><td>
+<p>3DNowPrefetch</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>OSVW</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0;</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SSE5</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>SKINIT</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>WDT</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="33">
+<p>EDX</p>
+</td><td colspan="5">
+<p><strong>Extended feature flags</strong></p>
+</td></tr>
+<tr><td>
+<p>FPU</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>VME</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>DE</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PSE</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>TSC</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MSR</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PAE</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MCE</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>CMPXCHG8B</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>APIC</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>10</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SysCallSysRet</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MTRR</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PGE</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>13</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>MCA</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>14</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>CMOV</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PAT</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>PSE36</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>19</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>Execute disabled/No execute</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>20</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>21</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>MmxExt</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>22</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>MMX</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>FXSR</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>FFXSR</p>
+</td><td>
+<p>25</p>
+</td><td>
+<p>25</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>Page1GB</p>
+</td><td>
+<p>26</p>
+</td><td>
+<p>26</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RDTSCP</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>LM</p>
+</td><td>
+<p>29</p>
+</td><td>
+<p>29</p>
+</td><td>
+<p>Set</p>
+</td><td>
+<p>Set</p>
+</td></tr>
+<tr><td>
+<p>3DNowExt</p>
+</td><td>
+<p>30</p>
+</td><td>
+<p>30</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>3DNow </p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000002</p>
+</td><td colspan="6">
+<p><strong>Processor name string identifier </strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000003</p>
+</td><td colspan="6">
+<p><strong>Processor name string identifier </strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000004</p>
+</td><td colspan="6">
+<p><strong>Processor name string identifier </strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>Processor brand string</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough value from processor 0.</p>
+</td></tr>
+<tr><td rowspan="17">
+<p>0x80000005</p>
+</td><td colspan="6">
+<p><strong>L1 Cache and TLB identifiers (all registers)</strong></p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EAX</p>
+</td><td>
+<p>L1ITlb2and4MSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1ITlb2and4MAssoc</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb2and4MSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb2and4MAssoc</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EBX</p>
+</td><td>
+<p>L1ITlb4KSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1ITlb4KAssoc</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb4KSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb4KAssoc</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>ECX</p>
+</td><td>
+<p>L1DcLineSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DcLinesPerTag</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DcAssoc</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1DcSize</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EDX</p>
+</td><td>
+<p>L1IcLineSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1IcLinesPerTag</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1IcAssoc</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>23</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L1IcSize</p>
+</td><td>
+<p>24</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="18">
+<p>0x80000006</p>
+</td><td colspan="6">
+<p><strong>L2 Cache and L2 TLB identifiers</strong></p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EAX</p>
+</td><td>
+<p>L2ITlb2and4MSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2ITlb2and4MAssoc</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb2and4MSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb2and4MAssoc</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EBX</p>
+</td><td>
+<p>L2ITlb4KSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2ITlb4KAssoc</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb4KSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb4KAssoc</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>ECX</p>
+</td><td>
+<p>L2 Line Size</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2 Lines per tag</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2 Association</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L2 cache size in kilobytes</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>EDX</p>
+</td><td>
+<p>L3LineSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L3LinesPerTag</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L3Assoc</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>17</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>L3Size</p>
+</td><td>
+<p>18</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td rowspan="14">
+<p>0x80000007</p>
+</td><td colspan="6">
+<p><strong>Advanced power management information</strong></p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="10">
+<p>EDX</p>
+</td><td>
+<p>TS </p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>FID</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>VID</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>TTP</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>TM</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>STC</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>5</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>100MhzSteps</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>6</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>HwPState</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>TscInvariant</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>9</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="10">
+<p>0x80000008</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>EAX</p>
+</td><td>
+<p>PhysAddrSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>The size of the physical GPA space that is supported.</p>
+</td></tr>
+<tr><td>
+<p>LinAddrSize</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>The size of the virtual GPA space that is supported.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>ECX</p>
+</td><td>
+<p>NC</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ApicIdCoreIdSize</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Passthrough</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000009</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="10">
+<p>0x8000000A</p>
+</td><td colspan="6">
+<p><strong>SVM revision and feature identification </strong></p>
+</td></tr>
+<tr><td rowspan="2">
+<p>EAX</p>
+</td><td>
+<p>SvmRev</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>7</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>8</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>NASID</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>EDX</p>
+</td><td>
+<p>NP</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>LBRVirt</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>SVML</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>NRIPS</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>3</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>4</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x8000000B</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x8000000C</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x8000000D</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x8000000E</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x8000000F</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000010</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000011</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000012</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000013</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000014</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000015</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000016</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000017</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="5">
+<p>0x80000018</p>
+</td></tr>
+<tr><td>
+<p>EAX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="11">
+<p>0x80000019</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EAX</p>
+</td><td>
+<p>L1ITlb1GSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L1ITlb1GAssoc</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb1GSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L1DTlb1GAssoc</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="4">
+<p>EBX</p>
+</td><td>
+<p>L2ITlb1GSize</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>11</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L2ITlb1GAssoc</p>
+</td><td>
+<p>12</p>
+</td><td>
+<p>15</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb1GSize</p>
+</td><td>
+<p>16</p>
+</td><td>
+<p>27</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>L2DTlb1GAssoc</p>
+</td><td>
+<p>28</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td rowspan="7">
+<p>0x8000001A</p>
+</td></tr>
+<tr><td rowspan="3">
+<p>EAX</p>
+</td><td>
+<p>FP128</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>MOVU</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>1</p>
+</td><td>
+<p>Passthrough</p>
+</td><td>
+<p>Set if set on all; otherwise 0.</p>
+</td></tr>
+<tr><td>
+<p>RsvdZ</p>
+</td><td>
+<p>2</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EBX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>ECX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+<tr><td>
+<p>EDX</p>
+</td><td>
+<p>RsvdZ</p>
+</td><td>
+<p>0</p>
+</td><td>
+<p>31</p>
+</td><td>
+<p>Cleared</p>
+</td><td>
+<p>Cleared</p>
+</td></tr>
+</table>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [hypervisor\hypervisor]:%20Hypervisor Handling of Architectural CPUID Leaves%20 RELEASE:%20(11/16/2013)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/16/2013</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="qMT16be7IumBfK2NWIQF1N08Le7ewLH5-jDKIQmt9BGlvgAIsJGmR1KFVQxLS0vElkC1posyyffuPbGBHOtkgBm6HpBPUnAzMi1GGytJZPmoAj-ZNUgEMlP2LoGxWtszpBWHEg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff541519(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="FF ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff541519(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="G69tvDaKPGyB36-OENm0P1v2Z38gHOpY0p-4YBa-lLV5_I5Lwf5nPGkB-EvGBEcG4WM4vSFZdYWnh602G6bjZVtpXRUxSKKOPkQqDSEys_NLXo2bBTWijpVtXvd_DgdqHuHFBA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff541519(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"29a26275-7cd4-4ab4-af96-368d70af9e5e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff541519(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 10:54:47 GMT -->
+</html>

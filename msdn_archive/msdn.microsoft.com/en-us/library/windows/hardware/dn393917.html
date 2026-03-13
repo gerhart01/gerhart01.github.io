@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn393917.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393917.aspx" />
+        <title>Troubleshooting Windows HCK Client</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn393917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393917(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93A-9:17:22 AM" />
+
+<meta name="Search.ShortId" content="dn393917" />
+
+<meta name="ms.shortidmsdn" content="dn393917" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395073042&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn393917.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293719.aspx" id="dn247312_WIN.10_en-us" mtpsaliasid="" mtpsassetid="2b95e0d0-61a0-4c95-8953-a79fe47f230e_WIN.10_en-us" mtpsshortid="dn293719_WIN.10_en-us" title="Troubleshooting Windows HCK">Troubleshooting Windows HCK</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998592.aspx" id="dn393916_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4470d43b-51e3-4369-80c2-8da699684374_WIN.10_en-us" mtpsshortid="hh998592_WIN.10_en-us" title="Troubleshooting the Windows HCK Environment">Troubleshooting the Windows HCK Environment</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393917.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting Windows HCK Client">Troubleshooting Windows HCK Client</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393923.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting Windows HCK Controller">Troubleshooting Windows HCK Controller</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393918.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting Windows HCK Setup">Troubleshooting Windows HCK Setup</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393922.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Troubleshooting Windows HCK Studio and Windows HCK Manager">Troubleshooting Windows HCK Studio and Windows HCK Manager</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Troubleshooting Windows HCK Client</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>This topic describes how to troubleshoot issues with the Windows Hardware Certification Kit (Windows HCK) Client.</p>
+      <p>For help with problems that occur during Windows HCK Client setup, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn393918.aspx">Troubleshooting Windows HCK Setup</a>.</p>
+      <p>
+        <strong>In this topic:</strong>
+      </p>
+      <ul>
+        <li class="unordered">
+          <a href="#debugstate">Cannot get a client computer out of Debug state</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#prevfail">Cannot select tests after previous test fails</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#sleep">Client computer goes to sleep during a test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#llulock">Client computer is locked by an LLU account</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#clicommcntr">Client computers cannot communicate with the Windows HCK Controller</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#inaccdatastudio">Client information in HCK Studio is inaccurate</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#nouninst">Client software is not uninstalled from the test system</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#domerror">Error encountered while adding user &lt;domain\username&gt;</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#nullkey">Error: Skipped as Public key is null for the machine</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#stuckjob">Job is stuck in the Scheduler</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#jobsno">Jobs do not run after reinstalling the Windows HCK Client</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#multcli">Multiple client systems are identified as the same system</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#rem">Remote Desktop cannot connect to a Windows HCK Client computer</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#remcli">Remove and reinstall the Windows HCK Client</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#unsupp">Unsupported scenarios</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#watched">Watched system does not have a heartbeat</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="#win7">Windows 7 Clients do not enter the Ready state</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <a id="debugstate">
+        
+      </a>
+      <h2 class="heading">Cannot get a client computer out of Debug state</h2>
+      <div id="sectionSection0" class="section">
+        <p>
+          <strong>Problem.</strong> The Client does not change from the <strong>Debug</strong> state to the <strong>Ready</strong> state, even after changing the state to <strong>Reset</strong> in Windows HCK Manager. </p>
+        <p>This problem can be caused by a lack of communication between the Windows HCK Controller computer and the Windows HCK Client computer, or by a trusted key mismatch between the two systems.</p>
+        <p>Try these solutions in the following order:</p>
+        <ol class="ordered">
+          <li>
+							Try the solutions in <a href="#clicommcntr">Client computers cannot communicate with the Windows HCK Controller</a>.<br /><br /></li>
+          <li>
+							Reinstall the Client using the steps in <a href="#remcli">Remove and reinstall the Windows HCK Client</a>.<br /><br /></li>
+        </ol>
+      </div>
+      <a id="prevfail">
+        
+      </a>
+      <h2 class="heading">Cannot select tests after previous test fails</h2>
+      <div id="sectionSection1" class="section">
+        <p>After a test fails, the checkboxes for the list of tests are dimmed and you cannot select additional tests.</p>
+        <p>If you select a target but cannot select any of the tests, the computer is not in a ready state.</p>
+        <p>Go to the <strong>Configuration</strong> menu and put the computer in a ready state.</p>
+      </div>
+      <a id="sleep">
+        
+      </a>
+      <h2 class="heading">Client computer goes to sleep during a test</h2>
+      <div id="sectionSection2" class="section">
+        <p>An always on, always connected (AOAC) computer that is not an ARM machine can go to sleep during a test. To prevent this, run the following command from an elevated command prompt on each Windows HCKClient computer:</p>
+        
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_9649a13e-644e-43b4-ae51-0691fd7b12a6');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9649a13e-644e-43b4-ae51-0691fd7b12a6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+powercfg /setacvalueindex scheme_current sub_video videoidle 0 &amp; Powercfg /setdcvalueindex scheme_current sub_video videoidle 0 &amp; Powercfg /s scheme_current
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+      </div>
+      <a id="llulock">
+        
+      </a>
+      <h2 class="heading">Client computer is locked by an LLU account</h2>
+      <div id="sectionSection3" class="section">
+        <p>If a client computer is locked by a LLU account or is unresponsive, you must log on by using the correct credentials for the LLU account. The two main LLU accounts on a client computer are:</p>
+        <ul>
+          <li class="unordered">
+            <strong>Local Standard User account</strong>
+            <br />
+            <br />
+							The client computer uses this account to run tests that require local standard user access on the client computer and any other computers with which it communicates. The local administrator account credentials can also be used for tests of this type, but the additional privileges might not be necessary.<br /><br /><ul><li class="unordered"><strong>LLU Name.</strong> LLU_LSU<br /><br /></li><li class="unordered"><strong>UserName.</strong><em> &lt;client machine name&gt;</em>\WDKLclStdUsr<br /><br /></li><li class="unordered"><strong>Password.</strong> WDKStdTstUsr!<br /><br /></li></ul></li>
+          <li class="unordered">
+            <strong>Local Administrative User account</strong>
+            <br />
+            <br />
+							The client computer uses this account to run tests that require local administrator access on the client computer and any other computers with which it communicates.<br /><br /><ul><li class="unordered"><strong>LLU Name.</strong> LLU_LAU<br /><br /></li><li class="unordered"><strong>UserName.</strong><em> &lt;client machine name&gt;</em>\LLUAdminUser<br /><br /></li><li class="unordered"><strong>Password.</strong> Testpassword,1<br /><br /></li></ul></li>
+        </ul>
+      </div>
+      <a id="clicommcntr">
+        
+      </a>
+      <h2 class="heading">Client computers cannot communicate with the Windows HCK Controller</h2>
+      <div id="sectionSection4" class="section">
+        <p>If a client computer cannot communicate with the Windows HCK Controller, review the following problems and solutions:</p>
+        <ul>
+          <li class="unordered">
+							Client computers do not appear in the <strong>Machine List</strong> in the Windows HCK <strong>Manager Job Monitor</strong> window.<br /><br /></li>
+          <li class="unordered">
+							Client computers can't connect to the Controller computer.<br /><br /></li>
+          <li class="unordered">
+							Client computers do not process jobs in the job Scheduler in Windows HCK Manager.<br /><br /></li>
+          <li class="unordered">
+							Client computers always go to the debug state, even after a reset.<br /><br /></li>
+        </ul>
+        <p>Try these solutions in the following order:</p>
+        <ol class="ordered">
+          <li>
+							Review the steps in <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998740.aspx">Step 2: Install Client on the test computer(s)</a> and check basic networking connectivity between the two computers.<br /><br /></li>
+          <li>
+							Run the procedure <a href="#BKMK_ChangeNetworkLocation">To change the Windows HCK Client to a Home or Private network</a>.<br /><br /></li>
+          <li>
+							Make sure the Internet Connection Firewall (ICF) port for Windows HCK is open on both the Windows HCK Client and Windows HCK Controller computers.<br /><br /><h4 class="subHeading">To open an ICF port for Windows HCK in Windows 7</h4><div class="subSection"><ol class="ordered"><li><p>Open Control Panel.</p></li><li><p>Click <strong>System and Security</strong> &gt;<strong>Windows Firewall</strong> &gt; <strong>Advanced Settings</strong> &gt; <strong>Inbound Rules</strong>.</p></li><li><p>Make sure that <strong>WLK Client</strong> is present and enabled.</p></li><li><p>If WLK Client isn't there, click <strong>New Rule</strong>, click <strong>Port</strong>, and then click <strong>Next</strong>. </p></li><li><p>Type <strong>1771</strong> in the <strong>Specific local ports</strong> box, click <strong>Next</strong> twice for <strong>Allows the Connection</strong>.</p></li><li><p>Leave all Profiles checked and click <strong>Next</strong>.</p></li><li><p>For Name, type <strong>WLK Client</strong> and then click <strong>Finish</strong>.</p></li></ol></div><h4 class="subHeading">To open an ICF port for Windows HCK</h4><div class="subSection"><ol class="ordered"><li><p>Open Control Panel.</p></li><li><p>Click <strong>Security</strong> &gt;<strong>Windows Firewall</strong> &gt; <strong>Change Settings</strong>.</p></li><li><p>Click the <strong>Exceptions</strong> tab. Make sure that <strong>WLK Client</strong> is present and selected under <strong>Programs and Services</strong>.</p></li><li><p>If <strong>WLK Client</strong> does not appear, click <strong>Add Port</strong> and enter this information:</p><ul><li class="unordered">
+													In the <strong>Name</strong> box, type <strong>WLK Client</strong>.<br /><br /></li><li class="unordered">
+													In the <strong>Port number</strong> box, type <strong>1771</strong>.<br /><br /></li><li class="unordered">
+													Click the <strong>TCP</strong> button, and then click <strong>OK</strong>.<br /><br /></li></ul></li><li><p>Return to the exceptions tab and make sure that the <strong>WLK Client</strong> check box is selected, and then click <strong>OK</strong>.</p></li></ol></div></li>
+          <li>
+							Disable Internet Protocol security (IPsec)<br /><br />
+							For Windows HCKClient and Windows HCK Controller computers to communicate, all computers must either be running IPsec or all computers must have IPsec disabled.<br /><br /><strong>To disable IPsec</strong><br /><br /><ul><li class="unordered">
+									At a command prompt, type <strong>net stop ipsec</strong>, and then press Enter.<br /><br /></li></ul><h4 class="subHeading">To change IPSec properties</h4><div class="subSection"><ol class="ordered"><li><p>At a command prompt, type <strong>services.msc</strong>, and then press Enter. The Microsoft Management Console appears.</p></li><li><p>Double-click <strong>IPsec Policy Agent</strong> and change its <strong>Startup Type</strong> (<strong>Automatic</strong> | <strong>Manual</strong> | <strong>Disabled</strong>) and/or <strong>Service Status</strong> (<strong>Start</strong> | <strong>Stop</strong>).</p></li></ol></div></li>
+        </ol>
+      </div>
+      <a id="inaccdatastudio">
+        
+      </a>
+      <h2 class="heading">Client information in HCK Studio is inaccurate</h2>
+      <div id="sectionSection5" class="section">
+        <p>The Windows HCK Client information that shows in Windows HCK Studio can be inaccurate if the gatherer data is not current. Inaccurate information can include the following data:</p>
+        <ul>
+          <li class="unordered">
+							Missing or detected features.<br /><br /></li>
+          <li class="unordered">
+							Missing or extra tests.<br /><br /></li>
+          <li class="unordered">
+							Drivers that are included with the operating system are reported as not being included.<br /><br />
+							Drivers that are not included with the operating system are reported as being included.<br /><br /></li>
+        </ul>
+        <p>To work around this issue, perform the following steps:</p>
+        <ol class="ordered">
+          <li>
+							Restart the Windows HCK Client computer.<br /><br /></li>
+          <li>
+							(Optional) Delete the project in Windows HCK Studio.<br /><br /></li>
+          <li>
+							(Optional) Reset the status of the client computer in Windows HCK Manager Job Monitor.<br /><br /></li>
+          <li>
+							Close all instances of Windows HCK Studio and Windows HCK Manager.<br /><br /></li>
+          <li>
+							Restart Windows HCK Studio.<br /><br /></li>
+          <li>
+							Create a new project and add the Windows HCK Client computer to the machine pool.<br /><br /></li>
+        </ol>
+      </div>
+      <a id="nouninst">
+        
+      </a>
+      <h2 class="heading">Client software is not uninstalled from the test system</h2>
+      <div id="sectionSection6" class="section">
+        <p>This problem occurs when the entry in the database for the Windows HCK Controller is deleted for the test system. After ten minutes or less, the client software sends out a new signal (heartbeat) and the controller generates a new client entry in the database. After the client entry appears, the client is visible in the <strong>Configuration</strong> screen in Windows HCK Studio; however, when you select the machine pool on the <strong>Selection</strong> tab, no targets are listed for the system.</p>
+        <p>To resolve this problem, get a gatherer to return some new data. You can do this by installing a driver or hardware or by restarting the client system.</p>
+      </div>
+      <a id="domerror">
+        
+      </a>
+      <h2 class="heading">Error encountered while adding user &lt;domain\username&gt;</h2>
+      <div id="sectionSection7" class="section">
+        <p>When you try to create a user account for a domain user, the following error message appears:</p>
+        <p>Error encountered while adding user &lt;<em>domain\username</em>&gt;</p>
+        <p>Cannot grant/remove permission for user on data store <em>controller name</em>: User <em>username</em> does not exist in domain <em>domain</em>. Please ensure that user name is valid or contact your network administrator. </p>
+        <p>The domain that the error message refers to is the local machine domain. You cannot create a user account for a domain user if you are logged onto the Windows HCK Studio computer as a local Administrator. You must log off and log back on as a domain user who has Administrator rights, and then create the user account for the domain user.</p>
+      </div>
+      <a id="nullkey">
+        
+      </a>
+      <h2 class="heading">Error: Skipped as Public key is null for the machine</h2>
+      <div id="sectionSection8" class="section">
+        <p>When you try to add a local logical user (LLU) to a client computer, the following error appears:</p>
+        <p>Skipped as Public key is null for the machine. </p>
+        <p>This error means that the Windows HCK Client did not install correctly. To fix this problem, uninstall and reinstall the Windows HCK Client. For more info, see <a href="#remcli">Remove and reinstall the Windows HCK Client</a>.</p>
+      </div>
+      <a id="stuckjob">
+        
+      </a>
+      <h2 class="heading">Job is stuck in the Scheduler</h2>
+      <div id="sectionSection9" class="section">
+        <p>When you set up a job, Windows Scheduler searches for a client computer to run the job. The Scheduler considers all client computers in the machine pool that are available and capable of running the job.</p>
+        <p>When you use Windows HCK Manager Job Monitor to view the status of a job, the <strong>Current Pipeline</strong> column of the <strong>Job Execution Status</strong> pane displays the job status. If the <strong>Current Pipeline</strong> value for your job is <strong>Scheduler</strong>, and if this value hasn't changed for several minutes, make sure that a Windows HCK Client in the machine pool with a <strong>Ready</strong> status exists. </p>
+        <ul>
+          <li class="unordered">
+							If no Windows HCK Client computers are ready to run jobs, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998572.aspx">Step 3: Create a machine pool</a>.<br /><br /></li>
+          <li class="unordered">
+							If Windows HCK Client computers are available to run the job, make sure that at least one Windows HCK Client computer is capable of running the job. Check the attributes of the Windows HCK Client computers and compare them with the job requirements.<br /><br /></li>
+          <li class="unordered">
+							If a job contains machine sets, confirm that there are enough Windows HCK Client computers to meet the requirements of all machine sets. Windows HCK schedules all of the Windows HCK Client computers at the same time.<br /><br /></li>
+        </ul>
+        <p>If a job remains unchanged in the Scheduler, make sure that the SQL Server (<strong>MSSQLSERVER</strong>), <strong>WLKSvc</strong>, and <strong>DTMSERVICE</strong> services are started in services.msc. </p>
+      </div>
+      <a id="jobsno">
+        
+      </a>
+      <h2 class="heading">Jobs do not run after reinstalling the Windows HCK Client</h2>
+      <div id="sectionSection10" class="section">
+        <p>Previously scheduled jobs do not run if you have installed the Windows HCK Controller and Windows HCK Studio, scheduled some jobs, and then uninstalled and reinstalled the Windows HCK Client.</p>
+        <p>In this case, you must establish a new connection between the Windows HCK Client computer and the Windows HCK Controller computer by uninstalling and reinstalling the Client. For information on how to do this, see <a href="#remcli">Remove and reinstall the Windows HCK Client</a>.</p>
+      </div>
+      <a id="multcli">
+        
+      </a>
+      <h2 class="heading">Multiple client systems are identified as the same system</h2>
+      <div id="sectionSection11" class="section">
+        <p>Client systems are identified through a pair of hashes. These hashes are individually composed of the following data sets:</p>
+        <p>
+          <strong>Hash1:</strong>
+        </p>
+        
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_09ba2cd9-a334-4983-bd56-7712aee9369b');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_09ba2cd9-a334-4983-bd56-7712aee9369b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+smbios UUID
+smbios serial number
+smbios manufacturer
+smbios model
+smbios SKU number
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>
+          <strong>Hash 2:</strong>
+        </p>
+        
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_53fdbabd-bd93-4dc1-8e14-b375fd0ac82f');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_53fdbabd-bd93-4dc1-8e14-b375fd0ac82f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+mac address 0
+driver 0 vendor
+driver 0 product
+driver 0 serial number
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+        <p>This characteristic allows you to change the hardware while retaining the same machine identifier. However, if the hashes are too similar between two (or more) different systems, the systems are identified as the same system. This causes the last system’s heart-beat to be the active client.</p>
+        <p>To prevent this from happening, the hash data should be unique for each client system. The easiest values to update are <strong>smbios UUID</strong> and <strong>smbios serial number</strong>.</p>
+        <p>You can see these values in the CLIENTMACHINE gatherer data. This log does not determine these values and modifying this log does not prevent or resolve the problem.</p>
+        <p>This log exists at <strong>%SystemDrive%\WLK\JobsWorkingDir\AssetCfg\Log</strong>.</p>
+      </div>
+      <a id="rem">
+        
+      </a>
+      <h2 class="heading">Remote Desktop cannot connect to a Windows HCK Client computer</h2>
+      <div id="sectionSection12" class="section">
+        <p>If Remote Desktop cannot connect to a Windows HCK Client computer, make sure that Remote Desktop is a Windows Firewall exception.</p>
+        <h4 class="subHeading">To allow a Remote Desktop connection in Windows 7</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>Open Control Panel.</p>
+            </li>
+            <li>
+              <p>Click <strong>System and Security</strong> &gt; <strong>Windows Firewall</strong> &gt; <strong>Allow a program or feature through Windows Firewall</strong>.</p>
+            </li>
+            <li>
+              <p>Click the <strong>Remote Desktop</strong> check box, and then click <strong>OK</strong>.</p>
+            </li>
+          </ol>
+        </div>
+        <h4 class="subHeading">To allow a Remote Desktop connection in Windows Vista</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>Open Control Panel.</p>
+            </li>
+            <li>
+              <p>System and Security <strong>Security</strong> &gt; <strong>Windows Firewall</strong> &gt; <strong>Change Settings</strong>.</p>
+            </li>
+            <li>
+              <p>Click the <strong>Exceptions</strong> tab. </p>
+            </li>
+            <li>
+              <p>Click the <strong>Remote Desktop</strong> check box, and then click <strong>OK</strong>.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <a id="remcli">
+        
+      </a>
+      <h2 class="heading">Remove and reinstall the Windows HCK Client</h2>
+      <div id="sectionSection13" class="section">
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="Warning" alt="Warning" src="http://i.msdn.microsoft.com/dynimg/IC174466.gif" title="Warning" xmlns="" />Warning </th>
+            </tr>
+            <tr>
+              <td>
+						Do not remove the Windows HCK Client as the first step in troubleshooting Windows HCK Client problems. If you reinstall the Windows HCK Client, any certification testing in progress is lost and you have to rerun all the tests in a new project. <p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        <h4 class="subHeading">To remove and reinstall the Windows HCK Client</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>Uninstall the Windows HCK Client (<strong>Control Panel</strong> &gt; <strong>Uninstall a program</strong> &gt; <strong>Windows Hardware Certification Kit Client</strong>.) </p>
+            </li>
+            <li>
+              <p>Start the Windows HCK Manager, go to <strong>Explorers | Job Monitor</strong>, right-click your computer, and then select <strong>Change Status -&gt; Unsafe</strong> to set the computer to the <strong>Unsafe</strong> state.</p>
+            </li>
+            <li>
+              <p>Install the Windows HCK Client by using the steps in the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998740.aspx">Step 2: Install Client on the test computer(s)</a> topic. </p>
+            </li>
+            <li>
+              <p>Wait for the computer to go into the <strong>Manual</strong> state in <strong>HCK Manager | Job Monitor</strong>, below the <strong>Status</strong> column.</p>
+            </li>
+            <li>
+              <p>Go to <strong>Explorers | Job Monitor</strong>, right-click your computer, and then select <strong>Change Status -&gt; Reset</strong>. </p>
+            </li>
+            <li>
+              <p>Wait for the computer to automatically return to the <strong>Ready</strong> state, or click <strong>Refresh</strong> in Windows HCK Manager.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <a id="unsupp">
+        
+      </a>
+      <h2 class="heading">Unsupported scenarios</h2>
+      <div id="sectionSection14" class="section">
+        <p>The following scenarios are not supported by the Windows HCK Client:</p>
+        <ul>
+          <li class="unordered">
+            <strong>Multiple operating systems.</strong> Installing multiple operating systems on a computer with the Windows HCK Client installed is not supported. If you have more than one operating system installed on a computer, and multiple instances of Windows HCK Client installed, you might cause errors than cannot be fixed without reinstalling the operating system. <br /><br />
+							Only one instance of Windows HCK Client should be installed on the system under test. In this scenario, the system includes all related physical discs and partitions.<br /><br /></li>
+          <li class="unordered">
+            <strong>Testing on multiple client computers.</strong> If you are using multiple client computers to complete a test project, you must use the same client computers to complete and also package the test project in Windows HCK Studio. For example, if one computer is testing for Windows 7 x86 and another computer is testing for Windows 7 x64, you must complete and package all testing on each computer before you make any changes to a system or operating system. If you change anything about the client computer, you might invalidate the project and then have to restart the test by using a new project. You might need to restart your test project if you make any of these changes:<br /><br /><ul><li class="unordered">
+									Change the computer name <br /><br /></li><li class="unordered">
+									Reinstall the Client<br /><br /></li><li class="unordered">
+									Reinstall the operating system <br /><br /></li><li class="unordered">
+									Move the computer from a DOMAIN to a WORKGROUP or from a WORKGROUP to a DOMAIN.<br /><br /></li></ul></li>
+        </ul>
+        <p>If you have one of the above unsupported scenarios on a Windows HCK Client computer, you might have no heartbeat, jobs stuck in the Scheduler, or jobs that do not run.</p>
+        <p>To re-establish a working test environment, change the Windows HCK Client system back to its original state to continue and complete the test submission. Optionally, uninstall and reinstall Windows HCK Controller and Windows HCK Client so that all systems are either joined to a domain or part of a workgroup.</p>
+      </div>
+      <a id="watched">
+        
+      </a>
+      <h2 class="heading">Watched system does not have a heartbeat</h2>
+      <div id="sectionSection15" class="section">
+        <p>If you select a machine pool in configuration, and watch the test system from the configuration screen, the heart-beat, that is, the user interface (UI) time stamp, does not update.</p>
+        <p>This is a Windows HCK Studio UI issue. The system does continue to heart-beat, but the UI just does not update.</p>
+        <p>To update the heart-beat time stamp, switch machine pools.</p>
+      </div>
+      <a id="win7">
+        
+      </a>
+      <h2 class="heading">Windows 7 Clients do not enter the Ready state</h2>
+      <div id="sectionSection16" class="section">
+        <p>
+          <strong>Problem.</strong> A test Windows HCK Client appears in the Default Test Pool and has a recent heartbeat, but when you change the state of the Client to <strong>Reset</strong>, the status does not change to <strong>Ready</strong> and it eventually changes to <strong>Debug</strong>.</p>
+        <p>If the test computer is connected to a public network, the Windows HCK Client does not enter the <strong>Ready</strong> state because the public network category is restrictive, and network discovery is turned off by default. </p>
+        <p>
+          <strong>Solution.</strong> Change the network location of the Windows HCK Client.</p>
+        <a id="BKMK_ChangeNetworkLocation">
+          
+        </a>
+        <h4 class="subHeading">To change the Windows HCK Client to a Home or Private network</h4>
+        <div class="subSection">
+          <ol class="ordered">
+            <li>
+              <p>On the client computer, open Control Panel, click <strong>Network and Internet</strong>, and then click <strong>View network status and tasks</strong>.</p>
+            </li>
+            <li>
+              <p>On Windows 7, if the network under <strong>View your active networks</strong> is set to <strong>Public Network</strong>, click <strong>Public Network</strong>, and then change it to <strong>Home network</strong>. </p>
+              <p>-or-</p>
+              <p>On Windows Vista, if the Network category (under <strong>Network Details</strong>) is set to <strong>Public network</strong>, click <strong>Change</strong>, and then click <strong>Private</strong>.</p>
+            </li>
+          </ol>
+          <p>The Windows HCK Client status changes from <strong>Reset</strong> to <strong>Ready</strong>, and this action reinstalls the Windows HCK Client on the computer.</p>
+        </div>
+        <p>The Windows HCK Client status changes from <strong>Reset</strong> to <strong>Ready</strong>, and this action reinstalls the Windows HCK Client on the computer.</p>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998592.aspx">Troubleshooting the Windows HCK Environment</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="OZ3zLxg-jyKKgbjd_xQVOU_qSg5gPGU_bnRcV7_YDjcw7P7mz051unjYitvn-nDoklTLaK-t1G9FYtoEdxlwjC1Fz7q7A6QZghoEk1EdfwXaPK3Q3FZ8ccOJI6LkO_8GUSRymw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn393917.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn393917.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="nTPbmiqrlktJGqDDt_c-ICunC9upp5FAbKSu1ur1f6xrVMPksHmjoLBL6MuDO0uN1338dmPUaJUe6AlTiVzJOZlytGptfn2HgyGkI3QPO8yD2A_SrW38Q3TuxaKZoz0QvucQ0Q2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn393917(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"0d32bbda-6a02-4d3c-b9c1-1f8fbc7bd9fb\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn393917.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:56 GMT -->
+</html>

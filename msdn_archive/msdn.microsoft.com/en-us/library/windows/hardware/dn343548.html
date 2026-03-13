@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn343548.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:07:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn343548.html" />
+        <title>How to run HCK Motion Sensor Tests</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn343548(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343548(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343548(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343548(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD0-3:59:23 AM" />
+
+<meta name="Search.ShortId" content="dn343548" />
+
+<meta name="ms.shortidmsdn" content="dn343548" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053963&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn343548.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998100.html" id="dn375949_WIN.10_en-us" mtpsaliasid="" mtpsassetid="19922dd7-c8d5-4eab-bcd4-305157cbce9f_WIN.10_en-us" mtpsshortid="hh998100_WIN.10_en-us" title="Device.Digitizer Testing">Device.Digitizer Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn247279.html" id="dn375953_WIN.10_en-us" mtpsaliasid="" mtpsassetid="5f43a6ff-791a-4176-ba02-0bfec29a6277_WIN.10_en-us" mtpsshortid="dn247279_WIN.10_en-us" title="Additional Digitizer Resources">Additional Digitizer Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn195876.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Down Latency by using an Acoustic Measurement Tool">How to measure Touch Down Latency by using an Acoustic Measurement Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn266003.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to measure Touch Panning Latency">How to measure Touch Panning Latency</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn343548.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run HCK Motion Sensor Tests">How to run HCK Motion Sensor Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169214.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to run the Windows HCK Tests for Touch and Pen devices">How to run the Windows HCK Tests for Touch and Pen devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn281959.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the Precision Touch Testing Tool">How to use the Precision Touch Testing Tool</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293768.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overview of measuring Touch Down Hardware Latency">Overview of measuring Touch Down Hardware Latency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj906442.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Using Robot Automation for Touch Hardware Certification Tests">Using Robot Automation for Touch Hardware Certification Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn169213.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service">Windows Touch Device Certification Processes and Windows Touch Test Lab (WTTL) Service</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">How to run HCK Motion Sensor Tests</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <h2 class="heading">Introduction</h2>
+      <div id="sectionSection0" class="section">
+        <p>This document is a guide or a supplement to the existing HCK 2.0 documentation and tools for sensors OEMs, ODMs and IHVs. It provides some tips and tricks that a partner can leverage to run the tests. Partners are free to use other implementations to test their device-- this is just a singular reference. Items identified in this document are optional (you can run the tests without these pieces of hardware). They have simply been used to help demonstrate the orientations for the purposes of this document.</p>
+        <p>This document assumes that the HCK 2.0 or greater is being used to test a slate form factor system (requiring motion and light sensors). Other form factors (e.g. laptops) are beyond the scope of this document. Although the tests do validate other form factor systems, the details below are primarily designed to optimize testing on slate form factor systems.</p>
+        <p>This document describes the following tests:</p>
+        <ul>
+          <li class="unordered">
+            <a href="#accel">Verify Sensor Orientation – 3D Accelerometer</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#gyro">Gyroscope Sensor Test</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#compass">Verify Sensor Orientation – 3D Compass</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#inclin">Verify Sensor Orientation – Inclinometer</a>
+            <br />
+            <br />
+          </li>
+          <li class="unordered">
+            <a href="#advor">Verify Advanced Orientation Sensors</a>
+            <br />
+            <br />
+          </li>
+        </ul>
+        <p>The motion sensor tests are required for the following:</p>
+        <ul>
+          <li class="unordered">
+							Sensor device certification<br /><br /></li>
+          <li class="unordered">
+							System certification<br /><br /></li>
+        </ul>
+        <p>The motivation to have <strong>identical</strong> tests in both of these areas is to ensure that IHVs provide passing hardware, firmware, and drivers to PC manufacturers and that PC manufacturers integrate the parts correctly onto their systems to provide accurate and reliable sensor readings.</p>
+        <h3 class="subHeading">Test Purpose</h3>
+        <div class="subSection">
+          <p>The primary purpose of the motion sensor tests is to assist hardware partners in validating that their sensors are correctly orientated in the system and that they meet the WHCK required accuracy requirements.  These tests are not designed to provide full test coverage or to take advantage of specialized equipment that can more accurately determine the inaccuracies of individual sensors. It is recommended that PC manufacturers to test their systems with additional applications and quality assurance tests after passing WHCK (e.g. test with production-quality Windows 8 apps).</p>
+        </div>
+        <h3 class="subHeading">Recommended Testing Sequence</h3>
+        <div class="subSection">
+          <p>Microsoft recommends that you run the tests in the order that is listed in the following table. By testing the accelerometer and gyroscope first, you can ensure that these basic sensors are working correctly. The next set of tests validates the data from Compass, Inclinometer, and Orientation sensors that are derived by combining data of multiple sensors. It is also recommended not to attempt to execute subsequent tests until all previous tests are passing.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Sensor 
+										</th>
+              <th>
+											Test Name
+										</th>
+              <th>
+											Dependencies
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>Accelerometer</p>
+              </td>
+              <td>
+                <p>Verify Sensor Orientation – 3D Accelerometer</p>
+              </td>
+              <td>
+                <p>n/a</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Gyroscope</p>
+              </td>
+              <td>
+                <p>Gyroscope Sensor Test</p>
+                <p>
+                  
+                </p>
+              </td>
+              <td>
+                <p>n/a</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Compass</p>
+              </td>
+              <td>
+                <p>Verify Sensor Orientation – 3D Compass</p>
+              </td>
+              <td>
+                <p>Accelerometer, Gyro, Compass</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Inclinometer</p>
+              </td>
+              <td>
+                <p>Verify Sensor Orientation – Inclinometer</p>
+              </td>
+              <td>
+                <p>Accelerometer, Gyro, Compass</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Fusion/Orientation Sensors (Rotation Matrix / Quaternion)</p>
+              </td>
+              <td>
+                <p>Verify Advanced Orientation Sensors</p>
+              </td>
+              <td>
+                <p>Accelerometer, Gyro, Compass</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a id="equip">
+          
+        </a>
+        <h3 class="subHeading">Suggested Test Equipment</h3>
+        <div class="subSection">
+          <p>For the purposes of this document, the following hardware items were utilized to help run the WHCK tests. While these devices are not required for WHCK, they may assist the validation engineer get through the tests more easily if used.</p>
+          <p>
+            
+          </p>
+          <img id="5c864b3c-9c89-47fe-8a1b-3410f99f866b" alt="Suggested Test Equipment" src="../../../../../i.msdn.microsoft.com/dynimg/IC672961.jpg" title="Suggested Test Equipment" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 1 Suggested Test Equipment</strong>
+          </p>
+          <p>
+            
+          </p>
+          <ul>
+            <li class="unordered">
+									Bluetooth keyboard<br /><br /></li>
+            <li class="unordered">
+									Bluetooth mouse<br /><br /></li>
+            <li class="unordered">
+									Compass / GPS<br /><br /></li>
+            <li class="unordered">
+									Clamp and tape to hold system<br /><br /></li>
+            <li class="unordered">
+									Revolving turn-table (for example, a Lazy Susan)<br /><br /></li>
+            <li class="unordered">
+									Sensor Diagnostic Tool<br /><br /></li>
+          </ul>
+          <p>These additional devices help test a slate form factor system (where accelerometer, gyro, compass, inclinometer and orientation sensors are required). For other configurations, these tools may not apply. The remainder of this document will only focus on slate and not other form factors.</p>
+          <p>The sensor diagnostic tool (sensordiagnostictool.exe available in the WDK) is useful for debugging test failures. This tool will show the data being returned in real-time from the various motion sensors which can be compared to the expected results.</p>
+        </div>
+      </div>
+      <a id="accel">
+        
+      </a>
+      <h2 class="heading">Verify Sensor Orientation – 3D Accelerometer</h2>
+      <div id="sectionSection1" class="section">
+        <p>Test Scope: This test verifies the accelerometer is correctly orientated in the system.  The tests have an error tolerance of +/- 0.1 G.</p>
+        <p>Prerequisites before running this test:</p>
+        <ol class="ordered">
+          <li>
+							Manually verify that screen autorotation works as expected.<br /><br /></li>
+          <li>
+							Use SDT and validate that the sensors do not show new data events when sitting stationary.<br /><br /></li>
+        </ol>
+        <p>Once these simple prerequisites pass, proceed to run the WHCK test. Should you run into errors with the tests, ensure that the device is in the correct orientation as per this document. PC manufacturers with questions should first contact their sensor manufacturer (IHV) to identify how they passed the WHCK tests before contacting Microsoft for assistance with WHCK tests.</p>
+        <h3 class="subHeading">Accelerometer Test 1</h3>
+        <div class="subSection">
+          <p>Hold the device perpendicular to a flat and level surface with the Windows button on the bottom.</p>
+          <p>Expected values:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_X_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Y_G</p>
+              </td>
+              <td>
+                <p>-1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Z_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="009a354b-4b32-47d8-9554-38afa80fffd1" alt="Accelerometer Test 1" src="../../../../../i.msdn.microsoft.com/dynimg/IC672962.jpg" title="Accelerometer Test 1" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 2 Accelerometer Test 1</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Accelerometer Test 2</h3>
+        <div class="subSection">
+          <p>Rotate device 90 degrees clockwise, keeping the device perpendicular to the flat and level surface. The Windows button should be on the left.</p>
+          <p>Expected values:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_X_G</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Y_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Z_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="8aae104b-7048-4222-87c9-ad77d47c3075" alt="Accelerometer Test 2" src="../../../../../i.msdn.microsoft.com/dynimg/IC672963.jpg" title="Accelerometer Test 2" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 3 Accelerometer Test 2</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Accelerometer Test 3</h3>
+        <div class="subSection">
+          <p>Now lay the device flat, with the windows button away from you.</p>
+          <p>Expected values:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_X_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Y_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Z_G</p>
+              </td>
+              <td>
+                <p>-1</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="0074590b-1aad-4e6e-9933-dadbc18e9f3e" alt="Accelerometer Test 3" src="../../../../../i.msdn.microsoft.com/dynimg/IC673479.jpg" title="Accelerometer Test 3" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 4 Accelerometer Test 3</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Accelerometer Test 4</h3>
+        <div class="subSection">
+          <p>Now flip the device over, so the screen is face down.</p>
+          <p>Expected values:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_X_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Y_G</p>
+              </td>
+              <td>
+                <p>0</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ACCELERATION_Z_G</p>
+              </td>
+              <td>
+                <p>1</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="9b88f682-38f6-4f77-8935-1381d6d80479" alt="Accelerometer Test 4" src="../../../../../i.msdn.microsoft.com/dynimg/IC673480.jpg" title="Accelerometer Test 4" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 5 Accelerometer Test 4</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="gyro">
+        
+      </a>
+      <h2 class="heading">Gyroscope Sensor Test</h2>
+      <div id="sectionSection2" class="section">
+        <p>Test Scope:</p>
+        <p>Gyroscopes generally emit noise on the magnitude of +/- 2 degrees per second.  Prior to running the Gyroscope verification tests, testers should use the sensor diagnostic tool to validate the gyroscope sensor is not generating values greater than 2 degrees per second when the system is stationary.</p>
+        <p>Prerequisites before running this test:</p>
+        <ol class="ordered">
+          <li>
+							Accelerometer tests pass.<br /><br /></li>
+          <li>
+							Use SDT, and validate that the sensors do not return data when sitting stationary on a flat surface.<br /><br /></li>
+        </ol>
+        <p>If the gyroscope sensor is generating excessive noise, testers should work with the sensor manufacturer to understand and fix the source of the noise.</p>
+        <p>Gyro tests expect to receive an angular velocity of greater than 40 degrees per second on the axis being rotated and less than 15 degrees per second on the stationary axes.  To achieve passing results, testers will likely find that the system can be rotated on a turntable to keep the other two axes stationary. Note the system should also be centered on the turntable to prevent movement on other axes from detecting rotation.</p>
+        <h3 class="subHeading">Gyro Test 1</h3>
+        <div class="subSection">
+          <p>Lay the device flat with the screen up.  Rotate the device clockwise.</p>
+          <p>Expected values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; -40</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="1ccbc030-c540-4ddd-ba76-3d0ed50bbe7e" alt="Gyro Test 1" src="../../../../../i.msdn.microsoft.com/dynimg/IC672966.jpg" title="Gyro Test 1" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 6 Gyro Test 1</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Gyro Test 2</h3>
+        <div class="subSection">
+          <p>Lay the device flat with the screen up.  Rotate the device counterclockwise.</p>
+          <p>Expected Values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&gt; 40</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="a949062d-6e3c-40fb-8cba-78e07385aba5" alt="Gyro Test 2" src="../../../../../i.msdn.microsoft.com/dynimg/IC672967.jpg" title="Gyro Test 2" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 7 Gyro Test 2</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Gyro Test 3</h3>
+        <div class="subSection">
+          <p>Hold the device vertical with the windows button on the bottom. Looking down on the device, rotate the device clockwise along the axis between the top of the screen and the windows button.</p>
+          <p>Expected values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; -40</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="a1d79026-2ad0-4332-8135-f412a0c8fda3" alt="Gyro Test 3" src="../../../../../i.msdn.microsoft.com/dynimg/IC672968.jpg" title="Gyro Test 3" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 8 Gyro Test 3</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Gyro Test 4</h3>
+        <div class="subSection">
+          <p>Hold the device vertical with the windows button on the bottom. Looking down on the device, rotate the device counterclockwise along the axis between the top of the screen and the windows button.</p>
+          <p>Expected values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&gt; 40</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="e44ee4f5-cc9d-4bc9-8ac1-e9b11cb8ca13" alt="Gyro Test 4" src="../../../../../i.msdn.microsoft.com/dynimg/IC672969.jpg" title="Gyro Test 4" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 9 Gyro Test 4</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Gyro Test 5</h3>
+        <div class="subSection">
+          <p>Hold the device vertical with the windows button on the left. Looking down on the device, rotate the device clockwise keeping the device vertical and in the portrait orientation.</p>
+          <p>Expected values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&gt; 40</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="dc037935-5b02-4010-93dd-8bf03f4786aa" alt="Gyro Test 5" src="../../../../../i.msdn.microsoft.com/dynimg/IC672970.jpg" title="Gyro Test 5" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 10 Gyro Test 5</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Gyro Test 6</h3>
+        <div class="subSection">
+          <p>Hold the device vertical with the windows button on the left. Looking down on the device, rotate the device counterclockwise keeping the device vertical and in the portrait orientation.</p>
+          <p>Expected values during rotation:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_X_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt;-40</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Y_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>SENSOR_DATA_TYPE_ANGULAR_ACCELERATION_Z_DEGREES_PER_SECOND_SQUARED</p>
+              </td>
+              <td>
+                <p>&lt; 15</p>
+              </td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+          <img id="66df75ea-056c-46a2-a79d-cbf41ebd593e" alt="Gyro Test 6" src="../../../../../i.msdn.microsoft.com/dynimg/IC675221.jpg" title="Gyro Test 6" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 11 Gyro Test 6</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="compass">
+        
+      </a>
+      <h2 class="heading">Verify Sensor Orientation – 3D Compass</h2>
+      <div id="sectionSection3" class="section">
+        <p>Most compass implementations use data from both the 3D magnetometer and the gyro to calculate the current direction the user is facing relative to the magnetic north pole.  Some implementations also use data from the accelerometer. Therefore, if the gyroscope or accelerometer sensor is not functioning properly, testers should expect to see the compass return incorrect headings.</p>
+        <p>Since the earth’s magnetic force is relatively weak, the magnetometer sensors will often be subject to interference from other components inside the system. If the magnetometers are not adequately isolated from sources of electromagnetic interference such as antennas, power lines, or other components that are composed of materials such as iron that interfere with magnetic reception, testers will find that the compass will return incorrect headings. Please refer to the <a href="http://go.microsoft.com/fwlink/?LinkId=262274">Integrating Motion and Orientation Sensors whitepaper</a> for guidance on correct magnetometer placement and best practices.</p>
+        <p>The user is strongly encouraged to stand holding the system at various angles and rotate themselves so they end up facing different directions. Regardless of the angle the system is being held, or landscape / portrait orientation, the compass should always return the heading that is relative to the direction that the user is facing. Note that sensor diagnostic tool can be used to display the heading value from the compass sensor. If testers find out that the compass is returning incorrect or inconsistent results, please work with the magnetometer sensor vendor to determine if the error is a result of interference or potentially an incorrect sensor fusion algorithm.</p>
+        <p>The compass tests in the WHCK validate that the compass returns expected values when the system is held at different directions and orientations. The compass tests allow for an error tolerance of +/- 10 degrees. Testers should use a reference compass to determine the direction of magnetic north prior to starting the compass test.</p>
+        <h3 class="subHeading">Compass Test 1</h3>
+        <div class="subSection">
+          <p>Lay the device on a flat surface with the Windows button pointing due south.</p>
+          <p>The compass should return a heading near 0 degrees.</p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								Ignore the logging exception text. This will not cause a failure to be logged.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <p>
+            
+          </p>
+          <img id="b9f68d22-dcb2-4991-9fff-98abe35988da" alt="Compass Test 1" src="../../../../../i.msdn.microsoft.com/dynimg/IC672972.jpg" title="Compass Test 1" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 12 Compass Test 1</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Compass Test 2</h3>
+        <div class="subSection">
+          <p>Now hold the device vertical with the Windows button on the bottom, with the screen towards you.  Aim the Windows button due north.</p>
+          <p>The compass should return a heading near 0 degrees</p>
+          <p>
+            
+          </p>
+          <img id="533e68f9-2801-4f30-a3a7-549912a07eea" alt="Compass Test 2" src="../../../../../i.msdn.microsoft.com/dynimg/IC672973.jpg" title="Compass Test 2" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 13 Compass Test 2</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Compass Test 3</h3>
+        <div class="subSection">
+          <p>Now lay the device flat, screen down with the windows button pointing due south.</p>
+          <p>The compass should return a heading near 0 degrees.</p>
+          <p>
+            
+          </p>
+          <img id="73c5285d-eb45-49b2-a47b-c4baeab80cc9" alt="Compass Test 3" src="../../../../../i.msdn.microsoft.com/dynimg/IC672974.jpg" title="Compass Test 3" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 14 Compass Test 3</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Compass Test 4</h3>
+        <div class="subSection">
+          <p>Now rotate the screen 90 degrees clockwise so the Windows button is pointing due West.</p>
+          <p>The compass should return a heading near 90 degrees.</p>
+          <p>
+            
+          </p>
+          <img id="6be7b371-08ad-441d-8c89-8195069e4f3d" alt="Compass Test 4" src="../../../../../i.msdn.microsoft.com/dynimg/IC672975.jpg" title="Compass Test 4" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 15 Compass Test 4</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Compass Test 5</h3>
+        <div class="subSection">
+          <p>Rotate the screen another 90 degrees clockwise so the Windows button is pointing due North.</p>
+          <p>The compass should return a heading near 180 degrees.</p>
+          <p>
+            
+          </p>
+          <img id="f22e8517-da85-4a83-8e03-9aca5b0b4809" alt="Compass Test 5" src="../../../../../i.msdn.microsoft.com/dynimg/IC672976.jpg" title="Compass Test 5" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 16 Compass Test 5</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Compass Test 6</h3>
+        <div class="subSection">
+          <p>Rotate the screen another 90 degrees clockwise so the Windows button is pointing due East.</p>
+          <p>The compass should return a value near 270 degrees.</p>
+          <p>
+            
+          </p>
+          <img id="5c55af70-c674-4cb3-8987-08f9337b1876" alt="Compass Test 6" src="../../../../../i.msdn.microsoft.com/dynimg/IC672977.jpg" title="Compass Test 6" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 17 Compass Test 6</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="inclin">
+        
+      </a>
+      <h2 class="heading">Verify Sensor Orientation – Inclinometer</h2>
+      <div id="sectionSection4" class="section">
+        <p>Based on the guidance in the <a href="http://go.microsoft.com/fwlink/?LinkId=262274">Integrating Motion and Orientation Sensors whitepaper</a>, the inclinometer implementation could use data from the accelerometer, gyroscope and compass to determine the Euler angle values.</p>
+        <p>The tests will allow for angle errors of +/- 10 degrees.</p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+            </tr>
+            <tr>
+              <td>
+						Please refer to the Validation of Euler Angles section of the Integrating Motion and Orientation Sensors whitepaper for the expected angles for each of the inclinometer tests.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 1</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="4664527a-fe9d-4032-8521-8d3a82fe2102" alt="Inclinometer Test 1" src="../../../../../i.msdn.microsoft.com/dynimg/IC672978.jpg" title="Inclinometer Test 1" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 18 Inclinometer Test 1</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 2</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface with the windows button pointing due EAST.</p>
+          <p>
+            
+          </p>
+          <img id="42d9591b-00c4-4aab-8fc8-d48f13d6cf59" alt="Inclinometer Test 2" src="../../../../../i.msdn.microsoft.com/dynimg/IC672979.jpg" title="Inclinometer Test 2" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 19 Inclinometer Test 2</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 3</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface with the windows button pointing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="7b65fc04-41c6-49c7-b71e-a5031a569bac" alt="Inclinometer Test 3" src="../../../../../i.msdn.microsoft.com/dynimg/IC672980.jpg" title="Inclinometer Test 3" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 20 Inclinometer Test 3</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 4</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface with the windows button pointing due WEST.</p>
+          <p>
+            
+          </p>
+          <img id="1ddb5519-976d-4509-90be-d07d6e4c92a6" alt="Inclinometer Test 4" src="../../../../../i.msdn.microsoft.com/dynimg/IC672981.jpg" title="Inclinometer Test 4" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 21 Inclinometer Test 4</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 5</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface face up with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="92b4ca97-b94a-4a2e-9256-fdfaccbb01cf" alt="Inclinometer Test 5" src="../../../../../i.msdn.microsoft.com/dynimg/IC672982.jpg" title="Inclinometer Test 5" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 22 Inclinometer Test 5</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 6</h3>
+        <div class="subSection">
+          <p>Hold the device vertically against a flat and level surface so the windows button is on the bottom, the +Y axis points straight up and the screen is facing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="76879c20-171a-480b-a10e-dc0bab219746" alt="Inclinometer Test 6" src="../../../../../i.msdn.microsoft.com/dynimg/IC672983.jpg" title="Inclinometer Test 6" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 23 Inclinometer Test 6</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 7</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface face down so the windows button is pointing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="65d161c5-2dd9-4816-91f8-498580a07c8d" alt="Inclinometer Test 7" src="../../../../../i.msdn.microsoft.com/dynimg/IC672984.jpg" title="Inclinometer Test 7" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 24 Inclinometer Test 7</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 8</h3>
+        <div class="subSection">
+          <p>Hold the device vertically against a flat and level surface so the windows button is on the top, the +Y axis points straight down and the screen is facing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="c97a7844-68c1-43ca-8fbf-934a87d552db" alt="Inclinometer Test 8" src="../../../../../i.msdn.microsoft.com/dynimg/IC672985.jpg" title="Inclinometer Test 8" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 25 Inclinometer Test 8</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 9</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface face up with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="0810bd67-0edc-406a-a4c0-df4773ca1ff0" alt="Inclinometer Test 9" src="../../../../../i.msdn.microsoft.com/dynimg/IC672986.jpg" title="Inclinometer Test 9" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 26 Inclinometer Test 9</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 10</h3>
+        <div class="subSection">
+          <p>Hold the device vertically against a flat and level surface on its right side so the screen is pointing due EAST.</p>
+          <p>
+            
+          </p>
+          <img id="c7a0a6eb-69b4-4177-a7ef-ef4377a979b9" alt="Inclinometer Test 10" src="../../../../../i.msdn.microsoft.com/dynimg/IC672987.jpg" title="Inclinometer Test 10" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 27 Inclinometer Test 10</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 11</h3>
+        <div class="subSection">
+          <p>Place the device on a flat and level surface face down with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="b1f58bc2-5160-4d00-bcfe-cf4f5e539ce0" alt="Inclinometer Test 11" src="../../../../../i.msdn.microsoft.com/dynimg/IC672988.jpg" title="Inclinometer Test 11" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 28 Inclinometer Test 11</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Inclinometer Test 12</h3>
+        <div class="subSection">
+          <p>Hold the device vertically against a flat and level surface on its left side so the screen is pointing due WEST.</p>
+          <p>
+            
+          </p>
+          <img id="dec63ace-cc2c-4d93-bd5b-791057b27c85" alt="Inclinometer Test 12" src="../../../../../i.msdn.microsoft.com/dynimg/IC672989.jpg" title="Inclinometer Test 12" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 29 Inclinometer Test 12</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <a id="advor">
+        
+      </a>
+      <h2 class="heading">Verify Advanced Orientation Sensors</h2>
+      <div id="sectionSection5" class="section">
+        <p>Most rotation matrix and quaternion implementations will use data derived from both the accelerometer and compass to determine rotation matrix and quaternion values.  Testers are recommended to first validate accelerometer and compass values before attempting to run the advanced orientation tests.</p>
+        <p>The tests use dot products to compute the delta between the expected vector and the vector retrieved from the advanced orientation sensors.  The tests allow for a delta of up to 15 degrees.  If testers find that the sensor is returning different values than what the test expects then the orientation fusion algorithm should be reviewed to see that it produces consistent results with the values given in the <a href="http://go.microsoft.com/fwlink/?LinkId=262274">Integrating Motion and Orientation Sensors whitepaper</a>. </p>
+        <div class="alert">
+          <table>
+            <tr>
+              <th align="left">
+                <img id="Important" alt="Important" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Important" xmlns="" class="cl_IC160177" />Important </th>
+            </tr>
+            <tr>
+              <td>
+						Please refer to the Validation of Euler Angles section of the Integrating Motion and Orientation Sensors whitepaper for the expected quaternion and rotation matrix values.<p></p></td>
+            </tr>
+          </table>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 1</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="7fb7b3a5-2d2f-4999-8cdc-5619677f4c46" alt="Advanced Orientation Sensor Test 1" src="../../../../../i.msdn.microsoft.com/dynimg/IC672990.jpg" title="Advanced Orientation Sensor Test 1" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 30 Advanced Orientation Sensor Test 1</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 2</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due EAST.</p>
+          <p>
+            
+          </p>
+          <img id="d9b0eda3-a50e-4512-b1a2-d5efcd939036" alt="Advanced Orientation Sensor Test 2" src="../../../../../i.msdn.microsoft.com/dynimg/IC672991.jpg" title="Advanced Orientation Sensor Test 2" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 31 Advanced Orientation Sensor Test 2</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 3</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="acb8883d-a86a-44a1-a99b-e6cf1c4d8b0c" alt="Advanced Orientation Sensor Test 3" src="../../../../../i.msdn.microsoft.com/dynimg/IC672992.jpg" title="Advanced Orientation Sensor Test 3" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 32 Advanced Orientation Sensor Test 3</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 4</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due WEST.</p>
+          <p>
+            
+          </p>
+          <img id="25306911-5ed6-4e74-90f9-93f93669910a" alt="Advanced Orientation Sensor Test 4" src="../../../../../i.msdn.microsoft.com/dynimg/IC675222.jpg" title="Advanced Orientation Sensor Test 4" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 33 Advanced Orientation Sensor Test 4</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 5</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="d32de5bf-8781-4c5b-abca-44e5c84a79c0" alt="Advanced Orientation Sensor Test 5" src="../../../../../i.msdn.microsoft.com/dynimg/IC672982.jpg" title="Advanced Orientation Sensor Test 5" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 34 Advanced Orientation Sensor Test 5</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 6</h3>
+        <div class="subSection">
+          <p>Hold the device vertically with the windows button on the bottom and the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="6349bf41-c92f-48b0-8f52-131f609e63d9" alt="Advanced Orientation Sensor Test 6" src="../../../../../i.msdn.microsoft.com/dynimg/IC672995.jpg" title="Advanced Orientation Sensor Test 6" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 35 Advanced Orientation Sensor Test 6</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 7</h3>
+        <div class="subSection">
+          <p>Place the device on a flat level surface with screen down and the windows button pointing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="81d794cb-1f86-4c17-8bf9-8b18738660c0" alt="Advanced Orientation Sensor Test 7" src="../../../../../i.msdn.microsoft.com/dynimg/IC672996.jpg" title="Advanced Orientation Sensor Test 7" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 36 Advanced Orientation Sensor Test 7</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 8</h3>
+        <div class="subSection">
+          <p>Place the device on a flat level surface with screen down and the windows button pointing due NORTH.</p>
+          <p>
+            
+          </p>
+          <img id="85910077-2551-453b-b872-ce04e1d08783" alt="Advanced Orientation Sensor Test 8" src="../../../../../i.msdn.microsoft.com/dynimg/IC672997.jpg" title="Advanced Orientation Sensor Test 8" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 37 Advanced Orientation Sensor Test 8</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 9</h3>
+        <div class="subSection">
+          <p>Place device on a flat level surface, screen up with the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="7ced6628-5893-4561-ac1d-4fc052f75e43" alt="Advanced Orientation Sensor Test 9" src="../../../../../i.msdn.microsoft.com/dynimg/IC672986.jpg" title="Advanced Orientation Sensor Test 9" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 38 Advanced Orientation Sensor Test 9</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 10</h3>
+        <div class="subSection">
+          <p>Hold the device vertically with the windows button on the side, left side on top, and the windows button pointing due EAST.</p>
+          <p>
+            
+          </p>
+          <img id="b4316de9-c706-44b9-89cf-a8378ef24f27" alt="Advanced Orientation Sensor Test 10" src="../../../../../i.msdn.microsoft.com/dynimg/IC672987.jpg" title="Advanced Orientation Sensor Test 10" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 39 Advanced Orientation Sensor Test 10</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 11</h3>
+        <div class="subSection">
+          <p>Place the device on a flat level surface with screen down and the windows button pointing due SOUTH.</p>
+          <p>
+            
+          </p>
+          <img id="ddb3a19a-8186-491b-9826-8f96f492082e" alt="Advanced Orientation Sensor Test 11" src="../../../../../i.msdn.microsoft.com/dynimg/IC673000.jpg" title="Advanced Orientation Sensor Test 11" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 40 Advanced Orientation Sensor Test 11</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+        <h3 class="subHeading">Advanced Orientation Sensor Test 12</h3>
+        <div class="subSection">
+          <p>Hold the device vertically with the windows button on the side, left side on bottom, and the windows button pointing due WEST.</p>
+          <p>
+            
+          </p>
+          <img id="3dad2c33-4dd8-4369-a7bd-ad032dfc9ba8" alt="Advanced Orientation Sensor Test 12" src="../../../../../i.msdn.microsoft.com/dynimg/IC673001.jpg" title="Advanced Orientation Sensor Test 12" xmlns="" />
+          <p>
+            
+          </p>
+          <p>
+            <strong>Figure 41 Advanced Orientation Sensor Test 12</strong>
+          </p>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="ytcBnCXrTciGhnhm5ESLkRTN2lMZreav-lgZcuEm0rUMbC2-wOvKF_mFHkGeJTuoJxftXGGs3SwG3SFYSV4WMzeuQCNwyDo_e2leenlifNecSz7WDgvV59qi8hsCNanJFFspmw2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn343548.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn343548.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="DkQ73QAC5yOXlp2z1XMAyHl1UhGyDIj2nGdb4c3DS1u-KL1MxcBI0ZsKpzSiHZzjQMMq9sxh9YhkCs0NFWusipi92CNAnO-ZGVBu6dKCa0J5WMS4ZQsMwewUPUvico8V93JX_g2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn343548(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5e94732f-ea3d-45bf-aaca-0ef8359d1fbf\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn343548.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:08:36 GMT -->
+</html>

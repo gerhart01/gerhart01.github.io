@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn303344(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:36:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn303344(v%3dvs.85).html" />
+        <title>How to get USB descriptors (Windows Store app) (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn303344(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303344(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303344(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn303344(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD6-8:58:19 AM" />
+
+<meta name="Search.ShortId" content="dn303344" />
+
+<meta name="ms.shortidmsdn" content="dn303344" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined4208.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395071899&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn303344%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn303342(v%3dvs.85).html" id="hh948125_VS.85_en-us" mtpsaliasid="" mtpsassetid="B3F1A1A6-0908-4144-8454-76A2FB70619B_VS.85_en-us" mtpsshortid="dn303342_VS.85_en-us" title="Developing Windows applications for USB devices">Developing Windows applications for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn303355(v%3dvs.85).html" id="jj151904_VS.85_en-us" mtpsaliasid="" mtpsassetid="DEE30A6F-15AE-413B-B3F3-1C0250037D1A_VS.85_en-us" mtpsshortid="dn303355_VS.85_en-us" title="Windows Store app for a USB device">Windows Store app for a USB device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn312121(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Talking to USB devices, start to finish (Windows Store app)">Talking to USB devices, start to finish (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303351(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to add USB device capabilities to the app manifest">How to add USB device capabilities to the app manifest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303343(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to connect to a USB device (Windows Store app)">How to connect to a USB device (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303347(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer (Windows Store app)">How to send a USB control transfer (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303348(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB interrupt transfer request (Windows Store app)">How to send a USB interrupt transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303346(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB bulk transfer request (Windows Store app)">How to send a USB bulk transfer request (Windows Store app)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn303344(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to get USB descriptors (Windows Store app)">How to get USB descriptors (Windows Store app)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303345(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to select a USB interface setting (Windows Store app)">How to select a USB interface setting (Windows Store app)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to get USB descriptors (Windows Store app)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Summary</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>Understanding USB device layout</li>
+<li>Getting standard USB descriptors</li>
+<li>Getting custom descriptors</li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#usb_descriptors">USB descriptors</a></li>
+<li><a href="#before_you_start...">Before you start...</a></li>
+<li><a href="#how_to_get_the_device_descriptor">How to get the device descriptor</a></li>
+<li><a href="#how_to_get_the_configuration_descriptor">How to get the configuration descriptor</a></li>
+<li><a href="#how_to_get_interface_descriptors">How to get interface descriptors</a></li>
+<li><a href="#how_to_get_endpoint_descriptors">How to get endpoint descriptors</a></li>
+<li><a href="#how_to_get_custom_descriptors">How to get custom descriptors</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Important APIs</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>
+<a href="windows.devices.usb.usbdevicedescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDeviceDescriptor</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbconfigurationdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfigurationDescriptor</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDescriptor </strong></a>
+</li>
+</ul>
+
+</div>
+</div>
+<p>One of the main tasks of interacting with a USB device is to get information about it. All USB devices provide information in the form of several data structures called descriptors. This topic describes how a Windows Store app can get descriptors from the device at the endpoint, interface, configuration, and device level.</p>
+<h2><a id="USB_descriptors"></a><a id="usb_descriptors"></a><a id="USB_DESCRIPTORS"></a>USB descriptors</h2>
+<p>A USB device describes its capabilities in two main descriptors: device descriptor and configuration descriptor. </p>
+<p>A USB device must provide a <em>device descriptor</em> that contains information about a USB device as a whole. If the device doesn't provide that descriptor or provides a malformed descriptor, Windows is unable to load the device driver. The most important information in the descriptor is the device's <em>hardware ID</em> for the device (combination of <strong>vendor ID</strong> and <strong>product ID</strong> fields). It's based on that information that Windows is able to match an in-box driver for the device. Another information that is key is the <em>maximum packet size</em> of the default endpoint (<strong>MaxPacketSize0</strong>). The default endpoint is the target of all control requests that the host sends to the device to configure it. </p>
+<p>The length of the device descriptor is fixed.</p>
+<p>The USB device must also provide a complete <em>configuration descriptor</em>. The beginning portion of this descriptor has fixed length of 9 bytes, rest is variable length depending on the number of interfaces and endpoints those interfaces support. The fixed-length  portion provides information about a USB configuration: number of interfaces it supports and power consumption when the device is in that configuration. Those initial 9 bytes are followed by the variable portion of the descriptor that provides information about all USB interfaces. Each interface consists of one or more interface settings, and each setting is made up of a set of endpoints. Descriptors for interfaces, alternate settings, and endpoints are included in the variable portion. </p>
+<p>For detailed description about device layout, see <a href="dn303349(v%3dvs.85).html">Standard USB descriptors</a>.</p>
+<h2><a id="Before_you_start..."></a><a id="before_you_start..."></a><a id="BEFORE_YOU_START..."></a>Before you start...</h2>
+<p>
+</p><ul>
+<li>You  must have opened the device and obtained the <a href="windows.devices.usb.usbdevice.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a> object. Read <a href="dn303343(v%3dvs.85).html">How to connect to a USB device (Windows Store App)</a>.</li>
+<li>You can see the complete code shown in this topic in the CustomUsbDeviceAccess sample, Scenario5_UsbDescriptors files.</li>
+<li>
+<p>Get information about the device layout. <strong>Usbview.exe</strong> (included in the Windows Software Development Kit (SDK) for Windows 8) is an application that enables you to browse all USB controllers and the USB devices that are connected to them. For each connected device, you can view the device, configuration, interface, and endpoint descriptors to get an idea about the capability of the device.</p>
+</li>
+</ul>
+
+<h2><a id="How_to_get_the_device_descriptor"></a><a id="how_to_get_the_device_descriptor"></a><a id="HOW_TO_GET_THE_DEVICE_DESCRIPTOR"></a>How to get the device descriptor</h2>
+<p>Your Windows Store app can get the device descriptor from the previously obtained <a href="windows.devices.usb.usbdevice.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a> object by getting the <a href="windows.devices.usb.usbdevice.devicedescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.DeviceDescriptor</strong></a> property value.  </p>
+<p>This code example shows how to populate a string with field values from device descriptor.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d3c5e5fa-0e11-43a4-b460-6c6263558581');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d3c5e5fa-0e11-43a4-b460-6c6263558581" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+String GetDeviceDescriptorAsString (UsbDevice device)
+{
+    String content = <span style="color:Blue;">null</span>;
+
+    <span style="color:Blue;">var</span> deviceDescriptor = device.DeviceDescriptor;
+
+    content = <span style="color:#A31515;">"Device Descriptor\n"</span>
+            + <span style="color:#A31515;">"\nUsb Spec Number : 0x"</span> + deviceDescriptor.BcdUsb.ToString(<span style="color:#A31515;">"X4"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nMax Packet Size (Endpoint 0) : "</span> + deviceDescriptor.MaxPacketSize0.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nVendor ID : 0x"</span> + deviceDescriptor.IdVendor.ToString(<span style="color:#A31515;">"X4"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nProduct ID : 0x"</span> + deviceDescriptor.IdProduct.ToString(<span style="color:#A31515;">"X4"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nDevice Revision : 0x"</span> + deviceDescriptor.BcdDeviceRevision.ToString(<span style="color:#A31515;">"X4"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nNumber of Configurations : "</span> + deviceDescriptor.NumberOfConfigurations.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+    
+    <span style="color:Blue;">return</span> content;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The output is shown here:</p>
+<p><img id="device_descriptors_app" alt="USB device descriptor" src="../../../../../i.msdn.microsoft.com/dynimg/IC666102.png" title="USB device descriptor" xmlns="" /></p>
+<h2><a id="How_to_get_the_configuration_descriptor"></a><a id="how_to_get_the_configuration_descriptor"></a><a id="HOW_TO_GET_THE_CONFIGURATION_DESCRIPTOR"></a>How to get the configuration descriptor</h2>
+<p>To get the fixed portion of the configuration descriptor from the previously obtained <a href="windows.devices.usb.usbdevice.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a> object, </p>
+<ol>
+<li>Get the <a href="windows.devices.usb.usbconfiguration.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration</strong></a> object from <a href="windows.devices.usb.usbdevice.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice</strong></a>. <strong>UsbConfiguration</strong> represents the first USB configuration defined by the device and is also selected by default by the underlying device driver. </li>
+<li>Get the <a href="windows.devices.usb.usbconfiguration.configurationdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.ConfigurationDescriptor</strong></a> property value.</li>
+</ol>
+<p>The fixed portion of the configuration descriptor indicates the device's power characteristics. For example, you can determine whether the device is drawing power from the bus or an external source (see <a href="windows.devices.usb.usbconfigurationdescriptor.selfpowered.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfigurationDescriptor.SelfPowered</strong></a>). If the device is drawing power from the bus, how much power (in milliamp units) it is consuming (see <a href="windows.devices.usb.usbconfigurationdescriptor.maxpowermilliamps.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfigurationDescriptor.MaxPowerMilliamps</strong></a>). Also, you can determine whether the device is capable of waking itself or the system from a low power state, by getting <a href="windows.devices.usb.usbconfigurationdescriptor.remotewakeup.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfigurationDescriptor.RemoteWakeup</strong></a> value. </p>
+<p>This code example shows how to get the fixed portion of a configuration descriptor in a string.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_659dd595-14bb-4c07-9e7b-d22211d13dc1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_659dd595-14bb-4c07-9e7b-d22211d13dc1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+String GetConfigurationDescriptorAsString(UsbDevice device)
+{
+    String content = <span style="color:Blue;">null</span>;
+
+    <span style="color:Blue;">var</span> usbConfiguration = device.Configuration;
+    <span style="color:Blue;">var</span> configurationDescriptor = usbConfiguration.ConfigurationDescriptor;
+
+    content = <span style="color:#A31515;">"Configuration Descriptor\n"</span>
+            + <span style="color:#A31515;">"\nNumber of Interfaces : "</span> + usbConfiguration.UsbInterfaces.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nConfiguration Value : 0x"</span> + configurationDescriptor.ConfigurationValue.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+            + <span style="color:#A31515;">"\nSelf Powered : "</span> + configurationDescriptor.SelfPowered.ToString()
+            + <span style="color:#A31515;">"\nRemote Wakeup : "</span> + configurationDescriptor.RemoteWakeup.ToString()
+            + <span style="color:#A31515;">"\nMax Power (milliAmps) : "</span> + configurationDescriptor.MaxPowerMilliamps.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+
+    <span style="color:Blue;">return</span> content;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The output is shown here:</p>
+<p><img id="config_desc_app" alt="USB configuration descriptor" src="../../../../../i.msdn.microsoft.com/dynimg/IC666103.png" title="USB configuration descriptor" xmlns="" /></p>
+<h2><a id="How_to_get_interface_descriptors"></a><a id="how_to_get_interface_descriptors"></a><a id="HOW_TO_GET_INTERFACE_DESCRIPTORS"></a>How to get interface descriptors</h2>
+<p>Next, you can get information about the USB interfaces that are part of the configuration. </p>
+<p>A USB interface is a collection of interface settings. As such there is no descriptor that describes the entire interface. The term <em>interface descriptor</em> indicates the data structure that describes a setting within an interface.</p>
+<p>The <a href="windows.devices.usb.html"><strong xmlns="http://www.w3.org/1999/xhtml">Windows.Devices.Usb</strong></a> namespace exposes objects that you can use to get information about each USB interface and all interfaces descriptors (for alternate settings) included in that interface.    and descriptors from the variable-length portion of the configuration descriptor. </p>
+<p>To get the interface descriptors from <a href="windows.devices.usb.usbconfiguration.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration</strong></a>, </p>
+<ol>
+<li>Get the array of interfaces within the configuration by getting the <a href="windows.devices.usb.usbconfiguration.usbinterfaces.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.UsbInterfaces</strong></a> property.  </li>
+<li>For each interface (<a href="windows.devices.usb.usbinterface.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface</strong></a>), get this information:  <ul>
+<li>Bulk and interrupt pipes that are active and can transfer data.</li>
+<li>Array of alternate settings in the interface.</li>
+<li>Array of interface descriptors. </li>
+</ul>
+</li>
+</ol>
+<p>This example code gets  all <a href="windows.devices.usb.usbinterface.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface</strong></a> objects for the configuration. From each object,  the helper method gets the number of alternate setting and open bulk and interface pipes. If a device supports multiple interfaces, device class, subclass, and protocol codes of each interface can differ. However, all interface descriptors for alternate settings must specify same codes. In this example, the method gets the device class, subclass, and protocol codes  from the interface descriptor of the first setting to determine the code for the entire interface.</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c0a30a1a-07b4-4979-9cc3-40cde9b5a099');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c0a30a1a-07b4-4979-9cc3-40cde9b5a099" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+String GetInterfaceDescriptorsAsString(UsbDevice device)
+{
+    String content = <span style="color:Blue;">null</span>;
+    
+    <span style="color:Blue;">var</span> interfaces = device.Configuration.UsbInterfaces;
+
+    content = <span style="color:#A31515;">"Interface Descriptors"</span>;
+
+        <span style="color:Blue;">foreach</span> (UsbInterface usbInterface <span style="color:Blue;">in</span> interfaces)
+        {
+            <span style="color:Green;">// Class/subclass/protocol values from the first interface setting.</span>
+
+            UsbInterfaceDescriptor usbInterfaceDescriptor = usbInterface.InterfaceSettings[0].InterfaceDescriptor;
+
+            content +=<span style="color:#A31515;">"\n\nInterface Number: 0x"</span> +usbInterface.InterfaceNumber.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nClass Code: 0x"</span> +usbInterfaceDescriptor.ClassCode.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nSubclass Code: 0x"</span> +usbInterfaceDescriptor.SubclassCode.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nProtocol Code: 0x"</span> +usbInterfaceDescriptor.ProtocolCode.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nNumber of Interface Settings: "</span>+usbInterface.InterfaceSettings.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nNumber of open Bulk In pipes: "</span>+usbInterface.BulkInPipes.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nNumber of open Bulk Out pipes: "</span>+usbInterface.BulkOutPipes.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nNumber of open Interrupt In pipes: "</span>+usbInterface.InterruptInPipes.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo)
+                    + <span style="color:#A31515;">"\nNumber of open Interrupt Out pipes: "</span>+usbInterface.InterruptOutPipes.Count.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+       }
+
+    <span style="color:Blue;">return</span> content;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The output is shown here:</p>
+<p><img id="interface_desc_app" alt="USB interface descriptor" src="../../../../../i.msdn.microsoft.com/dynimg/IC666104.png" title="USB interface descriptor" xmlns="" /></p>
+<h2><a id="How_to_get_endpoint_descriptors"></a><a id="how_to_get_endpoint_descriptors"></a><a id="HOW_TO_GET_ENDPOINT_DESCRIPTORS"></a>How to get endpoint descriptors</h2>
+<p>All USB endpoints (except the default control endpoint) must have endpoint descriptors. To obtain the endpoint descriptors for a particular endpoint, you must know which interface and alternate setting to which the endpoint belongs.</p><ol>
+<li>Get the <a href="windows.devices.usb.usbinterface.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface</strong></a> object that contains the endpoint.</li>
+<li>Get the array of alternate settings  by getting <a href="windows.devices.usb.usbinterface.interfacesettings.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface.InterfaceSettings</strong></a>.</li>
+<li>Within the array, find the setting (<a href="windows.devices.usb.usbinterfacesetting.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterfaceSetting</strong></a>) that uses the endpoint.  </li>
+<li>Within each setting, find the endpoint by enumerating  bulk and interrupt descriptors arrays. <p>Endpoint descriptors are represented by these objects:</p>
+<ul>
+<li>
+<a href="windows.devices.usb.usbbulkinendpointdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkInEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbbulkoutendpointdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBulkOutEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbinterruptinendpointdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptInEndpointDescriptor</strong></a>
+</li>
+<li>
+<a href="windows.devices.usb.usbinterruptoutendpointdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterruptOutEndpointDescriptor</strong></a>
+</li>
+</ul>
+</li>
+</ol>
+
+<p>If your device has only one interface, you can use the <a href="windows.devices.usb.usbdevice.defaultinterface.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDevice.DefaultInterface</strong></a> to get the interface as shown in this example code. Here, the helper method gets populates a string with endpoint descriptors associated with pipes of the active interface setting. </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_3229b0ce-0c4e-4a12-bf26-fcb1c58542a1');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_3229b0ce-0c4e-4a12-bf26-fcb1c58542a1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">private</span> String GetEndpointDescriptorsAsString(UsbDevice device)
+{
+    String content = <span style="color:Blue;">null</span>;
+
+    <span style="color:Blue;">var</span> usbInterface = device.DefaultInterface;
+    <span style="color:Blue;">var</span> bulkInPipes = usbInterface.BulkInPipes;
+    <span style="color:Blue;">var</span> bulkOutPipes = usbInterface.BulkOutPipes;
+    <span style="color:Blue;">var</span> interruptInPipes = usbInterface.InterruptInPipes;
+    <span style="color:Blue;">var</span> interruptOutPipes = usbInterface.InterruptOutPipes;
+
+    content = <span style="color:#A31515;">"Endpoint Descriptors for open pipes"</span>;
+
+    <span style="color:Green;">// Print Bulk In Endpoint descriptors</span>
+    <span style="color:Blue;">foreach</span> (UsbBulkInPipe bulkInPipe <span style="color:Blue;">in</span> bulkInPipes)
+    {
+        <span style="color:Blue;">var</span> endpointDescriptor = bulkInPipe.EndpointDescriptor;
+
+        content +=<span style="color:#A31515;">"\n\nBulk In Endpoint Descriptor"</span>
+                + <span style="color:#A31515;">"\nEndpoint Number : 0x"</span> + endpointDescriptor.EndpointNumber.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                + <span style="color:#A31515;">"\nMax Packet Size : "</span> + endpointDescriptor.MaxPacketSize.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+    }
+
+    <span style="color:Green;">// Print Bulk Out Endpoint descriptors</span>
+    <span style="color:Blue;">foreach</span> (UsbBulkOutPipe bulkOutPipe <span style="color:Blue;">in</span> bulkOutPipes)
+    {
+        <span style="color:Blue;">var</span> endpointDescriptor = bulkOutPipe.EndpointDescriptor;
+
+        content +=<span style="color:#A31515;">"\n\nBulk Out Endpoint Descriptor"</span>
+                + <span style="color:#A31515;">"\nEndpoint Number : 0x"</span> + endpointDescriptor.EndpointNumber.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                + <span style="color:#A31515;">"\nMax Packet Size : "</span> + endpointDescriptor.MaxPacketSize.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+    }
+
+    <span style="color:Green;">// Print Interrupt In Endpoint descriptors</span>
+    <span style="color:Blue;">foreach</span> (UsbInterruptInPipe interruptInPipe <span style="color:Blue;">in</span> interruptInPipes)
+    {
+        <span style="color:Blue;">var</span> endpointDescriptor = interruptInPipe.EndpointDescriptor;
+
+        content +=<span style="color:#A31515;">"\n\nInterrupt In Endpoint Descriptor"</span>
+                + <span style="color:#A31515;">"\nEndpoint Number : 0x"</span> + endpointDescriptor.EndpointNumber.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                + <span style="color:#A31515;">"\nMax Packet Size : "</span> + endpointDescriptor.MaxPacketSize.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+                + <span style="color:#A31515;">"\nInterval : "</span> + endpointDescriptor.Interval.Duration.ToString();
+    }
+
+    <span style="color:Green;">// Print Interrupt Out Endpoint descriptors</span>
+    <span style="color:Blue;">foreach</span> (UsbInterruptOutPipe interruptOutPipe <span style="color:Blue;">in</span> interruptOutPipes)
+    {
+        <span style="color:Blue;">var</span> endpointDescriptor = interruptOutPipe.EndpointDescriptor;
+
+        content +=<span style="color:#A31515;">"\n\nInterrupt Out Endpoint Descriptor"</span>
+                + <span style="color:#A31515;">"\nEndpoint Number : 0x"</span> + endpointDescriptor.EndpointNumber.ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo)
+                + <span style="color:#A31515;">"\nMax Packet Size : "</span> + endpointDescriptor.MaxPacketSize.ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+                + <span style="color:#A31515;">"\nInterval : "</span> + endpointDescriptor.Interval.Duration.ToString();
+    }
+
+    <span style="color:Blue;">return</span> content;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The output is shown here:</p>
+<p><img id="endpoint_desc_app" alt="USb endpoint descriptors" src="../../../../../i.msdn.microsoft.com/dynimg/IC666105.png" title="USb endpoint descriptors" xmlns="" /></p>
+<h2><a id="How_to_get_custom_descriptors"></a><a id="how_to_get_custom_descriptors"></a><a id="HOW_TO_GET_CUSTOM_DESCRIPTORS"></a>How to get custom descriptors</h2>
+<p>Notice that <a href="windows.devices.usb.usbconfiguration.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration</strong></a>, <a href="windows.devices.usb.usbinterface.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface</strong></a>, and <a href="windows.devices.usb.usbinterfacesetting.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterfaceSetting</strong></a> objects, each expose a property named <strong>Descriptors</strong>. That property value retrieves the array of descriptors represented by <a href="windows.devices.usb.usbdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDescriptor</strong></a> objects. The <strong>UsbDescriptor</strong> object allows the app to get descriptor data in a buffer. <a href="windows.devices.usb.usbdescriptor.descriptortype.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDescriptor.DescriptorType</strong></a>  and <a href="windows.devices.usb.usbdescriptor.length.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbDescriptor.Length</strong></a> properties store the type and length of the buffer required to hold the descriptor.</p><p class="note"><strong>Note</strong>  The first two bytes of all descriptor buffers also indicate the type and length of the descriptor. </p>
+
+<p>For example, the <a href="windows.devices.usb.usbinterface.descriptors.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfiguration.Descriptors</strong></a> property gets the array of complete configuration descriptor (fixed and variable length portions). The first element in that array is the fixed-length configuration descriptor (same as <a href="windows.devices.usb.usbconfigurationdescriptor.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbConfigurationDescriptor</strong></a>), the second  element is the interface descriptor of the first alternate setting, and so on.</p>
+<p>Similarly, the <a href="windows.devices.usb.usbinterface.descriptors.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterface.Descriptors</strong></a>  property gets the array of all interface descriptors and the related endpoint descriptors.  The <a href="windows.devices.usb.usbinterfacesetting.descriptors.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbInterfaceSetting.Descriptors</strong></a> property gets the array of all descriptors for that setting, such as endpoint descriptors.</p>
+<p>This way of getting descriptors is useful when the app wants to retrieve custom descriptors or other descriptors like endpoint companion descriptors for SuperSpeed devices.</p>
+<p>This code example shows how to get a descriptor data in a buffer from the configuration descriptor. The example gets the configuration descriptor set and parses all descriptors contained in that set. For each descriptor, it uses the DataReader object to read the buffer and show descriptor length and type. You can get custom descriptors as shown in this example.</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ff8f5b6e-64b6-46e2-82e5-3cfb5e40e4d2');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ff8f5b6e-64b6-46e2-82e5-3cfb5e40e4d2" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">private</span> String GetCustomDescriptorsAsString(UsbDevice device)
+{
+    String content = <span style="color:Blue;">null</span>;
+    <span style="color:Green;">// Descriptor information will be appended to this string and then printed to UI</span>
+    content = <span style="color:#A31515;">"Raw Descriptors"</span>;
+
+    <span style="color:Blue;">var</span> configuration = device.Configuration;
+    <span style="color:Blue;">var</span> allRawDescriptors = configuration.Descriptors;
+
+    <span style="color:Green;">// Print first 2 bytes of all descriptors within the configuration descriptor    </span>
+    <span style="color:Green;">// because the first 2 bytes are always length and descriptor type</span>
+    <span style="color:Green;">// the UsbDescriptor's DescriptorType and Length properties, but we will not use these properties</span>
+    <span style="color:Green;">// in order to demonstrate ReadDescriptorBuffer() and how to parse it.</span>
+
+    <span style="color:Blue;">foreach</span> (UsbDescriptor descriptor <span style="color:Blue;">in</span> allRawDescriptors)
+    {
+        <span style="color:Blue;">var</span> descriptorBuffer = <span style="color:Blue;">new</span> Windows.Storage.Streams.Buffer(descriptor.Length);
+        descriptor.ReadDescriptorBuffer(descriptorBuffer);
+
+        DataReader reader = DataReader.FromBuffer(descriptorBuffer);
+
+        <span style="color:Green;">// USB data is Little Endian according to the USB spec.</span>
+        reader.ByteOrder = ByteOrder.LittleEndian;
+
+        <span style="color:Green;">// ReadByte has a side effect where it consumes the current byte, so the next ReadByte will read the next character.</span>
+        <span style="color:Green;">// Putting multiple ReadByte() on the same line (same variable assignment) may cause the bytes to be read out of order.</span>
+        <span style="color:Blue;">var</span> length = reader.ReadByte().ToString(<span style="color:#A31515;">"D"</span>, NumberFormatInfo.InvariantInfo);
+        <span style="color:Blue;">var</span> type = <span style="color:#A31515;">"0x"</span> + reader.ReadByte().ToString(<span style="color:#A31515;">"X2"</span>, NumberFormatInfo.InvariantInfo);
+
+        content += <span style="color:#A31515;">"\n\nDescriptor"</span>
+                + <span style="color:#A31515;">"\nLength : "</span> + length
+                + <span style="color:#A31515;">"\nDescriptorType : "</span> + type;
+    }
+
+    <span style="color:Blue;">return</span> content;
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to get USB descriptors (Windows Store app)%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="_-Pfb4CxujPUbnaGvzuTyy8mO5P63wcT-rsdYsz4aO6ZDt3HOF2NMuXkPhEo5mB5PYdpRmn8HTCxO2HCIWL4h-3qPYq9QE5nTwkkoSixLK6vpAhxoIVWXejrPnQl30KcMWWIVA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn303344(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn303344(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="InSVydvJTMfrdikcNr_VD_Ed6LlC5AeYP08zMov6eQ2ZPGwhcTOcpAsRHk2PAeR8pHokj5pqYqYisVXEESud_X7vOOESE6rqDpfUjl6-EVQlyBmiJinDbwE2QN6n7VTyIgTl5g2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn303344(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"9ba91daf-162f-4406-98e3-4530f2143c25\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn303344(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:37:05 GMT -->
+</html>

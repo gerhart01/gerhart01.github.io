@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn376872(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:49:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn376872(v%3dvs.85).html" />
+        <title>Write a Windows desktop app based on the WinUSB template (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn376872(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376872(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376872(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn376872(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD4-9:00:39 AM" />
+
+<meta name="Search.ShortId" content="dn376872" />
+
+<meta name="ms.shortidmsdn" content="dn376872" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined4208.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,0:NavSidebar,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=5D7E9AF826019A37D7275CF4C655CC6D" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072039&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn376872%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn303342(v%3dvs.85).html" id="hh948125_VS.85_en-us" mtpsaliasid="" mtpsassetid="B3F1A1A6-0908-4144-8454-76A2FB70619B_VS.85_en-us" mtpsshortid="dn303342_VS.85_en-us" title="Developing Windows applications for USB devices">Developing Windows applications for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn376885(v%3dvs.85).html" id="dn376892_VS.85_en-us" mtpsaliasid="" mtpsassetid="CECFF842-73BD-4FB2-9FC5-E531D10E74EC_VS.85_en-us" mtpsshortid="dn376885_VS.85_en-us" title="Windows desktop app for a USB device">Windows desktop app for a USB device</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn376872(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Write a Windows desktop app based on the WinUSB template">Write a Windows desktop app based on the WinUSB template</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff540174(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to Access a USB Device by Using WinUSB Functions">How to Access a USB Device by Using WinUSB Functions</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn376866(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Send USB isochronous transfers from a WinUSB desktop app">Send USB isochronous transfers from a WinUSB desktop app</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff728833(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Functions for Pipe Policy Modification">WinUSB Functions for Pipe Policy Modification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff728834(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WinUSB Power Management">WinUSB Power Management</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Write a Windows desktop app based on the WinUSB template</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">In this article</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#creating_a_winusb_application">Creating a WinUSB application</a></li>
+<li><a href="#building__deploying_and_debugging_the_project">Building, deploying and debugging the project</a></li>
+<li><a href="#template_code_discussion">Template code discussion</a></li>
+<li><a href="#next_steps">Next steps</a></li>
+</ul>
+
+</div>
+<span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">Important APIs</span>
+<div class="sidebar_summary" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li>
+<a href="ff550855(v%3dvs.85)-2.html">SetupAPI Functions</a>
+</li>
+<li><a href="ff540046(v%3dvs.85)-2.html#winusb">WinUSB Functions</a></li>
+</ul>
+
+</div>
+</div>
+<p>The easiest way to write a Windows desktop app that communicates with a USB device, is by using the C/C++ WinUSB template. For this template, you need an integrated environment with the Windows Driver Kit (WDK) (with  Debugging Tools for Windows) and  Microsoft Visual Studio (Professional or Ultimate). You can use the template as a starting point.  </p>
+<p></p>
+<h2><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h2>
+<ul>
+<li>To set up the integrated development environment, first install Microsoft Visual Studio Ultimate 2012 or Microsoft Visual Studio Professional 2012 and then install the WDK. You can find information about how to get Visual Studio and the WDK <a href="http://go.microsoft.com/fwlink/p/?linkid=239721">here</a>. </li>
+<li>Debugging Tools for Windows is included when you install the WDK. For more information, see <a href="http://go.microsoft.com/fwlink/p/?linkid=235427">Download and Install Debugging Tools for Windows</a>.</li>
+</ul>
+<h2><a id="Creating_a_WinUSB_application"></a><a id="creating_a_winusb_application"></a><a id="CREATING_A_WINUSB_APPLICATION"></a>Creating a WinUSB application</h2>
+<p>To create an application from the template:</p>
+<ol>
+<li>Open Microsoft Visual Studio. On the <strong>File</strong> menu, choose <strong>New</strong> &gt; <strong>Project</strong>. The <strong>New Project</strong> dialog box opens, as shown in the following screen shot.</li>
+<li>In the <strong>New Project</strong> dialog box, in the left pane, locate and select <strong>USB</strong>.</li>
+<li>In the middle pane, select <strong>WinUSB application.</strong></li>
+<li>In the <strong>Name</strong> field, if you want, change the project name. In this topic, we'll use the default name.</li>
+<li>In the <strong>Location</strong> field, enter the directory where you want to create the new project.</li>
+<li>Check <strong>Create directory for solution</strong>. Click <strong>OK</strong>.<p><img id="winusb_template" alt="WinUSB template in Visual Studio" src="../../../../../i.msdn.microsoft.com/dynimg/IC674748.png" title="WinUSB template in Visual Studio" xmlns="" /></p>
+<p>Visual Studio creates two projects and a solution. You can see the solution, the two projects, and the files that belong to each project in the <strong>Solution Explorer</strong> window, as shown in the following screen shot. (If the <strong>Solution Explorer</strong> window is not visible, choose <strong>Solution Explorer</strong> from the <strong>View</strong> menu.) The solution contains a C++ application project named USB Application1 and a driver package project named USB Application1 Package. If you want to look at the application source code, you can open any of the files that appear under <strong>Source Files</strong>. </p>
+<p><img id="winusb_template1" alt="WinUSB template solution explorer" src="../../../../../i.msdn.microsoft.com/dynimg/IC674749.png" title="WinUSB template solution explorer" xmlns="" /></p>
+<p>The USB Application1 project has source files for the application.</p>
+<p>The USB Application1 Package project contains an INF file that is used to install Microsoft-provided Winusb.sys driver as the device driver.</p>
+</li>
+<li>In the INF file, USBApplication1.inf, locate these lines: <p><code>%DeviceName% =USB_Install, USB\VID_vvvv&amp;PID_pppp
+</code></p>
+</li>
+<li>Replace VID_vvvv&amp;PID_pppp with the hardware ID for you device. Get the hardware ID from Device Manager. In Device Manager, view the device properties. On the <strong>Details</strong> tab, view the <strong>Hardware Ids</strong> property value. </li>
+<li>In the <strong>Solution Explorer</strong> window, right-click <strong>Solution 'USB Application1' (2 projects)</strong>, and choose <strong>Configuration Manager</strong>. Choose a configuration and platform for both the application project and the package project. In this exercise, we choose Win8.1 Debug and x64, as shown in the following screen shot.<p><img id="winusb_template2" alt="WinUSB application template" src="../../../../../i.msdn.microsoft.com/dynimg/IC675485.png" title="WinUSB application template" xmlns="" /></p>
+</li>
+</ol>
+<h2><a id="Building__deploying_and_debugging_the_project"></a><a id="building__deploying_and_debugging_the_project"></a><a id="BUILDING__DEPLOYING_AND_DEBUGGING_THE_PROJECT"></a>Building, deploying and debugging the project</h2>
+<p>So far in this exercise, you've used Visual Studio to build your projects. Next you need to configure the device to which the device is connected. The template requires that the Winusb driver is installed as the driver for your device.</p>
+<p>Your testing and debugging environment can have:</p><ul>
+<li>
+<p>Two computer setup: the host computer and the target computer. You develop and build your project in Visual Studio on the host computer. The debugger runs on the host computer and is available in the Visual Studio user interface. When you test and debug the application, it driver runs on the target computer.</p>
+</li>
+<li>
+<p>Single computer setup: Your target and host run on one computer. You develop and build your project in Visual Studio,  and run the debugger and the application. </p>
+</li>
+</ul>
+
+<p>
+</p><p>You can deploy, install, load, and debug your application and the driver by following these steps:</p>
+<ul>
+<li><strong>Two computer setup</strong><ol>
+<li>Provision your target computer by following the instructions in <a href="dn265573(v%3dvs.85)-2.html">Preparing a Computer for Provisioning (WDK 8.1)</a>.<p class="note"><strong>Note</strong>  </p><p class="note">Provisioning creates a user on the target machine named, WDKRemoteUser. After provisioning is complete you will see the user switch to WDKRemoteUser. Provisioning also installs the required debuggers, enables test signing for drivers, and so on. For complete details, see <a href="dn265576(v%3dvs.85)-2.html">What happens when you provision a computer (WDK 8.1)</a>.</p>
+
+</li>
+<li>On the host computer, open your solution in Visual Studio.</li>
+<li>In main.cpp add this line before the OpenDevice call. <p><code>system ("pause")
+</code></p>
+<p>The line causes the application to pause when launched. This is useful in remote debugging.</p>
+</li>
+<li>
+<p>In pch.h, include this line:</p>
+<p><code>#include &lt;cstdlib&gt;
+</code></p>
+<p>This include statement is required for the system() call in the preceding step.</p>
+</li>
+<li>In the <strong>Solution Explorer</strong> window, right-click USB Application1 Package, and choose <strong>Properties</strong>.
+</li>
+<li>In the <strong>USB Application1 Package Property Pages</strong> window, in the left pane, navigate to <strong>Configuration Properties &gt; Driver Install &gt; Deployment</strong>, as shown in the following screen shot.
+</li>
+<li>Check <strong>Enable deployment</strong>, and check <strong>Remove previous driver versions before deployment</strong>.
+</li>
+<li>For <strong>Remote Computer Name</strong>, select the name of the computer that you configured for testing and debugging. In this exercise, we use a computer named dbg-target.
+</li>
+<li>Select <strong>Install and Verify</strong>. Click <strong>OK</strong>.
+
+<p><img id="winusb_template4" alt="Winusb Template" src="../../../../../i.msdn.microsoft.com/dynimg/IC674751.png" title="Winusb Template" xmlns="" /></p>
+</li>
+<li>In the property page, navigate to <strong>Configuration Properties &gt; Debugging</strong>, and select <strong>Debugging Tools for Windows – Remote Debugger</strong>, as shown in the following screen shot.
+<p><img id="winusb_template5" alt="Winusb template debug setting" src="../../../../../i.msdn.microsoft.com/dynimg/IC674752.png" title="Winusb template debug setting" xmlns="" /></p>
+</li>
+<li>Select <strong>Build Solution</strong> from the <strong>Build</strong> menu. Visual Studio displays build progress in the <strong>Output</strong> window. (If the <strong>Output</strong> window is not visible, choose <strong>Output</strong> from the <strong>View</strong> menu.) In this exercise, we've build the project for an x-64 system running Windows 8.1. </li>
+</ol>
+<p>On the target computer, you will see driver install scripts running. The driver files are copied to the %Systemdrive%\drivertest\drivers folder on the target computer. Verify that the .inf, .cat, test cert, and .sys files, and any other necessary files, are present %systemdrive%\drivertest\drivers folder. The device must appear in Device Manager without  errors.</p>
+<p>On the host computer, you will see this message in the <strong>Output</strong> window.</p>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_4048916a-55ee-473d-b2a4-61a03d4b932a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_4048916a-55ee-473d-b2a4-61a03d4b932a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Deploying driver files for project 
+"&lt;path&gt;\visual studio 12\Projects\USB Application1\USB Application1 Package\USB Application1 Package.vcxproj".  
+Deployment may take a few minutes...
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<p>
+</p><p class="proch"><img id="wedge" alt="Dn376872.wedge(en-us,VS.85).gif" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="Dn376872.wedge(en-us,VS.85).gif" xmlns="" class="cl_IC153696" /><strong>To debug the application</strong></p>
+<ol>
+<li>On the host computer, navigate to <strong>x64 &gt; Win8.1Debug </strong> in the solution folder. </li>
+<li>Copy the application executable, UsbApplication1.exe to the target computer.</li>
+<li>On the target computer launch the application. </li>
+<li>On the host computer, from the <strong>Debug</strong> menu, select <strong>Attach to process</strong>.</li>
+<li>In the window, select <strong>Windows User Mode Debugger</strong> (Debugging Tools for Windows) as the transport and  the name of the target computer, in this case dbg-target, as the qualifier as shown in this image. 
+<p><img id="winusb_template6" alt="Winusb template debug setting" src="../../../../../i.msdn.microsoft.com/dynimg/IC674753.png" title="Winusb template debug setting" xmlns="" /></p>
+</li>
+<li>Select the application from the list of <strong>Available Processes</strong> and click <strong>Attach</strong>. You can now debug using <strong>Immediate Window</strong> or by using the options in <strong>Debug</strong> menu.  </li>
+</ol>
+
+<p>The preceding instructions debug the application by using<strong> Debugging Tools for Windows – Remote Debugger</strong>. If you want to use the <strong>Remote Windows Debugger</strong> (the debugger that is included with Visual Studio), then follow these instructions:</p><ol>
+<li>On the target computer, add msvsmon.exe to the list of apps allowed through Firewall.</li>
+<li>Launch Visual Studio Remote Debugging Monitor located in C:\DriverTest\msvsmon\msvsmon.exe.</li>
+<li>Create a working folder, such as, C:\remotetemp.</li>
+<li>Copy the application executable, UsbApplication1.exe to the working folder on the target computer.</li>
+<li>On the host computer, in Visual Studio, right-click the <strong>USB Application1 Package</strong> project, and select <strong>Unload Project</strong>.</li>
+<li>Right-click the <strong>USB Application1</strong> project, in project properties expand the <strong>Configuration Properties</strong> node and click <strong>Debugging</strong>.
+</li>
+<li>Change <strong>Debugger to launch</strong> to <strong>Remote Windows Debugger</strong>.
+</li>
+<li>Change the project settings to run the executable on a remote computer by following the instructions given in <a href="http://msdn.microsoft.com/en-us/library/vstudio/8x6by8d2.aspx">Remote Debugging of a Project Built Locally</a>. Make sure that <strong>Working Directory</strong> and <strong>Remote Command</strong> properties reflect the folder on the target computer.
+</li>
+<li>To debug the application, in the <strong>Build</strong> menu, select <strong>Start Debugging</strong>, or press <strong>F5.</strong></li>
+</ol>
+
+</li>
+<li><strong>Single computer setup:</strong><p>
+</p><ol>
+<li>To build your application and the driver installation package, choose <strong>Build Solution</strong> from the <strong>Build</strong> menu. Visual Studio displays build progress in the <strong>Output</strong> window, as shown in the following screen shot. (If the <strong>Output</strong> window is not visible, choose <strong>Output</strong> from the <strong>View</strong> menu.) In this exercise, we've build the project for an x-64 system running Windows 8.1. </li>
+<li>To see the built driver package, navigate in Windows Explorer to your USB Application1 folder, and then navigate to <strong>x64 &gt; Win8.1Debug &gt; USB Application1 Package</strong>. The driver package contains several files: USBApplication1.inf is an information file that Windows uses when you install the driver,  usbapplication1.cat is a catalog file that the installer uses to verify the test signature for the driver package. The other file is a co-installer for the Windows Driver Frameworks (WDF). These files are shown in the following screen shot.<p><img id="winusb_template3" alt="WinUSB application template" src="../../../../../i.msdn.microsoft.com/dynimg/IC674754.png" title="WinUSB application template" xmlns="" /></p><p class="note"><strong>Note</strong>  There is no driver file included in the package. That is because the INF file references the in-box driver, Winusb.sys, found in Windows\System32 folder.</p>
+
+</li>
+<li>
+<p>Manually install the driver. In Device Manager,  update the driver by specifying the INF in the package. Point to the driver package located in the solution folder, shown in the preceding section.</p>
+</li>
+<li>Right-click the <strong>USB Application1</strong> project, in project properties expand the <strong>Configuration Properties</strong> node and click <strong>Debugging</strong>.
+</li>
+<li>Change <strong>Debugger to launch</strong> to <strong>Local Windows Debugger</strong>.
+</li>
+<li></li>
+<li>Right-click the USB Application1 Package project, and select <strong>Unload Project</strong>.</li>
+<li>To debug the application, in the <strong>Build</strong> menu, select <strong>Start Debugging</strong>, or press <strong>F5</strong>.</li>
+</ol>
+
+</li>
+</ul>
+
+<h2><a id="Template_code_discussion"></a><a id="template_code_discussion"></a><a id="TEMPLATE_CODE_DISCUSSION"></a>Template code discussion</h2>
+<p>The template is a starting point for your desktop application. The USB Application1 project has source files device.cpp and main.cpp.</p>
+<p>The main.cpp file contains the application entry point, _tmain. The device.cpp contains all helper functions that open and close the handle to the device.</p>
+<p>The template also has a header file named device.h. This file contains definitions for the device interface GUID (discussed later) and a DEVICE_DATA structure that stores information obtained by the application. For example, it stores the WinUSB interface handle obtained by OpenDevice and used in subsequent operations. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_00dac92f-5f0b-4d31-b921-5ac63013a39d');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_00dac92f-5f0b-4d31-b921-5ac63013a39d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+typedef struct _DEVICE_DATA {
+
+    BOOL                    HandlesOpen;
+    WINUSB_INTERFACE_HANDLE WinusbHandle;
+    HANDLE                  DeviceHandle;
+    TCHAR                   DevicePath[MAX_PATH];
+
+} DEVICE_DATA, *PDEVICE_DATA;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h3><a id="deviceinstance"></a><a id="DEVICEINSTANCE"></a>Getting the instance path for the device - see RetrieveDevicePath in device.cpp</h3>
+<p>To access a USB device, the application creates a valid file handle for the device by calling <strong>CreateFile</strong>. For that call, the application must obtain the device path instance. To obtain the device path, the app uses <a href="ff550855(v%3dvs.85)-2.html">SetupAPI</a> routines and specifies the device interface GUID in the INF file that was used to install Winusb.sys. Device.h declares a GUID constant named GUID_DEVINTERFACE_USBApplication1. By using those routines, the application  enumerates all devices in the specified device interface class and retrieves the device path of  the device.</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c1340446-f159-4f17-8af3-9c764a711e17');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c1340446-f159-4f17-8af3-9c764a711e17" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HRESULT
+RetrieveDevicePath(
+    _Out_bytecap_(BufLen) LPTSTR DevicePath,
+    _In_                  ULONG  BufLen,
+    _Out_opt_             PBOOL  FailureDeviceNotFound
+    )
+/*++
+
+Routine description:
+
+    Retrieve the device path that can be used to open the WinUSB-based device.
+
+    If multiple devices have the same device interface GUID, there is no
+    guarantee of which one will be returned.
+
+Arguments:
+
+    DevicePath - On successful return, the path of the device (use with CreateFile).
+
+    BufLen - The size of DevicePath's buffer, in bytes
+
+    FailureDeviceNotFound - TRUE when failure is returned due to no devices
+        found with the correct device interface (device not connected, driver
+        not installed, or device is disabled in Device Manager); FALSE
+        otherwise.
+
+Return value:
+
+    HRESULT
+
+--*/
+{
+    BOOL                             bResult = FALSE;
+    HDEVINFO                         deviceInfo;
+    SP_DEVICE_INTERFACE_DATA         interfaceData;
+    PSP_DEVICE_INTERFACE_DETAIL_DATA detailData = NULL;
+    ULONG                            length;
+    ULONG                            requiredLength=0;
+    HRESULT                          hr;
+
+    if (NULL != FailureDeviceNotFound) {
+
+        *FailureDeviceNotFound = FALSE;
+    }
+
+    //
+    // Enumerate all devices exposing the interface
+    //
+    deviceInfo = SetupDiGetClassDevs(&amp;GUID_DEVINTERFACE_USBApplication1,
+                                     NULL,
+                                     NULL,
+                                     DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+
+    if (deviceInfo == INVALID_HANDLE_VALUE) {
+
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        return hr;
+    }
+
+    interfaceData.cbSize = sizeof(SP_DEVICE_INTERFACE_DATA);
+
+    //
+    // Get the first interface (index 0) in the result set
+    //
+    bResult = SetupDiEnumDeviceInterfaces(deviceInfo,
+                                          NULL,
+                                          &amp;GUID_DEVINTERFACE_USBApplication1,
+                                          0,
+                                          &amp;interfaceData);
+
+    if (FALSE == bResult) {
+
+        //
+        // We would see this error if no devices were found
+        //
+        if (ERROR_NO_MORE_ITEMS == GetLastError() &amp;&amp;
+            NULL != FailureDeviceNotFound) {
+
+            *FailureDeviceNotFound = TRUE;
+        }
+
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        SetupDiDestroyDeviceInfoList(deviceInfo);
+        return hr;
+    }
+
+    //
+    // Get the size of the path string
+    // We expect to get a failure with insufficient buffer
+    //
+    bResult = SetupDiGetDeviceInterfaceDetail(deviceInfo,
+                                              &amp;interfaceData,
+                                              NULL,
+                                              0,
+                                              &amp;requiredLength,
+                                              NULL);
+
+    if (FALSE == bResult &amp;&amp; ERROR_INSUFFICIENT_BUFFER != GetLastError()) {
+
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        SetupDiDestroyDeviceInfoList(deviceInfo);
+        return hr;
+    }
+
+    //
+    // Allocate temporary space for SetupDi structure
+    //
+    detailData = (PSP_DEVICE_INTERFACE_DETAIL_DATA)
+        LocalAlloc(LMEM_FIXED, requiredLength);
+
+    if (NULL == detailData)
+    {
+        hr = E_OUTOFMEMORY;
+        SetupDiDestroyDeviceInfoList(deviceInfo);
+        return hr;
+    }
+
+    detailData-&gt;cbSize = sizeof(SP_DEVICE_INTERFACE_DETAIL_DATA);
+    length = requiredLength;
+
+    //
+    // Get the interface's path string
+    //
+    bResult = SetupDiGetDeviceInterfaceDetail(deviceInfo,
+                                              &amp;interfaceData,
+                                              detailData,
+                                              length,
+                                              &amp;requiredLength,
+                                              NULL);
+
+    if(FALSE == bResult)
+    {
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        LocalFree(detailData);
+        SetupDiDestroyDeviceInfoList(deviceInfo);
+        return hr;
+    }
+
+    //
+    // Give path to the caller. SetupDiGetDeviceInterfaceDetail ensured
+    // DevicePath is NULL-terminated.
+    //
+    hr = StringCbCopy(DevicePath,
+                      BufLen,
+                      detailData-&gt;DevicePath);
+
+    LocalFree(detailData);
+    SetupDiDestroyDeviceInfoList(deviceInfo);
+
+    return hr;
+}
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>In the preceding function, the application gets the device path by calling these routines:</p><ol>
+<li>
+<a href="ff551072(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiGetClassDevs</strong></a> to get a handle to the <em>device information set</em>, an array that contains information about all installed devices that matched the specified device interface class, GUID_DEVINTERFACE_USBApplication1. Each element in the array called a <em>device interface</em> corresponds to a device that is installed and registered with the system. The device interface class is identified by passing the device interface GUID that you defined in the INF file. The function returns an HDEVINFO handle to the device information set.</li>
+<li>
+<a href="ff551015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiEnumDeviceInterfaces</strong></a> to enumerate the device interfaces in the device information set and obtain information about your device interface. <p>This call requires the following items:</p>
+<ul>
+<li>An initialized caller-allocated <a href="ff552342(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVICE_INTERFACE_DATA</strong></a> structure that has its <strong>cbSize</strong> member set to the size of the structure.</li>
+<li>The HDEVINFO handle from step 1.</li>
+<li>The device interface GUID that you defined in the INF file.</li>
+</ul>
+<p>
+<a href="ff551015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiEnumDeviceInterfaces</strong></a> looks up the device information set array for the specified index of the device interface and fills the initialized <a href="ff552342(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVICE_INTERFACE_DATA</strong></a> structure with basic data about  the interface. </p><p><strong>Note</strong>   To enumerate all the device interfaces in the device information set, call <a href="ff551015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiEnumDeviceInterfaces</strong></a> in  a loop until the function returns <strong>FALSE</strong> and the error code for the failure is ERROR_NO_MORE_ITEMS. The ERROR_NO_MORE_ITEMS error code can be retrieved by calling <strong>GetLastError</strong>. With each iteration, increment the member index. </p><p class="note">Alternately, you can call <a href="ff551010(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiEnumDeviceInfo</strong></a> that enumerates the device information set and returns information about device interface elements, specified by the index, in a caller-allocated <a href="ff552344(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVINFO_DATA</strong></a> structure. You can then pass a reference to this structure in the <em>DeviceInfoData</em>  parameter of the <a href="ff551015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiEnumDeviceInterfaces</strong></a> function.</p>
+
+
+</li>
+<li>
+<a href="ff551120(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiGetDeviceInterfaceDetail</strong></a> to get detailed data for the device interface. The information is returned in a <a href="ff552343(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVICE_INTERFACE_DETAIL_DATA</strong></a> structure.
+Because the size of the <strong>SP_DEVICE_INTERFACE_DETAIL_DATA</strong> structure varies,  <strong>SetupDiGetDeviceInterfaceDetail</strong> is called twice. The first call gets the buffer size to allocate for the <strong>SP_DEVICE_INTERFACE_DETAIL_DATA</strong> structure. The second call fills the allocated buffer with detailed information about the interface.<ol>
+<li>Calls  <a href="ff551120(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiGetDeviceInterfaceDetail</strong></a> with <em>DeviceInterfaceDetailData</em> parameter set to <strong>NULL</strong>.
+The function returns the correct buffer size in the <em>requiredlength</em> parameter. This call fails with the ERROR_INSUFFICIENT_BUFFER error code. This error code is expected.</li>
+<li>Allocates memory for a <a href="ff552343(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVICE_INTERFACE_DETAIL_DATA</strong></a> structure based on the correct buffer size that is retrieved in the <em>requiredlength</em> parameter.</li>
+<li> Calls <a href="ff551120(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SetupDiGetDeviceInterfaceDetail</strong></a> again and passes it a reference to the initialized structure in the <em>DeviceInterfaceDetailData</em> parameter. When the function returns, the structure is filled with detailed information about the interface. The device path is in the <a href="ff552343(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SP_DEVICE_INTERFACE_DETAIL_DATA</strong></a> structure's <strong>DevicePath</strong> member.
+</li>
+</ol>
+</li>
+</ol>
+
+<h3><a id="filehandle"></a><a id="FILEHANDLE"></a>Creating a file handle for the device - see OpenDevice in device.cpp</h3>
+<p>To interact with the device, the needs a WinUSB interface handle to the first (default) interface on the device. The template code obtains the file handle and the WinUSB interface handle and stores them in the DEVICE_DATA structure.</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_140c1917-ca69-4456-ba6e-c02df0980703');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_140c1917-ca69-4456-ba6e-c02df0980703" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+HRESULT
+OpenDevice(
+    _Out_     PDEVICE_DATA DeviceData,
+    _Out_opt_ PBOOL        FailureDeviceNotFound
+    )
+/*++
+
+Routine description:
+
+    Open all needed handles to interact with the device.
+
+    If the device has multiple USB interfaces, this function grants access to
+    only the first interface.
+
+    If multiple devices have the same device interface GUID, there is no
+    guarantee of which one will be returned.
+
+Arguments:
+
+    DeviceData - Struct filled in by this function. The caller should use the
+        WinusbHandle to interact with the device, and must pass the struct to
+        CloseDevice when finished.
+
+    FailureDeviceNotFound - TRUE when failure is returned due to no devices
+        found with the correct device interface (device not connected, driver
+        not installed, or device is disabled in Device Manager); FALSE
+        otherwise.
+
+Return value:
+
+    HRESULT
+
+--*/
+{
+    HRESULT hr = S_OK;
+    BOOL    bResult;
+
+    DeviceData-&gt;HandlesOpen = FALSE;
+
+    hr = RetrieveDevicePath(DeviceData-&gt;DevicePath,
+                            sizeof(DeviceData-&gt;DevicePath),
+                            FailureDeviceNotFound);
+
+    if (FAILED(hr)) {
+
+        return hr;
+    }
+
+    DeviceData-&gt;DeviceHandle = CreateFile(DeviceData-&gt;DevicePath,
+                                          GENERIC_WRITE | GENERIC_READ,
+                                          FILE_SHARE_WRITE | FILE_SHARE_READ,
+                                          NULL,
+                                          OPEN_EXISTING,
+                                          FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,
+                                          NULL);
+
+    if (INVALID_HANDLE_VALUE == DeviceData-&gt;DeviceHandle) {
+
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        return hr;
+    }
+
+    bResult = WinUsb_Initialize(DeviceData-&gt;DeviceHandle,
+                                &amp;DeviceData-&gt;WinusbHandle);
+
+    if (FALSE == bResult) {
+
+        hr = HRESULT_FROM_WIN32(GetLastError());
+        CloseHandle(DeviceData-&gt;DeviceHandle);
+        return hr;
+    }
+
+    DeviceData-&gt;HandlesOpen = TRUE;
+    return hr;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<ol>
+<li>The app calls <strong>CreateFile</strong> to create a file handle for the device by specifying the device path retrieved earlier. It uses the FILE_FLAG_OVERLAPPED flag because WinUSB depends on this setting.</li>
+<li>By using the file handle for the device, the app creates a WinUSB interface handle. <a href="ff540046(v%3dvs.85)-2.html#winusb">WinUSB Functions</a> use this handle to identify the target device instead of the file handle. To obtain a WinUSB interface handle, the app calls <a href="ff540277(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Initialize</strong></a> by passing the file handle. Use the received handle in the subsequent calls to get information from the device, and to send I/O requests to the device.</li>
+</ol>
+<h3><a id="Release_the_device_handles_-_see_CloseDevice_in_device.cpp"></a><a id="release_the_device_handles_-_see_closedevice_in_device.cpp"></a><a id="RELEASE_THE_DEVICE_HANDLES_-_SEE_CLOSEDEVICE_IN_DEVICE.CPP"></a>Release the device handles - see CloseDevice in device.cpp</h3>
+<p>The template code implements code to release the file handle and the WinUSB interface handle for the device. 
+
+</p>
+<ul>
+<li><strong>CloseHandle</strong> to release the handle that was created by <strong>CreateFile</strong>, as described in the <a href="#filehandle">Create a File Handle for the Device</a> section of this walkthrough.</li>
+<li>
+<a href="ff540233(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Free</strong></a> to release the WinUSB interface handle for the device, which is returned by <a href="ff540277(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_Initialize</strong></a>. </li>
+</ul>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1226b97d-559b-41ad-a03a-22d5d2b09865');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_1226b97d-559b-41ad-a03a-22d5d2b09865" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+VOID
+CloseDevice(
+    _Inout_ PDEVICE_DATA DeviceData
+    )
+/*++
+
+Routine description:
+
+    Perform required cleanup when the device is no longer needed.
+
+    If OpenDevice failed, do nothing.
+
+Arguments:
+
+    DeviceData - Struct filled in by OpenDevice
+
+Return value:
+
+    None
+
+--*/
+{
+    if (FALSE == DeviceData-&gt;HandlesOpen) {
+
+        //
+        // Called on an uninitialized DeviceData
+        //
+        return;
+    }
+
+    WinUsb_Free(DeviceData-&gt;WinusbHandle);
+    CloseHandle(DeviceData-&gt;DeviceHandle);
+    DeviceData-&gt;HandlesOpen = FALSE;
+
+    return;
+}
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Next_steps"></a><a id="next_steps"></a><a id="NEXT_STEPS"></a>Next steps</h2>
+<p>Next, read these topics to send get device information and send data transfers to the device:</p>
+<ul>
+<li>
+<a href="ff540174(v%3dvs.85)-2.html">Access a USB Device by Using WinUSB Functions</a>
+<p>Learn about querying the device for USB-specific information such as device speed, interface descriptors, related endpoints, and their pipes. </p>
+</li>
+<li>
+<a href="dn376866(v%3dvs.85)-2.html">Send USB isochronous transfers from a WinUSB desktop app</a>
+<p>Transfer data to and from isochronous endpoints of a USB device.</p>
+</li>
+</ul>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="dn376885(v%3dvs.85)-2.html">Windows desktop app for a USB device</a>
+</dt>
+<dt>
+<a href="hh698272(v%3dvs.85)-2.html">Configuring a Computer for Driver Deployment, Testing, and Debugging</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20Write a Windows desktop app based on the WinUSB template%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Dsw2-Hxa8gdjZqY0lX0kJ45Pd8Cud9mOYWDUc0i-M-MB3JQ-ndK5NrIAL3jgrvQ_QCOhnBsAD-wuCURtU8qTZD-ymw6Kd-hIKvlVtL9V6HvSh7bDZRM_SAM4NJjjT9yUqwxN_Q2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/dn376872(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fdn376872(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="ebwpfC6Ie3QzvMpWNceSJEvDTgyrgaBL7jXTIxzyWSasXGTeTunevlsbZXH_mQMBilM-yyHBi2iCcJBbcohZp9aA5Ekmce25h5L_ozoAcI2u5BU3a7FWWj3SjGRcle_KyNsOzQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn376872(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"4baaefde-bc94-4056-b1aa-703dfab70a35\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/dn376872(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:49:28 GMT -->
+</html>

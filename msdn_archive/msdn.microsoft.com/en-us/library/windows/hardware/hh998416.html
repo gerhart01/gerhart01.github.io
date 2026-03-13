@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh998416.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998416.aspx" />
+        <title>Graphic Adapter or Chipset Tests</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh998416(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998416(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998416(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998416(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA93B-9:58:06 AM" />
+
+<meta name="Search.ShortId" content="hh998416" />
+
+<meta name="ms.shortidmsdn" content="hh998416" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395075486&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh998416.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124227.aspx" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124928.aspx" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998741.aspx" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998929.aspx" id="dn375873_WIN.10_en-us" mtpsaliasid="" mtpsassetid="5a91b09b-f235-483a-8cd6-8c6184064350_WIN.10_en-us" mtpsshortid="hh998929_WIN.10_en-us" title="Device.Graphics Testing">Device.Graphics Testing</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998416.aspx" id="dn375915_WIN.10_en-us" mtpsaliasid="" mtpsassetid="362504ea-5e2e-407b-9246-d1797b94f45a_WIN.10_en-us" mtpsshortid="hh998416_WIN.10_en-us" title="Graphic Adapter or Chipset Tests">Graphic Adapter or Chipset Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124499.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="AES 128 and Session key Refresh Test">AES 128 and Session key Refresh Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123556.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Alpha Blending Precision">Alpha Blending Precision</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125229.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Alpha Blending - FALSE-TRUE 16bpp">Alpha Blending - FALSE-TRUE 16bpp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124690.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Alpha Compare">Alpha Compare</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997911.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Anisotropic">Anisotropic</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124015.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Arbitrary Clipping Planes">Arbitrary Clipping Planes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123586.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Auto Generation of Mip Maps">Auto Generation of Mip Maps</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998796.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Automatic Stereo">Automatic Stereo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124255.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Basic Rasterization">Basic Rasterization</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997914.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Basic - System to Primary">Blt - Basic - System to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998093.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Basic - VMem to Primary">Blt - Basic - VMem to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124562.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Color Key - Sys to Primary">Blt - Color Key - Sys to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125104.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Color Key - VMem to Primary">Blt - Color Key - VMem to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998243.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Exotic">Blt - Exotic</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998895.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Raster Ops - Vid Mem">Blt - Raster Ops - Vid Mem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191701.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Stretch - Color Key - Sys to Primary">Blt - Stretch - Color Key - Sys to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998040.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Stretch - Color Key - Vid to Primary">Blt - Stretch - Color Key - Vid to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124257.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Stretch - System to Primary">Blt - Stretch - System to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124052.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Stretch - System to Primary Test">Blt - Stretch - System to Primary Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123908.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Stretch - VMem to Primary">Blt - Stretch - VMem to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998543.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Textures">Blt - Textures</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123714.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Blt - Unused Pixel Bits">Blt - Unused Pixel Bits</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998988.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Buffered Blts">Buffered Blts</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998474.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bump Env Map">Bump Env Map</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125274.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Capscheck">Capscheck</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998559.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Check Resolution (WoW64)">Check Resolution (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191671.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Check Resolution for Dualview - Multihead">Check Resolution for Dualview - Multihead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998788.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Check Resource">Check Resource</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998992.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CDS_VideoParameters (WoW64)">CDS_VideoParameters (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125292.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Clear">Clear</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123814.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Color Fill">Color Fill</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123749.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Compare Z">Compare Z</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123824.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Compressed Texture">Compressed Texture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293760.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Content Protection- Playing H.264 + AAC media file protected environment. HCK test - Device Test.">Content Protection- Playing H.264 + AAC media file protected environment. HCK test - Device Test.</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247460.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Content Protection- Playing VC1 + WMAPro  media file protected environment. HCK test - Device Test.">Content Protection- Playing VC1 + WMAPro  media file protected environment. HCK test - Device Test.</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123892.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="COPP - HDCP Test (WoW64)">COPP - HDCP Test (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125038.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CopyRects Functionality (WoW64)">CopyRects Functionality (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191677.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CRASH - Display Stress 4-hour WDDM Profile (32bit)">CRASH - Display Stress 4-hour WDDM Profile (32bit)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191676.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CRASH - Display Stress 4-hour WDDM Profile (64bit)">CRASH - Display Stress 4-hour WDDM Profile (64bit)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124546.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CRASH - Legacy Display Stress">CRASH - Legacy Display Stress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998978.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CreateSurface">CreateSurface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123800.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cube Mapping">Cube Mapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998287.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D AGP Texture (WoW64)">D3D AGP Texture (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124368.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D Content Protection Test">D3D Content Protection Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191685.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D Content Protection - CPAuthChannelAPI">D3D Content Protection - CPAuthChannelAPI</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191669.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D Content Protection - DriverProtections 11">D3D Content Protection - DriverProtections 11</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123951.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D Cross Proc Sharing">D3D Cross Proc Sharing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123978.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D Lines">D3D Lines</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123603.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D9 Overlay - CheckDeviceOverlayType">D3D9 Overlay - CheckDeviceOverlayType</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123900.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D9 Overlay - CreateAdditionalSwapChain">D3D9 Overlay - CreateAdditionalSwapChain</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124307.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D9 Overlay - CreateDeviceEx Test">D3D9 Overlay - CreateDeviceEx Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124287.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3D9 Overlay - PresentEx">D3D9 Overlay - PresentEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997847.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="D3DQuery Conformance Test">D3DQuery Conformance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123966.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw AGP Memory Tests">DDraw AGP Memory Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997857.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Blt - Basic - AGP to Primary">DDraw Blt - Basic - AGP to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998410.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Blt - Color Key - AGP to Primary">DDraw Blt - Color Key - AGP to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998836.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Ddraw Blt - ColorFill - AGP">Ddraw Blt - ColorFill - AGP</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124941.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Blt - ColorFill - System Memory">DDraw Blt - ColorFill - System Memory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997932.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Blt - ColorFill - Video Memory">DDraw Blt - ColorFill - Video Memory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125116.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Blt - Stretch - Color Key - AGP to Primary">DDraw Blt - Stretch - Color Key - AGP to Primary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998181.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DDraw Cubic">DDraw Cubic</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123786.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Depth Bias">Depth Bias</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998608.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Desktop Duplication with Normal Mode">Desktop Duplication with Normal Mode</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191703.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DirectDraw Tests">DirectDraw Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124628.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Discardable Depth Stencil">Discardable Depth Stencil</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Displacement Mapping">Displacement Mapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191691.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Display Mode Filter Check">Display Mode Filter Check</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998667.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Driver Scenario">Driver Scenario</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125053.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 3DStereoVideo">DX11 3DStereoVideo</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998641.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 Video Content Protection FeatureLevel 11">DX11 Video Content Protection FeatureLevel 11</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997976.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 Video Decode FeatureLevel 9">DX11 Video Decode FeatureLevel 9</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124375.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 VideoProcessing">DX11 VideoProcessing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384094.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 Video Processing for Overlay">DX11 Video Processing for Overlay</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125233.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 Video Rotation">DX11 Video Rotation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384095.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DX11 Video Rotation for overlay">DX11 Video Rotation for overlay</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125117.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Cross Process Resource Sharing">DXGI Cross Process Resource Sharing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124390.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI DirectFlip">DXGI DirectFlip</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124708.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Frame Statistics">DXGI Frame Statistics</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998634.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Gamma Ramps">DXGI Gamma Ramps</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191682.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI GDI Interop D3D10.1">DXGI GDI Interop D3D10.1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191695.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI GDI Interop D3D11">DXGI GDI Interop D3D11</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998215.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Mode Enumeration">DXGI Mode Enumeration</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998330.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Presentation Rate Testing">DXGI Presentation Rate Testing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997957.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Presentation testing - FSPresentMS">DXGI Presentation testing - FSPresentMS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123651.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Resource Check">DXGI Resource Check</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998440.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI SCDest Buffer (D3D10.1 on feature levels 9.1-10.1)">DXGI SCDest Buffer (D3D10.1 on feature levels 9.1-10.1)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191687.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI SCDest Buffer (D3D11 on feature levels 9.1 and 10.0)">DXGI SCDest Buffer (D3D11 on feature levels 9.1 and 10.0)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998159.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Stereo Present">DXGI Stereo Present</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123671.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI Swap Effects">DXGI Swap Effects</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343537.aspx" id="dn375861_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXVA Tests">DXVA Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998427.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dynamic Resources">Dynamic Resources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998709.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Fill Modes">Fill Modes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997897.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Fog">Fog</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124493.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Four Character Code Surface Stability Test (WoW64)">Four Character Code Surface Stability Test (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191705.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Functional test for monitor container ID">Functional test for monitor container ID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998522.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Gamma Correction">Gamma Correction</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998822.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GDIHW_Functional Test for GDI HW ACC (v1.1)">GDIHW_Functional Test for GDI HW ACC (v1.1)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998956.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GDIMAN Rops (WoW64)">GDIMAN Rops (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124537.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Geometry Instancing">Geometry Instancing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124341.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get DC">Get DC</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998006.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GetInfo (WoW64)">GetInfo (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998230.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GetRasterStatus">GetRasterStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125166.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GetRenderTargetData - Backbuffer and Render Target">GetRenderTargetData - Backbuffer and Render Target</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123766.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GetRenderTargetData - Mip Texture and Cube Texture">GetRenderTargetData - Mip Texture and Cube Texture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998702.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Gradient Fill Test (WoW64)">Gradient Fill Test (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998852.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Graphics Device Runtime Power Management Component Validation">Graphics Device Runtime Power Management Component Validation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125084.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Graphics HDMI Test (Manual)">Graphics HDMI Test (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125211.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="High Order Surfaces">High Order Surfaces</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124414.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Index Buffer">Index Buffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124778.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lighting">Lighting</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998278.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lightmap">Lightmap</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123788.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lockable Depth Buffer">Lockable Depth Buffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125115.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lost Devices - Resource Management DX8 and lower (WoW64)">Lost Devices - Resource Management DX8 and lower (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998096.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Matrix Palette Skinning">Matrix Palette Skinning</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123588.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Maximum Primitives">Maximum Primitives</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124010.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Memory Leak Verifier (WoW64)">Memory Leak Verifier (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124308.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Memory-Texture Management (WoW64)">Memory-Texture Management (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124404.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MipFilter">MipFilter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125276.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Miscellaneous DirectDraw Test">Miscellaneous DirectDraw Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn268584.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MPO Quality Tests">MPO Quality Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124181.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multihead Support">Multihead Support</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191683.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multimon minimum resolution check - Multihead">Multimon minimum resolution check - Multihead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998644.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multipass Z-Fighting">Multipass Z-Fighting</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124694.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multiple Lights">Multiple Lights</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998432.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multiple Render Targets">Multiple Render Targets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998932.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multisample Stability (WoW64)">Multisample Stability (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998083.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multisampling">Multisampling</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123956.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Multistream Rendering">Multistream Rendering</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124817.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MultiSwapchain">MultiSwapchain</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124336.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Non Power 2 Conditional ConfTest">Non Power 2 Conditional ConfTest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191696.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Non Power 2 Conditional RenderTarget">Non Power 2 Conditional RenderTarget</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124031.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Non Power 2 Conditional Test (DX9) (WoW64)">Non Power 2 Conditional Test (DX9) (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998797.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Non Power 2 Conditional Test (WOW64)">Non Power 2 Conditional Test (WOW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998637.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OPM - HDCP CSS DVD Test">OPM - HDCP CSS DVD Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997961.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="OptStandby - Video Memory Purge and Resume">OptStandby - Video Memory Purge and Resume</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997796.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overdraw-Underdraw">Overdraw-Underdraw</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124305.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Overlay (Manual) (WoW64)">Overlay (Manual) (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125129.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Palette Tests">Palette Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191672.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Palettized Textures">Palettized Textures</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123611.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Palettized Textures Test">Palettized Textures Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191679.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PC99 #10 supported pixel orderings">PC99 #10 supported pixel orderings</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123493.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PC99 #10 supported pixel orderings (WoW64)">PC99 #10 supported pixel orderings (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998500.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PC99 #12 downloadable RAMDAC (WoW64)">PC99 #12 downloadable RAMDAC (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998971.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PC99 #3 system uses WC (32-bit)">PC99 #3 system uses WC (32-bit)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191688.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PerfX2 DirectFlip Scenarios">PerfX2 DirectFlip Scenarios</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124382.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Perspective">Perspective</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124816.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pixel Shaders Precision">Pixel Shaders Precision</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124418.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pixel Shaders Ver 1.1">Pixel Shaders Ver 1.1</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998183.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pixel Shaders Ver 1.x">Pixel Shaders Ver 1.x</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191709.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pixel Shaders Ver 2.x">Pixel Shaders Ver 2.x</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125270.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pixel Shaders Ver 3.0">Pixel Shaders Ver 3.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123622.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Point Sprites">Point Sprites</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123859.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preempt - Schedule reasonable workload 4 ms check">Preempt - Schedule reasonable workload 4 ms check</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997963.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preempt - Scheduler WLK PERF - Time to high priority completions (PoliceMS)">Preempt - Scheduler WLK PERF - Time to high priority completions (PoliceMS)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123943.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preempt - Scheduler WLK PERF - Time to high priority Preemptions (PoliceMS)">Preempt - Scheduler WLK PERF - Time to high priority Preemptions (PoliceMS)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125312.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preempt - Scheduler WLK Validate non-zero preemption values for WDDM1.2 hardware">Preempt - Scheduler WLK Validate non-zero preemption values for WDDM1.2 hardware</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123501.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preemption Test">Preemption Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124821.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preemption - Validate driver preemption level (single)">Preemption - Validate driver preemption level (single)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125099.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Present Validation 2">Present Validation 2</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123669.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Present Validation 2 (FullScreen)">Present Validation 2 (FullScreen)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123566.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Present Validation 2 - Vista">Present Validation 2 - Vista</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125164.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Present Validation (WoW64)">Present Validation (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998248.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Primitive Batching">Primitive Batching</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998724.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Processor Amplification Control Test (WoW64)">Processor Amplification Control Test (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998894.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Ratetest (WoW64)">Ratetest (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123552.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Read Scan Line">Read Scan Line</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191673.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Registry Validation">Registry Validation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124511.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Registry Validation (WoW64)">Registry Validation (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191680.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RenderOnly SetupAPI Test">RenderOnly SetupAPI Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191686.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RenderOnly Swapchain Test">RenderOnly Swapchain Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998339.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Set Render Target">Set Render Target</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191681.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SimulatePreemption TDR">SimulatePreemption TDR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191694.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SimulateVSync TDR">SimulateVSync TDR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123930.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="State Blocks">State Blocks</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123477.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Stencil">Stencil</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123863.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Stretch Rect">Stretch Rect</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998095.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Subpixel Texture">Subpixel Texture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124099.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Surface Flipping Tests">Surface Flipping Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998900.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TDR2 - Large Payload Penalty Compute Application Test">TDR2 - Large Payload Penalty Compute Application Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123560.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Tessellation">Tessellation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125286.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Address">Texture Address</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123891.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Blend">Texture Blend</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998611.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture ColorKey (WoW64)">Texture ColorKey (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124422.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Coordinate Generation">Texture Coordinate Generation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123638.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Filter">Texture Filter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124822.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Formats">Texture Formats</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123845.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Gradient">Texture Gradient</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998786.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Load (WoW64)">Texture Load (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997765.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Mapping">Texture Mapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998033.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Stage">Texture Stage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124507.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Texture Transforms">Texture Transforms</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124050.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TL Vertex Clipping">TL Vertex Clipping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125027.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Update Surface">Update Surface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125024.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Update Texture">Update Texture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123541.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VBIB - Vertex and Index Buffer Validation">VBIB - Vertex and Index Buffer Validation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191684.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify VESA and CEA required display modes">Verify VESA and CEA required display modes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124877.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Blending">Vertex Blending</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124174.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Buffer Rendering">Vertex Buffer Rendering</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123826.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Buffer Swapping">Vertex Buffer Swapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124148.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Formats">Vertex Formats</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123508.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Shaders">Vertex Shaders</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997788.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Shaders Precision">Vertex Shaders Precision</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124998.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Vertex Tweening">Vertex Tweening</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124289.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Video Acceleration - Bad Data (WoW64)">Video Acceleration - Bad Data (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124933.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Video Memory Aliasing">Video Memory Aliasing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123730.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Video Memory Management Tests">Video Memory Management Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124743.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Viewport Clipping">Viewport Clipping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997899.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Volume Texture">Volume Texture</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998376.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VPE and Kernel TestS">VPE and Kernel TestS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998758.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="W Buffer">W Buffer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125309.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="W Compare">W Compare</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123598.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Wait for VBlank">Wait for VBlank</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998826.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Bit Flip - Invalid Param First Group">WDDM Bit Flip - Invalid Param First Group</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124437.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Blt">WDDM Blt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124215.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Blt - Depth">WDDM Blt - Depth</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124620.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Blt - DepthFill">WDDM Blt - DepthFill</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124805.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Blt - Stretch">WDDM Blt - Stretch</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998668.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM BVT2">WDDM BVT2</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125148.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM CCD Test for Forced Projection">WDDM CCD Test for Forced Projection</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998426.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM CCD Test for PersistentReset Sleep">WDDM CCD Test for PersistentReset Sleep</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124943.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM CCD Test for QueryHardwareCaps">WDDM CCD Test for QueryHardwareCaps</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125272.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM CCD Test for Validation of Basic Topology (Multi Mon) - Multihead">WDDM CCD Test for Validation of Basic Topology (Multi Mon) - Multihead</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997818.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Coherency">WDDM Coherency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125011.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Cross Processor">WDDM Cross Processor</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998057.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Dead Lock">WDDM Dead Lock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125300.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM DMA Split (Force Split Points)">WDDM DMA Split (Force Split Points)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124710.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Eviction">WDDM Eviction</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123931.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM FlipQueue">WDDM FlipQueue</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123728.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Fuzzer Allocation- Invalid Param">WDDM Fuzzer Allocation- Invalid Param</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123778.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Fuzzer Command Buffer- Invalid Param">WDDM Fuzzer Command Buffer- Invalid Param</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124845.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Fuzzer Misc- Invalid Param">WDDM Fuzzer Misc- Invalid Param</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997982.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM GammaRamp">WDDM GammaRamp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124209.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Handles - Invalid Param First Group">WDDM Handles - Invalid Param First Group</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123679.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM HPD Notification Test (Manual)">WDDM HPD Notification Test (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997870.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM LockConfirm">WDDM LockConfirm</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998967.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM LockSmith">WDDM LockSmith</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997964.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM ManagedPrimary">WDDM ManagedPrimary</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125190.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Max Contexts">WDDM Max Contexts</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998949.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM ModeChange">WDDM ModeChange</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998683.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM ModifyVAD">WDDM ModifyVAD</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124560.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Overlay">WDDM Overlay</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998823.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Pass Through">WDDM Pass Through</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124263.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Pass Through - Lock">WDDM Pass Through - Lock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125033.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Pass Through - QueryResidency">WDDM Pass Through - QueryResidency</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998843.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PnPMultiModeSwitch Test">WDDM PnPMultiModeSwitch Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998190.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PnPStopModeSwitch Test">WDDM PnPStopModeSwitch Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191697.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PnPStopResetToVGA">WDDM PnPStopResetToVGA</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998509.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PnPStop Test">WDDM PnPStop Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125180.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PnPStop Test - Update and Rollback">WDDM PnPStop Test - Update and Rollback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998663.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM PresentStats - Present Statistics Test">WDDM PresentStats - Present Statistics Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125318.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Primary Surface">WDDM Primary Surface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124866.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Process Callout">WDDM Process Callout</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125232.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM RotateBlt Full Screen ColorFillPresent">WDDM RotateBlt Full Screen ColorFillPresent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997990.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Sch_Stress">WDDM Sch_Stress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997918.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Scheduler Stress (AlwaysRepatch)">WDDM Scheduler Stress (AlwaysRepatch)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124574.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Scheduler Stress (No PrePatching)">WDDM Scheduler Stress (No PrePatching)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124062.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Sync - VolBlt Test">WDDM Sync - VolBlt Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123784.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Sync Test">WDDM Sync Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123924.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Toaster - Invalid Param First Group">WDDM Toaster - Invalid Param First Group</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124706.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Unmap Segment to DummyPage Check">WDDM Unmap Segment to DummyPage Check</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998594.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM Verify DVI I adapters matches reported DVI and HD15 targets (Manual)">WDDM Verify DVI I adapters matches reported DVI and HD15 targets (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124416.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDDM WSSections">WDDM WSSections</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124096.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF Create Device">WGF Create Device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125325.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF Feature Level 9.3 Support">WGF Feature Level 9.3 Support</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124995.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Async">WGF11 Async</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123520.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Blend">WGF11 Blend</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124505.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Clipping">WGF11 Clipping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998402.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Compute Shader">WGF11 Compute Shader</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191710.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Compute Shader - Dispatch and GroupSharedMemory">WGF11 Compute Shader - Dispatch and GroupSharedMemory</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124814.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 D3DWDDM">WGF11 D3DWDDM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124008.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Depth Stencil">WGF11 Depth Stencil</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123861.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Draw">WGF11 Draw</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998745.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Fill Rules">WGF11 Fill Rules</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124911.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Filter">WGF11 Filter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998705.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Geometry Shader">WGF11 Geometry Shader</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998309.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Input Assembler">WGF11 Input Assembler</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123762.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Interfaces">WGF11 Interfaces</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998930.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Multisample">WGF11 Multisample</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998525.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 -- Multi-threading -- one-way stress test">WGF11 -- Multi-threading -- one-way stress test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125224.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Pixel Shader">WGF11 Pixel Shader</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125021.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Precision">WGF11 Precision</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998723.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Rasterizer">WGF11 Rasterizer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998014.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Render Targets">WGF11 Render Targets</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124677.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Resource Access">WGF11 Resource Access</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124199.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Resource Formats">WGF11 Resource Formats</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998541.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Shader 5x">WGF11 Shader 5x</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124205.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 SharedResources">WGF11 SharedResources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998136.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Streamout">WGF11 Streamout</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998964.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Tessellation">WGF11 Tessellation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124393.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Vertex Shader">WGF11 Vertex Shader</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123597.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGF11 Viewports">WGF11 Viewports</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123835.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WGFVidMMWDDM1_2 Test">WGFVidMMWDDM1_2 Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124760.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WHQL FPO optimization check for kernel video driver(s) (1.1)">WHQL FPO optimization check for kernel video driver(s) (1.1)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191689.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Client System Check For WDDM 1.1 Or Greater Display Driver Support">Windows Client System Check For WDDM 1.1 Or Greater Display Driver Support</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn283512.aspx" id="dn375919_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Wireless Display Tests">Wireless Display Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998650.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Wireframe">Wireframe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998633.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WLP MultiTexturing">WLP MultiTexturing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998993.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WLP RGB Rasterization">WLP RGB Rasterization</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191700.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WLP RGB Rasterization - Mobile (WoW64)">WLP RGB Rasterization - Mobile (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998118.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WLP Specular">WLP Specular</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124128.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WLP Texture Sizes">WLP Texture Sizes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997991.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="XPSRAS Display Driver Conformance Test">XPSRAS Display Driver Conformance Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123699.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="YUV Blt Test (WoW64)">YUV Blt Test (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998982.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="YUV Blt Test Performance (DX9) (WoW64)">YUV Blt Test Performance (DX9) (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998397.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="YUV Blt Test Performance (WoW64)">YUV Blt Test Performance (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191706.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="YUV Blt Test Performance - Server (WoW64)">YUV Blt Test Performance - Server (WoW64)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191704.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="YUV Blt Test - Server (WoW64)">YUV Blt Test - Server (WoW64)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Graphic Adapter or Chipset Tests</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>Tests that are included in the display adapter or chipset category include the following:</p>
+      <ul>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124499.aspx">AES 128 and Session key Refresh Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123556.aspx">Alpha Blending Precision</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125229.aspx">Alpha Blending - FALSE-TRUE 16bpp</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124690.aspx">Alpha Compare</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997911.aspx">Anisotropic</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124015.aspx">Arbitrary Clipping Planes</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123586.aspx">Auto Generation of Mip Maps</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998796.aspx">Automatic Stereo</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124255.aspx">Basic Rasterization</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997914.aspx">Blt - Basic - System to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998093.aspx">Blt - Basic - VMem to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124562.aspx">Blt - Color Key - Sys to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125104.aspx">Blt - Color Key - VMem to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998243.aspx">Blt - Exotic</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998895.aspx">Blt - Raster Ops - Vid Mem</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191701.aspx">Blt - Stretch - Color Key - Sys to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998040.aspx">Blt - Stretch - Color Key - Vid to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124257.aspx">Blt - Stretch - System to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124052.aspx">Blt - Stretch - System to Primary Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123908.aspx">Blt - Stretch - VMem to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998543.aspx">Blt - Textures</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123714.aspx">Blt - Unused Pixel Bits</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998988.aspx">Buffered Blts</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998474.aspx">Bump Env Map</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125274.aspx">Capscheck</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998559.aspx">Check Resolution (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998788.aspx">Check Resource</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998992.aspx">CDS_VideoParameters (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125292.aspx">Clear</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123814.aspx">Color Fill</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123749.aspx">Compare Z</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123824.aspx">Compressed Texture</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293760.aspx">Content Protection- Playing H.264 + AAC media file protected environment. HCK test - Device Test.</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247460.aspx">Content Protection- Playing VC1 + WMAPro  media file protected environment. HCK test - Device Test.</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123892.aspx">COPP - HDCP Test (WoW64) 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125038.aspx">CopyRects Functionality (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191677.aspx">CRASH - Display Stress 4-hour WDDM Profile (32bit)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191676.aspx">CRASH - Display Stress 4-hour WDDM Profile (64bit)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124546.aspx">CRASH - Legacy Display Stress</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998978.aspx">CreateSurface</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123800.aspx">Cube Mapping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998287.aspx">D3D AGP Texture (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124368.aspx">D3D Content Protection Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191685.aspx">D3D Content Protection - CPAuthChannelAPI</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191669.aspx">D3D Content Protection - DriverProtections 11</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123951.aspx">D3D Cross Proc Sharing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123978.aspx">D3D Lines</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123603.aspx">D3D9 Overlay - CheckDeviceOverlayType</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123900.aspx">D3D9 Overlay - CreateAdditionalSwapChain</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124307.aspx">D3D9 Overlay - CreateDeviceEx Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124287.aspx">D3D9 Overlay - PresentEx</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997847.aspx">D3DQuery Conformance Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123966.aspx">DDraw AGP Memory Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997857.aspx">DDraw Blt - Basic - AGP to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998410.aspx">DDraw Blt - Color Key - AGP to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998836.aspx">Ddraw Blt - ColorFill - AGP</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124941.aspx">DDraw Blt - ColorFill - System Memory</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997932.aspx">DDraw Blt - ColorFill - Video Memory</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125116.aspx">DDraw Blt - Stretch - Color Key - AGP to Primary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998181.aspx">DDraw Cubic</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123786.aspx">Depth Bias</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998608.aspx">Desktop Duplication with Normal Mode</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123868.aspx">DirectDraw Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124628.aspx">Discardable Depth Stencil</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998353.aspx">Displacement Mapping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191691.aspx">Display Mode Filter Check</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998667.aspx">Driver Scenario</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125053.aspx">DX11 3DStereoVideo</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998641.aspx">DX11 Video Content Protection FeatureLevel 11</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997976.aspx">DX11 Video Decode FeatureLevel 9</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124375.aspx">DX11 VideoProcessing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384094.aspx">DX11 Video Processing for Overlay</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125233.aspx">DX11 Video Rotation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn384095.aspx">DX11 Video Rotation for overlay</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125117.aspx">DXGI Cross Process Resource Sharing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124390.aspx">DXGI DirectFlip</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124708.aspx">DXGI Frame Statistics 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998634.aspx">DXGI Gamma Ramps</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191682.aspx">DXGI GDI Interop D3D10.1</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191695.aspx">DXGI GDI Interop D3D11</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998215.aspx">DXGI Mode Enumeration</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998330.aspx">DXGI Presentation Rate Testing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997957.aspx">DXGI Presentation testing - FSPresentMS</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123651.aspx">DXGI Resource Check</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998440.aspx">DXGI SCDest Buffer (D3D10.1 on feature levels 9.1-10.1)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191687.aspx">DXGI SCDest Buffer (D3D11 on feature levels 9.1 and 10.0)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998159.aspx">DXGI Stereo Present</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123671.aspx">DXGI Swap Effects</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn343537.aspx">DXVA Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998427.aspx">Dynamic Resources</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998709.aspx">Fill Modes</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997897.aspx">Fog</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124493.aspx">Four Character Code Surface Stability Test (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191705.aspx">Functional test for monitor container ID</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998522.aspx">Gamma Correction</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998822.aspx">GDIHW_Functional Test for GDI HW ACC (v1.1)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998956.aspx">GDIMAN Rops (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124537.aspx">Geometry Instancing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124341.aspx">Get DC</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998006.aspx">GetInfo (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998230.aspx">GetRasterStatus</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125166.aspx">GetRenderTargetData - Backbuffer and Render Target</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123766.aspx">GetRenderTargetData - Mip Texture and Cube Texture</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998702.aspx">Gradient Fill Test (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998852.aspx">Graphics Device Runtime Power Management Component Validation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125084.aspx">Graphics HDMI Test (Manual)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125211.aspx">High Order Surfaces</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124414.aspx">Index Buffer</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124778.aspx">Lighting</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998278.aspx">Lightmap</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123788.aspx">Lockable Depth Buffer</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125115.aspx">Lost Devices - Resource Management DX8 and lower (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998096.aspx">Matrix Palette Skinning</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123588.aspx">Maximum Primitives</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124010.aspx">Memory Leak Verifier (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124308.aspx">Memory-Texture Management (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124404.aspx">MipFilter</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125276.aspx">Miscellaneous DirectDraw Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn268584.aspx">MPO Quality Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124181.aspx">Multihead Support</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191683.aspx">Multimon minimum resolution check - Multihead</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998644.aspx">Multipass Z-Fighting</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124694.aspx">Multiple Lights</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998432.aspx">Multiple Render Targets</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998932.aspx">Multisample Stability (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998083.aspx">Multisampling</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123956.aspx">Multistream Rendering</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124817.aspx">MultiSwapchain</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124336.aspx">Non Power 2 Conditional ConfTest</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191696.aspx">Non Power 2 Conditional RenderTarget</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124031.aspx">Non Power 2 Conditional Test (DX9) (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998797.aspx">Non Power 2 Conditional Test (WOW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998637.aspx">OPM - HDCP CSS DVD Test2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997961.aspx">OptStandby - Video Memory Purge and Resume</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997796.aspx">Overdraw-Underdraw</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124305.aspx">Overlay (Manual) (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125129.aspx">Palette Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123611.aspx">Palettized Textures Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123493.aspx">PC99 #10 supported pixel orderings (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123493.aspx">PC99 #10 supported pixel orderings (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998500.aspx">PC99 #12 downloadable RAMDAC (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998971.aspx">PC99 #3 system uses WC (32-bit)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191688.aspx">PerfX2 DirectFlip Scenarios</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124382.aspx">Perspective</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124816.aspx">Pixel Shaders Precision</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124418.aspx">Pixel Shaders Ver 1.1</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998183.aspx">Pixel Shaders Ver 1.x</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191709.aspx">Pixel Shaders Ver 2.x</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125270.aspx">Pixel Shaders Ver 3.0 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123622.aspx">Point Sprites</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123859.aspx">Preempt - Schedule reasonable workload 4 ms check 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997963.aspx">Preempt - Scheduler WLK PERF - Time to high priority completions (PoliceMS)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123943.aspx">Preempt - Scheduler WLK PERF - Time to high priority Preemptions (PoliceMS)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125312.aspx">Preempt - Scheduler WLK Validate non-zero preemption values for WDDM1.2 hardware</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123501.aspx">Preemption Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124821.aspx">Preemption - Validate driver preemption level (single)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125099.aspx">Present Validation 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123669.aspx">Present Validation 2 (FullScreen)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123566.aspx">Present Validation 2 - Vista</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125164.aspx">Present Validation (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998248.aspx">Primitive Batching</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998724.aspx">Processor Amplification Control Test (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998894.aspx">Ratetest (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123552.aspx">Read Scan Line</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124511.aspx">Registry Validation (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124511.aspx">Registry Validation (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191680.aspx">RenderOnly SetupAPI Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191686.aspx">RenderOnly Swapchain Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998339.aspx">Set Render Target</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191694.aspx">SimulateVSync TDR</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123930.aspx">State Blocks</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123477.aspx">Stencil</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123863.aspx">Stretch Rect</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998095.aspx">Subpixel Texture</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124099.aspx">Surface Flipping Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998900.aspx">TDR2 - Large Payload Penalty Compute Application Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123560.aspx">Tessellation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125286.aspx">Texture Address</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123891.aspx">Texture Blend</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998611.aspx">Texture ColorKey (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124422.aspx">Texture Coordinate Generation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123638.aspx">Texture Filter</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124822.aspx">Texture Formats</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123845.aspx">Texture Gradient</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998786.aspx">Texture Load (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997765.aspx">Texture Mapping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998033.aspx">Texture Stage</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124507.aspx">Texture Transforms</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124050.aspx">TL Vertex Clipping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125027.aspx">Update Surface</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125024.aspx">Update Texture</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123541.aspx">VBIB - Vertex and Index Buffer Validation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191684.aspx">Verify VESA and CEA required display modes</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124877.aspx">Vertex Blending</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124174.aspx">Vertex Buffer Rendering</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123826.aspx">Vertex Buffer Swapping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124148.aspx">Vertex Formats</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123508.aspx">Vertex Shaders</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997788.aspx">Vertex Shaders Precision</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124998.aspx">Vertex Tweening</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124289.aspx">Video Acceleration - Bad Data (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124933.aspx">Video Memory Aliasing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123730.aspx">Video Memory Management Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124743.aspx">Viewport Clipping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997899.aspx">Volume Texture</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998376.aspx">VPE and Kernel Tests</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998758.aspx">W Buffer</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125309.aspx">W Compare</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123598.aspx">Wait for VBlank</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998826.aspx">WDDM Bit Flip - Invalid Param First Group</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124437.aspx">WDDM Blt</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124215.aspx">WDDM Blt - Depth</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124620.aspx">WDDM Blt - DepthFill</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124805.aspx">WDDM Blt - Stretch</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998668.aspx">WDDM BVT2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125148.aspx">WDDM CCD Test for Forced Projection</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998426.aspx">WDDM CCD Test for PersistentReset Sleep</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124943.aspx">WDDM CCD Test for QueryHardwareCaps</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125272.aspx">WDDM CCD Test for Validation of Basic Topology (Multi Mon) - Multihead</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997818.aspx">WDDM Coherency</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125011.aspx">WDDM Cross Processor</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998057.aspx">WDDM Dead Lock</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125300.aspx">WDDM DMA Split (Force Split Points)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124710.aspx">WDDM Eviction</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123931.aspx">WDDM FlipQueue</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123728.aspx">WDDM Fuzzer Allocation- Invalid Param</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123778.aspx">WDDM Fuzzer Command Buffer- Invalid Param</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124845.aspx">WDDM Fuzzer Misc- Invalid Param</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997982.aspx">WDDM GammaRamp</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124209.aspx">WDDM Handles - Invalid Param First Group</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123679.aspx">WDDM HPD Notification Test (Manual)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997870.aspx">WDDM LockConfirm</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998967.aspx">WDDM LockSmith</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997964.aspx">WDDM ManagedPrimary</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125190.aspx">WDDM Max Contexts</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998949.aspx">WDDM ModeChange</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998683.aspx">WDDM ModifyVAD</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124560.aspx">WDDM Overlay</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998823.aspx">WDDM Pass Through</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124263.aspx">WDDM Pass Through - Lock</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125033.aspx">WDDM Pass Through - QueryResidency</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998843.aspx">WDDM PnPMultiModeSwitch Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998190.aspx">WDDM PnPStopModeSwitch Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191697.aspx">WDDM PnPStopResetToVGA</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998509.aspx">WDDM PnPStop Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125180.aspx">WDDM PnPStop Test - Update and Rollback</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998663.aspx">WDDM PresentStats - Present Statistics Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125318.aspx">WDDM Primary Surface</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124866.aspx">WDDM Process Callout</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125232.aspx">WDDM RotateBlt Full Screen ColorFillPresent</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997990.aspx">WDDM Sch_Stress</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997918.aspx">WDDM Scheduler Stress (AlwaysRepatch)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124574.aspx">WDDM Scheduler Stress (No PrePatching)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124062.aspx">WDDM Sync - VolBlt Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123784.aspx">WDDM Sync Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123924.aspx">WDDM Toaster - Invalid Param First Group</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124706.aspx">WDDM Unmap Segment to DummyPage Check</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998594.aspx">WDDM Verify DVI I adapters matches reported DVI and HD15 targets (Manual)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124416.aspx">WDDM WSSections</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124096.aspx">WGF Create Device</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125325.aspx">WGF Feature Level 9.3 Support</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124995.aspx">WGF11 Async</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123520.aspx">WGF11 Blend</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124505.aspx">WGF11 Clipping</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998402.aspx">WGF11 Compute Shader</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191710.aspx">WGF11 Compute Shader - Dispatch and GroupSharedMemory</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124814.aspx">WGF11 D3DWDDM</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124008.aspx">WGF11 Depth Stencil</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123861.aspx">WGF11 Draw</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998745.aspx">WGF11 Fill Rules</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124911.aspx">WGF11 Filter</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998705.aspx">WGF11 Geometry Shader</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998309.aspx">WGF11 Input Assembler</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123762.aspx">WGF11 Interfaces</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998930.aspx">WGF11 Multisample</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998525.aspx">WGF11 -- Multi-threading -- one-way stress test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125224.aspx">WGF11 Pixel Shader</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj125021.aspx">WGF11 Precision</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998723.aspx">WGF11 Rasterizer</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998014.aspx">WGF11 Render Targets</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124677.aspx">WGF11 Resource Access 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124199.aspx">WGF11 Resource Formats</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998541.aspx">WGF11 Shader 5x</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124205.aspx">WGF11 SharedResources</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998136.aspx">WGF11 Streamout</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998964.aspx">WGF11 Tessellation</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124393.aspx">WGF11 Vertex Shader</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123597.aspx">WGF11 Viewports</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123835.aspx">WGFVidMMWDDM1_2 Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124760.aspx">WHQL FPO optimization check for kernel video driver(s) (1.1)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191689.aspx">Windows Client System Check For WDDM 1.1 Or Greater Display Driver Support</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998650.aspx">Wireframe</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998633.aspx">WLP MultiTexturing</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998993.aspx">WLP RGB Rasterization 2</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191700.aspx">WLP RGB Rasterization - Mobile (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998118.aspx">WLP Specular</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj124128.aspx">WLP Texture Sizes</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh997991.aspx">XPSRAS Display Driver Conformance Test</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123699.aspx">YUV Blt Test (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998982.aspx">YUV Blt Test Performance (DX9) (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998397.aspx">YUV Blt Test Performance (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191706.aspx">YUV Blt Test Performance - Server (WoW64)</a>
+          <br />
+          <br />
+        </li>
+        <li class="unordered">
+          <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj191704.aspx">YUV Blt Test - Server (WoW64)</a>
+          <br />
+          <br />
+        </li>
+      </ul>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998929.aspx">Device.Graphics Testing</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="n6w56gvVrVqK5iod4Svr_B0ng0a-kYqJttwUF5OZ2947L9RazNRg8fVwNqUG-YMD4cF-EIfuc1_Je0qBikrt6plG7zNuT4PJ2CjECvJX-nnEwqdkOBpGbLdp7vcKzIju2lpp9A2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh998416.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh998416.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="kvp2kuKFNeyJ8fXSmfx0dEmVJB_eojL_0G-xgNYhJRT3p-TcP7CLAnQMMkdw6oZADdaYc3vU-9D6_AwPvQbnhDMc604awVDOzyFEdFV44Pc0ZglmWIGFpzwX095l-oPiaJPr0w2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh998416(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"8af202e9-3e30-4c98-8368-b8d4c7110840\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh998416.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:10 GMT -->
+</html>

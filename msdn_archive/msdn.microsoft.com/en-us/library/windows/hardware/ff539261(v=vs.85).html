@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539261(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:38:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff539261(v%3dvs.85).html" />
+        <title>How to send a USB control transfer (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff539261(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539261(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD5-8:58:43 AM" />
+
+<meta name="Search.ShortId" content="ff539261" />
+
+<meta name="ms.shortidmsdn" content="ff539261" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395071923&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539261%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh406260(v%3dvs.85).html" id="hh948131_VS.85_en-us" mtpsaliasid="" mtpsassetid="CA11CE23-B0BA-4932-A2BE-983F070B51D6_VS.85_en-us" mtpsshortid="hh406260_VS.85_en-us" title="Developing Windows client drivers for USB devices">Developing Windows client drivers for USB devices</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="ff539286(v%3dvs.85).html" id="hh948140_VS.85_en-us" mtpsaliasid="" mtpsassetid="5c524bc4-6feb-4b9e-912e-063ec9f40253_VS.85_en-us" mtpsshortid="ff539286_VS.85_en-us" title="Sending USB data transfers in USB client drivers">Sending USB data transfers in USB client drivers</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff539261(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send a USB control transfer">How to send a USB control transfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968306(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to enumerate USB pipes">How to enumerate USB pipes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968308(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to use the continuous reader for reading data from a USB pipe">How to use the continuous reader for reading data from a USB pipe</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff539199(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send USB bulk transfer requests">How to send USB bulk transfer requests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450846(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to open and close static streams in a USB bulk endpoint">How to open and close static streams in a USB bulk endpoint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh406225(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to transfer data to USB isochronous endpoints">How to transfer data to USB isochronous endpoints</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh450848(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to send chained MDLs">How to send chained MDLs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh968307(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to recover from USB pipe errors">How to recover from USB pipe errors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="ff539193(v%3dvs.85).html" id="dn448491_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Bandwidth Allocation">USB Bandwidth Allocation</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">How to send a USB control transfer</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>  
+
+This topic explains the 
+
+structure of a control transfer and how a client driver should send a control request to the device.</p>
+<p>In this topic:</p>
+<p>
+</p><ul>
+<li><a href="#about_the_default_endpoint">About the default endpoint</a></li>
+<li><a href="#layout_of_a_control_transfer">Layout of a control transfer</a></li>
+<li><a href="#supported_driver_models">Supported driver models</a><ul>
+<li><a href="#related_technologies">Related Technologies</a></li>
+</ul>
+</li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#microsoft-defined_methods_for_sending_control_transfer_requests">Microsoft-defined methods for sending control transfer requests</a></li>
+<li><a href="#how_to_send_a_control_transfer_for_vendor_commands_-_kmdf">How to send a control transfer for vendor commands - KMDF</a></li>
+<li><a href="#how_to_send_a_control_transfer_for_get_status_-_umdf">How to send a control transfer for GET_STATUS - UMDF</a></li>
+</ul>
+
+<h2><a id="About_the_default_endpoint"></a><a id="about_the_default_endpoint"></a><a id="ABOUT_THE_DEFAULT_ENDPOINT"></a>About the default endpoint</h2>
+<p>All USB devices must support at least one endpoint called the <em>default 
+
+endpoint</em>. Any transfer that targets the default endpoint is called a <em>control transfer</em>. The 
+
+purpose of a control transfer is to enable the host to obtain device information, configure the 
+
+device, or perform control operations that are unique to the device. </p>
+<p>
+</p><p>Let’s begin by studying 
+
+these characteristics of the default endpoint.</p>
+<ul>
+<li>The address of the default endpoint 
+
+is 0.</li>
+<li>The default endpoint is bidirectional, that is, the host can send data to the 
+
+endpoint and receive data from it within one transfer.</li>
+<li>The default endpoint is 
+
+available at the device level and is not defined in any interface of the 
+
+device.</li>
+<li>The default endpoint is active as soon as a connection is established 
+
+between the host and the device. It is active even before a configuration is 
+
+selected.</li>
+<li>The maximum packet size of the default endpoint depends on the bus speed 
+
+of the device. Low speed, 8 bytes; full and high speed, 64 bytes; SuperSpeed, 512 bytes.
+</li>
+</ul>
+
+<h2><a id="Layout_of_a_control_transfer"></a><a id="layout_of_a_control_transfer"></a><a id="LAYOUT_OF_A_CONTROL_TRANSFER"></a>Layout of a control transfer</h2>
+<p>Because control transfers are high priority transfers, certain amount of 
+
+bandwidth is reserved on the bus by the host. For low and full speed devices, 10% of the 
+
+bandwidth; 20% for high and SuperSpeed transfers devices. Now, let’s look at the layout of a 
+
+control transfer.</p>
+<p><img id="control_transfer" alt="USB control transfer" src="../../../../../i.msdn.microsoft.com/dynimg/IC579199.png" title="USB control transfer" xmlns="" /></p>
+<p>A control transfer is divided into 
+
+three transactions: <em>setup transaction</em>, <em>data transaction</em>, and <em>status transaction</em>. Each transaction contains three types of packets: <em>token packet</em>, <em>data packet</em>, and <em>handshake packet</em>. </p>
+<p>Certain fields are common to all packets. These fields are:</p><ul>
+<li>Sync field that indicates the start of packet.</li>
+<li>Packet identifier (PID) that indicates the type of packet, the direction of the transaction, and in the case of a handshake packet, it indicates success or failure of the transaction.</li>
+<li>EOP field indicates the end of packet.</li>
+</ul>Other fields depend on the type of packet. 
+<p>
+</p><ul>
+<li><strong>Token packet</strong><p>Every setup transaction starts with a token packet. Here is the structure of the packet. The host always sends the token packet.</p>
+<p><img id="token" alt="Ff539261.token(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC579471.png" title="Ff539261.token(en-us,VS.85).png" xmlns="" /></p><p>The PID value indicates the type of the token packet. Here are the possible values:</p>
+<ul>
+<li>SETUP: Indicates the start of a setup transaction in a control transfer.</li>
+<li>IN: Indicates that the host is requesting data from the device (read case).</li>
+<li>OUT: Indicates that the host is sending data to the device (write case).</li>
+<li>SOF: Indicates the start of frame. This type of token packet contains an 11-bit frame number. The host sends the SOF packet. The frequency at which this packet is sent depends on the bus speed. For full speed, the host sends the packet every 1millisecond; every 125 microsecond on a high-speed bus.</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><strong>Data packet</strong><p>Immediately following the token packet is the data packet that contains the payload. The number of bytes that each data packet can contain depends on the maximum packet size of the default endpoint. The data packet can be sent by either the host or the device, depending on the direction of the transfer.</p>
+<p><img id="data" alt="Ff539261.data(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC579472.png" title="Ff539261.data(en-us,VS.85).png" xmlns="" /></p>
+</li>
+</ul>
+<ul>
+<li><strong>Handshake packet</strong><p>Immediately following the data packet is the handshake packet. The PID of the packet indicates whether or not the packet was received  by the host or the device. The handshake packet can be sent by either the host or the device, depending on the direction of the transfer.</p>
+<p><img id="handshake" alt="Ff539261.handshake(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC579473.png" title="Ff539261.handshake(en-us,VS.85).png" xmlns="" /></p>
+</li>
+</ul>
+
+<p>
+</p><p>You can see the structure of transactions and packets by using any USB analyzer, such as Beagle, Ellisys, LeCroy USB protocol analyzers. An analyzer device shows how data is sent to or received from a USB device over the wire. In this example, let's examine some traces captured by a LeCroy USB analyzer. This example is for information only. This is not an endorsement by Microsoft.</p>
+<ul>
+<li>
+<p><strong>Setup transaction</strong></p>
+<p>The host always 
+
+initiates a control transfer. It does so by sending a setup transaction. This transaction 
+
+contains a token packet called <em>setup token</em> followed by an 8-byte data 
+
+packet. This screen shot shows an example setup transaction.</p>
+<p><img id="setup_trans" alt="Trace of a setup transaction." src="../../../../../i.msdn.microsoft.com/dynimg/IC579474.png" title="Trace of a setup transaction." xmlns="" /></p>
+<p>In the preceding trace, the host initiates (indicated by<strong> H↓</strong>) the 
+
+control transfer by sending the setup token 
+
+packet #434. Notice that the PID specifies SETUP indicating a setup token. The PID is followed 
+
+by the device address  and the address of the endpoint. For control transfers, that endpoint 
+
+address is always 0.  </p>
+<p>Next, the host sends the data packet #435. The PID is DATA0 and 
+
+that value is used for packet sequencing (to be discussed). The PID is followed by 8 bytes that 
+
+contains the main information about this request. Those 8 bytes indicate the type of request and the 
+
+size of the buffer in which the device will write its response. 
+</p>
+<p>All bytes are received in reverse order. As described in 
+
+section 9.3, we see these fields and 
+
+values:</p><table>
+<tr><th>Field</th><th>Size</th><th>Value</th><th>Description</th></tr>
+<tr><td><strong>bmRequestType</strong>
+(See 9.3.1 bmRequestType)</td><td>1	</td><td>0x80</td><td>
+<p>The data transfer direction is 
+
+from device to host (D7 is 1)</p>
+<p>	The request is a standard request (D6…D5 is 0)</p>
+<p>	
+
+The recipient of the request is the DEVICE (D4  is 0)
+</p>
+</td></tr>
+<tr><td><strong>bRequest</strong> (See section See 9.3.2 and Table 9-4)
+
+</td><td>1	</td><td>0x06</td><td>The request type is GET_DESCRIPTOR.
+</td></tr>
+<tr><td><strong>wValue</strong> (See Table 9-5)
+
+</td><td>2</td><td>0x0100</td><td>The request value indicates that the descriptor type is 
+
+DEVICE.</td></tr>
+<tr><td><strong>wIndex</strong>(See section 9.3.4)</td><td>	2	
+
+</td><td>0x0000</td><td>
+<p>The direction is from the host to device (D7 is 1)</p>
+<p>	The 
+
+endpoint number is 0.</p>
+</td></tr>
+<tr><td><strong>wLength</strong> (See section 
+
+9.3.5)</td><td>2</td><td>0x0012</td><td>The request is to retrieve 18 bytes.
+</td></tr>
+</table>
+<p> </p>Thus, we can conclude that in this control (read) transfer, the host sends a 
+
+request to retrieve the device descriptor and specifies 18 bytes as the transfer length to hold 
+
+that descriptor. 
+The way the device sends those 18 bytes depends on         how much data the default endpoint 
+
+can send in one transaction. That information is included in the device descriptor returned by 
+
+the device in the data transaction. 
+
+<p>In response, the device sends a handshake packet (#436 indicated by <strong>D↓</strong>). Notice that the PID value is ACK (ACK packet). This indicates that 
+
+the device acknowledged the transaction. 
+</p>
+</li>
+<li>
+<p><strong>Data transaction</strong></p>
+<p>Now, let’s 
+
+see what the device returns in response to the request. The actual data is transferred in a 
+
+data transaction.
+</p>
+<p>Here is the trace for the data transaction.</p>
+<p><img id="datra_trans" alt="Trace of an example data transaction." src="../../../../../i.msdn.microsoft.com/dynimg/IC579475.png" title="Trace of an example data transaction." xmlns="" /></p>
+<p>Upon receiving the ACK packet, the host initiates the data transaction. To initiate the transaction, it sends a token packet 
+
+(#450) with direction as IN (called IN token). 
+</p>
+<p>In response, the device sends a data packet (#451) that follows the IN token. This data 
+
+packet contains the actual device descriptor. The first byte indicates the length of the device 
+
+descriptor, 18 bytes (0x12). The last byte in this data packet 
+
+indicates the maximum packet size supported by the default endpoint.  In this case, we see that 
+
+the device can send 8 bytes at a time through its default endpoint.
+</p><p class="note"><strong>Note</strong>  The maximum packet size of the default endpoint depends on the speed of the device. 
+
+The default endpoint of a high-speed device is 64 bytes; low-speed device is 8 bytes.</p>
+The host acknowledges the data transaction by sending an ACK packet (#452) to the device. 
+
+<p>Let’s calculate the amount of data returned. In the <strong>wLength</strong> 
+
+field of the data packet (#435) in the setup transaction, the host requested 18 bytes. In the 
+
+data transaction, we see that only first 8 bytes of the device descriptor were received from 
+
+the device. So, how does the host receive information stored in the remaining 10 bytes? The 
+
+device does so in two transactions: 8 bytes and then last 2 bytes.</p>
+<p>Now that the host 
+
+knows the maximum packet size of the default endpoint, the host initiates a new data 
+
+transaction and requests the next portion based on the packet size.  </p>
+<p>Here is the next data 
+
+transaction:</p>
+<p><img id="datra_trans2" alt="Trace of an example data transaction." src="../../../../../i.msdn.microsoft.com/dynimg/IC579476.png" title="Trace of an example data transaction." xmlns="" /></p>
+<p>The host initiates the 
+
+preceding data transaction by sending an IN token (#463) and requesting the next 8 bytes from 
+
+the device. The device responds with a data packet (#464) that contains the next 8 bytes of the 
+
+device descriptor. </p>
+<p>Upon receiving the 8 bytes, the host sends an ACK packet (#465) to 
+
+the device.
+</p>
+<p>Next, the host requests the last 2 bytes in another data transaction as follows:
+</p>
+<p><img id="datra_trans3" alt="Ff539261.datra_trans3(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC579477.png" title="Ff539261.datra_trans3(en-us,VS.85).png" xmlns="" /></p>
+<p>Therefore, we see that to transfer 18 
+
+bytes from the device to the host, the host keeps track of the number of bytes transferred and 
+
+initiated three data transactions (8+8+2).</p><p class="note"><strong>Note</strong>  
+Notice the PID of the data packets in data transactions 19, 23, 26. The PID alternates between 
+
+DATA0 and DATA1. This sequence is called data toggling. In cases where there are multiple data 
+
+transactions, data toggling is used to verify the packet sequence. This method makes sure that the data 
+
+packets are not duplicated or lost.</p>
+By mapping the consolidated data packets to the structure of the device descriptor (See Table 
+
+9-8), we see these fields and values:
+
+
+<table>
+<tr><th>Field</th><th>Size</th><th>Value</th><th>Description</th></tr>
+<tr><td><strong>bLength</strong></td><td>1</td><td>0x12</td><td>Length of the device descriptor, which is 18 bytes.</td></tr>
+<tr><td><strong>bDescriptorType</strong></td><td>1</td><td>0x01</td><td>The descriptor type is device.</td></tr>
+<tr><td><strong>bcdUSB</strong></td><td>2</td><td>0x0100</td><td>The specification version number is 1.00.</td></tr>
+<tr><td><strong>bDeviceClass</strong></td><td>1</td><td>0x00</td><td>Device class is 0. Each interface in the configuration has the class information.</td></tr>
+<tr><td><strong>bDeviceSubClass</strong></td><td>1</td><td>0x00</td><td>Subclass is 0 because device class is 0.</td></tr>
+<tr><td><strong>bProtocol</strong></td><td>1</td><td>0x00</td><td>Protocol is 0. This device does not use any class-specific protocols.</td></tr>
+<tr><td><strong>bMaxPacketSize0</strong></td><td>1</td><td>0x08</td><td>The maximum packet size of the endpoint is 8 bytes.</td></tr>
+<tr><td><strong>idVendor</strong></td><td>2</td><td>0x0562</td><td>Telex Communications.</td></tr>
+<tr><td><strong>idProduct</strong></td><td>2</td><td>0x0002</td><td>USB microphone.</td></tr>
+<tr><td><strong>bcdDevice</strong></td><td>2</td><td>0x0100</td><td>Indicates the device release number.</td></tr>
+<tr><td><strong>iManufacturer</strong></td><td>1</td><td>0x01</td><td>Manufacturer string.</td></tr>
+<tr><td><strong>iProduct</strong></td><td>1</td><td>0x02</td><td>Product string.</td></tr>
+<tr><td><strong>iSerialNumber</strong></td><td>1</td><td>0x03</td><td>Serial number.</td></tr>
+<tr><td><strong>bNumConfigurations</strong></td><td>1</td><td>0x01</td><td>Number of configurations.</td></tr>
+</table>
+<p> </p>By examining those values we have some preliminary information about the device. The device is a low-speed USB microphone. The maximum packet size of the default endpoint is 8 bytes. The device supports one configuration.
+</li>
+<li>
+<p><strong>Status transaction</strong></p>
+<p>Finally, the host 
+
+completes the control transfer by initiating the last transaction: status transaction.
+</p>
+<p><img id="status_trans" alt="Ff539261.status_trans(en-us,VS.85).png" src="../../../../../i.msdn.microsoft.com/dynimg/IC579478.png" title="Ff539261.status_trans(en-us,VS.85).png" xmlns="" /></p>
+<p>The host starts the transaction with an 
+
+OUT token packet (#481). The purpose of this packet is to verify that the device sent all of 
+
+the requested data. There is no data packet sent in this status transaction. The device 
+
+responds with an ACK packet. If an error occurred, the PID could have been either NAK or STALL.
+</p>
+</li>
+</ul>
+
+<h2><a id="Supported_driver_models"></a><a id="supported_driver_models"></a><a id="SUPPORTED_DRIVER_MODELS"></a>Supported driver models</h2>
+<h3><a id="Related_Technologies"></a><a id="related_technologies"></a><a id="RELATED_TECHNOLOGIES"></a>Related Technologies</h3>
+<ul>
+<li>
+<a href="ff544396(v%3dvs.85).html">Kernel-Mode Driver 
+
+Framework</a>
+</li>
+<li>
+<a href="ff560456(v%3dvs.85).html">User-
+
+Mode Driver Framework</a>
+</li>
+<li>
+<a href="ff540196(v%3dvs.85).html">WinUSB</a>
+</li>
+</ul>
+<h2><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h2>
+<p>Before the client driver can enumerate pipes, make sure that these requirements are 
+
+met:  </p>
+<ul>
+<li>The client driver must have created the framework USB target device object. <p>If you 
+
+are using the USB templates that are provided with Microsoft Visual Studio Professional 2012,  the template code   
+
+performs those tasks. The template code obtains the handle to the target device object and 
+
+stores in the device context. </p><p><strong>KMDF client driver:  </strong></p><p class="note">A KMDF client driver must obtain a WDFUSBDEVICE handle by calling the <a href="hh439428(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a> 
+
+method. For more information, see "Device source code" in <a href="hh770892(v%3dvs.85).html">Understanding the USB client driver 
+
+code structure (KMDF)</a>.</p>
+
+<p><strong>UMDF client 
+
+driver:  </strong></p><p class="note">A UMDF client driver must obtain an <a href="ff560362(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice</strong></a> pointer by querying the framework 
+
+target device object. For more information, see "<a href="ff556764(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IPnpCallbackHardware</strong></a> implementation and USB-specific 
+
+tasks" in <a href="hh770893(v%3dvs.85).html">Understanding the  USB client driver 
+
+code structure (UMDF)</a>.</p>
+
+
+</li>
+<li>
+<p>The most important aspect for a 
+
+control transfer is to format the setup token appropriately. Before sending the request, gather 
+
+this set of information:
+</p><ul>
+<li>Direction of the request: host to device or device to host.
+</li>
+<li>Recipient of the request: device, interface, endpoint, or other.
+</li>
+<li>Category of request: standard, class, or vendor.
+</li>
+<li>Type of request, such as a GET_DESCRIPTPOR request. For more information, see 
+
+section 9.5 in the USB specification.
+</li>
+<li><strong>wValue</strong> and <strong>wIndex</strong> values. Those values depend on the type of request.
+</li>
+</ul>You can obtain all that information from the official USB specification.
+</li>
+<li>If you are writing a UMDF driver, get the header file, Usb_hw.h from the the UMDF Sample Driver for OSR USB Fx2 Learning Kit. This header file contains useful macros and structure for formatting the setup packet for the control transfer.<p>All UMDF drivers must communicate with a kernel-mode driver in order to send and receive data from devices. For a USB UMDF driver, the kernel-mode driver is always the Microsoft-provided driver <a href="ff540196(v%3dvs.85).html">WinUSB</a> (Winusb.sys).</p>
+<p>Whenever a UMDF driver makes a request for the USB driver stack, the Windows I/O manager sends the request to WinUSB. After receiving the request, WinUSB either processes the request or forwards it to the USB driver stack.</p>
+</li>
+</ul>
+<h2><a id="Microsoft-defined_methods_for_sending_control_transfer_requests"></a><a id="microsoft-defined_methods_for_sending_control_transfer_requests"></a><a id="MICROSOFT-DEFINED_METHODS_FOR_SENDING_CONTROL_TRANSFER_REQUESTS"></a>Microsoft-defined methods for sending control transfer requests</h2>
+<p>A USB client driver on the host initiates most control requests to get 
+
+information about the device, configure the device, or send vendor control commands. All of 
+
+those requests can be categorized into:</p>
+<ul>
+<li>
+<p>Standard requests—Standard requests are defined in the USB specification. The purpose of sending these requests 
+
+is to obtain information about the device, its configurations, interfaces, and endpoints. The 
+
+recipient of each request depends on the type of request. The recipient can be the device, an 
+
+interface, endpoint. </p><p class="note"><strong>Note</strong>  The target of any control transfer is always the default endpoint. The recipient is the device's entity whose information (descriptor, status, and so on) the host is interested in.</p>
+
+<p>These requests can be further classified into: 
+
+configuration requests, feature requests, and status requests.
+</p><ul>
+<li>Configuration requests are sent to get information from the device so that the host can 
+
+configure it, such as a GET_DESCRIPTOR request. These requests can also be write requests that 
+
+are sent by the host to set a particular configuration or alternate setting in the device.
+</li>
+<li>Feature requests are sent by the client driver to enable or disable certain Boolean device 
+
+settings supported by the device, interface, or an endpoint.
+</li>
+<li>USB devices support status requests to enable the host get or set the USB-defined status bits 
+
+of a device, endpoint, or interface.</li>
+</ul>For more information, see Section 9.4 in USB specification, version 2.0. The standard request types are defined the header file, Usbspec.h.
+</li>
+<li>Class requests—are defined by a specific device class specification.
+</li>
+<li>Vendor requests—are provided by the vendor and depends on the requests 
+
+supported by the device.
+</li>
+</ul>
+<p>The Microsoft-provided USB stack handles all the protocol communication with the device as shown in the preceding traces. The driver exposes device driver interfaces (DDIs) that enable a client driver to send control 
+
+transfers in many ways. If your client driver is a Windows Driver Foundation (WDF) driver, it 
+
+can call routines directly to send the common types of control requests. WDF supports control 
+
+transfers intrinsically for both KMDF and UMDF. 
+</p>
+<p>Certain types of control requests are not exposed through WDF. For those requests, the client 
+
+driver can use the WDF-hybrid model. This model allows the client driver to build and format WDM 
+
+URB-style requests and then send those requests by using WDF framework objects. The hybrid 
+
+model only applies to kernel-mode drivers.
+</p>
+<p><strong>For UMDF drivers:  </strong></p><p class="note">Use the helper macros and structure defined in usb_hw.h. This header is included with the UMDF Sample Driver for OSR USB Fx2 Learning Kit.</p>
+
+<p>Use this table to determine the best way to send control requests to the USB driver stack. If you are unable to view this table, see the table in <a href="http://msdn.microsoft.com/en-us/library/ff539261(VS.85).aspx">this topic</a>.</p><table>
+<tr><th>If you want to send a control request to...</th><th>If you are a KMDF driver, use these KMDF DDIs... </th><th>If you are a UMDF driver, use these UMDF methods...</th><th>If you are a WDM driver, build your URB structure (Helper routine)</th></tr>
+<tr><td>CLEAR_FEATURE: Disable certain feature settings in device, its configurations, interfaces and endpoints. See section 9.4.1 in the USB specification.</td><td>
+<ol>
+<li>Declare a setup packet. See the <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure.</li>
+<li>Initialize the setup packet by calling <a href="ff552576(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_FEATURE</strong></a>.</li>
+<li>Specify a recipient  value defined in <a href="ff552554(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_BMREQUEST_RECIPIENT</strong></a>.</li>
+<li>Specify the feature selector (<strong>wValue</strong>). See USB_FEATURE_XXX constants in Usbspec.h. Also see Table 9-6 in the USB specification.</li>
+<li>Set <em>SetFeature</em> to <strong>FALSE</strong>.</li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+</ol>
+</td><td>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_FEATURE</strong>, defined in usb_hw.h. </li>
+<li>Specify a recipient value  defined in <strong>WINUSB_BMREQUEST_RECIPIENT</strong>. </li>
+<li>Specify the feature selector (<strong>wValue</strong>). See <strong>USB_FEATURE_XXX</strong> constants in Usbspec.h. Also see Table 9-6 in the USB specification.</li>
+<li>Set <em>SetFeature</em> to <strong>FALSE</strong>.</li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540361(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_FEATURE_REQUEST</strong></a>
+</p>
+<p>(<a href="ff538932(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildFeatureRequest</strong></a>)</p>
+<p> 
+URB_FUNCTION_CLEAR_FEATURE_TO_DEVICE</p>
+<p> 
+URB_FUNCTION_CLEAR_FEATURE_TO_INTERFACE</p>
+<p> 
+URB_FUNCTION_CLEAR_FEATURE_TO_ENDPOINT</p>
+<p> 
+URB_FUNCTION_CLEAR_FEATURE_TO_OTHER</p>
+</td></tr>
+<tr><td>GET_CONFIGURATION: Get the current USB configuration. See section 9.4.2 in the USB specification.</td><td>
+<p>KMDF selects the first configuration by default. To retrieve the device-defined configuration number:</p>
+<ol>
+<li>Format a <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> and set its <strong>bRequest</strong> member to <strong>USB_REQUEST_GET_CONFIGURATION</strong>.</li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+</ol>
+</td><td>
+<p>UMDF selects the first configuration by default. To retrieve the device-defined configuration number:</p>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT</strong>, defined in usb_hw.h. </li>
+<li>Specify <strong>BmRequestToDevice</strong> as the direction, <strong>BmRequestToDevice</strong> as the recipient, and <strong>USB_REQUEST_GET_CONFIGURATION</strong> as the request.</li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+<li>Receive the configuration number in the transfer buffer. Access that buffer by calling <a href="ff559249(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFMemory</strong></a> methods.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540365(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_GET_CONFIGURATION_REQUEST</strong></a>
+</p>
+<p>URB_FUNCTION_GET_CONFIGURATION </p>
+</td></tr>
+<tr><td>GET_DESCRIPTOR: Get device, configuration, interface, and endpoint descriptors. See section 9.4.3 in the USB specification.<p>For more information, see <a href="ff539267(v%3dvs.85).html">USB Descriptors</a>.</p>
+</td><td>
+<p>Call these methods:</p>
+<ul>
+<li>
+<a href="ff550090(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetDeviceDescriptor</strong></a>
+</li>
+<li>
+<a href="ff550060(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetDescriptor</strong></a>
+</li>
+<li>
+<a href="ff550063(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetEndpointInformation</strong></a>  or <a href="ff551142(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetPipeGetInformation</strong></a>. This method returns endpoint descriptor fields in  a <a href="ff553037(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_PIPE_INFORMATION</strong></a> structure.</li>
+</ul>
+</td><td>
+<p>Call these methods:</p>
+<ul>
+<li>
+<a href="ff560374(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::RetrieveDescriptor</strong></a>
+</li>
+<li>
+<a href="ff560320(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface::GetInterfaceDescriptor </strong></a>
+</li>
+<li>
+<a href="ff560403(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetPipe::GetInformation</strong></a>. This method returns endpoint descriptor fields in  a <a href="ff540285(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WINUSB_PIPE_INFORMATION</strong></a>  structure.</li>
+</ul>
+</td><td>
+<p>
+<a href="ff540357(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_DESCRIPTOR_REQUEST</strong></a>
+</p>
+<p>(<a href="ff538943(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildGetDescriptorRequest</strong></a>)</p>
+<p>URB_FUNCTION_GET_DESCRIPTOR_FROM_DEVICE</p>
+<p> 
+URB_FUNCTION_GET_DESCRIPTOR_FROM_ENDPOINT</p>
+<p> 
+URB_FUNCTION_GET_DESCRIPTOR_FROM_INTERFACE</p>
+</td></tr>
+<tr><td>GET_INTERFACE: Get the current alternate setting for an interface. See section 9.4.4 in the USB specification.</td><td>
+<p>
+</p><ol>
+<li>Get a WDFUSBINTERFACE handle to the target interface object by calling the <a href="ff550092(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceGetInterface</strong></a> method. </li>
+<li>Call the <a href="ff550059(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceGetConfiguredSettingIndex</strong></a> method.</li>
+</ol>
+
+</td><td>
+<ol>
+<li>Get a <a href="ff560312(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface</strong></a> pointer to the target interface object. </li>
+<li>Call the <a href="ff550059(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface::GetConfiguredSettingIndex</strong></a> method.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540373(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_GET_INTERFACE_REQUEST</strong></a>
+</p>
+<p>URB_FUNCTION_GET_INTERFACE </p>
+</td></tr>
+<tr><td>GET_STATUS: Get status bits from a device, endpoint, or interface. See section 9.4.5. in the USB specification.</td><td>
+<ol>
+<li>Declare a setup packet. See the <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure.</li>
+<li>Initialize the setup packet by calling <a href="ff552582(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_GET_STATUS</strong></a>.</li>
+<li>Specify the recipient  value defined in <a href="ff552554(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_BMREQUEST_RECIPIENT</strong></a>.</li>
+<li>Specify which status you want to get: device, interface, or endpoint (<strong>wIndex</strong>). </li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+</ol>
+</td><td>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_GET_STATUS</strong>, defined in usb_hw.h. </li>
+<li>Specify a recipient value  defined in <strong>WINUSB_BMREQUEST_RECIPIENT</strong>. </li>
+<li>Specify which status you want to get: device, interface, or endpoint (<strong>wIndex</strong>). </li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+<li>Receive the status value in the transfer buffer. Access that buffer by calling <a href="ff559249(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFMemory</strong></a> methods.</li>
+<li>To determine if the status indicates self-powered, remote wake-up, use thee values defined in the <strong>WINUSB_DEVICE_TRAITS</strong> enumeration:</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540378(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_GET_STATUS_REQUEST</strong></a>
+</p>
+<p>(<a href="ff538946(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildGetStatusRequest</strong></a>)</p>
+<p>URB_FUNCTION_GET_STATUS_FROM_DEVICE 
+</p>
+<p>URB_FUNCTION_GET_STATUS_FROM_INTERFACE</p>
+<p> 
+URB_FUNCTION_GET_STATUS_FROM_ENDPOINT</p>
+<p> 
+URB_FUNCTION_GET_STATUS_FROM_OTHER. 
+</p>
+</td></tr>
+<tr><td>SET_ADDRESS: See section 9.4.6 in USB specification.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td></tr>
+<tr><td>SET_CONFIGURATION: Set a configuration. See section 9.4.7 in USB specification.<p>For more information, see <a href="gg615081(v%3dvs.85).html">How to select a configuration for a USB device</a>.</p>
+</td><td>By default KMDF selects the default configuration and first alternate setting in each interface. The client driver can change the default configuration by calling <a href="ff550102(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfigType</strong></a> method and specifying <strong>WdfUsbTargetDeviceSelectConfigTypeUrb</strong> as the request option. You must then format an URB for this request and submit it to the USB driver stack.</td><td>By default UMDF selects the default configuration and first alternate setting in each interface. The client driver cannot change the configuration.</td><td>
+<p>
+<a href="ff540422(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_SELECT_CONFIGURATION</strong></a>
+</p>
+<p>(<a href="hh406243(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectConfigUrbAllocateAndBuild</strong></a>)</p>
+<p>URB_FUNCTION_SELECT_CONFIGURATION</p>
+</td></tr>
+<tr><td>SET_DESCRIPTOR: Update an existing device, configuration, or string descriptor. See section 9.4.8 in USB specification. <p>This request is not commonly used. However, the USB driver stack accepts such a request from the client driver.</p>
+</td><td>
+<ol>
+<li>Allocate and build an <a href="ff538923(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a> for the request. </li>
+<li>Specify the transfer information in a  
+<a href="ff540357(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_DESCRIPTOR_REQUEST</strong></a> structure. </li>
+<li>Send the request by calling <a href="ff550088(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForUrb</strong></a>  or <a href="ff550105(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a> .</li>
+</ol>
+</td><td>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Specify the transfer information as per the USB specification.</li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540357(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_DESCRIPTOR_REQUEST</strong></a>
+</p>
+<p>URB_FUNCTION_SET_DESCRIPTOR_TO_DEVICE</p>
+<p> 
+URB_FUNCTION_SET_DESCRIPTOR_TO_ENDPOINT</p>
+<p> 
+URB_FUNCTION_SET_DESCRIPTOR_TO_INTERFACE</p>
+</td></tr>
+<tr><td>SET_FEATURE: Enable certain feature settings in device, its configurations, interfaces and endpoints. See section 9.4.9 in the USB specification.</td><td>
+<ol>
+<li>Declare a setup packet. See the <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure.</li>
+<li>Initialize the setup packet by calling <a href="ff552576(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_FEATURE</strong></a>.</li>
+<li>Specify the recipient  value (device, interface, endpoint)  defined in <a href="ff552554(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_BMREQUEST_RECIPIENT</strong></a>.</li>
+<li>Specify the feature selector (<strong>wValue</strong>). See USB_FEATURE_XXX constants in Usbspec.h. Also see Table 9-6 in the USB specification.</li>
+<li>Set <em>SetFeature</em> to <strong>TRUE</strong></li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+</ol>
+</td><td>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_FEATURE</strong>, defined in usb_hw.h. </li>
+<li>Specify a recipient value  defined in <strong>WINUSB_BMREQUEST_RECIPIENT</strong>. </li>
+<li>Specify the feature selector (<strong>wValue</strong>). See <strong>USB_FEATURE_XXX</strong> constants in Usbspec.h. Also see Table 9-6 in the USB specification.</li>
+<li>Set <em>SetFeature</em> to <strong>TRUE</strong>.</li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540361(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_FEATURE_REQUEST</strong></a>
+</p>
+<p>(<a href="ff538932(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildFeatureRequest</strong></a>)</p>
+<p>URB_FUNCTION_SET_FEATURE_TO_DEVICE</p>
+<p>URB_FUNCTION_SET_FEATURE_TO_INTERFACE</p>
+<p>URB_FUNCTION_SET_FEATURE_TO_ENDPOINT</p>
+<p> 
+URB_FUNCTION_SET_FEATURE_TO_OTHER</p>
+</td></tr>
+<tr><td>SET_INTERFACE: Changes the alternate setting in an interface. See section 9.4.9 in the USB specification.<p>For more information, see <a href="hh968309(v%3dvs.85).html">How to select an alternate setting in a USB interface</a>.</p>
+</td><td>
+<a href="ff550101(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSelectConfig</strong></a>
+<p>
+</p><ol>
+<li>Get a WDFUSBINTERFACE handle to the target interface object. </li>
+<li>Call the <a href="ff550073(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbInterfaceSelectSetting</strong></a> method.</li>
+</ol>
+
+</td><td>
+<ol>
+<li>Get a <a href="ff560312(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface</strong></a> pointer to the target interface object. </li>
+<li>Call the <a href="ff550073(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbInterface::SelectSetting</strong></a> method.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540425(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_SELECT_INTERFACE</strong></a>
+</p>
+<p>(<a href="hh406245(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">USBD_SelectInterfaceUrbAllocateAndBuild</strong></a>)</p>
+<p>URB_FUNCTION_SELECT_INTERFACE</p>
+</td></tr>
+<tr><td>SYNC_FRAME: Set and get and endpoint's synchronization frame number. See section 9.4.10 in the USB specification.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td><td>This request is handled by the USB driver stack; the client driver cannot perform this operation.</td></tr>
+<tr><td>For device class-specific requests and vendor commands.</td><td>
+<ol>
+<li>Declare a setup packet. See the <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure.</li>
+<li>Initialize the setup packet by calling <a href="ff552574(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_CLASS</strong></a>-specific requests or <a href="ff552588(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR</strong></a> for vendor commands.</li>
+<li>Specify the recipient  value (device, interface, endpoint)  defined in <a href="ff552554(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_BMREQUEST_RECIPIENT</strong></a>.</li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+</ol>
+</td><td>
+<ol>
+<li>Declare a setup packet. See the  <strong>WINUSB_CONTROL_SETUP_PACKET</strong>  structure declared in usb_hw.h.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_CLASS</strong> or <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_VENDOR</strong>, defined in usb_hw.h. </li>
+<li>Specify the direction (see the <strong>WINUSB_BMREQUEST_DIRECTION</strong> enumeration), the recipient ( see the <strong>WINUSB_BMREQUEST_RECIPIENT</strong> enumeration), and the  request, as described in the class or the hardware specification.</li>
+<li>Build the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method.</li>
+<li>Send  the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method.</li>
+<li>Receive the information from the device in the transfer buffer. Access that buffer by calling <a href="ff559249(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFMemory</strong></a> methods.</li>
+</ol>
+</td><td>
+<p>
+<a href="ff540393(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">_URB_CONTROL_VENDOR_OR_CLASS_REQUEST</strong></a>
+</p>
+<p>(<a href="ff538986(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbBuildVendorRequest</strong></a>)</p>
+<p>URB_FUNCTION_VENDOR_DEVICE</p>
+<p>
+
+URB_FUNCTION_VENDOR_INTERFACE</p>
+<p>
+
+URB_FUNCTION_VENDOR_ENDPOINT</p>
+<p>URB_FUNCTION_VENDOR_OTHER</p>
+<p>URB_FUNCTION_CLASS_DEVICE</p>
+<p>
+
+URB_FUNCTION_CLASS_INTERFACE</p>
+<p>URB_FUNCTION_CLASS_ENDPOINT</p>
+<p>URB_FUNCTION_CLASS_OTHER</p>
+</td></tr>
+</table>
+<p> </p>
+
+<h2><a id="How_to_send_a_control_transfer_for_vendor_commands_-_KMDF"></a><a id="how_to_send_a_control_transfer_for_vendor_commands_-_kmdf"></a><a id="HOW_TO_SEND_A_CONTROL_TRANSFER_FOR_VENDOR_COMMANDS_-_KMDF"></a>How to send a control transfer for vendor commands - KMDF</h2>
+<p>
+This procedure shows how a client driver can send a control transfer. In this example, the client driver sends a vendor command that retrieves the firmware version from the device. </p>
+<ol>
+<li>Declare a constant for the vendor command. Study the hardware specification and determine the vendor command that you want to use.</li>
+<li>Declare a <a href="ff552392(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_MEMORY_DESCRIPTOR</strong></a> structure and initialize it by calling the <a href="ff552393(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_MEMORY_DESCRIPTOR_INIT_BUFFER</strong></a> macro. This structure will receive the response from the device after the USB driver completes the request. </li>
+<li>Depending on whether you send the request synchronously or asynchronously, specify your send options: <ul>
+<li>If you send the request synchronously by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a>, specify a timeout value. That value is important because without a timeout, you can block the thread indefinitely.<p>For this, declare a <a href="ff552491(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_SEND_OPTIONS</strong></a> structure and initialize it by calling the <a href="ff552497(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_SEND_OPTIONS_INIT</strong></a> macro. Specify the option as <strong>WDF_REQUEST_SEND_OPTION_TIMEOUT</strong>.</p>
+<p>Next, set the timeout value by calling the <a href="ff552498(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_SEND_OPTIONS_SET_TIMEOUT</strong></a> macro.</p>
+</li>
+<li>If you are sending the request asynchronously, implement a completion routine. Free all allocated resources in the completion routine.</li>
+</ul>
+</li>
+<li>Declare a <a href="ff552568(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure to contain the setup token and format the structure. To do so, call the <a href="ff552588(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR</strong></a> macro to format the setup packet. In the call specify, the direction of the request, the recipient, the sent-request options (initialized in step3), and the constant for the vendor command.</li>
+<li>Send the request by calling <a href="ff550104(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendControlTransferSynchronously</strong></a> or <a href="ff550082(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>.</li>
+<li>Check the NTSTATUS value returned by the framework and inspect the received value.</li>
+</ol>
+<p>This code example sends a control transfer request to a USB device to retrieve its firmware version. The request is sent synchronously and the client driver specifies a relative timeout value of 5 seconds (in 100-nanosecond units). The driver stores the received response in the driver-defined device context.</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_cbacf89f-1752-41f6-a82b-74cc4f217292');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_cbacf89f-1752-41f6-a82b-74cc4f217292" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+enum {   
+    USBFX2_GET_FIRMWARE_VERSION = 0x1,  
+....
+
+} USBFX2_VENDOR_COMMANDS; 
+
+#define WDF_TIMEOUT_TO_SEC              ((LONGLONG) 1 * 10 * 1000 * 1000)  // defined in wdfcore.h
+
+const __declspec(selectany) LONGLONG   
+            DEFAULT_CONTROL_TRANSFER_TIMEOUT = 5 * -1 * WDF_TIMEOUT_TO_SEC; 
+
+
+typedef struct _DEVICE_CONTEXT
+{
+ 
+    ...
+	   union {  
+        USHORT      VersionAsUshort;  
+        struct {  
+            BYTE Minor;  
+            BYTE Major;  
+        } Version;  
+    } Firmware; // Firmware version.
+
+} DEVICE_CONTEXT, *PDEVICE_CONTEXT;
+
+
+__drv_requiresIRQL(PASSIVE_LEVEL)  
+VOID  GetFirmwareVersion(  
+    __in PDEVICE_CONTEXT DeviceContext  
+)  
+{  
+    NTSTATUS                        status;  
+    WDF_USB_CONTROL_SETUP_PACKET    controlSetupPacket;  
+    WDF_REQUEST_SEND_OPTIONS        sendOptions;  
+    USHORT                          firmwareVersion;  
+    WDF_MEMORY_DESCRIPTOR           memoryDescriptor;  
+      
+    PAGED_CODE();  
+  
+    firmwareVersion = 0;  
+  
+    WDF_MEMORY_DESCRIPTOR_INIT_BUFFER(&amp;memoryDescriptor, (PVOID) &amp;firmwareVersion, sizeof(firmwareVersion));  
+  
+    WDF_REQUEST_SEND_OPTIONS_INIT(  
+                                  &amp;sendOptions,  
+                                  WDF_REQUEST_SEND_OPTION_TIMEOUT  
+                                  );  
+  
+    WDF_REQUEST_SEND_OPTIONS_SET_TIMEOUT(  
+                                         &amp;sendOptions,  
+                                         DEFAULT_CONTROL_TRANSFER_TIMEOUT  
+                                         );  
+                
+    WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR(&amp;controlSetupPacket,  
+                                        BmRequestDeviceToHost,       // Direction of the request
+                                        BmRequestToDevice,           // Recipient
+                                        USBFX2_GET_FIRMWARE_VERSION, // Vendor command
+                                        0,                           // Value
+                                        0);                          // Index    
+  
+    status = WdfUsbTargetDeviceSendControlTransferSynchronously(  
+                                        DeviceContext-&gt;UsbDevice,  
+                                        WDF_NO_HANDLE,               // Optional WDFREQUEST
+                                        &amp;sendOptions,  
+                                        &amp;controlSetupPacket,  
+                                        &amp;memoryDescriptor,           // MemoryDescriptor                                          
+                                        NULL);                       // BytesTransferred    
+     
+    if (!NT_SUCCESS(status)) 
+    {  
+        KdPrint(("Device %d: Failed to get device firmware version 0x%x\n", DeviceContext-&gt;DeviceNumber, status));  
+        TraceEvents(DeviceContext-&gt;DebugLog,  
+                    TRACE_LEVEL_ERROR,  
+                    DBG_RUN,  
+                    "Device %d: Failed to get device firmware version 0x%x\n",  
+                    DeviceContext-&gt;DeviceNumber,  
+                    status);  
+    }
+    else 
+    {  
+        DeviceContext-&gt;Firmware.VersionAsUshort = firmwareVersion;  
+        TraceEvents(DeviceContext-&gt;DebugLog,  
+                    TRACE_LEVEL_INFORMATION,  
+                    DBG_RUN,  
+                    "Device %d: Get device firmware version : 0x%x\n",  
+                    DeviceContext-&gt;DeviceNumber,  
+                    firmwareVersion);  
+    }  
+  
+    return;  
+}  
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="How_to_send_a_control_transfer_for_GET_STATUS_-_UMDF"></a><a id="how_to_send_a_control_transfer_for_get_status_-_umdf"></a><a id="HOW_TO_SEND_A_CONTROL_TRANSFER_FOR_GET_STATUS_-_UMDF"></a>How to send a control transfer for GET_STATUS - UMDF</h2>
+<p>
+This procedure shows how a client driver can send a control transfer for a GET_STATUS command. The recipient of the request is the device and the request obtains information in bits D1-D0. For more information, see Figure 9-4 in the USB specification.</p><ol>
+<li>Include the header file Usb_hw.h available with the UMDF Sample Driver for OSR USB Fx2 Learning Kit.</li>
+<li>Declare a <strong>WINUSB_CONTROL_SETUP_PACKET</strong> structure.</li>
+<li>Initialize the setup packet by calling the helper macro,   <strong>WINUSB_CONTROL_SETUP_PACKET_INIT_GET_STATUS</strong>. </li>
+<li>Specify <strong>BmRequestToDevice</strong> as the recipient. </li>
+<li>Specify 0 in the <em>Index</em> value. </li>
+<li>Call the helper method SendControlTransferSynchronously to send the request synchronously.<p>The helper method builds the request by associating  the initialized setup packet with the framework request object  and the transfer   buffer by calling <a href="ff560363(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFUsbTargetDevice::FormatRequestForControlTransfer</strong></a> method. The helper method then sends the request by calling the <a href="ff559149(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">IWDFIoRequest::Send</strong></a> method. After the method returns, inspect the value returned.</p>
+</li>
+<li>To determine if the status indicates self-powered, remote wake-up, use these values defined in the <strong>WINUSB_DEVICE_TRAITS</strong> enumeration:</li>
+</ol>
+
+<p>This code example sends a control transfer request to a get the status of the device. The example sends the request synchronously by calling a helper method named SendControlTransferSynchronously. </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c1bf98a7-f4a3-4a69-bf37-db7ec51746f9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c1bf98a7-f4a3-4a69-bf37-db7ec51746f9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+HRESULT  
+CDevice::GetDeviceStatus ()  
+{  
+
+    HRESULT hr = S_OK;
+
+    USHORT deviceStatus;  
+    ULONG bytesTransferred;  
+  
+  
+    TraceEvents(TRACE_LEVEL_INFORMATION,  
+                DRIVER_ALL_INFO,  
+                "%!FUNC!: entry");  
+  
+ 
+    // Setup the control packet.      
+
+    WINUSB_CONTROL_SETUP_PACKET setupPacket;  
+  
+    WINUSB_CONTROL_SETUP_PACKET_INIT_GET_STATUS(  
+                                      &amp;setupPacket,  
+                                      BmRequestToDevice,  
+                                      0);  
+
+    hr = SendControlTransferSynchronously(  
+                 &amp;(setupPacket.WinUsb),  
+                 &amp; deviceStatus,  
+                 sizeof(USHORT),  
+                 &amp;bytesReturned  
+                ); 
+
+     if (SUCCEEDED(hr))  
+    {  
+        if (deviceStatus &amp; USB_GETSTATUS_SELF_POWERED)
+        {
+             m_Self_Powered = true;
+        } 
+        if (deviceStatus &amp; USB_GETSTATUS_REMOTE_WAKEUP_ENABLED)
+        {
+             m_remote_wake-enabled = true;
+        }  
+
+    }  
+
+  
+    return hr;  
+
+ }
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The following code example shows the implementation of the helper method named SendControlTransferSynchronously. This method sends a request synchronously.</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5b064547-ded2-4489-98de-15085235ffb3');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5b064547-ded2-4489-98de-15085235ffb3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+
+HRESULT  
+CDevice::SendControlTransferSynchronously(  
+    _In_ PWINUSB_SETUP_PACKET SetupPacket,  
+    _Inout_ PBYTE Buffer,  
+    _In_ ULONG BufferLength,  
+    _Out_ PULONG LengthTransferred  
+    )  
+{  
+    HRESULT hr = S_OK;  
+    IWDFIoRequest *pWdfRequest = NULL;  
+    IWDFDriver * FxDriver = NULL;  
+    IWDFMemory * FxMemory = NULL;   
+    IWDFRequestCompletionParams * FxComplParams = NULL;  
+    IWDFUsbRequestCompletionParams * FxUsbComplParams = NULL;  
+  
+    *LengthTransferred = 0;  
+      
+    hr = m_FxDevice-&gt;CreateRequest( NULL, //pCallbackInterface
+                                    NULL, //pParentObject
+                                    &amp;pWdfRequest);  
+  
+    if (SUCCEEDED(hr))  
+    {  
+        m_FxDevice-&gt;GetDriver(&amp;FxDriver);  
+  
+        hr = FxDriver-&gt;CreatePreallocatedWdfMemory( Buffer,  
+                                                    BufferLength,  
+                                                    NULL,        //pCallbackInterface
+                                                    pWdfRequest, //pParetObject
+                                                    &amp;FxMemory );  
+    }  
+  
+    if (SUCCEEDED(hr))  
+    {  
+        hr = m_pIUsbTargetDevice-&gt;FormatRequestForControlTransfer( pWdfRequest,  
+                                                                   SetupPacket,  
+                                                                   FxMemory,  
+                                                                   NULL); //TransferOffset
+    }                                                            
+                          
+    if (SUCCEEDED(hr))  
+    {  
+        hr = pWdfRequest-&gt;Send( m_pIUsbTargetDevice,  
+                                WDF_REQUEST_SEND_OPTION_SYNCHRONOUS,  
+                                0); //Timeout      }  
+  
+    if (SUCCEEDED(hr))  
+    {  
+        pWdfRequest-&gt;GetCompletionParams(&amp;FxComplParams);  
+  
+        hr = FxComplParams-&gt;GetCompletionStatus();  
+    }  
+  
+    if (SUCCEEDED(hr))  
+    {  
+        HRESULT hrQI = FxComplParams-&gt;QueryInterface(IID_PPV_ARGS(&amp;FxUsbComplParams));  
+        WUDF_TEST_DRIVER_ASSERT(SUCCEEDED(hrQI));  
+  
+        WUDF_TEST_DRIVER_ASSERT( WdfUsbRequestTypeDeviceControlTransfer ==   
+                            FxUsbComplParams-&gt;GetCompletedUsbRequestType() );  
+  
+        FxUsbComplParams-&gt;GetDeviceControlTransferParameters( NULL,  
+                                                             LengthTransferred,  
+                                                             NULL,  
+                                                             NULL );  
+    }  
+  
+    SAFE_RELEASE(FxUsbComplParams);  
+    SAFE_RELEASE(FxComplParams);  
+    SAFE_RELEASE(FxMemory);  
+  
+    pWdfRequest-&gt;DeleteWdfObject();          
+    SAFE_RELEASE(pWdfRequest);  
+  
+    SAFE_RELEASE(FxDriver);  
+  
+    return hr;  
+}  
+
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2><a id="Remarks"></a><a id="remarks"></a><a id="REMARKS"></a>Remarks</h2>
+<p>If you are using Winusb.sys as the function driver for your device, you can send control transfers from an application. To format the setup packet in WinUSB, use the UMDF helper macros and structures, described in the table in this topic. To send the request, call <a href="ff540219(v%3dvs.85).html"><strong xmlns="http://www.w3.org/1999/xhtml">WinUsb_ControlTransfer</strong></a> function. </p>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20How to send a USB control transfer%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="xIfgpChLUHmZcBG-pVf51LGQHLBvx_KgXWMyBRx836VaBgKObCCBm-SmRHIhGT6ZYiPVN0QGJNRJK7En5EFCIujF4KklWScUSuRheSlTMk6Q7p-KtFY8IdLgg5Fu0gh6AkXiow2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff539261(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff539261(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="9f-ZmyHt1F0_i_N4ojgKDIxlozsimmTxgXjwnnCBC4ZGp54hOleUOXKr855d3EWEGdfj3x0fZC4rvSoQtJePqz66NceO1VWBmHUDb8NZiL5_R0OoLQWRMSHjYu_DN5goDb7LPA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff539261(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"f8d2750c-53ca-4116-9cde-9c7ad6d2254c\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff539261(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:38:40 GMT -->
+</html>

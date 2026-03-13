@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj123662.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/windows/hardware/jj123662.aspx" />
+        <title>Troubleshooting Device.Digitizer Testing</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj123662(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123662(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123662(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj123662(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD0-9:09:10 AM" />
+
+<meta name="Search.ShortId" content="jj123662" />
+
+<meta name="ms.shortidmsdn" content="jj123662" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072550&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj123662.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Troubleshooting Device.Digitizer Testing</h1>
+  
+  <p>Updated: July 26, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <div id="sectionSection0" class="section">
+        <p>To troubleshoot issues that occur in Device.Digitizer tests, follow these steps:</p>
+        <ol class="ordered">
+          <li>
+							Review the following Windows® Hardware Certification Kit (Windows HCK) topics:<br /><br /><ul><li class="unordered"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn247432.aspx">Troubleshooting Windows HCK Test Failures</a><br /><br /></li><li class="unordered"><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998919.aspx">Digitizer Testing Prerequisites</a><br /><br /></li></ul></li>
+          <li>
+							For a test failure, look for usable information in the Windows HCK Studio test log. If you find usable information, resolve the issue and rerun the test.<br /><br /></li>
+        </ol>
+        <h3 class="subHeading">Specific Information about Touch Tests in Windows 7</h3>
+        <div class="subSection">
+          <p>When you perform tests on a Windows Touch device, you must understand the way that positional accuracy affects the tests. You must also know how to read the information that's provided in the test log if test failures occur.</p>
+          <p>
+            <strong>Understanding the accuracy requirement</strong>
+          </p>
+          <p>For a single touch on a stationary contact point (a contact that's made when no other contacts are present), the INPUT-0046 accuracy requirement states that the reported contact position must be within 2.5 millimeters (mm) of the target point. For a single touch that traces a line, circle, or other predetermined pattern, the reported contact data must be within 2.5 mm of the target pattern, with an offset from the pattern that varies no more than 1 mm for every 10 mm of travel, and without interruption to the pattern.</p>
+          <p>Offset variance is the amount of variation in the offset of the traced line from the target line. This must be no more than 1 mm per 10 mm of travel. This allows a kind of drift (or moving "jitter" boundary) of up to 10 percent. The following figure is an example of how this might look in practice.</p>
+          <img id="4a2eedea-557f-4282-b4b4-575a5a0e91d7" alt="Diagram showing allowed touch variance" src="http://i.msdn.microsoft.com/dynimg/IC420880.png" title="Diagram showing allowed touch variance" xmlns="" />
+          <p>The thick blue line is the target line. The red line was produced by a tester who tried to trace the target line on the screen. To pass this test, the red line must meet all of the following conditions:</p>
+          <ul>
+            <li class="unordered">
+									The line falls completely inside the 2.5-mm accuracy boundary (as marked by the outer dotted green line).<br /><br /></li>
+            <li class="unordered">
+									For any 10mm segment along its length, the offset variance must be no larger than 1mm. The offset variance is the maximum difference in offset from the blue line, as marked by the inner dotted green line over the first 10 mm.<br /><br /></li>
+            <li class="unordered">
+									The line must be intact and without interruption.<br /><br /></li>
+          </ul>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								The offset variance is measured not just on the first 10 mm of the pattern, but also on overlapping 10-mm segments that cover the whole pattern.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <p>The same principles apply to additional contacts, to contacts that occur when another finger is already touching the screen, or to contacts that occur simultaneously. But, this case allows 2 times the room for maneuvering. The overall accuracy range is 5mm, and the offset variance per 10 mm is 2mm.</p>
+          <p>
+            <strong>Analyzing the Windows Touch log files</strong>
+          </p>
+          <p>The Windows Touch test tool uses the <strong>UserText</strong> attribute of each <strong>&lt;Msg&gt;</strong> element to provide touch-specific information.</p>
+          <div class="alert">
+            <table>
+              <tr>
+                <th align="left">
+                  <img id="note" alt="note" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+              </tr>
+              <tr>
+                <td>
+								The examples in the following table don't include the default attributes and subelements of the <strong>&lt;Msg&gt;</strong> element.<p></p></td>
+              </tr>
+            </table>
+            <p>
+              
+            </p>
+          </div>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <th>
+											Specification namespace
+										</th>
+              <th>
+											Specification title
+										</th>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 1: Sampling Rate</p>
+              </td>
+              <td>
+                <p>The following log messages indicate sampling-rate logging per second for various contact IDs. In this example, the digitizer reports a sampling rate of 63 for ID 10 and a sampling rate of 60 for ID 11:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Sampling rate was 63 for 10 touch ID" ...&gt; &lt;Msg UserText="INFO: Sampling rate was 60 for 11 touch ID" ...&gt;</code>
+                </p>
+                <p>If the sampling rate is too low, an additional failure message appears in the log. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Sampling rate was 49 for 10 touch ID"&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Sampling rate did not pass for contact ID 10 : Sampling rate was 49"&gt;</code>
+                </p>
+                <p>A log message also appears for the length of time that each contact is held. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Contact ID 10 lasted for 10 sec" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 2: Single Taps</p>
+              </td>
+              <td>
+                <p>For each test case on the page, a log message appears for the target point and touch point locations, in pixels. If the touch is inside the accuracy boundary, a log message that indicates success appears. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 2: Single Taps - Test Case 1: x:640 y:400"...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 2: Single Taps - Test Case 1: x:646 y:400"...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 2: Single Tap Test Passed for test case 1 - Test Pass"&gt;</code>
+                </p>
+                <p>If the touch is outside the permitted accuracy boundary, a log message appears for the failure (and failing distance). For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 2: Single Taps - Test Case 2: x:640 y:100" ...&gt;&lt;Msg UserText="INFO: Point Touched for Test 2: Single Taps - Test Case 2: x:637 y:117" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Touch do not match the given point- Test Fail, Distance is 3.642690" ...&gt;&lt;Msg UserText="INFO:Test 2: Single Tap - Touch did not match the given point for test case 2- Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 3: Single Press and Hold</p>
+              </td>
+              <td>
+                <p>Accuracy of the touch point is one of the requirements for the Single Press and Hold test. Log messages appear for the locations and pass/fail accuracy, just as they appear for test case 2: Single Taps. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 3: Single Press and Hold - Test 1: x:640 y:400" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 3: Single Press and Hold - Test 1: x:638 y:401" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 3: Single Press and Hold - Test Case 1 -Test Passed for Single Touch Press and Hold - Test Pass" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 3: Single Press and Hold - Test 2: x:10 y:10" ...&gt;&lt;Msg UserText="INFO: Point Touched for Test 3: Single Press and Hold - Test 2: x:18 y:21" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Touch do not match the given point- Test Fail, Distance is 2.870119" ...&gt;</code>
+                </p>
+                <p>The test also measures jitter over the period of contact. So, either jitter or not holding down the contact long enough causes a log message to appear. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Jitter Occurred at 18 21 " ... &gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 3: Single Press and Hold - Test Case 2 -Touch did not last for the specified time for single touch press and hold point - Test Fail"...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 4: Double Tap</p>
+              </td>
+              <td>
+                <p>Log messages for the Double Tap test resemble the log messages for test case 2: Single Taps. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 4: Double Taps: x:640 y:400" ...&gt;&lt;Msg UserText="INFO: Point Touched for Test 4: Double Taps: x:636 y:409" ... &gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 8: Double Taps Test Passed - Test Pass" ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 4: Double Taps: x:640 y:400" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 4: Double Taps: x:738 y:506" ...&gt;&lt;Msg UserText="INFO: Touch do not match the given point- Test Fail, Distance is 30.433714" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 5: Multi-Touch Points</p>
+              </td>
+              <td>
+                <p>Log messages for the Multi-Touch Points test resemble the log messages for test case 2: Single Taps, with this target and touch information:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 5: Multi-touch points - Test Case 1 - Finger 1: x:160 y:200" ...&gt;&lt;Msg UserText="INFO: Point Touched for Test 5: Multi-touch points - Test Case 1 - Finger 1: x:326 y:100" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 5: Multi-touch points - Test Case 1 - Finger 2: x:320 y:100" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 5: Multi-touch points - Test Case 1 - Finger 2: x:173 y:201" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 5: Multi-touch points passed for test case 1." CA="30593109" ...&gt;</code>
+                </p>
+                <p>Failure is possible because of non-simultaneity (that is, sequential input) or inaccuracy.</p>
+                <p>This example shows the log messages for non-simultaneous input:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 5: Multi-touch points - Test Case 2 - Finger 1: x:160 y:700" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 5: Multi-touch points - Test Case 2 - Finger 1: x:166 y:694" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 5: Multi-touch points - Test Case 2 - Finger 2: x:320 y:600" ...&gt;&lt;Msg UserText="INFO: Point Touched for Test 5: Multi-touch points - Test Case 2 - Finger 2: x:327 y:597" CA="38221429" LA="38221504" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 5: Multi-touch points failed for test case 2.Time difference between contacts more than 30 milliseconds" ...&gt;</code>
+                </p>
+                <p>This example shows the log messages for inaccurate input:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 4: Multi-touch points - Test Case 3 - Finger 1: x:480 y:400" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 4: Multi-touch points - Test Case 3 - Finger 1: x:507 y:456" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Shown for Test 4: Multi-touch points - Test Case 3 - Finger 2: x:640 y:400" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO: Point Touched for Test 4: Multi-touch points - Test Case 3 - Finger 2: x:704 y:397" ...&gt;</code>
+                </p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 4: Multi-touch points failed for test case 3." CA="48949421" LA="48949527" ... &gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 6: Press and Tap</p>
+              </td>
+              <td>
+                <p>The Press and Tap test logs a pass or fail result based on the accuracy of the touches and the jitter of the first touch. For example, this log message shows a pass result:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 6: Press and Tap Test:Test Pass" ...&gt;</code>
+                </p>
+                <p>This log message shows a fail result if jitter occurs on the first contact:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 6: Press and Tap:Jitter occurred for point 1 - Test Fail" ...&gt;</code>
+                </p>
+                <p>This log message shows a fail result if an accuracy problem occurs:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 6: Press and Tap: You did not touch all points - Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 7: Straight Line Accuracy</p>
+              </td>
+              <td>
+                <p>Detailed indications of the pass or fail areas of traced lines are visible on the screen. Green indicates an accurate trace, red indicates an inaccurate trace, and yellow indicates unmeasured parts of the trace. Because this information is available graphically, the log messages include simpler pass or fail information. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 7: Straight line accuracy - Test Case 1 traced successfully" ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 7: Straight line accuracy - Test Case 2 Could not trace all points - Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 8: Maximum Touch Lines</p>
+              </td>
+              <td>
+                <p>A log message indicates the pass or fail result for each line. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 8: Maximum contact support test - Line 1 traced correctly." ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 8: Maximum contact support test- Line 2 not traced correctly. Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 9: Multi-Touch Lines</p>
+              </td>
+              <td>
+                <p>Log messages for the Multi-Touch Lines test resemble the log messages for test case 5: Multi-Touch Points. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Multi touch lines traced successfully for lines 1 " ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Could not trace all points for multi-touch lines 6" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 10: Line Accuracy Velocity</p>
+              </td>
+              <td>
+                <p>The screen display for the Line Accuracy Velocity test resembles the display for test case 5: Multi-Touch Points. The log messages include simple pass or fail information. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 10: Line Accuracy Velocity Test - Passed" ... &gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 10: Line Accuracy Velocity Test - Failed" ...&gt;</code>
+                </p>
+                <p>Contact must remain inside the moving box as long as the contact is traveling along the line. Points at which the contact is outside the line appear on the screen in red. Contacts that are outside the accuracy boundary also appear in red.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 11: Single Touch Arcs</p>
+              </td>
+              <td>
+                <p>Log messages for the Single Touch Arcs test resemble the log messages for test case 5: Multi-Touch Points. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 11: Arc accuracy - Test Case 1 traced successfully" ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 11: Arc accuracy - Test Case 2 could not traced successfully" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 12: Pivot</p>
+              </td>
+              <td>
+                <p>Log messages for the Pivot test resemble the log messages for test case 7: Multi-Touch Lines. Note that a failure may occur because of inaccuracy of the traced arc or inaccuracy of the pivot point. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 12:Pivot Test - Test passed." ... &gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 12:Pivot Test : Could not trace all points - Test Fail." ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 13: Multi-Touch Arcs</p>
+              </td>
+              <td>
+                <p>Log messages for the Multi-Touch Arcs test resemble the log messages for test case 7: Multi-Touch Lines. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 13: Multi-touch arc accuracy - Traced Successfully - Test Pass"...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 13: Multi-touch arc accuracy - Could not Traced Successfully - Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test case 14: Ghost Points</p>
+              </td>
+              <td>
+                <p>Simple pass or fail information for the Ghost Points test appears in the log. For example:</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 14: Ghost points - Ghost test passed" ...&gt;</code>
+                </p>
+                <p>or</p>
+                <p>
+                  <code>&lt;Msg UserText="INFO:Test 14: Ghost points - Test Fail" ...&gt;</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Test pass completion</p>
+              </td>
+              <td>
+                <p>Multiple log messages collate the overall test pass information with regard to tests tried, completed, passed, and failed. If you have any difficulty understanding the messages, send email to tab-ext@microsoft.com. Include your query and a sample log file.</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh998100.aspx">Device.Digitizer Testing</a>
+        <br />
+        <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn293719.aspx">Troubleshooting Windows HCK</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="lRUQ0qKEb2B7z_FJ_0aZ6xgzFk4p_YFZDwnUPt1qVQsOlgUlIQmP4av5BHrvp9s3qBZ39gXJ_DT2Tkmpwwi_0aSwDL7B_sy1I3sfp0LwWn5jR0_iTFAX19IDwpgYCEWXnddmcg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/jj123662.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fjj123662.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="wBneUhEjN2wzrhanjFU1aObux4gCADGdHyaq5v1i6KQ-Tev9AeBhiwMQGZzSgmU55Xmi-ruR2wctJujE96lPFu0vt1Qg_AME8fp-TmNerOuKe2AeyHbnCg42PAYf9nPlyi471w2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj123662(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"158375c3-562d-41a9-8822-522e44337ac8\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/jj123662.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

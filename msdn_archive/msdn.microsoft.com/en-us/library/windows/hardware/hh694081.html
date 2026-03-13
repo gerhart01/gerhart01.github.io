@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh694081.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/apps/hh694081.aspx" />
+        <title>Using the Windows App Certification Kit (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh694081(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694081(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694081(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694081(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DCF-9:31:50 AM" />
+
+<meta name="Search.ShortId" content="hh694081" />
+
+<meta name="ms.shortidmsdn" content="hh694081" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395073910&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh694081.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/INVALIDLINK" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Dashboard">Dashboard</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg507680.aspx" id="bg126134_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Get Started">Get Started</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg462970.aspx" id="bg126135_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Design">Design</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff960953.aspx" id="bg126136_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Develop">Develop</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463010.aspx" id="bg126137_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Certify">Certify</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+<div class="topicNotInScope" id="topicNotInScope">
+    <div class="topicNotInScopeDisclaimer" id="topicNotInScopeDisclaimer">
+        <div class="topicNotInScopeImageContainer clip16x16">
+            <img class="topicNotInScopeInformationImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Information" />
+        </div>
+        <div class="topicNotInScopeSwitchCollectionContainer">
+            <a class="topicNotInScopeSwitchCollection" id="topicNotInScopeSwitchCollection" href="#" onclick="TopicNotInScope_ShowPicker();return false;">
+                Switch
+            </a>
+            <div class="topicNotInScopeImageContainer2 clip11x6">
+                <img class="topicNotInScopeDropdownImage" id="topicNotInScopeDropdownImage" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" alt="Switch" onclick="TopicNotInScope_ShowPicker()" />
+            </div>
+             <ul id="topicNotInScopeCollectionPicker" class="topicNotInScopeCollectionPicker">
+                        <li class="topicNotInScopeCollectionPickerItem">
+                            <a href="http://msdn.microsoft.com/en-us/windows/apps/ux/hh694081.aspx" title="Visual Studio">Visual Studio</a>
+                        </li>
+            </ul>
+        </div>
+        <div class="topicNotInScopeDisclaimerText">The topic you requested is included in another documentation set. For convenience, it's displayed below. Choose Switch to see the topic in its original location.</div>
+        <div class="Clear"></div>
+    </div>
+</div>
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Using the Windows App Certification Kit</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>
+          To give your app the best chance of getting certified, validate and test it on your computer before you submit it for certification and listing in the Windows Store. This topic shows you how to install and run the <a href="http://go.microsoft.com/fwlink/?LinkID=309666">Windows App Certification Kit</a>. 
+      For more details on  specific tests carried out by this kit, refer to the following topics:</p>
+<ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx">Windows App Certification Kit tests</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh920280.aspx">Windows security features test</a>
+</li>
+</ul>
+<p>For a high level look at the certification process, and where the use of this tool fits in, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694079.aspx">Certify your app</a>.</p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Prerequisites</h3>
+<p>If you are developing a Windows 8 app:</p>
+<ul>
+<li>You must install and run Windows 8 or Windows 8.1.</li>
+<li>
+<p>
+            You must install <a href="http://go.microsoft.com/fwlink/?LinkID=309666">Windows App Certification Kit version 3.1</a>, which is included in the Windows Software Development Kit (SDK) for Windows 8.1.
+          </p><p class="note"><strong>Note</strong>  Because it is frequently recommended that you test your app on Windows RT, be sure to also install the <a href="http://go.microsoft.com/fwlink/?LinkID=309328">Windows App Certification Kit for Windows RT</a> (available as a separate download for Windows RT devices).</p>
+
+</li>
+</ul>
+<p>If you are developing a Windows 8.1 app:</p>
+<ul>
+<li>
+<p>You must install and run Windows 8.1.</p>
+</li>
+<li>
+<p>You must install <a href="http://go.microsoft.com/fwlink/?LinkID=309666">Windows App Certification Kit version 3.1</a>, which is included in the Windows SDK for Windows 8.1.</p>
+<p>
+</p><p class="note"><strong>Note</strong>  </p><p class="note">Because it is frequently recommended that you test your app on Windows RT, be sure to also install the Windows App Certification Kit for Windows RT (available as a separate download for Windows RT devices).</p>
+<p class="note">To run <a href="http://go.microsoft.com/fwlink/?LinkID=309666">Windows App Certification Kit version 3.1</a> on a Windows RT machine (Windows 8.1 RT), the kits policy needs to be installed as well. For details on installing the kits policy, see <a href="http://go.microsoft.com/fwlink/?LinkID=324771">ARM Kit Policy Installation</a>.</p>
+
+
+</li>
+</ul>
+<p>Other pre-requisites:</p>
+<ul>
+<li>
+<p>
+            You must have a valid developer license for your computer.
+          See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh974578.aspx">Get a developer license</a> to learn how.</p>
+</li>
+<li>
+<p>
+            You must deploy the Windows Store app that you want to  test to your computer.
+          </p><p class="note"><strong>Note</strong>  If you're using Visual Studio, you can run the Windows App Certification Kit when you create your app package. See <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975357.aspx">Creating an app package</a> to learn how.</p>
+
+</li>
+</ul>
+<p><strong> Enabling in place upgrade</strong></p>
+<p>The installation of <a href="http://go.microsoft.com/fwlink/?LinkID=309666">Windows App Certification Kit version 3.1</a> or higher will replace any previous version of the kit that is installed on the machine.</p>
+<h2>Instructions</h2>
+<h3><a id="___________Validate_your_Windows_Store_app_by_using_the_Windows_App_Certification_Kit_interactively_________"></a><a id="___________validate_your_windows_store_app_by_using_the_windows_app_certification_kit_interactively_________"></a><a id="___________VALIDATE_YOUR_WINDOWS_STORE_APP_BY_USING_THE_WINDOWS_APP_CERTIFICATION_KIT_INTERACTIVELY_________"></a>
+          Validate your Windows Store app by using the Windows App Certification Kit interactively
+        </h3>
+<ol>
+<li>
+<p>
+                  From the <strong>Start</strong> menu, search <strong>Apps</strong>, find <strong>Windows Kits</strong>, and click <strong>Windows App Cert Kit</strong>.
+                </p>
+</li>
+<li>
+<p>
+              From the Windows App Certification Kit, select the category of validation you would like to perform. For example: If you are validating a Windows Store app, select <strong>Validate a Windows Store app</strong>.</p>
+<p>When the Windows App Certification Kit is run for the first time, the UI lists all the Windows Store apps that you have installed on your computer. For any subsequent runs, the UI will display the most recent apps that you have validated. If the app that you want to test is not listed, you can click on <strong>My app isn't listed</strong> to get a comprehensive list of all apps installed on your system.</p>
+</li>
+<li>
+<p>
+              Select the Windows Store app you want to test, and then click <strong>Next</strong>.
+            </p>
+</li>
+<li>
+<p>From the next screen, select the tests you want to run on your Windows Store app and click <strong>Next</strong>.</p>
+<p>
+              The Windows App Certification Kit begins validating the app.
+            </p>
+</li>
+<li>
+<p>At the prompt after the test, enter the path to the folder where you want to save the test report.</p>
+<p>
+              The Windows App Certification Kit creates an HTML along with an XML report
+              and saves it in this folder.
+            </p>
+</li>
+<li>Open the report file and review the results of the test.</li>
+</ol>
+<h3><a id="___________Validate_your_Windows_Store_app_by_using_the_Windows_App_Certification_Kit_from_a_command_line_________"></a><a id="___________validate_your_windows_store_app_by_using_the_windows_app_certification_kit_from_a_command_line_________"></a><a id="___________VALIDATE_YOUR_WINDOWS_STORE_APP_BY_USING_THE_WINDOWS_APP_CERTIFICATION_KIT_FROM_A_COMMAND_LINE_________"></a>
+          Validate your Windows Store app by using the Windows App Certification Kit from a command line
+        </h3>
+<ol>
+<li>
+<p>
+              In the command window, navigate to the directory that contains the Windows App Certification Kit.
+            </p>
+<p>
+</p><p class="note"><strong>Note</strong>  
+                The default path is C:\Program Files\Windows Kits\8.1\App Certification Kit\.
+              </p>
+
+</li>
+<li>
+<p>
+              Enter the following commands in this order:</p><dl>
+<dd><code>appcert.exe reset</code></dd>
+<dd><code>appcert.exe test -apptype windowsstoreapp -packagefullname [package full name] -reportoutputpath [report file name]</code></dd>
+</dl>
+
+<p>where:</p>
+<p><code>[package full name]</code> is the fully qualified name of the package.
+            </p>
+<p><code>[report file name]</code> is the fully qualified file name, that includes the file path, of the XML file that the kit will  create to contain the test report.
+            </p>
+</li>
+<li>
+            After the test completes, open the report file named <code>[report file name]</code> and review the test results.
+          </li>
+</ol>
+<p>
+</p><p class="note"><strong>Note</strong>  
+            For more info about the Windows App Certification Kit command line, enter the command <code>appcert.exe /?</code></p>
+
+<h2>Remarks</h2>
+<h3><a id="remarks_low_power_computer"></a><a id="REMARKS_LOW_POWER_COMPUTER"></a>Testing with a low-power computer</h3>
+<p>The performance test thresholds of the Windows App Certification Kit are based on the performance of a low-power computer.</p>
+<p>The characteristics of the computer on which the test is performed can influence the test results. To determine if your app’s performance  meets the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694083.aspx">certification requirements</a>, we recommend that you  test your app on a low-power computer, such as an Intel Atom processor-based computer with a screen resolution of 1366x768 (or higher) and a rotational hard drive (as opposed to a solid-state hard drive).</p>
+<p>As low-power computers evolve, their performance characteristics might change over time. Refer to the most current <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh694083.aspx">certification requirements</a> and test your app with the most current version of the Windows App Certification Kit to make sure that your app complies with the latest performance requirements.</p>
+<h3><a id="remarks_app_cert_tests"></a><a id="REMARKS_APP_CERT_TESTS"></a>Windows App Certification Kit tests</h3>
+<p>Several enhancements were made to the latest version of the Windows App Certification Kit to improve usability:</p>
+<ul>
+<li>Simplified user interface</li>
+<li>General fixes and performance improvements.</li>
+<li>Better integration within Visual Studio for evaluating Windows Store apps.</li>
+</ul>
+<h3><a id="tests_metrostyle"></a><a id="TESTS_METROSTYLE"></a>Tests performed on Windows Store apps</h3>
+<table>
+<tr><th>Test name</th><th>Possible test results</th><th>Certification requirements tested</th><th>OS Applicability</th></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#crashes_and_hangs_test">Crashes &amp; hangs test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Crashes and hangs</p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#app_manifest_policy_test">App manifest compliance test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>App manifest
+                    
+                    
+                    </p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td rowspan="3">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh920280.aspx">Windows security features test
+                    
+                  </a>
+</td><td rowspan="3">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Binary analyzer
+                    
+                    
+                  </p>
+</td><td rowspan="3">
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>Banned file analyzer**</p>
+</td></tr>
+<tr><td>
+<p>Private code signing</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#supported_windows_store_api_test">Supported  Windows Store API test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Supported APIs<strong></strong></p>
+</td><td>
+<p>The test is applicable to both Windows 8 and Windows 8.1</p>
+<p>The updates in Windows App Certification Kit 3.0 and later are applicable only for Windows 8.1</p>
+</td></tr>
+<tr><td rowspan="4">
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#performance_test">Performance test</a></p>
+</td><td rowspan="4">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Bytecode generation
+                    
+                  </p>
+</td><td rowspan="4">
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>Optimized binding references</p>
+</td></tr>
+<tr><td>
+<p>Performance launch</p>
+</td></tr>
+<tr><td>
+<p>Performance suspend</p>
+</td></tr>
+<tr><td rowspan="2">
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#app_manifest_resources_test">App manifest resources test</a></p>
+</td><td rowspan="2">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>App resources validation
+                    
+                  </p>
+</td><td rowspan="2">
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>Branding validation</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#debug_configuration_test">Debug configuration test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>
+                      Debug configuration
+                    </p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#file_encoding_test">File encoding test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>UTF-8 file encoding
+                      
+                    </p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td rowspan="2">
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#direct3d_feature_level_test">Direct3D feature level test</a></p>
+</td><td rowspan="2">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Direct3D feature level support</p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>Direct3D Trim after suspend<strong>**</strong></p>
+</td><td>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#app_capabilities_test">App capabilities test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Special use capabilities</p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td rowspan="6">
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#windows_metadata_validation">Windows Runtime metadata validation</a></p>
+</td><td rowspan="6">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>
+                      ExclusiveTo attribute test
+                    </p>
+</td><td rowspan="6">
+<p>The test is applicable to both Windows 8 and Windows 8.1</p>
+<p>The updates in Windows App Certification Kit 3.0 and later are applicable only for Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>
+                      Type location test</p>
+</td></tr>
+<tr><td>
+<p>
+                      Type name case-sensitivity test</p>
+</td></tr>
+<tr><td>
+<p>
+                      Type name correctness test</p>
+</td></tr>
+<tr><td>
+<p>
+                      General metadata correctness test</p>
+</td></tr>
+<tr><td>
+<p>Properties test</p>
+</td></tr>
+<tr><td rowspan="2">
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#package_sanity_test">Package Sanity check</a></p>
+</td><td rowspan="2">
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>Platform appropriate files<strong>**</strong></p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p>Supported directory structure check<strong>**</strong></p>
+</td><td>
+<p>Windows 8</p>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx#resource_usage_test">Resource Usage test</a></p>
+</td><td>
+<p>Pass</p>
+<p>Fail</p>
+</td><td>
+<p>
+                      
+                    WinJS bckground task test<strong>**</strong></p>
+</td><td>
+<p>Windows 8.1</p>
+</td></tr>
+<tr><td colspan="4">
+<p><strong>**</strong> indicates the test was newly added for Windows App Certification Kit for Windows 8.1 and is applicable only when you test using the latest kit.</p>
+</td></tr>
+</table>
+<p> </p>
+<h3><a id="Testing_on_ARM_devices"></a><a id="testing_on_arm_devices"></a><a id="TESTING_ON_ARM_DEVICES"></a>Testing on ARM devices</h3>
+<p>If you're creating an app for Windows RT devices, be sure to check out <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/bg126235.aspx">Debugging and testing on Windows RT PCs</a>. It contains info to help you test apps for these devices.</p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj657973.aspx">Windows App Certification Kit tests</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="_oKbW5eKjIl2KD7N2RBqAVD6q-3XztG-_GzecFEaHhYdHSgS-dQcx0R-PBN4F09aED2PMJRCZc3anjTF26t0H7xITm74DGoSnvUFVxBYeaZI0SlgKM-ub5fJaOOwzXSBIsKWjA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh694081.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh694081.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="y3LIRBSg9TtLLhQBJGKyzscKjRlKem4CKeXGsjlHBpVmBw1PS98sWRIw_2TORrDT-4EPKxrtUsjG7CNm_H8emM1QHBzMWS8euD5wooyJNQatn1-BwJZwnhIyZjncFT-foGZucQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh694081(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"0d91b6c7-8d4f-4b59-abfe-9fe471aa8302\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh694081.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:58 GMT -->
+</html>

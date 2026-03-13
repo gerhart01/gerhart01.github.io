@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff550104(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:53:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="ff550104(v%3dvs.85).html" />
+        <title>WdfUsbTargetDeviceSendControlTransferSynchronously method (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff550104(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550104(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550104(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550104(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD1-9:01:18 AM" />
+
+<meta name="Search.ShortId" content="ff550104" />
+
+<meta name="ms.shortidmsdn" content="ff550104" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072078&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff550104%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557565(v%3dvs.85).html" id="dn279975_VS.85_en-us" mtpsaliasid="" mtpsassetid="a3243ae3-1bc3-42d5-8975-b0588ae94dba_VS.85_en-us" mtpsshortid="ff557565_VS.85_en-us" title="Windows Driver Frameworks">Windows Driver Frameworks</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="dn265590(v%3dvs.85).html" id="dn280055_VS.85_en-us" mtpsaliasid="" mtpsassetid="937F0D32-9B2D-4586-A965-128E39DCFB1B_VS.85_en-us" mtpsshortid="dn265590_VS.85_en-us" title="WDF Reference">WDF Reference</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn265671(v%3dvs.85).html" id="dn280079_VS.85_en-us" mtpsaliasid="" mtpsassetid="CDD13B29-62C8-4CF7-9027-E55A5B37AA2E_VS.85_en-us" mtpsshortid="dn265671_VS.85_en-us" title="WDF USB Reference">WDF USB Reference</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541826(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EvtUsbTargetPipeReadComplete">EvtUsbTargetPipeReadComplete</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff541832(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="EvtUsbTargetPipeReadersFailed">EvtUsbTargetPipeReadersFailed</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552545(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_BMREQUEST_DIRECTION">WDF_USB_BMREQUEST_DIRECTION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552554(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_BMREQUEST_RECIPIENT">WDF_USB_BMREQUEST_RECIPIENT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552557(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_BMREQUEST_TYPE">WDF_USB_BMREQUEST_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552561(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTINUOUS_READER_CONFIG">WDF_USB_CONTINUOUS_READER_CONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552566(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTINUOUS_READER_CONFIG_INIT">WDF_USB_CONTINUOUS_READER_CONFIG_INIT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552568(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET">WDF_USB_CONTROL_SETUP_PACKET</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552571(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET_INIT">WDF_USB_CONTROL_SETUP_PACKET_INIT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552574(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET_INIT_CLASS">WDF_USB_CONTROL_SETUP_PACKET_INIT_CLASS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552576(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET_INIT_FEATURE">WDF_USB_CONTROL_SETUP_PACKET_INIT_FEATURE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552582(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET_INIT_GET_STATUS">WDF_USB_CONTROL_SETUP_PACKET_INIT_GET_STATUS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552588(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR">WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh406503(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_CREATE_CONFIG">WDF_USB_DEVICE_CREATE_CONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh406507(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_CREATE_CONFIG_INIT">WDF_USB_DEVICE_CREATE_CONFIG_INIT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552592(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_INFORMATION">WDF_USB_DEVICE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552595(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_INFORMATION_INIT">WDF_USB_DEVICE_INFORMATION_INIT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552600(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552982(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_DECONFIG">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_DECONFIG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552986(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_INTERFACES_DESCRIPTORS">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_INTERFACES_DESCRIPTORS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552992(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_MULTIPLE_INTERFACES">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_MULTIPLE_INTERFACES</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552995(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_SINGLE_INTERFACE">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_SINGLE_INTERFACE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff552997(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_URB">WDF_USB_DEVICE_SELECT_CONFIG_PARAMS_INIT_URB</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553002(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_DEVICE_TRAITS">WDF_USB_DEVICE_TRAITS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553003(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_INTERFACE_SELECT_SETTING_PARAMS">WDF_USB_INTERFACE_SELECT_SETTING_PARAMS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553008(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_DESCRIPTOR">WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_DESCRIPTOR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553011(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_SETTING">WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_SETTING</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553016(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_URB">WDF_USB_INTERFACE_SELECT_SETTING_PARAMS_INIT_URB</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553023(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_INTERFACE_SETTING_PAIR">WDF_USB_INTERFACE_SETTING_PAIR</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553027(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_PIPE_DIRECTION_IN">WDF_USB_PIPE_DIRECTION_IN</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553032(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_PIPE_DIRECTION_OUT">WDF_USB_PIPE_DIRECTION_OUT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553037(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_PIPE_INFORMATION">WDF_USB_PIPE_INFORMATION</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553040(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_PIPE_INFORMATION_INIT">WDF_USB_PIPE_INFORMATION_INIT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553047(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_PIPE_TYPE">WDF_USB_PIPE_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553049(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_REQUEST_COMPLETION_PARAMS">WDF_USB_REQUEST_COMPLETION_PARAMS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff553055(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WDF_USB_REQUEST_TYPE">WDF_USB_REQUEST_TYPE</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550057(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetConfiguredPipe method">WdfUsbInterfaceGetConfiguredPipe method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550059(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetConfiguredSettingIndex method">WdfUsbInterfaceGetConfiguredSettingIndex method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550060(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetDescriptor method">WdfUsbInterfaceGetDescriptor method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550063(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetEndpointInformation method">WdfUsbInterfaceGetEndpointInformation method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550065(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetInterfaceNumber method">WdfUsbInterfaceGetInterfaceNumber method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550066(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetNumConfiguredPipes method">WdfUsbInterfaceGetNumConfiguredPipes method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550068(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetNumEndpoints method">WdfUsbInterfaceGetNumEndpoints method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550070(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceGetNumSettings method">WdfUsbInterfaceGetNumSettings method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550073(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbInterfaceSelectSetting method">WdfUsbInterfaceSelectSetting method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550074(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceAllocAndQueryString method">WdfUsbTargetDeviceAllocAndQueryString method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550077(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceCreate method">WdfUsbTargetDeviceCreate method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh439420(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceCreateIsochUrb method">WdfUsbTargetDeviceCreateIsochUrb method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh439423(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceCreateUrb method">WdfUsbTargetDeviceCreateUrb method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh439428(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceCreateWithParameters method">WdfUsbTargetDeviceCreateWithParameters method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550080(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceCyclePortSynchronously method">WdfUsbTargetDeviceCyclePortSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550082(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceFormatRequestForControlTransfer method">WdfUsbTargetDeviceFormatRequestForControlTransfer method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550084(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceFormatRequestForCyclePort method">WdfUsbTargetDeviceFormatRequestForCyclePort method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550086(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceFormatRequestForString method">WdfUsbTargetDeviceFormatRequestForString method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550088(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceFormatRequestForUrb method">WdfUsbTargetDeviceFormatRequestForUrb method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550090(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceGetDeviceDescriptor method">WdfUsbTargetDeviceGetDeviceDescriptor method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550092(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceGetInterface method">WdfUsbTargetDeviceGetInterface method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550093(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceGetIoTarget method">WdfUsbTargetDeviceGetIoTarget method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550094(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceGetNumInterfaces method">WdfUsbTargetDeviceGetNumInterfaces method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550095(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceIsConnectedSynchronous method">WdfUsbTargetDeviceIsConnectedSynchronous method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550096(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceQueryString method">WdfUsbTargetDeviceQueryString method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh439434(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceQueryUsbCapability method">WdfUsbTargetDeviceQueryUsbCapability method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550097(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceResetPortSynchronously method">WdfUsbTargetDeviceResetPortSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550098(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceRetrieveConfigDescriptor method">WdfUsbTargetDeviceRetrieveConfigDescriptor method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550099(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceRetrieveCurrentFrameNumber method">WdfUsbTargetDeviceRetrieveCurrentFrameNumber method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550100(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceRetrieveInformation method">WdfUsbTargetDeviceRetrieveInformation method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550101(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceSelectConfig method">WdfUsbTargetDeviceSelectConfig method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550102(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceSelectConfigType">WdfUsbTargetDeviceSelectConfigType</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550103(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceSelectSettingType">WdfUsbTargetDeviceSelectSettingType</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="ff550104(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceSendControlTransferSynchronously method">WdfUsbTargetDeviceSendControlTransferSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff550105(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceSendUrbSynchronously method">WdfUsbTargetDeviceSendUrbSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551127(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetDeviceWdmGetConfigurationHandle method">WdfUsbTargetDeviceWdmGetConfigurationHandle method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551129(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeAbortSynchronously method">WdfUsbTargetPipeAbortSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551130(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeConfigContinuousReader method">WdfUsbTargetPipeConfigContinuousReader method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551132(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeFormatRequestForAbort method">WdfUsbTargetPipeFormatRequestForAbort method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551136(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeFormatRequestForRead method">WdfUsbTargetPipeFormatRequestForRead method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551138(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeFormatRequestForReset method">WdfUsbTargetPipeFormatRequestForReset method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551139(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeFormatRequestForUrb method">WdfUsbTargetPipeFormatRequestForUrb method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551141(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeFormatRequestForWrite method">WdfUsbTargetPipeFormatRequestForWrite method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551142(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeGetInformation method">WdfUsbTargetPipeGetInformation method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551146(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeGetIoTarget method">WdfUsbTargetPipeGetIoTarget method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551148(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeGetType method">WdfUsbTargetPipeGetType method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551151(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeIsInEndpoint method">WdfUsbTargetPipeIsInEndpoint method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551153(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeIsOutEndpoint method">WdfUsbTargetPipeIsOutEndpoint method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551155(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeReadSynchronously method">WdfUsbTargetPipeReadSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551156(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeResetSynchronously method">WdfUsbTargetPipeResetSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551158(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeSendUrbSynchronously method">WdfUsbTargetPipeSendUrbSynchronously method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551160(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeSetNoMaximumPacketSizeCheck method">WdfUsbTargetPipeSetNoMaximumPacketSizeCheck method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551162(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeWdmGetPipeHandle method">WdfUsbTargetPipeWdmGetPipeHandle method</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="ff551163(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WdfUsbTargetPipeWriteSynchronously method">WdfUsbTargetPipeWriteSynchronously method</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">WdfUsbTargetDeviceSendControlTransferSynchronously method</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p class="CCE_Message">[Applies to KMDF and UMDF]</p>
+<p>The <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> method builds a USB control transfer request and sends it synchronously to an I/O target.</p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f05bb68b-5cf3-4b6f-9550-11c07a888a82');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f05bb68b-5cf3-4b6f-9550-11c07a888a82" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS WdfUsbTargetDeviceSendControlTransferSynchronously(
+  [<span style="color:Blue;">in</span>]             WDFUSBDEVICE UsbDevice,
+  [<span style="color:Blue;">in</span>, optional]   WDFREQUEST Request,
+  [<span style="color:Blue;">in</span>, optional]   PWDF_REQUEST_SEND_OPTIONS RequestOptions,
+  [<span style="color:Blue;">in</span>]             PWDF_USB_CONTROL_SETUP_PACKET SetupPacket,
+  [<span style="color:Blue;">in</span>, optional]   PWDF_MEMORY_DESCRIPTOR MemoryDescriptor,
+  [out, optional]  PULONG BytesTransferred
+);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Parameters</h2>
+<dl>
+<dt><em>UsbDevice</em> [in]</dt>
+<dd>
+<p>A handle to a USB device object that was obtained from a previous call to <a href="hh439428(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceCreateWithParameters</strong></a>.</p>
+</dd>
+<dt><em>Request</em> [in, optional]</dt>
+<dd>
+<p>A handle to a framework request object. This parameter is optional and can be <strong>NULL</strong>. For more information, see the following Remarks section.</p>
+</dd>
+<dt><em>RequestOptions</em> [in, optional]</dt>
+<dd>
+<p>A pointer to a caller-allocated <a href="ff552491(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_SEND_OPTIONS</strong></a> structure that specifies options for the request. This pointer is optional and can be <strong>NULL</strong>. For more information, see the following Remarks section.</p>
+</dd>
+<dt><em>SetupPacket</em> [in]</dt>
+<dd>
+<p>A pointer to a caller-allocated <a href="ff552568(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure that describes the control transfer.</p>
+</dd>
+<dt><em>MemoryDescriptor</em> [in, optional]</dt>
+<dd>
+<p>A pointer to a caller-allocated <a href="ff552392(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_MEMORY_DESCRIPTOR</strong></a> structure that describes either an input or an output buffer, depending on the device-specific command. This pointer is optional and can be <strong>NULL</strong>. For more information, see the following Remarks section.</p>
+</dd>
+<dt><em>BytesTransferred</em> [out, optional]</dt>
+<dd>
+<p>A pointer to a location that receives the number of bytes that are transferred. This parameter is optional and can be <strong>NULL</strong>.</p>
+</dd>
+</dl>
+<h2>Return value</h2>
+<p><strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> returns the I/O target's completion status value if the operation succeeds. Otherwise, this method can return one of the following values:</p>
+<table>
+<tr><th>Return code</th><th>Description</th></tr>
+<tr><td>
+<dl>
+<dt><strong>STATUS_INVALID_PARAMETER</strong></dt>
+</dl>
+</td><td>
+<p>An invalid parameter was detected.</p>
+</td></tr>
+<tr><td>
+<dl>
+<dt><strong>STATUS_INSUFFICIENT_RESOURCES</strong></dt>
+</dl>
+</td><td>
+<p>Insufficient memory was available.</p>
+</td></tr>
+<tr><td>
+<dl>
+<dt><strong>STATUS_INVALID_DEVICE_REQUEST</strong></dt>
+</dl>
+</td><td>
+<p>An invalid memory descriptor was specified, or the specified I/O request was already queued to an I/O target.</p>
+</td></tr>
+<tr><td>
+<dl>
+<dt><strong>STATUS_IO_TIMEOUT</strong></dt>
+</dl>
+</td><td>
+<p>The driver supplied a time-out value and the request did not complete within the allotted time. </p>
+</td></tr>
+</table>
+<p> </p>
+<p>This method also might return other <a href="ff557697(v%3dvs.85)-2.html">NTSTATUS values</a>.</p>
+<p>A bug check occurs if the driver supplies an invalid object handle.
+
+</p>
+<h2>Remarks</h2>
+<p>Use the <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> method to send a USB control transfer request synchronously. To send such requests asynchronously, use <a href="ff550082(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>, followed by <a href="ff550027(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestSend</strong></a>.</p>
+<p>The <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> method does not return until the request has completed, unless the driver supplies a time-out value in the <a href="ff552491(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_REQUEST_SEND_OPTIONS</strong></a> structure that the <em>RequestOptions</em> parameter points to, or unless an error is detected.</p>
+<p>You can forward an I/O request that your driver received in an I/O queue, or you can create and send a new request. In either case, the framework requires a request object and, depending on the type of control transfer, possibly some buffer space.</p>
+<p>To forward an I/O request that your driver received in an I/O queue:</p>
+<ol>
+<li>
+<p>Specify the received request's handle for the <em>Request</em> parameter.</p>
+</li>
+<li>
+<p>Use the received request's input or output buffer for the <em>MemoryDescriptor</em> parameter.</p>
+<p>The driver can call <a href="ff550015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputMemory</strong></a> or <a href="ff550019(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputMemory</strong></a> to obtain a handle to a framework memory object that represents the request's input or output buffer and then place that handle in the <a href="ff552392(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_MEMORY_DESCRIPTOR</strong></a> structure that the driver supplies for the <em>MemoryDescriptor</em> parameter.</p>
+</li>
+</ol>
+<p>To create and send a new request:</p>
+<ol>
+<li>
+<p>Supply a <strong>NULL</strong> request handle in the <em>Request</em> parameter, or create a new request object and supply its handle:</p><ul>
+<li>If you supply a <strong>NULL</strong> request handle, the framework uses an internal request object. This technique is simple to use, but the driver cannot cancel the request.</li>
+<li>If you call <a href="ff549951(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCreate</strong></a> to create one or more request objects, you can reuse these request objects by calling <a href="ff550026(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestReuse</strong></a>. This technique enables your driver's <a href="ff541693(v%3dvs.85)-2.html"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> callback function to preallocate request objects for a device. Additionally, another driver thread can call <a href="ff549941(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCancelSentRequest</strong></a> to cancel the request, if necessary.</li>
+</ul>
+
+<p>Your driver can specify a non-<strong>NULL</strong> <em>RequestOptions</em> parameter, whether the driver provides a non-<strong>NULL</strong> or a <strong>NULL</strong> <em>Request</em> parameter. You can, for example, use the <em>RequestOptions</em> parameter to specify a time-out value. </p>
+</li>
+<li>
+<p>Provide buffer space for the <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> method's <em>MemoryDescriptor</em> parameter. </p>
+<p>Your driver can specify this buffer space as a locally allocated buffer, as a WDFMEMORY handle, or as an MDL. You can use whichever method is most convenient. </p>
+<p>If necessary, the framework converts the buffer description to one that is correct for the I/O target's <a href="ff554436(v%3dvs.85)-2.html">method for accessing data buffers</a>. </p>
+<p>The following techniques are available:</p>
+<ul>
+<li>
+<p>Supply a local buffer</p>
+<p>Because <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> handles I/O requests synchronously, the driver can create request buffers that are local to the calling routine, as shown in the following code example.</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_35b3af4e-4f78-43a4-ada8-3132318410b9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_35b3af4e-4f78-43a4-ada8-3132318410b9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+WDF_MEMORY_DESCRIPTOR  memoryDescriptor;
+MY_BUFFER_TYPE  myBuffer;
+WDF_MEMORY_DESCRIPTOR_INIT_BUFFER(&amp;memoryDescriptor,
+                                  (PVOID) &amp;myBuffer,
+                                  sizeof(myBuffer));
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>Supply a WDFMEMORY handle</p>
+<p>Call <a href="ff548706(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCreate</strong></a> or <a href="ff548712(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfMemoryCreatePreallocated</strong></a> to obtain a handle to framework-managed memory, as shown in the following code example. </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_689a108e-e2e0-4d43-9e18-7b8acef80c5a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_689a108e-e2e0-4d43-9e18-7b8acef80c5a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+WDF_MEMORY_DESCRIPTOR  memoryDescriptor;
+WDFMEMORY  memoryHandle = NULL;
+status = WdfMemoryCreate(NULL,
+                         NonPagedPool,
+                         POOL_TAG,
+                         MY_BUFFER_SIZE,
+                         &amp;memoryHandle,
+                         NULL);
+WDF_MEMORY_DESCRIPTOR_INIT_HANDLE(&amp;memoryDescriptor,
+                                  memoryHandle,
+                                  NULL);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Alternatively, the driver can call <a href="ff550015(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputMemory</strong></a> or <a href="ff550019(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputMemory</strong></a> to obtain a handle to a framework memory object that represents a received I/O request's buffer, if you want the driver to pass that buffer's contents to the I/O target. The driver must not complete the received I/O request until the new request that <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> sends to the I/O target has been deleted, reused, or reformatted. (<strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> increments the memory object's reference count. Deleting, reusing, or reformatting a request object decrements the memory object's reference count.)</p>
+</li>
+<li>
+<p>Supply an MDL</p>
+<p>Drivers can obtain MDLs that are associated with a received I/O request by calling <a href="ff550016(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveInputWdmMdl</strong></a> or <a href="ff550021(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestRetrieveOutputWdmMdl</strong></a>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>The framework sets the USBD_SHORT_TRANSFER_OK flag in its internal <a href="ff538923(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">URB</strong></a>. Setting this flag allows the last packet of a data transfer to be less than the maximum packet size.</p>
+<p>For information about obtaining status information after an I/O request completes, see <a href="ff540740(v%3dvs.85)-2.html#obtaining_completion_information">Obtaining Completion Information</a>.</p>
+<p>For more information about the <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> method and USB I/O targets, see <a href="ff544752(v%3dvs.85)-2.html">USB I/O Targets</a>.</p>
+<h2>Examples</h2>
+<p>The following code example initializes a <a href="ff552568(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a> structure and then calls <strong>WdfUsbTargetDeviceSendControlTransferSynchronously</strong> to send a vendor-specific control transfer.</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_f9a6f610-b74a-4345-8310-b59b254ec11e');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f9a6f610-b74a-4345-8310-b59b254ec11e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+WDF_USB_CONTROL_SETUP_PACKET  controlSetupPacket;
+
+WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR(
+                                         &amp;controlSetupPacket,
+                                         BmRequestHostToDevice,
+                                         BmRequestToDevice,
+                                         USBFX2LK_REENUMERATE,
+                                         0,
+                                         0
+                                         );
+
+status = WdfUsbTargetDeviceSendControlTransferSynchronously(
+                                         UsbDevice,
+                                         WDF_NO_HANDLE,
+                                         NULL,
+                                         &amp;controlSetupPacket,
+                                         NULL,
+                                         NULL
+                                         );
+return status;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Minimum KMDF version</p>
+</th><td>1.0</td></tr>
+<tr><th>
+<p>Minimum UMDF version</p>
+</th><td>2.0</td></tr>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>Wdfusb.h (include Wdfusb.h)</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>Library</p>
+</th><td>
+<dl>
+<dt>Wdf01000.sys (KMDF); </dt>
+<dt>WUDFx02000.dll (UMDF)</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>IRQL</p>
+</th><td>PASSIVE_LEVEL</td></tr>
+<tr><th>
+<p>DDI compliance rules</p>
+</th><td>
+<a href="ff544957(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">DriverCreate</strong></a>, <a href="ff548167(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">KmdfIrql</strong></a>, <a href="hh975091(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">KmdfIrql2</strong></a>, <a href="jj126208(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">RequestForUrbXrb</strong></a>, <a href="ff552890(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">SyncReqSend</strong></a>, <a href="ff554042(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbKmdfIrql</strong></a>, <a href="hh995019(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">UsbKmdfIrql2</strong></a>
+</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="ff552568(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET</strong></a>
+</dt>
+<dt>
+<a href="ff552588(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WDF_USB_CONTROL_SETUP_PACKET_INIT_VENDOR</strong></a>
+</dt>
+<dt>
+<a href="ff549941(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfRequestCancelSentRequest</strong></a>
+</dt>
+<dt>
+<a href="ff550082(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceFormatRequestForControlTransfer</strong></a>
+</dt>
+<dt>
+<a href="ff550105(v%3dvs.85)-2.html"><strong xmlns="http://www.w3.org/1999/xhtml">WdfUsbTargetDeviceSendUrbSynchronously</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [wdf\wdf]:%20WdfUsbTargetDeviceSendControlTransferSynchronously method%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="Bvht3uLMQq0otCT5Ae6uEmH5qQIBubGAyP-QtOFPDNIn3D6cHXIhnVCOupcFDUIQ-MGpoFRXXzo6riQeUdvLK5gjQjNOiNjMbMPZf7eGy3hgS50ZBBmkD_-jhv_j-NMfM1oNLQ2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/ff550104(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fff550104(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="3Rx6VRI1UIOE-q-sZq3jr9PgR7IqnaNgO-sa89z5ITEmIc7MCPkgdlStPJtCmuCrwoxFmAuGl89Vud2g1owDGxGG5Lz4KxEQmIrYtUvF0QMMpOxCkzNo2W__g_Odl_9OIB8SDg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff550104(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"594ff80a-f6db-4106-b674-343b8ced76c4\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/ff550104(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:54:12 GMT -->
+</html>

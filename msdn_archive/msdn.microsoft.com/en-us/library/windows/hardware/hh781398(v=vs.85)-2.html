@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx" />
+        <title>Provided WDTF Simple I/O plug-ins (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/hh781398(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD5-9:04:13 AM" />
+
+<meta name="Search.ShortId" content="hh781398" />
+
+<meta name="ms.shortidmsdn" content="hh781398" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072253&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh781398%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557553(v=vs.85).aspx" id="ff576024_VS.85_en-us" mtpsaliasid="" mtpsassetid="3a5f6182-67df-4aaa-ab36-7f3d6ec1e916_VS.85_en-us" mtpsshortid="ff557553_VS.85_en-us" title="Device and Driver Development Tools">Device and Driver Development Tools</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff539547(v=vs.85).aspx" id="ff572268_VS.85_en-us" mtpsaliasid="" mtpsassetid="cff552f0-5dde-4fe7-996c-0a496d845edc_VS.85_en-us" mtpsshortid="ff539547_VS.85_en-us" title="Windows Device Testing Framework">Windows Device Testing Framework</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781402(v=vs.85).aspx" id="ff572272_VS.85_en-us" mtpsaliasid="" mtpsassetid="FAC4D538-4C2B-46C1-B971-63FF66C2922B_VS.85_en-us" mtpsshortid="hh781402_VS.85_en-us" title="Writing a WDTF SimpleIO plug-in for your device">Writing a WDTF SimpleIO plug-in for your device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh831857(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to determine if a custom  WDTF Simple I/O Action Plug-in is required for your device">How to determine if a custom  WDTF Simple I/O Action Plug-in is required for your device</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706277(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="How to customize I/O for your device using the WDTF Simple I/O Action Plug-in">How to customize I/O for your device using the WDTF Simple I/O Action Plug-in</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Provided WDTF SimpleIO plug-ins">Provided WDTF SimpleIO plug-ins</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Provided WDTF Simple I/O plug-ins</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>Simple I/O plug-ins are extensions to the Windows Driver Test Framework (WDTF) that implement generic device-specific I/O functionality. If a plug-in exists for the type of device being tested,  the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">Device Fundamental tests</a> use the WDTF Simple I/O interfaces to test I/O.
+
+</p>
+<p>
+
+The following table shows the device types that have Simple I/O plug-ins. The table also indicates if there are specific requirements for testing the device. These are the same requirements you need to follow when you use the  <a href="http://go.microsoft.com/fwlink/p/?linkid=254893">Windows Hardware Certification Kit (HCK)</a>. </p>
+<p>If your device type is not listed, you can create one, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh706277(v=vs.85).aspx">How to customize I/O for your device using the WDTF Simple I/O Action Plug-in</a>
+</p>
+<h2><a id="_provided_io_plugin_list"></a><a id="_PROVIDED_IO_PLUGIN_LIST"></a>Provided Simple I/O plugins and device requirements for testing and tips for troubleshooting</h2>
+<p></p>
+<p>
+
+The following section lists the device types that have Simple I/O plug-ins. The section also indicates if there are specific requirements for testing the device. These are the same requirements you need to follow when you use the  <a href="http://go.microsoft.com/fwlink/p/?linkid=254893">Windows Hardware Certification Kit (HCK)</a>. The section also shows tips you can use to troubleshoot and triage test failures.</p>
+<ul>
+<li><a href="#_audio">Audio devices</a></li>
+<li><a href="#_bluetooth">Bluetooth devices</a></li>
+<li><a href="#_cdrom">CDROM devices</a></li>
+<li><a href="#_disk">Disk devices</a></li>
+<li><a href="#_display">Display devices</a></li>
+<li><a href="#_gps">GPS devices</a></li>
+<li><a href="#_lan">LAN devices</a></li>
+<li><a href="#_mobile_broadband">Mobile Broadband devices</a></li>
+<li><a href="#_portable_devices">Portable devices</a></li>
+<li><a href="#_smartcard">Smart Card Readers</a></li>
+<li><a href="#_sensors">Sensor devices</a></li>
+<li><a href="#_volume">Volume</a></li>
+<li><a href="#_webcam">Webcam</a></li>
+<li><a href="#_wlan">WLAN</a></li>
+<li><a href="#_usb_mutt">USB Controller and HUB with Mutt</a></li>
+</ul>
+<p>For a list of Device Fundamental tests that have  specific requirements, see  <a href="#_devfund_test_req">Device Fundamental tests that have specific device configuration requirements</a></p>
+<h3><a id="_audio"></a><a id="_AUDIO"></a></h3>
+<table>
+<tr><th>   Audio   </th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>Device must have at least one render type endpoint connected (speakers, headphones, etc.).</p>
+</li>
+<li>
+<p> If the targeted audio device has HDMI video and audio output capability, to perform audio tests, the device must be connected to an HDMI audio capable device such as an HDMI Monitor or an A/V Receiver.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Plays a sine tune on render type endpoint.
+Captures audio on a capture type endpoint.
+</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>  Look at failing HRESULT to perform initial triage.</li>
+<li>   If test is not responding, use the kernel debugger on the target computer to narrow down the root-cause. </li>
+<li>
+<p>Run traces:</p>
+<ul>
+<li>
+<p> Start kernel traces: 
+</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c6fcae3c-b243-4c95-b098-191af026d7ce');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_c6fcae3c-b243-4c95-b098-191af026d7ce" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+xperf.exe -on LOADER+PROC_THREAD+CSWITCH+DISK_IO+HARD_FAULTS+PROFILE+INTERRUPT+NETWORKTRACE+DPC+Latency+POWER -stackwalk ProcessCreate+ProcessDelete+ImageLoad+ImageUnload+ThreadCreate+ThreadDelete+CSwitch+ReadyThread+Profile+DiskFlushInit+FileFlush+RegFlush+HardFault+VirtualAlloc+VirtualFree -BufferSize 1024 -MinBuffers 512 -MaxBuffers 1024 -f Audio_SimpleIo_Kernel.etl
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>Start audio traces:</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_acdbbd77-8f58-4b87-a99a-d28115d361af');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_acdbbd77-8f58-4b87-a99a-d28115d361af" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+xperf.exe -start AudioSimpleIo -on Microsoft-Windows-Audio+a6a00efd-21f2-4a99-807e-9b3bf1d90285:0xffff:0x3 -BufferSize 1024 -MinBuffers 512 -MaxBuffers 1024 -f Audio_SimpleIo.etl
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>Run tests.</li>
+<li>
+<p>Stop traces: </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_02fbaffa-f225-45ba-87f3-2338aabe5edd');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_02fbaffa-f225-45ba-87f3-2338aabe5edd" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+xperf.exe -stop "NT Kernel Logger" Audio_SimpleIo
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>Merge traces: </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_996ad421-59a6-4592-93f9-c00df14a90ac');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_996ad421-59a6-4592-93f9-c00df14a90ac" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+xperf.exe -merge Audio_SimpleIo_Kernel.etl Audio_SimpleIo.etl Audio_SimpleIo _Merged.etl
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>View the merged trace file with Xperf (<strong>xperfview</strong>).</li>
+</ul>
+</li>
+</ul>
+
+<h3><a id="_bluetooth"></a><a id="_BLUETOOTH"></a></h3>
+<table>
+<tr><th>Bluetooth   </th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>No special requirements.</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa362784(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">BluetoothFindFirstDevice function</strong></a> to find a Bluetooth device.</p>
+</li>
+</ul>
+
+<h3><a id="_cdrom"></a><a id="_CDROM"></a></h3>
+<table>
+<tr><th>CDROM     </th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>Drive letter is assigned.</li>
+<li>Media is present in the device.
+
+</li>
+<li>Files are present on the media inserted.
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>Finds files on the CD-ROM and performs read operation using the Win32 <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365467(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a> API.</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>On the test computer, navigate to the CD/DVD drive in question and confirm you can access the contents of the drives. </li>
+<li>The CD-Rom Simple I/O plug-in searches for files on CD/DVD to use to perform reads from. Ensure the CD/DVD has files encoded on disk. </li>
+<li>This Simple I/O plug uses the Win32 <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFile</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365747(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFile</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365467(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a> functions. Error returned are most likely Win32 error codes from these APIs.</li>
+</ul>
+
+<h3><a id="_disk"></a><a id="_DISK"></a></h3>
+<table>
+<tr><th>Disk</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>Disk has at least one associated volume 
+Drive letter is assigned.</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses the Simple I/O plug-in for <a href="#_volume">Volumes</a>.</p>
+</li>
+</ul>
+
+<h3><a id="_display"></a><a id="_DISPLAY"></a></h3>
+<p><strong>Requirements:</strong></p><table>
+<tr><th>Display Devices</th></tr>
+</table>
+<p> </p>
+<ul>
+<li>No special requirements for testing.</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses D3DX APIs to exercise graphics adapter.</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>   Look through the test logs, which report failures from the APIs that are used. </li>
+</ul>
+
+<h3><a id="_gps"></a><a id="_GPS"></a></h3>
+<table>
+<tr><th>GPS devices (and GPS devices in systems)</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>The device must be tested in a location with proper GPS signals.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses the I/O plug-in for <a href="#_sensors">Sensors</a>.</p>
+</li>
+</ul>
+
+<h3><a id="_lan"></a><a id="_LAN"></a></h3>
+<table>
+<tr><th>LAN</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>   Device has an IPv6 address.
+
+</p>
+</li>
+<li>
+<p>      Device has an IPv6 gateway address  (otherwise the WDTFREMOTESYSTEM parameter should be passed to the test with an IPv6 address that the test NIC can ping).
+</p>
+</li>
+<li>
+<p>The network operation status of the device  is IfOperStatusUp.</p>
+</li>
+<li>
+<p>Network device is not a WWAN or a WLAN device.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Pings IPv6 network gateway address.</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>Confirm that there is an existing IP address.   
+
+</li>
+<li>Confirm that there is a gateway IPv6 IP Address. </li>
+<li>Confirm the IP gateway address manually (use ping.exe).
+</li>
+</ul>
+
+<h3><a id="_mobile_broadband"></a><a id="_MOBILE_BROADBAND"></a></h3>
+<table>
+<tr><th>Mobile Broadband</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>No special requirements for testing.</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd430406(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IMbnInterface interface</strong></a> and calls GetHomeProvider, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd323100(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IMbnInterface::GetInterfaceCapability method</strong></a>, and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dd323102(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IMbnInterface::GetReadyState method</strong></a> APIs to exercise the device.</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>
+<p>The MobileBroadbandPlugin has limited areas it can fail.
+
+</p><ul>
+<li>"MobileBroadbandPlugin: Getting all Mobile Broadband interfaces returned failure."</li>
+<li>"MobileBroadbandPlugin: Getting the interface returned failure."</li>
+<li>"MobileBroadbandPlugin: Getting the DeviceId returned."</li>
+<li>"MobileBroadbandPlugin: Getting the interface capabilities returned failure"</li>
+<li>"MobileBroadbandPlugin: Getting the ReadyState returned failure."</li>
+</ul>
+
+<p></p>
+</li>
+<li>
+<p>The best place to investigate the failure is starting from the device and determine if it was unable to indicate Ready Information or Device Capabilities. To debug further OS Trace file need to be collected.
+</p><ul>
+<li>Run the command: <strong>netsh trace start wwan_dbg</strong></li>
+<li>Reproduce the issue. </li>
+<li>Run the command: <strong>netsh trace stop</strong></li>
+</ul>
+
+</li>
+</ul>
+
+<h3><a id="_portable_devices"></a><a id="_PORTABLE_DEVICES"></a></h3>
+<table>
+<tr><th>Portable Devices</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>Device has a storage component where folders and files can be created.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Reads and writes a file to the storage component on WPD device using WPD APIs.</p>
+</li>
+</ul>
+
+<h3><a id="_smartcard"></a><a id="_SMARTCARD"></a></h3>
+<table>
+<tr><th>Smart Card Readers</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>Device has Athena T0 test card inserted.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Reads and writes data to Athena T0 card inserted in the card reader.</p>
+</li>
+</ul>
+
+<h3><a id="_sensors"></a><a id="_SENSORS"></a></h3>
+<table>
+<tr><th>Sensors</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>The GPS device must be tested in a location with proper GPS signals.</p>
+</li>
+</ul>
+
+<h3><a id="_volume"></a><a id="_VOLUME"></a></h3>
+<table>
+<tr><th>Volume</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>Volume has a drive letter assigned.</li>
+<li>Volume has 5MB of free space.</li>
+<li>Volume is not write-protected.</li>
+<li>Media is present in the device.
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Creates a directory called WDTF_Volume_IO and creates a file called SimpleIO.tmp. The I/O is performed by calling <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa914377.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a>  and <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa910675.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFile</strong></a>  APIs to this file. </p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>On the test computer, navigate to the drive in question and confirm you can access the contents of the drive. </li>
+<li>Attempt to save a file to the drive. Ensure you can save and access it readily.</li>
+<li>This Simple I/O plug uses the Win32 <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa363858(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFile</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365747(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">WriteFile</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/aa365467(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ReadFile</strong></a> functions. Error returned are most likely Win32 error codes from these APIs.</li>
+</ul>
+
+<h3><a id="_webcam"></a><a id="_WEBCAM"></a></h3>
+<table>
+<tr><th>Webcam</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p> No special requirements for testing. </p>
+<p class="note"><strong>Note</strong>  The Simple I/O plug-in for webcam devices has a dependency on the MFPlat.dll file, which is not available on versions of Windows that do not include Media Player  and related technologies, for example Windows 7 N or Windows 7 KN. On these version of Windows, the Media Feature Pack must be installed. You can download the Media Feature Pack from MSDN.
+ For more information, see   <a href="http://go.microsoft.com/fwlink/?LinkID=266437">KB Article 968211</a>.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>Uses Media Foundation interfaces to capture video.</p>
+</li>
+</ul>
+
+<h3><a id="_wlan"></a><a id="_WLAN"></a></h3>
+<table>
+<tr><th>WLAN</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>See <a href="http://go.microsoft.com/fwlink/?LinkId=309556">Troubleshooting WLAN SimpleIO plugin failures that are logged by Device Fundamentals tests</a> in the HCK  documentation.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>See <a href="http://go.microsoft.com/fwlink/?LinkId=309556">Troubleshooting WLAN SimpleIO plugin failures that are logged by Device Fundamentals tests</a> in the HCK  documentation.</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p>
+<ul>
+<li>
+<p>See <a href="http://go.microsoft.com/fwlink/?LinkId=309556">Troubleshooting WLAN SimpleIO plugin failures that are logged by Device Fundamentals tests</a> in the HCK  documentation.</p>
+</li>
+</ul>
+<h3><a id="_usb_mutt"></a><a id="_USB_MUTT"></a></h3>
+<table>
+<tr><th>USB Controller and HUB with Mutt</th></tr>
+</table>
+<p> </p>
+<p><strong>Requirements:</strong></p><ul>
+<li>
+<p>No special requirements for testing.</p>
+<p>    Device has a Symbolic link.</p>
+</li>
+</ul>
+
+<p><strong>Type of I/O plug-in performs:</strong></p><ul>
+<li>
+<p>USB transfer tests using the Microsoft USB Test Tool (MUTT) device.  Transfer types covered are control, bulk, isochronous, interrupt, and streams (only if  SuperMUTT is plugged into USB 3.0 controller)</p>
+</li>
+</ul>
+
+<p><strong>How to triage test failures:</strong></p><ul>
+<li>Start by examining the messages in the test log files. </li>
+<li>Further investigate by enabling Event Tracing for Windows (ETW) on the USB 2.0 and USB 3.0 stacks.  <ul>
+<li>For USB 2.0, see Microsoft Windows USB Core Team Blog - <a href="http://go.microsoft.com/fwlink/?LinkId=266442">ETW in the Windows 7 USB core stack</a></li>
+<li>For USB 3.0, see the Microsoft Windows USB Core Team Blog  - <a href="http://go.microsoft.com/fwlink/?LinkId=266443">How to Capture and Read USB ETW Traces in Windows 8</a></li>
+</ul>
+</li>
+</ul>
+
+<h2><a id="_devfund_test_req"></a><a id="_DEVFUND_TEST_REQ"></a>Device Fundamental tests that have specific device configuration requirements</h2>
+<p>Before you run the following <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">Device Fundamental tests</a>, the  devices on the test computer must  be configured according to the requirements described for the specific device types.  
+ See the list of <a href="#_provided_io_plugin_list">the provided Simple I/O plug-ins and device requirements.</a></p>
+<ul>
+<li>PCI Root Port Surprise Remove Test (PCI devices only)
+</li>
+<li>Device Path Exerciser Test (Certification)
+</li>
+<li>Sleep and PNP (disable and enable) with IO Before and After (Certification)
+</li>
+<li>Plug and Play Driver Test (Certification)
+</li>
+<li>Concurrent Hardware And Operating System (CHAOS) Test (Certification)
+</li>
+<li>Reinstall with IO Before and After (Certification)
+</li>
+<li>Device Install Check For File System Consistency (Certification)
+</li>
+<li>Device Install Check For Other Device Stability (Certification)
+</li>
+</ul>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj673011(v=vs.85).aspx">Device Fundamentals Tests</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454841(v=vs.85).aspx">How to How to test a driver at runtime using Visual Studio</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj674802(v=vs.85).aspx">How to How to test a driver at runtime from a Command Prompt</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454837(v=vs.85).aspx">How to select and configure the Device Fundamentals tests</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh949802(v=vs.85).aspx">Troubleshooting the Device Fundamentals tests</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [dtf\dtf]:%20Provided WDTF Simple I/O plug-ins%20 RELEASE:%20(11/16/2013)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/16/2013</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="nmxRV7qOCydGbBSoG0TxOttwAMevdK2B6yKY273Y7W2Up0m2M05XQtyUyh9C6iI1fZeGN5CfQqnD8TaNmfK20VPhS7B8LFm7CN72s_XlTlVXl_I3XocJanTE6RLdktI1Pm1acg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/hh781398(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="IE IE6 ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fhh781398(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="QmUycWYZQQaHQSgHjIDsT4uvjQJM-8S-NR_9QEA3GqJBTZuPkHDG-K50F5QByeP0EhCzdjwheIwAQr0N-HzQNGbaKoZiP6gO25uUWfttX7L55ox33Y-BCe-0TBiSXltVBezcnQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/hh781398(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"c7583e99-339d-46be-98a4-2b772bb7e834\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/hh781398(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:54 GMT -->
+</html>

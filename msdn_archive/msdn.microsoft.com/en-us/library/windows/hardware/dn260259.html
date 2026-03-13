@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn260259.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:02:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn260259.html" />
+        <title>Communications Audio Fidelity Test (System, Manual)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn260259(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260259(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260259(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn260259(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="BF1CA939-3:56:46 AM" />
+
+<meta name="Search.ShortId" content="dn260259" />
+
+<meta name="ms.shortidmsdn" content="dn260259" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined779b.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395053806&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn260259.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="normal" href="dn423132-3.html" title="Requirements">Requirements</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="br230803.html" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124227.html" id="dn260195_WIN.10_en-us" mtpsaliasid="" mtpsassetid="a80f332d-7a43-4312-b524-6cf51aab64ca_WIN.10_en-us" mtpsshortid="jj124227_WIN.10_en-us" title="Windows HCK User’s Guide">Windows HCK User’s Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="jj124928.html" id="dn293582_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e1472367-3b58-4f62-acb7-5730a440edd9_WIN.10_en-us" mtpsshortid="jj124928_WIN.10_en-us" title="Technical Reference">Technical Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998741.html" id="dn260292_WIN.10_en-us" mtpsaliasid="" mtpsassetid="4aee8fd9-87ff-4c6c-9eaa-028409549a52_WIN.10_en-us" mtpsshortid="hh998741_WIN.10_en-us" title="Test Reference">Test Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="hh998390.html" id="dn375909_WIN.10_en-us" mtpsaliasid="" mtpsassetid="30a0007a-2953-4b9c-96e0-41670db41aa1_WIN.10_en-us" mtpsshortid="hh998390_WIN.10_en-us" title="System.Fundamentals Testing">System.Fundamentals Testing</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="hh997993.html" id="dn375889_WIN.10_en-us" mtpsaliasid="" mtpsassetid="10e27e24-38d6-42b3-b54f-ca8ab31f7271_WIN.10_en-us" mtpsshortid="hh997993_WIN.10_en-us" title="System.Fundamentals Tests">System.Fundamentals Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123850.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="AC3 Test (System)">AC3 Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124878.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ACPI Logo Test">ACPI Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124392.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Audio Logo Test (System)">Audio Logo Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124169.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="AutoMemoryBenchmark">AutoMemoryBenchmark</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124526.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Drive Encryption BIOS Interface Logo Test">BitLocker Drive Encryption BIOS Interface Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123578.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Drive Encryption USB BIOS Logo Test">BitLocker Drive Encryption USB BIOS Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124417.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Tpm And Recovery Password tests for AOAC devices with Legacy PCRs">BitLocker Tpm And Recovery Password tests for AOAC devices with Legacy PCRs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124224.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Tpm And Recovery Password tests for AOAC devices with PCR 7">BitLocker Tpm And Recovery Password tests for AOAC devices with PCR 7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124540.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Tpm and Recovery Password tests for Non-AOAC devices for Legacy PCRs">BitLocker Tpm and Recovery Password tests for Non-AOAC devices for Legacy PCRs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260213.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Tpm and Recovery password tests for Non-AOAC devices with PCR 7">BitLocker Tpm and Recovery password tests for Non-AOAC devices with PCR 7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125147.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BitLocker Tpm+PIN+ USB and Recovery Password tests for NON ARM devices">BitLocker Tpm+PIN+ USB and Recovery Password tests for NON ARM devices</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998759.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Boot from USB (ARM)">Boot from USB (ARM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260294.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Boot from USB (ServerOperating System)">Boot from USB (ServerOperating System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998320.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Boot Test (SYSTEM)">Boot Test (SYSTEM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123802.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Check PM Profile">Check PM Profile</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125287.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Class Driver Audio Logo Test (System)">Class Driver Audio Logo Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997938.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Class Driver Round Trip Test (System, Manual)">Class Driver Round Trip Test (System, Manual)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn260259.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Communications Audio Fidelity Test (System, Manual)">Communications Audio Fidelity Test (System, Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123726.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Connected Standby Duration">Connected Standby Duration</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247323.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Connected Standby Hardware Security Test">Connected Standby Hardware Security Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124387.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Connected Standby IO Stress">Connected Standby IO Stress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125245.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Connected Standby Stress with Driver Verifier's Concurrency Stress (Logo)">Connected Standby Stress with Driver Verifier's Concurrency Stress (Logo)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293615.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Content Protection- Playing H.264 and AAC media file in protected environment. HCK test - System Test.">Content Protection- Playing H.264 and AAC media file in protected environment. HCK test - System Test.</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293696.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Content Protection- Playing VC1 and WMAPro  media file in protected environment. HCK test - System Test.">Content Protection- Playing VC1 and WMAPro  media file in protected environment. HCK test - System Test.</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998768.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crypto Capabilities - Entropy">Crypto Capabilities - Entropy</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124197.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crypto Capabilties - Functionality">Crypto Capabilties - Functionality</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124737.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crypto Capabilities - Performance">Crypto Capabilities - Performance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124733.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Crypto Capabilities - UEFI Hash Provider">Crypto Capabilities - UEFI Hash Provider</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124054.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CSRT Validation for ARM">CSRT Validation for ARM</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998510.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DE OOBE_EOW Sequence Tests">DE OOBE_EOW Sequence Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247299.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DE Perf Settings Test">DE Perf Settings Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998950.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Debug Capability Test (Logo)">Debug Capability Test (Logo)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260296.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device Power State Transition Test (System)">Device Power State Transition Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124586.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Disk Stress (SYSTEM)">Disk Stress (SYSTEM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293730.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DockUndock">DockUndock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247477.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Driver Firmware Configuration Test">Driver Firmware Configuration Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125219.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test (System) - Win7">DRM Test (System) - Win7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124556.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DRM Test (System) - Win8">DRM Test (System) - Win8</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283517.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI HybridPresent">DXGI HybridPresent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn251514.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI HybridPresent - PnPStop">DXGI HybridPresent - PnPStop</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn251502.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DXGI HybridPresent - PnPStop (FL9.1)">DXGI HybridPresent - PnPStop (FL9.1)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125327.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Fidelity Test (System, Manual)">Fidelity Test (System, Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj712696.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Firmware Post Time test">Firmware Post Time test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124838.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Firmware Update test">Firmware Update test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125016.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hal timer tests (HCT)">Hal timer tests (HCT)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997936.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hardware Offload of Audio Processing Test (System)">Hardware Offload of Audio Processing Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247554.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hardware Reserved Memory Test">Hardware Reserved Memory Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283576.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hybrid - Independent Driver Update (Discrete GPU)">Hybrid - Independent Driver Update (Discrete GPU)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283578.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Hybrid - Independent Driver Update (Integrated GPU)">Hybrid - Independent Driver Update (Integrated GPU)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283549.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_AppIdle">HybridPowerManagement_AppIdle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283564.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_AppIdleMonitorOff">HybridPowerManagement_AppIdleMonitorOff</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283584.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_AppRunning">HybridPowerManagement_AppRunning</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn283591.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_AppRunningMonitorOff">HybridPowerManagement_AppRunningMonitorOff</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn268575.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_NoApp">HybridPowerManagement_NoApp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn268568.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="HybridPowerManagement_NoAppMonitorOff">HybridPowerManagement_NoAppMonitorOff</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123526.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Position Test (System)">KS Position Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124468.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Topology Test (System) - Win7">KS Topology Test (System) - Win7</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123488.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Topology Test (System) - Win8">KS Topology Test (System) - Win8</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn508133.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="KS Topology Test (System) - WinBlue">KS Topology Test (System) - WinBlue</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998120.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lullaby Test (System)">Lullaby Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124686.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MultiPhaseResume">MultiPhaseResume</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998981.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NX Test">NX Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123721.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PC Resume">PC Resume</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124420.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PCI Hardware Compliance Test For Systems">PCI Hardware Compliance Test For Systems</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124870.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PerfX2 D2D Bench Scenarios">PerfX2 D2D Bench Scenarios</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998077.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Pre-boot Firmware Testing">Pre-boot Firmware Testing</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123532.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Rapidfile Test (SYSTEM)">Rapidfile Test (SYSTEM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293694.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Resume From Connected Standby">Resume From Connected Standby</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124433.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Round Trip Test (System, Manual)">Round Trip Test (System, Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123773.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Runtime Power Focused Stress with Driver Verifier's Concurrency Stress (Logo)">Runtime Power Focused Stress with Driver Verifier's Concurrency Stress (Logo)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998056.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ScatterGather (SYSTEM)">ScatterGather (SYSTEM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124605.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SD-Ioctl Test">SD-Ioctl Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123823.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Secure Boot Logo Test">Secure Boot Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124137.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Secure Boot Manual Logo Test">Secure Boot Manual Logo Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124204.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Signed Driver Check (CheckLogo)">Signed Driver Check (CheckLogo)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124188.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SMBIOS HCT">SMBIOS HCT</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998318.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Storage Performance CS">Storage Performance CS</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998465.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Syscache (SYSTEM)">Syscache (SYSTEM)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124852.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Embedded Signature Verification">System - Embedded Signature Verification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997786.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="System - Sleep and PNP (disable and enable) with IO Before and After (Certification)">System - Sleep and PNP (disable and enable) with IO Before and After (Certification)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998628.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TCG TPM Integration Test (Manual)">TCG TPM Integration Test (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124262.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TDI filters and LSPs are not allowed">TDI filters and LSPs are not allowed</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125076.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Time of the day test">Time of the day test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998653.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 1.2 TCG OS Interface Client Test">TPM 1.2 TCG OS Interface Client Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998086.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 1.2 TCG OS Interface Server Test">TPM 1.2 TCG OS Interface Server Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998646.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 1.2 TCG Physical Presence Interface 1.2 Test">TPM 1.2 TCG Physical Presence Interface 1.2 Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998241.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 1.2 UEFI Preboot Interface Test">TPM 1.2 UEFI Preboot Interface Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247564.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Clock Tests">TPM 2.0 - Clock Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247529.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Cryptographic Operations and RNG">TPM 2.0 - Cryptographic Operations and RNG</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247559.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Functional">TPM 2.0 - Functional</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247172.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Hardware Interface">TPM 2.0 - Hardware Interface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293704.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - NV Storage, Policy, Error Handling and Attestation">TPM 2.0 - NV Storage, Policy, Error Handling and Attestation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247589.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Raw Mode Commands">TPM 2.0 - Raw Mode Commands</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293593.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Reliability">TPM 2.0 - Reliability</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247506.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Required Security Patches Tests">TPM 2.0 - Required Security Patches Tests</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247401.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Self Test">TPM 2.0 - Self Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293792.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Stress">TPM 2.0 - Stress</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247357.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 - Supplemental test">TPM 2.0 - Supplemental test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998545.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 TCG Physical Presence Interface 1.2 Test">TPM 2.0 TCG Physical Presence Interface 1.2 Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123858.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM 2.0 UEFI Preboot Interface Test">TPM 2.0 UEFI Preboot Interface Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998296.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Attestation Test">TPM Attestation Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125313.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Based Virtual Smart Card Interface Test">TPM Based Virtual Smart Card Interface Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293575.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Extend Operation Performance">TPM Extend Operation Performance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998378.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM KSP Custom Property Test">TPM KSP Custom Property Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260276.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM OOBE Provisioning">TPM OOBE Provisioning</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998513.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Platform Crypto Provider Key Storage Provider Test">TPM Platform Crypto Provider Key Storage Provider Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998045.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Revoke Attestation Test">TPM Revoke Attestation Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998908.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM TCG OS Interface Test (Manual)">TPM TCG OS Interface Test (Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123808.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Verify Existence for Connected Standby Test">TPM Verify Existence for Connected Standby Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123903.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TPM Win32_TPM Class Test">TPM Win32_TPM Class Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998581.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UAA Test (System, Manual)">UAA Test (System, Manual)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh998298.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UEFI Firmware Certification Test">UEFI Firmware Certification Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj203417.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UEFI Tpr Test">UEFI Tpr Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn247570.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Upgrade to next version of Windows via Media">Upgrade to next version of Windows via Media</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123655.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Exposed Port System Test">USB Exposed Port System Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123594.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB Internal Device Idle">USB Internal Device Idle</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124672.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB3 Termination">USB3 Termination</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124081.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB xHCI Register System test">USB xHCI Register System test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997864.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB xHCI Transfer Speed Test">USB xHCI Transfer Speed Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293560.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Validate HAL Extension have no Imports">Validate HAL Extension have no Imports</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh997835.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Validate HAL Extension loaded successfully">Validate HAL Extension loaded successfully</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260217.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Validates image signatures.">Validates image signatures.</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj125217.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verifies PS2 Devices have a unique Plug and Play ID">Verifies PS2 Devices have a unique Plug and Play ID</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj123959.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify HAL Extension serviceable">Verify HAL Extension serviceable</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn260336.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Verify PVP-OPM Handshake with the display driver">Verify PVP-OPM Handshake with the display driver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124788.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Wave Test (System)">Wave Test (System)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293678.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WindowsToGo Boot Test">WindowsToGo Boot Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn293564.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="WindowsToGo UEFI USB Class Entry Test">WindowsToGo UEFI USB Class Entry Test</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="jj124012.html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="xHCI Debug Capability Compliance (Logo)">xHCI Debug Capability Compliance (Logo)</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a data-tochassubtree="true" href="dn247454.html" id="dn375930_WIN.10_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="XPerf D2D Performance Tests">XPerf D2D Performance Tests</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="../../../../../i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Communications Audio Fidelity Test (System, Manual)</h1>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <div class="alert">
+        <table>
+          <tr>
+            <th align="left">
+              <img id="note" alt="note" src="../../../../../i.msdn.microsoft.com/areas/global/content/clear.gif" title="note" xmlns="" class="cl_IC101471" />Note </th>
+          </tr>
+          <tr>
+            <td>
+					This is a system-specific implementation of an existing test. For more information on this test, see <a href="dn390880.html">Communications Audio Fidelity Test (Manual) - Certification</a>.<p></p></td>
+          </tr>
+        </table>
+        <p>
+          
+        </p>
+      </div>
+      <h2 class="heading">Test details</h2>
+      <div id="sectionSection0" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>
+                <strong>Associated requirements</strong>
+              </p>
+            </td>
+            <td>
+              <p>System.Fundamentals.SystemAudio.Audio</p>
+              <p>
+                <a href="http://go.microsoft.com/fwlink/?LinkID=254482">See the system hardware requirements.</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Platforms</strong>
+              </p>
+            </td>
+            <td>
+              <p>
+									Windows RT 8.1
+									<br />
+									Windows 8.1 x64
+									<br />
+									Windows 8.1 x86
+								</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Expected run time</strong>
+              </p>
+            </td>
+            <td>
+              <p>~15 minutes</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Categories</strong>
+              </p>
+            </td>
+            <td>
+              <p>Certification</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>
+                <strong>Type</strong>
+              </p>
+            </td>
+            <td>
+              <p>Manual</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="heading">Running the test</h2>
+      <div id="sectionSection1" class="section">
+        <p>Before you run the test, complete the test setup as described in the test requirements: <a href="jj123567.html">Audio Device Testing Prerequisites</a>.</p>
+      </div>
+      <a id="spec">
+        
+      </a>
+      <h2 class="heading">Troubleshooting</h2>
+      <div id="sectionSection2" class="section">
+        <p>For additional troubleshooting information, see <a href="jj123860.html">Troubleshooting Audio Testing</a>.</p>
+      </div>
+      <h2 class="heading">
+        <span id="seeAlsoNoToggle">See Also</span>
+      </h2>
+      <div id="seeAlsoSection" class="section">
+        <h4 class="subHeading">Concepts</h4>
+        <a href="hh997993.html">System.Fundamentals Tests</a>
+        <br />
+        <br />
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="LHc0_dBABIBe0Lb80A-t64vYSAYH5QaU6k0V9yCR9ath1IRnnWxb_whF4RWH0TSCEO8UwzCd0RSWkX8DcERGfVfirWB5tKFp2uzgpsFm65scPtBSWNLri7ub8kthsXaxzfCd3g2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn260259.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn260259.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="HxWN5l3cwpzNlV5dGLQsGXAHRPB2tR-OGXXhwaS3xnlhELwZiJzYylX-Yy1GhauOoi9d_TJbIv4XZTYaWP-Vwt575p-1rzMzZMN_btdzzDXGBRTT6j46juOb9S5w0b4zhdCYbg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn260259(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"a52a4198-4593-4bb2-b31b-fb522e7225d0\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn260259.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:03:01 GMT -->
+</html>

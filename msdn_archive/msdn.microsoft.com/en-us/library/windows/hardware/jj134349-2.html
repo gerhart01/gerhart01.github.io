@@ -1,0 +1,3480 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134349.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" />
+        <title>Device.DevFund Requirements</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/jj134349(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349(d=default,l=en-us,v=win.10).aspx" />
+
+<meta name="MN" content="61C41DD0-9:11:57 AM" />
+
+<meta name="Search.ShortId" content="jj134349" />
+
+<meta name="ms.shortidmsdn" content="jj134349" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395072717&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134349.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833792" title="Get started">Get started</a>
+            <a class="active" href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423132" title="Requirements">Requirements</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh833788" title="Hardware Certification Kit">Hardware Certification Kit</a>
+            <a class="normal" href="http://msdn.microsoft.com/en-us/library/windows/hardware/br230803.aspx" title="Dashboard services">Dashboard services</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh852371" title="Resources">Resources</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/hh749017" title="Windows 7">Windows 7</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134357.aspx" id="dn455080_WIN.10_en-us" mtpsaliasid="" mtpsassetid="e57b5870-01c6-40da-b956-72a7f57a8e0d_WIN.10_en-us" mtpsshortid="jj134357_WIN.10_en-us" title="Device Requirements">Device Requirements</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134354.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Audio">Device.Audio</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134352.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Buscontroller">Device.Buscontroller</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134364.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Connectivity">Device.Connectivity</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134349.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.DevFund">Device.DevFund</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134351.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Digitizer">Device.Digitizer</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134361.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Display">Device.Display</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134360.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Graphics">Device.Graphics</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134363.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Imaging">Device.Imaging</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134359.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Input">Device.Input</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134350.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Media">Device.Media</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134362.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Network">Device.Network</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134353.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Portable">Device.Portable</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134356.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Storage">Device.Storage</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj134355.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Device.Streaming">Device.Streaming</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+  <h1 class="title">Device.DevFund Requirements</h1>
+  
+  <p>Updated: September 4, 2013</p><div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <h2 class="heading">Device.DevFund.CDA</h2>
+      <div id="sectionSection0" class="section">
+        <p>Custom Driver Access for privileged application usage.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.CDA.Application</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.CDA.Application</h3>
+        <div class="subSection">
+          <p>Custom Driver Access</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.CDA</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>If a device driver supports a privileged app performing Custom Driver Access, it must declare a restricted interface.  By declaring a restricted interface, the following requirements must be met: </p>
+          <p>Assert that the device io control interfaces provided by this device driver are intended to be accessed by a privileged app running in app container accessing hardware functionality using CreateDeviceAccessInstance() and IDeviceIoControl() on Windows 8.   </p>
+          <p>The restricted interface cannot be opened directly from an app container.</p>
+          <p>A device driver declares an interface is restricted by setting the DEVPKEY_DeviceInterface_Restricted property to true on that interface.   </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Color</h2>
+      <div id="sectionSection1" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Color.DeviceColorProfilesInstall</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Color.DeviceColorProfilesInstall</h3>
+        <div class="subSection">
+          <p>Device that uses an ICC profile properly installs the profile and is compliant with the appropriate profile specification</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Color</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices that use a vendor-supplied International Color Consortium (ICC) profile or profiles must associate the profile or profiles with the device.Devices that create sRGB output can associate the sRGB Color Space Profile.icm profile (that is, the Windows default ICC profile) with the device. Devices that are sRGB-compliant are not required to provide an ICC profile.Note: For display monitors that are integrated into a system and are not required to support Plug and Play for their installed LCD display, the ICC profile must be installed manually by using an appropriate monitor information (INF) file. OEMs should install the correct configuration as part of the operating system pre-installation process. If necessary, the INF file will be available to the user for manual reinstallation. Mobile computers that have dual-scan supertwist nematic (DSTN) or reflective LCD displays do not require ICC profiles.Design Notes:By default, Windows supports devices that create sRGB output. Devices that use an output other than sRGB can use an INF file to install an ICC profile that is appropriate to the preferred display resolution, as identified in the extended display identification data (EDID), at 32 bits per pixel (bpp). For an LCD or other non-CRT display device, the profile should be based on the native display mode, or resolution and color depth, for which the display is designed.The ICM APIs and functionality are defined in the Microsoft Platform SDK and the Windows Driver Kit. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.DriverFramework.AllDrivers</h2>
+      <div id="sectionSection2" class="section">
+        <p>Driver framework requirements applicable to all drivers </p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.DriverFramework.AllDrivers.WDFLoadGroup</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.AllDrivers.WDFLoadGroup</h3>
+        <div class="subSection">
+          <p>Only Windows Driver Framework (WDF) can use the WdfLoadGroup driver load order group</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.AllDrivers</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Only WDF (Wdf01000.sys) should use the WdfLoadGroup driver load order group.  User-Mode Driver Framework (UMDF) and Kernel-Mode Driver Framework (KMDF) drivers should not use this driver load order group, because that prevents installation of WDF boot start drivers.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.DriverFramework.KMDF</h2>
+      <div id="sectionSection3" class="section">
+        <p>Driver framework requirements for KMDF</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.DriverFramework.KMDF.HandleDDIFailures</p>
+              <p>Device.DevFund.DriverFramework.KMDF.Reliability</p>
+              <p>Device.DevFund.DriverFramework.KMDF.WDFProperINF</p>
+              <p>Device.DevFund.DriverFramework.KMDF.WDFRedistributables</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.KMDF.HandleDDIFailures</h3>
+        <div class="subSection">
+          <p>Kernel Mode Driver Framework (KMDF) drivers are designed to handle DDI failures gracefully</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.KMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel Mode Driver Framework (KMDF) drivers must handle failure gracefully. When a device driver interface (DDI) returns an NTSTATUS code, the driver must check the return value before the driver proceeds.If a failure occurs, DDI out parameters should not be used. Use of these parameters will cause drivers to crash or stop responding. Use of these parameters will also lead to bug checks and other unreliable behavior. Design Notes:The WDFTester tool from the Windows® Driver Kit (WDK) is used for fault injection on the DDIs during logo testing. This tool resides in the following location in the WDK:%wdk%\WDKVersionNumber\tools\wdf\wdftesterFor more information about the WDFTester tool, visit the following website:http://msdn.microsoft.com/en-us/library/ff556110.aspx The Device Disable Enable test, the Sleep test, and the Plug and Play test from WDK will be used according to the WDFTester tool. The DDIs that are called from the driver during these tests will be fault injected to return unsuccessful status codes. When a DDI returns an unsuccessful status code, out parameters of that DDI may also be assigned to NULL values. If a DDI failure occurs, out parameters should be used according to the documented behavior.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.KMDF.Reliability</h3>
+        <div class="subSection">
+          <p>Kernel Mode Driver Framework (KMDF) drivers are architected to maximize reliability and stability and do not "leak" resources such as memory and KMDF objects</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.KMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Kernel-Mode Driver Framework (KMDF) drivers must use pool memory responsibly. Handles that the drivers pass to device driver interfaces (DDIs) must conform to the pattern of the parameter. The state of the drivers must be consistent with the use of WDFREQUEST objects and WDFQUEUE objects. Event callback functions that the driver registers must adhere to interrupt request level (IRQL) restrictions.Design Notes:For more information about developing drivers that meet this requirement, visit the following websites:http://msdn.microsoft.com/en-us/library/aa973499.aspxhttp://www.microsoft.com/whdc/driver/wdf/KMDF.mspxThe following tools can be enabled to validate this requirement for all KMDF drivers:</p>
+          <p>Windows® Driver Foundation (WDF) Verifier.</p>
+          <p>Handle tracking. Handle tracking will be enabled on all KMDF objects.</p>
+          <p>Enhanced Verifier for Framework 1.9 KMDF drivers. Enhanced Verifier is new for Framework 1.9. This tool can be enabled by using the EnhancedVerifierOptions registry value. To enable Enhanced Verifier, set the following registry values for the driver's Parameters\Wdf key:</p>
+          <p>HKLM\System\CurrentControlSet\Services\\Parameters\WdfEnhancedVerifierOptions   REG_DWORD  1VerifierOn                REG_DWORD  1TrackHandles              MULTI_SZ        * </p>
+          <p>Driver Verifier. To enable Driver Verifier, use the following command:</p>
+          <p>Verifier /flags 0xfb /driver This command will run the KMDF driver under Driver Verifier with all flags set except the Low Resource Simulation flag. For more information about Driver Verifier, visit the following website: http://msdn.microsoft.com/en-us/library/ff545448.aspx. In the Windows Hardware Certification Kit (Windows HCK), the WDF Test can be run to validate this requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.KMDF.WDFProperINF</h3>
+        <div class="subSection">
+          <p>Windows Driver Framework (WDF) driver INF files are properly structured</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.KMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All information (INF) files in Windows Driver Foundation (WDF) driver packages must call WDF-specific sections properly. Correctly structured INF sections help ensure that the driver will be installed properly. However, even when a driver is installed, a poorly or wrongly configured section can cause unpredictable problems during the operation of the driver or device. These problems can be prevented by following the guidelines for WDF INF settings.To meet this requirement, all WDF INF files must have the following:</p>
+          <p>A coinstaller section, as follows:[DDInstall.Coinstallers]CopyFiles=AddReg= </p>
+          <p>A WDF section, as follows:</p>
+          <p>For Kernel-Mode Driver Framework (KMDF) drivers:[DDInstall.Wdf]KmdfService= &lt;ServiceName&gt;, &lt;Kmdf_Install&gt;[Kmdf_Install]KmdfLibraryVersion=For User-Mode Driver Framework (UMDF) drivers:[DDInstall.Wdf]UmdfService=&lt;ServiceName&gt;,&lt;Umdf_Install&gt;UmdfServiceOrder=UmdfDispatcher [Only for USB Drivers and Drivers with file handle I/O targets]=UmdfImpersonationLevel[optional]=[Umdf_Install]UmdfLibraryVersion=DriverCLSID=ServiceBinary= </p>
+          <p>All UMDF driver INF files must have a WUDFRD service installation section, as follows:</p>
+          <p>[WUDFRD_ServiceInstall]DisplayName = "Windows Driver Foundation - User-mode Driver FrameworkReflector"ServiceType = 1StartType = 3ErrorControl = 1ServiceBinary = %12%\WUDFRd.sysLoadOrderGroup = Base </p>
+          <p>All WDF drivers that use a WinUSB driver must have the following service installation settings:</p>
+          <p>[WinUsb_ServiceInstall]DisplayName = "WinUSB Driver"ServiceType = 1StartType = 3ErrorControl = 1ServiceBinary = %12%\WinUSB.sys </p>
+          <p>Service names, hardware IDs (HWIDs), display names, and UMDF class identifiers (CLSIDs) cannot be pasted from WDF samples.</p>
+          <p>Design Notes:For more information about WDF-specific INF settings, visit the following websites:http://www.microsoft.com/whdc/driver/wdf/wdfbook.mspxhttp://msdn.microsoft.com/en-us/library/ff560526.aspx http://msdn.microsoft.com/en-us/library/ff560526.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.KMDF.WDFRedistributables</h3>
+        <div class="subSection">
+          <p>Windows Driver Framework (WDF) drivers are packaged to contain the RTM free versions of redistributables</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.KMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All Windows Driver Framework (WDF) drivers that are submitted for a logo or signature through the Windows Hardware Certification Kit (Windows HCK) must meet the following guidelines for packaging redistributables, or co-installers: </p>
+          <p>All WDF drivers, for all versions of the WDF, for all operating systems can be submitted for a logo or signature. </p>
+          <p>Redistributables that are included in the driver package must be the release to manufacturing (RTM) fre version of the redistributables. Some WDF version 1.7 coinstallers that were available on the Microsoft Connect website caused serious installation problems. Microsoft has removed these coinstallers from Connect and replaced them with fixed coinstallers. The problematic WDF coinstallers were version 1.7.6001.0. The fixed coinstallers are version 1.7.6001.18000. For logo submissions, drivers should use the version 1.7.6001.18000 co-installers.</p>
+          <p>Kernel-Mode Driver Framework (KMDF) has coinstallers for versions 1.0, 1.1, 1.5, 1.7, 1.9 and 1.11. You can use all of these coinstallers for certification submissions, provided that you use the RTM fre versions. User-Mode Driver Framework (UMDF) has coinstallers for versions 1.5, 1.7, 1.9 and 1.11. You can use all of these coinstallers in your driver package, provided that you use the RTM fre versions.WDF version 1.11 coinstallers that are released via Microsoft Connect have the most enhanced version of the framework. We advise partners to use the latest version of the framework to develop and distribute WDF drivers.Design Notes:WDF version 1.11 drivers can install the frameworks using an MSU update package instead of using the 1.11 coinstallers. If WDF version 1.11 drivers use the MSU install package then KMDF drivers don't use a co-installer, but WDF version 1.11 UMDF drivers still reference the inbox co-installer named WudfCoinstaller.dll. WudfCoinstaller.dll is inbox to Windows 8, and UMDF drivers aren't packaged with it, only the INF file should reference this co-installer.WDF 1.11 is inbox to Windows 8, so before Windows 8 RTM WDF 1.11 drivers can be logo'ed for Windows 8 if the driver installs without referring to the 1.11 coinstaller from its INF file. But UMDF driver must still reference the inbox coinstaller wudfcoinstaller.dll, for more information regarding WDF driver installation without a coinstaller please visit the following link:http://blogs.msdn.com/b/iliast/archive/2009/08/13/wdf-logo-requirements-regarding-coinstallers.aspx  The WDF 1.11 coinstallers and the MSU package are distributed via Microsoft Connect. Partners who want to have driver packages signed for down-level operating systems prior to WDF 1.11 RTM should use the WDF 1.9 RTM co-installers. For more information about WDF driver installation, visit the following website: http://msdn.microsoft.com/en-us/library/ff544213.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.DriverFramework.UMDF</h2>
+      <div id="sectionSection4" class="section">
+        <p>Driver framework requirements for UMDF</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.DriverFramework.UMDF.Reliability</p>
+              <p>Device.DevFund.DriverFramework.UMDF.WDFProperINF</p>
+              <p>Device.DevFund.DriverFramework.UMDF.WDFRedistributables</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.UMDF.Reliability</h3>
+        <div class="subSection">
+          <p>User Mode Driver Framework (UMDF) drivers must be secure, stable, reliable and not have application compatibility issues.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.UMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To help ensure that all User-Mode Driver Framework (UMDF) drivers meet security standards, are stable and reliable, and do not have application compatibility issues, drivers must not have any object leaks. Object leaks can be diagnosed by enabling object tracking. If a memory leak occurs, set the Reference Count Tracking setting to "On." This setting logs the history for "add of reference" and "release of reference" counts.These features can be set to "On" by using the following registry values:HKLM\Software\Microsoft\WindowsNT\CurrentVersion\WUDF\Services\{193a1820-d9ac-4997-8c55-be817523f6aa}TrackObjects REG_DWORD 1TrackRefCounts REG_DWORD 1UMDF drivers must also meet the following requirements:</p>
+          <p>The drivers must not attempt to use invalid handles.</p>
+          <p>The drivers must use critical sections and file locks properly. The primary purpose of the locks test is to help ensure that the application properly uses critical sections.</p>
+          <p>The drivers must not cause heap memory corruption.</p>
+          <p> The drivers must correctly use virtual address space manipulation functions, such as VirtualAlloc, VirtualFree, and MapViewOfFile.</p>
+          <p> The drivers must not hide access violations by using structured exception handling.</p>
+          <p> The drivers must correctly use thread local storage functions.</p>
+          <p> The drivers must use COM correctly.</p>
+          <p>Partners can verify that the drivers meet these requirement by enabling Microsoft® Application Verifier's handles, locks, heaps, memory, exceptions, and Transport Layer Security (TLS) settings for the UMDF host process (that is, WUDFHost.exe) during driver development and testing. For more information, see the Developing Drivers with the Windows Driver Foundation book at the following website: http://www.microsoft.com/whdc/driver/wdf/wdfbook.mspxDesign Notes:Application Verifier will help check UMDF drivers extensively to help ensure stable and reliable drivers.For all UMDF drivers, Application Verifier will be enabled when driver reliability tests are executed.Application Verifier can be downloaded from the following Microsoft website: http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c4a25ab9-649d-4a1b-b4a7-c9d8b095df18 To enable Application Verifier for WUDFHost.exe, run the following command:appverif -enable handles locks heaps memory COM exceptions TLS -for WUDFHost.exeFor more information about UMDF, visit the following website: http://www.microsoft.com/whdc/driver/wdf/UMDF.mspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.UMDF.WDFProperINF</h3>
+        <div class="subSection">
+          <p>Windows Driver Framework (WDF) driver INF files are properly structured</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.UMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All information (INF) files in Windows Driver Foundation (WDF) driver packages must call WDF-specific sections properly. Correctly structured INF sections help ensure that the driver will be installed properly. However, even when a driver is installed, a poorly or wrongly configured section can cause unpredictable problems during the operation of the driver or device. These problems can be prevented by following the guidelines for WDF INF settings.To meet this requirement, all WDF INF files must have the following:</p>
+          <p>A coinstaller section, as follows:</p>
+          <p>[DDInstall.Coinstallers]CopyFiles=AddReg= </p>
+          <p>A WDF section, as follows:</p>
+          <p>For Kernel-Mode Driver Framework (KMDF) drivers:[DDInstall.Wdf]KmdfService= &lt;ServiceName&gt;, &lt;Kmdf_Install&gt;[Kmdf_Install]KmdfLibraryVersion=For User-Mode Driver Framework (UMDF) drivers:[DDInstall.Wdf]UmdfService=&lt;ServiceName&gt;,&lt;Umdf_Install&gt;UmdfServiceOrder=UmdfDispatcher [Only for USB Drivers and Drivers with file handle I/O targets]=UmdfImpersonationLevel[optional]=[Umdf_Install]UmdfLibraryVersion=DriverCLSID=ServiceBinary= </p>
+          <p>All UMDF driver INF files must have a WUDFRD service installation section, as follows:</p>
+          <p>[WUDFRD_ServiceInstall]DisplayName = "Windows Driver Foundation - User-mode Driver FrameworkReflector"ServiceType = 1StartType = 3ErrorControl = 1ServiceBinary = %12%\WUDFRd.sysLoadOrderGroup = Base </p>
+          <p>All WDF drivers that use a WinUSB driver must have the following service installation settings:</p>
+          <p>[WinUsb_ServiceInstall]DisplayName = "WinUSB Driver"ServiceType = 1StartType = 3ErrorControl = 1ServiceBinary = %12%\WinUSB.sys </p>
+          <p>Service names, hardware IDs (HWIDs), display names, and UMDF class identifiers (CLSIDs) cannot be pasted from WDF samples.</p>
+          <p>Design Notes:For more information about WDF-specific INF settings, visit the following websites:http://www.microsoft.com/whdc/driver/wdf/wdfbook.mspxhttp://msdn.microsoft.com/en-us/library/ff560526.aspx http://msdn.microsoft.com/en-us/library/ff560526.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.DriverFramework.UMDF.WDFRedistributables</h3>
+        <div class="subSection">
+          <p>Windows Driver Framework (WDF) drivers are packaged to contain the RTM free versions of redistributables</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.DriverFramework.UMDF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All Windows Driver Framework (WDF) drivers that are submitted for a logo or signature through the Windows HCK must meet the following guidelines for packaging redistributables, or co-installers: </p>
+          <p>All WDF drivers, for all versions of the WDF, for all operating systems can be submitted for a logo or signature. </p>
+          <p>Redistributables that are included in the driver package must be the release to manufacturing (RTM) fre version of the redistributables. Some WDF version 1.7 coinstallers that were available on the Microsoft Connect website caused serious installation problems. Microsoft has removed these coinstallers from Connect and replaced them with fixed coinstallers. The problematic WDF coinstallers were version 1.7.6001.0. The fixed coinstallers are version 1.7.6001.18000. For logo submissions, drivers should use the version 1.7.6001.18000 co-installers.</p>
+          <p>Kernel-Mode Driver Framework (KMDF) has coinstallers for versions 1.0, 1.1, 1.5, 1.7, 1.9 and 1.11. You can use all of these coinstallers for certification submissions, provided that you use the RTM fre versions. User-Mode Driver Framework (UMDF) has coinstallers for versions 1.5, 1.7, 1.9 and 1.11. You can use all of these coinstallers in your driver package, provided that you use the RTM fre versions.WDF version 1.11 coinstallers that are released via Microsoft Connect have the most enhanced version of the framework. We advise partners to use the latest version of the framework to develop and distribute WDF drivers.Design Notes:WDF version 1.11 drivers can install the frameworks using an MSU update package instead of using the 1.11 coinstallers. If WDF version 1.11 drivers use the MSU install package then KMDF drivers don't use a co-installer, but WDF version 1.11 UMDF drivers still reference the inbox co-installer named WudfCoinstaller.dll. WudfCoinstaller.dll is inbox to Windows 8, and UMDF drivers aren't packaged with it, only the INF file should reference this co-installer.WDF 1.11 is inbox to Windows 8, so before Windows 8 RTM WDF 1.11 drivers can be logo'ed for Windows 8 if the driver installs without referring to the 1.11 coinstaller from its INF file. But UMDF driver must still reference the inbox coinstaller wudfcoinstaller.dll, for more information regarding WDF driver installation without a coinstaller please visit the following link:http://blogs.msdn.com/b/iliast/archive/2009/08/13/wdf-logo-requirements-regarding-coinstallers.aspx  The WDF 1.11 coinstallers and the MSU package are distributed via Microsoft Connect. Partners who want to have driver packages signed for down-level operating systems prior to WDF 1.11 RTM should use the WDF 1.9 RTM co-installers.          For more information about WDF driver installation, visit the following website: http://msdn.microsoft.com/en-us/library/ff544213.aspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Firmware</h2>
+      <div id="sectionSection5" class="section">
+        <p>Driver package requirements for firmware update package</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Firmware.UpdateDriverPackage</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Firmware.UpdateDriverPackage</h3>
+        <div class="subSection">
+          <p>These requirements apply to any firmware update driver package that is submitted to MS for approval and signing.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Firmware</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In addition to standard driver requirements, the following requirements apply to firmware update driver package:</p>
+          <p>A firmware package must payload the update for only one resource.</p>
+          <p>A firmware package must be configurable (see Device.DevFund.INF.* for more details).</p>
+          <p>After a successful firmware upgrade, the firmware version in the .INF file of the driver package, the resource version (in ESRE), and the last attempted version (in ESRE) for that resource must match.</p>
+          <p>The name of the binary file in the firmware package must not conflict with any of the previous firmware versions.</p>
+          <p>A successful firmware upgrade must not reduce or eliminate functionality of any devices in the system.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.HALExtension</h2>
+      <div id="sectionSection6" class="section">
+        <p>HAL requirements for HAL Extensions</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.HALExtension.HAL</p>
+              <p>Device.DevFund.HALExtension.HALSignatureAttributes</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.HALExtension.HAL</h3>
+        <div class="subSection">
+          <p>These requirements apply to HAL Extensions that is submitted to MS for approval and signing. </p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.HALExtension</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client ARM (Windows RT)</p>
+                <p>Windows 8.1 Client ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>In addition to standard driver requirements, the following requirements apply to HAL</p>
+          <p>HAL Extension should work with system HAL seamlessly . </p>
+          <p>HAL Extension should be signed correctly.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.HALExtension.HALSignatureAttributes</h3>
+        <div class="subSection">
+          <p>Requirement for SignatureAttribute section in HAL Extension INF files</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.HALExtension</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>HAL Extensions must to be signed with a special signature as part of submission/validation process. The process of determining what signature each module needs is being standardized, each INF file now must include a SignatureAttributes section uniquely identifying what type of signature is applicable for the associated driver binaries. Adding this section to existing inf files is a very simple process. </p>
+          <p>An example follows:</p>
+          <p>[SignatureAttributes]HalExtension.dll = SignatureAttributes.HalExt[SignatureAttributes.HalExt]HalExt=true</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.INF</h2>
+      <div id="sectionSection7" class="section">
+        <p>INF restictions</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.INF.AddReg</p>
+              <p>Device.DevFund.INF.AddService</p>
+              <p>Device.DevFund.INF.ClassInstall32</p>
+              <p>Device.DevFund.INF.ComplexDeviceMatching</p>
+              <p>Device.DevFund.INF.DDInstall.CoInstallers</p>
+              <p>Device.DevFund.INF.DeviceConfigOnly</p>
+              <p>Device.DevFund.INF.DeviceResourceConfig</p>
+              <p>Device.DevFund.INF.FileCopyRestriction</p>
+              <p>Device.DevFund.INF.FileOrRegistryModification</p>
+              <p>Device.DevFund.INF.InstallManagement</p>
+              <p>Device.DevFund.INF.LegacySyntax</p>
+              <p>Device.DevFund.INF.TargetOSVersion</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.INF.AddReg</h3>
+        <div class="subSection">
+          <p>When using an AddReg directive, each AddReg entry must specify HKR as the registry root</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>HKR (meaning "relative root") is the only registry root identifier that can be referenced in an AddReg section in an INF file. Other root identifiers, including HKCR, HKCU, HKLM and HKU, are restricted from use in an AddReg section. The AddReg directive is intended to be used for device installation and configuration purposes only.Exceptions:Note that there are some exceptions to this requirement to accommodate the registration of Component Object Model (COM) objects and Media Foundation Transforms (MFT) using the AddReg directive. Refer to the Design Notes section of this requirement for additional details.Design Notes:All registry keys declared in an AddReg section of an INF file must use the relative root identifier (HKR) as the registry root value, unless an explicit exception exists as outlined in this requirement.The following example shows the registration of a COM object using AddReg directives. Building on this example it is possible to customize all of the object's parameters:[COMobj.AddReg]HKCR,CLSID\{&lt;CLSID&gt;},,,"&lt;MFT DLL description&gt;"HKCR,CLSID\{&lt;CLSID&gt;}\InprocServer32,,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\mftxyz.dll"HKCR,CLSID\{&lt;CLSID&gt;}\InprocServer32,ThreadingModel,,"Both"A complete list of COM registry entries with details on their use can be found in the MSDN at http://msdn.microsoft.com/en-us/library/ms694355(v=vs.85).aspx.The following example shows the registration of an MFT filter using AddReg directives:[MFT.AddReg]HKCR,CLSID\{&lt;CLSID&gt;},,,"&lt;MFT DLL description&gt;"HKCR,CLSID\{&lt;CLSID&gt;}\InprocServer32,,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\mftxyz.dll"HKCR,CLSID\{&lt;CLSID&gt;}\InprocServer32,ThreadingModel,,"Both"HKCR,MediaFoundation\Transforms\&lt;CLSID&gt;,InputTypes,%REG_BINARY%,76,45,87,2d,5e,23,...HKCR,MediaFoundation\Transforms\&lt;CLSID&gt;,OutputTypes,%REG_BINARY%,22,5e,23,46,43,10,...HKCR,MediaFoundation\Transforms\&lt;CLSID&gt;,,%REG_SZ%,"MFT Friendly Name"HKCR,MediaFoundation\Transforms\&lt;CLSID&gt;,MFTFlags,%REG_DWORD%, 0x00000004HKCR,MediaFoundation\Transforms\&lt;CLSID&gt;,Attributes,REG_BINARY%, 41,46,4d,HKCR,MediaFoundation\Transforms\Categories\&lt;MFTCategoryGUID&gt;\&lt;CLSID&gt;HKLM,SOFTWARE\Microsoft\Windows Media Foundation\ByteStreamHandlers\audio/xyz,&lt;CLSID&gt;,,"XYZ Stream Handler"Additionally, when registering a DECODE or ENCODE HMFT, the one of the following registry keys must also be set:DECODE HMFTHKLM,SOFTWARE\Microsoft\Windows Media Foundation\HardwareMFT,EnableDecoders, %REG_DWORD%, 1ENCODE HMFTHKLM,SOFTWARE\Microsoft\Windows Media Foundation\HardwareMFT,EnableEncoders, %REG_DWORD%, 1More details on MFTs can be found in the MSDN at http://msdn.microsoft.com/en-us/library/windows/desktop/ms703138(v=vs.85).aspx. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures. Note that there are some exceptions to this requirement to accommodate the registration of Component Object Model (COM) objects and Media Foundation Transforms (MFT) using the AddReg directive. Refer to the Design Notes section of this requirement for additional details.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.AddService</h3>
+        <div class="subSection">
+          <p>INF files can only install driver-related services</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An INF AddService directive can only reference services that are driver related. Services that are not driver related, such as a Microsoft Win32 service, cannot be referenced or installed using an INF file.Design Notes:An INF AddService directive service-install-section may only specify a ServiceType type-code of the following:</p>
+          <p>SERVICE_DRIVER</p>
+          <p>SERVICE_KERNEL_DRIVER</p>
+          <p>SERVICE_FILE_SYSTEM_DRIVER</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.ClassInstall32</h3>
+        <div class="subSection">
+          <p>INF files must not define a custom class installer within a ClassInstall32 section</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An INF file may not specify a custom class installer within a ClassInstall32 section. Therefore, a driver package cannot execute a custom class installer during device installation.Design Notes:Developers should use one of the existing inbox device setup classes for their device. If it is necessary to define a new device setup class, the new setup class cannot employ a class installer as part of the device installation process. The following example shows an INF ClassInstall32 section which defines a custom class installer and therefore fails this requirement.[ClassInstall32.ntx86]            ; Declare a ClassInstall32 section for the x86                                                ; architectureAddReg=SetupClassAddReg    ; Reference to the ClassInstall32 AddReg section; Place additional class specific directives here[SetupClassAddReg]                ; Declare a class specific AddReg section; Device class specific AddReg entries appear here; The next line defines the class installer that will be executed when; installing devices of this device-class type. Defining a registry entry; of this type is no longer supported and the driver package fails to meet; this device fundamental requirement.[HKR,,Installer32,,"class-installer.dll,class-entry-point"] </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.ComplexDeviceMatching</h3>
+        <div class="subSection">
+          <p>INF directives related to complex device matching logic are not supported</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>INF files will not support complex device matching logic. Specifically, the capability to specify a DeviceID for a device which should not be installed, when a matching HardwareID or CompatibleID exists in the DDInstall section, will not be supported.Design Notes:The following INF directive may not be referenced in an INF file:</p>
+          <p>ExcludeID</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.DDInstall.CoInstallers</h3>
+        <div class="subSection">
+          <p>INF files must not reference any co-installers within a DDInstall.CoInstallers section</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>An INF file may not reference any co-installers within a DDInstall.CoInstallers section. Therefore, a driver package cannot execute any co-installers during device installation.Design Notes:Execution of co-installers is prohibited during device installation. The following examples show the registration of a device-specific co-installer and a device-class co-installer. Both types of co-installers are not permitted in an INF file and inclusion will result in failure to meet the requirement.Device-specific co-installer example:; Registering one or more device-specific co-installers requires adding; adding a REG_MULTI_SZ value using an AddReg directive. The following; shows the general form for registering a device-specific co-installer.;  :;  :[DestinationDirs]         ; Destination dir for the co-installer dllXxxCopyFilesSection = 11           ; DIRID_for %WINDIR%\System32 dir                                   ; Xxx = driver or device prefix;  :;  :[XxxInstall.OS-platform.CoInstallers]       ; Define co-installers sectionCopyFiles = XxxCopyFilesSection             ; Copy files directiveAddReg = Xxx.OS-platform.CoInstallers_AddReg        ; Add registry directive[XxxCopyFilesSection]              ; Define the co-installer copy filesXxxCoInstall.dll                   ; section[Xxx.OS-platform.CoInstallers_AddReg]       ; Define the co-installer AddReg                                            ; section; The next line defines the co-installer that will be executed when; installing this device. Defining a registry entry of this type is no; longer supported and the driver package fails to meet this device; fundamental requirement.HKR,,CoInstallers32,0x00010000,"XxxCoInstall.dll, \  XxxCoInstallEntryPoint"Device-class co-installer example:[Xxx.OS-platform.CoInstallers_AddReg]       ; Define the co-installer AddReg                                            ; section; Similar format to the device-specific co-installer example, except the; registry location is under HKLM. The next line defines the co-installer; executed after any installation operations complete for the given device; setup class GUID. Defining a registry entry of this type is no; longer supported and the driver package fails to meet this device; fundamental requirement.HKLM,System\CurrentControlSet\Control\CoDeviceInstallers, \{SetupClassGUID}, 0x00010008,"DevClssCoInst.dll[,DevClssEntryPoint]"</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.DeviceConfigOnly</h3>
+        <div class="subSection">
+          <p>INF files cannot reference INF directives that are not directly related to the configuration of a device</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>INF directives that provide configuration functionality beyond what is necessary to configure device hardware are no longer supported. The INF file and all supporting files in the driver package must be used only for device installation and configuration.Design Notes:The following INF directives may not be referenced in an INF file:1. RegisterDlls 2. UnregisterDlls 3. ProfileItems 4. UpdateInis 5. UpdateIniFields 6. Ini2RegNote that while the RegisterDlls directive can no longer be declared in an INF file, it is still possible to register Component Object Model (COM) and Media Foundation Transform (MFT) objects from an INF file using the AddReg directive. The AddReg directive allows the declaration of COM/MFT registration keys under the HKLM registry hive. For information on the use of the AddReg directive for this purpose, refer to the Device.DevFund.INF.AddReg Windows Hardware Certification requirement. </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.DeviceResourceConfig</h3>
+        <div class="subSection">
+          <p>INF based device resource configuration and non-PnP related configuration cannot be performed within an INF file</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>INF files cannot be used to perform device resource configuration or non-PnP related configuration tasks. Several INF directives and sections are no longer supported.Design Notes:The following INF sections and directives cannot be referenced in an INF file:</p>
+          <p>[DDInstall.LogConfigOverride] section</p>
+          <p>LogConfig</p>
+          <p>[DDInstall.FactDef] section</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.FileCopyRestriction</h3>
+        <div class="subSection">
+          <p>INF based file copy restrictions</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>File copy destination locations are limited to prevent driver packages from installing drivers in inappropriate locations on the system.Design Notes:When using the CopyFiles directive, the destination directory specified for a file must be one of the following DIRID values:</p>
+          <p>11 (corresponds to the %WINDIR%\System32 directory) </p>
+          <p>12 (corresponds to the %WINDIR%\System32\Drivers directory)</p>
+          <p>Only these destination directories expressed as the appropriate DIRID will be a valid copy file location.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.FileOrRegistryModification</h3>
+        <div class="subSection">
+          <p>Deleting or modifying existing files, registry entries and/or services is not allowed from within an INF file</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>INF file directives which delete or modify registry entries, services and files are no longer supported.Design Notes:The following INF directives may not be referenced in an INF file:</p>
+          <p>DelReg </p>
+          <p>DelService</p>
+          <p>DelPropertry</p>
+          <p>BitReg</p>
+          <p>DelFiles</p>
+          <p>RenFiles</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.InstallManagement</h3>
+        <div class="subSection">
+          <p>Management of files installed using an INF file is restricted to the system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Any files that are installed onto the system using an INF file are managed exclusively by Windows. Plug and Play (PnP) prevents applications from directly modifying the files that are referenced in the INF.Design Notes:An INF file must include the PnpLockDown directive set to value 1 in the [Version] section. This would appear as follows in the INF file:[Version]; Other Version section directives herePnpLockDown=1</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.LegacySyntax</h3>
+        <div class="subSection">
+          <p>Legacy service configuration cannot be performed within an INF file</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Service configuration using legacy INF syntax is no longer supported.Design Notes:The following INF service install section directive may not be referenced in an INF file:</p>
+          <p>LoadOrderGroup</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.INF.TargetOSVersion</h3>
+        <div class="subSection">
+          <p>The TargetOSVersion decoration in an INF file cannot contain a ProductType flag or SuiteMask flag</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.INF</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Within the [Manufacturer] section of an INF file, a TargetOSVersion decoration is used to identify the target OS of the driver package. The TargetOSVersion decoration cannot contain a ProductType flag or SuiteMask flag.Design Notes:In Windows 7 and earlier OS versions, the TargetOSVersion decoration is formatted as follows:nt[Architecture].[OSMajorVersion][.[OSMinorVersion][.[ProductType][ \  .[SuiteMask]]]]Beginning in Windows 8, the ProductType field and SuiteMask field are no longer valid fields in the TargetOSVersion decoration.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>*This is a requirement for Windows RT, but is recommended for Windows 8 (x86) and Windows 8 (x64). It will be required in the future for those architectures.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Aug. 28, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Memory</h2>
+      <div id="sectionSection8" class="section">
+        <p>Requirements related to memory profile</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Memory.DriverFootprint</p>
+              <p>Device.DevFund.Memory.NXPool</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Memory.DriverFootprint</h3>
+        <div class="subSection">
+          <p>Drivers must occupy a limited memory footprint</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Memory</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Drivers must occupy less than or equal to the following size of non-paged code pages in memory: </p>
+          <p>Non Paged Code Pages</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Driver Type</p>
+              </td>
+              <td>
+                <p>Graphics Drivers</p>
+              </td>
+              <td>
+                <p>All other driver types</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>x86/ARM</p>
+              </td>
+              <td>
+                <p>&lt;= 10MB</p>
+              </td>
+              <td>
+                <p>&lt;= 1.66MB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>x64</p>
+              </td>
+              <td>
+                <p>&lt;= 10MB</p>
+              </td>
+              <td>
+                <p>&lt;= 5.45 MB</p>
+              </td>
+            </tr>
+          </table>
+          <p>Driver locked allocations (including MDL allocations and contiguous memory allocations)</p>
+          <p>12MB for all driver types for both architectures</p>
+          <p>Non Paged Pool - For Windows 8.1, Drivers must occupy less than or equal to the following size of non-paged pool in memory:</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Driver type</p>
+              </td>
+              <td>
+                <p>Graphics Drivers</p>
+              </td>
+              <td>
+                <p>All other driver types</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>x86/ARM</p>
+              </td>
+              <td>
+                <p>6MB</p>
+              </td>
+              <td>
+                <p>4MB</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>x64</p>
+              </td>
+              <td>
+                <p>10MB</p>
+              </td>
+              <td>
+                <p>7MB</p>
+              </td>
+            </tr>
+          </table>
+          <p>Thresholds are based in telemetry: X86/ARM – 4MB covers 80th percentile, X64 – 7MB covers 76th percentile from pool allocation samples </p>
+          <p>Design Notes:  The corresponding test will check the size of the drivers non paged code pages in MB.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Driver non-paged memory usage constitutes a fixed cost in terms of memory utilization for the overall lifetime of a system. These contribute substantially toward the total OS memory footprint, and most drivers are present in memory at all times. Optimizing driver memory will provide an improved user experience and better overall system responsiveness due to greater availability of memory for user applications. </p>
+                <p>Any reduction in non-pageable driver footprint directly improves the baseline memory consumption of the OS which increases scalability. Current WHCK tests for Windows 8 cover driver Locked allocations (MDL/Contiguous memory allocations) and non-paged driver code. Non Paged pool usage is the only non-pageable driver footprint aspect that is not covered by existing tests.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Memory.NXPool</h3>
+        <div class="subSection">
+          <p>All driver pool allocations must be in NX pool</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Memory</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver pool allocations must be made in the non-executable (NX) pool.Design Notes:A new type of non-paged pool has been introduced which is non-executable (NX) Pool. Since it is non-executable, it is inherently more secure as compared to executable non-paged (NP) Pool, and provides better protection against overflow attacks.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Moving allocations to the non-executable pool, the surface area of attack for a rogue binary's executable code is minimized.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Reliability</h2>
+      <div id="sectionSection9" class="section">
+        <p>Reliability tests containing content of the former DEVFUND tests</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Reliability.BasicReliabilityAndPerformance</p>
+              <p>Device.DevFund.Reliability.BasicSecurity</p>
+              <p>Device.DevFund.Reliability.BootDriverEmbeddedSignature</p>
+              <p>Device.DevFund.Reliability.DriverInstallUninstallReinstall</p>
+              <p>Device.DevFund.Reliability.DriverUninstallInstallOtherDeviceStability</p>
+              <p>Device.DevFund.Reliability.NoReplacingSysComponents</p>
+              <p>Device.DevFund.Reliability.NormalOpWithDEP</p>
+              <p>Device.DevFund.Reliability.PnPIDs</p>
+              <p>Device.DevFund.Reliability.PnPIRPs</p>
+              <p>Device.DevFund.Reliability.ProperINF</p>
+              <p>Device.DevFund.Reliability.RemoteDesktopServices</p>
+              <p>Device.DevFund.Reliability.S3S4SleepStates</p>
+              <p>Device.DevFund.Reliability.Signable</p>
+              <p>Device.DevFund.Reliability.SWDeviceInstallsUsePnPAPIs</p>
+              <p>Device.DevFund.Reliability.X64Support</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Reliability.BasicReliabilityAndPerformance</h3>
+        <div class="subSection">
+          <p>Drivers are architected to maximize reliability and stability and do not "leak" resources such as memory (DEVFUND-0016)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+                <p>Windows XP x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver components must not cause the system to crash or leak resources. These resources include but are not limited to the following:</p>
+          <p>Memory</p>
+          <p>Graphics Device Interface (GDI) or user objects</p>
+          <p>Kernel objects such as files, mutex, semaphore, and device handles</p>
+          <p>Critical sections</p>
+          <p>Disk space</p>
+          <p>Printer handles</p>
+          <p>Design Notes </p>
+          <p>To improve the reliability and stability of Windows drivers, all drivers will be subjected to a series of generic driver quality tests. These tests include:</p>
+          <p>Embedded Signature Verification Test - This test verifies that boot start drivers are embedded signed.</p>
+          <p>Device Install Check for File System Consistency - This test verifies that no system resources have been overwritten during the process of a device/driver install </p>
+          <p>Device Install Check for Other Device Stability - This test verifies that no device or driver, except the device under test, has been affected by the device(s)/driver(s) install or co-install process</p>
+          <p>PCI Root Port Surprise Remove Test - This surprise removes PCI root port for the device (if applicable)</p>
+          <p>PNP (disable and enable) with IO Before and After - This test performs basic I/O and basic PNP disable/enable on the test device(s)</p>
+          <p>Reinstall with IO Before and After - This test uninstalls and reinstalls the drivers for test device(s) and runs I/O on these device(s)</p>
+          <p>Sleep with PNP (disable and enable) with IO Before and After - This test cycles the system through various sleep states and performs I/O and basic PNP (disable/enable) on test device(s) before and after each sleep state cycle</p>
+          <p>Sleep with IO Before and After - This test cycles the system through various sleep states and performs I/O on device(s) before and after each sleep state cycle</p>
+          <p>Sleep with IO During – This test cycles the system through various sleep states and perform I/O on device(s) during each sleep state cycle</p>
+          <p>Plug and Play Driver Test - This test exercises PnP-related code paths in the driver under test</p>
+          <p>Device Path Exerciser Test - This consists of a set of tests, each of which concentrates on a different entry point or I/O interface. These tests are designed to assess the robustness of a driver, not its functionality.</p>
+          <p>CHAOS Test - This test the runs PnP tests (disable/enable, rebalance, remove/restart, surprise remove, and DIF remove) and Driver Fuzz tests on the test device in parallel, while cycling the test system in and out of all of its supported sleep states (S1, S2, S3, S4 and Connected Standby) at the same time</p>
+          <p>All of these tests will be run with Driver Verifier enabled with standard settings.</p>
+          <p>In addition Driver Verifier will be enabled on all applicable kit tests.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Power management/usage, PNP errors as well as IO related errors contribute to a poor end user experience and may often cause system hangs, crashes, and failures. These tests help to identify some common driver problems.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.BasicSecurity</h3>
+        <div class="subSection">
+          <p>Device driver must properly handle various user-mode as well as kernel to kernel I/O requests (DEVFUND-0004)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+                <p>Windows XP x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver reliability and security are connected. Reliable drivers help protect the system from malicious attacks.Compliance will be validated by running the Device Path Exerciser test against the device driver. Device Path Exerciser consists of a set of tests, each of which concentrates on a different entry point or I/O interface. These tests are designed to assess the robustness of a driver, not its functionality.During a test, Device Path Exerciser typically sends hundreds of thousands of similar calls to the driver in rapid succession. The calls include varying data access methods, valid and invalid buffer lengths and addresses and permutation of the function parameters, including spaces, strings, and characters that might be misinterpreted by a flawed parsing or error-handling routine.The device driver must comply with the reliability guidelines that are defined in the Windows Driver Kit. All user mode I/O requests and kernel-to-kernel I/O requests must be handled properly to help ensure secure devices and drivers. Design Notes:Potential security vulnerabilities include the failure to check for a buffer overflow, the inability to handle bad data from user mode, and the mishandling of unexpected entry points into the driver. If such vulnerabilities are left unidentified and uncorrected, malicious programs could potentially issue denial-of-service attacks or otherwise bypass system security.For additional information, see the "Creating Reliable and Secure Drivers" and "Creating Reliable Kernel-Mode Drivers" topics in the Windows Driver Kit.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.BootDriverEmbeddedSignature</h3>
+        <div class="subSection">
+          <p>Boot drivers must be self-signed with an embedded signature (DEVFUND-0029)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All boot start drivers must be embedded-signed using a Software Publisher Certificate (SPC) from a commercial certificate authority. The SPC must be valid for kernel modules. Drivers must be embedded-signed through self-signing before the driver submission. Design Notes:For more information about how to embedded-sign a boot start driver, see Step 6: Release-Sign a Driver Image File by Using an Embedded Signature" at the following website: http://go.microsoft.com/fwlink/?LinkId=237093After the file is embedded-signed, use SignTool to verify the signature. Check the results to verify that the root of the SPC's certificate chain for kernel policy is "Microsoft Code Verification Root." The following command line verifies the signature on the toaster.sys file: Signtool verify /kp /v amd64\toaster.sysVerifying: toaster.sysSHA1 hash of file: 2C830C20CF15FCF0AC0A4A04337736987C8ACBE3Signing Certificate Chain:Issued to: Microsoft Code Verification RootIssued by: Microsoft Code Verification RootExpires: 11/1/2025 5:54:03 AMSHA1 hash: 8FBE4D070EF8AB1BCCAF2A9D5CCAE7282A2C66B3Successfully verified: toaster.sysNumber of files successfully Verified: 1Number of warnings: 0Number of errors: 0In the Windows HCK, this requirement will be tested by using the Embedded Signature Verification test.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Boot drivers must be embedded-signed in order to work properly with the boot process.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2007</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.DriverInstallUninstallReinstall</h3>
+        <div class="subSection">
+          <p>Device and Driver Installation/un-installation/re-installation must be completed without any error, including function drivers for a multi-function device (DEVFUND-0030)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Device and driver installation, uninstallation, or reinstallation must not fail in any case.Driver installation must not cause the system to stop running or to restart without user interaction, unless the operating system requires a restart.For multi-function devices that have separate drivers that enable separate functions, each driver must be capable of installing and uninstalling independently with no start order or hidden dependencies. A multi-function device is a single device that supports multiple functionalities.Devices that use inbox drivers for operation must also meet this requirement. This requirement does not apply to Internet Small Computer System Interface (iSCSI) devices.Design Notes:In the case of multi-function devices, a supervisory driver that loads different drivers for individual functions does not work well with Windows®. In particular, driver support is likely to be lost after an operating system reinstallation or upgrade, or when new drivers are distributed through Windows Update. Therefore, such supervisory drivers should be avoided.This requirement will be tested by using the "Reinstall with IO" test in the Windows Hardware Certification Kit (WHCK).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This requirement does not apply to Internet Small Computer System Interface (iSCSI) devices. PEP and HAL extensions will be considered for exemption from this requirement.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.DriverUninstallInstallOtherDeviceStability</h3>
+        <div class="subSection">
+          <p>Installing or uninstalling the driver must not reduce or eliminate functionality of other devices or other functional parts of the same device installed on the system (DEVFUND-0006)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Installing or uninstalling a device driver must not reduce or eliminate functionality of other devices that are installed on the system. This requirement also applies to functional units of a multi-function device, whether that functional unit is on the multi-function device or on the system as a whole. Design Notes:The steps for testing this requirement are outlined in the Device install check for other device stability test in the Windows Hardware Certification Kit (WHCK): http://msdn.microsoft.com/en-us/library/ff561407(VS.85).aspx . </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.NoReplacingSysComponents</h3>
+        <div class="subSection">
+          <p>Vendor-supplied drivers or software must not replace system components</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver or software installation must not overwrite any protected operating system files. This includes files that not authored by Microsoft, but that are included as part of the operating system.</p>
+          <p>If a manufacturer’s information file (INF) copies any files that the operating system supplies, the INF must copy those files from the Windows® product disk or preinstalled source files, unless the component is a licensed, redistributable component.</p>
+          <p>Drivers that are not provided by the operating system are not allowed to be named after an operating system supplied driver.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.NormalOpWithDEP</h3>
+        <div class="subSection">
+          <p>All drivers must operate normally and execute without errors with Data Execution Prevention (DEP) enabled (DEVFUND-0041)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>To help ensure proper device and driver behavior and to enhance the security of Windows® systems against viruses and other security threats, all drivers must operate normally when Data Execution Prevention (DEP) is enabled. DEP monitors programs to help make sure that the programs use system memory safely. DEP also protects the system by closing any program that is trying to execute code from memory in an incorrect way. To meet this requirement, drivers must not execute code from data pages such as default heap pages, various stack pages, and memory pool pages.DEP is a set of hardware and software technologies that perform additional checks on memory to help prevent malicious code from running on a system. The primary benefit of DEP is to help prevent code execution from data pages. Typically, code is not executed from the default heap and the stack. Hardware-enforced DEP detects code that is running from these locations and raises an exception when execution occurs. Software-enforced DEP can help prevent malicious code from taking advantage of exception handling mechanisms in Windows.Design Notes:For more information about DEP, including how to enable DEP, visit the following website: http://support.microsoft.com/kb/875352The test for DEP is currently part of the systems test category in the Windows Hardware Certification Kit (WHCK). A device version of this test will be introduced before this requirement is enforced for logos.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>DEP can help enhance the security of systems that are running Windows operating systems. DEP also helps protect against malicious code, viruses, and other security threats. Making this requirement fundamental for devices will help ensure that all drivers that are signed through the Windows HCK are protected, and that the drivers prevent malware from being signed.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.PnPIDs</h3>
+        <div class="subSection">
+          <p>Plug and Play IDs embedded in hardware devices, including each functional unit of a multi-function device, must have device IDs to support Plug and Play (DEVFUND-0003)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Each device that is connected to an expansion bus must be able to supply its own device ID. Each function or device on a multi-function add-on device that is individually enumerated must also provide a device ID for the bus that the function or device uses. The following are the specific requirements for Plug and Play device IDs:</p>
+          <p>Each separate function or device on the system board must be separately enumerated. Therefore, each function or device must provide a device ID for the bus that it uses, as required in the current Plug and Play specification.</p>
+          <p>If a device on an expansion card is enumerated, the device must have a unique ID and its own resources according to the current device ID requirements for the bus to which the card is connected. This requirement includes devices that are separately enumerated on multi-function cards or multi-function chips.</p>
+          <p>A Plug and Play ID can be shared with other devices that have the same model name, as defined in the device-specific Plug and Play specification.</p>
+          <p>Each logical function of the device must have a distinct Plug and Play ID.</p>
+          <p>The install (INF) section must key off only the most specific ID according to the Plug and Play guidelines in the Windows® Driver Kit.</p>
+          <p>For legacy devices such as serial, parallel, and infrared ports, the legacy Plug and Play guidelines define requirements and clarifications for automatic device configuration, resource allocation, and dynamic disable capabilities .</p>
+          <p>Note: Devices that are completely invisible to the operating system, such as out-of-band systems management devices or Intelligent Input/Output (I2O) hidden devices, still must use Advanced Configuration and Power Interface (ACPI) methods to properly reserve resources and avoid potential conflicts.The following are the exceptions to the individual device ID requirement for multi-function devices: </p>
+          <p>Multiple devices of the same device class, such as multiline serial devices, do not need individual device IDs.</p>
+          <p>Devices that are generated by an accelerator or auxiliary processor and that do not have independent hardware I/O do not need individual device IDs. That processor must have an ID, and the MF.sys file must be used to enumerate the dependent devices.</p>
+          <p>If an OEM uses a proprietary mechanism to assign asset or serial numbers to hardware, this information must be available to the operating system through Windows hardware instrumentation technology.Design Notes:See Windows Hardware Instrumentation Implementation Guidelines (WHIIG), Version1.0, at the following website: http://go.microsoft.com/fwlink/?LinkId=237095 </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>A unique Plug and Play ID provides a good end user experience for devices.  Because a unique device installs each device driver, this requirement helps prevent the issues that occur in Windows Update. This requirement now also includes all aspects of Plug and Play that are relevant for multi-function devices to enable a good Plug and Play experience when the device is used with Windows. This requirement enhances compatibility and reliability when Windows is used with certified devices.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.PnPIRPs</h3>
+        <div class="subSection">
+          <p>Drivers must support all PnP IRPs</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+                <p>Windows XP x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Drivers must support all Plug and Play I/O request packets (IRPs) according to the requirements on the following website: http://msdn.microsoft.com/en-us/library/ff558807(v=VS.85).aspxThe following IRPs are often the cause of driver issues. Special attention should be given to their implementation:</p>
+          <p>Removal</p>
+          <p>IRP_MN_QUERY_REMOVE_DEVICE</p>
+          <p>IRP_MN_CANCEL_REMOVE_DEVICE</p>
+          <p>IRP_MN_REMOVE_DEVICE</p>
+          <p>Rebalancing</p>
+          <p>IRP_MN_QUERY_STOP_DEVICE</p>
+          <p>IRP_MN_QUERY_RESOURCE_REQUIREMENTS</p>
+          <p>IRP_MN_FILTER_RESOURCE_REQUIREMENTS</p>
+          <p>IRP_MN_CANCEL_STOP_DEVICE</p>
+          <p>IRP_MN_STOP_DEVICE</p>
+          <p>IRP_MN_START_DEVICE</p>
+          <p>IRP_MN_REMOVE</p>
+          <p>Surprise Removal</p>
+          <p>IRP_MN_SURPRISE_REMOVAL</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Dec. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.ProperINF</h3>
+        <div class="subSection">
+          <p>Device driver must have a properly formatted INF for its device class (DEVFUND-0001)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Driver installation and removal must use Windows®-based methods. Therefore, only information file (INF)-based installation routines are allowed. A device driver must have a properly formatted INF for its device as described in the Windows Driver Kit (WDK) "Creating an INF File" topic. Design Notes:The "INFTest against a single INF" test in the Windows Hardware Certification Kit (WHCK) validates this requirement. For more information about this test, see the Help documentation of the test kit.Note: If the device does not provide an INF file (that is, the device uses the inbox driver and the INF file only), this requirement does not apply.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>If the device does not provide an INF file (that is, the device uses the inbox driver and the INF file only), this requirement does not apply.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.RemoteDesktopServices</h3>
+        <div class="subSection">
+          <p>Client and server devices must function properly before, during, and after fast user switching or a Microsoft Remote Desktop Services session (DEVFUND-0009)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows XP x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Devices must support Fast User Switching (FUS) and Remote Desktop Services without losing data before, during, or after sessions. Any user interface (UI) for the device must be shown in the session to which the UI applies. Device usage must not be indefinitely blocked in alternate user sessions.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>FUS and Remote Desktop Services are Windows® features. To provide a good and consistent user experience, each device needs to work properly with these services.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.S3S4SleepStates</h3>
+        <div class="subSection">
+          <p>All devices and drivers must support S3 and S4 sleep states of the system they are integrated on or connected to (DEVFUND-0043)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+                <p>Windows XP x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All devices and drivers must meet the following requirements for systems that are entering S3 and S4 sleep states:  </p>
+          <p>All devices and drivers must correctly support the request of a system that is going into S3 or S4 states.</p>
+          <p>Devices and drivers must not veto the request from the system.</p>
+          <p>The devices must support both the S3 and S4 states.</p>
+          <p>All devices must be capable of resuming from S3 and S4 sleep states and be fully functional after waking up.</p>
+          <p>The device and all its functional units (in the case of multi-function devices) must be enumerated appropriately after the device resumes.</p>
+          <p>All devices and drivers must respond properly to Plug and Play events, IOCtl calls, and I/O requests that are issued concurrently with sleep state transitions.</p>
+          <p>This requirement helps ensure that all certified and signed devices will support the S3 and S4 sleep states when the devices are used as part of a system or are connected externally to a system. This requirement will help the systems conserve power when the system is not being used. Power management is an important aspect of a good user experience. The system should be able to control which devices are put into a sleep state when the devices are not being used. All devices must comply with the request from the system to go into a sleep state and not veto the request, thereby putting an additional drain on the power source.Design Notes:This requirement will be tested by using the "Sleep Stress with IO" test and the "PnPDTest with Concurrent IO in parallel with DevPathExer" test in the Windows Hardware Certification Kit (WHCK).The system that is used for testing must support S3 and S4.Note that systems that support Connected Standby will not support S3, and may or may not support S4. Devices in such systems must support Connected Standby, and S4 requests of that system (if applicable).</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.Signable</h3>
+        <div class="subSection">
+          <p>Device drivers must be able to be signed by Microsoft (DEVFUND-0002)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2003 x86, x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All devices must have code signed drivers. Drivers that are submitted for the Windows® certification must be able to be code signed and must meet the Microsoft® guidelines that are defined in the Windows Driver Kit "WHQL Digital Signatures" topic. All boot start drivers must be embedded-signed by using a certificate that is valid for kernel modules. Devices must be embedded-signed via self-signing before the devices are submitted to Microsoft for certification. It is recommend that all drivers are embedded-signed via self-signing before the drivers are submitted to Microsoft, although this is only required for boot start drivers.Design Notes:For requirements for digital signatures, see the "Driver Signing/File Protection" topic at the following website:http://go.microsoft.com/fwlink/?LinkId=36678The INF2CAT signability verification tool installs automatically the first time that you create a submission on Microsoft's website. For more information about the INF2CAT tool, visit the following website:http://go.microsoft.com/fwlink/?LinkId=109929</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This requirement does not apply to devices that use the inbox drivers of the operating system.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.SWDeviceInstallsUsePnPAPIs</h3>
+        <div class="subSection">
+          <p>Software-initiated device-installs use Plug and Play APIs to install device drivers (DEVFUND-0015)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Device installers that directly manipulate Plug and Play resources contribute to system instability. Therefore, direct manipulation of Plug and Play resources will be blocked on later releases of Windows®. To help ensure compatibility with Windows releases, standard Plug and Play application programming interfaces (APIs) must be used to install device drivers.Design Notes:In Windows Vista® and later operating systems, standard Plug and Play calls such as the SetupCopyOEMInf call pre-stage all required files for device installation on the system automatically. Pre-staging of driver packages will facilitate driver package migration during a system upgrade to Windows Vista or later Windows operating systems. We strongly encourage the use of the Driver Install Framework tools to meet this logo requirement. Use of DIFxAPI, DIFxAPP, or DPInst DIFx tools fulfills this requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Reliability.X64Support</h3>
+        <div class="subSection">
+          <p>Device drivers support x64 versions of Windows (DEVFUND-0014)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64</p>
+                <p>Windows 8.1 Client x86, x64</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+                <p>Windows Vista Client x86, x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>All kernel mode or user mode products and drivers that are submitted for a Microsoft® signature or logo must support the x64 version of that specific Windows® operating system, with certain exceptions that are described below. All x64 device drivers must adhere to the Microsoft x64 software calling convention, as defined in the Windows Driver Kit.This requirement applies to Windows Vista® and later operating systems. The requirement applies to all unclassified drivers and drivers that have a logo. An x86 driver submission is optional in all cases. However, if a vendor submits an x86 driver or device, the vendor must also submit an x64 driver. Update submissions for x86 drivers do not need to include x64 drivers again unless the updates also apply to x64 drivers. When a vendor submits any device or driver for x86 architecture, and the device or driver is expected to work with x64 operating system inbox drivers, the Windows Hardware Certification Kit (WHCK) test results of that device with the x64 inbox drivers must also be included in the submission.This requirement does not apply to IA-64 devices and drivers. IA-64 devices and drivers are not required to support the x64 architecture.  "All products" refers to all hardware IDs that are enumerated in the operating system for that device or driver. Virtual hardware IDs, or hardware IDs that do not correspond to a physical device but are created in a driver only, must be enumerated identically for x86, IA64 and x64 architectures. No additional prefix or suffix may be appended to differentiate between x86, IA64, and x64 architecture virtual hardware IDs.This requirement does not apply to devices that are physically embedded on a system that is capable of supporting only an x86 operating system. Vendors that submit devices under this exemption must provide justification in the Readme file that is included with the submission package. Justification must include relevant information, such as the system name on which the device is embedded and the processor that is used on the system.For Windows Server® 2008: Legacy devices that are submitted for a Windows Server 2008 signature are exempt from this requirement and can make an x86-only submission. Vendors that submit devices under this exemption must provide justification in the Readme file that is included with the submission package. Legacy devices are devices that were at the "end-of-life" stage when Windows Server 2008 was released, but that are included in systems that will be tested for the supported designation and that need to provide Windows Server 2008 signed drivers for system submissions.Design Notes:To increase the safety and stability of the Microsoft Windows platform, unsigned kernel-mode code will not load and will not run on Windows Vista 64-bit platforms. For additional details, see the document that is titled "Digital Signatures for Kernel Modules on Systems Running Windows Vista" at the following website:http://go.microsoft.com/fwlink/?LinkId=108140For more information about creating drivers to run on 64-bit editions of Windows operating systems, see the checklist for 64-bit Microsoft drivers at the following website:http://go.microsoft.com/fwlink/?LinkId=108141For more information about the Microsoft x64 calling convention, see the "Calling Convention for x64 64-bit Environments" topic in the Windows Driver Kit.Notes about testing:This requirement will be tested during the submission approval process after the submission is uploaded to Microsoft. Validation is performed at the hardware ID level. The test enumerates all hardware IDs that are included in the x86 driver. The test also verifies the following: </p>
+          <p>The same hardware IDs are also included in the x64 driver package. </p>
+          <p>The hardware IDs have the right descriptors for the operating system's x64 platform. </p>
+          <p>The x64 driver has been tested on the x64 platform and results have been submitted.</p>
+          <p>If a match is not found in the current submission package, the test will search through past approved x64 submissions to find the hardware IDs.For valid exemption cases, the details of the exempt hardware IDs must be included in the Readme file that is included with the submission.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Reliability.3rdParty</h2>
+      <div id="sectionSection10" class="section">
+        <p>Reliability tests containing content of the former DEVFUND tests</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Reliability.3rdParty.FormerTests</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Reliability.3rdParty.FormerTests</h3>
+        <div class="subSection">
+          <p>Former Tests Mapping Requirement</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability.3rdParty</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The feature Device.DevFund.Reliability.3rdParty and this requirement are a placeholder for mapping of former DevFund tests not found in other requirement.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Exceptions</p>
+              </td>
+              <td>
+                <p>This requirement does not apply to devices that use the inbox drivers of the operating system.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Reliability.Interrupts</h2>
+      <div id="sectionSection11" class="section">
+        <p>Reliability with respect to device interrupts</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Reliability.Interrupts.BasicReliabilityAndPerformance</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Reliability.Interrupts.BasicReliabilityAndPerformance</h3>
+        <div class="subSection">
+          <p>Drivers must not exceed the maximum number of interrupts, and must support resource arbitration down to a minimum level as defined by the operating system</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Reliability.Interrupts</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The driver must be able to tolerate system re-balancing of interrupt resources with any alternative chosen by the OS without failures, including the theoretical minimum of one line based interrupt.Interrupt arbitration may require multiple iterations. Drivers must be prepared to tolerate cases where their initial interrupt request is rejected. In order to support optimal and timely interrupt arbitration, drivers should provide multiple alternatives at successively reduced interrupt count. Drivers should avoid requesting more than one interrupt per core when possible. Any request for greater than 2048 interrupts per device function will be rejected per the PCIe 3.0 defined MSI-X table entry limit of 2048 per device.Design Notes:This requirement is currently untested.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Requesting more than one interrupt per core can lead to IDT exhaustion in settings where many devices are present. Requesting a total number of interrupts based on the number of cores often leads to memory allocation issues.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.ReliabilityDisk</h2>
+      <div id="sectionSection12" class="section">
+        <p>Reliability tests targeting disk devices</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.ReliabilityDisk.IOCompletionCancellation</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.ReliabilityDisk.IOCompletionCancellation</h3>
+        <div class="subSection">
+          <p>Device driver follows design details in the I/O Completion/Cancellation Guidelines (DEVFUND-0013)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.ReliabilityDisk</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 7 Client x86, x64</p>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>I/O completion and cancellation guidelines for drivers provide prescriptive requirements to help ensure that device drivers do not stop responding and can be fully cancelled. These requirements also suggest best practices that drivers can follow to improve performance.Based on the guideline, all device drivers must meet the following requirements: </p>
+          <p>All I/O request packets (IRPs) that are cancelled must be completed within five seconds in an environment that is not resource constrained. No cancellation should be missed even though the cancellation requests may arrive at any instant, even before driver's dispatch routine sees the IRP.</p>
+          <p>All resources that a cancelled IRP allocates must be released at IRP cancellation time to prevent hindering system performance under a high cancellation load. The cancellation of the IRP should shut down any I/O intensive process.</p>
+          <p>In addition, we strongly recommend that drivers do not depend on an additional allocation of resources during cancellation.Design Notes:The Windows® I/O Manager includes enhancements to support cancellation of the MJ_IRP_CREATE process. The Win32 application programming interfaces (APIs) include enhancements to support cancellation of synchronous operations, such as CreateFile. These enhancements allow I/O cancellation in more environments than in earlier operating systems. For more information, see the "I/O Completion/Cancellation Guidelines" whitepaper at the following website:http://www.microsoft.com/whdc/driver/kernel/default.mspx. For more information about designing completion and cancellation logic for drivers, see the following topics in the Windows Development Kit (WDK):Completing IRPsCanceling IRPsCancel-Safe IRP QueuesUsing the System's Cancel Spin Lock</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>The primary justification for this requirement is to prevent drivers from causing applications to stop responding. Additionally, users cannot terminate or restart the applications. Drivers that cause applications to stop responding are a significant cause of customer dissatisfaction.  A secondary justification for this requirement is to improve the customer experience by permitting I/O cancellation to occur on demand by a user, through the use of user interface (UI) elements such as a universal stop button or cancel buttons. This requirement was introduced in Windows Vista. The requirement adds demands to existing driver cancellation logic and adds the requirement that drivers support cancelling creation requests. Drivers that stop responding can lead to sometimes random application and operating system failures that result in lost customer productivity, lost customer data, and the need to reboot the computer. Beyond these very serious problems, nonexistent or poor I/O cancellation support prevents applications from successfully stopping operations without restarting the application.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2006</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Security</h2>
+      <div id="sectionSection13" class="section">
+        <p>Additional TDI filter driver and LSP requirements related to security.</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Security.NoTDIFilterAndLSP</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Security.NoTDIFilterAndLSP</h3>
+        <div class="subSection">
+          <p>No TDI filters or LSPs are installed by the driver or associated software packages during installation or usage</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Security</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows 8 Client x86, x64, ARM (Windows RT)</p>
+                <p>Windows 8.1 Client x86, x64, ARM (Windows RT 8.1)</p>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>There can be no use of TDI filters or LSPs by either kernel mode software or drivers, or user mode software or drivers.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>Use of TDI filters and LSPs increase attack surface, and will therefore no longer be supported for future OS releases.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Mar. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Server</h2>
+      <div id="sectionSection14" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Server.CommandLineConfigurable</p>
+              <p>Device.DevFund.Server.MultipleProcessorGroups</p>
+              <p>Device.DevFund.Server.OperateInServerCore</p>
+              <p>Device.DevFund.Server.ServerPowerManagement</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Server.CommandLineConfigurable</h3>
+        <div class="subSection">
+          <p>Windows Server device drivers which have configurable settings provide command line utility or function for device and driver management</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Windows® Server® device drivers are required to supply a command-line, scriptable, or answer-file-capable utility or functionality for device and driver management. The following device categories are included:</p>
+          <p>Network, including teaming and Infiniband </p>
+          <p>Storage, including multipath I/O (MPIO) </p>
+          <p>Bus </p>
+          <p>Other drivers that may have configurable settings</p>
+          <p>The specific requirements are the following:</p>
+          <p>The utility or tool functionality may use Visual Basic Scripting Edition (VBS), PowerShell, Windows Management Instrumentation (WMI), other functionality that the Windows Server Core option supports, or a proprietary utility or other menu system that functions in the Server Core option. </p>
+          <p>The utility or functionality must operate from the command line or be a WMI object and provider that is compatible with the Windows Management Instrumentation Command-line (WMIC) tool. </p>
+          <p>The utility must be provided as part of the driver package and be installed by default on the system with the driver. </p>
+          <p>The utility must be able to correctly query, display, and change any values that can be changed for the driver. </p>
+          <p>The utility must not incorrectly create or set options that do not exist for a specific device or driver. The utility must be capable of changing any setting if the operating system does not provide the ability to change that setting from the command line. </p>
+          <p>Changed values or ranges that the user inputs must be automatically checked to ensure that the user input is valid. </p>
+          <p>Changes that the utility makes must not require any network or storage stack restarts or system reboots, unless a boot, system, or paging behavior or location is modified. </p>
+          <p>Changes that the utility makes are persistent across reboots. </p>
+          <p>Help about the utility usage and options is available locally on the system. For example, the utility must provide a "configutil /?" command-line option, or the WMI options for the product must be  exposed through standard WMIC commands. </p>
+          <p>The utility should not be installed by the information file (INF). </p>
+          <p>The utility should be installed by default. This can be accomplished by using a co-installer.</p>
+          <p>This requirement does not apply to storage arrays, storage fabrics, switches, or other devices that are external to the server system and that can be managed by any system that is attached to the Ethernet, Fibre Channel, or other network.   This requirement does not apply to printers or any device that does not have configurable settings. For example, in a system that uses the graphical interface, there are no "Advanced", "Power Management", or other additional tabs in the Device Manager interface, nor are any utilities available from the vendor that achieve the same effect.If vendors provide access to functionality only through graphical tools with no command-line or WMI access, vendors must provide information to Microsoft® about any functionality that is available only by using graphical tools and is not accessible from the command line or WMI provider.  Microsoft may determine, in its sole and final discretion, whether the exception(s) will be permitted. This requirement applies to any physical device, or device that has a PCI ID, that has a driver; to any driver that is in the network, storage, file system or other stacks; and to any device or driver that otherwise operates at kernel or user mode in the operating system instance on the server.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2010</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Server.MultipleProcessorGroups</h3>
+        <div class="subSection">
+          <p>Drivers must operate correctly on servers that have processors configured into multiple processor groups</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Windows® Server uses the concept of KGROUPs to extend the number of processors that a single instance of the operating system can support to more than 64. Both enlightened and unenlightened device drivers must operate correctly in multiple KGROUP configurations.Design Notes:For more information, see the "Supporting Systems That Have More Than 64 Processors: Guidelines for Developers" white paper at the following website: http://www.microsoft.com/whdc/system/Sysinternals/MoreThan64proc.mspxThis requirement is tested for all server device categories. The test uses BCDEdit functionality to change the boot configuration database (BCD) of the operating system, thus changing the size of the processor groups (the groupsize setting) so that multiple processor groups are created. The test also uses BCDEdit functionality to add the groupaware setting to the BCD. This changes the behavior of several now-legacy application programming interfaces (APIs) so that the test finds more code errors.The operating system will not ship with any of these settings. These settings are for testing only and will not be supported in production. To reconfigure the system for normal operations, these settings must be removed from the BCD and the system must be rebooted. The system that is used for testing must include at least four processor cores.Vendors may configure the system so that it is similar to the Windows HCK and Device Test Manager (DTM) systems. Vendors can perform their own tests in a multiple processor group configuration, as follows.The command lines to add the group settings and reboot the computer are the following:bcdedit.exe /set groupsize 2bcdedit.exe /set groupaware onshutdown.exe -r -t 0 -fThe command lines to remove the group settings and reboot the computer are the following:bcdedit.exe /deletevalue groupsizebcdedit.exe /deletevalue groupawareshutdown.exe -r -t 0 -f</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 01, 2009</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Server.OperateInServerCore</h3>
+        <div class="subSection">
+          <p>Device drivers must install, configure, be serviced and operate in Windows Server Core</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>The hardware platforms on which Windows Server operating systems are deployed have evolved dramatically in the past decade.  As these become graphic-less system designs for cost and deployment efficiencies, the customers expect to completely setup, deploy, configure and manage these hardware platforms using the minimal command line interface and automated scripting of Windows Server Core.  Windows Server device drivers must evolve in a similar manner to allow the customers to pursue these operations unhindered.</p>
+          <p>A device driver must demonstrate its ability to install, configure, be serviced and operate without reliance on the presence of a GUI.</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h3 class="subHeading">Device.DevFund.Server.ServerPowerManagement</h3>
+        <div class="subSection">
+          <p>Windows Server device drivers must support Query Power and Set Power Management requests</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2008 x86, x64,</p>
+                <p>Windows Server 2008 Release 2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>During transition into the hibernation (S4) system sleep state, device drivers receive power requests from the operating system. In Windows® Server® 2008, a server is placed into a "pseudo"-S4 state during a processor or memory hot replace operation. Device drivers must honor the Query Power and Set Power requests that are dispatched as part of this operation. Device drivers must queue all I/O requests during this pseudo-S4 operation.A device driver must support this pseudo-S4 sleep state by correctly handling the Query Power and Set Power power management requests. A device driver should never reject a Query Power request. When a device driver receives an S4 Set Power power management request, the driver must transition its devices into a D3 device power state and stop all I/O operations. This includes any direct memory access (DMA) transfers that are currently in progress. When the driver's devices are in a low power state, interrupts are disabled, and all in-progress I/O operations are halted, the replace operation can continue without affecting the device driver.While a driver's devices are in the D3 power state, the device driver should queue any new I/O requests that the driver receives. A device driver should use an I/O time-out period for the I/O requests that the driver processes. This time-out period must be long enough so that the I/O requests will not time out if they are stopped or queued during the replacement of a partition unit. When the operating system resumes from the pseudo-S4 sleep state, the device driver can resume processing any stopped or queued I/O requests.The D3 state may be either D3 "Hot", to support devices that must respond to external stimuli, or D3 "Cold".A device driver must not bind itself to a uniquely identifiable instance of system hardware, such as a specific processor. If this occurs, the driver may fail if the partition unit that contains that hardware is replaced in the hardware partition.Design Notes:For more information, see the "Driver Compatibility for Dynamic Hardware Partitioning" white paper at the following website:http://www.microsoft.com/whdc/system/platform/server/dhp.mspx</p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Sep. 01, 2008</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Server.PCI</h2>
+      <div id="sectionSection15" class="section">
+        <p>PCI</p>
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Server.PCI.PCIAER</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Server.PCI.PCIAER</h3>
+        <div class="subSection">
+          <p>Windows Server PCI Express devices are required to support Advanced Error Reporting [AER] as defined in PCI Express Base Specification version 2.1.</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server.PCI</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>See Tables 6-2, 6-3, 6-4 and 6-5 of the PCI Specification on how errors are detected in hardware, the default severity of the error, and the expected action taken by the agent which detects the error with regards to error reporting and logging.All three methods of error reporting; completion status, error messages, error forwarding\data poisoning.Completion status enables the Requester to associate an error with a specific Request.Error messages indicate if the problem is correctable or not, and fatal or notError forwarding\data poisoning can help determine if a particular Switch along the path poisoned the TLPThe following table lists which errors in section 6.2 are required to be reported:Type of Errors                                                    Required?              ____    Action                                                     ERR_COR (correctable)                                  No                                          No action, not logged in Event View, system takes no action             ERR_FATAL (fatal, non-correctable)         Yes                                         WHEA handles, logged  ERR_NONFATAL  (non-fatal)                       Yes                                         None </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jan. 01, 2012</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="heading">Device.DevFund.Server.StaticTools</h2>
+      <div id="sectionSection16" class="section">
+        <h3 class="subHeading"> </h3>
+        <table>
+          <tr>
+            <td>
+              <p>Related Requirements</p>
+            </td>
+            <td>
+              <p>Device.DevFund.Server.StaticTools.SDVandPFD</p>
+            </td>
+          </tr>
+        </table>
+        <h3 class="subHeading">Device.DevFund.Server.StaticTools.SDVandPFD</h3>
+        <div class="subSection">
+          <p>Driver Development includes static analysis to improve reliability using Static Driver Verifier (SDV) and Prefast for Drivers (PFD)</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Target Feature</p>
+              </td>
+              <td>
+                <p>Device.DevFund.Server.StaticTools</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Applies to</p>
+              </td>
+              <td>
+                <p>Windows Server 2012 R2 x64</p>
+                <p>Windows Server 2012 x64</p>
+              </td>
+            </tr>
+          </table>
+          <p>Description</p>
+          <p>Server driver development must include log files for Static Driver Verifier (SDV) and Prefast for Drivers (PFD). Because these tools may produce false errors, you need only submit the logs rather than provide logs which are fully passing.Design Notes:Microsoft's Static Analysis Tools, namely, Prefast for Drivers (PFD) and Static Driver Verifier (SDV) have been found to be highly effective in improving driver reliability by identifying coding issues that would be otherwise difficult to find. Because PFD may produce false errors or warnings, you must fix only those errors and warnings that you deem to be true problems with your driver code. The results file will be captured by the Windows HCK for inclusion in the submission package. Note that there is no requirement that the submitted and subsequently distributed binary be compiled using Microsoft Windows Device Kit or other tools. It is highly recommended that you fix errors and warnings that might be determined to indicate true problems with your driver code.  </p>
+          <p>Additional Information</p>
+          <h3 class="subHeading"> </h3>
+          <table>
+            <tr>
+              <td>
+                <p>Business Justification</p>
+              </td>
+              <td>
+                <p>SDV and PFD provide driver analysis that ensures driver reliability, and a stable system for end users.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Enforcement Date</p>
+              </td>
+              <td>
+                <p>Jun. 26, 2013</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+</div></div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="ORVVIU7--3kYyG1kXu4NDndbFfgYqkzqCyivXtvEnbHkXPLonrYNW_xZ8zclme2GUujEdLBYY0iFxNQXpmm4Vnt2rR_uALY4XKapJyMfyFdytRWwjOqFTBEy62CPsKQ9D4F9Eg2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-US/library/feedback/add/jj134349.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-US" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-US/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-US/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-US%2flibrary%2fwindows%2fhardware%2fjj134349.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="onO_LHEiNdEMY-FlJW1buPUf_qXNuypA2dp2aasr6ouAJEiCxRAOPI_HiKmeTGthuvhOF-TjCKBO7bLZqc3Wpen2h3QlwZdxjnVJ_hGS4fWgQNpkPUDyxfUmgyBku1Y2zgyKeg2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/jj134349(d=default,l=en-us,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-US\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"dfdd9ca4-98a5-490e-8055-7e33fc282386\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-US\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-US/library/windows/hardware/jj134349.aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:15:55 GMT -->
+</html>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff549526(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549526(v=vs.85).aspx" />
+        <title>IoRegisterPlugPlayNotification routine (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/ff549526(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549526(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549526(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549526(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="BF1CA938-9:45:39 AM" />
+
+<meta name="Search.ShortId" content="ff549526" />
+
+<meta name="ms.shortidmsdn" content="ff549526" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=3FEA910FB0B7251DAF6A5F06B61EA8C8" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="http://i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395074739&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff549526%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557560(v=vs.85).aspx" id="ff576020_VS.85_en-us" mtpsaliasid="" mtpsassetid="dd284fb0-6fa6-4f10-ac82-aa3f48847631_VS.85_en-us" mtpsshortid="ff557560_VS.85_en-us" title="Kernel-Mode Driver Architecture">Kernel-Mode Driver Architecture</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553217(v=vs.85).aspx" id="ff573518_VS.85_en-us" mtpsaliasid="" mtpsassetid="9ca2dfee-abb3-40cb-aa04-b9e1bc0b1fa5_VS.85_en-us" mtpsshortid="ff553217_VS.85_en-us" title="Reference">Reference</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544200(v=vs.85).aspx" id="ff573542_VS.85_en-us" mtpsaliasid="" mtpsassetid="c0b21ead-875f-4b7a-a760-ec5b9ead184a_VS.85_en-us" mtpsshortid="ff544200_VS.85_en-us" title="Driver Support Routines">Driver Support Routines</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551797(v=vs.85).aspx" id="ff573630_VS.85_en-us" mtpsaliasid="" mtpsassetid="bdc977ec-825c-406b-871b-b28b0bdc135a_VS.85_en-us" mtpsshortid="ff551797_VS.85_en-us" title="I/O Manager Routines">I/O Manager Routines</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548196(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAcquireCancelSpinLock">IoAcquireCancelSpinLock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548204(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAcquireRemoveLock">IoAcquireRemoveLock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548207(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAcquireRemoveLockEx">IoAcquireRemoveLockEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548209(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAdjustPagingPathCount">IoAdjustPagingPathCount</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548216(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateAdapterChannel">IoAllocateAdapterChannel</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548224(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateController">IoAllocateController</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548233(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateDriverObjectExtension">IoAllocateDriverObjectExtension</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548245(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateErrorLogEntry">IoAllocateErrorLogEntry</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548257(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateIrp">IoAllocateIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548263(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateMdl">IoAllocateMdl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548276(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAllocateWorkItem">IoAllocateWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548282(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAssignArcName">IoAssignArcName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548285(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAssignResources">IoAssignResources</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548294(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAttachDevice">IoAttachDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548298(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAttachDeviceByPointer">IoAttachDeviceByPointer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548300(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoAttachDeviceToDeviceStack">IoAttachDeviceToDeviceStack</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548310(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoBuildAsynchronousFsdRequest">IoBuildAsynchronousFsdRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548318(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoBuildDeviceIoControlRequest">IoBuildDeviceIoControlRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548324(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoBuildPartialMdl">IoBuildPartialMdl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548330(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoBuildSynchronousFsdRequest">IoBuildSynchronousFsdRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548336(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCallDriver">IoCallDriver</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548338(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCancelIrp">IoCancelIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548341(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCheckShareAccess">IoCheckShareAccess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh285207(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCheckShareAccessEx">IoCheckShareAccessEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439297(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoClearActivityIdThread">IoClearActivityIdThread</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548343(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCompleteRequest">IoCompleteRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548371(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoConnectInterrupt">IoConnectInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548378(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoConnectInterruptEx">IoConnectInterruptEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548387(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCopyCurrentIrpStackLocationToNext">IoCopyCurrentIrpStackLocationToNext</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548395(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateController">IoCreateController</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548397(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateDevice">IoCreateDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548407(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateDeviceSecure">IoCreateDeviceSecure</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff548418(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateFile">IoCreateFile</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549039(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateNotificationEvent">IoCreateNotificationEvent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549043(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateSymbolicLink">IoCreateSymbolicLink</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549045(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateSynchronizationEvent">IoCreateSynchronizationEvent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj158874(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateSystemThread">IoCreateSystemThread</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549050(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCreateUnprotectedSymbolicLink">IoCreateUnprotectedSymbolicLink</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549054(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqInitialize">IoCsqInitialize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549060(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqInitializeEx">IoCsqInitializeEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549066(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqInsertIrp">IoCsqInsertIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549067(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqInsertIrpEx">IoCsqInsertIrpEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549070(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqRemoveIrp">IoCsqRemoveIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549072(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoCsqRemoveNextIrp">IoCsqRemoveNextIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549076(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDeassignArcName">IoDeassignArcName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh780273(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDecrementKeepAliveCount">IoDecrementKeepAliveCount</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549078(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDeleteController">IoDeleteController</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549083(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDeleteDevice">IoDeleteDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549085(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDeleteSymbolicLink">IoDeleteSymbolicLink</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549087(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDetachDevice">IoDetachDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549089(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDisconnectInterrupt">IoDisconnectInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549093(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoDisconnectInterruptEx">IoDisconnectInterruptEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549095(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFlushAdapterBuffers">IoFlushAdapterBuffers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549100(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoForwardIrpSynchronously">IoForwardIrpSynchronously</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549101(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeAdapterChannel">IoFreeAdapterChannel</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549104(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeController">IoFreeController</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549107(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeErrorLogEntry">IoFreeErrorLogEntry</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549113(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeIrp">IoFreeIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549117(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeMapRegisters">IoFreeMapRegisters</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549126(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeMdl">IoFreeMdl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549133(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoFreeWorkItem">IoFreeWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439309(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetActivityIdIrp">IoGetActivityIdIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439311(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetActivityIdThread">IoGetActivityIdThread</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549140(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetAffinityInterrupt">IoGetAffinityInterrupt</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549145(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetAttachedDeviceReference">IoGetAttachedDeviceReference</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549153(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetBootDiskInformation">IoGetBootDiskInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549157(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetConfigurationInformation">IoGetConfigurationInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549164(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetContainerInformation">IoGetContainerInformation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549174(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetCurrentIrpStackLocation">IoGetCurrentIrpStackLocation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549177(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetCurrentProcess">IoGetCurrentProcess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549180(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceInterfaceAlias">IoGetDeviceInterfaceAlias</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439313(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceInterfacePropertyData">IoGetDeviceInterfacePropertyData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549186(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceInterfaces">IoGetDeviceInterfaces</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549191(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceNumaNode">IoGetDeviceNumaNode</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549198(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceObjectPointer">IoGetDeviceObjectPointer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549203(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDeviceProperty">IoGetDeviceProperty</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549206(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDevicePropertyData">IoGetDevicePropertyData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549220(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDmaAdapter">IoGetDmaAdapter</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549229(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetDriverObjectExtension">IoGetDriverObjectExtension</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549231(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetFileObjectGenericMapping">IoGetFileObjectGenericMapping</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549236(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetFunctionCodeFromCtlCode">IoGetFunctionCodeFromCtlCode</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549247(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetInitialStack">IoGetInitialStack</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439373(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetInitiatorProcess">IoGetInitiatorProcess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549265(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetIoPriorityHint">IoGetIoPriorityHint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549266(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetNextIrpStackLocation">IoGetNextIrpStackLocation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549269(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetPagingIoPriority">IoGetPagingIoPriority</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549277(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetRelatedDeviceObject">IoGetRelatedDeviceObject</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549286(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetRemainingStackSize">IoGetRemainingStackSize</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549299(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoGetStackLimits">IoGetStackLimits</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh780274(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoIncrementKeepAliveCount">IoIncrementKeepAliveCount</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549307(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeDpcRequest">IoInitializeDpcRequest</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549315(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeIrp">IoInitializeIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549324(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeRemoveLock">IoInitializeRemoveLock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549331(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeRemoveLockEx">IoInitializeRemoveLockEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549344(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeTimer">IoInitializeTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549349(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInitializeWorkItem">IoInitializeWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549353(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInvalidateDeviceRelations">IoInvalidateDeviceRelations</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549361(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoInvalidateDeviceState">IoInvalidateDeviceState</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549372(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoIs32bitProcess">IoIs32bitProcess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549375(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoIsErrorUserInduced">IoIsErrorUserInduced</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj242062(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoIsValidIrpStatus">IoIsValidIrpStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549382(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoIsWdmVersionAvailable">IoIsWdmVersionAvailable</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549397(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoMakeAssociatedIrp">IoMakeAssociatedIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549411(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoMapTransfer">IoMapTransfer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549422(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoMarkIrpPending">IoMarkIrpPending</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549433(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoOpenDeviceInterfaceRegistryKey">IoOpenDeviceInterfaceRegistryKey</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549443(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoOpenDeviceRegistryKey">IoOpenDeviceRegistryKey</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439375(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoPropagateActivityIdToThread">IoPropagateActivityIdToThread</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549453(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoQueryDeviceDescription">IoQueryDeviceDescription</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/dn265329(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoQueryFullDriverPath">IoQueryFullDriverPath</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549466(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoQueueWorkItem">IoQueueWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549474(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoQueueWorkItemEx">IoQueueWorkItemEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549482(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRaiseHardError">IoRaiseHardError</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549488(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRaiseInformationalHardError">IoRaiseInformationalHardError</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439379(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterBootDriverCallback">IoRegisterBootDriverCallback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549494(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterBootDriverReinitialization">IoRegisterBootDriverReinitialization</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549501(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterContainerNotification">IoRegisterContainerNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549506(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterDeviceInterface">IoRegisterDeviceInterface</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549511(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterDriverReinitialization">IoRegisterDriverReinitialization</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549518(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterLastChanceShutdownNotification">IoRegisterLastChanceShutdownNotification</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549526(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterPlugPlayNotification">IoRegisterPlugPlayNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549541(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRegisterShutdownNotification">IoRegisterShutdownNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549550(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReleaseCancelSpinLock">IoReleaseCancelSpinLock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549560(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReleaseRemoveLock">IoReleaseRemoveLock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549567(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReleaseRemoveLockAndWait">IoReleaseRemoveLockAndWait</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549571(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReleaseRemoveLockAndWaitEx">IoReleaseRemoveLockAndWaitEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549581(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReleaseRemoveLockEx">IoReleaseRemoveLockEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549587(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRemoveShareAccess">IoRemoveShareAccess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549597(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportDetectedDevice">IoReportDetectedDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj158875(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportInterruptActive">IoReportInterruptActive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj158876(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportInterruptInactive">IoReportInterruptInactive</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549608(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportResourceForDetection">IoReportResourceForDetection</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549616(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportResourceUsage">IoReportResourceUsage</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj157233(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportRootDevice">IoReportRootDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549625(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportTargetDeviceChange">IoReportTargetDeviceChange</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549634(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReportTargetDeviceChangeAsynchronous">IoReportTargetDeviceChangeAsynchronous</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549647(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRequestDeviceEject">IoRequestDeviceEject</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549657(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoRequestDpc">IoRequestDpc</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549661(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoReuseIrp">IoReuseIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439382(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetActivityIdIrp">IoSetActivityIdIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439385(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetActivityIdThread">IoSetActivityIdThread</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549674(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetCancelRoutine">IoSetCancelRoutine</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549679(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetCompletionRoutine">IoSetCompletionRoutine</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549686(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetCompletionRoutineEx">IoSetCompletionRoutineEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439388(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetDeviceInterfacePropertyData">IoSetDeviceInterfacePropertyData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549700(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetDeviceInterfaceState">IoSetDeviceInterfaceState</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549704(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetDevicePropertyData">IoSetDevicePropertyData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549707(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetHardErrorOrVerifyDevice">IoSetHardErrorOrVerifyDevice</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff549710(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetIoPriorityHint">IoSetIoPriorityHint</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/jj219212(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetMasterIrpStatus">IoSetMasterIrpStatus</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550321(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetNextIrpStackLocation">IoSetNextIrpStackLocation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550324(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetShareAccess">IoSetShareAccess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh285208(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetShareAccessEx">IoSetShareAccessEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550330(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetStartIoAttributes">IoSetStartIoAttributes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550336(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetSystemPartition">IoSetSystemPartition</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550342(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSetThreadHardErrorMode">IoSetThreadHardErrorMode</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550349(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSizeOfIrp">IoSizeOfIrp</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550352(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSizeofWorkItem">IoSizeofWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550355(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoSkipCurrentIrpStackLocation">IoSkipCurrentIrpStackLocation</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550358(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoStartNextPacket">IoStartNextPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550363(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoStartNextPacketByKey">IoStartNextPacketByKey</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550370(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoStartPacket">IoStartPacket</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550373(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoStartTimer">IoStartTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550377(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoStopTimer">IoStopTimer</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439391(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoTransferActivityId">IoTransferActivityId</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550396(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUnregisterContainerNotification">IoUnregisterContainerNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550392(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUninitializeWorkItem">IoUninitializeWorkItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh439394(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUnRegisterBootDriverCallback">IoUnRegisterBootDriverCallback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550398(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUnregisterPlugPlayNotification">IoUnregisterPlugPlayNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550404(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUnregisterPlugPlayNotificationEx">IoUnregisterPlugPlayNotificationEx</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550409(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUnregisterShutdownNotification">IoUnregisterShutdownNotification</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550412(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoUpdateShareAccess">IoUpdateShareAccess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550418(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoValidateDeviceIoControlAccess">IoValidateDeviceIoControlAccess</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550421(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoVerifyPartitionTable">IoVerifyPartitionTable</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550422(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoVolumeDeviceToDosName">IoVolumeDeviceToDosName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550426(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWithinStackLimits">IoWithinStackLimits</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550429(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIAllocateInstanceIds">IoWMIAllocateInstanceIds</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550433(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIDeviceObjectToProviderId">IoWMIDeviceObjectToProviderId</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550432(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIDeviceObjectToInstanceName">IoWMIDeviceObjectToInstanceName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550438(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIExecuteMethod">IoWMIExecuteMethod</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550443(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIHandleToInstanceName">IoWMIHandleToInstanceName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550453(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIOpenBlock">IoWMIOpenBlock</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550463(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIQueryAllData">IoWMIQueryAllData</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550467(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIQueryAllDataMultiple">IoWMIQueryAllDataMultiple</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550471(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIQuerySingleInstance">IoWMIQuerySingleInstance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550477(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIQuerySingleInstanceMultiple">IoWMIQuerySingleInstanceMultiple</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550480(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIRegistrationControl">IoWMIRegistrationControl</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550484(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMISetNotificationCallback">IoWMISetNotificationCallback</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550493(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMISetSingleInstance">IoWMISetSingleInstance</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550495(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMISetSingleItem">IoWMISetSingleItem</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550505(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMISuggestInstanceName">IoWMISuggestInstanceName</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550520(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWMIWriteEvent">IoWMIWriteEvent</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550527(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="IoWriteErrorLogEntry">IoWriteErrorLogEntry</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">IoRegisterPlugPlayNotification routine</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>The <strong>IoRegisterPlugPlayNotification</strong> routine registers a Plug and Play (PnP) notification callback routine to be called when a PnP event of the specified category occurs.</p>
+<h2>Syntax</h2>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_971caa9d-cb17-4309-a48a-7e6d5f3f0120');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_971caa9d-cb17-4309-a48a-7e6d5f3f0120" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+NTSTATUS IoRegisterPlugPlayNotification(
+  _In_      IO_NOTIFICATION_EVENT_CATEGORY EventCategory,
+  _In_      ULONG EventCategoryFlags,
+  _In_opt_  PVOID EventCategoryData,
+  _In_      PDRIVER_OBJECT DriverObject,
+  _In_      PDRIVER_NOTIFICATION_CALLBACK_ROUTINE CallbackRoutine,
+  _In_opt_  PVOID Context,
+  _Out_     PVOID *NotificationEntry
+);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<h2>Parameters</h2>
+<dl>
+<dt><em>EventCategory</em> [in]</dt>
+<dd>
+<p>The category of PnP event for which the callback routine is being registered. <em>EventCategory</em> must be one of the following: </p>
+<p></p>
+<dl>
+<dt><a id="EventCategoryDeviceInterfaceChange"></a><a id="eventcategorydeviceinterfacechange"></a><a id="EVENTCATEGORYDEVICEINTERFACECHANGE"></a><strong>EventCategoryDeviceInterfaceChange</strong></dt>
+<dd>
+<p>PnP events in this category include the arrival (enabling) of a new instance of a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541339(v=vs.85).aspx">device interface class</a> (GUID_DEVICE_INTERFACE_ARRIVAL), or the removal (disabling) of an existing device interface instance (GUID_DEVICE_INTERFACE_REMOVAL).</p>
+</dd>
+<dt><a id="EventCategoryHardwareProfileChange"></a><a id="eventcategoryhardwareprofilechange"></a><a id="EVENTCATEGORYHARDWAREPROFILECHANGE"></a><strong>EventCategoryHardwareProfileChange</strong></dt>
+<dd>
+<p>PnP events in this category include query-change (GUID_HWPROFILE_QUERY_CHANGE), change-complete (GUID_HWPROFILE_CHANGE_COMPLETE), and change-cancel (GUID_HWPROFILE_CHANGE_CANCELLED) of a hardware profile.</p>
+</dd>
+<dt><a id="EventCategoryTargetDeviceChange"></a><a id="eventcategorytargetdevicechange"></a><a id="EVENTCATEGORYTARGETDEVICECHANGE"></a><strong>EventCategoryTargetDeviceChange</strong></dt>
+<dd>
+<p>PnP events in this category include events related to removing a device: the device's drivers received a query-remove IRP (GUID_TARGET_DEVICE_QUERY_REMOVE), the drivers completed a remove IRP (GUID_TARGET_DEVICE_REMOVE_COMPLETE), or the drivers received a cancel-remove IRP (GUID_TARGET_DEVICE_REMOVE_CANCELLED). This category is also used for custom notification events.</p>
+</dd>
+</dl>
+</dd>
+<dt><em>EventCategoryFlags</em> [in]</dt>
+<dd>
+<p>Flag bits that modify the registration operation. Possible values include:</p>
+<p></p>
+<dl>
+<dt><a id="PNPNOTIFY_DEVICE_INTERFACE_INCLUDE_EXISTING_INTERFACES"></a><a id="pnpnotify_device_interface_include_existing_interfaces"></a>PNPNOTIFY_DEVICE_INTERFACE_INCLUDE_EXISTING_INTERFACES</dt>
+<dd>
+<p>Only valid with an <em>EventCategory</em> of <strong>EventCategoryDeviceInterfaceChange</strong>. If set, the PnP manager calls the driver callback routine for each device interface instance that is currently registered and active and registers the callback routine for future arrivals or removals of device interface instances.</p>
+</dd>
+</dl>
+</dd>
+<dt><em>EventCategoryData</em> [in, optional]</dt>
+<dd>
+<p>A pointer to further information about the events for which <em>CallbackRoutine</em> is being registered. The information varies for different <em>EventCategory</em> values:</p>
+<ul>
+<li>
+<p>When <em>EventCategory</em> is <strong>EventCategoryDeviceInterfaceChange</strong>, <em>EventCategoryData</em> must point to a GUID specifying a device interface class. <em>CallbackRoutine</em> will be called when an interface of that class is enabled or removed.</p>
+</li>
+<li>
+<p>When <em>EventCategory</em> is <strong>EventCategoryHardwareProfileChange</strong>, <em>EventCategoryData</em> must be <strong>NULL</strong>.</p>
+</li>
+<li>
+<p>When <em>EventCategory</em> is <strong>EventCategoryTargetDeviceChange</strong>, <em>EventCategoryData</em> must point to the file object for which PnP notification is requested.</p>
+</li>
+</ul>
+</dd>
+<dt><em>DriverObject</em> [in]</dt>
+<dd>
+<p>A pointer to the caller's driver object.</p>
+<p>To ensure that the driver remains loaded while it is registered for PnP notification, this call increments the reference count on <em>DriverObject</em>. The PnP manager decrements the reference count when this registration is removed.</p>
+</dd>
+<dt><em>CallbackRoutine</em> [in]</dt>
+<dd>
+<p>A pointer to the PnP notification callback routine to be called when the specified PnP event occurs.</p>
+<p>The function prototype for this callback routine is defined as follows:</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a5d711a0-1a4a-413b-adff-7369ea4c73c9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a5d711a0-1a4a-413b-adff-7369ea4c73c9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+typedef NTSTATUS 
+  DRIVER_NOTIFICATION_CALLBACK_ROUTINE(
+    _In_ PVOID NotificationStructure,
+    _Inout_opt_ PVOID Context
+    );
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The callback routine's <em>NotificationStructure</em> is specific to the <em>EventCategory</em> value, as shown in the following table.</p>
+<table>
+<tr><th>Event category</th><th>Notification structure</th></tr>
+<tr><td>
+<p><strong>EventCategoryDeviceInterfaceChange</strong></p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543134(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DEVICE_INTERFACE_CHANGE_NOTIFICATION</strong></a>
+</p>
+</td></tr>
+<tr><td>
+<p><strong>EventCategoryHardwareProfileChange</strong></p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547073(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">HWPROFILE_CHANGE_NOTIFICATION</strong></a>
+</p>
+</td></tr>
+<tr><td>
+<p><strong>EventCategoryTargetDeviceChange</strong></p>
+</td><td>
+<p>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564601(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">TARGET_DEVICE_REMOVAL_NOTIFICATION</strong></a>
+</p>
+</td></tr>
+</table>
+<p> </p>
+<p>The callback routine's <em>Context</em> parameter contains the context data the driver supplied during registration.</p>
+<p>For information about including a function declaration for the callback routine  that meets the requirements of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552808(v=vs.85).aspx">Static Driver Verifier</a> (SDV), see Examples.</p>
+<p>The PnP manager calls driver callback routines at IRQL = PASSIVE_LEVEL.</p>
+</dd>
+<dt><em>Context</em> [in, optional]</dt>
+<dd>
+<p>A pointer to a caller-allocated buffer containing context that the PnP manager passes to the callback routine.</p>
+</dd>
+<dt><em>NotificationEntry</em> [out]</dt>
+<dd>
+<p>A pointer to an opaque value returned by this call that identifies the registration. Pass this value to the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550404(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IoUnregisterPlugPlayNotificationEx</strong></a> routine to remove the registration. (In versions of Windows before Windows 7, call the <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550398(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IoUnregisterPlugPlayNotification</strong></a> routine instead of <strong>IoUnregisterPlugPlayNotificationEx</strong>.)</p>
+</dd>
+</dl>
+<h2>Return value</h2>
+<p><strong>IoRegisterPlugPlayNotification</strong> returns STATUS_SUCCESS or an appropriate error status.</p>
+<h2>Remarks</h2>
+<p>A driver registers for an event category. Each category includes one or more types of PnP events.</p>
+<p>A driver can register different callback routines for different event categories or can register a single callback routine. A single callback routine can cast the <em>NotificationStructure</em> to a <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558805(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">PLUGPLAY_NOTIFICATION_HEADER</strong></a> and use the <strong>Event</strong> field to determine the exact type of the notification structure.</p>
+<p class="note"><strong>Warning</strong>  If the caller specifies PNPNOTIFY_DEVICE_INTERFACE_INCLUDE_EXISTING_INTERFACES, the operating system might call the PnP notification callback routine twice for a single <strong>EventCategoryDeviceInterfaceChange</strong> event for an existing interface. You can safely ignore the second call to the callback. The operating system will not call the callback more than twice for a single event.</p>
+<p>PnP notification callback routines should complete their tasks as quickly as possible and return control to the PnP manager, to prevent delays in notifying other drivers and applications that have registered for the event.</p>
+<p>The PnP manager does not take out a reference on the file object when a driver registers for notification of an <strong>EventCategoryTargetDeviceChange</strong> event. If the driver's PnP notification callback routine requires access to the file object, the driver should take out an extra reference on the file object before calling <strong>IoRegisterPlugPlayNotification</strong>.</p>
+<p>Typically, Kernel-Mode Driver Framework (KMDF) drivers should call <strong>IoRegisterPlugPlayNotification</strong> from their <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540902(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceSelfManagedIoInit</em></a> callback function, and should call <strong>IoUnregisterPlugPlayNotification</strong> from their <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540898(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceSelfManagedIoCleanup</em></a> callback function. These drivers should not call <strong>IoRegisterPlugPlayNotification</strong> from their <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a> callback function; otherwise, the PnP notification callback routine might be called before the driver stack is started by PnP, in which case the driver will not be prepared to handle the notification.</p>
+<p>For more information, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff565480(v=vs.85).aspx">Using PnP Notification</a>.</p>
+<h2>Examples</h2>
+<p>To define a PnP notification callback routine, you must first provide a function declaration that identifies the type of callback routine you're defining. Windows provides a set of callback function types for drivers. Declaring a function using the callback function types helps <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454182(v=vs.85).aspx">Code Analysis for Drivers</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff552808(v=vs.85).aspx">Static Driver Verifier</a> (SDV), and other verification tools find errors, and it's a requirement for writing drivers for the Windows operating system.</p>
+<p>For example, to define a PnP notification callback routine that is named <code>MyCallbackRoutine</code>, use the DRIVER_NOTIFICATION_CALLBACK_ROUTINE type as shown in this code example:</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5038bd58-6d9c-4d65-96a9-0d75279149a4');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5038bd58-6d9c-4d65-96a9-0d75279149a4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+DRIVER_NOTIFICATION_CALLBACK_ROUTINE MyCallbackRoutine;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Then, implement your callback routine as follows:</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_a6e53814-89c6-4fad-9ce6-a251e8e92fd9');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_a6e53814-89c6-4fad-9ce6-a251e8e92fd9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+_Use_decl_annotations_
+NTSTATUS
+  MyCallbackRoutine(
+    PVOID NotificationStructure,
+    PVOID Context
+    )
+  {
+      // Function body
+  }
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The DRIVER_NOTIFICATION_CALLBACK_ROUTINE function type is defined in the Wdm.h header file. To more accurately identify errors when you run the code analysis tools, be sure to add the _Use_decl_annotations_ annotation to your function definition. The _Use_decl_annotations_ annotation ensures that the annotations that are applied to the DRIVER_NOTIFICATION_CALLBACK_ROUTINE function type in the header file are used. For more information about the requirements for function declarations, see <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544652(v=vs.85).aspx">Declaring Functions by Using Function Role Types for WDM Drivers</a>. For information about _Use_decl_annotations_, see <a href="http://go.microsoft.com/fwlink/?LinkId=286697">Annotating Function Behavior</a>.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Version</p>
+</th><td>Available starting with Windows 2000.</td></tr>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>Wdm.h (include Wdm.h, Ntddk.h, or Ntifs.h)</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>Library</p>
+</th><td>
+<dl>
+<dt>Ntoskrnl.lib</dt>
+</dl>
+</td></tr>
+<tr><th>
+<p>IRQL</p>
+</th><td>PASSIVE_LEVEL</td></tr>
+<tr><th>
+<p>DDI compliance rules</p>
+</th><td>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975188(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MarkPower</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975189(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MarkPowerDown</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975190(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MarkQueryRelations</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975191(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">MarkStartDevice</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh975204(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">PowerIrpDDis</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/hh454220(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">HwStorPortProhibitedDDIs</strong></a>
+</td></tr>
+</table>
+<h2><a id="see_also"></a>See also</h2>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff543134(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DEVICE_INTERFACE_CHANGE_NOTIFICATION</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540898(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceSelfManagedIoCleanup</em></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff540902(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDeviceSelfManagedIoInit</em></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff541693(v=vs.85).aspx"><em xmlns="http://www.w3.org/1999/xhtml">EvtDriverDeviceAdd</em></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff547073(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">HWPROFILE_CHANGE_NOTIFICATION</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550398(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IoUnregisterPlugPlayNotification</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff550404(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IoUnregisterPlugPlayNotificationEx</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558805(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">PLUGPLAY_NOTIFICATION_HEADER</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564596(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">TARGET_DEVICE_CUSTOM_NOTIFICATION</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff564601(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">TARGET_DEVICE_REMOVAL_NOTIFICATION</strong></a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [kernel\kernel]:%20IoRegisterPlugPlayNotification routine%20 RELEASE:%20(2/11/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 2/11/2014</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="GHGorhxSU6G_6gl1y57hkgwgZl4BkKXXIQsf8RNh_CN2hN1agyO5twz8YZRHwFsIfYCbCxgo1Y-s9-qFo481vllRgAMMAOEGB95CvOjONBL7U6eUIkM0mSpfQooviAxTwDDk-g2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/ff549526(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class=" ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fff549526(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="Oc9NUTitQrx8dHXyDadQk4W4AK3-LjBBrJuWreT0Xnn_AK1mvGIt-lJYAn8tyK38lKmQzcE_alW-3DxX4LQqrXYSdbr809Tu8Lw1MA_7oSyRSQ92tGDY5TSdAMPvx57RqKEMGA2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/ff549526(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"6a3d227b-c464-468d-8c3a-0076e6eb9a2e\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=6A874F42A61252C549AE8222B0CA65F4" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/ff549526(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 17:16:05 GMT -->
+</html>

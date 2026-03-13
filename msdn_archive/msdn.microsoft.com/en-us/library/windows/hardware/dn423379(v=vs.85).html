@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn423379(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:30:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="dn423379(v%3dvs.85).html" />
+        <title>USB in Windows - FAQ (Windows Drivers)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/hardware/dn423379(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423379(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423379(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/hardware/dn423379(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="61C41DD0-7:03:59 AM" />
+
+<meta name="Search.ShortId" content="dn423379" />
+
+<meta name="ms.shortidmsdn" content="dn423379" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../i3.msdn.microsoft.com/Combined6126.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,1:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,2:Header,2:sprite,1:Toc,1:LibraryMemberFilter,2:Footer,3:DetailedLinkList,3:LinkList,4:Windows;/Areas/Epx/Content/Css:0,/Areas/Library/Content:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Themes/Base/Content:3,/Areas/Library/Themes/Windows/Content:4&amp;amp;hashKey=E1AF301680B6D838738C2F52E9149624" /></head>
+    <body class="library ">
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    <div id="ux-header" class=" ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/" title="Windows"><img alt="Windows" src="../../../../../i.msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Windows_logo.png"></img></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Dev Center - Hardware</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Dev Center Home">Dev Center Home</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Windows Store apps">Windows Store apps</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Desktop">Desktop</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+        <div class="SearchBox">   
+            <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />            
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+            </form>
+         
+                
+                 
+    
+        </div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://sysdev.microsoft.com/en-us/hardware/" title="Dashboard">Dashboard</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg507680" title="Get Started ">Get Started </a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg462970" title="Design">Design</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/hardware/ff960953" title="Develop">Develop</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg463010" title="Certify">Certify</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn">
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1395065039&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn423379%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+    
+
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454504" title="Systems">Systems</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/gg454505" title="Devices">Devices</a>
+            <a class="active" href="http://msdn.microsoft.com/library/windows/hardware/ff557573" title="Drivers">Drivers</a>
+            <a class="normal" href="http://msdn.microsoft.com/library/windows/hardware/ff551063(v=vs.85).aspx" title="Debugging">Debugging</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454513" title="Downloads">Downloads</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn433227.aspx" title="Samples">Samples</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/gg454517" title="Community">Community</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/hardware/dn550976" title="Archives">Archives</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557557(v%3dvs.85).html" id="ff576019_VS.85_en-us" mtpsaliasid="" mtpsassetid="1ef3e216-1322-42c3-b070-94cddfb2133c_VS.85_en-us" mtpsshortid="ff557557_VS.85_en-us" title="Device and Driver Technologies">Device and Driver Technologies</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff557547(v%3dvs.85).html" id="hh440424_VS.85_en-us" mtpsaliasid="" mtpsassetid="5cefa114-cec1-4058-a7a9-08e0b13fe412_VS.85_en-us" mtpsshortid="ff557547_VS.85_en-us" title="Bus and Port Drivers">Bus and Port Drivers</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="ff538930(v%3dvs.85).html" id="dn303474_VS.85_en-us" mtpsaliasid="" mtpsassetid="45ba2638-b1b9-409d-bd23-78e75a3515be_VS.85_en-us" mtpsshortid="ff538930_VS.85_en-us" title="Universal Serial Bus (USB)">Universal Serial Bus (USB)</a>            </div>
+            <div class="toclevel1" data-toclevel="1">
+<a data-tochassubtree="true" href="dn303352(v%3dvs.85).html" id="hh948124_VS.85_en-us" mtpsaliasid="" mtpsassetid="91C5F1DC-8AB4-427E-B76F-C8557FA48576_VS.85_en-us" mtpsshortid="dn303352_VS.85_en-us" title="Concepts for all USB developers">Concepts for all USB developers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="hh920375(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB device layout">USB device layout</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303349(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Standard USB descriptors">Standard USB descriptors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="dn303353(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB endpoints and their pipes">USB endpoints and their pipes</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2">
+<a href="dn423379(v%3dvs.85).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="USB in Windows - FAQ">USB in Windows - FAQ</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">USB in Windows - FAQ</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>This topic presents frequently asked questions for driver developers who are new to developing and integrating USB devices and drivers with Windows operating systems.</p>
+<p>
+</p><ul>
+<li><a href="#usbterms">I hear numerous USB terms thrown around almost interchangeably. What do they all mean?</a></li>
+<li><a href="#PC_3_Ports">Does my PC have USB 3.0 ports?</a></li>
+<li><a href="#ext_drivers">Do I need to install drivers for my eXtensible host controller?</a></li>
+<li><a href="#hosts">Why do I see several host controllers on my system?</a></li>
+<li><a href="#twohubs">Why do I see two hubs in Device Manager when I have connected only one USB 3.0 hub?</a></li>
+<li><a href="#portdrivers">Which set of drivers is loaded for the devices that are connected to 2.0 ports?</a></li>
+<li><a href="#superspeed">How do I determine whether my USB 3.0 device is operating as SuperSpeed?</a></li>
+<li><a href="#whynotfaster">Why isn't my SuperSpeed USB device faster than an equivalent high-speed USB device?</a></li>
+<li><a href="#compositecompound">Is it possible to have a composite and a compound device in one piece of hardware?</a></li>
+<li><a href="#why_reinstalled">Why are some of my USB devices reinstalled when they are moved to a new port?</a></li>
+<li><a href="#designrec">Is there a list of design recommendations for USB product packaging?</a></li>
+<li><a href="#rewritedriver">Do I have to rewrite my client driver to support USB 3.0 devices?</a></li>
+<li><a href="#loadeddriver">Which driver is loaded for my SuperSpeed storage device use, Uaspstor.sys or Usbstor.sys?</a></li>
+<li><a href="#usbdwg">Which USB DWG Classes does Microsoft support?</a></li>
+<li><a href="#customclass">Which device setup class should I use for a custom USB device?</a></li>
+<li><a href="#cpucthree">Why won't my CPU enter C3 when I attach some USB devices?</a></li>
+<li><a href="#selsuspend">Which USB class drivers support Selective Suspend?</a></li>
+<li><a href="#usbawake">Why can't a USB device awaken Windows from S3?</a></li>
+<li><a href="#enhdriver">Do I need to install drivers for my enhanced (USB 2.0) host controller?</a></li>
+<li><a href="#disablehi">Can I disable the "HI-SPEED USB Device plugged into non-HI-SPEED USB port" notice?</a></li>
+<li><a href="#singlett">Is my USB 2.0 hub single-TT or multi-TT?</a></li>
+<li><a href="#usbsn">What characters or bytes are valid in a USB serial number?</a></li>
+<li><a href="#langidloc">What LANGID is used in a string request on localized builds of Windows?</a></li>
+<li><a href="#langidsn">What LANGID is used to extract a device's serial number?</a></li>
+<li><a href="#maxxfer">What is the maximum USB transfer size for different Windows versions?</a></li>
+<li><a href="#nummultif">How should numbers be assigned to multiple interfaces on a composite device?</a></li>
+<li><a href="#usbccgp">What are the major restrictions imposed by Usbccgp.sys?</a></li>
+<li><a href="#tracecorebin">How do I enable debug tracing for USB core binaries?</a></li>
+<li><a href="#iadesc">Does Windows support Interface Association Descriptors?</a></li>
+<li><a href="#mdlsinurb">Does the USB stack handle chained MDLs in a URB?</a></li>
+<li><a href="#urbirp">Can a driver have more than one URB in an IRP?</a></li>
+<li><a href="#supportcomposite">Does Windows Support USB Composite Hubs?</a></li>
+<li><a href="#addlfaq">Where can I find additional FAQs on USB?</a></li>
+</ul>
+
+<h2><a id="usbterms"></a><a id="USBTERMS"></a>I hear numerous USB terms thrown around almost interchangeably. What do they all mean?</h2>
+<p><em>"Thanks to USB 3.0, I can connect a SuperSpeed USB thumb drive to my PC's xHCI host controller and copy files faster." </em></p>
+<p>Let's understand the USB terms in the preceding sentence. USB 3.0, USB 2.0, and USB 1.0 refer to the USB specification revision number from the <a href="http://www.usb.org/home">USB Implementers Forum</a>. The USB specifications define how the host PC and USB device communicate with each another.
+
+</p>
+<p>The version number also indicates the maximum transmission speed. The newest specification revision is USB 3.0, which specifies a maximum transmission speed up to 5 Gbps. USB 1.0 defines two different data rates, low speed USB (up to 1.5 Mbps) and full speed USB (up to 12 Mbps). USB 2.0 defines a new data rate, high-speed USB (480 Mbps), while maintaining support for low and full speed devices. USB 3.0 continues to work with all of the previously defined data rates.
+
+If you look at product packaging, SuperSpeed USB references the newest USB 3.0 devices. Hi-Speed USB is used to describe high-speed USB 2.0 devices. USB, with no descriptor, refers to low speed and full speed devices.
+
+</p>
+<p>In addition to the USB protocol, there is a second specification for the USB host controller, the piece of hardware on the PC to which a device is connected. The Host Controller Interface specification defines how host controller hardware and software interact. The eXtensible Host Controller Interface (xHCI) defines a USB 3.0 host controller. The Enhanced Host Controller Interface (EHCI) defines a USB 2.0 host controller. The Universal Host Controller (UHCI) and the Open Host Controller (OHCI) are two, alternate implementations of a USB 1.0 host controller.
+</p>
+<h2><a id="PC_3_Ports"></a><a id="pc_3_ports"></a><a id="PC_3_PORTS"></a>Does my PC have USB 3.0 ports?</h2>
+<p>USB 3.0 ports are either marked with the SuperSpeed USB Logo or the port is typically blue.</p>
+<p><img id="USB_Intro_FAQ_Fig1_USBLogo" alt="Port with USB Logo" src="../../../../../i.msdn.microsoft.com/dynimg/IC675748.png" title="Port with USB Logo" xmlns="" /></p>
+<p><img id="USB_Intro_FAQ_Fig2_BlueUSBPort" alt="Blue USB 3.0 Port" src="../../../../../i.msdn.microsoft.com/dynimg/IC675749.png" title="Blue USB 3.0 Port" xmlns="" /></p>
+<p>Newer PCs have both USB 3.0 and USB 2.0 ports. If you want your SuperSpeed USB device to perform at top speed, find a USB 3.0 port and connect the device to that port. A SuperSpeed device that is connected a USB 2.0 port, operates at high speed.
+
+</p>
+<p>You can also verify that a particular port is a USB 3.0 port in Device Manager. In Windows Vista or later version of Windows, open Device Manager, and select the port from the list.
+</p>
+<p><img id="USB_host_controllers_dm" alt="USB Host Controllers in Device Manager" src="../../../../../i.msdn.microsoft.com/dynimg/IC675750.png" title="USB Host Controllers in Device Manager" xmlns="" /></p>
+<p>If you have an eXtensible Host Controller, it supports USB 3.0.</p>
+<h2><a id="ext_drivers"></a><a id="EXT_DRIVERS"></a>Do I need to install drivers for my eXtensible host controller?</h2>
+<p>Windows 8 and Windows Server 2012 include support for USB 3.0.
+
+</p>
+<p>If the PC has USB 3.0 ports and is running a version of Windows earlier than Windows 8, the host controller drivers are provided by the PC manufacturer. If you need to reinstall those drivers, you must get them from the manufacturer.
+
+</p>
+<p>If you added a USB 3.0 controller card to your PC that is running a version of Windows earlier than Windows 8, you must install the drivers provided by the controller card manufacturer.
+
+</p>
+<p>In Windows 8, the Microsoft-provided set of USB 3.0 drivers (USB driver stack) work with most host controllers. Microsoft USB 3.0 driver stack does not work with the Fresco Logic FL1000 controller. To determine if you have an FL1000 controller, open Device Manager and expand <strong>Universal Serial Bus controllers</strong>. View the controller properties by right-clicking the controller node. On the <strong>Details</strong> tab, select <strong>Hardware Ids</strong> property in the list. If the hardware ID starts with PCI\VEN_1B73&amp;DEV_1000, it is the FL1000. For that controller, download and install drivers from your PC or controller card manufacturer.
+</p>
+<h2><a id="hosts"></a><a id="HOSTS"></a>Why do I see several host controllers on my system?</h2>
+<p>In addition to the USB devices that you connect to your PC, there are a number of devices integrated within the PC that might be connected over USB, such as a webcam, fingerprint reader, SD Card reader.  To connect all of those devices and still provide external USB ports, the PC supports several USB host controllers.
+</p>
+<p>The USB 3.0 xHCI host controller is fully backwards compatible with all USB device speeds, SuperSpeed, high speed, full speed, and low speed.  You can connect any device directly to an xHCI controller and expect that device to work.  For EHCI controller, that is not the case.  While the USB 2.0 specification supports all speeds of devices, the EHCI controller only supports high-speed USB devices.  In order for full speed and low speed USB devices to work, they must be connected to the EHCI controller through a USB 2.0 hub, or they must be connected to a UHCI or OHCI Controller.
+</p>
+<p>For newer PCs, most USB 2.0 ports exposed by PCs are downstream of a USB 2.0 hub.  This hub is connected to an EHCI controller.  This allows the PC’s USB 2.0 port to work with all speeds of devices. SuperSpeed devices behave as high-speed devices when connected to a 2.0 port. 
+</p>
+<p>After the USB 2.0 specification was released, PCs used a combination of host controllers in order to support all speeds of devices.  A single USB 2.0 port would be wired to two host controllers, an EHCI host controller and either a UHCI or OHCI host controller.  When you attach a device, the hardware dynamically routes the connection to one of the two hosts. The routine depends on the device’s speed.
+</p>
+<h2><a id="twohubs"></a><a id="TWOHUBS"></a>Why do I see two hubs in Device Manager when I have connected only one USB 3.0 hub?</h2>
+<p>While xHCI host controllers work with any speed of device, a SuperSpeed hub only works with SuperSpeed devices.  To ensure that USB 3.0 hubs can work with all speeds, they have two parts: a SuperSpeed hub and a USB 2.0 hub.  A USB 3.0 hub is able to support all speeds by dynamically routing devices, to the SuperSpeed hub or 2.0 hub, based on device speed. 
+</p>
+<p>Open Device Manager, view <strong>Devices by connection</strong>, and then locate your eXtensible Host Controller.  When you connect a single USB 3.0 hub to your USB 3.0 port, there are two hubs downstream of the controllers’ Root Hub.
+</p>
+<p><img id="USB_3_Hub_dm" alt="USB 3.0 Hub in Device Manager" src="../../../../../i.msdn.microsoft.com/dynimg/IC675751.png" title="USB 3.0 Hub in Device Manager" xmlns="" /></p>
+<p>In the example below, a SuperSpeed USB storage device and USB Audio device are both connected to a USB 3.0 hub. You can see the storage device is downstream of the SuperSpeed hub and the audio device is downstream of the USB 2.0 hub.</p>
+<p><img id="USB_3_Hub_Connected_Devices_dm" alt="USB 3.0 Hub with Connected Devices in Device Manager" src="../../../../../i.msdn.microsoft.com/dynimg/IC675752.png" title="USB 3.0 Hub with Connected Devices in Device Manager" xmlns="" /></p>
+<h2><a id="portdrivers"></a><a id="PORTDRIVERS"></a>Which set of drivers is loaded for the devices that are connected to 2.0 ports?</h2>
+<p>A different set of binaries is loaded for each type of host controller. It's important to understand that the USB driver stack that Windows loads correlates to the type of host controller, not to the connected device's speed.
+
+</p>
+<p>In this image, you can see which drivers are loaded for each of the different types of USB host controllers.
+</p>
+<p><img id="USB_Win8_driver_stacks" alt="USB Driver Stack in Windows 8" src="../../../../../i.msdn.microsoft.com/dynimg/IC675753.png" title="USB Driver Stack in Windows 8" xmlns="" /></p>
+<p>If the USB 3.0 port is correctly routed to an xHCI controller, Windows loads the xHCI driver stack (also referred to as the USB 3.0 driver stack).
+
+</p>
+<p>If the USB 2.0 port is connected to an EHCI controller through a USB 2.0 hub, the traffic moves through the EHCI controller, and the USB 2.0 driver stack is loaded.
+
+</p>
+<p>For more information about the drivers in the USB driver stack, see <a href="http://go.microsoft.com/fwlink/?LinkID=320134">USB Driver Stack Architecture</a>.
+
+</p>
+<p>If the PC's USB 2.0 ports use a companion controller, the host controller to which the port is routed depends on device speed. For example, a low speed device connects through a UHCI or an OHCI controller, and uses the USBUHCI or USBOHCI driver. The PC routes a high speed device to an EHCI controller, therefore, Windows uses the USBEHCI driver.
+
+</p>
+<p>Different device speeds do not determine the driver that is loaded for the controller. However, different device speeds might determine which controller is used. The controller always uses the same driver.
+</p>
+<h2><a id="superspeed"></a><a id="SUPERSPEED"></a>How do I determine whether my USB 3.0 device is operating as SuperSpeed?</h2>
+<p>In Windows 8, first, make sure that you have a USB 3.0 port and an xHCI host controller. If your SuperSpeed USB device is connected to the xHCI host controller, Windows 8 shows a "Connected to USB 3.0" message in specific portions of the Windows 8 UI. If the device is connected to an EHCI controller instead of your XHCI controller, the messages will instead read, "Device can perform faster when connected to USB 3.0".
+
+</p>
+<p>You can view these UI messages in PC Settings.
+</p>
+<ol>
+<li>Open the Charms Bar (Drag the cursor to top or bottom right corner of the screen, type Windows Key + C, or swipe in from the right with your finger).</li>
+<li>Select <strong>Settings</strong> and then <strong>Change PC settings</strong>.
+</li>
+<li>Select the <strong>Devices</strong> under <strong>PC settings</strong>.
+</li>
+</ol>
+<p>This image shows the UI message when the USB 3.0 device is operating at SuperSpeed.</p>
+<p><img id="USB_Superspeed" alt="SuperSpeed USB Device operating at SuperSpeed " src="../../../../../i.msdn.microsoft.com/dynimg/IC599047.jpg" title="SuperSpeed USB Device operating at SuperSpeed " xmlns="" /></p>
+<p>This image shows the UI message when the USB device is operating at a bus speed that is lower than SuperSpeed.</p>
+<p><img id="USB_High_Speed" alt="SuperSpeed USB device operating at high-speed " src="../../../../../i.msdn.microsoft.com/dynimg/IC599049.jpg" title="SuperSpeed USB device operating at high-speed " xmlns="" /></p>
+<p>You can view similar messages in Devices and Printers, as shown in these images.</p>
+<p><img id="USB_Superspeed_Devices" alt="SuperSpeed USB device operating at SuperSpeed" src="../../../../../i.msdn.microsoft.com/dynimg/IC599046.jpg" title="SuperSpeed USB device operating at SuperSpeed" xmlns="" /></p>
+<p><img id="USB_High_Speed_Devices" alt="SuperSpeed device operating at high-speed" src="../../../../../i.msdn.microsoft.com/dynimg/IC599050.jpg" title="SuperSpeed device operating at high-speed" xmlns="" /></p>
+<p>If the USB 3.0 device is a storage device, Windows Explorer shows similar messages when the volume label is selected, as shown below. Note that the <strong>View -&gt; Details</strong> pane must be selected for the message to be visible.</p>
+<p><img id="USB_Superspeed_Storage_Device" alt="SuperSpeed USB device operating at SuperSpeed " src="../../../../../i.msdn.microsoft.com/dynimg/IC599045.jpg" title="SuperSpeed USB device operating at SuperSpeed " xmlns="" /></p>
+<p><img id="USB_High_Speed_Storage_Device" alt="SuperSpeed USB device operating at high-speed" src="../../../../../i.msdn.microsoft.com/dynimg/IC599048.jpg" title="SuperSpeed USB device operating at high-speed" xmlns="" /></p>
+<p>If you are writing a device driver, the <a href="http://go.microsoft.com/fwlink/?LinkID=320135">USBView</a> tool, included in the Windows Driver Kit (WDK), is very useful. For the Windows 8 WDK, Microsoft updated USBView to display SuperSpeed USB information. You can use this tool to determine whether or not your device is operating at SuperSpeed. This image shows a USB 3.0 device operating at SuperSpeed in USBView.</p>
+<p><img id="USB_Superspeed_USBView" alt="SuperSpeed USB device operating at SuperSpeed" src="../../../../../i.msdn.microsoft.com/dynimg/IC599044.jpg" title="SuperSpeed USB device operating at SuperSpeed" xmlns="" /></p>
+<p>If you are a device driver developer, the <a href="http://go.microsoft.com/fwlink/?LinkID=320134">USB driver stack</a> exposes a new IOCTL that is called  <a href="http://go.microsoft.com/fwlink/?LinkID=320136">IOCTL_USB_GET_NODE_CONNECTION_INFORMATION_EX_V2</a>, which you can use to query speed information for USB 3.0 devices.</p>
+<h2><a id="whynotfaster"></a><a id="WHYNOTFASTER"></a>Why isn't my SuperSpeed USB device faster than an equivalent high-speed USB device?</h2>
+<p>Generally, if a USB 3.0 USB device is not faster than a high-speed USB device, it's not performing at SuperSpeed. If the SuperSpeed USB device is connected to a USB 3.0 port, it may not operate at SuperSpeed for the following reasons:</p>
+<ul>
+<li>
+<p>You are using a USB 2.0 hub.
+</p>
+<p>If you are using a hub, verify that it's a USB 3.0 hub. If you're using a USB 2.0 hub, any attached SuperSpeed USB device will operate at high-speed. Either replace the hub with a USB 3.0 hub, or connect the device directly to the USB 3.0 port.</p>
+</li>
+<li>
+<p>The firmware on the USB 3.0 hub is out of date.</p>
+<p>Certain earlier USB 3.0 hubs did not work well. As a result, Windows only uses the 2.0 portion of those hubs. If Device Manager indicates a "Non Functional" hub as shown in this image, Windows 8 is not using the 3.0 portion of your hub.</p>
+<p><img id="USB_Superspeed_Nonfunctional" alt="Non Functional SuperSpeed USB Hub" src="../../../../../i.msdn.microsoft.com/dynimg/IC599052.jpg" title="Non Functional SuperSpeed USB Hub" xmlns="" /></p>
+<p>You can either connect your SuperSpeed device directly to the USB 3.0 port, or update the firmware on your hub. Windows 8 recognizes hubs that have newer firmware.</p>
+</li>
+<li>
+<p>The device is connected with a USB 2.0 cable.
+</p>
+<p>Make sure that the cable that is used to connect the device is a USB 3.0 cable. It is also possible that the USB 3.0 cable has signal integrity issues. In that case, the device might switch to high speed. If that happens, you must use a different USB 3.0 cable.</p>
+</li>
+<li>
+<p>The firmware on the device is out of date.
+</p>
+<p>Update the firmware for the SuperSpeed USB device by obtaining the latest version from the manufacturer's website. Some SuperSpeed USB device manufacturers release fixes, for bugs found in the device, as firmware updates.</p>
+</li>
+<li>
+<p>The firmware on the host controller is out of date.
+</p>
+<p>Update the firmware for the USB 3.0 controller by obtaining the latest version from your PC manufacturer's site or from your add in card manufacturer's site. Some USB 3.0 controller manufacturers release fixes, for bugs found in the controller, as firmware updates.</p>
+</li>
+<li>
+<p>The BIOS for your system is out of date.
+</p>
+<p>Update the BIOS for your system by obtaining the latest version from your PC maker. On some motherboards, the BIOS can incorrectly route a device that is connected to an xHCI host controller to an EHCI controller. That incorrect routing forces a SuperSpeed USB device to operate at high-speed. A BIOS update can fix this problem.</p>
+</li>
+</ul>
+<h2><a id="compositecompound"></a><a id="COMPOSITECOMPOUND"></a>Is it possible to have a composite and a compound device in one piece of hardware?</h2>
+<p>Yes. The Microsoft Natural Keyboard Pro, which has a three-port, bus-powered hub, is an example of a compound composite USB device. The device has a composite device attached to port 1. Two additional ports are exposed to the end user.
+
+</p>
+<p>The device that is attached to port 1 is a low-speed composite device. The device has two interfaces, both of which comply with the USB standard device class definition for human interface devices (HID). The composite device provides two HID interfaces instead of multiplexing all collections over a single HID interface by using top-level collections. This design was chosen for compatibility with older BIOSs.
+</p>
+<h2><a id="why_reinstalled"></a><a id="WHY_REINSTALLED"></a>Why are some of my USB devices reinstalled when they are moved to a new port?</h2>
+<p>In Windows 2000 and later operating systems, a new physical device object (PDO) is created when a USB device is moved from one port to another. If the hardware reports a unique USB serial number, a new PDO is not created.
+
+</p>
+<p>To reuse the same PDO and to ensure that the device experience is unchanged whether the device is reinserted into the same port or a new port, hardware vendors must store a serial number on their device. According to Windows Hardware Certification Program requirements, the serial number must be unique for all devices that share the device installation identifier.
+</p>
+<h2><a id="designrec"></a><a id="DESIGNREC"></a>Is there a list of design recommendations for USB product packaging?</h2>
+<p>The USB-IF has worked with Microsoft and other USB-IF member companies to develop a list of recommendations for independent hardware vendors to include on their packaging.
+
+</p>
+<p>More information is available on the USB Web site.
+</p>
+<p>For USB and Hi-Speed USB refer to: <a href="http://www.usb.org/developers/packaging/">http://www.usb.org/developers/packaging</a>/.</p>
+<p>For SuperSpeed USB refer to: <a href="http://www.usb.org/channel/">http://www.usb.org/channel/</a>.</p>
+<h2><a id="rewritedriver"></a><a id="REWRITEDRIVER"></a>Do I have to rewrite my client driver to support USB 3.0 devices?</h2>
+<p>All existing client drivers should continue work, as is, when a low, full, or high-speed device is connected to a USB 3.0 port.
+
+In Windows 8, we have ensured compatibility with existing client drivers. </p>
+<p>The USB 3.0 driver stack maintains IRQL levels, caller context, and error status; retry frequency and timing when interacting with devices, and more to make sure existing drivers continue to work.
+
+It is still very important to test. </p>
+<p>Common failures occur because:
+</p>
+<ul>
+<li>The driver's endpoint descriptor parsing breaks due to the presence of SuperSpeed endpoint companion descriptors.
+</li>
+<li>Due to increased speed, you might run into timing issues at the application protocol level.
+</li>
+<li>The maximum packet size supported by the endpoint might be different.
+</li>
+<li>\Due to function power management, timing for selective suspend operation might be different.
+</li>
+</ul>
+<p>In Windows 7 and earlier version of the operating systems, the USB 3.0 driver stack is provided by third-party. Therefore, we highly recommend that you test your driver to work with third party USB driver stacks.
+
+</p>
+<p>New client drivers in Windows 8 for high Speed and SuperSpeed USB devices should opt for new capabilities.
+</p>
+<h2><a id="loadeddriver"></a><a id="LOADEDDRIVER"></a>Which driver is loaded for my SuperSpeed storage device use, Uaspstor.sys or Usbstor.sys?</h2>
+<p>The USB Attached SCSI (UAS) protocol is a new mass storage protocol designed to improve performance over the established USB mass storage protocol, Bulk-Only-Transport (BOT). It does so by reducing protocol overhead, supporting SATA native command queuing (NCQ) and by processing multiple commands in parallel. To do this, UAS makes use of a new USB 3.0 feature for bulk transfers called streams.
+
+</p>
+<p>The existing mass storage driver, Usbstor.sys, uses the BOT protocol. It works with all speeds of devices, including SuperSpeed USB devices.
+
+</p>
+<p>For Windows 8, Microsoft includes a new mass storage class driver, Uaspstor.sys which uses the UAS protocol. Because streams is new to USB 3.0, so Uaspstor.sys can only use streams when the hardware supports streams (a SuperSpeed USB device is connected to an xHCI host controller). The driver also includes support for software streams, so it can also load for devices operating at high-speed, regardless of the host type.
+
+</p>
+<p>If you connect a mass storage device to Windows 8 and that device supports UAS, Windows loads Uaspstor.sys. In some cases, there might be known issues with hardware streams on a specific xHCI host controller or known issues with a device's UAS protocol implementation. In those cases, Windows falls back to the BOT protocol and loads the Usbstor.sys driver instead.
+
+</p>
+<p>Uaspstor.sys is new to Windows 8. It is not present in earlier versions of Windows.
+</p>
+<h2><a id="usbdwg"></a><a id="USBDWG"></a>Which USB DWG Classes does Microsoft support?</h2>
+<p>Windows supports several USB classes that the USB Device Working Group (DWG) has defined. For the current list of USB class specifications and class codes, visit the USB DWG Web site at <a href="http://www.usb.org/developers/devclass_docs">http://www.usb.org/developers/devclass_docs</a>.
+
+</p>
+<p>This table highlights the USB DWG classes that are supported in Windows and also identifies the versions of Windows that support each class.
+</p>
+<table>
+<tr><th>Class Specification </th><th>bDeviceClass Code</th><th>Driver Name </th><th>Windows Support</th></tr>
+<tr><td>Bluetooth class</td><td>0xE0</td><td>Bthusb.sys</td><td>Windows XP and later</td></tr>
+<tr><td>Chip/smart card interface devices (CCID)</td><td>0x0B</td><td>Usbccid.sys</td><td>
+<p>Windows Server 2008 and later
+</p>
+<p>Windows Vista and later
+</p>
+<p>Windows Server 2003*
+</p>
+<p>Windows XP* 
+</p>
+<p>Windows 2000*
+</p>
+</td></tr>
+<tr><td>Hub class</td><td>0x09</td><td>Usbhub.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Human interface device (HID)</td><td>0x03</td><td>Hidusb.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Mass storage class (MSC)</td><td>0x08</td><td>Usbstor.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>USB Attached SCSI (UAS)</td><td>0x08</td><td>Uaspstor.sys</td><td>
+<p>Windows Server 2012
+</p>
+<p>Windows 8
+</p>
+</td></tr>
+<tr><td>Printing class</td><td>0x07</td><td>Usbprint.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Scanning/imaging (PTP)</td><td>0x06</td><td>
+<p>WpdUsb.sys
+</p>
+<p>Usbscan.sys
+</p>
+</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Media Transfer (MTP)</td><td>0x06</td><td>WpdUsb.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+</td></tr>
+<tr><td>USB Audio class</td><td>0x01</td><td>Usbaudio.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Modem class (CDC)</td><td>0x02</td><td>Usbser.sys</td><td>
+<p>Windows Server 2003 and later
+</p>
+<p>Windows XP and later
+</p>
+<p>Windows 2000 and later
+</p>
+</td></tr>
+<tr><td>Video class (UVC)</td><td>0x0E</td><td>Usbvideo.sys</td><td>
+<p>Windows Vista and later
+</p>
+<p>Windows XP*
+</p>
+</td></tr>
+</table>
+<p> </p>
+<p>*Special instructions are necessary to load this driver because this driver might have been released later than the operating system.
+Windows class drivers might not support all of the features that are described in a DWG class specification.  In this case, the driver does not load based on class match.  For additional details on implemented features within a class specification, see the WDK documentation.
+</p>
+<h2><a id="customclass"></a><a id="CUSTOMCLASS"></a>Which device setup class should I use for a custom USB device?</h2>
+<p>Microsoft provides system-defined setup classes for most device types. System-defined setup class GUIDs are defined in Devguid.h. For additional information, see the WDK. 
+For a list of Windows class GUIDs, see these topics:
+</p>
+<ul>
+<li><a href="http://go.microsoft.com/fwlink/?LinkID=320141">System-Defined Device Setup Classes Available to Vendors
+</a></li>
+<li><a href="http://go.microsoft.com/fwlink/?LinkID=320142">System-Defined Device Setup Classes Reserved for System Use 
+</a></li>
+</ul>
+<p>Independent hardware vendors must use the setup class that is associated with the type of USB device, not with the bus type. If you are developing a device type for which Microsoft has not provided an existing class GUID, you can define a new device setup class.
+</p>
+<p>In Windows 8, a new setup class has been defined, named <strong>USBDevice</strong> (ClassGuid = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}). If you are developing a device type, associate your device with <strong>USBDevice</strong> instead of the setup class, <strong>USB</strong>. The <strong>USBDevice</strong> class works on Windows Vista and later versions of the operating system.
+</p>
+<p>The setup class <strong>USB</strong> (ClassGuid = {36fc9e60-c465-11cf-8056-444553540000}) is reserved only for USB host controllers and USB hubs, and must not be used for other device categories. Using this setup class incorrectly may cause the device driver to fail Windows logo testing.
+</p>
+<h2><a id="cpucthree"></a><a id="CPUCTHREE"></a>Why won't my CPU enter C3 when I attach some USB devices?</h2>
+<p>When a USB device is connected, the USB host controller polls the frame scheduler, which is a direct memory access (DMA) bus master operation. "Break events" such as bus master traffic, interrupts, or several other system activities move a CPU out of C3 because, by definition, the CPU's cache cannot be snooped while it is in C3.
+
+</p>
+<p>There are two ways to work around this issue:
+</p>
+<ul>
+<li>
+<p>Hardware removal.
+</p>
+<p>At times, the hardware can be electronically disconnected from the Universal Serial Bus. For example, when storage media is removed from the USB reader, the USB reader can emulate an electronic disconnect and reconnect when the media is reinserted. In this case, the C3 transitions can occur because no USB devices are on the host controller.
+</p>
+</li>
+<li>
+<p>Selective Suspend.</p>
+<p>
+The only alternative available in Windows XP and later operating systems is to support USB Selective Suspend. This feature lets a driver suspend a USB device that it controls when the device becomes idle, even though the system itself remains in a fully operational power state (S0).
+Selective Suspend is especially powerful if all USB function drivers support it. If even one driver does not support it, the CPU cannot enter C3.
+For additional information on Selective Suspend, see the WDK.
+</p>
+</li>
+</ul>
+<h2><a id="selsuspend"></a><a id="SELSUSPEND"></a>Which USB class drivers support Selective Suspend?</h2>
+<p>The following is a list of USB class drivers in Windows 8 that support Selective Suspend:</p>
+<ul>
+<li>
+<p>Bluetooth</p>
+<p>
+This driver can selectively suspend devices on computers that are running Windows XP Service Pack 2 and later versions of Windows. The driver requires the Bluetooth radio to set the self-powered and remote wake bits in the configuration descriptor. The driver selectively suspends (D2) the Bluetooth radio when no active Bluetooth connections exist. 
+</p>
+</li>
+<li>
+<p>USB HID
+</p>
+<p>This driver can selectively suspend an HID device. It is your responsibility to trigger the remote wake signal on all device state changes. To enable Selective Suspend in the HID stack, the SelectiveSuspendEnabled registry value must be enabled for the specific VID+PID of the device. For examples, see Input.inf. 
+</p>
+<p>On systems that support Windows 8’s Connected Standby, this driver enters selective suspend (D2) when the system is in Connected Standby.  This driver can wake the system and turn on the screen.</p>
+</li>
+<li>
+<p>USB Hub
+</p>
+<p>This driver can selectively suspend a root or external hub when no devices are attached to it or when all devices that are attached to that hub can be selectively suspended. 
+</p>
+</li>
+<li>
+<p>USB Modem
+</p>
+<p>This driver can selectively suspend the device when no active modem connections exist.
+</p>
+</li>
+<li>
+<p>USB Storage (BOT)
+</p>
+<p>This driver can selectively suspend (D3) storage devices on systems that support Windows 8 Connected Standby, when those systems go into Connected Standby.  Like HID, there is a registry override to enable selective suspend on all Windows 8 systems.
+</p>
+</li>
+<li>
+<p>USB Storage (UAS)
+</p>
+<p>This driver can selectively suspend (D3) a storage device when it’s idle for a disk timeout period.
+</p>
+</li>
+<li>
+<p>USB Video
+</p>
+<p>This driver can selectively suspend (D3) a webcam on Windows Vista and later operating system.
+</p>
+</li>
+<li>
+<p>USB Audio
+</p>
+<p>This driver can selectively suspend (D3) a USB audio device on Windows 7 and later operating systems when the computer is on battery power.
+</p>
+</li>
+<li>
+<p>Composite USB
+</p>
+<p>This driver can selectively suspend (D3) composite devices when all children are in suspend.  On systems that support D3-Cold, all children must opt into D3-Cold.
+</p>
+</li>
+<li>
+<p>USB Smart Card
+</p>
+<p>This driver can selectively suspend (D2) Smart Card interface devices by default in Windows 7 and later operating systems.
+</p>
+</li>
+<li>
+<p>Generic USB Peripherals (WinUSB)
+</p>
+<p>This driver can selectively suspend (D3) devices by default on Windows Vista and later operating systems.
+</p>
+</li>
+<li>
+<p>WWAN: 3G or WiMax Dongles
+</p>
+<p>This driver can selectively suspend devices.  When there is an active subscription, the device enters D2, without an active subscription, the device enters D3.
+</p>
+</li>
+</ul>
+<h2><a id="usbawake"></a><a id="USBAWAKE"></a>Why can't a USB device awaken Windows from S3?</h2>
+<p>A USB device cannot awaken Windows from S3 for several reasons, including the following:</p>
+<ol>
+<li>
+<p>	Incorrect BIOS.
+</p>
+<p>Verify that the latest BIOS is installed on the computer. To obtain the latest BIOS revision for the computer, visit the Web site of the OEM or ODM.
+</p>
+</li>
+<li>
+<p>	BIOS that is not enabled to wake.
+</p>
+<p>Some BIOSs make it possible to disable wake from S3 and S4. Verify that the BIOS is enabled to wake from S3.
+</p>
+</li>
+<li>
+<p>USBBIOSx registry key not being set.
+</p>
+<p>A clean installation of Windows XP does not have the USBBIOSx registry key. If the OEM or ODM validates that the BIOS can wake from S3, set this registry key to 0x00 and restart the computer.
+</p>
+</li>
+<li>
+<p>The Host Controller does not have power in S3 or S4.
+</p>
+<p>Many times the PC cuts power to an add-in card when the PC is in a lower power state.  If the add-in card has no power, it will not be able to detect a wake event, and will not be able to wake the PC.
+</p>
+</li>
+</ol>
+<p>For additional information, see the USB troubleshooter in the Help and Support Center in Windows XP and later versions of Windows.</p>
+<h2><a id="enhdriver"></a><a id="ENHDRIVER"></a>Do I need to install drivers for my enhanced (USB 2.0) host controller?</h2>
+<p>The following versions of Windows support the USB 2.0 enhanced host controller:</p>
+<ul>
+<li>Windows Vista and later
+</li>
+<li>Windows Server 2003 and later
+</li>
+<li>Windows XP Service Pack 1
+</li>
+<li>Windows 2000 Service Pack 4
+</li>
+</ul>
+<p class="note"><strong>Note</strong>  </p><p class="note">Because Windows 2000 and Windows XP were released before USB 2.0 hardware was available, the drivers were released for those operating systems in the service packs.
+To install drivers:
+</p>
+<ol>
+<li>Follow the procedure that was described in the answer to the first question to verify that your computer has USB 2.0 ports and that you need to install a driver for the enhanced host controller.
+</li>
+<li>In the Device Manager window, expand the <strong>Other Devices </strong>section as explained in the first question, and then double-click <strong>Universal Serial Bus (USB) Controller</strong>. 
+</li>
+<li>On the <strong>General</strong> tab of the Properties dialog box, click <strong>Reinstall Driver</strong>.
+<p><img id="USB_Reinstall_Driver" alt="Reinstall Driver" src="../../../../../i.msdn.microsoft.com/dynimg/IC599051.jpg" title="Reinstall Driver" xmlns="" /></p>
+</li>
+<li>In the Add New Hardware Wizard, select <strong>Install the software automatically (Recommended)</strong>, and then click <strong>Next</strong>. Continue with the wizard, accepting all default options, until you reach the last page of the wizard, and then click <strong>Finish</strong>. You might be required to restart your computer to finish the installation.</li>
+</ol>
+
+<p>For additional information about the availability of USB 2.0 in Windows XP Service Pack 1, see Microsoft Knowledge Base article 329632, "How to obtain and to install USB 2.0 drivers in Windows XP Service Pack 1" at <a href="http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q329632&amp;">http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q329632&amp;</a>.</p>
+<p class="note"><strong>Note</strong>  </p><p class="note">To ensure that you have the latest updates installed on your machine, visit Windows Update regularly.</p>
+
+<h2><a id="disablehi"></a><a id="DISABLEHI"></a>Can I disable the "HI-SPEED USB Device plugged into non-HI-SPEED USB port" notice?</h2>
+<p>Windows XP and later versions of Windows create a pop-up notice when a Hi-Speed USB device is plugged into a USB port that does not support high speed. To obtain the fastest performance from the device, users must click the notice and follow the instructions on the screen.
+</p>
+<p>To disable the notice, follow these steps:
+</p>
+<ol>
+<li>Start Device Manager, as described in the first question in this FAQ.
+</li>
+<li>In the Device Manager window, expand the <strong>Universal Serial Bus controllers</strong> node. Look for a host controller with the word "Universal" or "Open" in the title. If you find one, double-click it.
+</li>
+<li>On the <strong>Advanced</strong> tab of the <strong>Properties </strong>dialog box, select <strong>Don't tell me about USB errors</strong>.
+</li>
+</ol>
+<p class="note"><strong>Note</strong>  </p><p class="note">The preceding procedure disables all USB notices, not just "HI-SPEED USB Device plugged into non-HI-SPEED port".</p>
+
+<p>For additional information about USB 2.0 support in Windows XP Service Pack 1, see Microsoft Knowledge Base article 329632, "How to obtain and to install USB 2.0 drivers in Windows XP Service Pack 1, at <a href="http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q329632">http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q329632</a>.</p>
+<h2><a id="singlett"></a><a id="SINGLETT"></a>Is my USB 2.0 hub single-TT or multi-TT?</h2>
+<p>A USB 2.0 hub can have one transaction translator (TT) for all downstream-facing ports on the hub (single TT), or it can have one TT for each downstream-facing port on the hub (multiple TT).
+
+</p>
+<p>The value of the <strong>bDeviceProtocol</strong> field of the USB device descriptor and the <strong>bInterfaceProtocol</strong> field of the USB interface descriptor indicate whether a hub is single-TT or multi-TT:
+</p>
+<ul>
+<li>Single-TT. <strong>bDeviceProtocol</strong> == 0x01
+
+</li>
+<li>Multi-TT. <strong>bDeviceProtocol</strong> == 0x02
+
+</li>
+</ul>
+<p><strong>Usbhub.sys</strong> uses this setting to enable multi-TT mode or single-TT mode. On Windows XP and later, Usbhub.sys always enables multi-TT mode on a multi-TT hub.
+
+For additional details about TT layout, see sections 11.14.1.3 and 11.23.1 of the <a href="http://www.usb.org/developers/docs">USB 2.0 Specification</a>.
+</p>
+<h2><a id="usbsn"></a><a id="USBSN"></a>What characters or bytes are valid in a USB serial number?</h2>
+<p>The USB device descriptor's <strong>iSerialNumber</strong> field indicates whether the device has a serial number and where the number is stored, as follows:</p>
+<ul>
+<li><strong>iSerialNumber </strong>== 0x00 : The USB device has no serial number.
+
+</li>
+<li><strong>iSerialNumber</strong> != 0x00 : The USB device has a serial number. The value assigned to <strong>iSerialNumber</strong> is the serial number's string index.
+
+</li>
+</ul>
+<p>If the device has a serial number, the serial number must uniquely identify each instance of the same device. </p>
+<p>For example, if two device descriptors have identical values for the i<strong>dVendor</strong>, <strong>idProduct</strong>, and <strong>bcdDevice</strong> fields, the <strong>iSerialNumber </strong>field must be different, to distinguish one device from the other.
+
+</p>
+<p>Plug and Play requires that every byte in a USB serial number be valid. If a single byte is invalid, Windows discards the serial number and treats the device as if it had no serial number.
+
+The following byte values are not valid for USB serial numbers:
+</p>
+<ul>
+<li></li>
+<li>0x2C.
+
+</li>
+<li>Values less than 0x20.
+
+</li>
+<li>Values greater than 0x7F.
+
+</li>
+</ul>
+<p>For additional details on the <strong>iSerialNumber</strong> value, see section 9.6.1 of the <a href="http://www.usb.org/developers/docs">USB 2.0 Specification</a>.</p>
+<h2><a id="langidloc"></a><a id="LANGIDLOC"></a>What LANGID is used in a string request on localized builds of Windows?</h2>
+<p>A USB device indicates the presence of a serial number by setting the iSerialNumber field of the USB device descriptor to the serial number's string index. To retrieve the serial number, Windows issues a string request with the language identifier (LANGID) set to 0x0409 (U.S. English). Windows always uses this LANGID to retrieve USB serial numbers, even for versions of Windows that are localized for other languages.</p>
+<h2><a id="langidsn"></a><a id="LANGIDSN"></a>What LANGID is used to extract a device's serial number?</h2>
+<p>A USB device indicates the presence of a serial number by setting the iSerialNumber field of the USB device descriptor to the serial number's string index. To retrieve the serial number, Windows issues a string request with the language identifier (LANGID) set to 0x0409 (U.S. English). Windows always uses this LANGID to retrieve USB serial numbers, even for versions of Windows that are localized for other languages.</p>
+<h2><a id="maxxfer"></a><a id="MAXXFER"></a>What is the maximum USB transfer size for different Windows versions?</h2>
+<p>See <a href="http://support.microsoft.com/kb/832430/en-us">Maximum size of USB transfers on various operating systems</a>.</p>
+<h2><a id="nummultif"></a><a id="NUMMULTIF"></a>How should numbers be assigned to multiple interfaces on a composite device?</h2>
+<p>Windows treats USB devices that have more than one interface on the first configuration as composite devices.
+</p>
+<p>
+For Windows XP Service Pack 1 and earlier versions of Windows:
+
+</p>
+<ul>
+<li>Interface numbers must be zero-based.
+
+</li>
+<li>Interface numbers must be consecutive and increasing.
+
+</li>
+</ul>
+<p>For Windows XP Service Pack 2 and later versions of Windows, interface numbers are only required to be increasing, not consecutive.</p>
+<p>For additional information about interface numbers, see <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;814560">Composite USB devices whose interfaces are not sequentially numbered do not work in Windows XP</a>.</p>
+<p>Alternate settings for an interface should be assigned as follows for all versions of Windows:</p>
+<ul>
+<li>The default value for an interface is always alternate setting zero.
+
+</li>
+<li>Additional alternate setting numbers must be consecutive and increasing.
+
+</li>
+</ul>
+<p>For additional information on alternate settings, see Section 9.6.5 of the <a href="http://www.usb.org/developers/docs">USB 2.0 Specification</a>.</p>
+<h2><a id="usbccgp"></a><a id="USBCCGP"></a>What are the major restrictions imposed by Usbccgp.sys?</h2>
+<p><strong>Usbccgp.sys</strong> supports composite devices for:</p>
+<ul>
+<li>Windows Me
+
+</li>
+<li>Windows XP
+
+</li>
+<li>Windows Server 2003
+
+</li>
+<li>Windows Vista
+
+</li>
+<li>Windows Server 2008
+
+</li>
+</ul>
+<p>Although it might still be possible to load <strong>Usbhub.sys</strong> as the parent driver for the composite device on these and later versions of Windows, Microsoft does not recommend it because it might cause hardware compatibility errors. You should use <strong>Usbccgp.sys</strong> instead. </p>
+<p>To ensure that you load the correct driver for your composite device, use the Include and Needs directives in your INF files, as follows:</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_9fbf5681-ebe2-43a9-8052-d0d263436e87');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9fbf5681-ebe2-43a9-8052-d0d263436e87" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+Include = USB.INF
+Needs = Composite.Dev
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>The major restrictions imposed on hardware devices and drivers by <strong>Usbccgp.sys</strong> are as follows:</p>
+<ul>
+<li>Usbccgp supports only the default configuration, configuration 0.
+
+</li>
+<li>Usbccgp does not support Selective Suspend in Windows XP and Windows Server 2003. This feature is supported only in Windows Vista and later versions of Windows.
+
+<p class="note"><strong>Note</strong>  </p><p class="note">Usbccgp supports Selective Suspend in Windows XP SP1 and later versions of Windows XP, but with limited features. For these versions of Windows, the composite device is put into Selective Suspend only if each child function of the device has a pending Idle IRP. Usbccgp does not support Selective Suspend in Windows XP RTM</p>
+
+</li>
+<li>Usbccgp supports the interface association descriptor (IAD) only in Windows XP SP2, Windows Server 2003 SP1, and later versions of Windows.
+
+</li>
+<li>Usbccgp supports nonconsecutive interface numbers only in Windows XP SP2, Windows Server 2003 SP1, and later versions of Windows.
+
+</li>
+</ul>
+<h2><a id="tracecorebin"></a><a id="TRACECOREBIN"></a>How do I enable debug tracing for USB core binaries?</h2>
+<p>See the blog post about <a href="http://blogs.msdn.com/b/usbcoreblog/archive/2013/06/29/wpp-blog-post.aspx">How to include and view WPP trace messages in a driver’s public PDB files</a>.</p>
+<p>For additional information about USB core stack debugging, see <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;314743">How to enable verbose debug tracing in various drivers and subsystems</a>.</p>
+<h2><a id="iadesc"></a><a id="IADESC"></a>Does Windows support Interface Association Descriptors?</h2>
+<p>Yes. The USB 2.0 Interface Association Descriptor (IAD) Engineering Change Notification (ECN) introduced a new standard method for describing a grouping of interfaces and their alternate settings within a function. IAD can be used to identify two or more consecutive interfaces and alternate settings within one function.
+
+</p>
+<p>Microsoft is currently working with IHVs to develop devices that support IAD. The following operating systems have support for IAD:
+</p>
+<ul>
+<li>Windows XP Service Pack 2 and later
+
+</li>
+<li>Windows Server 2003 Service Pack 1 and later
+
+</li>
+<li>Windows Vista
+
+</li>
+</ul>
+<h2><a id="mdlsinurb"></a><a id="MDLSINURB"></a>Does the USB stack handle chained MDLs in a URB?</h2>
+<p>This functionality is supported by the USB 3.0 driver stack that is included with Windows.</p>
+<h2><a id="urbirp"></a><a id="URBIRP"></a>Can a driver have more than one URB in an IRP?</h2>
+<p>No. This functionality is not supported by the USB stack that is included with Windows.</p>
+<h2><a id="supportcomposite"></a><a id="SUPPORTCOMPOSITE"></a>Does Windows Support USB Composite Hubs?</h2>
+<p>A composite USB device - also referred to as a multifunction USB device - exposes multiple functions, each of which can be treated as an independent device. The system loads the USB generic parent driver, <strong>Usbccgp.sys</strong>, to serve as the parent driver for eaech of the device's functions. The USB generic parent driver enumerates the composite device's functions as though they were separate USB devices and then creates a PDO and constructs a device stack for each function.
+
+</p>
+<p>A composite USB device cannot expose a function that serves as a hub. Windows does not enumerate such hubs properly and attempting to install the device might cause a system crash.
+</p>
+<h2><a id="addlfaq"></a><a id="ADDLFAQ"></a>Where can I find additional FAQs on USB?</h2>
+<p>See the USB-IF FAQ page at <a href="http://www.usb.org/developers/usbfaq/">http://www.usb.org/developers/usbfaq/</a>. </p>
+<h2><a id="related_topics"></a>Related topics</h2>
+<dl>
+<dt>
+<a href="dn303352(v%3dvs.85).html">USB concepts for all developers</a>
+</dt>
+<dt>
+<a href="ff538930(v%3dvs.85).html">Universal Serial Bus (USB)</a>
+</dt>
+</dl>
+<p> </p>
+<p> </p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [usbcon\buses]:%20USB in Windows - FAQ%20 RELEASE:%20(2/20/2014)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AWe use your feedback to improve the documentation. We don't use your email address for any other purpose, and we'll remove your email address from our system after the issue that you're reporting is fixed. While we're working to fix this issue, we might send you an email message to ask for more info. Later, we might also send you an email message to let you know that we've addressed your feedback.%0A%0AFor more info about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="5qte1ncN01zhTGbgcVCVfCXI-WVuXdbiCdxAmfMoQTLjhjyF75UPv6kg0xLOewyoD-RLHh5szojAVTp6cowIlREUg4SS6OtClSEuWIcNb-UNIlcBeALi8F-viuVGQCqcGEvQVA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/dn423379(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="FF ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Yes</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Submit</button>
+            <button id="ratingSkipThis">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentName="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbdd5.html?LinkId=317805" id="SockLinks_727_11" xmlns="http://www.w3.org/1999/xhtml">Find us on Facebook</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/index00a1.html?LinkId=317806" id="SockLinks_727_12" xmlns="http://www.w3.org/1999/xhtml">Follow us on Twitter</a>
+        </li>
+        <li>
+          <a href="../../../../../go.microsoft.com/fwlink/p/indexbae3.html?linkid=285656" id="SockLinks_727_40" xmlns="http://www.w3.org/1999/xhtml">Read the hardware blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentName="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centers</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_727_13" xmlns="http://www.w3.org/1999/xhtml">Dev Center Home</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_727_14" xmlns="http://www.w3.org/1999/xhtml">Windows Store apps</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_727_15" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_727_16" xmlns="http://www.w3.org/1999/xhtml">Desktop</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_727_17" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Related developer sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285634" id="Column2_727_18" xmlns="http://www.w3.org/1999/xhtml">Microsoft Connect</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285635" id="Column2_727_19" xmlns="http://www.w3.org/1999/xhtml">OSR Online</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_727_42" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_727_20" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_727_43" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Other Windows sites</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285636" id="Column2_727_21" xmlns="http://www.w3.org/1999/xhtml">Enterprise</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285637" id="Column2_727_22" xmlns="http://www.w3.org/1999/xhtml">Small business</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285638" id="Column2_727_23" xmlns="http://www.w3.org/1999/xhtml">Students</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285639" id="Column2_727_24" xmlns="http://www.w3.org/1999/xhtml">Home users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Downloads</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285645" id="Column3_727_25" xmlns="http://www.w3.org/1999/xhtml">Windows Driver Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285646" id="Column3_727_26" xmlns="http://www.w3.org/1999/xhtml">Windows Assessment and Deployment Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285647" id="Column3_727_27" xmlns="http://www.w3.org/1999/xhtml">Windows Hardware Certification Kit</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?LinkID=316548" id="Column3_727_29" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Professional 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285649" id="Column3_727_30" xmlns="http://www.w3.org/1999/xhtml">More downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Support</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285664" id="Column3_727_44" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285663" id="Column3_727_45" xmlns="http://www.w3.org/1999/xhtml">More support options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentName="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Essentials</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285650" id="Column4_727_46" xmlns="http://www.w3.org/1999/xhtml">Recently published</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285651" id="Column4_727_47" xmlns="http://www.w3.org/1999/xhtml">Debugging</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328186" id="Column4_727_48" xmlns="http://www.w3.org/1999/xhtml">Samples</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285653" id="Column4_727_49" xmlns="http://www.w3.org/1999/xhtml">Hardware dashboard</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=317804" id="Column4_727_50" xmlns="http://www.w3.org/1999/xhtml">Partner with Microsoft</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Stay connected</div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285658" id="Column4_727_36" xmlns="http://www.w3.org/1999/xhtml">Microsoft events</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313299" id="Column4_727_37" xmlns="http://www.w3.org/1999/xhtml">Windows App Builder Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/en-us" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentName="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentName="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/info/privacy.mspx" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://msdn.microsoft.com/en-us/windows/dn554289" id="BaseFooter_730_5" xmlns="http://www.w3.org/1999/xhtml">Site map</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentName="HelloText" id="Fragment_HelloText">Hello from Seattle.
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/windows/hardware/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fhardware%2fdn423379(v%3dvs.85).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="../../../../../m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njsb803.html?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com/" title="Web Analytics">
+    <img src="http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="kHiFdQVPXY9EhGLr_tMcnpNQqwsAD6V007szPYI0lTZ88cDzQ_JyGAKzadh9IiUhU6i64A8nMX5vdmfnQt_yrvq1Vle6acmKpvYbE-fYh_T4mYXui609qhT2fEgW3nLqF2XyYQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/hardware/dn423379(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"eaa4d9f2-96d6-4920-8788-011016abd4cf\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=E93F43E708C4E79B13014A098239D120" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026Refinement=182\u0026focusOnInit=false\u0026iroot=windows%2fhardware\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=2738C0CC18843CA9EAD45D501FB8031F" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/windows/hardware/dn423379(v=vs.85).aspx by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 17 Mar 2014 16:30:31 GMT -->
+</html>
